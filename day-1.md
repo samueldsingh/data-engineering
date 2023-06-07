@@ -10,3 +10,7 @@ Python divides the operators in the following groups:
 - Identity operators
 - Membership operators
 - Bitwise operators
+
+## Python Arithmetic Operators
+Arithmetic operators are used with numeric values to perform common mathematical operations:
+```+, -, *, /, %, **, //```
