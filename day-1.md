@@ -18,3 +18,27 @@ Arithmetic operators are used with numeric values to perform common mathematical
 ## Python Assignment Operators
 Assignment operators are used to assign values to variables:
 `=, +=, -=, *=, /=, %=, //=, **=, &=, |=, ^=, >>=, <<=`
+
+## Python Comparison Operators
+Comparison operators are used to compare two values:
+`==, !=, >, <, >=, <=`
+
+## Python Logical Operators
+Logical operators are used to combine conditional statements:
+`and, or, not`
+
+## Python Identity Operators
+Identity operators are used to compare the objects, not if they are equal, but if they are actually the same object, with the same memory location:
+`is, is not`
+
+## Python Membership Operators
+Membership operators are used to test if a sequence is presented in an object:
+`in, not in`
+
+## Python Binary Operators
+Bitwise operators are used to compare (binary) numbers:
+`&, |, ^, ~, <<, >>`
+
+## Operator Precedence
+The precedence order is described in the table below, starting with the highest precedence at the top:
+`(), **, +x  -x  ~x, *  /  //  %, +  -,  <<  >>, &, ^, |, ==  !=  >  >=  <  <= is  is not  in  not in, not, and, or`
