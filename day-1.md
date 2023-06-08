@@ -54,6 +54,26 @@ hence, a & b = 0011
 
 **AND** Operator: The bitwise **AND** operation, denoted as **&**, is a binary operation that operates on individual bits of two binary numbers. It compares the corresponding bits of the two numbers and **produces a new number where each bit is set to 1 only if both corresponding bits in the original numbers are also 1**. Otherwise, if either bit is 0, the result will have the corresponding bit set to 0.
 
+**XOR (^)** Operator: Sets each bit to 1 if only one of two bits is 1
+
+```print(6 ^ 3)```
+
+The result is:
+```5```
+
+Explanation:
+```
+"""
+The ^ operator compares each bit and set it to 1 if only one is 1, otherwise (if both are 1 or both are 0) it is set to 0:
+
+6 = 0000000000000110
+3 = 0000000000000011
+--------------------
+5 = 0000000000000101
+====================
+"""
+```
+
 ## Operator Precedence
 The precedence order is described in the table below, starting with the highest precedence at the top:
 `(), **, +x  -x  ~x, *  /  //  %, +  -,  <<  >>, &, ^, |, ==  !=  >  >=  <  <= is  is not  in  not in, not, and, or`
