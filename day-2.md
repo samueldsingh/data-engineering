@@ -50,6 +50,67 @@ Binary Types: bytes (sequence of bytes), bytearray (mutable sequence of bytes)
 Other Types: NoneType (null value), complex (numbers with real and imaginary parts)
 ```
 
+## 15 examples of an entity along with their attribute, value and data type
+1. Car:
+- Attributes: Model (string), year_of_make (int), Price (float)
+- Vales: Hyndai i10, 2017, 700000.50
+
+2. Weather:
+- Attributes: date (string or datetime), temperature (float), humidity (float), is_rainy (boolean)
+- Values: date = "30-03-2022", temperature = 28.5, humidity = 0.75, is_rainy = False
+
+3. Restaurant:
+- Attributes: name (string), cuisine_type (string), rating (float), is_open (boolean)
+- Values: name = "Barbeque Nation", cuisine_type = "Italian", rating = 4.5, is_open = True
+
+4. Computer:
+- Attributes: brand (string), processor_speed (float), memory_capacity (integer), is_laptop (boolean)
+- Values: brand = "HP Pavilion", processor_speed = 2.4, memory_capacity = 8, is_laptop = True
+
+5.Event:
+- Attributes: name (string), date (string or datetime), location (string), is_free (boolean)
+- Values: name = "Music Concert", date = "2023-07-15", location = "Phoenix Mall", is_free = False
+
+6. Product:
+- Attributes: name (string), price (float), quantity (integer), is_available (boolean)
+- Values: name = "iPhone 12", price = 70,000, quantity = 10, is_available = True
+
+7. Student:
+- Attributes: name (string), age (integer), grade (integer), is_enrolled (boolean)
+- Values: name = "Samuel David Singh", age = 15, grade = 9, is_enrolled = True
+
+8. Country:
+- Attributes: name (string), population (integer), capital (string), is_developed (boolean)
+- Values: name = "United States", population = 331000000, capital = "Washington, D.C.", is_developed = True
+
+9. Employee:
+- Attributes: name (string), age (integer), position (string), salary (float)
+- Values: name = "Samuel", age = 30, position = "Manager", salary = 50000.0
+
+10. Movie:
+- Attributes: title (string), director (string), release_year (integer), rating (float)
+- Values: title = "The Shawshank Redemption", director = "Frank Darabont", release_year = 1994, rating = 9.3
+
+11. Animal:
+- Attributes: name (string), avg_age (int), is_carnivore (boolean)
+- Values: name = "Lion", avg_age = 5, is_carnivore = True
+
+12. Customer:
+- Attributes: name (string), age (integer), email (string), is_premium (boolean)
+- Values: name = "Emily Johnson", age = 35, email = "emily@example.com", is_premium = True
+
+13. Product:
+- Attributes: name (string), price (float), quantity_available (integer), is_discounted (boolean)
+- Values: name = "Smartphone", price = 20000.50, quantity_available = 50, is_discounted = False
+
+14. Song:
+- Attributes: title (string), artist (string), duration_seconds (integer), is_favorite (boolean)
+- Example values: title = "Bohemian Rhapsody", artist = "Queen", duration_seconds = 355, is_favorite = True
+
+15. Bank:
+- Attributes: name (string), location (string), total_assets (float), is_international (boolean)
+- Values: name = "HDFC", location = "Bangalore", total_assets = 5000000.0, is_international = True
+
 
 
 
