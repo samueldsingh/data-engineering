@@ -97,7 +97,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 
 12. Customer:
 - Attributes: name (string), age (integer), email (string), is_premium (boolean)
-- Values: name = "Emily Johnson", age = 35, email = "emily@example.com", is_premium = True
+- Values: name = "Samuel", age = 35, email = "samuel@example.com", is_premium = True
 
 13. Product:
 - Attributes: name (string), price (float), quantity_available (integer), is_discounted (boolean)
