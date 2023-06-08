@@ -39,6 +39,9 @@ Membership operators are used to test if a sequence is presented in an object:
 Bitwise operators are used to compare (binary) numbers:
 `&, |, ^, ~, <<, >>`
 
+Example:
+
+
 ## Operator Precedence
 The precedence order is described in the table below, starting with the highest precedence at the top:
 `(), **, +x  -x  ~x, *  /  //  %, +  -,  <<  >>, &, ^, |, ==  !=  >  >=  <  <= is  is not  in  not in, not, and, or`
