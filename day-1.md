@@ -40,6 +40,7 @@ Bitwise operators are used to compare (binary) numbers:
 `&, |, ^, ~, <<, >>`
 
 Example:
+```
 if a = 7     
    b = 6       
 then, binary (a) = 0111      
@@ -49,6 +50,7 @@ hence, a & b = 0011
       a | b = 0111      
              a ^ b = 0100      
        ~ a = 1000
+```
 
 ## Operator Precedence
 The precedence order is described in the table below, starting with the highest precedence at the top:
