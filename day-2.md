@@ -67,7 +67,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 - Attributes: brand (string), processor_speed (float), memory_capacity (integer), is_laptop (boolean)
 - Values: brand = "HP Pavilion", processor_speed = 2.4, memory_capacity = 8, is_laptop = True
 
-5.Event:
+5. Event:
 - Attributes: name (string), date (string or datetime), location (string), is_free (boolean)
 - Values: name = "Music Concert", date = "2023-07-15", location = "Phoenix Mall", is_free = False
 
