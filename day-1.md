@@ -52,7 +52,7 @@ hence, a & b = 0011
        ~ a = 1000
 ```
 
-*AND* Operator: The bitwise *AND* operation, denoted as *&*, is a binary operation that operates on individual bits of two binary numbers. It compares the corresponding bits of the two numbers and *produces a new number where each bit is set to 1 only if both corresponding bits in the original numbers are also 1*. Otherwise, if either bit is 0, the result will have the corresponding bit set to 0.
+**AND** Operator: The bitwise *AND* operation, denoted as **&**, is a binary operation that operates on individual bits of two binary numbers. It compares the corresponding bits of the two numbers and **produces a new number where each bit is set to 1 only if both corresponding bits in the original numbers are also 1**. Otherwise, if either bit is 0, the result will have the corresponding bit set to 0.
 
 ## Operator Precedence
 The precedence order is described in the table below, starting with the highest precedence at the top:
