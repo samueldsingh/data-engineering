@@ -22,3 +22,35 @@ Python is often referred to as an interpreted language because it uses an interp
 Portability: Python's interpreted nature contributes to its portability. Python programs can run on any platform or operating system that has a compatible Python interpreter installed, without the need for recompilation. This enables code portability and simplifies the process of sharing and distributing Python applications.
 
 While Python is primarily interpreted, it does have an optional compilation step. Python code can be compiled into bytecode, which is then executed by the interpreter. This bytecode compilation improves performance and enables distribution of compiled Python programs. However, this compilation step is transparent to the developer and handled automatically by the interpreter or tools like Just-In-Time (JIT) compilers.
+
+## Entity, Attributes, Values, Datatypes
+
+**Entity**: Represents real world object or concept that you want to model in your program. 
+- It can be a person, a place, a thing, or an abstract concept. In programming, entities are typically represented as **objects or instances of classes**.
+
+**Attributes**: Attributes are characteristics or properties associated with an entity. 
+- They describe the state or features of an entity. 
+- For example, if you have an entity representing a person, attributes could include name, age, height, and so on. 
+- In Python, attributes can be represented as **variables or fields within a class or as properties associated with an object**.
+
+**Values**: Values are the actual data assigned to attributes. They represent specific instances or data points for a given attribute. 
+- For example, the attribute "name" of a person entity can have a value like "John," while the attribute "age" can have a value like 25. 
+- Values can be of various types, such as numbers, strings, booleans, or more complex types like lists or dictionaries.
+
+**Data Types**: Data types define the nature and behavior of values in a programming language. 
+- In Python, data types specify the kind of data that a variable or attribute can hold. 
+- Some commonly used data types in Python include:
+```Numeric: int, float, string, boolean, 
+Text Type: string (sequence of characters),
+Boolean Types: bools (logical operations like True or False),
+Sequence Types: List (ordered collection in square brackets), Tuple ( ordered collection in parenthesis), Range (sequence of numbers used in loops)
+Mapping Type: Dictionary (collection of key-value pairs enclosed in curly braces)
+Set Types: set (unordered collection of unique elements, enclosed in curly braces), frozenset (immutable sets)
+Binary Types: bytes (sequence of bytes), bytearray (mutable sequence of bytes)
+Other Types: NoneType (null value), complex (numbers with real and imaginary parts)
+```
+
+
+
+
+
