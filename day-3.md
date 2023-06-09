@@ -67,8 +67,6 @@ straightforward for a programmer to convert an algorithm into program code
 | Readability & Simplicity: code readability, reduces 
 the cost of program maintenance and development.      | Performance: Interpreted language perform slowly on computationally intensive tasks      |
 | Large standard library: pre-built modules and functions for various tasks such as file I/O, networking, web developement   | Global Interpreter Lock allows only one thread to execute Python bytecode at a time, hence the performance to achieve true parallelism in multi-threaded applications is impacted|
-| Readability & Simplicity: code readability, reduces 
-the cost of program maintenance and development.      | Performance: Interpreted language perform slowly on computationally intensive tasks      |
-| Large standard library: pre-built modules and functions for various tasks such as file I/O, networking, web developement   | Global Interpreter Lock allows only one thread to execute Python bytecode at a time, hence the performance to achieve true parallelism in multi-threaded applications is impacted|
-
-
+| Cross Platform Compatibility: Can run on different operating systems which makes it convenient for developing applications that need to run on multiple platforms.      | Mobile and Game Development: Although frameworks like Kivy and Pygame exist, they may have limitations compared to platform-specific languages like Java, Kotlin, Swift, or C++ .      |
+| Rich Ecosystem and Community Support: supportive community that actively contributes to the development of tools, libraries, and resources. This availability of resources simplifies development tasks and promotes collaboration.  | Memory Consumption: due to its dynamic type system and high-level abstractions, building memory-intensive applications can be a concern|
+| Integration Capabilities: seamless integration with other languages like C, C++, and Java. It provides interfaces to popular databases, allowing easy data manipulation and management.     | Design Restrictions: the use of whitespace indentation for code blocks can be a challenge for developers accustomed to other programming languages.      |
