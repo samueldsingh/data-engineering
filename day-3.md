@@ -12,14 +12,14 @@ I. Introduction:
 7. How compilation will happen internally. Explain in detail
 8. Why Python is Dynamically typed programming Language. Explain
 9. Python is Platform independent.Explain
-10.Different ways to write python program.
+10. Different ways to write python program.
    Interactive, IDLE, CommandPrompt, IDE
    Advantages, Disadvantages
-11.sourcecode vs bytecode
-12.Register instruction set
-13.High Level vs Low level programming Language
-14.Python architecture
-15.Explain Garbage Collection mechanism in detail.
+11. sourcecode vs bytecode
+12. Register instruction set
+13. High Level vs Low level programming Language
+14. Python architecture
+15. Explain Garbage Collection mechanism in detail.
 
 ## About Python
 Python is a general purpose, dynamic, high-level and interpreted programming language.
@@ -61,6 +61,13 @@ straightforward for a programmer to convert an algorithm into program code
 11. Easy-to-maintain − Python's source code is fairly easy-to-maintained
 12. Databases − Python provides interfaces to all major commercial databases.
 
+## Advantages and disadvantages of python
+| Advantages      | Disadvantages |
+| ----------- | ----------- |
+| Readability & Simplicity: code readability, reduces 
+the cost of program maintenance and development.      | Performance: Interpreted language perform slowly on computationally intensive tasks      |
+| Large standard library: pre-built modules and functions for various tasks such as file I/O, networking, web developement   | Global Interpreter Lock
+ allows only one thread to execute Python bytecode at a time, hence the performance to achieve true parallelism in multi-threaded applications is impacted|
 
 
 
