@@ -111,13 +111,71 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 - Attributes: name (string), location (string), total_assets (float), is_international (boolean)
 - Values: name = "HDFC", location = "Bangalore", total_assets = 5000000.0, is_international = True
 
-# Decision making in Python
+## Decision making in Python
 Decision making in Python is typically implemented using **conditional statements**. Python provides several types of conditional statements to control the flow of a program based on certain conditions. The most commonly used conditional statements are:
 ```if, for, while, try-except```
 
-# Control statements in python
+## Control statements in python
 In Python, control statements are used to **control the flow of execution in a program**. 
 They allow you to make decisions, repeat blocks of code, and handle exceptions. Here are some commonly used control statements in Python:
+```if, for, while, break, continue, try-except-else-finally```
 
+## States and behaviors in Python
+In Python, states and behaviors are fundamental concepts in object-oriented programming (OOP). 
+- Objects have states that represent their data or properties, and they have behaviors that define their actions or methods. 
 
+Let's explore how states and behaviors are implemented in Python:
 
+## States
+States in Python refer to the data or properties associated with an object. 
+- These states are represented by instance variables, which are unique to each object of a class. 
+- Instance variables hold the state of an object and can have different values for different instances. 
+- They define the characteristics or attributes of an object.
+
+Example:
+```
+class Car:
+    def __init__(self, brand, color):
+        self.brand = brand
+        self.color = color
+
+# Creating objects
+car1 = Car("Toyota", "Red")
+car2 = Car("Honda", "Blue")
+
+# Accessing object states
+print(car1.brand)  # Output: Toyota
+print(car2.color)  # Output: Blue
+```
+
+- In the above example, the `Car` class has two instance variables, `brand` and `color`, which represent the state of a car object. 
+- Each car object (`car1` and `car2`) has its own values for these instance variables, representing their specific states.
+
+## Behaviors:
+Behaviors in Python are defined by methods or functions associated with an object. Methods represent the actions or operations that an object can perform. They can modify the object's state, access its data, or perform specific tasks.
+
+Example:
+```
+class Car:
+    def __init__(self, brand, color):
+        self.brand = brand
+        self.color = color
+
+    def start_engine(self):
+        print(f"The {self.brand} car's engine is starting.")
+
+    def stop_engine(self):
+        print(f"The {self.brand} car's engine is stopping.")
+
+# Creating objects
+car1 = Car("Toyota", "Red")
+car2 = Car("Honda", "Blue")
+
+# Invoking object behaviors
+car1.start_engine()  # Output: The Toyota car's engine is starting.
+car2.stop_engine()  # Output: The Honda car's engine is stopping.
+```
+
+In the above example, the Car class has two methods, start_engine() and stop_engine(), which represent the behaviors of a car object. The methods are defined within the class and can be invoked on the objects (car1 and car2) to perform the specified actions.
+
+By combining states (instance variables) and behaviors (methods) within a class, you can create objects that have their own unique states and can perform specific actions. This encapsulation of data and behavior is a fundamental principle of object-oriented programming in Python.
