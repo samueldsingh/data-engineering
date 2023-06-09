@@ -67,6 +67,8 @@ straightforward for a programmer to convert an algorithm into program code
 | Readability & Simplicity: code readability, reduces 
 the cost of program maintenance and development.      | Performance: Interpreted language perform slowly on computationally intensive tasks      |
 | Large standard library: pre-built modules and functions for various tasks such as file I/O, networking, web developement   | Global Interpreter Lock allows only one thread to execute Python bytecode at a time, hence the performance to achieve true parallelism in multi-threaded applications is impacted|
-
+| Readability & Simplicity: code readability, reduces 
+the cost of program maintenance and development.      | Performance: Interpreted language perform slowly on computationally intensive tasks      |
+| Large standard library: pre-built modules and functions for various tasks such as file I/O, networking, web developement   | Global Interpreter Lock allows only one thread to execute Python bytecode at a time, hence the performance to achieve true parallelism in multi-threaded applications is impacted|
 
 
