@@ -53,7 +53,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 ## 15 examples of an entity along with their attribute, value and data type
 1. Car:
 - Attributes: Model (string), year_of_make (int), Price (float)
-- Vales: Hyndai i10, 2017, 700000.50
+- Values: Hyndai i10, 2017, 700000.50
 
 2. Weather:
 - Attributes: date (string or datetime), temperature (float), humidity (float), is_rainy (boolean)
@@ -105,7 +105,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 
 14. Song:
 - Attributes: title (string), artist (string), duration_seconds (integer), is_favorite (boolean)
-- Example values: title = "Bohemian Rhapsody", artist = "Queen", duration_seconds = 355, is_favorite = True
+- Values: title = "Tera yaar", artist = "Arijit Singh", duration_seconds = 355, is_favorite = True
 
 15. Bank:
 - Attributes: name (string), location (string), total_assets (float), is_international (boolean)
