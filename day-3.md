@@ -173,6 +173,20 @@ Source code and bytecode are different representations of a program that serve d
 | It typically has a file extension of ".py" in Python.    | It is often stored in files with a ".pyc" extension (compiled bytecode) for caching and faster subsequent executions. |
 |    | Bytecode can be executed more efficiently than source code because it has already undergone some level of translation and optimization. |
 
+## 12. Register instruction set
+In computer architecture, a register instruction set refers to the set of instructions that operate directly on the CPU's registers. Registers are small, high-speed storage areas within the CPU that hold data that the CPU is currently working on. The register instruction set includes instructions that perform operations on these registers, such as loading data into registers, storing data from registers to memory, performing arithmetic or logical operations on register contents, and transferring data between registers. Low-level programming languages like assembly language provide direct access to the CPU's register instruction set.
+
+## 13. High level vs low level programming language
+High-level and low-level programming languages are different categories of programming languages that offer varying levels of abstraction and control over hardware and system details.
+
+| High Level Programming Languages      | Low Level Programming Languages |
+| ----------- | ----------- | 
+| designed to be human-readable and provide a high level of abstraction from the underlying hardware and system details. | provide a closer representation of the hardware and system architecture, allowing for direct control over hardware resources. |
+| They offer built-in features and constructs that make programming easier and more efficient, focusing on problem-solving rather than low-level implementation. | They are less abstract and require a deep understanding of the system architecture and hardware details. | 
+| High-level languages are closer to natural language and use common programming paradigms, such as object-oriented programming or functional programming. | Low-level languages are typically used for tasks that require fine-grained control, optimization, or interfacing with specific hardware devices. |
+| Examples of high-level programming languages include Python, Java, C++, JavaScript, and Ruby.| Assembly language and machine code are examples of low-level languages. |
+| Advantages: Easier to learn and use. Increased productivity and faster development. Platform independence, as they are typically designed to run on different operating systems. Extensive libraries and frameworks for various tasks | Direct access to hardware resources and system-level operations. Highly optimized code for performance-critical applications. Ability to interact with hardware devices or write low-level system components. | Disadvantage: They may sacrifice fine-grained control over hardware-specific operations. Some high-level languages may have slower performance compared to low-level languages. Limited access to low-level system features and hardware. | Steeper learning curve and more complex syntax. Code written in low-level languages is usually less portable across different platforms. Requires detailed knowledge of the system architecture and hardware-specific instructions. Development can be time-consuming and error-prone. |
+
 ## 14. Python Architecture
 The Python architecture refers to the overall structure and components involved in the execution of Python programs. Here's an overview of the Python architecture:
 
