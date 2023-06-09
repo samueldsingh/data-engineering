@@ -111,7 +111,13 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 - Attributes: name (string), location (string), total_assets (float), is_international (boolean)
 - Values: name = "HDFC", location = "Bangalore", total_assets = 5000000.0, is_international = True
 
+# Decision making in Python
+Decision making in Python is typically implemented using **conditional statements**. Python provides several types of conditional statements to control the flow of a program based on certain conditions. The most commonly used conditional statements are:
+```if, for, while, try-except```
 
+# Control statements in python
+In Python, control statements are used to **control the flow of execution in a program**. 
+They allow you to make decisions, repeat blocks of code, and handle exceptions. Here are some commonly used control statements in Python:
 
 
 
