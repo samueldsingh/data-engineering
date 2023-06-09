@@ -176,6 +176,6 @@ car1.start_engine()  # Output: The Toyota car's engine is starting.
 car2.stop_engine()  # Output: The Honda car's engine is stopping.
 ```
 
-In the above example, the Car class has two methods, start_engine() and stop_engine(), which represent the behaviors of a car object. The methods are defined within the class and can be invoked on the objects (car1 and car2) to perform the specified actions.
+In the above example, the Car class has two methods, `start_engine()` and `stop_engine()`, which represent the behaviors of a car object. The methods are defined within the class and can be invoked on the objects (`car1` and `car2`) to perform the specified actions.
 
 By combining states (instance variables) and behaviors (methods) within a class, you can create objects that have their own unique states and can perform specific actions. This encapsulation of data and behavior is a fundamental principle of object-oriented programming in Python.
