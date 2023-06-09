@@ -163,6 +163,15 @@ low-level details and system-specific intricacies.
 |  Jupyter Notebooks    | Interactive and supports a mix of code, text, and visualizations. Great for data exploration, prototyping, and sharing analyses. Allows executing code cells individually. | Less suitable for large-scale projects. Limited support for refactoring and code organization. Not designed for traditional software development workflows.     | Jupyter Notebook, JupyterLab |
 |    Integrated Development Environment (IDE) with Notebook-like capabilities:  | Combines features of traditional IDEs and Jupyter notebooks. Provides an integrated environment for coding, debugging, and data analysis. Offers the flexibility of notebooks within a larger development ecosystem. | Requires additional setup and configuration. Can be resource-intensive, especially for large notebooks. Might have a steeper learning curve compared to simpler options.      | Spyder, PyCharm, VS Code with Jupyter extensions |
 
+## 11. Source code vs Bytecode
+Source code and bytecode are different representations of a program that serve different purposes in the execution process. 
+| Source Code     | Bytecode |
+| Source code is the human-readable form of a program written in a programming language like Python.     | Bytecode is an intermediate representation of the source code that is generated during the compilation or interpretation process. |
+| It is composed of text-based instructions and high-level language constructs that are easily understood by developers.    | It is a lower-level form of code that is closer to machine language but is still platform-independent. |
+| Source code is written by programmers and serves as the input for the compilation or interpretation process.    | Bytecode is designed to be executed by a virtual machine or interpreter rather than directly by the hardware. |
+| It typically has a file extension of ".py" in Python.    | It is often stored in files with a ".pyc" extension (compiled bytecode) for caching and faster subsequent executions. |
+|    | Bytecode can be executed more efficiently than source code because it has already undergone some level of translation and optimization. |
+
 ## 14. Python Architecture
 The Python architecture refers to the overall structure and components involved in the execution of Python programs. Here's an overview of the Python architecture:
 
