@@ -166,6 +166,7 @@ low-level details and system-specific intricacies.
 ## 11. Source code vs Bytecode
 Source code and bytecode are different representations of a program that serve different purposes in the execution process. 
 | Source Code     | Bytecode |
+| ----------- | ----------- | 
 | Source code is the human-readable form of a program written in a programming language like Python.     | Bytecode is an intermediate representation of the source code that is generated during the compilation or interpretation process. |
 | It is composed of text-based instructions and high-level language constructs that are easily understood by developers.    | It is a lower-level form of code that is closer to machine language but is still platform-independent. |
 | Source code is written by programmers and serves as the input for the compilation or interpretation process.    | Bytecode is designed to be executed by a virtual machine or interpreter rather than directly by the hardware. |
