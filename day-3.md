@@ -239,3 +239,11 @@ Here's a detailed explanation of the garbage collection mechanism:
 7. Performance Considerations: Garbage collection introduces some overhead as the runtime needs to periodically scan and manage memory. However, Python's garbage collector is designed to minimize this overhead and provide efficient memory management while maintaining the convenience and safety of automatic memory deallocation. The impact of garbage collection on the overall performance depends on the characteristics of the program and the allocation patterns of objects.
 
 Python's garbage collection mechanism is an integral part of the language's memory management. It combines reference counting with tracing garbage collection to handle circular references and efficiently reclaim memory. The garbage collector runs automatically in the background, transparently managing memory and freeing developers from manual memory management concerns.
+
+## General caching
+## What is caching?
+- Caching is a technique used in computer systems to store and retrieve frequently accessed or computationally expensive data in a faster and more efficient manner. 
+- In the context of software applications, caching involves storing a copy of data in a cache, which is typically a faster storage medium, such as memory or a dedicated cache server. When a request for the data is made, the system first checks the cache. If the requested data is found in the cache, it can be quickly retrieved, avoiding the need to perform the original, potentially time-consuming operation again. This can significantly speed up subsequent access to the data.
+- The purpose of caching is to reduce latency, improve performance, and minimize the need for repeated computations or expensive data retrieval operations.
+- Caching can occur at various levels within a computer system, including: Hardware Caches, Operating System Caches, Database Caches, Application-Level Caches.
+- Caching provides several benefits, including: Improved Performance, Reduced Resource Usage, Scalability and Cost Savings.
