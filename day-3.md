@@ -36,10 +36,10 @@ Python is a general purpose, dynamic, high-level and interpreted programming lan
 
 ## 3. Features of Python
 
-1. It is an interpreted language
+1. Interpreted Language:
 There are no separate compilation and execution steps like C, C++, Java. Directly run the program from the source code. Internally, Python converts the source code into an intermediate form called bytecodes then translated into native language of specific computer to run it. No need to worry about linking and loading with libraries, etc.
 
-2. Platform independent
+2. Platform independent:
 Python programs can be developed and executed on multiple operating system platforms. Python can be used on Linux, Windows, Macintosh, Solaris and many more.
 
 3. Free and Open Source: Redistributable
