@@ -21,14 +21,16 @@ I. Introduction:
 14. Python architecture
 15. Explain Garbage Collection mechanism in detail.
 
-## About Python
+## 1. About Python
 Python is a general purpose, dynamic, high-level and interpreted programming language.
 - **General purpose** means that it can create all kinds of programs
 - **Dynamic** refers to the fact that you don't need to assign keywords suchs as int.
 - **Dynamic** also means that you can use a variable that was previously assigned an integer can be assigned a string
-- **High Level** language is one that is user-oriented in that it has been designed to make it 
-straightforward for a programmer to convert an algorithm into program code
-- **Interpreted language** 
+- **High Level** language is one that is user-oriented in that it has been designed to make it  straightforward for a programmer to convert an algorithm into program code
+- **Interpreted language** is where the source code is executed directly without the need for a separate compilation step. In an interpreted language, the code is read, interpreted, and executed line by line by an interpreter.
+
+## 2. Why is python popular nowadays?
+Data Science and Machine Learning: Python has emerged as a leading language for data science and machine learning. Its rich ecosystem of libraries, including NumPy, Pandas, and scikit-learn, coupled with frameworks like TensorFlow and PyTorch, make Python a go-to choice for data scientists and machine learning practitioners. Python's simplicity and readability also make it a preferred language for prototyping and experimentation in these fields.
 
 ## 3. Features of Python
 
@@ -231,4 +233,10 @@ Here's a detailed explanation of the garbage collection mechanism:
 1. Memory allocation: When an object is created memory is allocated to store its data and attributes dynamically during runtime. The Python runtime keeps track of allocated memory and manages its lifecycle.
 
 2. Reference counting: The primary garbage collection technique used in Python is reference counting. Each object in memory has a reference count, which is the number of references to that object. The reference count is incremented or decremented whenever is created or deleted.
-3. Circular reference: 
+3. Circular reference: Circular references occur when two or more objects reference each other, forming a cycle.
+4. Tracing Garbage Collection: To handle circular references, Python employs a tracing garbage collection algorithm. The garbage collector periodically executes to identify and collect unreachable objects.
+5. Mark and Sweep Algorithm: The tracing garbage collector uses a mark and sweep algorithm. It consists of two phases: marking and sweeping. In the marking phase, reachable objects are marked as "in use" using a flag or a bit in their memory representation. During the sweeping phase, the garbage collector scans the entire memory, identifying and deallocating objects that were not marked during the marking phase. The memory is then returned to the pool of available memory for future object allocations.
+6. Generational Garbage Collection: Python's garbage collector further optimizes performance using generational garbage collection. It divides objects into different generations based on their age. Younger objects are more likely to become garbage sooner, so the garbage collector focuses primarily on the younger generations, which reduces the overhead of scanning the entire memory. As objects survive multiple collection cycles, they are promoted to older generations and undergo less frequent garbage collection.
+7. Performance Considerations: Garbage collection introduces some overhead as the runtime needs to periodically scan and manage memory. However, Python's garbage collector is designed to minimize this overhead and provide efficient memory management while maintaining the convenience and safety of automatic memory deallocation. The impact of garbage collection on the overall performance depends on the characteristics of the program and the allocation patterns of objects.
+
+Python's garbage collection mechanism is an integral part of the language's memory management. It combines reference counting with tracing garbage collection to handle circular references and efficiently reclaim memory. The garbage collector runs automatically in the background, transparently managing memory and freeing developers from manual memory management concerns.
