@@ -47,7 +47,7 @@ Python programs can be developed and executed on multiple operating system platf
 In Python, no need to take care about low-level details such as managing the memory used by the program.
 5. Simple:
 Closer to learning Mathematics basics in English medium. Easy to Learn. More emphasis on the solution to the problem rather than the syntax
-6. Embeddable
+6. Embeddable:
 Python can be used within C/C++ program to give scripting capabilities for the program’s users.
 7. Robust:
 Exceptional handling features. Memory management techniques in built
