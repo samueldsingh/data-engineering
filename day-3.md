@@ -109,11 +109,10 @@ In summary, .py files contain the human-readable source code written by develope
 
 ## 7. How compilation happens internally in Python:
 Internally, in CPython (the reference implementation of Python), the compilation process involves several stages and components. Here's a brief overview of how compilation happens internally in Python:
-1. **Lexical Analysis (Tokenization):** The source code is read and converted into a sequence of tokens which are identified as keywords, identifiers, literals, operators and other tokens based on the Python language specification. The resulting tokens represent the building blocks of the code.
-2. **Parsing (Syntax Analysis):** Using python program rules, a syntax tree is constructed using the stream of tokens and constructs. The syntax tree represents the syntactic structure of the code, capturing the relationships between expressions, statements, and other language constructs.
-3. **Abstract Syntax Tree (AST) Generation:** The parser generates an Abstract Syntax Tree (AST) from the syntax tree. The AST is a tree-like structure that abstracts away the details of the code and represents the underlying structure in a more concise and manageable form. Each node in the AST represents a different language construct, such as function calls, assignments, loops, conditionals, etc.
-4. **Compilation to bytecode:** The AST is then compiled into a lower-level representation known as bytecode. The bytecode is a platform-independent set of instructions that can be executed by the Python Virtual Machine (PVM).
-5. **Bytecode execution:** The bytecode is executed by the Python interpreter or the Python Virtual Machine (PVM). The interpreter reads the bytecode instructions one by one, interpreting and executing them to produce the desired output.
+1. **Lexical Analysis (Tokenization):** The interpreter performs lexical analysis, also known as tokenization or scanning, to break down the source code into individual tokens such as keywords, identifiers, operators, and literals.
+2. **Parsing (Syntax Analysis) and Abstract Syntax Tree (AST) Generation:** The token stream is then parsed according to the Python grammar rules to create an Abstract Syntax Tree (AST) which represents the syntactic structure of the code and guides the subsequent execution steps.
+3. **Compilation to bytecode:** The AST is then compiled into a lower-level representation known as bytecode. The bytecode is a platform-independent set of instructions that can be executed by the Python Virtual Machine (PVM).
+4. **Bytecode execution:** The bytecode is executed by the Python interpreter or the Python Virtual Machine (PVM). The interpreter reads the bytecode instructions one by one, interpreting and executing them to produce the desired output.
 
 It's important to note that Python's compilation process happens dynamically at runtime. When a Python module or script is imported or executed, the compilation steps are performed automatically by the interpreter. The compiled bytecode can be cached in .pyc files to speed up subsequent executions.
 
