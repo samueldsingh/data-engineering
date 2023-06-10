@@ -51,12 +51,12 @@ Closer to learning Mathematics basics in English medium. Easy to Learn. More emp
 Python can be used within C/C++ program to give scripting capabilities for the program’s users.
 7. Robust:
 Exceptional handling features. Memory management techniques in built
-8. Rich Library Support
+8. Rich Library Support:
 The Python Standard Library is very vast. Known as the “batteries included” philosophy of Python. It can help do various things involving regular expressions, documentation generation, unit testing, threading, databases, web browsers, CGI, email, XML, HTML, WAV files, cryptography, GUI and many more.
-9. Easy-to-learn − Python has few keywords, simple structure, and a clearly defined syntax. This allows the student to pick up the language quickly.
-10. Easy-to-read − Python code is more clearly defined and visible to the eyes.
-11. Easy-to-maintain − Python's source code is fairly easy-to-maintained
-12. Databases − Python provides interfaces to all major commercial databases.
+9. Easy-to-learn: Python has few keywords, simple structure, and a clearly defined syntax. This allows the student to pick up the language quickly.
+10. Easy-to-read: Python code is more clearly defined and visible to the eyes.
+11. Easy-to-maintain: Python's source code is fairly easy-to-maintained
+12. Databases: Python provides interfaces to all major commercial databases.
 
 ## 4. Advantages and disadvantages of python
 | Advantages      | Disadvantages |
