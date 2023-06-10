@@ -30,7 +30,9 @@ Python is a general purpose, dynamic, high-level and interpreted programming lan
 - **Interpreted language** is where the source code is executed directly without the need for a separate compilation step. In an interpreted language, the code is read, interpreted, and executed line by line by an interpreter.
 
 ## 2. Why is python popular nowadays?
-Data Science and Machine Learning: Python has emerged as a leading language for data science and machine learning. Its rich ecosystem of libraries, including NumPy, Pandas, and scikit-learn, coupled with frameworks like TensorFlow and PyTorch, make Python a go-to choice for data scientists and machine learning practitioners. Python's simplicity and readability also make it a preferred language for prototyping and experimentation in these fields.
+- Python has emerged as a leading language for data science and machine learning. 
+- Its rich ecosystem of libraries, including NumPy, Pandas, and scikit-learn, coupled with frameworks like TensorFlow and PyTorch, make Python a go-to choice for data scientists and machine learning practitioners. 
+- Python's simplicity and readability also make it a preferred language for prototyping and experimentation in these fields.
 
 ## 3. Features of Python
 
