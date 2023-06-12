@@ -29,3 +29,21 @@ When we delete **c**, we decrease the reference count to **c** by one.
 ![reference1](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/10d08de5-dcdc-4476-af1f-c8bf7d2a6569)
 
 The ```del()``` statement doesn’t delete objects, it removes the name (and reference) to the object. When the reference count is zero, the object is deleted from the system by the garbage collection.
+
+**Pros:** Reference counting are easy to implement because programmers don’t have to worry about deleting objects when they are no longer used. 
+
+**Cons:** The most important issue in reference counting garbage collection is that it doesn’t work in cyclical references.
+
+Cyclical reference is a situation in which an object refers to itself. The simplest cyclical reference is appending a list to itself.
+
+Reference counting alone can not destroy objects with cyclic references. If the reference count is not zero, the object cannot be deleted. The solution 
+to this problem is the second garbage collection method.
+
+2. Generational Garbage Collection:
+It is a type of **trace-based garbage collection**. It can break cyclic references and delete the unused objects even if they are referred by themselves.
+
+**How does generational Garbage Collection work?**
+Python keeps track of every object in memory. 3 lists are created when a program is run. Generation 0, 1, and 2 lists.
+
+Newly created objects are put in the Generation 0 list. A list is created for objects to discard. Reference cycles are detected. If an object has no outside references it is discarded. The objects who survived after this process are put in the Generation 1 list. The same steps are applied to the Generation 1 list. Survivals from the Generation 1 list are put in the Generation 2 list. The objects in the Generation 2 list stay there until the end of the program execution.
+
