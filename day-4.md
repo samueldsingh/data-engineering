@@ -24,3 +24,4 @@ Now we assign a boolean, ```False``` to ```b```. The previous integer object, ``
 
 ![reference](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/ba8519dc-d611-4339-b26b-abebabc7762d)
 
+When we delete **c**, we decrease the reference count to **c** by one.
