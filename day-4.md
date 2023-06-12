@@ -22,4 +22,4 @@ Next we change the value of ```a``` to ```60```, and then to ```None```. The int
 
 Now we assign a boolean, ```False``` to ```b```. The previous integer object, ```60``` is not deleted because it still has a reference by ```c```.
 
-https://github.com/samueldsingh/python-dev-90-days-bootcamp/issues/1#issue-1752095083
+![reference](https://github.com/samueldsingh/python-dev-90-days-bootcamp/issues/1#issue-1752095083)
