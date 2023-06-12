@@ -1,4 +1,4 @@
-## What is an object?
+## 1. What is an object?
 In programming, an object is a fundamental concept in object-oriented programming (OOP) that represents a real-world entity, concept, or thing. Objects are self-contained units that encapsulate data (attributes) and behaviors (methods) related to the entity they represent.
 
 ## Key characteristics of objects:
@@ -24,7 +24,7 @@ A reference is a name(pointer) that refers to an object.
 A python object has 3 things -  Type, value, and reference count. As python is a dynamic language, the type is automatically detected. Value is 
 declared while defining the object. Reference count is the number of names pointing that object. 
 
-## Explain Garbage Collection in detail
+## 2. Explain Garbage Collection in detail
 Garbage collection releases memory when no object is in use. It is like a recycling system in computers where the system deletes the unused object and 
 reuses its memory slot for new objects.
 
@@ -68,5 +68,13 @@ Newly created objects are put in the Generation 0 list. A list is created for ob
 ![generation](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/d0b300cb-ea82-4de3-9875-cbfd8d8bbdae)
 
 **Conclusion:**
-Python is a high-level language and we don’t have to do the memory management manually. Python garbage collection algorithm is very useful to open up space in the memory. Garbage collection is implemented in Python in two ways: reference counting and generational. When the reference count of an object reaches 0, reference counting garbage collection algorithm cleans up the object immediately. If you have a cycle, reference count doesn’t reach zero, you wait for the generational garbage collection algorithm to run and clean the object. While a programmer doesn’t have to think about garbage collection in Python, it canConclusion:
 Python is a high-level language and we don’t have to do the memory management manually. Python garbage collection algorithm is very useful to open up space in the memory. Garbage collection is implemented in Python in two ways: reference counting and generational. When the reference count of an object reaches 0, reference counting garbage collection algorithm cleans up the object immediately. If you have a cycle, reference count doesn’t reach zero, you wait for the generational garbage collection algorithm to run and clean the object. While a programmer doesn’t have to think about garbage collection in Python, it can be useful to understand what is happening under the hood.
+
+## 3. Variables in Python
+-	In Python, variables are used to store and manipulate data. Variable is a name which is used to refer **memory location of value**. 
+-	Variable also known as identifier and used to hold value.
+-	A variable, as the name indicates is something whose value is changeable over time.  X = 10
+
+**Rule:** Variable names can be a group of both letters and digits, but they have to begin with a letter or an underscore. It is recommended to use lowercase letters for variable name. Rahul and rahul both are two different variables.
+
+Based on the data type of a variable, the interpreter allocates memory and decides what can be stored in the reserved memory. Therefore, by assigning different data types to variables, you can store integers, decimals or characters in these variables.
