@@ -15,3 +15,6 @@ reuses its memory slot for new objects.
 
 1. Reference Counting - Suppose we assign c to 50. Next, when we assign a new variable to the object c, the reference count increases by 1.
 For now we print the ID's of each object to see if they are the same or different.
+![object](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/12f8cb3e-3933-43e2-b987-ba00e9be0474)
+
+
