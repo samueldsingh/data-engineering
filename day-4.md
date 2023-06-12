@@ -25,3 +25,7 @@ Now we assign a boolean, ```False``` to ```b```. The previous integer object, ``
 ![reference](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/ba8519dc-d611-4339-b26b-abebabc7762d)
 
 When we delete **c**, we decrease the reference count to **c** by one.
+
+![reference1](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/10d08de5-dcdc-4476-af1f-c8bf7d2a6569)
+
+As you can see above, ```del()``` statement doesn’t delete objects, it removes the name (and reference) to the object. When the reference count is zero, the object is deleted from the system by the garbage collection.
