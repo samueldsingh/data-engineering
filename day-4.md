@@ -1,3 +1,21 @@
+## What is an object?
+In programming, an object is a fundamental concept in object-oriented programming (OOP) that represents a real-world entity, concept, or thing. Objects are self-contained units that encapsulate data (attributes) and behaviors (methods) related to the entity they represent.
+
+## Key characteristics of objects:
+**1. State:** An object has a state that is determined by its attributes or properties. Attributes represent the data associated with an object and describe its current condition or characteristics. For example, an object representing a car may have attributes such as color, model, and speed.
+
+**2. Behavior:** Objects can exhibit behavior through methods, which are functions or procedures associated with the object. Methods define the actions or operations that an object can perform. For example, an object representing a car may have methods such as accelerate(), brake(), and turn().
+
+**3. Identity:** Each object has a unique identity that distinguishes it from other objects. This identity allows the program to differentiate between multiple objects of the same class. 
+
+**4. Encapsulation:** Objects encapsulate data and behavior, which means that the internal details and implementation are hidden from external entities. 
+
+**5. Interaction:** Objects can interact with each other by invoking methods, exchanging data, or passing messages. 
+
+Object-oriented programming languages, such as Python, Java, C++, and C#, provide mechanisms to define and manipulate objects. Objects can be created based on predefined classes or user-defined classes, allowing programmers to create custom objects that represent specific entities or concepts in their applications.
+
+The concept of objects allows for modular and organized code design, as it promotes the encapsulation of data and behavior into reusable and self-contained units. Objects facilitate code reusability, maintainability, and scalability, making them a powerful tool in software development.
+
 ## How are objects stored in Python
 In C, C++, and Java we have variables and objects. A Python object is stored in memory with **names and references**. 
 A name is just a label for an object, so one object can have many names. 
