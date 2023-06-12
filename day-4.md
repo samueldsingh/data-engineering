@@ -21,3 +21,5 @@ For now we print the ID's of each object to see if they are the same or differen
 Next we change the value of ```a``` to ```60```, and then to ```None```. The integer 60 has no reference and it is deleted by the garbage collection.
 
 Now we assign a boolean, ```False``` to ```b```. The previous integer object, ```60``` is not deleted because it still has a reference by ```c```.
+
+https://github.com/samueldsingh/python-dev-90-days-bootcamp/issues/1#issue-1752095083
