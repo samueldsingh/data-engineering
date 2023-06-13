@@ -217,19 +217,57 @@ The Python architecture refers to the overall structure and components involved 
 The Python architecture is designed to provide a high-level and versatile programming environment. It offers features such as dynamic typing, automatic memory management, extensive libraries, and cross-platform compatibility. The combination of the Python interpreter, bytecode compilation, the PVM, and the vast ecosystem of libraries contributes to the popularity and effectiveness of the Python programming language.
 
 ## 15. Explain Garbage Collection mechanism in detail.
-Garbage collection is a memory management mechanism used in programming languages to automatically reclaim memory that is no longer in use by the program. It ensures efficient memory utilization and relieves developers from manually deallocating memory. 
 
-Here's a detailed explanation of the garbage collection mechanism:
-1. Memory allocation: When an object is created memory is allocated to store its data and attributes dynamically during runtime. The Python runtime keeps track of allocated memory and manages its lifecycle.
+Garbage collection releases memory when no object is in use. It is like a recycling system in computers where the system deletes the unused object and 
+reuses its memory slot for new objects.
 
-2. Reference counting: The primary garbage collection technique used in Python is reference counting. Each object in memory has a reference count, which is the number of references to that object. The reference count is incremented or decremented whenever is created or deleted.
-3. Circular reference: Circular references occur when two or more objects reference each other, forming a cycle.
-4. Tracing Garbage Collection: To handle circular references, Python employs a tracing garbage collection algorithm. The garbage collector periodically executes to identify and collect unreachable objects.
-5. Mark and Sweep Algorithm: The tracing garbage collector uses a mark and sweep algorithm. It consists of two phases: marking and sweeping. In the marking phase, reachable objects are marked as "in use" using a flag or a bit in their memory representation. During the sweeping phase, the garbage collector scans the entire memory, identifying and deallocating objects that were not marked during the marking phase. The memory is then returned to the pool of available memory for future object allocations.
-6. Generational Garbage Collection: Python's garbage collector further optimizes performance using generational garbage collection. It divides objects into different generations based on their age. Younger objects are more likely to become garbage sooner, so the garbage collector focuses primarily on the younger generations, which reduces the overhead of scanning the entire memory. As objects survive multiple collection cycles, they are promoted to older generations and undergo less frequent garbage collection.
-7. Performance Considerations: Garbage collection introduces some overhead as the runtime needs to periodically scan and manage memory. However, Python's garbage collector is designed to minimize this overhead and provide efficient memory management while maintaining the convenience and safety of automatic memory deallocation. The impact of garbage collection on the overall performance depends on the characteristics of the program and the allocation patterns of objects.
+- Python has an automated garbage collection system.
+- Python has algorithms to deallocate objects and it has two ways to delete the unused objects from the memory.
 
-Python's garbage collection mechanism is an integral part of the language's memory management. It combines reference counting with tracing garbage collection to handle circular references and efficiently reclaim memory. The garbage collector runs automatically in the background, transparently managing memory and freeing developers from manual memory management concerns.
+1. Reference Counting - Suppose we assign c to 50. Next, when we assign a new variable to the object c, the reference count increases by 1.
+For now we print the ID's of each object to see if they are the same or different.
+
+
+![object](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/12f8cb3e-3933-43e2-b987-ba00e9be0474)
+
+
+Next we change the value of ```a``` to ```60```, and then to ```None```. The integer 60 has no reference and it is deleted by the garbage collection.
+
+Now we assign a boolean, ```False``` to ```b```. The previous integer object, ```60``` is not deleted because it still has a reference by ```c```.
+
+
+![reference](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/ba8519dc-d611-4339-b26b-abebabc7762d)
+
+
+When we delete **c**, we decrease the reference count to **c** by one.
+
+
+![reference1](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/10d08de5-dcdc-4476-af1f-c8bf7d2a6569)
+
+
+The ```del()``` statement doesn’t delete objects, it removes the name (and reference) to the object. When the reference count is zero, the object is deleted from the system by the garbage collection.
+
+**Pros:** Reference counting are easy to implement because programmers don’t have to worry about deleting objects when they are no longer used. 
+
+**Cons:** The most important issue in reference counting garbage collection is that it doesn’t work in cyclical references.
+
+Cyclical reference is a situation in which an object refers to itself. The simplest cyclical reference is appending a list to itself.
+
+Reference counting alone can not destroy objects with cyclic references. If the reference count is not zero, the object cannot be deleted. The solution 
+to this problem is the second garbage collection method.
+
+2. Generational Garbage Collection:
+It is a type of **trace-based garbage collection**. It can break cyclic references and delete the unused objects even if they are referred by themselves.
+
+**How does generational Garbage Collection work?**
+Python keeps track of every object in memory. 3 lists are created when a program is run. Generation 0, 1, and 2 lists.
+
+Newly created objects are put in the Generation 0 list. A list is created for objects to discard. Reference cycles are detected. If an object has no outside references it is discarded. The objects who survived after this process are put in the Generation 1 list. The same steps are applied to the Generation 1 list. Survivals from the Generation 1 list are put in the Generation 2 list. The objects in the Generation 2 list stay there until the end of the program execution.
+
+![generation](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/d0b300cb-ea82-4de3-9875-cbfd8d8bbdae)
+
+**Conclusion:**
+Python is a high-level language and we don’t have to do the memory management manually. Python garbage collection algorithm is very useful to open up space in the memory. Garbage collection is implemented in Python in two ways: reference counting and generational. When the reference count of an object reaches 0, reference counting garbage collection algorithm cleans up the object immediately. If you have a cycle, reference count doesn’t reach zero, you wait for the generational garbage collection algorithm to run and clean the object. While a programmer doesn’t have to think about garbage collection in Python, it can be useful to understand what is happening under the hood.
 
 ## General caching
 ## What is caching?
