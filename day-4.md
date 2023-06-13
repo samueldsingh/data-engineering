@@ -7,7 +7,7 @@ Objects are self-contained units that encapsulate data (attributes) and behavior
 For example, an object representing a car may have attributes such as color, model, and speed.
 
 **2. Behavior:** Objects exhibit behavior through methods, which are functions or procedures associated with the object. Methods define the actions or operations that an object can perform. 
-For example, an object representing a car may have methods such as accelerate(), brake(), and turn().
+For example, an object representing a car may have methods such as ```accelerate()```, ```brake()```, and ```turn()```.
 
 **3. Identity:** Each object has a unique identity that distinguishes it from other objects. This identity allows the program to differentiate between multiple objects of the same class. 
 
