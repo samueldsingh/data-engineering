@@ -16,7 +16,7 @@ Object-oriented programming languages, such as Python, Java, C++, and C#, provid
 
 The concept of objects allows for modular and organized code design, as it promotes the encapsulation of data and behavior into reusable and self-contained units. Objects facilitate code reusability, maintainability, and scalability, making them a powerful tool in software development.
 
-## How are objects stored in Python
+## 2. How are objects stored in Python
 In C, C++, and Java we have variables and objects. A Python object is stored in memory with **names and references**. 
 A name is just a label for an object, so one object can have many names. 
 A reference is a name(pointer) that refers to an object.
@@ -24,7 +24,26 @@ A reference is a name(pointer) that refers to an object.
 A python object has 3 things -  Type, value, and reference count. As python is a dynamic language, the type is automatically detected. Value is 
 declared while defining the object. Reference count is the number of names pointing that object. 
 
-## 2. Explain Garbage Collection in detail
+## 2What is a reference count
+In Python, a reference count is a technique used for memory management. It is a count that keeps track of the number of references pointing to an object. The reference count mechanism is part of Python's automatic memory management system, which helps determine when an object is no longer in use and can be safely deallocated from memory.
+
+Here's how the reference count works:
+
+**Reference Count Increment:** When a reference to an object is created, either by assigning the object to a variable or passing it as an argument to a function, the reference count of the object is incremented by one. This indicates that there is now one reference to the object.
+
+**Reference Count Decrement:** When a reference to an object is removed, either by reassigning the variable to another object or when a variable goes out of scope, the reference count of the object is decremented by one. This indicates that there is now one less reference to the object.
+
+**Zero Reference Count:** When the reference count of an object reaches zero, it means that there are no more references to that object in the program. At this point, the object is considered no longer in use.
+
+**Deallocation:** Once an object's reference count reaches zero, Python's memory manager deallocates the memory occupied by the object. The memory is then returned to the system and made available for reuse.
+
+The reference count mechanism is a fundamental part of Python's memory management system because it allows the interpreter to determine when an object is no longer needed. By keeping track of the number of references to an object, Python can ensure that memory is deallocated only when it is no longer being used by the program.
+
+However, it's important to note that the reference count mechanism is not the sole memory management technique used in Python. Python also employs a garbage collector to handle situations where objects have cyclic references or when memory deallocation cannot be determined solely based on reference counting. The garbage collector identifies and collects objects that are no longer accessible even if their reference count is not zero.
+
+Overall, the reference count mechanism, combined with the garbage collector, allows Python to efficiently manage memory allocation and deallocation, ensuring that memory is properly used and reclaimed when objects are no longer needed. This automatic memory management helps relieve the programmer from manual memory management tasks and reduces the likelihood of memory leaks and dangling pointers.
+
+## 3. Explain Garbage Collection in detail
 Garbage collection releases memory when no object is in use. It is like a recycling system in computers where the system deletes the unused object and 
 reuses its memory slot for new objects.
 
@@ -70,7 +89,7 @@ Newly created objects are put in the Generation 0 list. A list is created for ob
 **Conclusion:**
 Python is a high-level language and we don’t have to do the memory management manually. Python garbage collection algorithm is very useful to open up space in the memory. Garbage collection is implemented in Python in two ways: reference counting and generational. When the reference count of an object reaches 0, reference counting garbage collection algorithm cleans up the object immediately. If you have a cycle, reference count doesn’t reach zero, you wait for the generational garbage collection algorithm to run and clean the object. While a programmer doesn’t have to think about garbage collection in Python, it can be useful to understand what is happening under the hood.
 
-## 3. Variables in Python
+## 4. Variables in Python
 -	In Python, variables are used to store and manipulate data. Variable is a name which is used to refer **memory location of value**. 
 -	Variable also known as identifier and used to hold value.
 -	A variable, as the name indicates is something whose value is changeable over time.  X = 10
