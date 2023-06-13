@@ -24,7 +24,7 @@ A reference is a name(pointer) that refers to an object.
 A python object has 3 things -  Type, value, and reference count. As python is a dynamic language, the type is automatically detected. Value is 
 declared while defining the object. Reference count is the number of names pointing that object. 
 
-## 2. What is a reference count
+## 3. What is a reference count
 In Python, a reference count is a technique used for memory management. It is a count that keeps track of the number of references pointing to an object. The reference count mechanism is part of Python's automatic memory management system, which helps determine when an object is no longer in use and can be safely deallocated from memory.
 
 Here's how the reference count works:
@@ -43,7 +43,7 @@ However, it's important to note that the reference count mechanism is not the so
 
 Overall, the reference count mechanism, combined with the garbage collector, allows Python to efficiently manage memory allocation and deallocation, ensuring that memory is properly used and reclaimed when objects are no longer needed. This automatic memory management helps relieve the programmer from manual memory management tasks and reduces the likelihood of memory leaks and dangling pointers.
 
-## 3. Explain Garbage Collection in detail
+## 4. Explain Garbage Collection in detail
 Garbage collection releases memory when no object is in use. It is like a recycling system in computers where the system deletes the unused object and 
 reuses its memory slot for new objects.
 
@@ -89,7 +89,7 @@ Newly created objects are put in the Generation 0 list. A list is created for ob
 **Conclusion:**
 Python is a high-level language and we don’t have to do the memory management manually. Python garbage collection algorithm is very useful to open up space in the memory. Garbage collection is implemented in Python in two ways: reference counting and generational. When the reference count of an object reaches 0, reference counting garbage collection algorithm cleans up the object immediately. If you have a cycle, reference count doesn’t reach zero, you wait for the generational garbage collection algorithm to run and clean the object. While a programmer doesn’t have to think about garbage collection in Python, it can be useful to understand what is happening under the hood.
 
-## 4. Variables in Python
+## 5. Variables in Python
 -	In Python, variables are used to store and manipulate data. Variable is a name which is used to refer **memory location of value**. 
 -	Variable also known as identifier and used to hold value.
 -	A variable, as the name indicates is something whose value is changeable over time.  X = 10
