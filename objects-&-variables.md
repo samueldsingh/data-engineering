@@ -175,7 +175,7 @@ f()
 
 The output is:
 ```
-
+I love Geeksforgeeks
 ```
 ## Using Python in Command Prompt
 https://codeberryschool.com/blog/en/python-in-command-prompt/
