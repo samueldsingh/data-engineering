@@ -1,5 +1,6 @@
 ## 1. What is an object?
-In programming, an object is a fundamental concept in object-oriented programming (OOP) that represents a real-world entity, concept, or thing. Objects are self-contained units that encapsulate data (attributes) and behaviors (methods) related to the entity they represent.
+In programming, an object is a fundamental concept in object-oriented programming (OOP) that represents a real-world entity, concept, or thing. 
+Objects are self-contained units that encapsulate data (attributes) and behaviors (methods) related to the entity they represent.
 
 ## Key characteristics of objects:
 **1. State:** An object has a state that is determined by its attributes or properties. Attributes represent the data associated with an object and describe its current condition or characteristics. For example, an object representing a car may have attributes such as color, model, and speed.
