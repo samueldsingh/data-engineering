@@ -79,8 +79,11 @@ Interpreted and compiled languages are two different approaches to executing com
 ### Key Differences and Considerations:
 
 **Compilation Time**: Compiled languages require an additional compilation step before execution, which can increase the overall development time compared to interpreted languages.
+
 **Portability**: Interpreted languages are generally more portable because the interpreter can run on different platforms without the need for recompilation.
+
 **Performance**: Compiled languages often offer better performance due to their direct translation into machine code, whereas interpreted languages may have slightly slower execution due to the interpretation process.
+
 **Development and Debugging**: Interpreted languages can provide more interactive and dynamic development and debugging experiences since they can execute code directly without the need for recompilation.
 
 Some languages, like Java and C#, combine elements of interpreted and compiled approaches, using a bytecode compilation step followed by interpretation or just-in-time (JIT) compilation at runtime.
