@@ -52,64 +52,154 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 
 ## 15 examples of an entity along with their attribute, value and data type
 1. Car:
+**State:**
 - Attributes: Model (string), year_of_make (int), Price (float)
 - Values: Hyndai i10, 2017, 700000.50
+**Behavior:** 
+- Create (a new entry): New Model
+- Read (retrieve car info): print(year_of_make)
+- Update: Price
+- Delete: Model (after it is sold or scrapped)
 
 2. Weather:
+**State:**
 - Attributes: date (string or datetime), temperature (float), humidity (float), is_rainy (boolean)
 - Values: date = "30-03-2022", temperature = 28.5, humidity = 0.75, is_rainy = False
+**Behavior:**
+- Create: date
+- Read: print(humidity)
+- Update: is_rainy
+- Delete: date (old data)
 
 3. Restaurant:
+**State:**
 - Attributes: name (string), cuisine_type (string), rating (float), is_open (boolean)
 - Values: name = "Barbeque Nation", cuisine_type = "Italian", rating = 4.5, is_open = True
+**Behavior:**
+- Create: name
+- Read: print(cuisine_type)
+- Update: rating
+- Delete: name
 
 4. Computer:
+**State:**
 - Attributes: brand (string), processor_speed (float), memory_capacity (integer), is_laptop (boolean)
 - Values: brand = "HP Pavilion", processor_speed = 1.19, memory_capacity = 4, is_laptop = True
+**Behavior:**
+- Create: brand
+- Read: print(processor_speed)
+- Update: memory_capacity
+- Delete: brand
 
 5. Event:
+**State:**
 - Attributes: name (string), date (string or datetime), location (string), is_free (boolean)
 - Values: name = "Music Concert", date = "2023-07-15", location = "Phoenix Mall", is_free = False
+**Behavior:**
+- Create: name
+- Read: print(location)
+- Update: is_free
+- Delete: name (no longer exists)
 
 6. Product:
+**State:**
 - Attributes: name (string), price (float), quantity (integer), is_available (boolean)
 - Values: name = "iPhone 12", price = 70,000, quantity = 10, is_available = True
+**Behavior:**
+- Create: name
+- Read: print(price)
+- Update: is_available
+- Delete: name (no longer manufacture)
 
 7. Student:
-- Attributes: name (string), age (integer), grade (integer), is_enrolled (boolean)
-- Values: name = "Samuel David Singh", age = 15, grade = 9, is_enrolled = True
+**State:**
+- Attributes: id(int), name (string), age (integer), grade (integer), is_enrolled (boolean)
+- Values: name = "Samuel David Singh", age = 15, grade = 9, is_enrolled = True4
+**Behavior:**
+- Create: id (new entry)
+- Read: grade (retrieve student's grade)
+- Update: is_enrolled (changes over time)
+- Delete: name (no longer enrolled)
 
 8. Country:
+**State:**
 - Attributes: name (string), population (integer), capital (string), is_developed (boolean)
 - Values: name = "United States", population = 331000000, capital = "Washington, D.C.", is_developed = True
+**Behavior:**
+- Create: name (new entry)
+- Read: population
+- Update: population (changes over time)
+- Delete: name (no longer exists)
 
 9. Employee:
-- Attributes: name (string), age (integer), position (string), salary (float)
+**State:**
+- Attributes: eid(int), name (string), age (integer), position (string), salary (float)
 - Values: name = "Samuel", age = 30, position = "Manager", salary = 50000.0
+**Behavior:**
+- Create: eid (new entry)
+- Read: salary
+- Update: position
+- Delete: eid (no longer an employee)
 
 10. Movie:
+**State:**
 - Attributes: title (string), director (string), release_year (integer), rating (float)
 - Values: title = "The Shawshank Redemption", director = "Frank Darabont", release_year = 1994, rating = 9.3
+**Behavior:**
+- Create: title (new movie)
+- Read: rating (float)
+- Update: rating
+- Delete: title (movie deleted)
 
 11. Animal:
-- Attributes: name (string), avg_age (int), is_carnivore (boolean)
+**State:**
+- Attributes: name (string), age (int), is_carnivore (boolean)
 - Values: name = "Lion", avg_age = 5, is_carnivore = True
+**Behavior:**
+- Create: name (new animal in zoo)
+- Read: is_carnivore
+- Update: age
+- Delete: name (no longer exists)
 
 12. Customer:
-- Attributes: name (string), age (integer), email (string), is_premium (boolean)
+**State:**
+- Attributes: cid(int), name (string), age (integer), email (string), is_premium (boolean)
 - Values: name = "Samuel", age = 35, email = "samuel@example.com", is_premium = True
+**Behavior:**
+- Create: cid
+- Read: is_premium
+- Update: email
+- Delete: cid (no longer exists)
 
 13. Product:
-- Attributes: name (string), price (float), quantity_available (integer), is_discounted (boolean)
+**State:**
+- Attributes: pid (int), name (string), price (float), quantity_available (integer), is_discounted (boolean)
 - Values: name = "Smartphone", price = 20000.50, quantity_available = 50, is_discounted = False
+**Behavior:**
+- Create: pid
+- Read: price
+- Update: price
+- Delete: pid (no longer available)
 
 14. Song:
-- Attributes: title (string), artist (string), duration_seconds (integer), is_favorite (boolean)
+**State:**
+- Attributes: id(int), title (string), artist (string), duration_seconds (integer), is_favorite (boolean)
 - Values: title = "Tera yaar", artist = "Arijit Singh", duration_seconds = 355, is_favorite = True
+**Behavior:**
+- Create: id
+- Read: title
+- Update: is_favorite
+- Delete: id
 
 15. Bank:
-- Attributes: name (string), location (string), total_assets (float), is_international (boolean)
-- Values: name = "HDFC", location = "Bangalore", total_assets = 5000000.0, is_international = True
+**State:**
+- Attributes: ifsc_code (int), name (string), location (string), total_assets (float), is_international (boolean)
+- Values: ifsc_code = 98567, name = "HDFC", location = "Bangalore", total_assets = 5000000.0, is_international = True
+**Behavior:**
+- Create: bank_id
+- Read: total_assets
+- Update: total_assets
+- Delete: ifsc_code
 
 ## Decision making in Python
 Decision making in Python is typically implemented using **conditional statements**. Python provides several types of conditional statements to control the flow of a program based on certain conditions. The most commonly used conditional statements are:
