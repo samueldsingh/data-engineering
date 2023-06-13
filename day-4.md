@@ -111,5 +111,57 @@ Based on the data type of a variable, the interpreter allocates memory and decid
 
 **Variable Use and Manipulation:** Variables are used to store data, perform calculations, pass values between functions, and store intermediate results in a program. They can be used in expressions, combined with operators, and passed as arguments to functions.
 
+Every item of data in a Python program can be described by the abstract term **object**, and objects can be manipulated using symbolic names called **variables**.
+
+## Object References
+What is actually happening when you make a variable assignment? 
+Python is a highly object-oriented programming language. Every item of data in a Python program is an object of a specific type or class. 
+
+Consider the code below that prints the number 300:
+```
+print(300)
+300
+```
+
+When you print the statement, the interpreter does three things: Creates an integer object, Gives it the value 300, Displays it to the console. 
+
+Print the type of the object using the built-in ```type``` function:
+```
+>>> type(300)
+<class 'int'>
+```
+
+A Python variable is a symbolic name that is a reference or pointer to an object. Once an object is assigned to a variable, you can refer to the object by that name. But the data itself is still contained within the object.
+
+For example, assign an object integer, ```n=300```, to the variable ```n``` using the assignment operator ```=```. The assignment operator assigns the variable n to point to that object.
+
+```
+n = 300
+```
+
+Now consider the following statement:
+```
+>>> m = n
+```
+
+What happens when it is executed? Python does not create another object. It simply creates a new symbolic name or reference, m, which points to the same object that n points to.
+
+Next, suppose assign a new variable to the object ```m```:
+```
+>>> m = 400
+```
+Python creates a new integer object with the value 400, and m becomes a reference to it.
+
+Lastly, execute the statement:
+```
+>>> n = "hello"
+```
+Python creates a string object with the value "foo" and makes n reference that.
+ 
+There is no longer any reference to the integer object 300. It is orphaned, and there is no way to access it. The number of references to an object drops to zero, it is no longer accessible. At that point, its lifetime is over. Python will eventually notice that it is inaccessible and reclaim the allocated memory so it can be used for something else. This process is referred to as garbage collection.
+
+## Object Identity
+
+
 ## Using Python in Command Prompt
 https://codeberryschool.com/blog/en/python-in-command-prompt/
