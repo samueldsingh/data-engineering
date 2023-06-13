@@ -17,7 +17,7 @@ Object-oriented programming languages, such as Python, Java, C++, and C#, provid
 The concept of objects allows for modular and organized code design, as it promotes the encapsulation of data and behavior into reusable and self-contained units. Objects facilitate code reusability, maintainability, and scalability, making them a powerful tool in software development.
 
 ## 2. How are objects stored in Python
-In C, C++, and Java we have variables and objects. A Python object is stored in memory with **names and references**. 
+A Python object is stored in memory with **names and references**. 
 A name is just a label for an object, so one object can have many names. 
 A reference is a name(pointer) that refers to an object.
 
