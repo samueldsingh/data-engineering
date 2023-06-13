@@ -173,5 +173,9 @@ s = "I love Geeksforgeeks"
 f()
 ```
 
+The output is:
+```
+
+```
 ## Using Python in Command Prompt
 https://codeberryschool.com/blog/en/python-in-command-prompt/
