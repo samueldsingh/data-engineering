@@ -27,7 +27,7 @@ A python object has 3 things -  Type, value, and reference count. As python is a
 declared while defining the object. Reference count is the number of names pointing that object. 
 
 ## 3. What is a reference count
-In Python, a reference count is a technique used for memory management. It is a count that keeps track of the number of references pointing to an object. The reference count mechanism is part of Python's automatic memory management system, which helps determine when an object is no longer in use and can be safely deallocated from memory.
+In Python, a reference count is automatic memory management system that helps determine when an object is no longer in use and can be safely deallocated from memory. It is a count that keeps track of the number of references pointing to an object.
 
 Here's how the reference count works:
 
