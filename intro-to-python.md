@@ -55,6 +55,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: Model (string), year_of_make (int), Price (float)
 - Values: Hyndai i10, 2017, 700000.50
+
 **Behavior:** 
 - Create (a new entry): New Model
 - Read (retrieve car info): print(year_of_make)
@@ -65,6 +66,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: date (string or datetime), temperature (float), humidity (float), is_rainy (boolean)
 - Values: date = "30-03-2022", temperature = 28.5, humidity = 0.75, is_rainy = False
+
 **Behavior:**
 - Create: date
 - Read: print(humidity)
@@ -75,6 +77,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: name (string), cuisine_type (string), rating (float), is_open (boolean)
 - Values: name = "Barbeque Nation", cuisine_type = "Italian", rating = 4.5, is_open = True
+
 **Behavior:**
 - Create: name
 - Read: print(cuisine_type)
@@ -85,6 +88,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: brand (string), processor_speed (float), memory_capacity (integer), is_laptop (boolean)
 - Values: brand = "HP Pavilion", processor_speed = 1.19, memory_capacity = 4, is_laptop = True
+
 **Behavior:**
 - Create: brand
 - Read: print(processor_speed)
@@ -95,6 +99,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: name (string), date (string or datetime), location (string), is_free (boolean)
 - Values: name = "Music Concert", date = "2023-07-15", location = "Phoenix Mall", is_free = False
+
 **Behavior:**
 - Create: name
 - Read: print(location)
@@ -105,6 +110,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: name (string), price (float), quantity (integer), is_available (boolean)
 - Values: name = "iPhone 12", price = 70,000, quantity = 10, is_available = True
+
 **Behavior:**
 - Create: name
 - Read: print(price)
@@ -115,6 +121,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: id(int), name (string), age (integer), grade (integer), is_enrolled (boolean)
 - Values: name = "Samuel David Singh", age = 15, grade = 9, is_enrolled = True4
+
 **Behavior:**
 - Create: id (new entry)
 - Read: grade (retrieve student's grade)
@@ -125,6 +132,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: name (string), population (integer), capital (string), is_developed (boolean)
 - Values: name = "United States", population = 331000000, capital = "Washington, D.C.", is_developed = True
+
 **Behavior:**
 - Create: name (new entry)
 - Read: population
@@ -135,6 +143,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: eid(int), name (string), age (integer), position (string), salary (float)
 - Values: name = "Samuel", age = 30, position = "Manager", salary = 50000.0
+
 **Behavior:**
 - Create: eid (new entry)
 - Read: salary
@@ -145,6 +154,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: title (string), director (string), release_year (integer), rating (float)
 - Values: title = "The Shawshank Redemption", director = "Frank Darabont", release_year = 1994, rating = 9.3
+
 **Behavior:**
 - Create: title (new movie)
 - Read: rating (float)
@@ -155,6 +165,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: name (string), age (int), is_carnivore (boolean)
 - Values: name = "Lion", avg_age = 5, is_carnivore = True
+
 **Behavior:**
 - Create: name (new animal in zoo)
 - Read: is_carnivore
@@ -165,6 +176,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: cid(int), name (string), age (integer), email (string), is_premium (boolean)
 - Values: name = "Samuel", age = 35, email = "samuel@example.com", is_premium = True
+
 **Behavior:**
 - Create: cid
 - Read: is_premium
@@ -175,6 +187,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: pid (int), name (string), price (float), quantity_available (integer), is_discounted (boolean)
 - Values: name = "Smartphone", price = 20000.50, quantity_available = 50, is_discounted = False
+
 **Behavior:**
 - Create: pid
 - Read: price
@@ -185,6 +198,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: id(int), title (string), artist (string), duration_seconds (integer), is_favorite (boolean)
 - Values: title = "Tera yaar", artist = "Arijit Singh", duration_seconds = 355, is_favorite = True
+
 **Behavior:**
 - Create: id
 - Read: title
@@ -195,6 +209,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 **State:**
 - Attributes: ifsc_code (int), name (string), location (string), total_assets (float), is_international (boolean)
 - Values: ifsc_code = 98567, name = "HDFC", location = "Bangalore", total_assets = 5000000.0, is_international = True
+
 **Behavior:**
 - Create: bank_id
 - Read: total_assets
