@@ -1,6 +1,7 @@
 ## 1. What is an object?
 In programming, an object is a fundamental concept in object-oriented programming (OOP) that represents a real-world entity, concept, or thing. 
 Objects are self-contained units that encapsulate data (attributes) and behaviors (methods) related to the entity they represent.
+Every item of data in a Python program can be described by the abstract term **object**, and we can manipulate objects using symbolic names called variables.
 
 ## Key characteristics of objects:
 **1. State:** An object's state is determined by its attributes or properties. Attributes of an object represent its current condition or characteristics. 
