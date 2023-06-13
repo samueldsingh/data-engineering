@@ -161,7 +161,7 @@ Python creates a string object with the value "foo" and makes n reference that.
 There is no longer any reference to the integer object 300. It is orphaned, and there is no way to access it. The number of references to an object drops to zero, it is no longer accessible. At that point, its lifetime is over. Python will eventually notice that it is inaccessible and reclaim the allocated memory so it can be used for something else. This process is referred to as garbage collection.
 
 ## Object Identity
-
+In Python, every object that is created has a unique identifier. 
 
 ## Using Python in Command Prompt
 https://codeberryschool.com/blog/en/python-in-command-prompt/
