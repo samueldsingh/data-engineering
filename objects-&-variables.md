@@ -109,7 +109,69 @@ Python creates a string object with the value "foo" and makes n reference that.
 There is no longer any reference to the integer object 300. It is orphaned, and there is no way to access it. The number of references to an object drops to zero, it is no longer accessible. At that point, its lifetime is over. Python will eventually notice that it is inaccessible and reclaim the allocated memory so it can be used for something else. This process is referred to as garbage collection.
 
 ## Object Identity
-In Python, every object that is created has a unique identifier. 
+In Python, every object that is created has a unique identifier. Once an object’s reference count drops to zero and it is garbage collected, as happened to the 300 object above, then its identifying number becomes available and may be used again.
+
+The built-in Python function ```id()``` returns an object’s integer identifier.
+
+After the assignment ```m = n```, ```m``` and ```n``` both point to the same object, confirmed by the fact that ```id(m)``` and ```id(n)``` return the same number. Once ```m``` is reassigned to ```400```, ```m``` and ```n``` point to different objects with different identities.
+
+Deep Dive: Caching Small Integer Values
+
+From what you now know about variable assignment and object references in Python, the following probably won’t surprise you:
+```
+>>> m = 300
+>>> n = 300
+>>> id(m)
+60062304
+>>> id(n)
+60062896
+```
+With the statement m = 300, Python creates an integer object with the value 300 and sets m as a reference to it. n is then similarly assigned to an integer object with value 300—but not the same object. Thus, they have different identities, which you can verify from the values returned by id().
+
+But consider this:
+```
+>>> m = 30
+>>> n = 30
+>>> id(m)
+1405569120
+>>> id(n)
+1405569120
+```
+Here, m and n are separately assigned to integer objects having value 30. But in this case, id(m) and id(n) are identical!
+
+For purposes of optimization, the interpreter creates objects for the integers in the range [-5, 256] at startup, and then reuses them during program execution. Thus, when you assign separate variables to an integer value in this range, they will actually reference the same object.
+
+## Global and local variables
+**Local variables** in Python are the ones that are defined and declared inside a function. We can not call this variable outside the function.
+
+```
+# This function uses global variable s
+def f():
+	s = "Welcome geeks"
+	print(s)
+
+
+f()
+```
+
+The output is:
+```
+Welcome geeks
+```
+
+**Global variables** in Python are the ones that are defined and declared outside a function, and we need to use them inside a function.
+
+```
+# This function has a variable with
+# name same as s.
+def f():
+    print(s)
+ 
+ 
+# Global scope
+s = "I love Geeksforgeeks"
+f()
+```
 
 ## Using Python in Command Prompt
 https://codeberryschool.com/blog/en/python-in-command-prompt/
