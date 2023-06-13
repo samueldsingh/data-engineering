@@ -101,3 +101,6 @@ Based on the data type of a variable, the interpreter allocates memory and decid
 **Variable References:** In Python, variables are references to objects rather than direct storage locations. Multiple variables can reference the same object, and changes made through one variable will be reflected in others.
 
 **Variable Use and Manipulation:** Variables are used to store data, perform calculations, pass values between functions, and store intermediate results in a program. They can be used in expressions, combined with operators, and passed as arguments to functions.
+
+## Using Python in Command Prompt
+https://codeberryschool.com/blog/en/python-in-command-prompt/
