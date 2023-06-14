@@ -206,10 +206,11 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: name = "Smartphone", price = 20000.50, quantity_available = 50, is_discounted = False
 
 **Behavior:**
-- Create: pid
-- Read: price
-- Update: price
-- Delete: pid (no longer available)
+
+- Create: Add a new product to the product catalog.
+- Read: Fetch product information by ID or name.
+- Update: Update product details such as price, description, or quantity.
+- Delete: Remove a product from the product catalog.
 
 14. Song:
 
@@ -275,13 +276,34 @@ The **behavior** of an entity represents the actions or operations that the enti
 19. Event 
 
 **State:**
-- Attributes: event_id (int), name (str), date (str), venue (str), time (
+- Attributes: event_id (int), name (str), date (str), venue (str), time (datatime), description (str)
+- Values: event_id = 01, name = "musical_evening", venue = "bangalore", date = "14-07-2023", time = 18:00, description = "Rock Concert"
 
 **Behavior:**
 Create: Create a new event in the event management system.
 Read: Retrieve event details by event ID, name, or date.
 Update: Update event information such as venue, time, or description.
 Delete: Cancel an existing event and remove it from the system.
+
+20. Book:
+
+**State:**
+- Attributes: book_id (int), author (str), isbn_no (int), pub_year (int), genre (str), availability (boolean)
+- Values: book_id = 567, author = "Salman Rushdie", isbn_no = "0084635", pub_year = "2023", genre = "fiction", availability = "True"
+
+**Behavior:**
+Create: Add a new book to the library catalog.
+Read: Retrieve book details by ISBN, title, or author.
+Update: Update book information such as publication year, genre, or availability.
+Delete: Remove a book from the library catalog.
+
+21. Order
+
+**Behavior:**
+Create: Place a new order for a customer, including the ordered items and quantities.
+Read: Fetch order details by order ID or customer ID.
+Update: Update order status, shipping address, or payment information.
+Delete: Cancel an existing order.
 
 
 
