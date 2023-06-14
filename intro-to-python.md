@@ -51,11 +51,12 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 ```
 
 ## 50 examples of an entity along with their attribute, value and data type
+States represent the attribute and property of an entity. It describes the current condition or characteristics of the entity. 
 1. Car:
 
 **State:**
 - Attributes: Model (string), year_of_make (int), Price (float)
-- Values: Hyndai i10, 2017, 700000.50
+- Values: Hyundai i10, 2017, 700000.50
 
 **Behavior:** 
 - Create (a new entry): New Model
