@@ -274,5 +274,189 @@ if __name__ == '__main__':
 
 These examples demonstrate the automatic memory management in Python, where memory is allocated for variables when needed and deallocated when they are no longer in use. The specifics of memory management, such as reference counting and garbage collection, are handled by the Python runtime environment.
 
+## List Operations:
+Operations are fundamental building blocks for performing calculations, manipulating data, and controlling program flow in many programming languages.
+
+Some examples of common operations that can be performed on variables: arithmetic operations, comparison operations, assignment operations, string concatenation and list operations.
+
+### 1. Arithmetic Operation:
+```
+a = 5
+b = 3
+
+sum = a + b
+difference = a - b
+product = a * b
+quotient = a / b
+remainder = a % b
+exponentiation = a ** b
+
+print(sum)  # Output: 8
+print(difference)  # Output: 2
+print(product)  # Output: 15
+print(quotient)  # Output: 1.6666666666666667
+print(remainder)  # Output: 2
+print(exponentiation)  # Output: 125
+```
+
+### 2. Comparison Operation:
+```
+a = 5
+b = 3
+
+greater_than = a > b
+less_than = a < b
+equal_to = a == b
+not_equal_to = a != b
+greater_than_equal_to = a >= b
+less_than_equal_to = a <= b
+
+print(greater_than)  # Output: True
+print(less_than)  # Output: False
+print(equal_to)  # Output: False
+print(not_equal_to)  # Output: True
+print(greater_than_equal_to)  # Output: True
+print(less_than_equal_to)  # Output: False
+```
+
+### 3. Assignment Operation
+```
+a = 5
+b = 3
+
+a += b  # Equivalent to a = a + b
+print(a)  # Output: 8
+
+a -= b  # Equivalent to a = a - b
+print(a)  # Output: 5
+
+a *= b  # Equivalent to a = a * b
+print(a)  # Output: 15
+
+a /= b  # Equivalent to a = a / b
+print(a)  # Output: 5.0
+
+a %= b  # Equivalent to a = a % b
+print(a)  # Output: 2.0
+
+a **= b  # Equivalent to a = a ** b
+print(a)  # Output: 125.0
+```
+
+### 4. String concatenation:
+```
+first_name = "John"
+last_name = "Doe"
+
+full_name = first_name + " " + last_name
+print(full_name)  # Output: "John Doe"
+
+```
+
+### 5. List Operations:
+```
+numbers = [1, 2, 3, 4, 5]
+
+length = len(numbers)
+maximum = max(numbers)
+minimum = min(numbers)
+total = sum(numbers)
+sorted_numbers = sorted(numbers)
+
+print(length)  # Output: 5
+print(maximum)  # Output: 5
+print(minimum)  # Output: 1
+print(total)  # Output: 15
+print(sorted_numbers)  # Output: [1, 2, 3, 4, 5]
+```
+
+### Complex operations on variables
+Complex operations involving conditional statements, loops, string formatting, list comprehension, function calls, and file operations. Such operations allow you to perform conditional branching, repeat tasks, format and manipulate strings, transform lists, call functions, and interact with files, providing powerful capabilities to solve complex problems in your programs.
+
+1. Conditional Statements
+```
+a = 5
+b = 3
+
+if a > b:
+    print("a is greater than b")
+elif a < b:
+    print("a is less than b")
+else:
+    print("a and b are equal")
+
+# Output: a is greater than b
+```
+
+2. Loops
+```
+# While Loop
+i = 1
+while i <= 5:
+    print(i)
+    i += 1
+
+# Output: 1 2 3 4 5
+
+# For Loop
+numbers = [1, 2, 3, 4, 5]
+for num in numbers:
+    print(num)
+
+# Output: 1 2 3 4 5
+```
+
+3. String Formatting:
+```
+name = "Sam"
+age = 25
+
+message = f"My name is {name} and I am {age} years old."
+print(message)
+
+# Output: My name is Sam and I am 25 years old.
+
+```
+
+4. List Comprehensions:
+```
+numbers = [1, 2, 3, 4, 5]
+
+squared_numbers = [num ** 2 for num in numbers if num % 2 == 0]
+print(squared_numbers)
+
+# Output: [4, 16]
+```
+
+5. Function Calls:
+```
+def add(a, b):
+    return a + b
+
+def multiply(a, b):
+    return a * b
+
+result = multiply(add(2, 3), 4)
+print(result)
+
+# Output: 20
+```
+
+6. File Operations:
+```
+# Reading from a File
+with open("data.txt", "r") as file:
+    data = file.read()
+    print(data)
+
+# Writing to a File
+with open("output.txt", "w") as file:
+    file.write("Hello, world!")
+
+# Appending to a File
+with open("log.txt", "a") as file:
+    file.write("Log entry: Something happened")
+```
+
 ## Using Python in Command Prompt
 https://codeberryschool.com/blog/en/python-in-command-prompt/
