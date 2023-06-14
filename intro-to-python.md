@@ -122,10 +122,10 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: name = "iPhone 12", price = 70,000, quantity = 10, is_available = True
 
 **Behavior:**
-- Create: name
-- Read: print(price)
-- Update: is_available
-- Delete: name (no longer manufacture)
+- Create: Add a new product to the product catalog.
+- Read: Fetch product information by ID or name.
+- Update: Update product details such as price, description, or quantity.
+- Delete: Remove a product from the product catalog.
 
 7. Student:
 
@@ -134,10 +134,10 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: name = "Samuel David Singh", age = 15, grade = 9, is_enrolled = True4
 
 **Behavior:**
-- Create: id (new entry)
-- Read: grade (retrieve student's grade)
-- Update: is_enrolled (changes over time)
-- Delete: name (no longer enrolled)
+- Create: Enroll a new student in a school or educational institution.
+- Read: Retrieve student information by student ID or name.
+- Update: Update student details such as contact information or grade level.
+- Delete: Remove a student's record from the system.
 
 8. Country:
 
@@ -194,10 +194,10 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: name = "Samuel", age = 35, email = "samuel@example.com", is_premium = True
 
 **Behavior:**
-- Create: cid
-- Read: is_premium
-- Update: email
-- Delete: cid (no longer exists)
+- Create: Create a new customer profile in the customer database.
+- Read: Retrieve customer information by ID, email, or phone number.
+- Update: Update customer details such as address, contact information, or preferences.
+- Delete: Remove a customer profile from the customer database.
 
 13. Product:
 
@@ -231,10 +231,10 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: ifsc_code = 98567, name = "HDFC", location = "Bangalore", total_assets = 5000000.0, is_international = True
 
 **Behavior:**
-- Create: bank_id
-- Read: total_assets
-- Update: total_assets
-- Delete: ifsc_code
+- Create: Open a new bank account for a customer.
+- Read: Retrieve account details by account number or customer ID.
+- Update: Update account information such as balance or account type.
+- Delete: Close an existing bank account.
 
 16. Customer Feedback Entry:
 
@@ -280,10 +280,10 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: event_id = 01, name = "musical_evening", venue = "bangalore", date = "14-07-2023", time = 18:00, description = "Rock Concert"
 
 **Behavior:**
-Create: Create a new event in the event management system.
-Read: Retrieve event details by event ID, name, or date.
-Update: Update event information such as venue, time, or description.
-Delete: Cancel an existing event and remove it from the system.
+- Create: Create a new event in the event management system.
+- Read: Retrieve event details by event ID, name, or date.
+- Update: Update event information such as venue, time, or description.
+- Delete: Cancel an existing event and remove it from the system.
 
 20. Book:
 
@@ -292,20 +292,154 @@ Delete: Cancel an existing event and remove it from the system.
 - Values: book_id = 567, author = "Salman Rushdie", isbn_no = "0084635", pub_year = "2023", genre = "fiction", availability = "True"
 
 **Behavior:**
-Create: Add a new book to the library catalog.
-Read: Retrieve book details by ISBN, title, or author.
-Update: Update book information such as publication year, genre, or availability.
-Delete: Remove a book from the library catalog.
+- Create: Add a new book to the library catalog.
+- Read: Retrieve book details by ISBN, title, or author.
+- Update: Update book information such as publication year, genre, or availability.
+- Delete: Remove a book from the library catalog.
 
 21. Order
 
+**State:**
+- Attributes: c_name (str), order_name (str), qty (int), order_id (int), c_id (int), order_status (str), address (str), payment (str)
+- Values: c_name = "Sam", order_name = "mobile", qty = 1, order_id = 4968, c_id = 938, order_status = "active", address = "101, Bangalore", payment = "COD"
+
 **Behavior:**
-Create: Place a new order for a customer, including the ordered items and quantities.
-Read: Fetch order details by order ID or customer ID.
-Update: Update order status, shipping address, or payment information.
-Delete: Cancel an existing order.
+- Create: Place a new order for a customer, including the ordered items and quantities.
+- Read: Fetch order details by order ID or customer ID.
+- Update: Update order status, shipping address, or payment information.
+- Delete: Cancel an existing order.
 
+22. User
 
+**State:**
+- Attributes: u_id (int), u_name (str), email (str), password (str)
+- Values: u_id = 638, u_name = "Sam", email = "samuel@gmail.com", password = "653286"
+- 
+**Behavior:**
+- Create: Create a new user account in the system.
+- Read: Retrieve user information by username or ID.
+- Update: Update user details such as name, email, or password.
+- Delete: Delete a user account from the system.
+
+23. Appointment
+
+**State:**
+- Attributes: app_id (int), date (str), name (str), time (str), ph_no (str)
+- Values: app_id = 038, date = "14-07-2023", name = "Sa,", time = "17:00", ph_no = "123456789"
+
+**Behaviour:**
+- Create: Schedule a new appointment with a client or service provider.
+- Read: Fetch appointment details by appointment ID, date, or participant.
+- Update: Update appointment information such as time, location, or description.
+- Delete: Cancel an appointment and remove it from the system.
+
+24. Task
+
+**State:**
+- Attributes: task_id (int), assignee (str), date (str), status (str)
+- Values: task_id = 938, assignee = "Sam", date = "14-06-2023", status = "High"
+
+**Behaviour:**
+- Create: Create a new task in a task management system.
+- Read: Fetch task details by task ID or assignee.
+- Update: Update task information such as due date, status, or priority.
+- Delete: Delete a task from the task management system.
+
+25. Product Review
+
+**State:**
+- Attributes: product_id (int), reviewer (str), comments (str), rating (float)
+- Values: product_id = 34, reviewer = "Sam", comments = "Good", rating = 4.0
+
+**Reviews:**
+- Create: Submit a new review for a product.
+- Read: Retrieve product reviews by product ID or reviewer.
+- Update: Update review comments or ratings.
+- Delete: Remove a product review from the system.
+
+26. Employee Timesheet Entity:
+
+**State:**
+- Attributes: emp_id (int), project (str), start_date (str), end_date (str)
+- Values: emp_id = 924, project = "Python", start_date = "14-06-2023", end_date = "14-07-2023"
+
+**Reviews:**
+- Create: Record a new timesheet entry for an employee.
+- Read: Fetch timesheet details by employee ID, date, or project.
+- Update: Update timesheet information such as hours worked or project allocation.
+- Delete: Remove a timesheet entry from the system.
+
+27. Recipe Entity:
+
+**State:**
+- Attributes: recipe_id (int), recipe (str), ingredients (str), end_date = "str"
+- Values: product_id = 34, reviewer = "Sam", comments = "Good", rating = 4.0
+
+**Reviews:**
+- Create: Add a new recipe to a recipe management system.
+- Read: Retrieve recipe details by recipe ID or name.
+- Update: Update recipe information such as ingredients, instructions, or cooking time.
+- Delete: Delete a recipe from the recipe management system.
+
+28. Social Media Post:
+
+**State:**
+- Attributes: post_id (int), author(str), date (str), comments = "str"
+- Values: product_id = 34, reviewer = "Sam", comments = "Good", rating = 4.0
+
+**Reviews:**
+Create: Publish a new post on a social media platform.
+Read: Retrieve post content and metadata by post ID, author, or date.
+Update: Update post content, add comments, or modify privacy settings.
+Delete: Delete a post from the social media platform.
+
+29. Hotel:
+
+**State:**
+- Attributes: hotel_id (int), hotel_name (str), location (str), room_avail (boolean), pricing (float)
+- Values: hotel_id = 28, hotel_name = "Meridian", location = "bangalore", room_avail = "yes", pricing = 2000.50
+
+**Reviews:**
+- Create: Add a new hotel to a booking system.
+- Read: Retrieve hotel details by hotel ID or location.
+- Update: Update hotel information such as room availability or pricing.
+- Delete: Remove a hotel from the booking system.
+
+30. Customer Support Ticket Entity:
+
+**State:**
+- Attributes: ticket_id (int), agent_name (str), status (str), task_name (str)
+- Values: ticket_id = 828, agent_name = "Samuel", status = "Completed", task_name = "Software Demo"
+
+**Reviews:**
+- Create: Create a new support ticket for a customer query or issue.
+- Read: Fetch support ticket details by ticket ID or customer.
+- Update: Update ticket information such as status, priority, or assigned agent.
+- Delete: Close or remove a support ticket from the system.
+
+31. Sales Order Entity:
+Create: Place a new sales order for a customer.
+Read: Fetch sales order details by order ID or customer.
+Update: Update order information such as quantities, shipping address, or payment method.
+Delete: Cancel a sales order and remove it from the system.
+
+32. Inventory Item:
+Create: Add a new item to the inventory system.
+Read: Retrieve item details by item ID, name, or category.
+Update: Update item information such as quantity, price, or description.
+Delete: Remove an item from the inventory system.
+
+33. Movie:
+Create: Add a new movie to a movie database.
+Read: Retrieve movie details by movie ID, title, or genre.
+Update: Update movie information such as release date, director, or cast.
+Delete: Delete a movie from the movie database.
+
+34. Supplier:
+Create: Add a new supplier to the supplier list.
+Read: Retrieve supplier details by supplier ID or name.
+Update: Update supplier information such as contact information or payment terms.
+Delete: Remove a supplier from the supplier list.
 
 ## Decision making in Python
 Decision making in Python is typically implemented using **conditional statements**. Python provides several types of conditional statements to control the flow of a program based on certain conditions. The most commonly used conditional statements are:
