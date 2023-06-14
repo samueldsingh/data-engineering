@@ -351,7 +351,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Attributes: product_id (int), reviewer (str), comments (str), rating (float)
 - Values: product_id = 34, reviewer = "Sam", comments = "Good", rating = 4.0
 
-**Reviews:**
+**Behavior:**
 - Create: Submit a new review for a product.
 - Read: Retrieve product reviews by product ID or reviewer.
 - Update: Update review comments or ratings.
@@ -363,7 +363,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Attributes: emp_id (int), project (str), start_date (str), end_date (str)
 - Values: emp_id = 924, project = "Python", start_date = "14-06-2023", end_date = "14-07-2023"
 
-**Reviews:**
+**Behavior:**
 - Create: Record a new timesheet entry for an employee.
 - Read: Fetch timesheet details by employee ID, date, or project.
 - Update: Update timesheet information such as hours worked or project allocation.
@@ -375,7 +375,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Attributes: recipe_id (int), recipe (str), ingredients (str), end_date = "str"
 - Values: product_id = 34, reviewer = "Sam", comments = "Good", rating = 4.0
 
-**Reviews:**
+**Behavior:**
 - Create: Add a new recipe to a recipe management system.
 - Read: Retrieve recipe details by recipe ID or name.
 - Update: Update recipe information such as ingredients, instructions, or cooking time.
@@ -387,7 +387,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Attributes: post_id (int), author(str), date (str), comments = "str"
 - Values: product_id = 34, reviewer = "Sam", comments = "Good", rating = 4.0
 
-**Reviews:**
+**Behavior:**
 Create: Publish a new post on a social media platform.
 Read: Retrieve post content and metadata by post ID, author, or date.
 Update: Update post content, add comments, or modify privacy settings.
@@ -399,25 +399,31 @@ Delete: Delete a post from the social media platform.
 - Attributes: hotel_id (int), hotel_name (str), location (str), room_avail (boolean), pricing (float)
 - Values: hotel_id = 28, hotel_name = "Meridian", location = "bangalore", room_avail = "yes", pricing = 2000.50
 
-**Reviews:**
+**Behavior:**
 - Create: Add a new hotel to a booking system.
 - Read: Retrieve hotel details by hotel ID or location.
 - Update: Update hotel information such as room availability or pricing.
 - Delete: Remove a hotel from the booking system.
 
-30. Customer Support Ticket Entity:
+30. Customer Support Ticket:
 
 **State:**
 - Attributes: ticket_id (int), agent_name (str), status (str), task_name (str)
 - Values: ticket_id = 828, agent_name = "Samuel", status = "Completed", task_name = "Software Demo"
 
-**Reviews:**
+**Behavior:**
 - Create: Create a new support ticket for a customer query or issue.
 - Read: Fetch support ticket details by ticket ID or customer.
 - Update: Update ticket information such as status, priority, or assigned agent.
 - Delete: Close or remove a support ticket from the system.
 
-31. Sales Order Entity:
+31. Sales Order:
+
+**State:**
+- Attributes: order_id (int), c_name (str), qty (int), address (str), payment (str)
+- Values: order_id = 476, c_name = "Sam", qty = 1, address = "101, Bangalore", payment ="COD"
+
+**Behavior:**
 Create: Place a new sales order for a customer.
 Read: Fetch sales order details by order ID or customer.
 Update: Update order information such as quantities, shipping address, or payment method.
