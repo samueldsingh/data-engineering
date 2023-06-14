@@ -117,6 +117,7 @@ After the assignment ```m = n```, ```m``` and ```n``` both point to the same obj
 
 > ## Deep Dive: Caching Small Integer Values
 > From what you now know about variable assignment and object references in Python, the following probably won’t surprise you:
+>
 ```
 >>> m = 300
 >>> n = 300
@@ -127,6 +128,7 @@ After the assignment ```m = n```, ```m``` and ```n``` both point to the same obj
 ```
 > With the statement m = 300, Python creates an integer object with the value 300 and sets m as a reference to it. n is then similarly assigned to an integer object with value 300—but not the same object. Thus, they have different identities, which you can verify from the values returned by id().
 But consider this:
+>
 ```
 >>> m = 30
 >>> n = 30
