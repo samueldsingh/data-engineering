@@ -210,13 +210,69 @@ print(num_list)  # Output: [1, 2, 3, 4, 5]
 num_list = [1, 2, 3, 4, 5]
 str_list = [str(num) for num in num_list]
 print(str_list)  # Output: ['1', '2', '3', '4', '5']
-
 ```
-
 
 Remember to handle potential errors when converting between incompatible types, as Python may raise exceptions if the conversion is not possible.
 
+## Summary of memory management in variables
+In short the memory management in variables follow the given path:
+```
+Variable Allocation --> Memory Address --> Garbage Collection --> Reference Counting --> Automatic Memory Management --> Memory Optimization
+```
 
+**Variable allocation:** On creating a variable, memory is allocated to store its value. The size of the memory depends on the data type of the variable. Integers require a fixed amount of memory whereas string may require memory size proportional to its size.
+
+**Memory Address:** Each allocated memory block has a unique address, which is used to identify and access the data stored in that block.
+
+**Garbage Collection:** Automatically reclaims memory that is no longer in use. It reduces the likelihood of memory leaks and manual memory management errors.
+
+**Reference Counting:** Keeps track of the number of references pointing to that allocated object.
+
+**Automatic memory management:** In cases where cyclic references exist, a garbage collector runs periodically to identify and deallocate unreachable objects.
+
+**Memory Optimization:** In cases where you may need to optimize memory usage in your program, techniques like object pooling (limited set of objects are reused instead of creating new ones) or using generators instead of lists for large datasets, can help reduce memory consumption.
+
+## Example of memory management:
+1. Variable Allocation: Execute the below assignment to store the value ```100```. On execution, memory is allocated to store the value ```1000```.
+```
+x=100
+```
+
+2. Reference Counting: Let's create a list ```[1,2,3]``` and assign the variables ```x``` and ```y``` to reference it. As long as there are references to the object, its reference count remains non-zero, indicating that the memory is still in use. When all references to the object are removed (set to ```None``` or go out of scope), the reference count becomes zero, and the memory occupied by the list object is deallocated.
+
+```
+x = [1, 2, 3]  # Reference count of the list object becomes 1
+y = x  # Reference count of the list object becomes 2
+x = None  # Reference count of the list object becomes 1 again
+y = None  # Reference count of the list object becomes 0, and memory is deallocated
+```
+
+3. Garbage Collection: Create a large object using the ```create_large_object()``` function. Perform some operations with the object, and when it is no longer needed, deallocate its memory by setting it to ```None```. Use the ```gc.collect()``` function to explicitly trigger the garbage collector and reclaim the memory occupied by the large object.
+
+```
+import gc
+
+def create_large_object():
+    # Creates a large object
+    return [0] * 10**6
+
+def do_something():
+    # Performs some operations
+    pass
+
+def main():
+    large_object = create_large_object()  # Allocates memory for the large object
+    do_something()  # Some operations that may or may not use the large object
+    large_object = None  # Deallocates memory for the large object
+
+    # Trigger garbage collection explicitly
+    gc.collect()
+
+if __name__ == '__main__':
+    main()
+```
+
+These examples demonstrate the automatic memory management in Python, where memory is allocated for variables when needed and deallocated when they are no longer in use. The specifics of memory management, such as reference counting and garbage collection, are handled by the Python runtime environment.
 
 ## Using Python in Command Prompt
 https://codeberryschool.com/blog/en/python-in-command-prompt/
