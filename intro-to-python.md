@@ -55,19 +55,19 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 
 The **behavior** of an entity represents the actions or operations that the entity can perform. Behavior is typically implemented as methods or functions associated with the object. Examples of behavior for a "Car" entity could include starting the engine, accelerating, braking, changing gears, turning, and stopping.
 
-1. Car:
+### 1. Car:
 
 **State:**
 - Attributes: Model (string), year_of_make (int), Price (float)
 - Values: Hyundai i10, 2017, 700000.50
 
 **Behavior:** 
-- Create (a new entry): New Model
-- Read (retrieve car info): print(year_of_make)
-- Update: Price
-- Delete: Model (after it is sold or scrapped)
+- Create: Add a new car to a car dealership inventory.
+- Read: Retrieve car details by car ID, make, or model.
+- Update: Update car information such as price, mileage, or color.
+- Delete: Remove a car from the inventory.
 
-2. Weather:
+### 2. Weather:
 
 **State:**
 - Attributes: date (string or datetime), temperature (float), humidity (float), is_rainy (boolean)
@@ -79,7 +79,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: is_rainy
 - Delete: date (old data)
 
-3. Restaurant:
+### 3. Restaurant:
 
 **State:**
 - Attributes: name (string), cuisine_type (string), rating (float), is_open (boolean)
@@ -91,7 +91,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: rating
 - Delete: name
 
-4. Computer:
+### 4. Computer:
 
 **State:**
 - Attributes: brand (string), processor_speed (float), memory_capacity (integer), is_laptop (boolean)
@@ -103,7 +103,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: memory_capacity
 - Delete: brand
 
-5. Event:
+### 5. Event:
 
 **State:**
 - Attributes: name (string), date (string or datetime), location (string), is_free (boolean)
@@ -115,7 +115,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: is_free
 - Delete: name (no longer exists)
 
-6. Product:
+### 6. Product:
 
 **State:**
 - Attributes: name (string), price (float), quantity (integer), is_available (boolean)
@@ -127,7 +127,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update product details such as price, description, or quantity.
 - Delete: Remove a product from the product catalog.
 
-7. Student:
+### 7. Student:
 
 **State:**
 - Attributes: id(int), name (string), age (integer), grade (integer), is_enrolled (boolean)
@@ -139,7 +139,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update student details such as contact information or grade level.
 - Delete: Remove a student's record from the system.
 
-8. Country:
+### 8. Country:
 
 **State:**
 - Attributes: name (string), population (integer), capital (string), is_developed (boolean)
@@ -151,7 +151,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: population (changes over time)
 - Delete: name (no longer exists)
 
-9. Employee:
+### 9. Employee:
 
 **State:**
 - Attributes: eid(int), name (string), age (integer), position (string), salary (float)
@@ -163,7 +163,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: position
 - Delete: eid (no longer an employee)
 
-10. Movie:
+### 10. Movie:
 
 **State:**
 - Attributes: title (string), director (string), release_year (integer), rating (float)
@@ -175,7 +175,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: rating
 - Delete: title (movie deleted)
 
-11. Animal:
+### 11. Animal:
 
 **State:**
 - Attributes: name (string), age (int), is_carnivore (boolean)
@@ -187,7 +187,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: age
 - Delete: name (no longer exists)
 
-12. Customer:
+### 12. Customer:
 
 **State:**
 - Attributes: cid(int), name (string), age (integer), email (string), is_premium (boolean)
@@ -199,7 +199,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update customer details such as address, contact information, or preferences.
 - Delete: Remove a customer profile from the customer database.
 
-13. Product:
+### 13. Product:
 
 **State:**
 - Attributes: pid (int), name (string), price (float), quantity_available (int), is_discounted (boolean)
@@ -212,7 +212,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update product details such as price, description, or quantity.
 - Delete: Remove a product from the product catalog.
 
-14. Song:
+### 14. Song:
 
 **State:**
 - Attributes: id(int), title (string), artist (string), duration_seconds (integer), is_favorite (boolean)
@@ -224,7 +224,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: is_favorite
 - Delete: id
 
-15. Bank:
+### 15. Bank:
 
 **State:**
 - Attributes: ifsc_code (int), name (string), location (string), total_assets (float), is_international (boolean)
@@ -236,7 +236,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update account information such as balance or account type.
 - Delete: Close an existing bank account.
 
-16. Customer Feedback Entry:
+### 16. Customer Feedback Entry:
 
 **State:**
 - Attributes: entry_id (int), c_name (string), date (string), feedback (str), rating (float)
@@ -249,7 +249,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Delete: Remove a customer feedback entry from the system.
 
 
-17. Blog Post Entry:
+### 17. Blog Post Entry:
 
 **State:**
 - Attributes: post_id (int), author (string), title (str), metadata (str), tag (str), 
@@ -261,7 +261,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update blog post content, title, or tags.
 - Delete: Delete a blog post from the blogging platform.
 
-18. Project
+### 18. Project
 
 **State:**
 - Attributes: project_id (int), name (str), owner(str), deadlines (str), team_members (list), Objectives (str), 
@@ -273,7 +273,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update project information such as deadlines, team members, or objectives.
 - Delete: Delete an existing project from the project management system.
 
-19. Event 
+### 19. Event 
 
 **State:**
 - Attributes: event_id (int), name (str), date (str), venue (str), time (datatime), description (str)
@@ -285,7 +285,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update event information such as venue, time, or description.
 - Delete: Cancel an existing event and remove it from the system.
 
-20. Book:
+### 20. Book:
 
 **State:**
 - Attributes: book_id (int), author (str), isbn_no (int), pub_year (int), genre (str), availability (boolean)
@@ -297,7 +297,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update book information such as publication year, genre, or availability.
 - Delete: Remove a book from the library catalog.
 
-21. Order
+### 21. Order
 
 **State:**
 - Attributes: c_name (str), order_name (str), qty (int), order_id (int), c_id (int), order_status (str), address (str), payment (str)
@@ -309,7 +309,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update order status, shipping address, or payment information.
 - Delete: Cancel an existing order.
 
-22. User
+### 22. User
 
 **State:**
 - Attributes: u_id (int), u_name (str), email (str), password (str)
@@ -321,7 +321,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update user details such as name, email, or password.
 - Delete: Delete a user account from the system.
 
-23. Appointment
+### 23. Appointment
 
 **State:**
 - Attributes: app_id (int), date (str), name (str), time (str), ph_no (str)
@@ -333,7 +333,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update appointment information such as time, location, or description.
 - Delete: Cancel an appointment and remove it from the system.
 
-24. Task
+### 24. Task
 
 **State:**
 - Attributes: task_id (int), assignee (str), date (str), status (str)
@@ -345,7 +345,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update task information such as due date, status, or priority.
 - Delete: Delete a task from the task management system.
 
-25. Product Review
+### 25. Product Review
 
 **State:**
 - Attributes: product_id (int), reviewer (str), comments (str), rating (float)
@@ -357,7 +357,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update review comments or ratings.
 - Delete: Remove a product review from the system.
 
-26. Employee Timesheet Entity:
+### 26. Employee Timesheet Entity:
 
 **State:**
 - Attributes: emp_id (int), project (str), start_date (str), end_date (str)
@@ -369,7 +369,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update timesheet information such as hours worked or project allocation.
 - Delete: Remove a timesheet entry from the system.
 
-27. Recipe Entity:
+### 27. Recipe Entity:
 
 **State:**
 - Attributes: recipe_id (int), recipe (str), ingredients (str), end_date = "str"
@@ -381,7 +381,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Update: Update recipe information such as ingredients, instructions, or cooking time.
 - Delete: Delete a recipe from the recipe management system.
 
-28. Social Media Post:
+### 28. Social Media Post:
 
 **State:**
 - Attributes: post_id (int), author(str), date (str), comments = "str"
@@ -393,7 +393,7 @@ Read: Retrieve post content and metadata by post ID, author, or date.
 Update: Update post content, add comments, or modify privacy settings.
 Delete: Delete a post from the social media platform.
 
-29. Hotel:
+### 29. Hotel:
 
 **State:**
 - Attributes: hotel_id (int), hotel_name (str), location (str), room_avail (boolean), pricing (float)
@@ -405,7 +405,7 @@ Delete: Delete a post from the social media platform.
 - Update: Update hotel information such as room availability or pricing.
 - Delete: Remove a hotel from the booking system.
 
-30. Customer Support Ticket:
+### 30. Customer Support Ticket:
 
 **State:**
 - Attributes: ticket_id (int), agent_name (str), status (str), task_name (str)
@@ -417,7 +417,7 @@ Delete: Delete a post from the social media platform.
 - Update: Update ticket information such as status, priority, or assigned agent.
 - Delete: Close or remove a support ticket from the system.
 
-31. Sales Order:
+### 31. Sales Order:
 
 **State:**
 - Attributes: order_id (int), c_name (str), qty (int), address (str), payment (str)
@@ -429,23 +429,100 @@ Read: Fetch sales order details by order ID or customer.
 Update: Update order information such as quantities, shipping address, or payment method.
 Delete: Cancel a sales order and remove it from the system.
 
-32. Inventory Item:
+### 32. Inventory Item:
+
+**State:**
+- Attributes: item_id (int), name (str), category (str), qty (int), price (float), description (str)
+- Values: item_id = 24, name = mobile, category = electronics, qty = 500, price = 300000.50, description = "Apple Iphones"
+
+**Behavior:**
 Create: Add a new item to the inventory system.
 Read: Retrieve item details by item ID, name, or category.
 Update: Update item information such as quantity, price, or description.
 Delete: Remove an item from the inventory system.
 
-33. Movie:
+### 33. Movie:
+
+**State:**
+- Attributes: movie_id (int), title (str), genre (str), release_date (str), director (str)
+- Values: movie_id = 389, title = "Avatar", genre = "fiction", release_date = "2022", direction = "James Cameroon"
+
+**Behavior:**
 Create: Add a new movie to a movie database.
 Read: Retrieve movie details by movie ID, title, or genre.
 Update: Update movie information such as release date, director, or cast.
 Delete: Delete a movie from the movie database.
 
-34. Supplier:
+### 34. Supplier:
+
+**State:**
+- Attributes: supplier_id (int), supplier_name (str), contact (str), payment (str)
+- Values: supplier_id = 839, supplier_name = "Amazon", contact = "123456789", payment = "NEFT"
+
+**Behavior:**
 Create: Add a new supplier to the supplier list.
 Read: Retrieve supplier details by supplier ID or name.
 Update: Update supplier information such as contact information or payment terms.
 Delete: Remove a supplier from the supplier list.
+
+### 35. Forum Thread:
+
+**State:**
+- Attributes: thread_id (int), topic (str), tags (str)
+- Values: thread_id = 48, topic = "Programming", tags = "Python"
+
+**Behavior:**
+Create: Start a new forum thread with a topic and initial post.
+Read: Retrieve forum thread details by thread ID or topic.
+Update: Update thread information such as title or category.
+Delete: Delete a forum thread and remove it from the forum.
+
+### 36. Course:
+
+**State:**
+- Attributes: course_id (int), title (str), instructor (str), description (str)
+- Values: course_id = 395, title = "Python", instructor = "Samuel", description = "Top Rated"
+
+**Behavior:**
+Create: Create a new course in an e-learning platform.
+Read: Retrieve course details by course ID or title.
+Update: Update course information such as description or instructor.
+Delete: Delete a course from the e-learning platform.
+
+### 37. Warehouse:
+
+**State:**
+- Attributes: warehouse_id (int), location (str), capacity_in_tonnes (int)
+- Values: warehouse_id = 938, location = "Whitefield, Bangalore", capacity_in_tonnes = 1500
+
+**Behavior:**
+- Create: Create a new warehouse in the warehouse management system.
+- Read: Retrieve warehouse details by warehouse ID or location.
+- Update: Update warehouse information such as capacity or address.
+- Delete: Remove a warehouse from the system.
+
+### 38. 
+
+light Entity:
+Create: Schedule a new flight in an airline reservation system.
+Read: Retrieve flight details by flight number, departure/arrival airports, or date.
+Update: Update flight information such as departure/arrival times or gate.
+Delete: Cancel a flight and remove it from the system.
+Music Album Entity:
+Create: Add a new music album to a music library.
+Read: Retrieve album details by album ID, artist, or title.
+Update: Update album information such as tracklist, release date, or genre.
+Delete: Remove an album from the music library.
+Rental Property Entity:
+Create: Add a new rental property to a property management system.
+Read: Retrieve property details by property ID, location, or owner.
+Update: Update property information such as rent price, availability, or amenities.
+Delete: Remove a rental property from the system.
+Donation Entity:
+Create: Record a new donation in a fundraising system.
+Read: Fetch donation details by donation ID, donor, or date.
+Update: Update donation information such as amount, donor details, or allocation.
+Delete: Remove a donation from the system.
 
 ## Decision making in Python
 Decision making in Python is typically implemented using **conditional statements**. Python provides several types of conditional statements to control the flow of a program based on certain conditions. The most commonly used conditional statements are:
