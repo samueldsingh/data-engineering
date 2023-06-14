@@ -202,7 +202,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 13. Product:
 
 **State:**
-- Attributes: pid (int), name (string), price (float), quantity_available (integer), is_discounted (boolean)
+- Attributes: pid (int), name (string), price (float), quantity_available (int), is_discounted (boolean)
 - Values: name = "Smartphone", price = 20000.50, quantity_available = 50, is_discounted = False
 
 **Behavior:**
@@ -234,6 +234,56 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Read: total_assets
 - Update: total_assets
 - Delete: ifsc_code
+
+16. Customer Feedback Entry:
+
+**State:**
+- Attributes: entry_id (int), c_name (string), date (string), feedback (str), rating (float)
+- Values: entry_id = 0137, c_name = "Sam", date = "14-06-2023", feedback = "Good", rating = 4.5
+
+**Behavior:**
+- Create: Submit a new customer feedback entry.
+- Read: Fetch customer feedback by ID, customer name, or date.
+- Update: Update customer feedback comments or ratings.
+- Delete: Remove a customer feedback entry from the system.
+
+
+17. Blog Post Entry:
+
+**State:**
+- Attributes: post_id (int), author (string), title (str), metadata (str), tag (str), 
+- Values: post_id = 012, author = "Sam", title = "Python Programming", metadata = "Blog on Python Variables", tag="python"
+
+**Behavior:**
+- Create: Create a new blog post on the blogging platform.
+- Read: Retrieve blog post content and metadata by post ID, title, or author.
+- Update: Update blog post content, title, or tags.
+- Delete: Delete a blog post from the blogging platform.
+
+18. Project
+
+**State:**
+- Attributes: project_id (int), name (str), owner(str), deadlines (str), team_members (list), Objectives (str), 
+- Values: project_id = 02, name = "Sam", owner = "Sam", deadline = "14-07-2023", team_members = [x,y,z], Objectives = "Deployment"
+
+**Behavior:**
+- Create: Create a new project in the project management system.
+- Read: Fetch project details by project ID, name, or owner.
+- Update: Update project information such as deadlines, team members, or objectives.
+- Delete: Delete an existing project from the project management system.
+
+19. Event 
+
+**State:**
+- Attributes: event_id (int), name (str), date (str), venue (str), time (
+
+**Behavior:**
+Create: Create a new event in the event management system.
+Read: Retrieve event details by event ID, name, or date.
+Update: Update event information such as venue, time, or description.
+Delete: Cancel an existing event and remove it from the system.
+
+
 
 ## Decision making in Python
 Decision making in Python is typically implemented using **conditional statements**. Python provides several types of conditional statements to control the flow of a program based on certain conditions. The most commonly used conditional statements are:
