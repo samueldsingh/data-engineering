@@ -51,7 +51,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 ```
 
 ## 50 examples of an entity along with their attribute, value and data type
-States represent the attribute and property of an entity. It describes the current condition or characteristics of the entity. 
+States represent the attribute and property of an entity. It describes the current condition or characteristics of the entity. The behavior of an entity represents the actions or operations that the entity can perform. Behavior is typically implemented as methods or functions associated with the object. Examples of behavior for a "Car" entity could include starting the engine, accelerating, braking, changing gears, turning, and stopping.
 1. Car:
 
 **State:**
