@@ -50,7 +50,7 @@ Binary Types: bytes (sequence of bytes), bytearray (mutable sequence of bytes)
 Other Types: NoneType (null value), complex (numbers with real and imaginary parts)
 ```
 
-## 15 examples of an entity along with their attribute, value and data type
+## 50 examples of an entity along with their attribute, value and data type
 1. Car:
 
 **State:**
