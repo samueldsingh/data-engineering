@@ -56,6 +56,7 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 The **behavior** of an entity represents the actions or operations that the entity can perform. Behavior is typically implemented as methods or functions associated with the object. Examples of behavior for a "Car" entity could include starting the engine, accelerating, braking, changing gears, turning, and stopping.
 
 **CRUD Operations:** CRUD stands for Create, Read, Update, and Delete, which are the basic operations performed on data in most applications. These operations allow you to interact with a database or any other data storage system. 
+
 **Create:** In Python, you typically need to connect to a database using a database driver or an ORM (Object-Relational Mapping) library like SQLAlchemy. Using appropriate functions and methods, you can create or insert records into the database.
 
 ```
