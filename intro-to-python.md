@@ -424,10 +424,10 @@ Delete: Delete a post from the social media platform.
 - Values: order_id = 476, c_name = "Sam", qty = 1, address = "101, Bangalore", payment ="COD"
 
 **Behavior:**
-Create: Place a new sales order for a customer.
-Read: Fetch sales order details by order ID or customer.
-Update: Update order information such as quantities, shipping address, or payment method.
-Delete: Cancel a sales order and remove it from the system.
+- Create: Place a new sales order for a customer.
+- Read: Fetch sales order details by order ID or customer.
+- Update: Update order information such as quantities, shipping address, or payment method.
+- Delete: Cancel a sales order and remove it from the system.
 
 ### 32. Inventory Item:
 
@@ -436,10 +436,10 @@ Delete: Cancel a sales order and remove it from the system.
 - Values: item_id = 24, name = mobile, category = electronics, qty = 500, price = 300000.50, description = "Apple Iphones"
 
 **Behavior:**
-Create: Add a new item to the inventory system.
-Read: Retrieve item details by item ID, name, or category.
-Update: Update item information such as quantity, price, or description.
-Delete: Remove an item from the inventory system.
+- Create: Add a new item to the inventory system.
+- Read: Retrieve item details by item ID, name, or category.
+- Update: Update item information such as quantity, price, or description.
+- Delete: Remove an item from the inventory system.
 
 ### 33. Movie:
 
@@ -448,10 +448,10 @@ Delete: Remove an item from the inventory system.
 - Values: movie_id = 389, title = "Avatar", genre = "fiction", release_date = "2022", direction = "James Cameroon"
 
 **Behavior:**
-Create: Add a new movie to a movie database.
-Read: Retrieve movie details by movie ID, title, or genre.
-Update: Update movie information such as release date, director, or cast.
-Delete: Delete a movie from the movie database.
+- Create: Add a new movie to a movie database.
+- Read: Retrieve movie details by movie ID, title, or genre.
+- Update: Update movie information such as release date, director, or cast.
+- Delete: Delete a movie from the movie database.
 
 ### 34. Supplier:
 
@@ -460,10 +460,10 @@ Delete: Delete a movie from the movie database.
 - Values: supplier_id = 839, supplier_name = "Amazon", contact = "123456789", payment = "NEFT"
 
 **Behavior:**
-Create: Add a new supplier to the supplier list.
-Read: Retrieve supplier details by supplier ID or name.
-Update: Update supplier information such as contact information or payment terms.
-Delete: Remove a supplier from the supplier list.
+- Create: Add a new supplier to the supplier list.
+- Read: Retrieve supplier details by supplier ID or name.
+- Update: Update supplier information such as contact information or payment terms.
+- Delete: Remove a supplier from the supplier list.
 
 ### 35. Forum Thread:
 
@@ -472,10 +472,10 @@ Delete: Remove a supplier from the supplier list.
 - Values: thread_id = 48, topic = "Programming", tags = "Python"
 
 **Behavior:**
-Create: Start a new forum thread with a topic and initial post.
-Read: Retrieve forum thread details by thread ID or topic.
-Update: Update thread information such as title or category.
-Delete: Delete a forum thread and remove it from the forum.
+- Create: Start a new forum thread with a topic and initial post.
+- Read: Retrieve forum thread details by thread ID or topic.
+- Update: Update thread information such as title or category.
+- Delete: Delete a forum thread and remove it from the forum.
 
 ### 36. Course:
 
@@ -484,10 +484,10 @@ Delete: Delete a forum thread and remove it from the forum.
 - Values: course_id = 395, title = "Python", instructor = "Samuel", description = "Top Rated"
 
 **Behavior:**
-Create: Create a new course in an e-learning platform.
-Read: Retrieve course details by course ID or title.
-Update: Update course information such as description or instructor.
-Delete: Delete a course from the e-learning platform.
+- Create: Create a new course in an e-learning platform.
+- Read: Retrieve course details by course ID or title.
+- Update: Update course information such as description or instructor.
+- Delete: Delete a course from the e-learning platform.
 
 ### 37. Warehouse:
 
@@ -508,10 +508,10 @@ Delete: Delete a course from the e-learning platform.
 - Values: flight_no = 12345, departure = "Chennai", arrival = "Bangalore", dep_time = "12:00", arr_time = "13:00"
 
 **Behavior:**
-Create: Schedule a new flight in an airline reservation system.
-Read: Retrieve flight details by flight number, departure/arrival airports, or date.
-Update: Update flight information such as departure/arrival times or gate.
-Delete: Cancel a flight and remove it from the system.
+- Create: Schedule a new flight in an airline reservation system.
+- Read: Retrieve flight details by flight number, departure/arrival airports, or date.
+- Update: Update flight information such as departure/arrival times or gate.
+- Delete: Cancel a flight and remove it from the system.
 
 ### 39. Music Album:
 
@@ -520,10 +520,10 @@ Delete: Cancel a flight and remove it from the system.
 - Values: album_id = 937, artist = "Sam", title = "Good Day", release_date = "13-06-2023", genre = "rock"
 
 **Behavior:**
-Create: Add a new music album to a music library.
-Read: Retrieve album details by album ID, artist, or title.
-Update: Update album information such as tracklist, release date, or genre.
-Delete: Remove an album from the music library.
+- Create: Add a new music album to a music library.
+- Read: Retrieve album details by album ID, artist, or title.
+- Update: Update album information such as tracklist, release date, or genre.
+- Delete: Remove an album from the music library.
 
 ### 40. Rental Property:
 
@@ -532,10 +532,10 @@ Delete: Remove an album from the music library.
 - Values: property_id = 397563, location = "Bangalore", owner = "Sam", price = 395000.50, availability = Yes
 
 **Behavior:**
-Create: Add a new rental property to a property management system.
-Read: Retrieve property details by property ID, location, or owner.
-Update: Update property information such as rent price, availability, or amenities.
-Delete: Remove a rental property from the system.
+- Create: Add a new rental property to a property management system.
+- Read: Retrieve property details by property ID, location, or owner.
+- Update: Update property information such as rent price, availability, or amenities.
+- Delete: Remove a rental property from the system.
 
 ### 41. Donation:
 
@@ -544,10 +544,10 @@ Delete: Remove a rental property from the system.
 - Values: donation_id = 98765, donor = "Sam", date = "15-07-2023", amount = 50000.50, donor_details = "Business owner, Bangalore"
 
 **Behavior:**
-Create: Record a new donation in a fundraising system.
-Read: Fetch donation details by donation ID, donor, or date.
-Update: Update donation information such as amount, donor details, or allocation.
-Delete: Remove a donation from the system.
+- Create: Record a new donation in a fundraising system.
+- Read: Fetch donation details by donation ID, donor, or date.
+- Update: Update donation information such as amount, donor details, or allocation.
+- Delete: Remove a donation from the system.
 
 ### 42. Social Media Profile:
 
@@ -556,10 +556,10 @@ Delete: Remove a donation from the system.
 - Values: profile_id = 9283, profile_name = "sam7", bio = "python_dev", privacy = "open"
 
 **Behavior:**
-Create: Create a new social media profile for a user.
-Read: Retrieve profile details by profile ID or user.
-Update: Update profile information such as bio, profile picture, or privacy settings.
-Delete: Delete a social media profile.
+- Create: Create a new social media profile for a user.
+- Read: Retrieve profile details by profile ID or user.
+- Update: Update profile information such as bio, profile picture, or privacy settings.
+- Delete: Delete a social media profile.
 
 ### 43. Library Membership:
 
@@ -568,10 +568,10 @@ Delete: Delete a social media profile.
 - Values: user_id = 123, borrowing_limit = 2, membership_status = "Permanent", joining_date = "23-11-2019"
 
 **Behavior:**
-Create: Create a new library membership for a user.
-Read: Retrieve membership details by membership ID or user.
-Update: Update membership information such as borrowing limits or membership status.
-Delete: Cancel a library membership.
+- Create: Create a new library membership for a user.
+- Read: Retrieve membership details by membership ID or user.
+- Update: Update membership information such as borrowing limits or membership status.
+- Delete: Cancel a library membership.
 
 ### 44. Supplier Product:
 
@@ -580,10 +580,10 @@ Delete: Cancel a library membership.
 - Values: prod_id = 123, supplier = "b2c", price = 5000.75, qty =5, supplier_address = "Whitefield, Bangalore"
 
 **Behavior:**
-Create: Add a new product supplied by a supplier.
-Read: Retrieve product details by product ID, name, or supplier.
-Update: Update product information such as price, quantity, or supplier details.
-Delete: Remove a product from the system.
+- Create: Add a new product supplied by a supplier.
+- Read: Retrieve product details by product ID, name, or supplier.
+- Update: Update product information such as price, quantity, or supplier details.
+- Delete: Remove a product from the system.
 
 ### 45. Expense Report Entity:
 
@@ -592,10 +592,10 @@ Delete: Remove a product from the system.
 - Values: report_id = 9876, submitter = "sam", date = "14-07-2023", items = ["food", "utilities", "education"], amount = 25000.75
 
 **Behavior:**
-Create: Create a new expense report with itemized expenses.
-Read: Retrieve expense report details by report ID, submitter, or date.
-Update: Update expense report information such as expense items, amounts, or categories.
-Delete: Delete an expense report from the system.
+- Create: Create a new expense report with itemized expenses.
+- Read: Retrieve expense report details by report ID, submitter, or date.
+- Update: Update expense report information such as expense items, amounts, or categories.
+- Delete: Delete an expense report from the system.
 
 ### 46. Sports Team Entity:
 
@@ -604,10 +604,10 @@ Delete: Delete an expense report from the system.
 - Values: team_id = 456, name = "Chelsea", league = "EPL", coach = "maradona", home_stadium = "london"
 
 **Behavior:**
-Create: Create a new sports team in a sports management system.
-Read: Retrieve team details by team ID, name, or league.
-Update: Update team information such as roster, coach, or home stadium.
-Delete: Remove a sports team from the system.
+- Create: Create a new sports team in a sports management system.
+- Read: Retrieve team details by team ID, name, or league.
+- Update: Update team information such as roster, coach, or home stadium.
+- Delete: Remove a sports team from the system.
 
 ### 47. Job Application Entity:
 
@@ -616,10 +616,10 @@ Delete: Remove a sports team from the system.
 - Values: app_id = 234, app_name = "sam", position = "python dev", status = "waitlist"
 
 **Behavior:**
-Create: Submit a new job application for a job opening.
-Read: Retrieve application details by application ID, applicant, or position.
-Update: Update application information such as resume, cover letter, or status.
-Delete: Remove a job application from the system.
+- Create: Submit a new job application for a job opening.
+- Read: Retrieve application details by application ID, applicant, or position.
+- Update: Update application information such as resume, cover letter, or status.
+- Delete: Remove a job application from the system.
 
 ### 48. Document Entity:
 
@@ -640,10 +640,10 @@ Delete: Delete a document from the system.
 - Values: app_id = 345, patient = "sam", date = "str", time = 
 
 **Behavior:**
-Create: Schedule a new healthcare appointment for a patient.
-Read: Fetch appointment details by appointment ID, patient, or date.
-Update: Update appointment information such as time, doctor, or reason for visit.
-Delete: Cancel a healthcare appointment and remove it from the system.
+- Create: Schedule a new healthcare appointment for a patient.
+- Read: Fetch appointment details by appointment ID, patient, or date.
+- Update: Update appointment information such as time, doctor, or reason for visit.
+- Delete: Cancel a healthcare appointment and remove it from the system.
 
 ### 50. Invoice Entity:
 
@@ -652,10 +652,10 @@ Delete: Cancel a healthcare appointment and remove it from the system.
 - Values: invoice_id = 987), billing_items = ["mobile", "laptop"], amount = 5000.50, due_date = 14-07-2023
 
 **Behavior:**
-Create: Generate a new invoice for a customer.
-Read: Retrieve invoice details by invoice ID or customer.
-Update: Update invoice information such as billing items, amounts, or due date.
-Delete: Delete an invoice from the system.
+- Create: Generate a new invoice for a customer.
+- Read: Retrieve invoice details by invoice ID or customer.
+- Update: Update invoice information such as billing items, amounts, or due date.
+- Delete: Delete an invoice from the system.
 
 ## Decision making in Python
 Decision making in Python is typically implemented using **conditional statements**. Python provides several types of conditional statements to control the flow of a program based on certain conditions. The most commonly used conditional statements are:
