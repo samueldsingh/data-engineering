@@ -360,8 +360,8 @@ The **behavior** of an entity represents the actions or operations that the enti
 ### 26. Employee Timesheet Entity:
 
 **State:**
-- Attributes: emp_id (int), project (str), start_date (str), end_date (str)
-- Values: emp_id = 924, project = "Python", start_date = "14-06-2023", end_date = "14-07-2023"
+- Attributes: emp_id (int), project (str), start_date (datetime), end_date (datetime)
+- Values: emp_id = 924, project = "Python", start_date = "14-06-2023", end_date = 14-07-2023
 
 **Behavior:**
 - Create: Record a new timesheet entry for an employee.
@@ -372,8 +372,8 @@ The **behavior** of an entity represents the actions or operations that the enti
 ### 27. Recipe Entity:
 
 **State:**
-- Attributes: recipe_id (int), recipe (str), ingredients (str), end_date = "str"
-- Values: product_id = 34, reviewer = "Sam", comments = "Good", rating = 4.0
+- Attributes: recipe_id (int), recipe (str), ingredients (list), end_date (datetime)
+- Values: recipe_id = 123, recipe = "biryani", ingredients = ["rice", "biryani", "masala"], end_date = 14-07-2023
 
 **Behavior:**
 - Create: Add a new recipe to a recipe management system.
@@ -503,78 +503,155 @@ Delete: Delete a course from the e-learning platform.
 
 ### 38. Flight:
 
+**State:**
+- Attributes: flight_no (int), departure (str), arrival (str), dep_time (str), arr_time (str)
+- Values: flight_no = 12345, departure = "Chennai", arrival = "Bangalore", dep_time = "12:00", arr_time = "13:00"
+
+**Behavior:**
 Create: Schedule a new flight in an airline reservation system.
 Read: Retrieve flight details by flight number, departure/arrival airports, or date.
 Update: Update flight information such as departure/arrival times or gate.
 Delete: Cancel a flight and remove it from the system.
 
 ### 39. Music Album:
+
+**State:**
+- Attributes: album_id (int), artist (str), title (str), release_date (str), genre (str)
+- Values: album_id = 937, artist = "Sam", title = "Good Day", release_date = "13-06-2023", genre = "rock"
+
+**Behavior:**
 Create: Add a new music album to a music library.
 Read: Retrieve album details by album ID, artist, or title.
 Update: Update album information such as tracklist, release date, or genre.
 Delete: Remove an album from the music library.
 
 ### 40. Rental Property:
+
+**State:** 
+- Attributes: property_id (int), location (str), owner (str), price (float), availability (bool)
+- Values: property_id = 397563, location = "Bangalore", owner = "Sam", price = 395000.50, availability = Yes
+
+**Behavior:**
 Create: Add a new rental property to a property management system.
 Read: Retrieve property details by property ID, location, or owner.
 Update: Update property information such as rent price, availability, or amenities.
 Delete: Remove a rental property from the system.
 
 ### 41. Donation:
+
+**State:** 
+- Attributes: donation_id (int), donor (str), date (str), amount (float), donor_details (str)
+- Values: donation_id = 98765, donor = "Sam", date = "15-07-2023", amount = 50000.50, donor_details = "Business owner, Bangalore"
+
+**Behavior:**
 Create: Record a new donation in a fundraising system.
 Read: Fetch donation details by donation ID, donor, or date.
 Update: Update donation information such as amount, donor details, or allocation.
 Delete: Remove a donation from the system.
 
 ### 42. Social Media Profile:
+
+**State:** 
+- Attributes: profile_id (int), profile_name (str), bio (str), privacy (str)
+- Values: profile_id = 9283, profile_name = "sam7", bio = "python_dev", privacy = "open"
+
+**Behavior:**
 Create: Create a new social media profile for a user.
 Read: Retrieve profile details by profile ID or user.
 Update: Update profile information such as bio, profile picture, or privacy settings.
 Delete: Delete a social media profile.
 
 ### 43. Library Membership:
+
+**State:** 
+- Attributes: user_id (int), borrowing_limit (int), membership_status (str), joining_date (str)
+- Values: user_id = 123, borrowing_limit = 2, membership_status = "Permanent", joining_date = "23-11-2019"
+
+**Behavior:**
 Create: Create a new library membership for a user.
 Read: Retrieve membership details by membership ID or user.
 Update: Update membership information such as borrowing limits or membership status.
 Delete: Cancel a library membership.
 
-### 44. Supplier Product Entity:
+### 44. Supplier Product:
+
+**State:** 
+- Attributes: prod_id (int), supplier (str), price (float), qty (int), supplier_address (str)
+- Values: prod_id = 123, supplier = "b2c", price = 5000.75, qty =5, supplier_address = "Whitefield, Bangalore"
+
+**Behavior:**
 Create: Add a new product supplied by a supplier.
 Read: Retrieve product details by product ID, name, or supplier.
 Update: Update product information such as price, quantity, or supplier details.
 Delete: Remove a product from the system.
 
 ### 45. Expense Report Entity:
+
+**State:** 
+- Attributes: report_id (int), submitter (str), date (str), items (list), amount (float)
+- Values: report_id = 9876, submitter = "sam", date = "14-07-2023", items = ["food", "utilities", "education"], amount = 25000.75
+
+**Behavior:**
 Create: Create a new expense report with itemized expenses.
 Read: Retrieve expense report details by report ID, submitter, or date.
 Update: Update expense report information such as expense items, amounts, or categories.
 Delete: Delete an expense report from the system.
 
 ### 46. Sports Team Entity:
+
+**State:** 
+- Attributes: team_id (int), name (str), league (str), coach (str), home_stadium (str)
+- Values: team_id = 456, name = "Chelsea", league = "EPL", coach = "maradona", home_stadium = "london"
+
+**Behavior:**
 Create: Create a new sports team in a sports management system.
 Read: Retrieve team details by team ID, name, or league.
 Update: Update team information such as roster, coach, or home stadium.
 Delete: Remove a sports team from the system.
 
 ### 47. Job Application Entity:
+
+**State:** 
+- Attributes: app_id (int), app_name (str), position (str), status (str)
+- Values: app_id = 234, app_name = "sam", position = "python dev", status = "waitlist"
+
+**Behavior:**
 Create: Submit a new job application for a job opening.
 Read: Retrieve application details by application ID, applicant, or position.
 Update: Update application information such as resume, cover letter, or status.
 Delete: Remove a job application from the system.
 
 ### 48. Document Entity:
+
+**State:** 
+- Attributes: doc_id (int), title (str), author (str), tags (list)
+- Values: doc_id = 345, title = "python", author = "sam", tags = ["AI", "ML", "SQL"]
+
+**Behavior:**
 Create: Create a new document in a document management system.
 Read: Retrieve document details by document ID, title, or author.
 Update: Update document information such as content, tags, or access permissions.
 Delete: Delete a document from the system.
 
 ### 49. Healthcare Appointment Entity:
+
+**State:** 
+- Attributes: app_id (int), patient (str), date (datetime), time (datetime)
+- Values: app_id = 345, patient = "sam", date = "str", time = 
+
+**Behavior:**
 Create: Schedule a new healthcare appointment for a patient.
 Read: Fetch appointment details by appointment ID, patient, or date.
 Update: Update appointment information such as time, doctor, or reason for visit.
 Delete: Cancel a healthcare appointment and remove it from the system.
 
 ### 50. Invoice Entity:
+
+**State:** 
+- Attributes: invoice_id (int), billing_items (list), amount (float), due_date (datetime)
+- Values: invoice_id = 987), billing_items = ["mobile", "laptop"], amount = 5000.50, due_date = 14-07-2023
+
+**Behavior:**
 Create: Generate a new invoice for a customer.
 Read: Retrieve invoice details by invoice ID or customer.
 Update: Update invoice information such as billing items, amounts, or due date.
