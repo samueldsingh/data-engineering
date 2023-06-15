@@ -13,7 +13,7 @@ I am genuinely passionate about Python and its vast capabilities. I am excited t
 
 Thank you for considering my profile as a Python developer. I am eager to discuss potential opportunities and how my skills align with your organization's goals."
 
-Some of the challenges that I face as a Python Developer on a daily basis is to 
+Some of the challenges that I face as a Python Developer on a daily basis is
 
 **1. Performance:** overcome performance challenges like optimizing critical code sections, utilizing efficient algorithms and data structures, and leveraging compiled extensions or libraries written in languages like C or Cython for computationally intensive tasks.
 
