@@ -457,5 +457,5 @@ with open("log.txt", "a") as file:
     file.write("Log entry: Something happened")
 ```
 
-## Using Python in Command Prompt
-https://codeberryschool.com/blog/en/python-in-command-prompt/
+## References
+- (Using Python in Command Prompt)[https://codeberryschool.com/blog/en/python-in-command-prompt/]
