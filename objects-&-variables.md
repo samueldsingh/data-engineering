@@ -458,4 +458,4 @@ with open("log.txt", "a") as file:
 ```
 
 ## References
-- (Using Python in Command Prompt)[https://codeberryschool.com/blog/en/python-in-command-prompt/]
+- [Using Python in Command Prompt](https://codeberryschool.com/blog/en/python-in-command-prompt/)
