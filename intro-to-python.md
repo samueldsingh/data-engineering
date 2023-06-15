@@ -55,6 +55,60 @@ Other Types: NoneType (null value), complex (numbers with real and imaginary par
 
 The **behavior** of an entity represents the actions or operations that the entity can perform. Behavior is typically implemented as methods or functions associated with the object. Examples of behavior for a "Car" entity could include starting the engine, accelerating, braking, changing gears, turning, and stopping.
 
+**CRUD Operations:** CRUD stands for Create, Read, Update, and Delete, which are the basic operations performed on data in most applications. These operations allow you to interact with a database or any other data storage system. 
+**Create:** In Python, you typically need to connect to a database using a database driver or an ORM (Object-Relational Mapping) library like SQLAlchemy. Using appropriate functions and methods, you can create or insert records into the database.
+
+```
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+# Define a database engine and session
+engine = create_engine('sqlite:///mydatabase.db')
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# Define a model or table
+Base = declarative_base()
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+
+# Create a new user record
+new_user = User(name='John')
+session.add(new_user)
+session.commit()
+```
+
+**Read:** SQLAlchemy ORM uses functions and methods to query and retrieve data from the database.
+
+```
+# Query and retrieve user records
+users = session.query(User).all()  # Retrieve all users
+for user in users:
+    print(user.name)
+```
+
+**Update:** SQLAlchemy ORM can be used to modify existing records or objects in the data storage system.
+
+```
+# Update a user's name
+user = session.query(User).filter_by(name='John').first()
+user.name = 'John Doe'
+session.commit()
+```
+
+**Delete:** SQLAlchemy ORM can be used to remove existing records or objects from the data storage system.
+
+```
+# Delete a user record
+user = session.query(User).filter_by(name='John Doe').first()
+session.delete(user)
+session.commit()
+```
+
+
 ### 1. Car:
 
 **State:**
