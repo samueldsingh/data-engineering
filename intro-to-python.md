@@ -501,28 +501,84 @@ Delete: Delete a course from the e-learning platform.
 - Update: Update warehouse information such as capacity or address.
 - Delete: Remove a warehouse from the system.
 
-### 38. 
+### 38. Flight:
 
-light Entity:
 Create: Schedule a new flight in an airline reservation system.
 Read: Retrieve flight details by flight number, departure/arrival airports, or date.
 Update: Update flight information such as departure/arrival times or gate.
 Delete: Cancel a flight and remove it from the system.
-Music Album Entity:
+
+### 39. Music Album:
 Create: Add a new music album to a music library.
 Read: Retrieve album details by album ID, artist, or title.
 Update: Update album information such as tracklist, release date, or genre.
 Delete: Remove an album from the music library.
-Rental Property Entity:
+
+### 40. Rental Property:
 Create: Add a new rental property to a property management system.
 Read: Retrieve property details by property ID, location, or owner.
 Update: Update property information such as rent price, availability, or amenities.
 Delete: Remove a rental property from the system.
-Donation Entity:
+
+### 41. Donation:
 Create: Record a new donation in a fundraising system.
 Read: Fetch donation details by donation ID, donor, or date.
 Update: Update donation information such as amount, donor details, or allocation.
 Delete: Remove a donation from the system.
+
+### 42. Social Media Profile:
+Create: Create a new social media profile for a user.
+Read: Retrieve profile details by profile ID or user.
+Update: Update profile information such as bio, profile picture, or privacy settings.
+Delete: Delete a social media profile.
+
+### 43. Library Membership:
+Create: Create a new library membership for a user.
+Read: Retrieve membership details by membership ID or user.
+Update: Update membership information such as borrowing limits or membership status.
+Delete: Cancel a library membership.
+
+### 44. Supplier Product Entity:
+Create: Add a new product supplied by a supplier.
+Read: Retrieve product details by product ID, name, or supplier.
+Update: Update product information such as price, quantity, or supplier details.
+Delete: Remove a product from the system.
+
+### 45. Expense Report Entity:
+Create: Create a new expense report with itemized expenses.
+Read: Retrieve expense report details by report ID, submitter, or date.
+Update: Update expense report information such as expense items, amounts, or categories.
+Delete: Delete an expense report from the system.
+
+### 46. Sports Team Entity:
+Create: Create a new sports team in a sports management system.
+Read: Retrieve team details by team ID, name, or league.
+Update: Update team information such as roster, coach, or home stadium.
+Delete: Remove a sports team from the system.
+
+### 47. Job Application Entity:
+Create: Submit a new job application for a job opening.
+Read: Retrieve application details by application ID, applicant, or position.
+Update: Update application information such as resume, cover letter, or status.
+Delete: Remove a job application from the system.
+
+### 48. Document Entity:
+Create: Create a new document in a document management system.
+Read: Retrieve document details by document ID, title, or author.
+Update: Update document information such as content, tags, or access permissions.
+Delete: Delete a document from the system.
+
+### 49. Healthcare Appointment Entity:
+Create: Schedule a new healthcare appointment for a patient.
+Read: Fetch appointment details by appointment ID, patient, or date.
+Update: Update appointment information such as time, doctor, or reason for visit.
+Delete: Cancel a healthcare appointment and remove it from the system.
+
+### 50. Invoice Entity:
+Create: Generate a new invoice for a customer.
+Read: Retrieve invoice details by invoice ID or customer.
+Update: Update invoice information such as billing items, amounts, or due date.
+Delete: Delete an invoice from the system.
 
 ## Decision making in Python
 Decision making in Python is typically implemented using **conditional statements**. Python provides several types of conditional statements to control the flow of a program based on certain conditions. The most commonly used conditional statements are:
