@@ -19,7 +19,7 @@ Some of the challenges that I face as a Python Developer on a daily basis is
 
 **2. Scalability:** Python's Global Interpreter Lock (GIL) limits multi-threading performance, making it challenging to scale applications on multiple CPU cores. To address this, explore alternative concurrency models such as multiprocessing, asynchronous programming with libraries like asyncio, or using task queues and message brokers to distribute workloads across multiple processes or machines.
 
-**3. Dependency Management** Managing dependencies and their versions can be challenging, especially in large projects or when collaborating with other developers. Utilize virtual environments, tools like pipenv or Poetry for dependency management, and consider using tools like Docker for containerization to ensure consistent environments across development, testing, and production.
+**3. Dependency Management:** Managing dependencies and their versions can be challenging, especially in large projects or when collaborating with other developers. Utilize virtual environments, tools like pipenv or Poetry for dependency management, and consider using tools like Docker for containerization to ensure consistent environments across development, testing, and production.
 
 **4. Compatibility:** Python has multiple versions in use, and compatibility issues may arise when working with different versions or when interacting with libraries that may have specific requirements. Use tools like pip to specify and manage library versions, adopt continuous integration (CI) systems for automated testing across multiple Python versions, and document compatibility requirements for your projects.
 
