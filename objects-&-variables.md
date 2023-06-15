@@ -459,3 +459,6 @@ with open("log.txt", "a") as file:
 
 ## References
 - [Using Python in Command Prompt](https://codeberryschool.com/blog/en/python-in-command-prompt/)
+- [Python Variables - by realpython.org](https://realpython.com/python-variables/)
+- [Python Variables - gfg](https://www.geeksforgeeks.org/python-variables/)
+- [Python Variables - javatpoint](https://www.javatpoint.com/python-variables)
