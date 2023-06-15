@@ -74,10 +74,10 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: date = "30-03-2022", temperature = 28.5, humidity = 0.75, is_rainy = False
 
 **Behavior:**
-- Create: date
-- Read: print(humidity)
-- Update: is_rainy
-- Delete: date (old data)
+- Create: Add a new date to the weather database
+- Read: Retrieve weather details like temperature, humidity
+- Update: Update weather information such as is_rainy
+- Delete: Remove old data
 
 ### 3. Restaurant:
 
@@ -86,22 +86,22 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: name = "Barbeque Nation", cuisine_type = "Italian", rating = 4.5, is_open = True
 
 **Behavior:**
-- Create: name
-- Read: print(cuisine_type)
-- Update: rating
-- Delete: name
+- Create: Add a new restaurant to the database
+- Read: Retrieve cuisines details like chinese, italian, different restaurants
+- Update: Update restaurant information like rating, is_open
+- Delete: Remove restaurants that no longer exists
 
 ### 4. Computer:
 
 **State:**
-- Attributes: brand (string), processor_speed (float), memory_capacity (integer), is_laptop (boolean)
-- Values: brand = "HP Pavilion", processor_speed = 1.19, memory_capacity = 4, is_laptop = True
+- Attributes: brand (string), processor_speed (float), memory_capacity (integer), is_laptop (boolean), price (float)
+- Values: brand = "HP Pavilion", processor_speed = 1.19, memory_capacity = 4, is_laptop = True, price = 5000.75
 
 **Behavior:**
-- Create: brand
-- Read: print(processor_speed)
-- Update: memory_capacity
-- Delete: brand
+- Create: Add a new computer to the inventory
+- Read: Retireve computer details like processor_speed, memory capacity
+- Update: Update information like price, specifications
+- Delete: Remove details of sold out computers
 
 ### 5. Event:
 
@@ -110,11 +110,10 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: name = "Music Concert", date = "2023-07-15", location = "Phoenix Mall", is_free = False
 
 **Behavior:**
-- Create: name
-- Read: print(location)
-- Update: is_free
-- Delete: name (no longer exists)
-
+- Create: Create a new event in the database
+- Read: Retrieve information like genre, date
+- Update: Update price depending on the time
+- Delete: Remove events that no longer exists
 ### 6. Product:
 
 **State:**
@@ -146,10 +145,10 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: name = "United States", population = 331000000, capital = "Washington, D.C.", is_developed = True
 
 **Behavior:**
-- Create: name (new entry)
-- Read: population
-- Update: population (changes over time)
-- Delete: name (no longer exists)
+- Create: Add a new country to the database
+- Read: Retrieve information like population, capital
+- Update: information like population (changes over time)
+- Delete: countries (no longer exists)
 
 ### 9. Employee:
 
@@ -158,9 +157,9 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: name = "Samuel", age = 30, position = "Manager", salary = 50000.0
 
 **Behavior:**
-- Create: eid (new entry)
-- Read: salary
-- Update: position
+- Create: a new employee id for a new hire
+- Read: information like position, age
+- Update: salary
 - Delete: eid (no longer an employee)
 
 ### 10. Movie:
@@ -170,22 +169,22 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: title = "The Shawshank Redemption", director = "Frank Darabont", release_year = 1994, rating = 9.3
 
 **Behavior:**
-- Create: title (new movie)
-- Read: rating (float)
-- Update: rating
+- Create: Add newly released movie to the database
+- Read: Retrieve information like director name, movie name, release_year
+- Update: Information like rating
 - Delete: title (movie deleted)
 
 ### 11. Animal:
 
 **State:**
-- Attributes: name (string), age (int), is_carnivore (boolean)
-- Values: name = "Lion", avg_age = 5, is_carnivore = True
+- Attributes: name (string), age (int), diet (str), is_carnivore (boolean)
+- Values: name = "Lion", avg_age = 5, diet = "Meat", is_carnivore = True
 
 **Behavior:**
-- Create: name (new animal in zoo)
-- Read: is_carnivore
-- Update: age
-- Delete: name (no longer exists)
+- Create: Add new animal to the zoo database
+- Read: Update information on the behavior and diet of the animal
+- Update: age information
+- Delete: animals that no longer exist in the zoo
 
 ### 12. Customer:
 
@@ -219,10 +218,10 @@ The **behavior** of an entity represents the actions or operations that the enti
 - Values: title = "Tera yaar", artist = "Arijit Singh", duration_seconds = 355, is_favorite = True
 
 **Behavior:**
-- Create: id
-- Read: title
-- Update: is_favorite
-- Delete: id
+- Create: Add a new song to the database
+- Read: Retrieve information like song title, artist
+- Update: whether song is_favorite or not
+- Delete: songs from database
 
 ### 15. Bank:
 
@@ -325,7 +324,7 @@ The **behavior** of an entity represents the actions or operations that the enti
 
 **State:**
 - Attributes: app_id (int), date (str), name (str), time (str), ph_no (str)
-- Values: app_id = 038, date = "14-07-2023", name = "Sa,", time = "17:00", ph_no = "123456789"
+- Values: app_id = 038, date = "14-07-2023", name = "Sam", time = "17:00", ph_no = "123456789"
 
 **Behaviour:**
 - Create: Schedule a new appointment with a client or service provider.
