@@ -1,6 +1,7 @@
 # What is Python? What are the advantages and disadvantages of Python? Where is it used?
 
-- It is a high level, object-oriented, interpreted and general purpose programming language known for its simplicity, readability, versatility and reuseability. 
+- It is a high level (user-friendly), object-oriented, interpreted and general purpose programming language known for its simplicity, readability, versatility and reuseability. 
+- It is often classified as a "scripting language" ( used to manipulate, customize, and automate the facilities of an existing system) and is considered similar to languages such as Perl, Tcl, or Ruby. The syntax of Python is loosely inspired by elements of C programming.
 - It is popular due to its clean and easy-to-understand syntax, which emphasizes code readability.
 - It offers a wide range of built-in functions and libraries that make it efficient for various programming tasks.
 - Python can be used for a wide range of applications, including web development, data analysis, scientific computing, artificial intelligence, machine learning, automation, and more. 
