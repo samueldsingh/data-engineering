@@ -249,6 +249,19 @@ The Python architecture is designed to provide a high-level and versatile progra
 
 ## 15. Explain Garbage Collection mechanism in detail.
 
+**Example:** Suppose you have 5 objects referring to the same variable:
+
+```
+a=b=c=d=e=10
+```
+
+Now you assign a new variable to the object `a`:
+```
+a=5
+```
+
+The reference count for the variable `10` decreases to 4. Likewise, when all objects get assigned to different variables, the reference count for `10` becomes `0` and `10` becomes garbage collected.
+
 Garbage collection releases memory when no object is in use. It is like a recycling system in computers where the system deletes the unused object and 
 reuses its memory slot for new objects.
 
