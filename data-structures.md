@@ -6,7 +6,12 @@ Tasks:
 4. Store marks of 10 students with their name and employee id.
 5. Take any 3 random invoices(like current bill) and store all attributes using data structure
 
+
+
 1. Store 5 students information like sid,name, age, marks, school_name, gender using Data Structure
+
+   You can utilize data structures like lists or dictionaries and iterate over the data input using loops. To
+store data use a loop such as:
 
 ```
 students = []  # Empty list to store student information
@@ -43,6 +48,35 @@ print(students)
 The output is:
 ```
 [{'sid': '1', 'name': 'Samuel', 'age': 21, 'marks': 90.0, 'school_name': 'SHUATS', 'gender': 'M'}, {'sid': '2', 'name': 'Benjamin', 'age': 21, 'marks': 95.0, 'school_name': 'SHUATS', 'gender': 'M'}, {'sid': '3', 'name': 'Ashwin', 'age': 21, 'marks': 85.0, 'school_name': 'SHUATS', 'gender': 'M'}, {'sid': '4', 'name': 'Kamlesh', 'age': 21, 'marks': 75.0, 'school_name': 'SHUATS', 'gender': 'M'}, {'sid': '5', 'name': 'Aslam', 'age': 21, 'marks': 80.0, 'school_name': 'SHUATS', 'gender': 'M'}]
+```
+
+2. Store 10 states of country India
+
+```
+states = []  # Empty list to store student information
+
+num_states = int(input("Enter the number of states: "))
+
+for i in range(num_states):
+    state = {}
+
+    print(f"\nEnter information for State #{i + 1}:")
+    state['name'] = input("Enter State Name: ")
+    state['capital'] = input("Enter Capital Name: ")
+
+    states.append(state)  # Add the student information dictionary to the list
+
+# Printing the stored state information
+print("\nState Information:")
+for i, state in enumerate(states):
+    print("The Capital of ", state['name'], "is", state['capital'])
+```
+
+The output is:
+```
+State Information:
+The Capital of  Karnataka is Bangalore
+The Capital of  Tamil Nadu is Chennai
 ```
 
 
