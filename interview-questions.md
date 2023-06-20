@@ -1,6 +1,12 @@
 ## Preparation for group discussion
 
 ### Tell me about yourself?
+
+
+### Data Engineering
+"Hello, my name is Samuel David Singh. I am a Data Engineer with expertise in designing and implementing data infrastructure solutions. I have a strong background in managing and processing large-scale data sets, building data pipelines, and ensuring the smooth flow of data between various systems. I am experienced in working with tools and technologies such as AWS, PySpark, Hadoop, Databases and Azure. My goal as a Data Engineer is to optimize data systems, improve data quality, and enable efficient data analysis and processing. I enjoy collaborating with cross-functional teams and leveraging my technical skills to drive data-driven solutions and insights. I am passionate about leveraging data to solve complex business problems and contribute to the success of organizations. I am excited about the ever-evolving field of data engineering and look forward to applying my expertise to tackle challenging data-related projects."
+
+### Python Developer
 "Hello, my name is Samuel, and I am a Python developer. With 2 years of experience in Python programming, I have developed a strong foundation in building robust and scalable applications using this versatile language.
 
 Throughout my career, I have successfully delivered various projects, ranging from web development to data analysis and automation. I am proficient in leveraging Python frameworks such as Django and Flask for web development, as well as libraries like NumPy, Pandas, and Matplotlib for data manipulation and visualization.
@@ -30,6 +36,7 @@ Some of the challenges that I face as a Python Developer on a daily basis is
 **7. Documentation and Code Maintenance:** Poorly documented code or lack of documentation can lead to confusion and difficulty maintaining the project. Document code consistently using docstrings and consider using tools like Sphinx to generate documentation. Adhering to coding standards, employing good naming conventions, and refactoring code regularly can help improve code maintainability.
 
 **8. Continuous Learning:** The Python ecosystem is vast and continuously evolving. Staying updated with new libraries, frameworks, and best practices can be challenging. Engage with the Python community through forums, conferences, and online resources. Participate in open-source projects, collaborate with other developers, and allocate time for self-study and exploration of new tools and technologies.
+
 
 I. Introduction:
 =================
