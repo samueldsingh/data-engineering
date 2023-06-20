@@ -28,9 +28,21 @@ In summary, the `and` operator requires both operands to be `True` in order to e
 0 ^ 0 = 0
 ```
 
+## OR operator
+- If either operand is `True`, the result is `True`.
+- If both operands are `False`, the result is `False`.
+
+```
+1 v 1 = 1
+1 v 0 = 1
+0 v 1 = 1
+0 v 0 = 0
+```
 
 
 ##  Read three inputs, arrange in ascending , without if, for, while, sort
+
+```
 first_no = int(input("Enter the first number: "))
 second_no = int(input("Enter the second number: "))
 third_no = int(input("Enter the third number: "))
@@ -42,18 +54,11 @@ max = first_no * ( first_no >= second_no and first_no >= third_no) + second_no *
 median = (first_no + second_no + third_no) - min - max
 
 print("Ascending order: ", min, median, max)
+```
 
 Example: first_no = 7, second_no = 8, third_no =3
 
-The execution of the expression, `1 * ( 1 <= 2 and 1 <= 3) + 2 * (2 <=1 and 2 <= 3) + 3 * (3 <= 1 and 3 <=2)` is as:
-
-1. 1 * (1 <= 2 and 1 <= 3)
-The expression inside the brackets is evaluated as follows:
-- 1 <= 2 is True because 1 is less than or equal to 2.
-- 1 <= 3 is True because 1 is less than or equal to 3.
-- The logical AND operator 'and' evaluates to True if both conditions are True.
-
-Therefore, the expression evaluates to 1 * True = 1.
+The execution of the expression, `7 * (7 <= 8 and 7 <= 3) + 8 * (8 <=7 and 8 <= 3) + 3 * (3 <= 1 and 3 <=2)` is as:
 
 1. 7 * (7 <= 8 and 7 <= 3)
 The expression inside the brackets is evaluated as follows:
@@ -63,7 +68,7 @@ The expression inside the brackets is evaluated as follows:
 
 Therefore, the expression evaluates to 7 * False = 0.
 
-2 * (8 <= 7 and 8 <= 3)
+2. 8 * (8 <=7 and 8 <= 3)
 The expression inside the brackets is evaluated as follows:
 - 8 <= 7 is False because 8 is not less than or equal to 7.
 - 8 <= 3 is False because 8 is not less than or equal to 3.
@@ -71,12 +76,41 @@ The expression inside the brackets is evaluated as follows:
 
 Therefore, the expression evaluates to 2 * False = 0.
 
-3 * (3 <= 7 and 3 <= 8)
+3. 3 * (3 <= 7 and 3 <=8)
 The expression inside the brackets is evaluated as follows:
-3 <= 7 is False because 3 is not less than or equal to 1.
-3 <= 8 is False because 3 is not less than or equal to 2.
-The logical AND operator 'and' evaluates to False if any of the conditions is False.
+3 <= 7 is True because 3 is less than or equal to 7.
+3 <= 8 is True because 3 is less than or equal to 8.
+The logical AND operator 'and' evaluates to True because both the conditions are true.
+
+Therefore, the expression evaluates to 3 * True = 3.
+
+Finally, the result is the sum of the three expressions: 0 + 0 + 3 = 3.
+
+
+The execution of the expression, `7 * (7 >= 8 and 7 >= 3) + 8 * (8 >=7 and 8 >= 3) + 3 * (3 >= 7 and 3 >= 8)` is as:
+
+1. 7 * (7 >= 8 and 7 >= 3)
+The expression inside the brackets is evaluated as follows:
+- 7 >= 8 is False because 7 is less than 8.
+- 7 >= 3 is True because 7 is greater than 3.
+- The logical AND operator 'and' evaluates to False because one of the conditions is False.
+
+Therefore, the expression evaluates to 7 * False = 0.
+
+2. 8 * (8 >=7 and 8 >= 3)
+The expression inside the brackets is evaluated as follows:
+- 8 >= 7 is True because 8 is greater than 7.
+- 8 >= 3 is True because 8 is greater than 3.
+- The logical AND operator 'and' evaluates to True because both the conditions are True.
+
+Therefore, the expression evaluates to 8 * True = 8.
+
+3. 3 * (3 >= 7 and 3 >=8)
+The expression inside the brackets is evaluated as follows:
+3 >= 7 is False because 3 is less than or equal to 7.
+3 >= 8 is False because 3 is less than or equal to 8.
+The logical AND operator 'and' evaluates to True because both the conditions are true.
 
 Therefore, the expression evaluates to 3 * False = 0.
 
-Finally, the result is the sum of the three expressions: 1 + 0 + 0 = 1.
+Finally, the result is the sum of the three expressions: 0 + 8 + 0 = 8.
