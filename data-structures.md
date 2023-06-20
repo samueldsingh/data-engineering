@@ -42,15 +42,20 @@ for i, student in enumerate(students):
     print("School Name:", student['school_name'])
     print("Gender:", student['gender'])
 
-print(students)
+for i in students:
+    print(i)
 ```
 
 The output is:
 ```
-[{'sid': '1', 'name': 'Samuel', 'age': 21, 'marks': 90.0, 'school_name': 'SHUATS', 'gender': 'M'}, {'sid': '2', 'name': 'Benjamin', 'age': 21, 'marks': 95.0, 'school_name': 'SHUATS', 'gender': 'M'}, {'sid': '3', 'name': 'Ashwin', 'age': 21, 'marks': 85.0, 'school_name': 'SHUATS', 'gender': 'M'}, {'sid': '4', 'name': 'Kamlesh', 'age': 21, 'marks': 75.0, 'school_name': 'SHUATS', 'gender': 'M'}, {'sid': '5', 'name': 'Aslam', 'age': 21, 'marks': 80.0, 'school_name': 'SHUATS', 'gender': 'M'}]
+{'sid': '1', 'name': 'Samuel', 'age': 21, 'marks': 80.0, 'school_name': 'SHUATS', 'gender': 'M'}
+{'sid': '2', 'name': 'Benjamin', 'age': 21, 'marks': 90.0, 'school_name': 'SHUATS', 'gender': 'M'}
 ```
 
 2. Store 10 states of country India
+
+   You can utilize data structures like lists or dictionaries and iterate over the data input using loops. To
+store data use a loop such as:
 
 ```
 states = []  # Empty list to store student information
@@ -78,6 +83,39 @@ State Information:
 The Capital of  Karnataka is Bangalore
 The Capital of  Tamil Nadu is Chennai
 ```
+
+## Another Approach:
+# Create a dictionary to store the states and their capitals
+```
+states = {
+    "Sikkim": "Gangtok",
+    "Tamil Nadu": "Chennai",
+    "Telangana": "Hyderabad",
+    "Tripura": "Agartala",
+    "Uttar Pradesh": "Lucknow",
+    "Uttarakhand": "Dehradun",
+    "West Bengal": "Kolkata"
+}
+```
+
+# Print the states and their capitals
+```
+for state, capital in states.items():
+    print(f"The capital of {state} is {capital}")
+```
+
+The output is:
+```
+The capital of Sikkim is Gangtok
+The capital of Tamil Nadu is Chennai
+The capital of Telangana is Hyderabad
+The capital of Tripura is Agartala
+The capital of Uttar Pradesh is Lucknow
+The capital of Uttarakhand is Dehradun
+The capital of West Bengal is Kolkata
+```
+This program uses a dictionary called states to store the names of Indian states as keys and their respective capital cities as values. It then iterates over the dictionary using a for loop and prints the state-capital pairs. You can add or remove states as needed to customize the dictionary.ho
+
 
 
 Questions:
