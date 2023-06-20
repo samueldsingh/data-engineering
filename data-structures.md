@@ -84,8 +84,8 @@ The Capital of  Karnataka is Bangalore
 The Capital of  Tamil Nadu is Chennai
 ```
 
-## Another Approach:
-# Create a dictionary to store the states and their capitals
+#### Another Approach:
+#### Create a dictionary to store the states and their capitals
 ```
 states = {
     "Sikkim": "Gangtok",
@@ -98,7 +98,7 @@ states = {
 }
 ```
 
-# Print the states and their capitals
+#### Print the states and their capitals
 ```
 for state, capital in states.items():
     print(f"The capital of {state} is {capital}")
@@ -116,7 +116,7 @@ The capital of West Bengal is Kolkata
 ```
 This program uses a dictionary called states to store the names of Indian states as keys and their respective capital cities as values. It then iterates over the dictionary using a for loop and prints the state-capital pairs. You can add or remove states as needed to customize the dictionary.ho
 
-## Write a python program to print list, tuples, sets
+#### Write a python program to print list, tuples, sets
 ```
 list = []  # Empty list to store a number
 
