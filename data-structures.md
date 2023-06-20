@@ -116,7 +116,50 @@ The capital of West Bengal is Kolkata
 ```
 This program uses a dictionary called states to store the names of Indian states as keys and their respective capital cities as values. It then iterates over the dictionary using a for loop and prints the state-capital pairs. You can add or remove states as needed to customize the dictionary.ho
 
+## Write a python program to print list, tuples, sets
+```
+list = []  # Empty list to store a number
 
+number = int(input("Enter how many values you want in the list: "))
+
+for i in range(number):
+    numbers = input("Enter a value to append: ")
+    list.append(numbers)
+
+
+print("The list:", list)
+print("The tuple:", tuple(list))
+print("The set:", set(list))
+```
+
+The output is:
+```
+Enter how many values you want in the list: 5
+Enter a value to append: 1
+Enter a value to append: 2
+Enter a value to append: 3
+Enter a value to append: 4
+Enter a value to append: 5
+
+The list: ['1', '2', '3', '4', '5']
+The tuple: ('1', '2', '3', '4', '5')
+The set: {'2', '5', '1', '4', '3'}
+```
+
+```
+dict = {}
+number=int(input("Enter how many values you want: "))
+for i in range(number):
+    dict[i] = i*2
+
+print("The Dictionary:", dict)
+```
+
+The output is:
+```
+Enter how many values you want: 5
+The Dictionary: {0: 0, 1: 2, 2: 4, 3: 6, 4: 8}
+```
 
 Questions:
 --------------
