@@ -114,7 +114,46 @@ The capital of Uttar Pradesh is Lucknow
 The capital of Uttarakhand is Dehradun
 The capital of West Bengal is Kolkata
 ```
-This program uses a dictionary called states to store the names of Indian states as keys and their respective capital cities as values. It then iterates over the dictionary using a for loop and prints the state-capital pairs. You can add or remove states as needed to customize the dictionary.ho
+This program uses a dictionary called states to store the names of Indian states as keys and their respective capital cities as values. It then iterates over the dictionary using a for loop and prints the state-capital pairs. You can add or remove states as needed to customize the dictionary.
+
+## 4. Store marks of 10 students with their name and student_id.
+```
+students = []  # Empty list to store student information
+
+num_students = int(input("Enter the number of students: "))
+
+for i in range(num_students):
+    student = {}  # Empty dictionary to store information for each student
+    
+    print(f"\nEnter information for Student #{i+1}:")
+    student['sid'] = input("Enter Student ID: ")
+    student['name'] = input("Enter Name: ")
+    
+    students.append(student)  # Add the student information dictionary to the list
+
+# Printing the stored student information
+print("\nStudent Information:")
+for i, student in enumerate(students):
+    print(f"\nStudent #{i+1}:")
+    print("Student ID:", student['sid'])
+    print("Name:", student['name'])
+
+for i in students:
+    print(i)
+```
+
+The output is:
+```
+Student Information:
+
+Student #1:
+Student ID: 1
+Name: Samuel
+
+Student #2:
+Student ID: 2
+Name: Ashwin
+```
 
 #### Write a python program to print list, tuples, sets
 ```
