@@ -299,6 +299,11 @@ Newly created objects are put in the Generation 0 list. A list is created for ob
 **Conclusion:**
 Python is a high-level language and we don’t have to do the memory management manually. Python garbage collection algorithm is very useful to open up space in the memory. Garbage collection is implemented in Python in two ways: reference counting and generational. When the reference count of an object reaches 0, reference counting garbage collection algorithm cleans up the object immediately. If you have a cycle, reference count doesn’t reach zero, you wait for the generational garbage collection algorithm to run and clean the object. While a programmer doesn’t have to think about garbage collection in Python, it can be useful to understand what is happening under the hood.
 
+## What is the difference between "==" (equality) and "is" operator?
+
+- "==" is used for equality comparison to compare two values and check if they are equal.
+- "is" operator is used for identity comparison, checking whether two objects refer to the same memory location.
+
 ## General caching
 ## What is caching?
 - Caching is a technique used in computer systems to store and retrieve frequently accessed or computationally expensive data in a faster and more efficient manner. 
