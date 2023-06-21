@@ -1,4 +1,4 @@
-Tasks:
+### Tasks:
 -------------
 1. Store 5 students information like sid,name, age, marks, school_name, gender using Data Structure
 2. Store 10 states of country India 
@@ -8,7 +8,7 @@ Tasks:
 
 
 
-1. Store 5 students information like sid,name, age, marks, school_name, gender using Data Structure
+### 1. Store 5 students information like sid,name, age, marks, school_name, gender using Data Structure
 
    You can utilize data structures like lists or dictionaries and iterate over the data input using loops. To
 store data use a loop such as:
@@ -52,7 +52,7 @@ The output is:
 {'sid': '2', 'name': 'Benjamin', 'age': 21, 'marks': 90.0, 'school_name': 'SHUATS', 'gender': 'M'}
 ```
 
-2. Store 10 states of country India
+### 2. Store 10 states of country India
 
    You can utilize data structures like lists or dictionaries and iterate over the data input using loops. To
 store data use a loop such as:
@@ -84,8 +84,8 @@ The Capital of  Karnataka is Bangalore
 The Capital of  Tamil Nadu is Chennai
 ```
 
-#### Another Approach:
-#### Create a dictionary to store the states and their capitals
+### Another Approach:
+### Create a dictionary to store the states and their capitals
 ```
 states = {
     "Sikkim": "Gangtok",
@@ -98,7 +98,7 @@ states = {
 }
 ```
 
-#### Print the states and their capitals
+### Print the states and their capitals
 ```
 for state, capital in states.items():
     print(f"The capital of {state} is {capital}")
@@ -116,7 +116,7 @@ The capital of West Bengal is Kolkata
 ```
 This program uses a dictionary called states to store the names of Indian states as keys and their respective capital cities as values. It then iterates over the dictionary using a for loop and prints the state-capital pairs. You can add or remove states as needed to customize the dictionary.
 
-## 4. Store marks of 10 students with their name and student_id.
+### 3. Store marks of 10 students with their name and student_id.
 ```
 students = []  # Empty list to store student information
 
