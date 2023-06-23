@@ -362,6 +362,20 @@ In the example above, the "==" operator returns True because the values of the l
 - Caching can occur at various levels within a computer system, including: Hardware Caches, Operating System Caches, Database Caches, Application-Level Caches.
 - Caching provides several benefits, including: Improved Performance, Reduced Resource Usage, Scalability and Cost Savings.
 
-- Questions:
---------------
+## Data Structures
+
+1. What are datatypes in Python.Explain in detail
+2. What are datastructures in Python.Explain in detail
+3. Generic functions in Python.
+4. Realtime examples for usage of integer,float,boolean,string
+5. When to use string 
+6. Importance of String datatype in Python 
+7. Why and how string is Immutable.Explain in detail
+8. What is Sequence. Types
+9. How to use sequence operations on String
+10.How memory will be allocated for string 
+11.Explain 10 very freqently used functions in String 
+12. isdigit() vs isnumeric() vs isdecimal() 
+13. find vs index in string 
+
 
