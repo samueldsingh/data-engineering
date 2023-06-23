@@ -306,7 +306,7 @@ Newly created objects are put in the Generation 0 list. A list is created for ob
 **Conclusion:**
 Python is a high-level language and we don’t have to do the memory management manually. Python garbage collection algorithm is very useful to open up space in the memory. Garbage collection is implemented in Python in two ways: reference counting and generational. When the reference count of an object reaches 0, reference counting garbage collection algorithm cleans up the object immediately. If you have a cycle, reference count doesn’t reach zero, you wait for the generational garbage collection algorithm to run and clean the object. While a programmer doesn’t have to think about garbage collection in Python, it can be useful to understand what is happening under the hood.
 
-## What is the difference between "==" (equality) and "is" operator?
+## 16. What is the difference between "==" (equality) and "is" operator?
 
 - "==" is used for equality comparison to compare two values and check if they are equal.
 - "is" operator is used for identity comparison, checking whether two objects refer to the same memory location.
@@ -322,6 +322,37 @@ print(a is b)  # False, because a and b refer to different memory locations
 
 In the example above, the "==" operator returns True because the values of the lists a and b are the same. However, the "is" operator returns False because a and b are separate list objects with different memory locations.
 
+## 17. Variables. Explain in detail
+
+- In Python, variables are used to store data values that can be accessed and manipulated throughout the program.
+- Variables act as containers for storing data of different types, such as numbers, strings, lists, or objects.
+- Since Python is dynamically typed, you don't need to declare the type of a variable explicitly
+
+- Some key points to understand about Python variables: Variable Assignment (Operator), Variable Names (cannot be keywords), Variable Types (Numbers, Booleans, Strings), Variable Scope (local scope or global scope), naming_conventions (snake_case), variable reassignment (old value is discarded), memory management (garbage collector reclaims memory), Constants (uppercase variable names).
+
+## 18. Why is string immutable?
+
+- In Python, strings are immutable, which means they cannot be changed once they are created. They have to be used as is or either be deleted. 
+
+- When you perform any operation that appears to modify a string, such as concatenation or converting to capital, it actually creates a new string object with the modified value instead of modifying the original string.
+
+- Integer are also immutable: When you create a new variable, `x=10`, memory is allocated to save the object 10. Next when you try to save a new object to the same variable, `x=20`, only the object value changes and not the variable. The memory for the object 10 is deallocated and new memory is allocated for the object 20.
+
+- String immutablity: Same logic applies when you change a string from `msg = hello` to `msg = hello world`.
+
+2. Tokens in python 
+3. Implicit casting vs Explicit casting 
+4. Type promotion 
+5. Explain about each function 
+	print type id int float bool str list tuple dict set 
+6. == vs is 
+7. Difference between and or operators. Any two realtime examples 
+8. Keywords in python
+9. Control Statements
+10. What is an entry control loop and an exit control loop
+
+11. 
+
 ## General caching
 ## What is caching?
 - Caching is a technique used in computer systems to store and retrieve frequently accessed or computationally expensive data in a faster and more efficient manner. 
@@ -329,3 +360,7 @@ In the example above, the "==" operator returns True because the values of the l
 - The purpose of caching is to reduce latency, improve performance, and minimize the need for repeated computations or expensive data retrieval operations.
 - Caching can occur at various levels within a computer system, including: Hardware Caches, Operating System Caches, Database Caches, Application-Level Caches.
 - Caching provides several benefits, including: Improved Performance, Reduced Resource Usage, Scalability and Cost Savings.
+
+- Questions:
+--------------
+
