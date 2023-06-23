@@ -341,8 +341,20 @@ In the example above, the "==" operator returns True because the values of the l
 
 - String immutablity: Same logic applies when you change a string from `msg = hello` to `msg = hello world`.
 
-2. Tokens in python 
-3. Implicit casting vs Explicit casting 
+## 19. Tokens in python 
+In Python, tokens are the smallest individual units of a program. They are the building blocks of a program's syntax and 
+can be categorized into several types:
+
+- **Identifiers:** names used to identify variables `(count)`, functions `(calculate_sum)`, classes `(Person)`, modules `(math)`, or other entities in the program.
+- **Keywords:** reserved words that have predefined meanings in the Python language and cannot be used as identifiers in the program (`if`, `else`, `for`, `while`, `def`, `class`, `import`, and `return`)
+- **Literals:** Fixed values like numeric literals (integers, floats, complex numbers), string literals, boolean literasls, none literal (None)
+- **Operators:** arithmetic operators (+, -, *, /), assignment operator (=), comparison operators (<, >, ==, !=), logical operators (and, or, not), and more.
+- **Delimiters:** characters or symbols used to define the structure of the program. ((), [], {}, :, ;)
+- **Comments:** documentation or explanation
+
+## 20. Implicit casting vs Explicit casting 
+
+
 4. Type promotion 
 5. Explain about each function 
 	print type id int float bool str list tuple dict set 
