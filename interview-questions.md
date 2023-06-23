@@ -60,10 +60,11 @@ I. Introduction:
 15. Explain Garbage Collection mechanism in detail.
 
 ## 1. About Python
-Python is a general purpose, dynamic, high-level and interpreted programming language.
+Python is a general purpose, dynamic, scripting, high-level and interpreted programming language.
 - **General purpose** means that it can create all kinds of programs
 - **Dynamic** refers to the fact that you don't need to assign keywords suchs as int.
 - **Dynamic** also means that you can use a variable that was previously assigned an integer can be assigned a string
+- **Scripting** 
 - **High Level** language is one that is user-oriented in that it has been designed to make it  straightforward for a programmer to convert an algorithm into program code
 - **Interpreted language** is where the source code is executed directly without the need for a separate compilation step. In an interpreted language, the code is read, interpreted, and executed line by line by an interpreter.
 
