@@ -307,9 +307,6 @@ Newly created objects are put in the Generation 0 list. A list is created for ob
 **Conclusion:**
 Python is a high-level language and we don’t have to do the memory management manually. Python garbage collection algorithm is very useful to open up space in the memory. Garbage collection is implemented in Python in two ways: reference counting and generational. When the reference count of an object reaches 0, reference counting garbage collection algorithm cleans up the object immediately. If you have a cycle, reference count doesn’t reach zero, you wait for the generational garbage collection algorithm to run and clean the object. While a programmer doesn’t have to think about garbage collection in Python, it can be useful to understand what is happening under the hood.
 
-## 16. What is the difference between "==" (equality) and "is" operator?
-
-
 ## 17. Variables. Explain in detail
 
 - In Python, variables are used to store data values that can be accessed and manipulated throughout the program.
@@ -327,17 +324,6 @@ Python is a high-level language and we don’t have to do the memory management 
 - Integer are also immutable: When you create a new variable, `x=10`, memory is allocated to save the object 10. Next when you try to save a new object to the same variable, `x=20`, only the object value changes and not the variable. The memory for the object 10 is deallocated and new memory is allocated for the object 20.
 
 - String immutablity: Same logic applies when you change a string from `msg = hello` to `msg = hello world`.
-
-## 19. Tokens in python 
-In Python, tokens are the smallest individual units of a program. They are the building blocks of a program's syntax and 
-can be categorized into several types:
-
-- **Identifiers:** names used to identify variables `(count)`, functions `(calculate_sum)`, classes `(Person)`, modules `(math)`, or other entities in the program.
-- **Keywords:** reserved words that have predefined meanings in the Python language and cannot be used as identifiers in the program (`if`, `else`, `for`, `while`, `def`, `class`, `import`, and `return`)
-- **Literals:** Fixed values like numeric literals (integers, floats, complex numbers), string literals, boolean literasls, none literal (None)
-- **Operators:** arithmetic operators (+, -, *, /), assignment operator (=), comparison operators (<, >, ==, !=), logical operators (and, or, not), and more.
-- **Delimiters:** characters or symbols used to define the structure of the program. ((), [], {}, :, ;)
-- **Comments:** documentation or explanation
 
 ## 20. Implicit casting vs Explicit casting 
 - In **implicit casting**, the programming language automatically converts one data type to another without requiring any explicit action from the programmer.
@@ -455,13 +441,43 @@ Here, the loop runs indefinitely `(while True)`, but the condition `n > 5` is ch
 
 II. Variables:
 ===============
-1. x = 10. Explain in detail for CRUD operations
-2. tokens in Python. Explain all types
-3. Garbage collection. How it works internally
-4. Memory Management in Python 
-5. Dynamically typed programming. Explain examples.
-6. Initializing variable, static,dynamic way 
-7. Assigning value to multiple variables. Explain 
+## 1. x = 10. Explain in detail for CRUD operations
+   In the context of CRUD operations, which stands for Create, Read, Update, and Delete, the variable x with the value 10 represents a piece of data that can be manipulated. Here's how each CRUD operation applies to this variable:
+   - **Create:** Creating a new value for `x` involves assigning a new value to it. For example, `x = 20` would create a new value of `20` for `x`.
+   - **Read:** Reading the value of `x` involves accessing and retrieving its current value. In this case, `x` has a value of `10`, so reading x would return the value `10`.
+   - **Update:** Updating `x` means modifying its existing value. For example, `x = x + 5` would update the value of `x` to `15` by adding `5` to its current value.
+   - **Delete:** Deleting `x` means removing it from the program's memory. This can be achieved by using the `del` statement, such as `del x`, which would delete the variable `x` and free up the memory it occupied.
+
+These CRUD operations provide a way to manage the data associated with the variable `x`.
+
+## 2. Tokens in Python. Explain all types
+
+In Python, tokens are the smallest individual units of a program. They are the building blocks of a program's syntax and 
+can be categorized into several types:
+
+- **Identifiers:** names used to identify variables `(count)`, functions `(calculate_sum)`, classes `(Person)`, modules `(math)`, or other entities in the program.
+- **Keywords:** reserved words that have predefined meanings in the Python language and cannot be used as identifiers in the program (`if`, `else`, `for`, `while`, `def`, `class`, `import`, and `return`)
+- **Literals:** Fixed values like numeric literals (integers, floats, complex numbers), string literals, boolean literasls, none literal (None)
+- **Operators:** arithmetic operators (+, -, *, /), assignment operator (=), comparison operators (<, >, ==, !=), logical operators (and, or, not), and more.
+- **Delimiters:** characters or symbols used to define the structure of the program. ((), [], {}, :, ;)
+- **Comments:** documentation or explanation
+
+## 3. Garbage collection. How it works internally
+- Garbage collection is the process of automatically reclaiming memory that is no longer in use by the program.
+- It works by identifying and freeing up memory occupied by objects that are no longer reachable or referenced by the program.
+- The exact implementation of garbage collection can vary depending on the programming language and the runtime environment, but a general overview of how it works internally is:
+- **Marking:** The garbage collector starts by traversing through all live objects in the program's memory heap. It begins with a set of known root objects, such as global variables or references on the call stack. These root objects are considered live because they are reachable and actively used by the program. The garbage collector marks these objects as live.
+- **Tracing:** The garbage collector then follows references from the marked objects to other objects in the heap. It traverses through the object graph, visiting each referenced object and marking them as live. This process continues until all reachable objects have been marked.
+- **Sweep and Free:** Once the marking phase is complete, the garbage collector performs a sweep phase. It scans the entire heap and identifies objects that are not marked as live. These unmarked objects are considered garbage since they are no longer reachable. The garbage collector frees the memory occupied by these garbage objects, making it available for future allocation.
+- **Compaction (optional):** In some garbage collection implementations, a compaction phase may be performed after the sweep phase. This phase involves rearranging the live objects in memory to minimize fragmentation and optimize memory usage. It moves live objects closer together, creating a contiguous block of free memory.
+- **Repeat:** After the garbage collection cycle is complete, the program continues its execution, and the process may be repeated periodically or as needed to reclaim memory.
+
+It's important to note that the specific algorithms and techniques used in garbage collection can vary. Some common approaches include reference counting, mark-and-sweep, and generational collection. Each approach has its own trade-offs in terms of efficiency, latency, and memory overhead. The choice of garbage collection algorithm depends on the programming language, runtime environment, and specific requirements of the application.
+
+5. Memory Management in Python 
+6. Dynamically typed programming. Explain examples.
+7. Initializing variable, static,dynamic way 
+8. Assigning value to multiple variables. Explain 
 
 III. IDE PyCharm:
 ===================
