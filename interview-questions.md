@@ -466,3 +466,128 @@ Here, the loop runs indefinitely `(while True)`, but the condition `n > 5` is ch
 13. find vs index in string 
 
 
+II. Variables:
+===============
+1. x = 10. Explain in detail for CRUD operations
+2. tokens in Python. Explain all types
+3. Garbage collection. How it works internally
+4. Memory Management in Python 
+5. Dynamically typed programming. Explain examples.
+6. Initializing variable, static,dynamic way 
+7. Assigning value to multiple variables. Explain 
+
+III. IDE PyCharm:
+===================
+1. Different IDEs in market 
+2. Advantages of IDE
+3. Shortcuts in PyCharm (Explain min 10)
+
+IV. Operators:
+===============
+1. Explain in detail about all operators 
+2. == vs is 
+3. and or operators. Explain 2 examples 
+4. Operator precedence.
+5. Subtract 2 numbers and print result program.
+	- Write down all scenarios with different input values 
+
+V. DataTypes Intro:
+====================
+1. Importance of DataTypes.2
+2. Different data types, data structures available in Python
+3. int vs float
+4. Boolean. give all scenarios
+5. 0 vs null
+6. Explain each data type, data structure with real life examples.
+7. CRUD Operations.Give examples for each 
+8. Sequences. Types of sequences. Sequence operations
+9. Explain about below functions and give examples 
+	print()
+	id()
+	type()
+	int()
+	float()
+	complex()
+	bool()	
+	input()
+	
+VI. Keywords:
+=====================
+1. Explain all keywords with examples and areas of usage
+
+VII. Decision Making:
+=====================
+1. What is Decision Making. Explain different scenarios when to go for Decision Making
+2. Give examples for below conditions
+	1. single if : 
+	2. if else:
+	3. if elif else:
+	4. if elif elif else:
+	5. Nested if: 
+3. Prepare Programs for below questions
+	1. Prepare state and assign North South West East 
+	    north = []
+		south = ['Andhra Prades', 'Telangana', 'Karnataka','Tamil Nadu', 'Kerala']
+		west = []
+		east = []
+	2. Prepare dictionary with key as state name and value as "list of districts"
+4. Get employee details(in dict format, empid,name,sal, exp) and update hike for employee with below 
+		If exp is 0 to 2 years - 10% Hike
+				  2 to 5 years - 20% Hike
+				  5 to 8 years - 30% Hike
+				  8+           - No hike
+5. Explain below terms in detail 
+	- Requirement
+	- User Criteria
+	- Validations(Client vs Server)
+6. State vs Behavior . Examples
+
+
+VIII. Loops:
+============
+1. Importance of Loops
+2. while loop. Explain in detail with different use cases 
+3. for loop. Explain in detail with different use cases 
+4. while vs for
+5. Give examples while with if else combination 
+6. Give examples for with if else combination
+7. Control statements.Explain and give examples for each keyword 
+    - break 
+    - continue
+    - pass
+8. Implement 5 examples which covers all topics if elif else for while break/continue/pass
+
+Programs:
+----------
+- Between 1 to 100
+    1. Print all numbers  
+    2. Print even numbers
+    3. Print odd numbers 
+    4. Print all prime numbers
+    5. Print numbers with power of 2 (1 2 4 8 16 32 64)
+    6. Print all numbers which are divisible by 5 and 7 
+    7. Print all numbers which are divisible by 4 or 6
+    8. Print first 14 odd numbers 
+    9. Print first 23 even numbers
+   10. Print first 6 numbers which are divisible by 4 and 6 
+   11. Print all numbers except divisible by 9
+   12. Write for loop to explain all data structures.
+   
+IX. Data Structures:
+=====================
+        1. What are CRUD operations.Explain in detail 
+        2. Sequence.Types. Operations on each sequence
+        3. HTTP Request methods for CRUD. Explain in detail 
+     i. Numbers:
+           1. Types of numbers. Explain each use case 
+           2. type conversions
+           3. Explain different operations of boolean type
+    ii. String:
+           1. Explain about string. 
+           2. Multi line string 
+           3. String is Immutable.Explain in detail 
+           4. CRUD Operations on String
+           5. Sequence operations on String
+           6. Memory allocation of String 
+           7. Explain 10 important functions of String
+
