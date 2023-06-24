@@ -309,19 +309,6 @@ Python is a high-level language and we don’t have to do the memory management 
 
 ## 16. What is the difference between "==" (equality) and "is" operator?
 
-- "==" is used for equality comparison to compare two values and check if they are equal.
-- "is" operator is used for identity comparison, checking whether two objects refer to the same memory location.
-
-Example:
-```
-a = [1, 2, 3]
-b = [1, 2, 3]
-
-print(a == b)  # True, because the values of a and b are the same
-print(a is b)  # False, because a and b refer to different memory locations
-```
-
-In the example above, the "==" operator returns True because the values of the lists a and b are the same. However, the "is" operator returns False because a and b are separate list objects with different memory locations.
 
 ## 17. Variables. Explain in detail
 
@@ -485,7 +472,22 @@ III. IDE PyCharm:
 IV. Operators:
 ===============
 1. Explain in detail about all operators 
-2. == vs is 
+## 2. == (equality) vs is (identity) operator
+
+- "==" is used for equality comparison to compare two values and check if they are equal.
+- "is" operator is used for identity comparison, checking whether two objects refer to the same memory location.
+
+Example:
+```
+a = [1, 2, 3]
+b = [1, 2, 3]
+
+print(a == b)  # True, because the values of a and b are the same
+print(a is b)  # False, because a and b refer to different memory locations
+```
+
+In the example above, the "==" operator returns True because the values of the lists a and b are the same. However, the "is" operator returns False because a and b are separate list objects with different memory locations.
+
 3. and or operators. Explain 2 examples 
 4. Operator precedence.
 5. Subtract 2 numbers and print result program.
