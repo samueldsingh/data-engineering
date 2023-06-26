@@ -66,7 +66,7 @@ In this example, the `pop()` method with index `1` removes and returns the eleme
 
 Both `append()` and `pop()` are useful methods for manipulating lists. `append()` allows you to add elements to the end of a list, while `pop()` allows you to remove and retrieve elements, either from the end of the list or at a specific index.
 
-8. shallow copy vs deep copy 
+## 8. shallow copy vs deep copy 
 1. **Shallow Copy:** A shallow copy of a list creates a new list object, but the elements of the new list still refer to the same objects as the original list. Any modifications made to the original list or its elements will be reflected in the shallow copy.
 
 Example:
@@ -106,12 +106,65 @@ In this example, the `deepcopy()` function from the `copy` module is used to cre
 In summary, a shallow copy creates a new list with references to the same objects as the original list, while a deep copy creates a new list with completely independent copies of all the objects within the original list. The choice between shallow copy and deep copy depends on your specific requirements and the level of independence needed between the original list and the copied list.
 
 10. append vs extend
+`append()` and `extend()` are both methods used to add elements to a list in Python, but they differ in how they add the elements:
 
+1. `append()`: The `append()` method is used to add a single element to the end of a list. It modifies the original list by adding the element as a single item.
 
-11. pop vs remove
+Example:
+```
+my_list = [1, 2, 3]
+my_list.append(4)
+print(my_list)  # Output: [1, 2, 3, 4]
+```
 
+In this example, the `append()` method is used to add the integer `4` as a single element to the end of the list.
 
-12. Pass by value vs Pass by reference
+2. `extend()`: The `extend()` method is used to add multiple elements to the end of a list. It takes an iterable (such as another list or tuple) and adds each element from the iterable to the end of the original list.
+
+Example:
+```
+my_list = [1, 2, 3]
+my_list.extend([4, 5, 6])
+print(my_list)  # Output: [1, 2, 3, 4, 5, 6]
+```
+
+In this example, the `extend()` method is used to add the elements `[4, 5, 6]` to the end of the list individually, resulting in a list with six elements.
+
+To summarize:
+
+Use `append()` when you want to add a single element to the end of a list.
+Use `extend()` when you want to add multiple elements from an iterable to the end of a list.
+
+It's important to note that `append()` and `extend()` modify the original list in place, meaning they directly modify the list object and do not create a new list.
+
+12. pop vs remove
+
+`pop()` and `remove()` are both methods used to remove elements from a list in Python, but they differ in how they remove the elements:
+
+1. `pop()`: The `pop()` method is used to remove and return an element from a specific index in a list. It modifies the original list by removing the element at the specified index and returning its value.
+
+Example:
+```
+my_list = [1, 2, 3, 4, 5]
+removed_element = my_list.pop(2)
+print(my_list)  # Output: [1, 2, 4, 5]
+print(removed_element)  # Output: 3
+```
+
+In this example, the `pop()` method is used to remove and return the element at index 2 (which is `3`) from the list.
+
+2. `remove()`: The `remove()` method is used to remove the first occurrence of a specific value from a list. It modifies the original list by removing the first occurrence of the specified value.
+
+Example:
+```
+my_list = [1, 2, 3, 4, 5]
+my_list.remove(3)
+print(my_list)  # Output: [1, 2, 4, 5]
+```
+
+In this example, the `remove()` method is used to remove the first occurrence of the value `3` from the list.
+
+13. Pass by value vs Pass by reference
 
 
 
