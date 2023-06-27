@@ -2,7 +2,7 @@
           
 ## 1. What is use of list. Explain different use cases of List.
 - In Python, a list is a versatile data structure that is used to store a collection of items.
-- It is a mutable, ordered sequence of elements enclosed in square brackets ([]).
+- It is a mutable, ordered sequence of elements enclosed in square brackets `([])`.
 - Lists offer various functionalities and are commonly used in many programming scenarios. A few of the common use cases are:
 
 1. Storing a collection of related data (homogeneous and heterogenous data in a sequence): Lists can be used to store multiple elements of different types. For example, you can use a list to store a collection of numbers, strings, objects, or any other data type.
