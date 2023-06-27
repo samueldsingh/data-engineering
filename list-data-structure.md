@@ -19,7 +19,7 @@ The flexibility and functionality provided by lists make them an essential tool 
 ## 2. Sequence operations on List
 Lists are a type of sequence, which means they support various sequence operations. Here are some common sequence operations that can be performed on lists:
 
-Accessing elements by index `(my_list[0])`, Slicing `(my_list[1:4])`, Concatenation `(list1 + list2)`, Repetition `(*)`, Length `(len)`, Membership `(in)`, Iteration (for), `max`, `min`, Sorting (`sort` method rearranges the elements of the list in ascending order and `sorted` function creates a new sorted list without modifying the original list), searching (`index` method returns the index of the first occurrence of the element).
+Accessing elements by index `(my_list[0])`, Slicing `(my_list[1:4])`, Concatenation `(list1 + list2)`, Repetition `(*)`, Length `(len)`, Membership `(in)`, Iteration `(for)`, `max`, `min`, Sorting (`sort` method rearranges the elements of the list in ascending order and `sorted` function creates a new sorted list without modifying the original list), searching (`index` method returns the index of the first occurrence of the element).
 
 ## 3. Characteristics(Properties) of List
 
