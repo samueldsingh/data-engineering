@@ -141,7 +141,7 @@ It's important to note that `append()` and `extend()` modify the original list i
 
 `pop()` and `remove()` are both methods used to remove elements from a list in Python, but they differ in how they remove the elements:
 
-1. `pop()`: The `pop()` method is used to remove and return an element from a specific index in a list. It modifies the original list by removing the element at the specified index and returning its value.
+1. `pop()`: The `pop()` method is used to remove and return an element from a **specific index** in a list. It modifies the original list by removing the element at the specified index and returning its value.
 
 Example:
 ```
@@ -153,7 +153,7 @@ print(removed_element)  # Output: 3
 
 In this example, the `pop()` method is used to remove and return the element at index 2 (which is `3`) from the list.
 
-2. `remove()`: The `remove()` method is used to remove the first occurrence of a specific value from a list. It modifies the original list by removing the first occurrence of the specified value.
+2. `remove()`: The `remove()` method is used to **remove the first occurrence of a specific value** from a list. It modifies the original list by removing the first occurrence of the specified value.
 
 Example:
 ```
@@ -166,7 +166,51 @@ In this example, the `remove()` method is used to remove the first occurrence of
 
 ## 13. Pass by value vs Pass by reference
 
+"Pass by value" and "pass by reference" are two different approaches to passing arguments to functions or methods. The distinction between them relates to how the values of the arguments are handled and whether modifications made to the arguments within the function affect the original values.
 
+**Pass by value:**
+- In pass by value, a copy of the value of the argument is passed to the function.
+- Any modifications made to the argument within the function do not affect the original value.
+- Changes made to the copied value inside the function are local to the function and do not impact the original value.
+- This approach is typically used with immutable data types, such as numbers, strings, and tuples.
+- Examples of pass by value languages are C, C++, and Java.
+
+Example:
+```
+def modify_value(x):
+    x = 10
+
+value = 5
+modify_value(value)
+print(value)  # Output: 5
+```
+
+In this example, the function `modify_value` takes an argument `x` and assigns it a new value of `10`. However, since integers are immutable in Python, the assignment `x = 10` creates a new integer object and the original value of `value` is not modified. Therefore, the output is still `5`.
+
+The integer value is passed by value, meaning that the function receives a copy of the value, and modifications made inside the function do not affect the original variable. 
+
+**Pass by reference:**
+- In pass by reference, a reference to the memory address of the argument is passed to the function.
+- Any modifications made to the argument within the function directly affect the original value.
+- Changes made to the referenced value inside the function are reflected outside the function as well.
+- This approach is typically used with mutable data types, such as lists and dictionaries.
+- Examples of pass by reference languages are Python, Ruby, and JavaScript.
+
+Example:
+```
+def modify_list(lst):
+    lst.append(4)
+
+my_list = [1, 2, 3]
+modify_list(my_list)
+print(my_list)  # Output: [1, 2, 3, 4]
+```
+
+In this example, the function `modify_list` takes a list `lst` and appends the value 4 to it. Since lists are mutable in Python, any modifications made to the list `lst` within the function will be reflected in the original list `my_list`. Therefore, the output is `[1, 2, 3, 4]`.
+
+The list is passed by reference, so the function receives a reference to the original list, and modifications made inside the function are reflected in the original variable.
+
+In summary, "pass by value" involves copying the value of the argument, while "pass by reference" involves passing a reference to the memory address of the argument. The choice between them depends on the programming language and the type of data being passed.
 
 # Tuple:
 ## 1. What is use of Tuple. Explain different use cases of Tuple
