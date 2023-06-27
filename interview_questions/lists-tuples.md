@@ -105,7 +105,7 @@ In this example, the `deepcopy()` function from the `copy` module is used to cre
 
 In summary, a shallow copy creates a new list with references to the same objects as the original list, while a deep copy creates a new list with completely independent copies of all the objects within the original list. The choice between shallow copy and deep copy depends on your specific requirements and the level of independence needed between the original list and the copied list.
 
-10. append vs extend
+## 10. append vs extend
 `append()` and `extend()` are both methods used to add elements to a list in Python, but they differ in how they add the elements:
 
 1. `append()`: The `append()` method is used to add a single element to the end of a list. It modifies the original list by adding the element as a single item.
@@ -137,7 +137,7 @@ Use `extend()` when you want to add multiple elements from an iterable to the en
 
 It's important to note that `append()` and `extend()` modify the original list in place, meaning they directly modify the list object and do not create a new list.
 
-12. pop vs remove
+## 12. pop vs remove
 
 `pop()` and `remove()` are both methods used to remove elements from a list in Python, but they differ in how they remove the elements:
 
@@ -164,17 +164,33 @@ print(my_list)  # Output: [1, 2, 4, 5]
 
 In this example, the `remove()` method is used to remove the first occurrence of the value `3` from the list.
 
-13. Pass by value vs Pass by reference
+## 13. Pass by value vs Pass by reference
 
 
 
-    iv. Tuple:
-          1. What is use of Tuple. Explain different use cases of Tuple
-          2. Sequence operations on Tuple
-          3. Characteristics(Properties) of Tuple
-          4. CRUD operations on Tuple
-          5. Memory allocation of Tuple
-          6. Write all possible combinations of Tuple structure(homo,hetero with all data types, data structures)
-          7. Explain about each function of Tuple
-          8. shallow copy vs deep copy in tuple.
-          9. list vs tuple ( Min. 4 differences in detail)
+# Tuple:
+## 1. What is use of Tuple. Explain different use cases of Tuple
+          
+          
+## 2. Sequence operations on Tuple
+
+
+## 3. Characteristics(Properties) of Tuple
+          
+          
+## 4. CRUD operations on Tuple
+          
+          
+## 5. Memory allocation of Tuple
+          
+          
+## 6. Write all possible combinations of Tuple structure(homo,hetero with all data types, data structures)
+          
+          
+## 7. Explain about each function of Tuple
+          
+          
+## 8. shallow copy vs deep copy in tuple.
+                    
+          
+## 9. list vs tuple ( Min. 4 differences in detail)
