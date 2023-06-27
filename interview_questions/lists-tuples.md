@@ -137,7 +137,7 @@ Use `extend()` when you want to add multiple elements from an iterable to the en
 
 It's important to note that `append()` and `extend()` modify the original list in place, meaning they directly modify the list object and do not create a new list.
 
-## 12. pop vs remove
+## 11. pop vs remove
 
 `pop()` and `remove()` are both methods used to remove elements from a list in Python, but they differ in how they remove the elements:
 
@@ -164,7 +164,7 @@ print(my_list)  # Output: [1, 2, 4, 5]
 
 In this example, the `remove()` method is used to remove the first occurrence of the value `3` from the list.
 
-## 13. Pass by value vs Pass by reference
+## 12. Pass by value vs Pass by reference
 
 "Pass by value" and "pass by reference" are two different approaches to passing arguments to functions or methods. The distinction between them relates to how the values of the arguments are handled and whether modifications made to the arguments within the function affect the original values.
 
