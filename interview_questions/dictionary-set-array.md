@@ -1,4 +1,4 @@
-# Dictionary
+# 1. Dictionary
 
 Sequences follow indexing mechanism but dictionaries use the `item` function to access the key-value pair in a dictionary.`item` function works by converting the 
 dictionary into a list of tuples.
@@ -54,14 +54,14 @@ dict1 = {100: 10,
 
 2. Keys should be unique
 
-## CRUD operations in Dictionaries
+## 2. CRUD operations in Dictionaries
 
-# CREATE
+### CREATE
 ```
 data = {1: 'One', 2: 'Two', 3: 'Two', 'id': '100'}
 ```
 
-# RETRIEVE
+### RETRIEVE
 ```
 print("Dictionary : ", data, type(data))
 print("Dict item  :", data[2])
@@ -75,7 +75,7 @@ Dict item  : Two
 Dict item  : 100
 ```
 
-# UPDATE
+### UPDATE
 data[2] = 'Twenty'
 data['id'] = 200
 print("Dictionary update: ", data)
@@ -85,7 +85,7 @@ Output:
 Dictionary update:  {1: 'One', 2: 'Twenty', 3: 'Two', 'id': 200}
 ```
 
-# DELETE
+### DELETE
 
 1. Delete entire  dict   --> `del dict1`
 2. Delete any one item   --> `del dict1['id']`
@@ -112,6 +112,12 @@ Dictionary delete2:  {}
 Dictionary delete3:  {'sal': 1000}
 ```
 
+## 3. Memory allocation of dictionary
+
+Dictionaries follow the hashing algorithm. The steps involved in hashing algorithm are:
+1. Calculate hashcode of dict key
+2. Check if bucket exists or not based on hashkey
+3. If bukcet exists, value is stored in the same or else new bucket is created.
 
 
 
