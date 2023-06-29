@@ -214,3 +214,26 @@ The output is:
 Deep copy before at recursive:  [1, 2, [10, 20]] [1, 2, [10, 20]]
 Deep copy after at recursive :  [1, 2, [10, 20]] [1, 2, [10, 20, 100]]
 ```
+
+Let's perform deep copy in dictionaries:
+```
+di1 = {1: 1, 2: 2}
+di2 = di1.copy()
+print("-----Before modification-----------")
+print("Dict1 copy : ", di1)
+print("Dict2 copy : ", di2)
+print("-----After modification-----------")
+di2['name'] = 'Madhu'
+print("Dict1 copy : ", di1)
+print("Dict2 copy : ", di2)
+```
+
+The output is:
+```
+-----Before modification-----------
+Dict1 copy :  {1: 1, 2: 2}
+Dict2 copy :  {1: 1, 2: 2}
+-----After modification-----------
+Dict1 copy :  {1: 1, 2: 2}
+Dict2 copy :  {1: 1, 2: 2, 'name': 'Madhu'}
+```
