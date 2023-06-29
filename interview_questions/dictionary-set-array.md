@@ -119,6 +119,60 @@ Dictionaries follow the hashing algorithm. The steps involved in hashing algorit
 2. Check if bucket exists or not based on hashkey
 3. If bukcet exists, value is stored in the same or else new bucket is created.
 
+## 4. Shallow copy vs deep copy
+In shallow copy, changes made to the recursive list will be affected. In deep copy, changes made to the recursive list will not be affected.
 
+In list dictionaries, changes made to the list will not affect original content. Let's compare the memory address after appending an item to the lists, `list1` and `list2`. We can see they have the same memeory address.
 
+```
+list1 = [1, 2, 3]
+list2 = list1
+print("Before :", list1, list2)
+print("Address:", id(list1), id(list2))
+list2.append(10)
+print("After :", list1, list2)
+print("Address:", id(list1), id(list2))
+```
 
+The output is:
+```
+Before : [1, 2, 3] [1, 2, 3]
+Address: 2022319995328 2022319995328
+After : [1, 2, 3, 10] [1, 2, 3, 10]
+Address: 2022319995328 2022319995328
+```
+
+Let's compare the memory address of two lists, after `list2` is shallow copied from `list1`. 
+
+```
+list1 = [1, 2, 3]
+list2 = list1.copy()
+print("Shallow copy before at Index: ", list1, list2)
+print("Shallow copy before at Index: ", id(list1), id(list2))
+```
+
+The output is:
+```
+Shallow copy before at Index:  [1, 2, 3] [1, 2, 3]
+Shallow copy before at Index:  2098796181888 2098804765632
+```
+
+After `list2` is shallow copied from `list1`, the memory address changes.
+
+Let's append an item to recursive list:
+
+```
+list1 = [1, 2, [10, 20]]
+list2 = list1.copy()
+print("Shallow copy before at recursive: ", list1, list2)
+list2[2].append(100)
+print("Shallow copy after at recursive : ", list1, list2)
+```
+
+The output is:
+```
+Shallow copy before at recursive:  [1, 2, [10, 20]] [1, 2, [10, 20]]
+Shallow copy after at recursive :  [1, 2, [10, 20, 100]] [1, 2, [10, 20, 100]]
+```
+
+**Deep copy:**
