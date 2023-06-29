@@ -237,3 +237,9 @@ Dict2 copy :  {1: 1, 2: 2}
 Dict1 copy :  {1: 1, 2: 2}
 Dict2 copy :  {1: 1, 2: 2, 'name': 'Madhu'}
 ```
+
+## 5. Dictionary Functions
+
+The commonly used dictionary functions are: `len()`, `type()`, `str()`, `dict()`.
+The built-in functions are:
+`keys()`, `values()`, `items()`, `update()`, `clear()`, `fromkeys()`, `copy()`, `has_key()`, `pop()`, `popitem()`, `setdefault()`
