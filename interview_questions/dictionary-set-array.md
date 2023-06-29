@@ -176,3 +176,41 @@ Shallow copy after at recursive :  [1, 2, [10, 20, 100]] [1, 2, [10, 20, 100]]
 ```
 
 **Deep copy:**
+Let's perform a deep copy before and after at index:
+```
+import copy
+list1 = [1, 2, 3]
+list2 = copy.deepcopy(list1)
+print("Deep copy before at Index   : ", list1, list2)
+list2.append(100)
+print("Deep copy after at Index    : ", list1, list2)
+print("ID of list1: ", id(list1))
+print("ID of list2: ", id(list1))
+
+```
+
+Output:
+```
+Deep copy before at Index   :  [1, 2, 3] [1, 2, 3]
+Deep copy after at Index    :  [1, 2, 3] [1, 2, 3, 100]
+ID of list1:  2508988898496
+ID of list2:  2508988898496
+```
+
+Changes do not affect the original list.
+
+Let's try performing deep copy on a recursive list:
+```
+import copy
+list1 = [1, 2, [10, 20]]
+list2 = copy.deepcopy(list1)
+print("Deep copy before at recursive: ", list1, list2)
+list2[2].append(100)
+print("Deep copy after at recursive : ", list1, list2)
+```
+
+The output is:
+```
+Deep copy before at recursive:  [1, 2, [10, 20]] [1, 2, [10, 20]]
+Deep copy after at recursive :  [1, 2, [10, 20]] [1, 2, [10, 20, 100]]
+```
