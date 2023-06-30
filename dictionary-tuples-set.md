@@ -264,7 +264,7 @@ country = my_dict.get('country', 'Unknown')
 print(country)  # Output: USA
 ```
 
-## 7. List vs arrat
+## 7. List vs array
 |  List |  Array  |
 |---|---|
 |Flexibility: Lists in Python are dynamic and can store elements of different types.   | Arrays, on the other hand, are more rigid and have a fixed size.   |
