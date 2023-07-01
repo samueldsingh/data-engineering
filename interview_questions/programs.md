@@ -35,6 +35,13 @@ for number in range(1, 101):
 ```
     
 ## 5. Print numbers with power of 2 (1 2 4 8 16 32 64)
+```
+n = int(input("Enter the number of terms: "))
+
+for i in range(n):
+    number = 2 ** i
+    print(f"{i}: {number}")
+```
     
 ## 6. Print all numbers which are divisible by 5 and 7 
 ```
