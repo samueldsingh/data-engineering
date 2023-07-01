@@ -66,6 +66,20 @@ In Python, the memory allocation of a list is dynamic and managed by the Python 
   
 It's important to note that memory allocation and management in Python are abstracted away from the programmer, allowing you to focus on working with the list data structure without worrying about low-level memory details.
 
+**Example:**
+```
+list1 = [1,2,3,4,5]
+print(list1,id(list1))
+list1[2] = 7
+print(list1,id(list1))
+```
+
+The output is:
+```
+[1, 2, 3, 4, 5] 1640370354752
+[1, 2, 7, 4, 5] 1640370354752
+```
+
 ## 6. Write all possible combinations of list structure(homo,hetero with all data types, data structures)
  Here are examples of possible combinations of list structures in Python:
 
