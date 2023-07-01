@@ -1,6 +1,6 @@
 # VI. Keywords:
 =====================
-1. Explain all keywords with examples and areas of usage
+### 1. Explain all keywords with examples and areas of usage
 
 - In Python, keywords are reserved words that have special meanings and are used to define the syntax and structure of the language. 
 - These keywords cannot be used as variable names or identifiers because they are already predefined and have specific functionalities assigned to them.
