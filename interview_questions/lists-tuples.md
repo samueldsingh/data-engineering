@@ -489,18 +489,20 @@ In the above example, the shallow copy tuple2 and the original tuple tuple1 shar
           
 ## 9. list vs tuple ( Min. 4 differences in detail)
 
-| List      | Tuple |
-| ----------- | ----------- |
-| **Time Complexity:** 
+**List:** 
+*Time Complexity:*
 Because lists are mutable, the flexibility comes with a slight overhead in terms of time complexity. The average time complexities for common operations on lists:
-1. Accessing an element by index: `O(1)`: Accessing an element by index takes constant time because the index allows direct access to the desired element.
-2. Appending an element to the end: `O(1)`: Appending an element to the end of a list takes amortized constant time `(O(1))`.
+1. Accessing an element by index `O(1)`: Accessing an element by index takes constant time because the index allows direct access to the desired element.
+2. Appending an element to the end `O(1)`: Appending an element to the end of a list takes amortized constant time `(O(1))`.
 3. Inserting or deleting an element at a specific index: Inserting or deleting an element at a specific index in a list takes linear time `(O(n))` because it may require shifting elements. Tuples are immutable, so you cannot perform these operations on them.
-4. Searching for an element: In both cases, searching for an element in a list or tuple takes linear time `(O(n))` in the worst case because the entire collection needs to be traversed.   | **Time Complexity :** Because Tuples are immutable, the performance is optimized. The average time complexities for common operations on tuples are:
+4. Searching for an element: In both cases, searching for an element in a list or tuple takes linear time `(O(n))` in the worst case because the entire collection needs to be traversed.  
+
+**Tuple:** 
+*Time Complexity:*
+Because Tuples are immutable, the performance is optimized. The average time complexities for common operations on tuples are:
 1. Accessing an element by index: O(1).
 2. Concatenating two tuples: `O(n)` (where n is the total number of elements in both tuples)
-3. Searching for an element: `O(n)` (similar to lists)      |
-| Paragraph   | Text        |
+3. Searching for an element: `O(n)` (similar to lists) 
 
 1. Mutability:
 The main difference between a list and a tuple is mutability. A list is mutable, which means its elements can be modified after creation. On the other hand, a tuple is immutable, which means its elements cannot be modified once the tuple is created. In other words, you can add, remove, or change elements in a list, but you cannot do so in a tuple.
