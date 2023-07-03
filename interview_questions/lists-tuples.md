@@ -490,36 +490,50 @@ In the above example, the shallow copy tuple2 and the original tuple tuple1 shar
 ## 9. list vs tuple ( Min. 4 differences in detail)
 
 **List:** 
-
-*Time Complexity:*
-Because lists are mutable, the flexibility comes with a slight overhead in terms of time complexity. The average time complexities for common operations on lists:
-1. Accessing an element by index `O(1)`: Accessing an element by index takes constant time because the index allows direct access to the desired element.
-2. Appending an element to the end `O(1)`: Appending an element to the end of a list takes amortized constant time `(O(1))`.
-3. Inserting or deleting an element at a specific index: Inserting or deleting an element at a specific index in a list takes linear time `(O(n))` because it may require shifting elements. Tuples are immutable, so you cannot perform these operations on them.
-4. Searching for an element: In both cases, searching for an element in a list or tuple takes linear time `(O(n))` in the worst case because the entire collection needs to be traversed.  
+In other programming languages, list objects are declared similarly to arrays. Lists don't have to be homogeneous all the time, so they can simultaneously store items of different data types. This makes lists the most useful tool. The list is a kind of container data Structure of Python that is used to hold numerous pieces of data simultaneously. Lists are helpful when we need to iterate over some elements and keep hold of the items.
 
 **Tuple:** 
+A tuple is another data structure to store the collection of items of many data types, but unlike mutable lists, tuples are immutable. A tuple, in other words, is a collection of items separated by commas. Because of its static structure, the tuple is more efficient than the list.
 
-*Time Complexity:*
-Because Tuples are immutable, the performance is optimized. The average time complexities for common operations on tuples are:
-1. Accessing an element by index `O(1)`.
-2. Concatenating two tuples: `O(n)` (where n is the total number of elements in both tuples)
-3. Searching for an element: `O(n)` (similar to lists) 
 
-1. Mutability:
+*1. Time Complexity:*
+
+Because lists are mutable, the flexibility comes with a slight overhead in terms of time complexity. Because Tuples are immutable, the performance is optimized.
+
+| Lists      | Tuples |
+| ----------- | ----------- |
+| Accessing an element by index `O(1)`: Accessing an element by index takes constant time because the index allows direct access to the desired element.      | Accessing an element by index `O(1)`.       |
+| Appending an element to the end `O(1)`: Appending an element to the end of a list takes amortized constant time `(O(1))`.   | Concatenating two tuples: `O(n)` (where n is the total number of elements in both tuples)        |
+| Inserting or deleting an element at a specific index: Inserting or deleting an element at a specific index in a list takes linear time `(O(n))` because it may require shifting elements. Tuples are immutable, so you cannot perform these operations on them.   |    |
+| Searching for an element: In both cases, searching for an element in a list or tuple takes linear time `(O(n))` in the worst case because the entire collection needs to be traversed.      |  Searching for an element: `O(n)` (similar to lists)   |
+
+*2. Space Complexity:*
+
+The space complexity of lists and tuples in Python differs based on their characteristics.
+| Lists      | Tuples |
+| ----------- | ----------- |
+|  Lists are mutable, meaning they can be modified by adding, removing, or changing elements.  |  Tuples are immutable, meaning they cannot be modified once created.  |
+|  The space complexity of a list is O(n), where n is the number of elements in the list.  |  The space complexity of a tuple is also O(n), where n is the number of elements in the tuple.  |
+| Lists require additional space to store the elements as well as the underlying data structure that allows dynamic resizing.   |  Tuples require space to store the elements, but they do not require additional memory for dynamic resizing.  |
+|  In lists, each element is stored as a separate object, and additional memory is needed to store references to these objects.  |  In tuples, elements are stored consecutively in memory without the need for extra references.  |
+
+In general, tuples tend to have slightly lower space complexity than lists due to their immutability and lack of dynamic resizing overhead. However, the difference in space complexity between lists and tuples is typically negligible unless dealing with a very large number of elements.
+
+
+*3. Mutability:*
 The main difference between a list and a tuple is mutability. A list is mutable, which means its elements can be modified after creation. On the other hand, a tuple is immutable, which means its elements cannot be modified once the tuple is created. In other words, you can add, remove, or change elements in a list, but you cannot do so in a tuple.
 
-2. Syntax:
+*4. Syntax:*
 Lists are defined using square brackets `[ ]`, while tuples are defined using parentheses `( )`. For example, `my_list = [1, 2, 3]` is a list, and `my_tuple = (1, 2, 3)` is a tuple.
 
-3. Usage and Intended Purpose:
+*5. Usage and Intended Purpose:*
 - Lists are commonly used when you need a collection of elements that can be modified. They are suitable for situations where you want to add, remove, or change elements dynamically.
 - Tuples, on the other hand, are used when you want to create a collection of elements that should remain constant and unchanged. They are suitable for situations where you want to store related pieces of information together, such as coordinates, settings, or database records.
 
-4. Performance:
+*6. Performance:*
 Tuples are generally more lightweight and faster than lists in terms of performance. Since tuples are immutable, the interpreter can optimize memory allocation for tuples, resulting in faster access and execution. Lists, being mutable, require additional memory allocation and management, which can impact performance, especially when dealing with large lists.
 
-5. Use as Dictionary Keys:
+*7. Use as Dictionary Keys:*
 Tuples can be used as keys in dictionaries, whereas lists cannot. Since tuples are immutable, they provide a reliable and hashable representation for dictionary keys. This allows tuples to be used in scenarios where you need an unchangeable, unique identifier for dictionary entries.
 
 It's important to note that the choice between using a list or a tuple depends on the specific requirements of your program. If you need mutability and dynamic modifications, a list is the appropriate choice. If you need immutability and a collection of constant elements, a tuple is a better fit.
