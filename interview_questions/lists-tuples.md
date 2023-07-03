@@ -502,7 +502,7 @@ Because lists are mutable, the flexibility comes with a slight overhead in terms
 
 *Time Complexity:*
 Because Tuples are immutable, the performance is optimized. The average time complexities for common operations on tuples are:
-1. Accessing an element by index: O(1).
+1. Accessing an element by index `O(1)`.
 2. Concatenating two tuples: `O(n)` (where n is the total number of elements in both tuples)
 3. Searching for an element: `O(n)` (similar to lists) 
 
