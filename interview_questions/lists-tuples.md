@@ -490,6 +490,7 @@ In the above example, the shallow copy tuple2 and the original tuple tuple1 shar
 ## 9. list vs tuple ( Min. 4 differences in detail)
 
 **List:** 
+
 *Time Complexity:*
 Because lists are mutable, the flexibility comes with a slight overhead in terms of time complexity. The average time complexities for common operations on lists:
 1. Accessing an element by index `O(1)`: Accessing an element by index takes constant time because the index allows direct access to the desired element.
@@ -498,6 +499,7 @@ Because lists are mutable, the flexibility comes with a slight overhead in terms
 4. Searching for an element: In both cases, searching for an element in a list or tuple takes linear time `(O(n))` in the worst case because the entire collection needs to be traversed.  
 
 **Tuple:** 
+
 *Time Complexity:*
 Because Tuples are immutable, the performance is optimized. The average time complexities for common operations on tuples are:
 1. Accessing an element by index: O(1).
