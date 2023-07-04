@@ -373,3 +373,59 @@ we cannot modify the tuple object within the set. Attempting to modify an immuta
 It's important to note that the mutability or immutability of the elements within a set affects how they can 
 be modified or used, but it does not affect the set itself. The set can still be modified by adding or 
 removing elements, regardless of the mutability or immutability of the elements it contains.
+
+
+## Array
+
+- Arrays are used to store multiple values in single variable. 
+- Arrays stores a fixed-size sequence of elements of the same type.
+- It provides random access to its elements based on an index.
+- The elements in an array are typically stored in contiguous memory locations.
+- Arrays are commonly used in programming to store and manipulate collections of data.
+- They offer efficient and direct access to individual elements using their index.
+- Arrays can be one-dimensional (a list of elements) or multi-dimensional (e.g., a matrix or a table).
+- The `array` module, which provides a more efficient storage and operations for arrays of homogeneous data types can be used to create arrays.
+
+- Arrays are useful for various tasks, including:
+1. Storing and manipulating collections of data.
+2. Accessing elements by their index for efficient retrieval and modification.
+3. Performing mathematical and statistical operations on numerical data.
+4. Representing matrices, tables, or other multi-dimensional data structures.
+5. Implementing algorithms and data structures that rely on sequential or random access to data.
+
+Example 1: Storing integers in an array
+```
+import array
+
+# Create an array of integers
+my_array = array.array('i', [1, 2, 3, 4, 5])
+
+# Accessing elements
+print(my_array[0])  # Output: 1
+print(my_array[2])  # Output: 3
+
+# Modifying an element
+my_array[1] = 10
+
+# Printing the modified array
+print(my_array)  # Output: array('i', [1, 10, 3, 4, 5])
+```
+
+Example 2: Storing characters in an array
+
+```
+import array
+
+# Create an array of characters
+my_array = array.array('c', ['a', 'b', 'c', 'd'])
+
+# Accessing elements
+print(my_array[0])  # Output: b
+print(my_array[2])  # Output: c
+
+# Modifying an element
+my_array[1] = 'x'
+
+# Printing the modified array
+print(my_array)  # Output: array('c', ['a', 'x', 'c', 'd'])
+```
