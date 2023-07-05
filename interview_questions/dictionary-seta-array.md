@@ -283,6 +283,9 @@ that further enhance the capabilities of arrays for numerical computations and d
 In Python, a set is an unordered collection of unique elements. It is a built-in data type that is used to 
 store a collection of items where each item is unique. Sets are mutable, which means you can add or remove elements from them.
 
+Some common set operations are:
+Union, Intersection, Difference, Symmetric Difference, Update
+
 Key features of set are:
 - Uniqueness: duplicate element will be ignored.
 - Unordered: the order of elements in a set is arbitrary and can change
