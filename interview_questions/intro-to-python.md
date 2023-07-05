@@ -205,7 +205,20 @@ Source code and bytecode are different representations of a program that serve d
 |    | Bytecode can be executed more efficiently than source code because it has already undergone some level of translation and optimization. |
 
 ## 12. Register instruction set
-In computer architecture, a register instruction set refers to the set of instructions that operate directly on the CPU's registers. Registers are small, high-speed storage areas within the CPU that hold data that the CPU is currently working on. The register instruction set includes instructions that perform operations on these registers, such as loading data into registers, storing data from registers to memory, performing arithmetic or logical operations on register contents, and transferring data between registers. Low-level programming languages like assembly language provide direct access to the CPU's register instruction set.
+A microprocessor is made up of 3 main units:
+1. **Arithmetic and Logic Unit (ALU):** to perform arithmetic and logical instruction based on computer instructions
+2. **Control Unit:** To control the overall operations of the computer through signals.
+3. Registers 
+
+Registers in internal memory are used to hold the instruction and data for the execution of the processor. A microprocessor's performance depends on the following characteristics:
+1. Clock Speed: Each microprocessor has an **internal clock** that regulates the speed at which it executes instructions. The speed at which the microprocessor executes instruction is called the **clock speed**. Clock speed is measured in GHz (GigaHertz) or MHz (MegaHertz).
+2. Instruction Set: A command which is given to a computer to perform an operation on data is called an **instruction**. Basic set of machine level instructions that a microprocessor is designed to execute is called an **instruction set**. This instruction set carries out the following types of operations:
+- Data Transfer
+- Arithmetic Operations
+- Logical Operations
+- Control Flow
+- Input/Output   
+3. Word Size: The number of bits that can be processed by a processor in a single instruction is called its word size. **Word size** determines the amount of RAM that can be accessed by a microprocessor. 
 
 ## 13. High level vs low level programming language
 High-level and low-level programming languages are different categories of programming languages that offer varying levels of abstraction and control over hardware and system details.
@@ -301,6 +314,10 @@ The reference count for the variable `10` decreases to 4. Likewise, when all obj
 
 Garbage collection releases memory when no object is in use. It is like a recycling system in computers where the system deletes the unused object and 
 reuses its memory slot for new objects.
+
+When we assign the new name or placed it in containers such as a dictionary or tuple, the reference count increases its value. If we reassign the reference to an object, the reference counts decreases its value if. It also decreases its value when the object's reference goes out of scope or an object is deleted. As we know, Python uses the dynamic memory allocation which is managed by the Heap data structure. Memory Heap holds the objects and other data structures that will be used in the program. Python memory manager manages the allocation or de-allocation of the heap memory space through the API functions.
+
+The Python garbage collector initiates its execution with the program and is activated if the reference count falls to zero.
 
 - Python has an automated garbage collection system.
 - Python has algorithms to deallocate objects and it has two ways to delete the unused objects from the memory.
