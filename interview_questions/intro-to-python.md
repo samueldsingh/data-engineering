@@ -319,44 +319,6 @@ Python is a high-level language and we don’t have to do the memory management 
 
 - String immutablity: Same logic applies when you change a string from `msg = hello` to `msg = hello world`.
 
-## 20. Implicit casting vs Explicit casting 
-- In **implicit casting**, the programming language automatically converts one data type to another without requiring any explicit action from the programmer.
-- There is no loss of information as conversion is performed when the data types involved are compatible.
-- The conversion is carried out by the programming language itself during compile-time or runtime.
-- Implicit casting is considered safe because it ensures that data is converted seamlessly without the need for manual intervention.
-
-- For example, in Python, if you assign an integer value to a variable of type float, the language automatically converts the integer to a float:
-```
-x = 10
-y = 3.14
-
-result = x + y  # Implicit casting of x to float
-print(result)  # Output: 13.14
-```
-
-- **Explicit type conversion or typecasting**, is the process in which the programmer explicitly converts one data type to another by using predefined conversion functions or operators. The desired conversion have to be specified explicitly by the programmer.
-- Explicit casting is useful when you want to convert data between incompatible types or when you want to ensure a specific behavior during the conversion
-
-- For example, in Python, you can explicitly cast a float to an integer using the int() function:
-```
-x = 3.14
-y = int(x)  # Explicit casting of x to int
-print(y)   # Output: 3
-```
-- In the above code, the float value 3.14 is explicitly cast to an integer using the int() function. The resulting integer value 3 is assigned to the variable y.
-
-- It's important to note that when performing explicit casting, there is a possibility of data loss or unexpected behavior if the conversion is not done carefully. 
-
-
-4. Type promotion 
-5. Explain about each function 
-	print type id int float bool str list tuple dict set 
-6. == vs is 
-7. Difference between and or operators. Any two realtime examples 
-8. Keywords in python
-9. Control Statements
-
-
 
 11. What is an entry control loop and an exit control loop
 
