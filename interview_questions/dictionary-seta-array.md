@@ -377,12 +377,9 @@ removing elements, regardless of the mutability or immutability of the elements 
 
 ## Array
 
-- Arrays are used to store multiple values of the same type in single variable. 
-- Arrays have a fixed-size sequence of elements.
+- Arrays are commonly used in programming to store and manipulate collections of data. Arrays are used to store multiple values of the same type in single variable.
 - It provides random access to its elements based on an index.
 - The elements in an array are typically stored in contiguous memory locations.
-- Arrays are commonly used in programming to store and manipulate collections of data.
-- They offer efficient and direct access to individual elements using their index.
 - Arrays can be one-dimensional (a list of elements) or multi-dimensional (e.g., a matrix or a table).
 - The `array` module, which provides a more efficient storage and operations for arrays of homogeneous data types can be used to create arrays.
 
