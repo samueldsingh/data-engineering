@@ -255,6 +255,35 @@ The Python architecture refers to the overall structure and components involved 
 
 The Python architecture is designed to provide a high-level and versatile programming environment. It offers features such as dynamic typing, automatic memory management, extensive libraries, and cross-platform compatibility. The combination of the Python interpreter, bytecode compilation, the PVM, and the vast ecosystem of libraries contributes to the popularity and effectiveness of the Python programming language.
 
+## Memory Management in Python
+When we execute our Python script, there are so many logic that runs behind in Python memory to make the code efficient. Memory management is very important for software developers to work efficiently with any programming language. Memory management is related to writing memory-efficient code. Improper memory management leads to slowness on the application and the server-side components. If the memory is not handled well, it will take much time while preprocessing the data.
+
+In Python, memory is managed by the Python manager which determines where to put the application data in the memory. 
+
+Let's assume memory looks like an empty book and we want to write anything on the book's page. Then, we write data any data the manager find the free space in the book and provide it to the application. The procedure of providing memory to objects is called **allocation**.
+
+Python Memory Allocation
+Memory allocation is an essential part of the memory management for a developer. This process basically allots free space in the computer's virtual memory, and there are two types of virtual memory works while executing programs.
+
+- Static Memory Allocation
+- Dynamic Memory Allocation
+
+Static memory allocation happens at the compile time. For example - In C/C++, we declare a static array with the fixed sizes. However, we cannot use the memory again in the further program.
+
+```
+static int a=10; 
+```
+
+**Stack Allocation:** The Stack data structure is used to store the static memory. It is only needed inside the particular function or method call. The function is added in program's call stack whenever we call it. 
+
+**Dynamic memory allocation:**
+Unlike static memory allocation, Dynamic memory allocates the memory at the runtime to the program. For example - In C/C++, there is a predefined size of the integer of float data type but there is no predefine size of the data types in dynamic memory allocation. Memory is allocated to the objects at the run time. We use the **Heap** to implement dynamic memory management. We can use the memory throughout the program.
+
+Everything in Python is an object means dynamic memory allocation inspires the Python memory management. Python memory manager automatically vanishes when the object is no longer in use.
+
+**Heap Memory Allocation**
+Heap data structure is used for dynamic memory which is not related to naming counterparts. It is type of memory that uses outside the program at the global space. One of the best advantages of heap memory is to it freed up the memory space if the object is no longer in use or the node is deleted.
+
 ## 15. Explain Garbage Collection mechanism in detail.
 
 **Example:** Suppose you have 5 objects referring to the same variable:
