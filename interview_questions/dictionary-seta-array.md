@@ -324,6 +324,15 @@ numbers = set([1, 2, 3, 4, 5])
 print(numbers)
 ```
 
+Example: Symmetric Difference
+```
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+
+symmetric_difference_set = set1.symmetric_difference(set2)
+print(symmetric_difference_set)  # Output: {1, 2, 4, 5}
+```
+
 ## When to use sets:
 Sets are useful in situations where you need to work with a collection of unique elements
 and perform operations like intersection, union, difference, and symmetric difference.
