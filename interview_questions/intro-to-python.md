@@ -1,4 +1,4 @@
-## Preparation for group discussion
+
 
 ### Tell me about yourself?
 
@@ -305,9 +305,48 @@ reuses its memory slot for new objects.
 When we assign the new name or placed it in containers such as a dictionary or tuple, the reference count increases its value. If we reassign the reference to an object, the reference counts decreases its value if. It also decreases its value when the object's reference goes out of scope or an object is deleted. As we know, Python uses the dynamic memory allocation which is managed by the Heap data structure. Memory Heap holds the objects and other data structures that will be used in the program. Python memory manager manages the allocation or de-allocation of the heap memory space through the API functions.
 
 **Reference Counting in Python**
+
 Reference counting states that how many times other objects reference an object. When a reference of the object is assigned, the count of object is incremented one. When references of an object are removed or deleted, the count of object is decremented. The Python memory manager performs the de-allocation when the reference count becomes zero. Let's make it simple to understand.
 
+Suppose, there is two or more variable that contains the same value, so the Python virtual machine rather creating another object of the same value in the private heap. It actually makes the second variable point to that the originally existing value in the private heap.
+
+This is highly beneficial to preserve the memory, which can be used by another variable.
+
+```
+x = 20  
+```
+
+When we assign the value to the x. the integer object 10 is created in the Heap memory and its reference is assigned to x.
+
+```
+x = 20  
+y = x   
+if id(x) == id(y):   
+    print("The variables x and y are referring  to the same object")  
+
+
 **Example:** Suppose you have 5 objects referring to the same variable:
+```
+
+In the above code, we have assigned y = x, which means the y object will refer to the same object because Python allocated the same object reference to new variable if the object is already exists with the same value.
+
+Now, see another example.
+
+```
+x = 20  
+y = x  
+x += 1  
+If id(x) == id(y):  
+      print("x and y do not refer to  the same object")  
+```
+
+Output:
+```
+x and y do not refer to the same object
+```
+
+Another Example:
+The variables x and y are not referring the same object because x is incremented by one, x creates the new reference object and y still referring to 10.
 
 ```
 a=b=c=d=e=10
@@ -356,17 +395,25 @@ Newly created objects are put in the Generation 0 list. A list is created for ob
 **Conclusion:**
 Python is a high-level language and we don’t have to do the memory management manually. Python garbage collection algorithm is very useful to open up space in the memory. Garbage collection is implemented in Python in two ways: reference counting and generational. When the reference count of an object reaches 0, reference counting garbage collection algorithm cleans up the object immediately. If you have a cycle, reference count doesn’t reach zero, you wait for the generational garbage collection algorithm to run and clean the object. While a programmer doesn’t have to think about garbage collection in Python, it can be useful to understand what is happening under the hood.
 
+**Common Ways to Reduce the Space Complexity**
 
+We can follow some best practices to reduce the space complexity. These techniques are supposed to save quite space and make the program efficient. Below are a few practices in Python for memory allocators:
 
-## 18. Why is string immutable?
+- **Use List Indexing Carefully:**
+The developer should try to use the "for item in array" instead of "for index in range(len(array))" to save space and time. If our program doesn't need the indexing of the list element, then don't use it.
 
-- In Python, strings are immutable, which means they cannot be changed once they are created. They have to be used as is or either be deleted. 
+- **String Concatenation:**
+String concatenation is not suitable for saving space and time complexity. When possible, we should avoid using '+' for the string concatenation because strings are immutable. When we add the new string to the existing string, Python creates the new string and allocates it to a new address.
 
-- When you perform any operation that appears to modify a string, such as concatenation or converting to capital, it actually creates a new string object with the modified value instead of modifying the original string.
+Each string needs a fixed size of memory based on the character and its length. When we change the string, it needs a different amount of memory and requires reallocating.
 
-- Integer are also immutable: When you create a new variable, `x=10`, memory is allocated to save the object 10. Next when you try to save a new object to the same variable, `x=20`, only the object value changes and not the variable. The memory for the object 10 is deallocated and new memory is allocated for the object 20.
+- **Use Iterators and Generators:**
+Iterators are very helpful for both time and memory when working on a large set of data. Working with the large dataset, we need data processing immediately and can wait for the program to process the entire data set first.
 
-- String immutablity: Same logic applies when you change a string from `msg = hello` to `msg = hello world`.
+Generators are the special functions used to create the iterator function.
+
+- **Use the Built-in Library when Possible:**
+If we use methods that have already been predefined in the Python library, then import the corresponding library. It would save a lot of space and time. We can also create a module to define the function and import it to the current working program.
 
 
 
@@ -524,6 +571,13 @@ IX. Data Structures:
     ii. String:
            1. Explain about string. 
            2. Multi line string 
+           3. String is Immutable.Explain in detail 
+           4. CRUD Operations on String
+           5. Sequence operations on String
+           6. Memory allocation of String 
+           7. Explain 10 important functions of String
+
+
            3. String is Immutable.Explain in detail 
            4. CRUD Operations on String
            5. Sequence operations on String
