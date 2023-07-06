@@ -299,6 +299,14 @@ Heap data structure is used for dynamic memory which is not related to naming co
 
 ## 15. Explain Garbage Collection mechanism in detail.
 
+Garbage collection releases memory when no object is in use. It is like a recycling system in computers where the system deletes the unused object and 
+reuses its memory slot for new objects.
+
+When we assign the new name or placed it in containers such as a dictionary or tuple, the reference count increases its value. If we reassign the reference to an object, the reference counts decreases its value if. It also decreases its value when the object's reference goes out of scope or an object is deleted. As we know, Python uses the dynamic memory allocation which is managed by the Heap data structure. Memory Heap holds the objects and other data structures that will be used in the program. Python memory manager manages the allocation or de-allocation of the heap memory space through the API functions.
+
+**Reference Counting in Python**
+Reference counting states that how many times other objects reference an object. When a reference of the object is assigned, the count of object is incremented one. When references of an object are removed or deleted, the count of object is decremented. The Python memory manager performs the de-allocation when the reference count becomes zero. Let's make it simple to understand.
+
 **Example:** Suppose you have 5 objects referring to the same variable:
 
 ```
@@ -311,11 +319,6 @@ a=5
 ```
 
 The reference count for the variable `10` decreases to 4. Likewise, when all objects get assigned to different variables, the reference count for `10` becomes `0` and `10` becomes garbage collected.
-
-Garbage collection releases memory when no object is in use. It is like a recycling system in computers where the system deletes the unused object and 
-reuses its memory slot for new objects.
-
-When we assign the new name or placed it in containers such as a dictionary or tuple, the reference count increases its value. If we reassign the reference to an object, the reference counts decreases its value if. It also decreases its value when the object's reference goes out of scope or an object is deleted. As we know, Python uses the dynamic memory allocation which is managed by the Heap data structure. Memory Heap holds the objects and other data structures that will be used in the program. Python memory manager manages the allocation or de-allocation of the heap memory space through the API functions.
 
 The Python garbage collector initiates its execution with the program and is activated if the reference count falls to zero.
 
