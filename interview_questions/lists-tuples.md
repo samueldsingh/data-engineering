@@ -554,8 +554,8 @@ Because lists are mutable, the flexibility comes with a slight overhead in terms
 
 | Lists      | Tuples |
 | ----------- | ----------- |
-| Accessing an element by index `O(1)`: Accessing an element by index takes constant time because the index allows direct access to the desired element.      | Accessing an element by index `O(1)`.       |
-| Appending an element to the end `O(1)`: Appending an element to the end of a list takes amortized constant time `(O(1))`.   | Concatenating two tuples: `O(n)` (where n is the total number of elements in both tuples)        |
+| Accessing an element by index `O(1)`: Accessing an element by index takes constant time because the index allows direct access to the desired element.      | Accessing an element by index `O(1)`. Since tuples are indexed collections, accessing an element by its index takes constant time.       |
+| Appending an element to the end `O(1)`: Appending an element to the end of a list takes amortized constant time `(O(1))`.   | Concatenating two tuples: `O(n)` The time complexity in concatenating two tuples is proportional to the sum of the sizes of the two tuples.        |
 | Inserting or deleting an element at a specific index: Inserting or deleting an element at a specific index in a list takes linear time `(O(n))` because it may require shifting elements. Tuples are immutable, so you cannot perform these operations on them.   |    |
 | Searching for an element: In both cases, searching for an element in a list or tuple takes linear time `(O(n))` in the worst case because the entire collection needs to be traversed.      |  Searching for an element: `O(n)` (similar to lists)   |
 
