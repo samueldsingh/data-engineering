@@ -40,7 +40,39 @@
 - `pass`: The `pass` statement is a placeholder statement that does nothing. It is used when a statement is syntactically required but you don't want any code to be executed.
 - `return`: The `return` statement is used to exit a function and return a value to the caller.
 
+## 8. Implement 5 examples which covers all topics if elif else for while break/continue/pass
+
+## What is entry control loop and exit control loop?
+What is an entry control loop and an exit control loop
+
+**Entry Control loops:**
+In an entry control loop, the condition is checked before the loop body is executed. If the condition is not satisfied initially, the loop body will not be executed at all. In other words, the loop may not run even once if the condition is false from the beginning.
+
+Example:
+```
+n = 5
+for i in range(1, n+1):
+    print(n)
+    n -= 1
+```
+
+Here, the condition `n > 0` is checked before executing the loop body. If the initial value of `n` is not greater than `0`, the loop will not run.
+
+**Exit control loops:**
+In an exit control loop, the condition is checked after executing the loop body. The loop body will be executed at least once, and then the condition is checked to determine if the loop should continue or exit.
+
+```
+n = 1
+while True:
+    print(n)
+    n += 1
+    if n > 5:
+        break
+```
+
+Here, the loop runs indefinitely `(while True)`, but the condition `n > 5` is checked within the loop. If the condition becomes true, the `break` statement is encountered, and the loop is exited.
+
+
 Control statements allow you to make decisions, control the flow of execution based on conditions, and repeat certain actions. They provide flexibility and control in programming to handle different scenarios and conditions effectively.
 
 
-## 8. Implement 5 examples which covers all topics if elif else for while break/continue/pass
