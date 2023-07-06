@@ -163,43 +163,95 @@ In this example, the `pop()` method with index `1` removes and returns the eleme
 Both `append()` and `pop()` are useful methods for manipulating lists. `append()` allows you to add elements to the end of a list, while `pop()` allows you to remove and retrieve elements, either from the end of the list or at a specific index.
 
 ## 8. shallow copy vs deep copy 
-1. **Shallow Copy:** A shallow copy of a list creates a new list object, but the elements of the new list still refer to the same objects as the original list. Any modifications made to the original list or its elements will be reflected in the shallow copy.
+Generally, we use the ```=``` (assignment operator) to create a copy of the Python object.
+
+**Copy in Python**
+As we all know, the assignment operator is used to create the copy of the Python object, but this is not true; it only creates the binding between a target and object. When we use the assignment operator, instead of creating a new object, it creates a new variable that shares the old object's reference.
+
+The copies are helpful when a user wants to make changes without modifying the original object at the same time. A user also prefers to create a copy to work with mutable objects.
 
 Example:
 ```
-original_list = [1, 2, [3, 4]]
-shallow_copy = original_list.copy()
-
-# Modify the original list
-original_list[0] = 10
-original_list[2][0] = 30
-
-print(original_list)  # Output: [10, 2, [30, 4]]
-print(shallow_copy)  # Output: [1, 2, [30, 4]]
+list1 = [[1, 2, 3], [4, 5, 6], [7, 8, 'a']]  
+list2 = list1  
+  
+list2[1][2] = 4  
+  
+print('Old List:', list1)  
+print('ID of Old List:', id(list1))  
+  
+print('New List:', list2)  
+print('ID of New List:', id(list2)) 
 ```
 
-In this example, the `copy()` method creates a shallow copy of the `original_list`. When we modify the element at index `0` in the original list, the change is not reflected in the shallow copy. However, when we modify the nested element at index `0` `(original_list[2][0])`, the change is reflected in both the original list and the shallow copy.
+Output is:
+```
+Old List: [[1, 2, 3], [4, 5, 4], [7, 8, 'a']]
+ID of Old List: 1909447368968
+New List: [[1, 2, 3], [4, 5, 4], [7, 8, 'a']]
+ID of New List: 1909447368968
+```
 
-2. **Deep Copy:** A deep copy of a list creates a new list object and recursively creates new copies of all the objects within the original list. The new list and its elements are completely independent of the original list. Modifications made to the original list or its elements will not affect the deep copy.
+**Explanation:**
+- In the above output, we can see that both variable list1 and list2 share the same id 1909447368968.
+- If we make any changes in any value in list1 or list2, the change will reflect in both.
+
+**Types of Copies in Python**
+The main motive is to create a copy of Python object that we can modify the copy without changing the original data. In Python, there are two methods to create copies.
+- Shallow Copy
+- Deep Copy
+
+We can use the copy module to create the above copies.
+
+**The copy Module**
+The copy module is used to create the shallow copy and deep copy. 
+
+**Shallow Copy**
+A shallow copy is a copy of an object that stores the reference of the original elements. It creates the new collection object and then occupies it with reference to the child objects found in the original.
+
+It makes copies of the nested objects' reference and doesn't create a copy of the nested objects. So if we make any changes to the copy of the object will reflect in the original object. We will use the copy() function to implement it.
 
 Example:
 ```
-import copy
-
-original_list = [1, 2, [3, 4]]
-deep_copy = copy.deepcopy(original_list)
-
-# Modify the original list
-original_list[0] = 10
-original_list[2][0] = 30
-
-print(original_list)  # Output: [10, 2, [30, 4]]
-print(deep_copy)  # Output: [1, 2, [3, 4]]
+import copy  
+  
+list1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]  
+list2 = copy.copy(list1)  
+  
+list1.append([13, 14,15])  
+  
+print("Old list:", list1)  
+print("New list:", list2) 
 ```
 
-In this example, the `deepcopy()` function from the `copy` module is used to create a deep copy of the `original_list`. Modifying the elements of the original list does not affect the deep copy. The nested element modification at index `0` is only reflected in the original list, while the deep copy remains unchanged.
+Output:
+```
+Old list: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15]]
+New list: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
+```
 
-In summary, a shallow copy creates a new list with references to the same objects as the original list, while a deep copy creates a new list with completely independent copies of all the objects within the original list. The choice between shallow copy and deep copy depends on your specific requirements and the level of independence needed between the original list and the copied list.
+Explanation -
+In the above code, we have created a shallow copy of list1. The newly created list2 contains the reference of the original nested object stored in list1. We have then appended the `[13, 14, 15]` into the old list and sublist not copied in the new list.
+
+**Deep Copy**
+A deep copy is a process where we create a new object and add copy elements recursively. We will use the `deecopy()` method which is present in `copy` module. The independent copy is created of original object and its entire object. Let's understand the following example.
+
+```
+import copy  
+x = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]  
+z = copy.deepcopy(xs)  
+print(x)  
+prin(z) 
+```
+
+The output is:
+```
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+```
+
+**Explanation**
+In the above output, we can see that `z` is a clone of `x` that we have created using the `deecopy()` method. If we make change to one of child won't affect the original object.
 
 ## 10. append vs extend
 `append()` and `extend()` are both methods used to add elements to a list in Python, but they differ in how they add the elements:
