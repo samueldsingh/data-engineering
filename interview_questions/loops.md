@@ -42,7 +42,7 @@
 
 ## 8. Implement 5 examples which covers all topics if elif else for while break/continue/pass
 
-## What is entry control loop and exit control loop?
+## 9. What is entry control loop and exit control loop?
 What is an entry control loop and an exit control loop
 
 **Entry Control loops:**
