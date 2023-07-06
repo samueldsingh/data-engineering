@@ -90,12 +90,18 @@ Type conversions are useful when you need to perform operations or manipulate da
         
 ### 3. Explain different operations of boolean type
     
-    
-### ii. String:
-        1. Explain about string. 
-        2. Multi line string 
-        3. String is Immutable.Explain in detail 
-        4. CRUD Operations on String
-        5. Sequence operations on String
-        6. Memory allocation of String 
-        7. Explain 10 important functions of String
+
+
+1. What are datatypes in Python.Explain in detail
+2. What are datastructures in Python.Explain in detail
+3. Generic functions in Python.
+4. Realtime examples for usage of integer,float,boolean,string
+5. When to use string 
+6. Importance of String datatype in Python 
+7. Why and how string is Immutable.Explain in detail
+8. What is Sequence. Types
+9. How to use sequence operations on String
+10.How memory will be allocated for string 
+11.Explain 10 very freqently used functions in String 
+12. isdigit() vs isnumeric() vs isdecimal() 
+13. find vs index in string 
