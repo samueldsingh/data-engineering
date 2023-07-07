@@ -23,6 +23,23 @@
 	- Requirement
 	- User Criteria
 	- Validations(Client vs Server)
+
+Requirements and user criteria are essential components that guide the development process and ensure that the software meets the desired objectives and user expectations. 
+
+**Requirement:**
+Requirements represent a clear and concise description of what the software system should accomplish. They define the features, functionalities, and constraints that the software must adhere to. 
+
+Gathering requirements is typically one of the initial stages in the software development life cycle. It involves interacting with stakeholders (such as clients, users, and business analysts) to identify and document their needs and expectations.
+
+Requirements can be classified into different types, including:
+
+a. Functional Requirements: These specify the specific actions the software should perform, describing what the system needs to do. For example, "The system should allow users to create new accounts" or "The system should calculate the total purchase amount."
+
+
+
+**User Criteria:**
+
+
  
  **Client Validation:**
  - Client-side validation refers to the validation performed on the client-side, typically using JavaScript, before the data is sent to the server. It is performed within the user's web browser and provides instant feedback to the user. 
