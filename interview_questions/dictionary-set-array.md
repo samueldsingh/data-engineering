@@ -140,7 +140,37 @@ Dictionaries are implemented as hash table. The hash table consists of an array 
 ## 4. Shallow copy vs deep copy
 In shallow copy, changes made to the recursive list will be affected. In deep copy, changes made to the recursive list will not be affected.
 
+When creating copies of dictionaries, you have to option to perform shallow copies or deep copies.
 
+A shallow copy creates a new dictionary object, but the keys and values of the new dictionary still refer to the same objects as the original dictionary. Any modifications made to the shared elements will be reflected in both the original and the copy.
+
+Example of a shallow copy of a dictionary:
+```
+original = {'a': [1, 2, 3], 'b': [4, 5, 6]}
+copy = original.copy()
+
+# Modifying the value of 'a' in the copy affects the original
+copy['a'].append(4)
+
+print(original)  # Output: {'a': [1, 2, 3, 4], 'b': [4, 5, 6]}
+print(copy)  # Output: {'a': [1, 2, 3, 4], 'b': [4, 5, 6]}
+```
+
+A deep copy, on the other hand, creates a completely independent copy of the original dictionary, including all the nested objects. Any modifications made to the elements in the deep copy will not affect the original dictionary, and vice versa.
+
+Example of a deep copy of a dictionary:
+```
+import copy
+
+original = {'a': [1, 2, 3], 'b': [4, 5, 6]}
+deep_copy = copy.deepcopy(original)
+
+# Modifying the value of 'a' in the deep copy does not affect the original
+deep_copy['a'].append(4)
+
+print(original)  # Output: {'a': [1, 2, 3], 'b': [4, 5, 6]}
+print(deep_copy)  # Output: {'a': [1, 2, 3, 4], 'b': [4, 5, 6]}
+```
 
 ## 5. Dictionary Functions
 
