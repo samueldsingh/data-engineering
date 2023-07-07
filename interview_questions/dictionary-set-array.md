@@ -287,13 +287,13 @@ Sets are useful in situations where you need to work with a collection of unique
 and perform operations like intersection, union, difference, and symmetric difference.
 
 A few of the other scenarios where set is used are:
-Removing duplicates, Membership testing, Set operations (operations like union, intersection, difference, 
+- Removing duplicates, Membership testing, Set operations (operations like union, intersection, difference, 
 and symmetric difference can be used to combine or compare sets, find common elements, 
-or determine the unique elements between sets), Mathematical modeling (they represent mathematical concepts 
+or determine the unique elements between sets),
+- Mathematical modeling (they represent mathematical concepts 
 such as sets, subsets, and universal sets, making it easier to perform calculations and analyze relationships between elements),
 removing unwanted elements.
-
-Sets cannot contain mutable objects like lists or dictionaries since they need to be hashable. If you need 
+- Sets cannot contain mutable objects like lists or dictionaries since they need to be hashable. If you need 
 to maintain the order of elements or store mutable objects, you may need to consider other data structures like lists or dictionaries.
 
 ## Mutability and immutability of elements within a set
