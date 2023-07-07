@@ -91,9 +91,11 @@ Dict item  : 100
 ```
 
 ### UPDATE
+```
 data[2] = 'Twenty'
 data['id'] = 200
 print("Dictionary update: ", data)
+```
 
 Output:
 ```
@@ -106,7 +108,9 @@ Dictionary update:  {1: 'One', 2: 'Twenty', 3: 'Two', 'id': 200}
 2. Delete any one item   --> `del dict1['id']`
 3. Delete entire items   --> `dict1.clear()`
 
+```
 data = {1: 'One', 2: 'Two', 3: 'Two', 'id': '100'}
+```
 
 ```
 del data[3]
@@ -180,12 +184,17 @@ The built-in functions are:
 
 ## 6. get() method
 
-get() method is used in dictionaries when you don't know if a key exists
+- `get()` method is used in dictionaries when you don't know if a key exists
+- The `get()` method in Python dictionaries is used to retrieve the value associated with a given key.
+- It takes two parameters: the key whose value needs to be retrieved, and an optional default value that is returned if the key is not found in the dictionary.
 
+```
 my_dict = {'name': 'John', 'age': 30, 'country': 'USA'}
- ```
- name = my_dict.get('name')
- print(name)  # Output: John
+```
+
+```
+name = my_dict.get('name')
+print(name)  # Output: John
 ```
 
 ``` 
