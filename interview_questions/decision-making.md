@@ -68,7 +68,7 @@ It's important to note that requirements and user criteria are interconnected an
 
 **Server Validation:**
  - refers to the validation performed on the server-side, typically using server-side programming languages like Python, PHP, or Java.
- -  - it ensures that the data sent by the client is valid, regardless of any client-side validation that may have been performed. It provides an additional layer of security and integrity to the application.
+ - it ensures that the data sent by the client is valid, regardless of any client-side validation that may have been performed. It provides an additional layer of security and integrity to the application.
  - Server-side validation is used to validate complex business rules, perform database queries, and enforce security constraints that cannot be reliably implemented on the client-side.
 
 Client-side validation improves the user experience by providing instant feedback, while server-side validation ensures the integrity and security of the application. It is recommended to perform both client-side and server-side validation to have a robust and secure validation mechanism in web applications.
