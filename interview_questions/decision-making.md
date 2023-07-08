@@ -35,6 +35,26 @@ Requirements can be classified into different types, including:
 
 a. Functional Requirements: These specify the specific actions the software should perform, describing what the system needs to do. For example, "The system should allow users to create new accounts" or "The system should calculate the total purchase amount."
 
+b. Non-Functional Requirements: These define the qualities or characteristics that the software should possess, such as performance, security, usability, scalability, and reliability. Non-functional requirements often address aspects like response time, system availability, data encryption, user interface design, and so on.
+
+c. Business Requirements: These requirements focus on the broader goals and objectives of the software from a business perspective. They capture the high-level needs and benefits the software is expected to provide to the organization. For example, "The software should streamline the inventory management process and reduce costs."
+
+d. Technical Requirements: These specify the technological aspects and constraints that the software must consider. They may include hardware and software compatibility, programming languages or frameworks to be used, database requirements, and any specific integration needs.
+
+
+Requirements should be well-documented, unambiguous, and testable, allowing developers to clearly understand what needs to be built and enabling testers to verify if the software meets the specified criteria.
+
+1. User Criteria:
+User criteria, also known as user requirements or user stories, represent the specific needs and expectations of the end-users or stakeholders who will interact with the software. They provide a user-centric perspective and help developers understand how the software should behave from the user's point of view. User criteria are typically expressed in a narrative format or as user stories and capture the functionalities and behaviors that users desire.
+
+User criteria often follow a specific template known as "As a [type of user], I want [some goal] so that [some reason]." For example:
+
+"As a customer, I want to be able to add items to my shopping cart so that I can purchase them later."
+"As an administrator, I want to be able to generate reports on user activities for auditing purposes."
+
+User criteria are often collected through user interviews, surveys, or direct observations. They help prioritize development efforts and ensure that the software aligns with the user's needs, resulting in a more user-friendly and satisfying experience.
+
+It's important to note that requirements and user criteria are interconnected and influence each other. User criteria provide the user's perspective, while requirements encompass a broader scope, including technical, business, and non-functional aspects. Both play a crucial role in defining the scope of the software and driving the development process to meet the desired objectives.
 
 
 **User Criteria:**
