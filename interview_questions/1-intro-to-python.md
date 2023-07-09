@@ -299,101 +299,16 @@ Heap data structure is used for dynamic memory which is not related to naming co
 
 ## 15. Explain Garbage Collection mechanism in detail.
 
-Garbage collection releases memory when no object is in use. It is like a recycling system in computers where the system deletes the unused object and 
-reuses its memory slot for new objects.
+- Garbage collection is the process of automatically reclaiming memory that is no longer in use by the program.
+- It works by identifying and freeing up memory occupied by objects that are no longer reachable or referenced by the program.
+- The exact implementation of garbage collection can vary depending on the programming language and the runtime environment, but a general overview of how it works internally is:
+- **Marking:** The garbage collector starts by traversing through all live objects in the program's memory heap. It begins with a set of known root objects, such as global variables or references on the call stack. These root objects are considered live because they are reachable and actively used by the program. The garbage collector marks these objects as live.
+- **Tracing:** The garbage collector then follows references from the marked objects to other objects in the heap. It traverses through the object graph, visiting each referenced object and marking them as live. This process continues until all reachable objects have been marked.
+- **Sweep and Free:** Once the marking phase is complete, the garbage collector performs a sweep phase. It scans the entire heap and identifies objects that are not marked as live. These unmarked objects are considered garbage since they are no longer reachable. The garbage collector frees the memory occupied by these garbage objects, making it available for future allocation.
+- **Compaction (optional):** In some garbage collection implementations, a compaction phase may be performed after the sweep phase. This phase involves rearranging the live objects in memory to minimize fragmentation and optimize memory usage. It moves live objects closer together, creating a contiguous block of free memory.
+- **Repeat:** After the garbage collection cycle is complete, the program continues its execution, and the process may be repeated periodically or as needed to reclaim memory.
 
-When we assign the new name or placed it in containers such as a dictionary or tuple, the reference count increases its value. If we reassign the reference to an object, the reference counts decreases its value if. It also decreases its value when the object's reference goes out of scope or an object is deleted. As we know, Python uses the dynamic memory allocation which is managed by the Heap data structure. Memory Heap holds the objects and other data structures that will be used in the program. Python memory manager manages the allocation or de-allocation of the heap memory space through the API functions.
-
-**Reference Counting in Python**
-
-Reference counting states that how many times other objects reference an object. When a reference of the object is assigned, the count of object is incremented one. When references of an object are removed or deleted, the count of object is decremented. The Python memory manager performs the de-allocation when the reference count becomes zero. Let's make it simple to understand.
-
-Suppose, there is two or more variable that contains the same value, so the Python virtual machine rather creating another object of the same value in the private heap. It actually makes the second variable point to that the originally existing value in the private heap.
-
-This is highly beneficial to preserve the memory, which can be used by another variable.
-
-```
-x = 20  
-```
-
-When we assign the value to the x. the integer object 10 is created in the Heap memory and its reference is assigned to x.
-
-```
-x = 20  
-y = x   
-if id(x) == id(y):   
-    print("The variables x and y are referring  to the same object")  
-
-
-**Example:** Suppose you have 5 objects referring to the same variable:
-```
-
-In the above code, we have assigned y = x, which means the y object will refer to the same object because Python allocated the same object reference to new variable if the object is already exists with the same value.
-
-Now, see another example.
-
-```
-x = 20  
-y = x  
-x += 1  
-If id(x) == id(y):  
-      print("x and y do not refer to  the same object")  
-```
-
-Output:
-```
-x and y do not refer to the same object
-```
-
-Another Example:
-The variables x and y are not referring the same object because x is incremented by one, x creates the new reference object and y still referring to 10.
-
-```
-a=b=c=d=e=10
-```
-
-Now you assign a new variable to the object `a`:
-```
-a=5
-```
-
-The reference count for the variable `10` decreases to 4. Likewise, when all objects get assigned to different variables, the reference count for `10` becomes `0` and `10` becomes garbage collected.
-
-The Python garbage collector initiates its execution with the program and is activated if the reference count falls to zero.
-
-- Python has an automated garbage collection system.
-- Python has algorithms to deallocate objects and it has two ways to delete the unused objects from the memory.
-
-1. Reference Counting - In Python, a reference count is automatic memory management system that helps determine when an object is no longer in use and can be safely deallocated from memory. It is a count that keeps track of the number of references pointing to an object.
-
-Here's how the reference count works:
-
-**Reference Count Increment:** When a reference to an object is created, either by assigning the object to a variable or passing it as an argument to a function, the reference count of the object is incremented by one. This indicates that there is now one reference to the object.
-
-**Reference Count Decrement:** When a reference to an object is removed, either by reassigning the variable to another object or when a variable goes out of scope, the reference count of the object is decremented by one. This indicates that there is now one less reference to the object.
-
-**Zero Reference Count:** When the reference count of an object reaches zero, it means that there are no more references to that object in the program. At this point, the object is considered no longer in use.
-
-**Deallocation:** Once an object's reference count reaches zero, Python's memory manager deallocates the memory occupied by the object. The memory is then returned to the system and made available for reuse.
-
-The reference count mechanism is a fundamental part of Python's memory management system because it allows the interpreter to determine when an object is no longer needed. By keeping track of the number of references to an object, Python can ensure that memory is deallocated only when it is no longer being used by the program.
-
-However, it's important to note that the reference count mechanism is not the sole memory management technique used in Python. Python also employs a garbage collector to handle situations where objects have cyclic references or when memory deallocation cannot be determined solely based on reference counting. The garbage collector identifies and collects objects that are no longer accessible even if their reference count is not zero.
-
-Overall, the reference count mechanism, combined with the garbage collector, allows Python to efficiently manage memory allocation and deallocation, ensuring that memory is properly used and reclaimed when objects are no longer needed. This automatic memory management helps relieve the programmer from manual memory management tasks and reduces the likelihood of memory leaks and dangling pointers. 
-
-2. Generational Garbage Collection:
-It is a type of **trace-based garbage collection**. It can break cyclic references and delete the unused objects even if they are referred by themselves.
-
-**How does generational Garbage Collection work?**
-Python keeps track of every object in memory. 3 lists are created when a program is run. Generation 0, 1, and 2 lists.
-
-Newly created objects are put in the Generation 0 list. A list is created for objects to discard. Reference cycles are detected. If an object has no outside references it is discarded. The objects who survived after this process are put in the Generation 1 list. The same steps are applied to the Generation 1 list. Survivals from the Generation 1 list are put in the Generation 2 list. The objects in the Generation 2 list stay there until the end of the program execution.
-
-![generation](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/d0b300cb-ea82-4de3-9875-cbfd8d8bbdae)
-
-**Conclusion:**
-Python is a high-level language and we don’t have to do the memory management manually. Python garbage collection algorithm is very useful to open up space in the memory. Garbage collection is implemented in Python in two ways: reference counting and generational. When the reference count of an object reaches 0, reference counting garbage collection algorithm cleans up the object immediately. If you have a cycle, reference count doesn’t reach zero, you wait for the generational garbage collection algorithm to run and clean the object. While a programmer doesn’t have to think about garbage collection in Python, it can be useful to understand what is happening under the hood.
+It's important to note that the specific algorithms and techniques used in garbage collection can vary. Some common approaches include reference counting, mark-and-sweep, and generational collection. Each approach has its own trade-offs in terms of efficiency, latency, and memory overhead. The choice of garbage collection algorithm depends on the programming language, runtime environment, and specific requirements of the application.
 
 **Common Ways to Reduce the Space Complexity**
 
