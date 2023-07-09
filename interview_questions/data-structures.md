@@ -82,10 +82,8 @@ The PATCH method is used to partially update a resource on the server. It is not
 The DELETE method is used to delete a resource from the server. It is idempotent, meaning that multiple identical requests should have the same effect as a single request. In CRUD, DELETE is used for deleting existing resources.
 
 These HTTP request methods provide a standardized way of performing CRUD operations on resources over the web. When designing web applications, these methods are mapped to corresponding actions or endpoints to handle the desired operations on the server side.
-     
-### i. Numbers:
         
-### 1. Types of numbers. Explain each use case 
+### 4. Types of numbers. Explain each use case 
 In Python, there are several types of numbers that can be used for different purposes. Here are the commonly used number types and their use cases:
 
 1. Integers (int):
@@ -106,7 +104,7 @@ Long integers are used to represent arbitrarily large integers. They can handle 
 These different number types allow you to work with various kinds of data and perform different calculations and operations in Python. It's important to choose the appropriate number type based on the requirements of your specific task to ensure accurate results and efficient memory usage.    
         
         
-### 2. type conversions
+### 5. Type conversions
 Type conversion, also known as type casting, is the process of converting a value from one data type to another in a programming language. In Python, you can perform various type conversions to manipulate and operate on data of different types. Here are some common type conversions in Python:
 
 1. Implicit Type Conversion:
@@ -143,12 +141,48 @@ b = int(a)  # Converts the string 'a' to an integer using the int() constructor
 
 Type conversions are useful when you need to perform operations or manipulate data of different types. However, it's important to ensure that the conversion is valid and makes sense in the context of your program to avoid errors or unexpected behavior.
         
-### 3. Explain different operations of boolean type
+### 6. Explain different operations of boolean type
 
 Boolean data represents a binary state, typically denoted as either true or false. Boolean operations allow for logical manipulation and evaluation of boolean values. Here are some common operations performed on boolean data:
 
+1. Logical AND (&&):
+The logical AND operation returns true only if both operands are true. If any of the operands is false, the result is false. For example:
+- `true && true` evaluates to true
+- `true && false` evaluates to false
+- `false && false` evaluates to false
 
+2. Logical OR (||):
+The logical OR operation returns true if at least one of the operands is true. It returns false only when both operands are false. For example:
+- `true || true` evaluates to true
+- `true || false` evaluates to true
+- `false || false` evaluates to false
 
+3. Logical NOT (!):
+The logical NOT operation negates the boolean value. It returns true if the operand is false, and false if the operand is true. For example:
+- `!true` evaluates to false
+- `!false` evaluates to true
+
+4. Comparison Operations:
+Boolean values can be compared using comparison operators to determine their relationship. These operators include:
+- Equal to (==): Returns true if the operands are equal. For example: `true == true` evaluates to true.
+- Not equal to (!=): Returns true if the operands are not equal. For example: `true != false` evaluates to true.
+
+5. Conditional Expressions:
+Boolean values are often used in conditional expressions to control the flow of program execution. Conditional statements, such as if-else or switch statements, rely on boolean conditions to determine which code blocks should be executed. For example:
+
+```
+if condition:
+    # Code block executed if condition is true
+else:
+    # Code block executed if condition is false
+```
+
+6. Ternary Operator:
+The ternary operator is a concise way to express conditional expressions. It allows for a quick evaluation and assignment based on a boolean condition. For example:
+- `result = condition ? trueValue : falseValue`
+Here, if the condition is true, `result` will be assigned `trueValue`, otherwise `falseValue`.
+
+These boolean operations and expressions form the foundation of logical reasoning and decision-making in programming. They are used to control program flow, perform conditional execution, and make comparisons based on true or false values.
 
 1. What are datatypes in Python.Explain in detail
 2. What are datastructures in Python.Explain in detail
