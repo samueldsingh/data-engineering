@@ -187,47 +187,7 @@ Here are examples of all arithmetic operations using functions in Python:
 These examples demonstrate the different arithmetic operations (+, -, *, /, //, %, **, -) using custom functions. You can define these functions 
 and use them to perform arithmetic calculations with different input values.
 
-## Give examples of printint the sum of two numbers with using return type and without using return type
-
-``` Without return types
-def sum(n1, n2):
-    result = n1 + n2  # Business Logic
-    print("Addition is  :", result)  # Print it
-
-print("SUM Operation : ", sum(10,20))
-sum(10, 20)
-```
-
-The output is:
-```
-Addition is  : 30
-SUM Operation :  None
-Addition is  : 30
-```
-
-``` With return type
-print("--------With return type--------")
-def sum(n1, n2):
-    result = n1 + n2  # Business Logic
-    return result     # return end value
-
-print("SUM Operation : ", sum(10, 20))
-print("---------------------------------")
-output = sum(10, 20)
-print("SUM Operation : ", output)
-print("---------------------------------")
-```
-
-The output is:
-```
---------With return type--------
-SUM Operation :  30
----------------------------------
-SUM Operation :  30
----------------------------------
-```
-
-## Explain return statement in Python:
+## 4. Explain return statement in Python:
 
 The `return` statement in a function is used to specify the value or values that should be returned from the function when it is called. It allows you to send data back from the function to the code that called it. Here are some important points about the `return` statement in Python:
 
@@ -302,4 +262,46 @@ The `return` statement in a function is used to specify the value or values that
 The `return` statement is crucial for providing the output or results of a function to the calling code. It allows you to pass back computed values, 
 perform early termination, and handle various conditions within the function. Understanding how to use the `return` statement effectively enables you 
 to write functions that encapsulate specific functionality and provide useful results to the rest of your program.
+
+## 5. Give examples of printing the sum of two numbers with using return type and without using return type
+
+``` Without return types
+def sum(n1, n2):
+    result = n1 + n2  # Business Logic
+    print("Addition is  :", result)  # Print it
+
+print("SUM Operation : ", sum(10,20))
+sum(10, 20)
+```
+
+The output is:
+```
+Addition is  : 30
+SUM Operation :  None
+Addition is  : 30
+```
+
+``` With return type
+print("--------With return type--------")
+def sum(n1, n2):
+    result = n1 + n2  # Business Logic
+    return result     # return end value
+
+print("SUM Operation : ", sum(10, 20))
+print("---------------------------------")
+output = sum(10, 20)
+print("SUM Operation : ", output)
+print("---------------------------------")
+```
+
+The output is:
+```
+--------With return type--------
+SUM Operation :  30
+---------------------------------
+SUM Operation :  30
+---------------------------------
+```
+
+
 
