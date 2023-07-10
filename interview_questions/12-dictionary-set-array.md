@@ -182,6 +182,152 @@ The commonly used dictionary functions are: `len()`, `type()`, `str()`, `dict()`
 The built-in functions are:
 `keys()`, `values()`, `items()`, `update()`, `clear()`, `fromkeys()`, `copy()`, `has_key()`, `pop()`, `popitem()`, `setdefault()`
 
+Certainly! Here are examples of various dictionary functions and methods in Python:
+
+1. `len()`:
+   - The `len()` function returns the number of key-value pairs in a dictionary.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     print(len(my_dict))  # Output: 3
+     ```
+
+2. `type()`:
+   - The `type()` function returns the type of an object, which in this case would be "dict" for a dictionary.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     print(type(my_dict))  # Output: <class 'dict'>
+     ```
+
+3. `str()`:
+   - The `str()` function converts a dictionary into a string representation.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     dict_str = str(my_dict)
+     print(dict_str)  # Output: "{'name': 'John', 'age': 30, 'city': 'New York'}"
+     ```
+
+4. `dict()`:
+   - The `dict()` function creates a new dictionary object.
+   - Example:
+     ```python
+     my_dict = dict(name="John", age=30, city="New York")
+     print(my_dict)  # Output: {'name': 'John', 'age': 30, 'city': 'New York'}
+     ```
+
+5. `keys()`:
+   - The `keys()` method returns a list containing all the keys in the dictionary.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     key_list = my_dict.keys()
+     print(key_list)  # Output: ['name', 'age', 'city']
+     ```
+
+6. `values()`:
+   - The `values()` method returns a list containing all the values in the dictionary.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     value_list = my_dict.values()
+     print(value_list)  # Output: ['John', 30, 'New York']
+     ```
+
+7. `items()`:
+   - The `items()` method returns a list of tuples containing key-value pairs in the dictionary.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     item_list = my_dict.items()
+     print(item_list)  # Output: [('name', 'John'), ('age', 30), ('city', 'New York')]
+     ```
+
+8. `update()`:
+   - The `update()` method updates the dictionary with key-value pairs from another dictionary or iterable.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30}
+     new_data = {"city": "New York", "country": "USA"}
+     my_dict.update(new_data)
+     print(my_dict)  # Output: {'name': 'John', 'age': 30, 'city': 'New York', 'country': 'USA'}
+     ```
+
+9. `clear()`:
+   - The `clear()` method removes all key-value pairs from the dictionary, making it empty.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30}
+     my_dict.clear()
+     print(my_dict)  # Output: {}
+     ```
+
+10. `fromkeys()`:
+    - The `fromkeys()` method creates a new dictionary with specified keys and a default value.
+    - Example:
+      ```python
+      keys = ["name", "age", "city"]
+      default_value = "Unknown"
+      my_dict = dict.fromkeys(keys, default_value)
+      print(my_dict)  # Output: {'name': 'Unknown', 'age': 'Unknown', 'city': 'Unknown'}
+      ```
+
+Certainly! Here are examples of some additional dictionary functions and methods:
+
+11. `copy()`:
+   - The `copy()` method creates a shallow copy of a dictionary.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     new_dict = my_dict.copy()
+     print(new_dict)  # Output: {'name': 'John', 'age': 30, 'city': 'New York'}
+     ```
+
+12. `has_key()` (Deprecated):
+   - The `has_key()` method checks if a specified key exists in the dictionary.
+   - Note: In Python 3.x, `has_key()` has been removed. Instead, you can use the `in` operator.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     print("age" in my_dict)  # Output: True
+     ```
+
+13. `pop()`:
+   - The `pop()` method removes and returns the value associated with the specified key from the dictionary.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     age = my_dict.pop("age")
+     print(age)  # Output: 30
+     print(my_dict)  # Output: {'name': 'John', 'city': 'New York'}
+     ```
+
+14. `popitem()`:
+   - The `popitem()` method removes and returns the last inserted key-value pair as a tuple from the dictionary.
+   - Note: In Python 3.7 and later versions, `popitem()` removes an arbitrary key-value pair instead of the last inserted one.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     item = my_dict.popitem()
+     print(item)  # Output: ('city', 'New York')
+     print(my_dict)  # Output: {'name': 'John', 'age': 30}
+     ```
+
+15. `setdefault()`:
+   - The `setdefault()` method returns the value of a specified key in the dictionary. If the key does not exist, it inserts the key with a default value and returns the default value.
+   - Example:
+     ```python
+     my_dict = {"name": "John", "age": 30}
+     city = my_dict.setdefault("city", "New York")
+     print(city)  # Output: 'New York'
+     print(my_dict)  # Output: {'name': 'John', 'age': 30, 'city': 'New York'}
+     ```
+
+These are some examples of functions and methods available for working with dictionaries in Python. Dictionaries provide a flexible and efficient way to store and manipulate data using key-value pairs.
+
+These are just a few examples of functions and methods that can be used with dictionaries in Python. Dictionaries offer a wide range of functionality for storing, accessing, and manipulating data in a key-value format.
+
 ## 6. get() method
 
 - `get()` method is used in dictionaries when you don't know if a key exists
