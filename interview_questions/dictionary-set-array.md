@@ -227,6 +227,7 @@ that further enhance the capabilities of arrays for numerical computations and d
 - It is a built-in data type that is used to 
 store a collection of items where each item is unique. 
 - It is a collection of distinct objects of the same type or class of objects. An object can be numbers, alphabets, names, etc.
+- Sets are utilized when an object only needs to exist within a collection of objects.
 
 Examples of sets are:
 - A set of rivers of India.
