@@ -265,7 +265,8 @@ to write functions that encapsulate specific functionality and provide useful re
 
 ## 5. Give examples of printing the sum of two numbers with using return type and without using return type
 
-``` Without return types
+Example: *Without return types*
+``` 
 def sum(n1, n2):
     result = n1 + n2  # Business Logic
     print("Addition is  :", result)  # Print it
@@ -281,7 +282,12 @@ SUM Operation :  None
 Addition is  : 30
 ```
 
-``` With return type
+In *return type*, the sum function takes 2 responsibilities:
+    1. Implementing the business logic
+    2. Handling the end result/output
+
+Example: *With return type*
+``` 
 print("--------With return type--------")
 def sum(n1, n2):
     result = n1 + n2  # Business Logic
@@ -303,5 +309,287 @@ SUM Operation :  30
 ---------------------------------
 ```
 
+## 6. Write a python to return the character count in a string.
 
+```
+str1 = 'abcabbcabac'
+
+def get_charcount(st):
+    di = {}
+    for char in str1:
+        if char not in di.keys():
+            di[char] = 1
+        else:
+            di[char] += 1
+    # print("Final char count : ", di)
+    return di
+
+ch_count = get_charcount(str1)
+print("Final char count : ", ch_count)
+```
+
+The output is:
+```
+Final char count :  {'a': 4, 'b': 4, 'c': 3}
+```
+
+## 7. Function categories 
+In python, the functions are usually of 4 types:
+1. Function with parameters, with return type
+2. Function with parameters, without return type
+3. Function without parameters, with return type
+4. Function without parameters, without return type
+
+Let's look at the sum functionality for the 4 different categories:
+1. Function with parameters, with return type
+```
+num1 = 10
+num2 = 20
+
+def sum(n1, n2):
+    res = n1 + n2
+    return res
+
+print("Addition is : ", sum(num1, num2))  
+```
+
+The output is:
+```
+Addition is :  30
+```
+
+2. Function with parameters, without return type
+```
+num1 = 10
+num2 = 20
+
+def sum(n1, n2):
+    res = n1 + n2
+    print("Addition is : ", res)
+
+sum(num1, num2)
+print("Second cat : ", sum(num1, num2))
+```
+
+The output is:
+```
+Addition is :  30
+Addition is :  30
+Second cat :  None
+```
+
+3. Function without parameters, with return type
+```
+def sum():
+    n1 = 10
+    n2 = 20
+    res = n1 + n2
+    return res
+
+output = sum()
+print("Addition is : ", output)
+```
+
+The output is:
+```
+Addition is: 30
+```
+
+4. Function without parameters, without return type
+```
+def sum():
+    n1 = 10
+    n2 = 20
+    res = n1 + n2
+    print("Addition is : ", res)
+
+sum()
+print("Cat 4 : ", sum())
+```
+
+Output is:
+```
+Addition is :  30
+Addition is :  30
+Cat 4 :  None
+```
+
+## 8. Passing arguments in a function
+There are 3 ways of passing arguments in a function:
+1. Positional Arguments (Required arguments)
+2. Default Arguments
+3. Keyword Arguments (Named arguments)
+
+1. Positional Arguments (Required arguments)
+```
+def sum(n1, n2, n3):
+    print("In sum method : with vals :", n1, n2, n3)
+    res = n1 + n2 + n3
+    print("Sum is : ", res)
+
+sum(10, 20, 30)
+```
+
+Output is:
+```
+In sum method : with vals : 10 20 30
+Sum is :  60
+```
+
+Causes of TypeError:
+1. sum(10, 20)            # TypeError: sum() missing 1 required positional argument: 'n3'3#
+2. sum(10, 20, 30, 40)    # TypeError: sum() takes 3 positional arguments but 4 were given
+
+
+
+2. Default Arguments
+```
+def sum(n1, n2, n3 = 1000):   # int float bool str  list tuple dict set
+    res = n1 + n2 + n3
+    print("Sum is : ", res)
+```
+
+**Scenarios:**
+sum(10)          # # sum() missing 1 required positional argument: 'n2'
+sum(10, 20)      # n3 = 1000
+sum(10, 20, 30)  # n3 = 1000 will be overriden with 30
+
+The output is:
+```
+Sum is :  1030
+Sum is :  60
+```
+
+## Function Overloading:
+When a function can be called in minimum two or more ways (based on the number of arguments)
+
+Example:
+```
+def sum(n1, n2=500, n3=1000):
+    res = n1 + n2 + n3
+    print("Result : ", res)
+
+# sum()
+sum(10)
+sum(150, 250)
+sum(150, 250, 350)
+# print("Zero argument    :", sum())
+print("One argument     :", sum(10))
+print("Two argument     :", sum(10, 20))
+print("Three argument   :", sum(10, 20, 30))
+#print("Extra arguments  :",sum(10,20,30,40))
+```
+
+The output will be:
+```
+Result :  1510
+Result :  1400
+Result :  750
+Result :  1510
+One argument     : None
+Result :  1030
+Two argument     : None
+Result :  60
+Three argument   : None
+```
+
+Example 2:
+```
+def sum(n1 = 100, n2 = 500, n3 = 1000):
+    res = n1 + n2 + n3
+    return res
+
+print("Zero argument    :", sum())
+print("One argument     :", sum(10))
+print("Two argument     :", sum(10, 20))
+print("Three argument   :", sum(10, 20, 30))
+```
+
+The output is:
+```
+Zero argument    : 1600
+One argument     : 1510
+Two argument     : 1030
+Three argument   : 60
+```
+
+3. Keyword Arguments (Named arguments)
+
+Usecase 1 : For code readability while calling function
+Usecase 2 : If we don't want to maintain order while passing arguments
+Usecase3 : If we want to pass argument only for specific parameter
+
+```
+def sum(n1=2000, n2, n3=1000):
+    res = n1 + n2 + n3
+    print("Sum is : ",res)
+```
+
+The output is:
+```
+SyntaxError: non-default argument follows default argument
+```
+
+Usecase 1 : For code readability while calling function
+
+```
+def get_order_info(mobile, ref_no, order_no, quantity, price):
+    print("Order details :")
+    print(order_no, ref_no, quantity, price, mobile)
+
+get_order_info(mobile=8975435643,
+               ref_no=9865432132,
+               order_no=123,
+               quantity=40,
+               price=65876,
+               )
+```
+
+The output is:
+```
+Order details :
+123 9865432132 40 65876 8975435643
+```
+
+Usecase 2 : If we don't want to maintain order while passing arguments
+```
+def sum(n1, n2, n3):
+    res = n1 + n2 + n3
+    print("Sum1 is : ", res)
+
+sum(10, 20, 30)           # 1.Positional/Required
+sum(n1=10, n2=20, n3=30)  # UC1: code readability
+sum(n2=20, n1=30, n3=10)  # UC2: don't want to maintain order
+sum(n3=20, n1=30, n2=10)  # UC2: don't want to maintain order
+```
+
+The output is:
+```
+Sum1 is :  60
+Sum1 is :  60
+Sum1 is :  60
+Sum1 is :  60
+```
+
+Usecase3 : If we want to pass argument only for specific parameter
+```
+def feedback(rating=10, comments=None):
+    print(rating, comments)
+```
+
+The output is:
+```
+10 None
+Feedback :  None
+7 None
+Feedback :  None
+10 Good
+Feedback :  None
+1 Bad
+Feedback :  None
+1 Bad
+Feedback :  None
+1 Bad
+Feedback :  None
+```
 
