@@ -301,6 +301,70 @@ These examples illustrate how an if-else statement allows you to make decisions 
 
 ## 8. Implement 5 examples which covers all topics if elif else for while break/continue/pass
 
+Certainly! Here are five examples that cover various topics including if/elif/else statements, for and while loops, and the use of break, continue, and pass statements:
+
+Example 1: if/elif/else statement
+```python
+num = 10
+
+if num < 0:
+    print("Number is negative")
+elif num == 0:
+    print("Number is zero")
+else:
+    print("Number is positive")
+```
+
+Example 2: for loop with break statement
+```python
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+for num in numbers:
+    if num == 7:
+        break
+    print(num)
+```
+
+Example 3: while loop with continue statement
+```python
+count = 0
+
+while count < 5:
+    count += 1
+    if count == 3:
+        continue
+    print(count)
+```
+
+Example 4: pass statement
+```python
+def my_function():
+    pass
+
+# The function doesn't do anything yet
+# We can implement the functionality later
+```
+
+Example 5: Nested if statements within a loop
+```python
+students = [
+    {"name": "Alice", "age": 20},
+    {"name": "Bob", "age": 22},
+    {"name": "Charlie", "age": 19},
+    {"name": "David", "age": 21}
+]
+
+for student in students:
+    if student["age"] < 20:
+        print(student["name"], "is underage")
+    elif student["age"] >= 20 and student["age"] < 21:
+        print(student["name"], "is of legal age, but not 21 yet")
+    else:
+        print(student["name"], "is 21 or older")
+```
+
+These examples demonstrate the use of if/elif/else statements to make decisions based on conditions, for and while loops for iteration, break and continue statements to control the flow of the loop, and the pass statement to create a placeholder without any functionality.
+
 ## 9. What is entry control loop and exit control loop?
 What is an entry control loop and an exit control loop
 
