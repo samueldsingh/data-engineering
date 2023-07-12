@@ -416,8 +416,11 @@ Cat 4 :  None
 
 ## 8. Passing arguments in a function
 There are 3 ways of passing arguments in a function:
+
 1. Positional Arguments (Required arguments)
+
 2. Default Arguments
+
 3. Keyword Arguments (Named arguments)
 
 1. Positional Arguments (Required arguments)
@@ -516,8 +519,10 @@ Three argument   : 60
 3. Keyword Arguments (Named arguments)
 
 Usecase 1 : For code readability while calling function
+
 Usecase 2 : If we don't want to maintain order while passing arguments
-Usecase3 : If we want to pass argument only for specific parameter
+
+Usecase 3 : If we want to pass argument only for specific parameter
 
 ```
 def sum(n1=2000, n2, n3=1000):
@@ -530,7 +535,7 @@ The output is:
 SyntaxError: non-default argument follows default argument
 ```
 
-Usecase 1 : For code readability while calling function
+**Usecase 1 : For code readability while calling function**
 
 ```
 def get_order_info(mobile, ref_no, order_no, quantity, price):
@@ -551,7 +556,7 @@ Order details :
 123 9865432132 40 65876 8975435643
 ```
 
-Usecase 2 : If we don't want to maintain order while passing arguments
+**Usecase 2 : If we don't want to maintain order while passing arguments**
 ```
 def sum(n1, n2, n3):
     res = n1 + n2 + n3
@@ -571,10 +576,17 @@ Sum1 is :  60
 Sum1 is :  60
 ```
 
-Usecase3 : If we want to pass argument only for specific parameter
+**Usecase 3 : If we want to pass argument only for specific parameter**
 ```
 def feedback(rating=10, comments=None):
     print(rating, comments)
+
+print("Feedback : ", feedback())
+print("Feedback : ", feedback(7))
+print("Feedback : ", feedback(comments='Good'))  # Keyword Arguments
+print("Feedback : ", feedback(1, "Bad"))
+print("Feedback : ", feedback(rating=1, comments="Bad"))
+print("Feedback : ", feedback(comments="Bad", rating=1))
 ```
 
 The output is:
