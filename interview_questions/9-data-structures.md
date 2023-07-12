@@ -268,7 +268,9 @@ These built-in data structures in Python are versatile and can be combined or ne
 Understanding data structures is crucial for efficient programming, as the choice of data structure impacts the performance and efficiency of algorithms and data manipulation tasks. By selecting the appropriate data structure, you can optimize operations such as searching, sorting, and accessing data in your programs.
 
 ## 9. Generic functions in Python.
-In Python, generic functions, also known as generic programming or generic functions, refer to a programming paradigm that allows functions to operate on different types of data in a uniform and reusable manner. Generic functions provide a way to write code that can handle multiple data types without explicitly specifying the type for each operation. This enhances code reusability and flexibility.
+- Generic functions allows functions to operate on different types of data in a uniform and reusable manner. 
+- Generic functions provide a way to write code that can handle multiple data types without explicitly specifying the type for each operation. 
+- This enhances code reusability and flexibility.
 
 Python does not have built-in support for generic functions like some other programming languages (e.g., C++ with templates or Java with generics). However, Python provides several mechanisms to achieve similar functionality. Here are a few approaches to implementing generic functions in Python:
 
