@@ -442,8 +442,8 @@ Sum is :  60
 ```
 
 Causes of TypeError:
-1. sum(10, 20)            # TypeError: sum() missing 1 required positional argument: 'n3'3#
-2. sum(10, 20, 30, 40)    # TypeError: sum() takes 3 positional arguments but 4 were given
+1. sum(10, 20)            `# TypeError: sum() missing 1 required positional argument: 'n3'3#`
+2. sum(10, 20, 30, 40)    `# TypeError: sum() takes 3 positional arguments but 4 were given`
 
 
 
