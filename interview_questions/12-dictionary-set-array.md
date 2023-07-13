@@ -135,7 +135,7 @@ Dictionary delete3:  {'sal': 1000}
 Generally, dictionaries in Python use more memory compared to other data structures like lists or tuples due to their flexible and dynamic nature. 
 
 Dictionaries are implemented as hash table. The hash table consists of an array of buckets, and each bucket stores multiple key-value pairs:
-1. When key-values are added, calculate hash value of dict key.
+1. When key-values are added, calculate hash value (integer representing the object) of dict key.
 2. Check if bucket exists or not based on hashkey.
 3. If bukcet exists, value is stored in the same or else new bucket is created.
 4. If multiple key values have the same hash value, chaining which involves creating a linked list of key-value pairs is done in the same bucket.
