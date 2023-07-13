@@ -426,6 +426,13 @@ There are 3 ways of passing arguments in a function:
 
 
 **1. Positional Arguments (Required arguments)**
+
+Positional arguments are passed to a function based on their position or order.
+
+The function receives the arguments in the same order they are passed when calling the function.
+
+The number of positional arguments in the function call must match the number of parameters in the function definition.
+
 ```
 def sum(n1, n2, n3):
     print("In sum method : with vals :", n1, n2, n3)
@@ -519,6 +526,8 @@ Three argument   : 60
 ```
 
 **3. Keyword Arguments (Named arguments)**
+
+Keyword arguments are passed to a function using the name of the parameter and the corresponding value. The order of keyword arguments doesn't matter as long as the parameter names are specified. Keyword arguments provide more flexibility and allow you to skip positional arguments or change their order.
 
 Usecase 1 : For code readability while calling function
 
