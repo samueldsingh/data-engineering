@@ -423,7 +423,9 @@ There are 3 ways of passing arguments in a function:
 
 3. Keyword Arguments (Named arguments)
 
-1. Positional Arguments (Required arguments)
+
+
+**1. Positional Arguments (Required arguments)**
 ```
 def sum(n1, n2, n3):
     print("In sum method : with vals :", n1, n2, n3)
@@ -445,7 +447,7 @@ Causes of TypeError:
 
 
 
-2. Default Arguments
+**2. Default Arguments**
 ```
 def sum(n1, n2, n3 = 1000):   # int float bool str  list tuple dict set
     res = n1 + n2 + n3
@@ -463,7 +465,7 @@ Sum is :  1030
 Sum is :  60
 ```
 
-## Function Overloading:
+**Function Overloading:**
 When a function can be called in minimum two or more ways (based on the number of arguments)
 
 Example:
@@ -516,7 +518,7 @@ Two argument     : 1030
 Three argument   : 60
 ```
 
-3. Keyword Arguments (Named arguments)
+**3. Keyword Arguments (Named arguments)**
 
 Usecase 1 : For code readability while calling function
 
@@ -604,4 +606,300 @@ Feedback :  None
 1 Bad
 Feedback :  None
 ```
+
+## Global and local variables
+
+In programming, global and local variables determine the scope and visibility of variables within a program. Here's an explanation of global and local variables with examples:
+
+1. Global Variables:
+   - Global variables are declared outside of any function or block and can be accessed throughout the program.
+   - They have global scope, meaning they are visible to all functions and blocks within the program.
+   - Global variables can be modified and accessed from any part of the program.
+   - Example:
+
+     ```python
+     # Global variable
+     global_var = 10
+
+     def my_function():
+         # Accessing global variable
+         print(global_var)
+
+     my_function()  # Output: 10
+     ```
+
+     In this example, `global_var` is a global variable defined outside of any function. It can be accessed from within the `my_function()` and its value is printed.
+
+2. Local Variables:
+   - Local variables are declared within a function or block and have local scope, meaning they are only visible within that specific function or block.
+   - They are created when the function or block is entered and destroyed when it is exited.
+   - Local variables cannot be accessed outside of the function or block in which they are defined.
+   - Example:
+
+     ```python
+     def my_function():
+         # Local variable
+         local_var = 20
+         print(local_var)
+
+     my_function()  # Output: 20
+     # Trying to access local_var here would result in an error
+     ```
+
+     In this example, `local_var` is a local variable defined within the `my_function()`. It can be accessed and printed from within the function, but any attempt to access it outside of the function would result in an error.
+
+It's important to note that global and local variables can have the same name, but they are distinct and separate entities. If a local variable has the same name as a global variable, the local variable takes precedence within its scope, and any modifications or references to that variable will affect the local instance, not the global one.
+
+```
+message = 'Hello World'              # Global
+def get_str_len(msg):                # msg -> local scope
+    print("String is:", message)     # Global variable can be accessed from anywhere
+    le = 0                           # le -> Local scope
+    for char in msg:
+        le += 1
+    return le
+```
+
+The output is:
+```
+String is: Hello World
+Length of given string: 11
+```
+
+Another example:
+
+```
+val = int(input("Enter value: "))
+def find_square(num):
+    res = num ** 2
+    return res
+out = find_square(val)
+print("Square of value:", out)
+```
+
+The output is:
+
+```
+Enter value: 7
+Square of value: 49
+```
+
+## Explain anonymous functions with example:
+
+Anonymous functions, also known as lambda functions, are functions without a defined name. They are often used when you need a short, one-line function for a specific task. Here's an explanation of anonymous functions with an example:
+
+In Python, you can define an anonymous function using the `lambda` keyword. The general syntax for a lambda function is `lambda arguments: expression`. The lambda function takes in one or more arguments, performs a computation using the expression, and returns the result.
+
+Example:
+
+```python
+# Normal function to add two numbers
+def add_numbers(x, y):
+    return x + y
+
+result = add_numbers(3, 5)
+print(result)  # Output: 8
+
+# Equivalent anonymous/lambda function to add two numbers
+add_lambda = lambda x, y: x + y
+
+result = add_lambda(3, 5)
+print(result)  # Output: 8
+```
+
+In this example, we have a normal function `add_numbers(x, y)` that adds two numbers `x` and `y` and returns the result. The equivalent anonymous/lambda function `add_lambda` performs the same addition operation.
+
+The lambda function is defined using the `lambda` keyword, followed by the arguments `x` and `y`, a colon `:`, and the expression `x + y`. The lambda function is assigned to the variable `add_lambda`.
+
+Both the normal function `add_numbers` and the lambda function `add_lambda` can be called with the same arguments `(3, 5)`, and they produce the same output of `8`.
+
+Lambda functions are commonly used when you need a simple, concise function definition for one-time use, such as in sorting, filtering, or mapping operations.
+
+## Explain lambda, map, filter and reduce functions
+
+Lambda functions, `map()`, `filter()`, and `reduce()` are powerful built-in functions in Python for working with iterables. Here's an explanation of each with examples:
+
+Lambda Functions (Anonymous Functions):
+- Lambda functions are anonymous functions without a defined name.
+- They are defined using the `lambda` keyword and are typically used for short, one-line functions.
+- Lambda functions can be used inline without the need for a separate function definition.
+- Example:
+
+```python
+# Square using lambda function
+square = lambda x: x ** 2
+result = square(5)
+print(result)  # Output: 25
+```
+
+Map Function:
+- The `map()` function applies a given function to each element of an iterable and returns an iterator of the results.
+- It takes two arguments: the function to apply and the iterable object.
+- The result is an iterator, which can be converted into a list or other desired format.
+- Example:
+
+```python
+numbers = [1, 2, 3, 4, 5]
+
+# Square using map()
+squared = map(lambda x: x ** 2, numbers)
+print(list(squared))  # Output: [1, 4, 9, 16, 25]
+```
+
+Filter Function:
+- The `filter()` function constructs a new iterator by selecting elements from an iterable that satisfy a given condition (expressed as a lambda function or a regular function).
+- It takes two arguments: the filtering function and the iterable object.
+- The result is an iterator containing only the elements that passed the filtering condition.
+- Example:
+
+```python
+numbers = [1, 2, 3, 4, 5]
+
+# Filter even numbers using filter()
+even_numbers = filter(lambda x: x % 2 == 0, numbers)
+print(list(even_numbers))  # Output: [2, 4]
+```
+
+Reduce Function:
+- The `reduce()` function applies a given function to the first two elements of an iterable, then to the result and the next element, and so on, reducing the iterable to a single value.
+- It requires the `functools` module to be imported.
+- Example:
+
+```python
+from functools import reduce
+
+numbers = [1, 2, 3, 4, 5]
+
+# Summing all numbers using reduce()
+sum_all = reduce(lambda x, y: x + y, numbers)
+print(sum_all)  # Output: 15
+```
+
+In this example, `reduce()` is used to apply the lambda function `lambda x, y: x + y` to the list of numbers. The function sums the elements pairwise until a single value is obtained.
+
+These functions (`map()`, `filter()`, and `reduce()`) are versatile tools for processing data in Python, and using lambda functions enables concise and flexible functional programming approaches.
+
+**Example of Lambda with map:**
+
+```
+li = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+final_list = list(map(lambda x: x ** 2, li))
+print("Using map: ", final_list)
+```
+
+The output is:
+```
+Using map:  [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+
+**Example of Lambda with filter:**
+```
+li = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61]
+
+def filter_list(li1):
+    li2 = []
+    for val in li1:
+        if val%2 == 0:
+            li2.append(val)
+    return li2
+print("Even numbers1: ", filter_list(li))
+
+
+print("Even numbers2: ", list(filter(lambda x: (x % 2 == 0), li)))
+
+ev_list = list(filter(lambda x: (x % 2 == 0), li))
+print("Even numbers3: ", ev_list)
+```
+
+The output is:
+```
+Even numbers1:  [22, 54, 62]
+Even numbers2:  [22, 54, 62]
+Even numbers3:  [22, 54, 62]
+```
+
+**Example of lambda with reduce:**
+
+```
+from functools import reduce
+li = [5, 8, 10, 20, 50, 100]
+sum = reduce((lambda x, y: x + y), li)
+print("Reduce data ", sum)
+```
+
+The output is:
+```
+Using map:  [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+Reduce data  193
+```
+
+The LEGB rule is an acronym that stands for Local, Enclosing, Global, and Built-in. It describes the order in which Python searches for variables in different scopes. Here's an explanation of each scope:
+
+1. Local (L) Scope:
+   - Variables defined within a function have local scope.
+   - They are only accessible within the function where they are defined.
+   - Example:
+
+     ```python
+     def my_function():
+         local_variable = 10
+         print(local_variable)
+
+     my_function()  # Output: 10
+     # Trying to access local_variable here would result in an error
+     ```
+
+2. Enclosing (E) Scope:
+   - This scope applies to nested functions, where each nested function has access to its own local variables and variables from outer functions.
+   - Example:
+
+     ```python
+     def outer_function():
+         outer_variable = 10
+
+         def inner_function():
+             print(outer_variable)
+
+         inner_function()  # Output: 10
+
+     outer_function()
+     ```
+
+     In this example, the inner function `inner_function()` has access to the `outer_variable` defined in the outer function `outer_function()`.
+
+3. Global (G) Scope:
+   - Variables defined at the top-level of a module or declared as global inside a function have global scope.
+   - They are accessible from anywhere within the module.
+   - Example:
+
+     ```python
+     global_variable = 10
+
+     def my_function():
+         print(global_variable)
+
+     my_function()  # Output: 10
+     ```
+
+     In this example, `global_variable` is defined outside of any function, making it accessible within the `my_function()`.
+
+4. Built-in (B) Scope:
+   - This scope includes the built-in functions and modules available in Python by default, such as `print()`, `len()`, and `range()`.
+   - These functions are globally accessible without the need for an import statement.
+   - Example:
+
+     ```python
+     def my_function():
+         print(len("Hello"))
+
+     my_function()  # Output: 5
+     ```
+
+     In this example, `len()` is a built-in function that can be used directly without importing any module.
+
+Python follows the LEGB rule to resolve variable names. When a variable is referenced, Python searches for it in the local scope first, then in any enclosing scopes, followed by the global scope, and finally in the built-in scope.
+
+If a variable is found in the local scope, that value is used. If not found, Python moves to the next scope until the variable is found or if it reaches the built-in scope. If the variable is not found anywhere, a `NameError` will be raised.
 
