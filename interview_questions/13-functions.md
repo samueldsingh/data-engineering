@@ -732,7 +732,7 @@ result = square(5)
 print(result)  # Output: 25
 ```
 
-Map Function:
+**Map Function:**
 - The `map()` function applies a given function to each element of an iterable and returns an iterator of the results.
 - It takes two arguments: the function to apply and the iterable object.
 - The result is an iterator, which can be converted into a list or other desired format.
@@ -746,7 +746,16 @@ squared = map(lambda x: x ** 2, numbers)
 print(list(squared))  # Output: [1, 4, 9, 16, 25]
 ```
 
-Filter Function:
+**Another example of Lambda with map:**
+
+```
+li = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+final_list = list(map(lambda x: x ** 2, li))
+print("Using map: ", final_list)
+```
+
+**Filter Function:**
 - The `filter()` function constructs a new iterator by selecting elements from an iterable that satisfy a given condition (expressed as a lambda function or a regular function).
 - It takes two arguments: the filtering function and the iterable object.
 - The result is an iterator containing only the elements that passed the filtering condition.
@@ -760,41 +769,7 @@ even_numbers = filter(lambda x: x % 2 == 0, numbers)
 print(list(even_numbers))  # Output: [2, 4]
 ```
 
-Reduce Function:
-- The `reduce()` function applies a given function to the first two elements of an iterable, then to the result and the next element, and so on, reducing the iterable to a single value.
-- It requires the `functools` module to be imported.
-- Example:
-
-```python
-from functools import reduce
-
-numbers = [1, 2, 3, 4, 5]
-
-# Summing all numbers using reduce()
-sum_all = reduce(lambda x, y: x + y, numbers)
-print(sum_all)  # Output: 15
-```
-
-In this example, `reduce()` is used to apply the lambda function `lambda x, y: x + y` to the list of numbers. The function sums the elements pairwise until a single value is obtained.
-
-These functions (`map()`, `filter()`, and `reduce()`) are versatile tools for processing data in Python, and using lambda functions enables concise and flexible functional programming approaches.
-
-**Example of Lambda with map:**
-
-```
-li = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-final_list = list(map(lambda x: x ** 2, li))
-print("Using map: ", final_list)
-```
-
-The output is:
-```
-Using map:  [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-```
-
-
-**Example of Lambda with filter:**
+**Another example of Lambda with filter:**
 ```
 li = [5, 7, 22, 97, 54, 62, 77, 23, 73, 61]
 
@@ -820,7 +795,33 @@ Even numbers2:  [22, 54, 62]
 Even numbers3:  [22, 54, 62]
 ```
 
-**Example of lambda with reduce:**
+**Reduce Function:**
+- The `reduce()` function applies a given function to the first two elements of an iterable, then to the result and the next element, and so on, reducing the iterable to a single value.
+- It requires the `functools` module to be imported.
+- Example:
+
+```python
+from functools import reduce
+
+numbers = [1, 2, 3, 4, 5]
+
+# Summing all numbers using reduce()
+sum_all = reduce(lambda x, y: x + y, numbers)
+print(sum_all)  # Output: 15
+```
+
+In this example, `reduce()` is used to apply the lambda function `lambda x, y: x + y` to the list of numbers. The function sums the elements pairwise until a single value is obtained.
+
+These functions (`map()`, `filter()`, and `reduce()`) are versatile tools for processing data in Python, and using lambda functions enables concise and flexible functional programming approaches.
+
+
+
+The output is:
+```
+Using map:  [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+**Another example of lambda with reduce:**
 
 ```
 from functools import reduce
@@ -834,6 +835,9 @@ The output is:
 Using map:  [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 Reduce data  193
 ```
+
+
+## Explain the scope of variable using LEGB rule
 
 The LEGB rule is an acronym that stands for Local, Enclosing, Global, and Built-in. It describes the order in which Python searches for variables in different scopes. Here's an explanation of each scope:
 
