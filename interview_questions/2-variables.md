@@ -39,14 +39,19 @@ can be categorized into several types:
 - **Comments:** documentation or explanation
 
 ## 3. Garbage collection. How it works internally
-- Garbage collection is the process of automatically reclaiming memory that is no longer in use by the program.
-- It works by identifying and freeing up memory occupied by objects that are no longer reachable or referenced by the program.
-- The exact implementation of garbage collection can vary depending on the programming language and the runtime environment, but a general overview of how it works internally is:
-- **Marking:** The garbage collector starts by traversing through all live objects in the program's memory heap. It begins with a set of known root objects, such as global variables or references on the call stack. These root objects are considered live because they are reachable and actively used by the program. The garbage collector marks these objects as live.
-- **Tracing:** The garbage collector then follows references from the marked objects to other objects in the heap. It traverses through the object graph, visiting each referenced object and marking them as live. This process continues until all reachable objects have been marked.
-- **Sweep and Free:** Once the marking phase is complete, the garbage collector performs a sweep phase. It scans the entire heap and identifies objects that are not marked as live. These unmarked objects are considered garbage since they are no longer reachable. The garbage collector frees the memory occupied by these garbage objects, making it available for future allocation.
-- **Compaction (optional):** In some garbage collection implementations, a compaction phase may be performed after the sweep phase. This phase involves rearranging the live objects in memory to minimize fragmentation and optimize memory usage. It moves live objects closer together, creating a contiguous block of free memory.
-- **Repeat:** After the garbage collection cycle is complete, the program continues its execution, and the process may be repeated periodically or as needed to reclaim memory.
+Garbage collection in Python is an automatic memory management process that handles the deallocation and recycling of memory occupied by objects that are no longer in use. Python uses a combination of reference counting and a cycle detection algorithm called "mark and sweep" to perform garbage collection.
+
+1. Reference Counting: Python keeps track of the number of references to an object using a reference count. Each object has a reference count that is incremented when a new reference to the object is created and decremented when a reference is deleted or goes out of scope. When the reference count of an object reaches zero, meaning there are no more references to it, the object becomes eligible for garbage collection.
+
+2. Mark and Sweep Algorithm: In addition to reference counting, Python employs a garbage collection algorithm called "mark and sweep" to deal with objects involved in circular references or reference cycles. A reference cycle occurs when a group of objects refers to each other, forming a closed loop of references that cannot be reached by regular reference counting.
+
+The mark and sweep algorithm works in two phases:
+   - Mark Phase: The garbage collector starts from known root objects (e.g., global variables, objects in the call stack) and recursively traverses the object graph, marking all objects that are reachable. Reachable objects are marked as "in use."
+   - Sweep Phase: The garbage collector scans the entire memory heap, examining each object. Any objects that are not marked as "in use" during the mark phase are considered garbage and are freed from memory. The memory occupied by these garbage objects is returned to the memory allocator for reuse.
+
+Python's garbage collector runs automatically in the background and manages memory deallocation transparently. It detects and collects garbage objects periodically, triggered by thresholds such as the number of allocated objects or the amount of memory used.
+
+It's worth noting that Python's garbage collector is highly optimized and typically works efficiently without requiring manual intervention. However, in certain cases where dealing with large amounts of memory or specific resource management is necessary, Python provides tools like weak references and context managers to help manage resources explicitly.
 
 It's important to note that the specific algorithms and techniques used in garbage collection can vary. Some common approaches include reference counting, mark-and-sweep, and generational collection. Each approach has its own trade-offs in terms of efficiency, latency, and memory overhead. The choice of garbage collection algorithm depends on the programming language, runtime environment, and specific requirements of the application.
 
