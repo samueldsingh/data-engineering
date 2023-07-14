@@ -455,6 +455,7 @@ Causes of TypeError:
 
 
 **2. Default Arguments**
+
 Default arguments in functions allow you to specify a default value for a parameter if no argument is provided when the function is called. This means that the function can be called with fewer arguments than the number of parameters it has.
 
 ```
