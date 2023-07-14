@@ -465,8 +465,11 @@ def sum(n1, n2, n3 = 1000):   # int float bool str  list tuple dict set
 ```
 
 **Scenarios:**
+
 sum(10)          `# # sum() missing 1 required positional argument: 'n2'`
+
 sum(10, 20)      `# n3 = 1000`
+
 sum(10, 20, 30)  `# n3 = 1000 will be overriden with 30`
 
 The output is:
