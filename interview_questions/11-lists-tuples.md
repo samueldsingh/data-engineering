@@ -23,8 +23,6 @@ Accessing elements by index `(my_list[0])`, Slicing `(my_list[1:4])`, Concatenat
 
 ## 3. Characteristics(Properties) of List
 
-Lists are mutable, **ordered** (maintain the order of elements as they are inserted and allow indexing), allows duplicates, can store heterogeneous data types, Variable Length (items can be added or removed as needed), iterable, supports sequence operations, inbuilt methods and functions.
-
 Lists are a fundamental data structure in Python and have several characteristics that make them versatile and useful in various programming scenarios. Here are some key characteristics of lists in Python:
 
 1. **Mutable:** Lists are mutable, meaning you can modify their elements after they are created. You can add, remove, or change elements within a list.
