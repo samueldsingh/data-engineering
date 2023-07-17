@@ -272,7 +272,7 @@ In Python, generic functions are functions that can operate on different data ty
 
 Python does not have built-in support for generic functions in the way some other programming languages do (e.g., C++ templates or Java generics). Instead, Python relies on duck typing and dynamic typing to achieve similar functionality.
 
-With duck typing, functions are designed to work with any object that supports the required methods or attributes, rather than being explicitly tied to a particular type. This allows Python functions to handle different types seamlessly as long as the necessary operations are supported.
+With duck typing (Duck typing is a concept in programming languages, including Python, where the type or the class of an object is determined by its behavior rather than its explicit type or inheritance), functions are designed to work with any object that supports the required methods or attributes, rather than being explicitly tied to a particular type. This allows Python functions to handle different types seamlessly as long as the necessary operations are supported.
 
 For example, consider a function that adds two values:
 
