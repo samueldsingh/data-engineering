@@ -9,7 +9,7 @@ OLAP (Online Analytical Processing):
 OLAP is a technology used for performing complex analysis on large volumes of data. It focuses on supporting business intelligence and decision-making 
 processes. OLAP databases are designed for efficient querying and analysis of data from multiple dimensions, such as time, geography, product, and 
 customer. These databases are typically optimized for read-intensive operations and provide features like multidimensional data modeling, aggregations, 
-and advanced analytics capabilities. OLAP systems are commonly used for generating reports, performing data mining, and supporting ad-hoc analysis.
+and advanced analytics capabilities. OLAP systems are commonly used for generating reports, performing data mining, and supporting ad-hoc analysis. Examples include Snowflake, Microsoft SQL Server Analysis Services (SSAS), Amazon Redshift, Google BigQuery
 
 OLTP (Online Transaction Processing):
 OLTP refers to the management of transactional or operational data in real-time. It deals with the day-to-day transactional operations of an organization, 
