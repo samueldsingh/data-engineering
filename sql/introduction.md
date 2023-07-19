@@ -83,3 +83,103 @@ Isolation ensures that concurrent transactions are executed independently of eac
 Durability guarantees that once a transaction is committed, its effects are permanent and will survive any subsequent system failures, such as power outages or crashes. The changes made by a committed transaction are stored in non-volatile memory (usually disk storage) and remain in the database even in the event of a system failure. This property ensures that data is not lost, providing a high level of reliability and recoverability.
 
 The ACID properties are crucial for maintaining data integrity, consistency, and reliability in database management systems. These properties ensure that transactions are executed reliably and that the database remains in a consistent and accurate state even in the presence of failures or concurrent access by multiple users.
+
+
+## 4. Explain the differences betweeen database and a schema
+Database and schema are related concepts in the field of database management, but they refer to different aspects of organizing and managing data:
+
+**1. Database:**
+A database is a collection of related data that is organized and structured to be stored, accessed, and managed efficiently. It can be thought of as a container that holds tables, views, procedures, and other objects that represent data and define its relationships. Databases are designed to manage large volumes of data and provide a structured way to store, retrieve, update, and delete information.
+
+In the context of database management systems (DBMS), a database is a physical or logical container that stores data in files on disk or in-memory structures. Databases can be relational (RDBMS), NoSQL, graph-based, or other types, each offering specific data storage and retrieval mechanisms suited to different use cases.
+
+For example, you might have a database named "CompanyDB" that contains tables for employees, departments, and projects, all related to the operations of a company.
+
+**2. Schema:**
+A schema, on the other hand, defines the structure and organization of the database. It is a *logical blueprint* that outlines the layout of the database, including the tables, their columns, data types, relationships, and constraints. The schema provides a clear definition of how data is stored and how different pieces of information are related to each other.
+
+In a relational database management system (RDBMS), a schema is a collection of database objects, including tables, views, indexes, stored procedures, and other elements that define the database structure. A schema can be considered as a namespace that groups related database objects together.
+
+For example, within the "CompanyDB" database, you might have different schemas like "HumanResources" and "Finance," each containing tables and views related to their respective departments.
+
+In summary, a database is a container that holds related data, while a schema is a logical blueprint that defines the structure and organization of the database. The schema provides a way to organize and categorize the database objects, making it easier to manage and maintain the data within the database.
+
+
+## 5. Explain DDL, DML, DCL, TCL and DQL.
+
+In SQL (Structured Query Language), different types of commands are used to interact with databases and manage data. These commands are categorized into four main groups based on their functionality: DDL, DML, DCL, and TCL. Additionally, there is a subset called DQL, which is not an official category but is commonly used to refer to commands used for querying data. Let's explain each category:
+
+**1. DDL (Data Definition Language):**
+DDL commands are used to define and manage the structure of the database. They are responsible for creating, altering, and dropping database objects like tables, views, indexes, and schemas. DDL commands do not manipulate the data itself but rather modify the database's structure and schema.
+
+Common DDL commands include:
+- `CREATE`: Used to create database objects like tables, views, indexes, etc.
+- `ALTER`: Used to modify the structure of existing database objects.
+- `DROP`: Used to delete database objects from the database.
+- `TRUNCATE`: Used to remove all data from a table (similar to `DELETE`, but faster).
+
+Example of a DDL command:
+```sql
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT
+);
+```
+
+**2. DML (Data Manipulation Language):**
+DML commands are used to manipulate data within the database. They allow you to insert, update, and delete data in the database tables.
+
+Common DML commands include:
+- `INSERT`: Used to add new records into a table.
+- `UPDATE`: Used to modify existing records in a table.
+- `DELETE`: Used to remove records from a table.
+
+Example of a DML command:
+```sql
+INSERT INTO students (id, name, age)
+VALUES (1, 'John Doe', 25);
+```
+
+**3. DCL (Data Control Language):**
+DCL commands are used to manage the access and permissions of database objects. They control the authorization of users and define their privileges on the database.
+
+Common DCL commands include:
+- `GRANT`: Used to give users specific privileges on database objects.
+- `REVOKE`: Used to revoke previously granted privileges.
+
+Example of a DCL command:
+```sql
+GRANT SELECT, INSERT ON students TO user1;
+```
+
+**4. TCL (Transaction Control Language):**
+TCL commands are used to manage transactions within the database. A transaction is a sequence of one or more database operations that need to be executed as a single unit of work, ensuring data consistency and integrity.
+
+Common TCL commands include:
+- `COMMIT`: Used to permanently save changes made by a transaction.
+- `ROLLBACK`: Used to undo the changes made by a transaction and revert the database to its previous state.
+- `SAVEPOINT`: Used to set a savepoint within a transaction, allowing partial rollback.
+
+Example of a TCL command:
+```sql
+BEGIN; -- Start a transaction
+UPDATE employees SET salary = salary + 500 WHERE department = 'HR';
+SAVEPOINT sp1; -- Set a savepoint
+UPDATE employees SET salary = salary + 300 WHERE department = 'Finance';
+ROLLBACK TO sp1; -- Rollback to the savepoint
+COMMIT; -- End the transaction and save changes
+```
+
+**5. DQL (Data Query Language):**
+DQL commands are used to query and retrieve data from the database. Although not an official SQL category, DQL is commonly used to refer to commands used for data retrieval.
+
+Common DQL commands include:
+- `SELECT`: Used to retrieve data from one or more database tables.
+
+Example of a DQL command:
+```sql
+SELECT id, name, age FROM students WHERE age > 20;
+```
+
+In summary, SQL commands are categorized into DDL, DML, DCL, and TCL based on their respective purposes: defining and managing the database structure, manipulating data, controlling user access and permissions, and managing transactions. Additionally, DQL commands are used to query and retrieve data from the database. Understanding these categories is essential for effectively managing databases and performing various data operations in SQL.
