@@ -1,6 +1,6 @@
 # Introduction
 
-## What is DBMS and RDBMS?
+## 1. What is DBMS and RDBMS?
 
 DBMS (Database Management System):
 
@@ -38,7 +38,7 @@ Key characteristics of RDBMS:
 
 In summary, both DBMS and RDBMS are software systems used to manage data, but RDBMS is a specific type of DBMS that follows the relational model, providing structured data organization and enforcing data relationships through keys and integrity constraints.
 
-## Examples of DBMS and RDBMS:
+## 2. Examples of DBMS and RDBMS:
 
 Here are examples of both DBMS and RDBMS:
 
@@ -65,3 +65,21 @@ RDBMS (Relational Database Management System):
 6. IBM Db2: Db2 is a family of data management products developed by IBM. It is known for its integration with IBM's mainframe systems and is used in enterprise-level applications.
 
 These examples represent a small subset of the many database management systems available, each with its own strengths and best-suited use cases. The choice of a particular DBMS or RDBMS depends on the specific requirements of the application, the complexity of data, scalability needs, and other factors.
+
+
+## 3. Explain what are ACID properties
+ACID properties are a set of four key characteristics that ensure the reliability and consistency of transactions in a database system. These properties are essential for maintaining data integrity and providing a robust environment for data management. The term "ACID" stands for Atomicity, Consistency, Isolation, and Durability. Let's explore each of these properties in detail:
+
+1. Atomicity:
+Atomicity ensures that a transaction is treated as a single, indivisible unit of work. It means that either all the operations within a transaction are successfully completed, or none of them are. If any part of the transaction fails, the entire transaction is rolled back, and the database is left unchanged. This property ensures that the database remains in a consistent state, and partial updates are not allowed.
+
+2. Consistency:
+Consistency guarantees that a transaction brings the database from one consistent state to another consistent state. In other words, the database must adhere to a set of predefined rules or constraints before and after a transaction. If a transaction violates any of these rules, the entire transaction is rolled back, and the database remains unchanged. Consistency ensures that data remains accurate and valid throughout the transaction.
+
+3. Isolation:
+Isolation ensures that concurrent transactions are executed independently of each other. It prevents interference between transactions and ensures that each transaction sees the database in a consistent state. Transactions are executed as if they were the only ones running on the system, even when multiple transactions are happening simultaneously. This property prevents issues like data corruption and ensures data integrity even in a multi-user environment.
+
+4. Durability:
+Durability guarantees that once a transaction is committed, its effects are permanent and will survive any subsequent system failures, such as power outages or crashes. The changes made by a committed transaction are stored in non-volatile memory (usually disk storage) and remain in the database even in the event of a system failure. This property ensures that data is not lost, providing a high level of reliability and recoverability.
+
+The ACID properties are crucial for maintaining data integrity, consistency, and reliability in database management systems. These properties ensure that transactions are executed reliably and that the database remains in a consistent and accurate state even in the presence of failures or concurrent access by multiple users.
