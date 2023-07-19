@@ -118,14 +118,62 @@ Common DDL commands include:
 - `DROP`: Used to delete database objects from the database.
 - `TRUNCATE`: Used to remove all data from a table (similar to `DELETE`, but faster).
 
-Example of a DDL command:
-```sql
-CREATE TABLE students (
-    id INT PRIMARY KEY,
-    name VARCHAR(50),
-    age INT
+**Examples:**
+
+**CREATE**
+**a. Create a database**
+
+```
+CREATE DATABASE SampleDB;
+```
+
+Double-click the db name in the SCHEMAS list in the sidebar to set the db to default db.
+
+**b. Insert tables**
+
+```
+CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    department VARCHAR(100),
+    salary DECIMAL(10, 2)
 );
 ```
+
+**c. Create a view:**
+
+In MySQL, a view is a virtual table that is derived from the result of a SELECT query. It does not store data itself but represents a stored query that can be used as if it were a real table. Views allow you to simplify complex queries, encapsulate logic, and provide an additional layer of security by restricting direct access to underlying tables. Some key points about views in MySQL are:
+
+Definition (query using  SELECT, INSERT, UPDATE, and DELETE statements), simplify complex queries (views once created for complex query stays unaffected), data abstraction (underlying complexity of the tables are hidden), security (limit users' access to specific columns or rows), Read-Only and Updatable Views (can be either read-only or updatable), performance (do not store data; they are merely stored queries.slight performance overhead).
+
+```
+CREATE VIEW EmployeeDetails AS
+SELECT emp_id, first_name, last_name, department, salary
+FROM Employees
+WHERE department = 'HR';
+```
+
+**Explain DESC <TABLE_NAME> and USE <schema_name>**
+The MySQL command `DESC <TABLE_NAME>;` is used to retrieve information about the columns (field names) and their data types of a specific table in the currently selected database. The `USE <schema_name>;` command is used to select or switch to a particular database or schema. 
+
+```
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| emp_id      | int(11)      | NO   | PRI | NULL    |       |
+| first_name  | varchar(50)  | YES  |     | NULL    |       |
+| last_name   | varchar(50)  | YES  |     | NULL    |       |
+| department  | varchar(100) | YES  |     | NULL    |       |
+| salary      | decimal(10,2)| YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+
+```
+
+
+
+**ALTER**
+
 
 **2. DML (Data Manipulation Language):**
 DML commands are used to manipulate data within the database. They allow you to insert, update, and delete data in the database tables.
@@ -183,3 +231,6 @@ SELECT id, name, age FROM students WHERE age > 20;
 ```
 
 In summary, SQL commands are categorized into DDL, DML, DCL, and TCL based on their respective purposes: defining and managing the database structure, manipulating data, controlling user access and permissions, and managing transactions. Additionally, DQL commands are used to query and retrieve data from the database. Understanding these categories is essential for effectively managing databases and performing various data operations in SQL.
+
+```MySQL password : sam@1234```
+
