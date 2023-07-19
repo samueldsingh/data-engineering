@@ -121,6 +121,12 @@ Common DDL commands include:
 **Examples:**
 
 **CREATE**
+
+Use **CREATE** command to perform the following operations:
+a. CREATE a DATABASE - CREATE DATABASE <DB_NAME>;
+b. CREATE a TABLE - CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>));
+c. CREATE a VIEW - CREATE {OR REPLACE} VIEW <VIEW_NAME> AS <SELECT STATMENT>;
+
 **a. Create a database**
 
 ```
@@ -155,7 +161,13 @@ WHERE department = 'HR';
 ```
 
 **Explain DESC <TABLE_NAME> and USE <schema_name>**
+
 The MySQL command `DESC <TABLE_NAME>;` is used to retrieve information about the columns (field names) and their data types of a specific table in the currently selected database. The `USE <schema_name>;` command is used to select or switch to a particular database or schema. 
+
+Example:
+```
+DESC employeedetails
+```
 
 ```
 +-------------+--------------+------+-----+---------+-------+
@@ -170,10 +182,175 @@ The MySQL command `DESC <TABLE_NAME>;` is used to retrieve information about the
 
 ```
 
+The `DESC employees`; command provides information about each column in the `employees` table. It shows the column name, data type, whether the column allows NULL values, if the column is part of the primary key (PRI), default value, and any extra information.
 
+
+The `USE company_db`; command selects the `company_db` database, and all subsequent queries will be executed within this database until another database is selected.
+
+In summary, the DESC <TABLE_NAME>; command is used to describe the structure of a specific table, and the USE <schema_name>; command is used to switch to a particular database before executing queries on its tables.
 
 **ALTER**
 
+*-- ALTER USED TO ADD/MODIFY/DROP INDEXES/CONSTARINTS.*
+
+In SQL, the `ALTER` command is used to modify the structure of an existing database object, such as a table, view, or database itself. It allows you to add, modify, or delete columns, change data types, rename objects, and perform various other changes to adapt the database schema to evolving requirements.
+
+The `ALTER` command is versatile and provides several subcommands that are specific to the type of object being altered. The main subcommands used with `ALTER` are:
+
+a. `ALTER TABLE`: Used to modify the structure of a table.
+b. `ALTER VIEW`: Used to modify the definition of a view.
+c. `ALTER DATABASE`: Used to modify database-level properties and settings.
+
+Here are some common uses of the `ALTER` command for each subcommand:
+
+a. `ALTER TABLE`:
+
+   - Adding a new column:
+     ```sql
+     ALTER TABLE table_name
+     ADD column_name datatype;
+     ```
+
+   - Modifying a column's data type:
+     ```sql
+     ALTER TABLE table_name
+     MODIFY column_name new_datatype;
+     ```
+
+   - Renaming a column:
+     ```sql
+     ALTER TABLE table_name
+     CHANGE old_column_name new_column_name datatype;
+     ```
+
+   - Deleting a column:
+     ```sql
+     ALTER TABLE table_name
+     DROP COLUMN column_name;
+     ```
+
+   - Adding a primary key:
+     ```sql
+     ALTER TABLE table_name
+     ADD PRIMARY KEY (column_name);
+     ```
+
+b. `ALTER VIEW`:
+
+   - Modifying the definition of a view:
+     ```sql
+     ALTER VIEW view_name AS
+     SELECT column1, column2, ...
+     FROM table_name
+     WHERE condition;
+     ```
+
+c. `ALTER DATABASE`:
+
+   - Modifying database-level properties (e.g., character set or collation):
+     ```sql
+     ALTER DATABASE database_name
+     CHARACTER SET utf8mb4
+     COLLATE utf8mb4_unicode_ci;
+     ```
+
+   - Setting default collation for a database:
+     ```sql
+     ALTER DATABASE database_name
+     COLLATE collation_name;
+     ```
+
+It's important to note that not all alterations may be allowed, depending on the specific database management system and the existing constraints or dependencies within the database. Also, some database systems might have additional specific subcommands or restrictions for certain alterations.
+
+Before using the `ALTER` command, make sure to back up your data and review the potential consequences of the changes, as some alterations might affect the existing data or require additional maintenance steps.
+
+Use **ALTER** to perform the following operations:
+
+a. ALTER TABLE NAME (RENAME) - ALTER TABLE <TABLE_NAME> RENAME TO <NEW_TABLE_NAME>;
+b. ALTER TABLE : ADD COLUMN - ALTER TABLE <TABLE_NAME> ADD <COLUMN_NAME> <TYPE(SIZE)>;
+-- Use, (COMMA) with to Add Multiple Columns
+c. ALTER TABLE : RENAME COLUMN - ALTER TABLE <TABLE_NAME> RENAME COLUMN <OLD_COLUMN_NAME> TO <NEW_COLUMN_NAME>; -- Use, (COMMA) with full RENAME COLUMN to Change multiple Columns
+d. ALTER TABLE : DROP COLUMN - ALTER TABLE <TABLE_NAME> DROP COLUMN <COLUMN_NAME>;
+e. ALTER TABLE : MODIFY THE TYPE/SIZE OF COLUMN - ALTER TABLE <TABLE_NAME> MODIFY COLUMN <COLUMN_NAME> <NEW_TYPE/(NEW_SIZE)>;
+f. ALTER VIEW - ALTER VIEW <VIEW_NAME> AS <SELECT STATMENT>; -- Later
+g. ALTER VIEW (RENAME) - ALTER TABLE <VIEW_NAME> RENAME TO <NEW_VIEW_NAME>; -- Not Working
+	or RENAME TABLE <OLD_VIEW_NAME> to <NEW_VIEW_NAME>;
+
+Here are examples of using the `ALTER` command for various operations:
+
+a. ALTER TABLE NAME (RENAME):
+
+```sql
+-- Assuming we have a table named "employees" and we want to rename it to "staff"
+ALTER TABLE employees RENAME TO staff;
+```
+
+b. ALTER TABLE: ADD COLUMN (with multiple columns):
+
+```sql
+-- Assuming we have a table named "students" and we want to add two new columns: "age" (INT) and "address" (VARCHAR)
+ALTER TABLE students ADD age INT, ADD address VARCHAR(100);
+```
+
+c. ALTER TABLE: RENAME COLUMN (with multiple columns):
+
+```sql
+-- Assuming we have a table named "employees" and we want to rename the columns "fname" to "first_name" and "lname" to "last_name"
+ALTER TABLE employees RENAME COLUMN fname TO first_name, RENAME COLUMN lname TO last_name;
+```
+
+d. ALTER TABLE: DROP COLUMN:
+
+```sql
+-- Assuming we have a table named "products" and we want to drop the column "obsolete"
+ALTER TABLE products DROP COLUMN obsolete;
+```
+
+e. ALTER TABLE: MODIFY THE TYPE/SIZE OF COLUMN:
+
+```sql
+-- Assuming we have a table named "orders" and we want to change the data type of the "quantity" column to DECIMAL(8,2)
+ALTER TABLE orders MODIFY COLUMN quantity DECIMAL(8,2);
+```
+
+f. ALTER VIEW:
+
+```sql
+-- Assuming we have a view named "high_salary_employees" and we want to change its definition to include employees with salaries above 50000
+ALTER VIEW high_salary_employees AS
+SELECT emp_id, first_name, last_name, salary
+FROM employees
+WHERE salary > 50000;
+```
+
+g. ALTER VIEW (RENAME) - Note that renaming a view directly using `ALTER VIEW` is not supported in MySQL. Instead, you can use the `RENAME TABLE` command:
+
+```sql
+-- Assuming we have a view named "old_view" and we want to rename it to "new_view"
+RENAME TABLE old_view TO new_view;
+```
+
+These are some examples of using the `ALTER` command in MySQL to modify tables and views, including renaming, adding, modifying, and dropping columns, as well as modifying the definition of views. Always be cautious when using the `ALTER` command, as it can have significant impacts on the database structure and data. Ensure you have a backup of your data before performing any alterations.
+
+
+DROP -
+1. DROP TABLE - DROP TABLE {IF EXISTS} <TABLE_NAME>;
+2. DROP COLUMN - ALTER TABLE <TABLE_NAME> DROP COLUMN <COLUMN_NAME>;
+3. DROP VIEW -  DROP VIEW {IF EXISTS} <VIEW_NAME>;
+
+RENAME -
+1. RENAME TABLE - RENAME TABLE <TABLE_NAME> to <NEW_TABLE_NAME>;
+2. RENAME VIEW - RENAME TABLE <VIEW_NAME> to <NEW_VIEW_NAME>;
+3. RENAME COLUMN - ALTER TABLE <TABLE_NAME> RENAME COLUMN <OLD_COLUMN_NAME> TO <NEW_COLUMN_NAME>;
+
+TRUNCATE - (DROP+CREATE)
+1. TRUNCATE TABLE - TRUNCATE TABLE <TABLE_NAME>;
+
+COMMENT - 
+1. CREATE TABLE WITH COMMENT - CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>)) COMMENT = '<Comment description>';
+2. ADD A COMMENT TO AN EXISTING TABLE. - ALTER TABLE <TABLE_NAME> COMMENT = '<Comment description>';
+3. DROP A COMMENT - ALTER TABLE <TABLE_NAME> COMMENT = ''; -- Leave it Empty
+4. UPDATE A COMMENT TO AN EXISTING TABLE. - ALTER TABLE <TABLE_NAME> COMMENT = '<Updated comment description>';
 
 **2. DML (Data Manipulation Language):**
 DML commands are used to manipulate data within the database. They allow you to insert, update, and delete data in the database tables.
