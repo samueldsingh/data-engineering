@@ -1,8 +1,8 @@
-8i7# Introduction
+# Introduction
 
 ## 1. What is DBMS and RDBMS?
 
-DBMS (Database Management System):
+**DBMS (Database Management System):**
 
 A Database Management System (DBMS) is a software system that allows users to interact with a database. It provides a set of tools and functionalities to store, retrieve, update, and manage data efficiently and securely. The main purpose of a DBMS is to provide an organized and structured way to manage data, ensuring data integrity, consistency, and security. Some key features of a DBMS include:
 
@@ -18,11 +18,11 @@ A Database Management System (DBMS) is a software system that allows users to in
 
 6. Data Recovery: DBMS has built-in mechanisms for data backup and recovery, protecting data from accidental loss or corruption.
 
-RDBMS (Relational Database Management System):
+**RDBMS (Relational Database Management System):**
 
 RDBMS is a type of DBMS that manages data in a relational database model. In the relational model, data is organized into tables with rows and columns, and relationships between tables are established using keys. The key feature of RDBMS is the ability to enforce relationships and constraints between tables through the use of primary keys, foreign keys, and other integrity constraints. Some popular RDBMSs include MySQL, PostgreSQL, Oracle, Microsoft SQL Server, and SQLite.
 
-Key characteristics of RDBMS:
+**Key characteristics of RDBMS:**
 
 1. Tabular Structure: Data is represented in tables, where each table consists of rows (records) and columns (attributes).
 
@@ -44,25 +44,25 @@ Here are examples of both DBMS and RDBMS:
 
 DBMS (Database Management System):
 
-1. MongoDB: MongoDB is a popular NoSQL database management system that stores data in a flexible JSON-like format called BSON (Binary JSON). It is designed for handling large volumes of unstructured or semi-structured data and is commonly used in modern web applications.
+1. **MongoDB:** MongoDB is a popular NoSQL database management system that stores data in a flexible JSON-like format called BSON (Binary JSON). It is designed for handling large volumes of unstructured or semi-structured data and is commonly used in modern web applications.
 
-2. Couchbase: Couchbase is a NoSQL database management system that supports both document-oriented and key-value data models. It is known for its high performance and scalability and is used in applications that require fast data access and low-latency response times.
+2. **Couchbase:** Couchbase is a NoSQL database management system that supports both document-oriented and key-value data models. It is known for its high performance and scalability and is used in applications that require fast data access and low-latency response times.
 
-3. Redis: Redis is an in-memory data structure store that can function as a database, cache, and message broker. It is widely used for caching frequently accessed data and supporting real-time data analytics.
+3. **Redis:** Redis is an in-memory data structure store that can function as a database, cache, and message broker. It is widely used for caching frequently accessed data and supporting real-time data analytics.
 
 RDBMS (Relational Database Management System):
 
-1. MySQL: MySQL is an open-source relational database management system known for its speed, reliability, and ease of use. It is widely used in web applications and is the default database for popular content management systems like WordPress.
+1. **MySQL:** MySQL is an open-source relational database management system known for its speed, reliability, and ease of use. It is widely used in web applications and is the default database for popular content management systems like WordPress.
 
-2. PostgreSQL: PostgreSQL is an advanced open-source relational database management system that supports a wide range of features, including custom data types, full-text search, and geospatial data. It is known for its extensibility and adherence to SQL standards.
+2. **PostgreSQL:** PostgreSQL is an advanced open-source relational database management system that supports a wide range of features, including custom data types, full-text search, and geospatial data. It is known for its extensibility and adherence to SQL standards.
 
-3. Oracle Database: Oracle Database is a commercial relational database management system developed by Oracle Corporation. It is one of the most popular RDBMS used in enterprise applications and large-scale systems, known for its scalability and high performance.
+3. **Oracle Database:** Oracle Database is a commercial relational database management system developed by Oracle Corporation. It is one of the most popular RDBMS used in enterprise applications and large-scale systems, known for its scalability and high performance.
 
-4. Microsoft SQL Server: SQL Server is a relational database management system developed by Microsoft. It is commonly used in Windows-based environments and integrates well with Microsoft's development tools and products.
+4. **Microsoft SQL Server:** SQL Server is a relational database management system developed by Microsoft. It is commonly used in Windows-based environments and integrates well with Microsoft's development tools and products.
 
-5. SQLite: SQLite is a lightweight, serverless, and self-contained relational database management system. It is commonly used in mobile applications, embedded systems, and as a local database for desktop applications.
+5. **SQLite:** SQLite is a lightweight, serverless, and self-contained relational database management system. It is commonly used in mobile applications, embedded systems, and as a local database for desktop applications.
 
-6. IBM Db2: Db2 is a family of data management products developed by IBM. It is known for its integration with IBM's mainframe systems and is used in enterprise-level applications.
+6. **IBM Db2:** Db2 is a family of data management products developed by IBM. It is known for its integration with IBM's mainframe systems and is used in enterprise-level applications.
 
 These examples represent a small subset of the many database management systems available, each with its own strengths and best-suited use cases. The choice of a particular DBMS or RDBMS depends on the specific requirements of the application, the complexity of data, scalability needs, and other factors.
 
@@ -70,16 +70,16 @@ These examples represent a small subset of the many database management systems 
 ## 3. Explain what are ACID properties
 ACID properties are a set of four key characteristics that ensure the reliability and consistency of transactions in a database system. These properties are essential for maintaining data integrity and providing a robust environment for data management. The term "ACID" stands for Atomicity, Consistency, Isolation, and Durability. Let's explore each of these properties in detail:
 
-1. Atomicity:
+**1. Atomicity:**
 Atomicity ensures that a transaction is treated as a single, indivisible unit of work. It means that either all the operations within a transaction are successfully completed, or none of them are. If any part of the transaction fails, the entire transaction is rolled back, and the database is left unchanged. This property ensures that the database remains in a consistent state, and partial updates are not allowed.
 
-2. Consistency:
+**2. Consistency:**
 Consistency guarantees that a transaction brings the database from one consistent state to another consistent state. In other words, the database must adhere to a set of predefined rules or constraints before and after a transaction. If a transaction violates any of these rules, the entire transaction is rolled back, and the database remains unchanged. Consistency ensures that data remains accurate and valid throughout the transaction.
 
-3. Isolation:
+**3. Isolation:**
 Isolation ensures that concurrent transactions are executed independently of each other. It prevents interference between transactions and ensures that each transaction sees the database in a consistent state. Transactions are executed as if they were the only ones running on the system, even when multiple transactions are happening simultaneously. This property prevents issues like data corruption and ensures data integrity even in a multi-user environment.
 
-4. Durability:
+**4. Durability:**
 Durability guarantees that once a transaction is committed, its effects are permanent and will survive any subsequent system failures, such as power outages or crashes. The changes made by a committed transaction are stored in non-volatile memory (usually disk storage) and remain in the database even in the event of a system failure. This property ensures that data is not lost, providing a high level of reliability and recoverability.
 
 The ACID properties are crucial for maintaining data integrity, consistency, and reliability in database management systems. These properties ensure that transactions are executed reliably and that the database remains in a consistent and accurate state even in the presence of failures or concurrent access by multiple users.
@@ -109,7 +109,7 @@ In summary, a database is a container that holds related data, while a schema is
 
 In SQL (Structured Query Language), different types of commands are used to interact with databases and manage data. These commands are categorized into four main groups based on their functionality: DDL, DML, DCL, and TCL. Additionally, there is a subset called DQL, which is not an official category but is commonly used to refer to commands used for querying data. Let's explain each category:
 
-**1. DDL (Data Definition Language):**
+### 1. DDL (Data Definition Language):
 DDL commands are used to define and manage the structure of the database. They are responsible for creating, altering, and dropping database objects like tables, views, indexes, and schemas. DDL commands do not manipulate the data itself but rather modify the database's structure and schema.
 
 
@@ -123,7 +123,7 @@ Common DDL commands include:
 **Examples:**
 
 
-**CREATE**
+#### CREATE
 
 Use **CREATE** command to perform the following operations:
 
@@ -198,7 +198,7 @@ The `USE company_db`; command selects the `company_db` database, and all subsequ
 
 In summary, the `DESC <TABLE_NAME>;` command is used to describe the structure of a specific table, and the `USE <schema_name>;` command is used to switch to a particular database before executing queries on its tables.
 
-**ALTER**
+#### ALTER
 
 *-- ALTER USED TO ADD/MODIFY/DROP INDEXES/CONSTARINTS.*
 
@@ -269,7 +269,7 @@ Here are some common uses of the `ALTER` command for each subcommand:
      COLLATE collation_name;
      ```
 
-Collation is a set of rules that determine how string comparison and sorting are performed for character data in a database. Collation settings can be specified at the database, table, or column level, and they significantly impact how string comparisons and sorting are handled in your SQL queries. 
+**Collation** is a set of rules that determine how string comparison and sorting are performed for character data in a database. Collation settings can be specified at the database, table, or column level, and they significantly impact how string comparisons and sorting are handled in your SQL queries. 
 
 It's important to note that not all alterations may be allowed, depending on the specific database management system and the existing constraints or dependencies within the database. Also, some database systems might have additional specific subcommands or restrictions for certain alterations.
 
@@ -288,42 +288,42 @@ Use **ALTER** to perform the following operations:
 
 Here are examples of using the `ALTER` command for various operations:
 
-1. ALTER TABLE NAME (RENAME):
+**1. ALTER TABLE NAME (RENAME):**
 
 ```sql
 -- Assuming we have a table named "employees" and we want to rename it to "staff"
 ALTER TABLE employees RENAME TO staff;
 ```
 
-2. ALTER TABLE: ADD COLUMN (with multiple columns):
+**2. ALTER TABLE: ADD COLUMN (with multiple columns):**
 
 ```sql
 -- Assuming we have a table named "students" and we want to add two new columns: "age" (INT) and "address" (VARCHAR)
 ALTER TABLE students ADD age INT, ADD address VARCHAR(100);
 ```
 
-3. ALTER TABLE: RENAME COLUMN (with multiple columns):
+**3. ALTER TABLE: RENAME COLUMN (with multiple columns):**
 
 ```sql
 -- Assuming we have a table named "employees" and we want to rename the columns "fname" to "first_name" and "lname" to "last_name"
 ALTER TABLE employees RENAME COLUMN fname TO first_name, RENAME COLUMN lname TO last_name;
 ```
 
-4. ALTER TABLE: DROP COLUMN:
+**4. ALTER TABLE: DROP COLUMN:**
 
 ```sql
 -- Assuming we have a table named "products" and we want to drop the column "obsolete"
 ALTER TABLE products DROP COLUMN obsolete;
 ```
 
-5. ALTER TABLE: MODIFY THE TYPE/SIZE OF COLUMN:
+**5. ALTER TABLE: MODIFY THE TYPE/SIZE OF COLUMN:**
 
 ```sql
 -- Assuming we have a table named "orders" and we want to change the data type of the "quantity" column to DECIMAL(8,2)
 ALTER TABLE orders MODIFY COLUMN quantity DECIMAL(8,2);
 ```
 
-6. ALTER VIEW:
+**6. ALTER VIEW:**
 
 ```sql
 -- Assuming we have a view named "high_salary_employees" and we want to change its definition to include employees with salaries above 50000
@@ -333,7 +333,7 @@ FROM employees
 WHERE salary > 50000;
 ```
 
-7. ALTER VIEW (RENAME) - Note that renaming a view directly using `ALTER VIEW` is not supported in MySQL. Instead, you can use the `RENAME TABLE` command:
+**7. ALTER VIEW (RENAME) - Note that renaming a view directly using `ALTER VIEW` is not supported in MySQL. Instead, you can use the `RENAME TABLE` command:**
 
 ```sql
 -- Assuming we have a view named "old_view" and we want to rename it to "new_view"
@@ -343,7 +343,7 @@ RENAME TABLE old_view TO new_view;
 These are some examples of using the `ALTER` command in MySQL to modify tables and views, including renaming, adding, modifying, and dropping columns, as well as modifying the definition of views. Always be cautious when using the `ALTER` command, as it can have significant impacts on the database structure and data. Ensure you have a backup of your data before performing any alterations.
 
 
-**DROP** 
+#### DROP 
 
 In SQL, the `DROP` command is used to remove or delete database objects, such as tables, views, indexes, or even entire databases. It permanently deletes the specified object from the database, and the data and structure associated with that object are no longer available.
 
@@ -384,7 +384,7 @@ Give examples for the given DROP commands:
 
 Sure, here are examples for each of the given `DROP` commands:
 
-1. DROP TABLE:
+**1. DROP TABLE:**
 
 ```sql
 -- Example 1: Basic DROP TABLE command
@@ -400,7 +400,7 @@ DROP TABLE IF EXISTS customers;
 
 This command will check if the table named `customers` exists before attempting to drop it. If the table exists, it will be dropped; otherwise, it will do nothing, avoiding an error if the table does not exist.
 
-2. DROP COLUMN:
+**2. DROP COLUMN:**
 
 ```sql
 -- Example: Drop a column named 'age' from the table 'employees'
@@ -409,7 +409,7 @@ ALTER TABLE employees DROP COLUMN age;
 
 This command will remove the column named `age` from the table `employees`. Be cautious when dropping columns, as any data stored in that column will be lost.
 
-3. DROP VIEW:
+**3. DROP VIEW:**
 
 ```sql
 -- Example 1: Basic DROP VIEW command
@@ -427,7 +427,7 @@ This command will check if the view named `customer_info_view` exists before att
 
 Remember, using the `DROP` command is irreversible, and it permanently deletes database objects. Always ensure that you have a proper backup before performing any `DROP` operation, especially in a production environment. Be cautious when using the `DROP` command to avoid accidental data loss.
 
-RENAME -
+#### RENAME 
 
 In SQL, the `RENAME` command is not a standard SQL command. The reason for this is that SQL databases have different implementations and features, and there is no single standardized way to rename database objects like tables, columns, or views across all database management systems (DBMS).
 
@@ -481,8 +481,6 @@ Give examples of using RENAME command using the given:
 2. RENAME VIEW - RENAME TABLE <VIEW_NAME> to <NEW_VIEW_NAME>;
 3. RENAME COLUMN - ALTER TABLE <TABLE_NAME> RENAME COLUMN <OLD_COLUMN_NAME> TO <NEW_COLUMN_NAME>;
 
-I apologize for the confusion in my previous response. It seems there was a misunderstanding. The `RENAME` command is not standard SQL, and the examples I provided were incorrect.
-
 In most database management systems, including MySQL, PostgreSQL, and SQL Server, there is no specific `RENAME` command for directly renaming tables, views, or columns. Instead, you can use the `ALTER TABLE` command to rename a table or a column.
 
 Here are the correct examples for renaming tables, views, and columns:
@@ -532,7 +530,7 @@ ALTER TABLE table_name RENAME COLUMN old_column_name TO new_column_name;
 
 Please note that the syntax and specific features might vary slightly between different database management systems. Always refer to the documentation of your particular DBMS for the correct syntax and options for renaming database objects.
 
-TRUNCATE - (DROP+CREATE)
+#### TRUNCATE - (DROP+CREATE)
 
 In SQL, the `TRUNCATE` command is used to quickly and efficiently remove all rows from a table, effectively resetting the table to its original state. Unlike the `DELETE` command, which removes individual rows and can be time-consuming for large tables, the `TRUNCATE` command is much faster and uses less transaction log space because it works by deallocating the data pages containing the table's rows.
 
@@ -607,11 +605,92 @@ After executing the `TRUNCATE TABLE` command, the `students` table will be empty
 
 Keep in mind that the `TRUNCATE TABLE` command is a fast and efficient way to remove all data from a table. However, it is essential to use it with caution, as the operation cannot be rolled back, and all data will be permanently deleted from the table. Make sure to have proper backups before performing the `TRUNCATE TABLE` command, especially in a production environment.
 
-COMMENT - 
+#### COMMENT
+
+In SQL, the comment command is used to add comments within SQL code. Comments are non-executable lines that provide explanatory notes, reminders, or documentation within the SQL script. These comments are ignored by the database engine during query execution and do not affect the result of the query.
+
+There are two types of comments in SQL:
+
+1. Single-line comments: These comments start with `--` and continue until the end of the line. Anything written after `--` on the same line will be treated as a comment.
+
+Example of a single-line comment:
+```sql
+-- This is a single-line comment
+SELECT column1, column2 FROM table_name;
+```
+
+2. Multi-line comments: These comments are enclosed between `/*` and `*/` and can span multiple lines.
+
+Example of a multi-line comment:
+```sql
+/*
+This is a multi-line comment.
+It can span several lines, and everything inside will be treated as a comment.
+*/
+SELECT column1, column2 FROM table_name;
+```
+
+Comments are useful for several reasons:
+
+1. Code Documentation: Comments provide explanations for the purpose of queries or the rationale behind specific code blocks, making it easier for others (and your future self) to understand the code.
+
+2. Code Testing: By commenting out parts of a query, you can temporarily exclude them from execution. This allows you to test different parts of a query without permanently removing them from the script.
+
+3. Code Clarity: Comments help improve the readability of complex queries by breaking them down into smaller, more manageable parts.
+
+It's essential to use comments in SQL scripts to improve code quality and maintainability. However, it's also crucial not to over-comment, as too many comments can clutter the code and make it harder to read. Balancing clear explanations with concise and well-organized code is key.
+
+Give examples of using COMMENT command with the following:
+
 1. CREATE TABLE WITH COMMENT - CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>)) COMMENT = '<Comment description>';
 2. ADD A COMMENT TO AN EXISTING TABLE. - ALTER TABLE <TABLE_NAME> COMMENT = '<Comment description>';
 3. DROP A COMMENT - ALTER TABLE <TABLE_NAME> COMMENT = ''; -- Leave it Empty
 4. UPDATE A COMMENT TO AN EXISTING TABLE. - ALTER TABLE <TABLE_NAME> COMMENT = '<Updated comment description>';
+
+
+In SQL, the syntax for adding, updating, and dropping comments on a table varies depending on the database management system being used. Here are examples for each case using MySQL:
+
+1. CREATE TABLE WITH COMMENT:
+
+```sql
+-- Create a table 'students' with a comment describing the table
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT
+) COMMENT = 'Table to store student information';
+```
+
+In this example, the `CREATE TABLE` statement creates a table named `students` with columns `id`, `name`, and `age`. The `COMMENT` option is used to add a comment describing the purpose of the table.
+
+2. ADD A COMMENT TO AN EXISTING TABLE:
+
+```sql
+-- Add a comment to an existing table 'employees'
+ALTER TABLE employees COMMENT = 'Table to store employee records';
+```
+
+In this example, the `ALTER TABLE` statement is used to add a comment to an existing table named `employees`.
+
+3. DROP A COMMENT:
+
+```sql
+-- Drop the comment from the 'students' table
+ALTER TABLE students COMMENT = '';
+```
+
+In this example, the `ALTER TABLE` statement is used to remove the comment from the `students` table by setting it to an empty string.
+
+4. UPDATE A COMMENT TO AN EXISTING TABLE:
+
+```sql
+-- Update the comment for the 'products' table
+ALTER TABLE products COMMENT = 'Table to store product information and inventory';
+```
+
+In this example, the `ALTER TABLE` statement is used to update the comment for an existing table named `products`.
+
+Please note that the syntax for adding, updating, and dropping comments may differ in other database management systems. Always refer to the specific documentation of your database system for the correct syntax and options for adding, updating, and dropping comments on tables.
 
 **2. DML (Data Manipulation Language):**
 DML commands are used to manipulate data within the database. They allow you to insert, update, and delete data in the database tables.
