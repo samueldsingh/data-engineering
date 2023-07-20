@@ -127,9 +127,9 @@ Common DDL commands include:
 
 Use **CREATE** command to perform the following operations:
 
-1. CREATE a DATABASE - CREATE DATABASE <DB_NAME>;
-2. CREATE a TABLE - CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>));
-3. CREATE a VIEW - CREATE {OR REPLACE} VIEW <VIEW_NAME> AS <SELECT STATMENT>;
+1. CREATE a DATABASE - `CREATE DATABASE <DB_NAME>;`
+2. CREATE a TABLE - `CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>));`
+3. CREATE a VIEW - `CREATE {OR REPLACE} VIEW <VIEW_NAME> AS <SELECT STATMENT>;`
 
 
 **1. Create a database**
@@ -186,7 +186,7 @@ The `DESC employees`; command provides information about each column in the `emp
 
 The `USE company_db`; command selects the `company_db` database, and all subsequent queries will be executed within this database until another database is selected.
 
-In summary, the DESC <TABLE_NAME>; command is used to describe the structure of a specific table, and the USE <schema_name>; command is used to switch to a particular database before executing queries on its tables.
+In summary, the `DESC <TABLE_NAME>;` command is used to describe the structure of a specific table, and the `USE <schema_name>;` command is used to switch to a particular database before executing queries on its tables.
 
 **ALTER**
 
