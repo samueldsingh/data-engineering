@@ -112,13 +112,16 @@ In SQL (Structured Query Language), different types of commands are used to inte
 **1. DDL (Data Definition Language):**
 DDL commands are used to define and manage the structure of the database. They are responsible for creating, altering, and dropping database objects like tables, views, indexes, and schemas. DDL commands do not manipulate the data itself but rather modify the database's structure and schema.
 
+
 Common DDL commands include:
 - `CREATE`: Used to create database objects like tables, views, indexes, etc.
 - `ALTER`: Used to modify the structure of existing database objects.
 - `DROP`: Used to delete database objects from the database.
 - `TRUNCATE`: Used to remove all data from a table (similar to `DELETE`, but faster).
 
+
 **Examples:**
+
 
 **CREATE**
 
@@ -127,6 +130,7 @@ a. CREATE a DATABASE - CREATE DATABASE <DB_NAME>;
 b. CREATE a TABLE - CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>));
 c. CREATE a VIEW - CREATE {OR REPLACE} VIEW <VIEW_NAME> AS <SELECT STATMENT>;
 
+
 **a. Create a database**
 
 ```
@@ -134,6 +138,7 @@ CREATE DATABASE SampleDB;
 ```
 
 Double-click the db name in the SCHEMAS list in the sidebar to set the db to default db.
+
 
 **b. Insert tables**
 
@@ -147,11 +152,13 @@ CREATE TABLE Employees (
 );
 ```
 
+
 **c. Create a view:**
 
 In MySQL, a view is a virtual table that is derived from the result of a SELECT query. It does not store data itself but represents a stored query that can be used as if it were a real table. Views allow you to simplify complex queries, encapsulate logic, and provide an additional layer of security by restricting direct access to underlying tables. Some key points about views in MySQL are:
 
 Definition (query using  SELECT, INSERT, UPDATE, and DELETE statements), simplify complex queries (views once created for complex query stays unaffected), data abstraction (underlying complexity of the tables are hidden), security (limit users' access to specific columns or rows), Read-Only and Updatable Views (can be either read-only or updatable), performance (do not store data; they are merely stored queries.slight performance overhead).
+
 
 ```
 CREATE VIEW EmployeeDetails AS
@@ -160,14 +167,17 @@ FROM Employees
 WHERE department = 'HR';
 ```
 
+
 **Explain DESC <TABLE_NAME> and USE <schema_name>**
 
 The MySQL command `DESC <TABLE_NAME>;` is used to retrieve information about the columns (field names) and their data types of a specific table in the currently selected database. The `USE <schema_name>;` command is used to select or switch to a particular database or schema. 
+
 
 Example:
 ```
 DESC employeedetails
 ```
+
 
 ```
 +-------------+--------------+------+-----+---------+-------+
@@ -181,6 +191,7 @@ DESC employeedetails
 +-------------+--------------+------+-----+---------+-------+
 
 ```
+
 
 The `DESC employees`; command provides information about each column in the `employees` table. It shows the column name, data type, whether the column allows NULL values, if the column is part of the primary key (PRI), default value, and any extra information.
 
