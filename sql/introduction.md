@@ -126,6 +126,7 @@ Common DDL commands include:
 **CREATE**
 
 Use **CREATE** command to perform the following operations:
+
 a. CREATE a DATABASE - CREATE DATABASE <DB_NAME>;
 b. CREATE a TABLE - CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>));
 c. CREATE a VIEW - CREATE {OR REPLACE} VIEW <VIEW_NAME> AS <SELECT STATMENT>;
