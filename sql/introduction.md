@@ -1,4 +1,4 @@
-# Introduction
+8i7# Introduction
 
 ## 1. What is DBMS and RDBMS?
 
@@ -178,19 +178,6 @@ Example:
 DESC employeedetails
 ```
 
-
-```
-+-------------+--------------+------+-----+---------+-------+
-| Field       | Type         | Null | Key | Default | Extra |
-+-------------+--------------+------+-----+---------+-------+
-| emp_id      | int(11)      | NO   | PRI | NULL    |       |
-| first_name  | varchar(50)  | YES  |     | NULL    |       |
-| last_name   | varchar(50)  | YES  |     | NULL    |       |
-| department  | varchar(100) | YES  |     | NULL    |       |
-| salary      | decimal(10,2)| YES  |     | NULL    |       |
-+-------------+--------------+------+-----+---------+-------+
-
-```
 
 
 The `DESC employees`; command provides information about each column in the `employees` table. It shows the column name, data type, whether the column allows NULL values, if the column is part of the primary key (PRI), default value, and any extra information.
