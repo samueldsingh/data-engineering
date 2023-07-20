@@ -109,7 +109,7 @@ In summary, a database is a container that holds related data, while a schema is
 
 In SQL (Structured Query Language), different types of commands are used to interact with databases and manage data. These commands are categorized into four main groups based on their functionality: DDL, DML, DCL, and TCL. Additionally, there is a subset called DQL, which is not an official category but is commonly used to refer to commands used for querying data. Let's explain each category:
 
-### 1. DDL (Data Definition Language):
+## 1. DDL (Data Definition Language):
 DDL commands are used to define and manage the structure of the database. They are responsible for creating, altering, and dropping database objects like tables, views, indexes, and schemas. DDL commands do not manipulate the data itself but rather modify the database's structure and schema.
 
 
@@ -123,7 +123,7 @@ Common DDL commands include:
 **Examples:**
 
 
-#### CREATE
+### 1. CREATE
 
 Use **CREATE** command to perform the following operations:
 
@@ -198,7 +198,7 @@ The `USE company_db`; command selects the `company_db` database, and all subsequ
 
 In summary, the `DESC <TABLE_NAME>;` command is used to describe the structure of a specific table, and the `USE <schema_name>;` command is used to switch to a particular database before executing queries on its tables.
 
-#### ALTER
+### 2. ALTER
 
 *-- ALTER USED TO ADD/MODIFY/DROP INDEXES/CONSTARINTS.*
 
@@ -343,7 +343,7 @@ RENAME TABLE old_view TO new_view;
 These are some examples of using the `ALTER` command in MySQL to modify tables and views, including renaming, adding, modifying, and dropping columns, as well as modifying the definition of views. Always be cautious when using the `ALTER` command, as it can have significant impacts on the database structure and data. Ensure you have a backup of your data before performing any alterations.
 
 
-#### DROP 
+### 3. DROP 
 
 In SQL, the `DROP` command is used to remove or delete database objects, such as tables, views, indexes, or even entire databases. It permanently deletes the specified object from the database, and the data and structure associated with that object are no longer available.
 
@@ -427,7 +427,7 @@ This command will check if the view named `customer_info_view` exists before att
 
 Remember, using the `DROP` command is irreversible, and it permanently deletes database objects. Always ensure that you have a proper backup before performing any `DROP` operation, especially in a production environment. Be cautious when using the `DROP` command to avoid accidental data loss.
 
-#### RENAME 
+### 4. RENAME 
 
 In SQL, the `RENAME` command is not a standard SQL command. The reason for this is that SQL databases have different implementations and features, and there is no single standardized way to rename database objects like tables, columns, or views across all database management systems (DBMS).
 
@@ -530,7 +530,7 @@ ALTER TABLE table_name RENAME COLUMN old_column_name TO new_column_name;
 
 Please note that the syntax and specific features might vary slightly between different database management systems. Always refer to the documentation of your particular DBMS for the correct syntax and options for renaming database objects.
 
-#### TRUNCATE - (DROP+CREATE)
+### 5. TRUNCATE - (DROP+CREATE)
 
 In SQL, the `TRUNCATE` command is used to quickly and efficiently remove all rows from a table, effectively resetting the table to its original state. Unlike the `DELETE` command, which removes individual rows and can be time-consuming for large tables, the `TRUNCATE` command is much faster and uses less transaction log space because it works by deallocating the data pages containing the table's rows.
 
@@ -605,7 +605,7 @@ After executing the `TRUNCATE TABLE` command, the `students` table will be empty
 
 Keep in mind that the `TRUNCATE TABLE` command is a fast and efficient way to remove all data from a table. However, it is essential to use it with caution, as the operation cannot be rolled back, and all data will be permanently deleted from the table. Make sure to have proper backups before performing the `TRUNCATE TABLE` command, especially in a production environment.
 
-#### COMMENT
+### 6. COMMENT
 
 In SQL, the comment command is used to add comments within SQL code. Comments are non-executable lines that provide explanatory notes, reminders, or documentation within the SQL script. These comments are ignored by the database engine during query execution and do not affect the result of the query.
 
@@ -692,13 +692,40 @@ In this example, the `ALTER TABLE` statement is used to update the comment for a
 
 Please note that the syntax for adding, updating, and dropping comments may differ in other database management systems. Always refer to the specific documentation of your database system for the correct syntax and options for adding, updating, and dropping comments on tables.
 
-**2. DML (Data Manipulation Language):**
+## 2. DML (Data Manipulation Language):
 DML commands are used to manipulate data within the database. They allow you to insert, update, and delete data in the database tables.
 
-Common DML commands include:
-- `INSERT`: Used to add new records into a table.
-- `UPDATE`: Used to modify existing records in a table.
-- `DELETE`: Used to remove records from a table.
+DML stands for "Data Manipulation Language" in SQL (Structured Query Language). It is a subset of SQL commands used to interact with and manipulate data stored in relational databases. DML commands primarily deal with inserting, updating, deleting, and retrieving data from database tables. Some of the key DML commands include:
+
+1. SELECT: The SELECT statement is used to retrieve data from one or more database tables. It allows you to specify the columns you want to retrieve, filter data based on conditions using the WHERE clause, and sort the result using the ORDER BY clause.
+
+Example:
+```sql
+SELECT first_name, last_name FROM employees WHERE department = 'HR' ORDER BY last_name;
+```
+
+2. INSERT: The INSERT statement is used to add new rows (records) into a table. It specifies the table name and the values for each column to be inserted.
+
+Example:
+```sql
+INSERT INTO employees (first_name, last_name, department, age) VALUES ('John', 'Doe', 'IT', 30);
+```
+
+3. UPDATE: The UPDATE statement is used to modify existing data in a table. It allows you to change the values of one or more columns for selected rows based on a specified condition.
+
+Example:
+```sql
+UPDATE employees SET department = 'Finance' WHERE age > 40;
+```
+
+4. DELETE: The DELETE statement is used to remove rows from a table based on specified conditions.
+
+Example:
+```sql
+DELETE FROM employees WHERE department = 'HR';
+```
+
+DML commands are essential for managing data in a relational database. They allow you to add, modify, and remove data, as well as retrieve information for reporting and analysis. It's crucial to use DML commands with care, especially the DELETE statement, as they can have a significant impact on the data in the database. Always make sure to have proper backups and test queries before executing them, especially in a production environment.
 
 Example of a DML command:
 ```sql
@@ -706,7 +733,84 @@ INSERT INTO students (id, name, age)
 VALUES (1, 'John Doe', 25);
 ```
 
+1. SELECT: Retrieve data from a table.
+
+Suppose we have a table named `employees` with columns `id`, `first_name`, `last_name`, and `department`.
+
+```sql
+-- Example: Retrieve all employees' names and departments from the 'employees' table.
+SELECT first_name, last_name, department FROM employees;
+```
+
+2. INSERT: Add new rows (records) into a table.
+
+```sql
+-- Example: Insert a new employee into the 'employees' table.
+INSERT INTO employees (first_name, last_name, department) VALUES ('John', 'Doe', 'IT');
+```
+
+3. UPDATE: Modify existing data in a table.
+
+```sql
+-- Example: Update the department of an employee with ID 101.
+UPDATE employees SET department = 'Finance' WHERE id = 101;
+```
+
+4. DELETE: Remove rows from a table.
+
+```sql
+-- Example: Delete all employees from the 'employees' table who are in the 'HR' department.
+DELETE FROM employees WHERE department = 'HR';
+```
+
+5. MERGE (In some database systems like Oracle):
+
+```sql
+-- Example: Merge data from 'source_table' into 'target_table' based on a matching condition.
+MERGE INTO target_table AS t
+USING source_table AS s
+ON t.id = s.id
+WHEN MATCHED THEN
+    UPDATE SET t.column1 = s.column1, t.column2 = s.column2
+WHEN NOT MATCHED THEN
+    INSERT (id, column1, column2) VALUES (s.id, s.column1, s.column2);
+```
+
+6. UPSERT (In some database systems like PostgreSQL and MySQL with ON DUPLICATE KEY UPDATE):
+
+```sql
+-- Example: Insert or update data in 'employees' table based on the unique constraint of 'id'.
+INSERT INTO employees (id, first_name, last_name, department)
+VALUES (101, 'John', 'Doe', 'Finance')
+ON DUPLICATE KEY UPDATE department = VALUES(department);
+```
+
+Remember that the syntax and availability of certain commands may vary slightly between different database management systems (DBMS). Always refer to the specific documentation of your DBMS for the correct syntax and usage of DML commands.
+
 **3. DCL (Data Control Language):**
+
+DCL stands for "Data Control Language" in SQL (Structured Query Language). DCL commands are used to control access to data and manage database objects' permissions within a relational database. These commands primarily deal with defining and managing user privileges and access rights to the database objects, ensuring data security and integrity. The two main DCL commands are:
+
+1. GRANT: The GRANT command is used to give specific privileges and permissions to users or roles. Privileges include the ability to perform certain actions on database objects, such as SELECT, INSERT, UPDATE, DELETE, and more.
+
+Example:
+```sql
+-- Grant SELECT and INSERT privileges on the 'employees' table to a user 'user1'
+GRANT SELECT, INSERT ON employees TO user1;
+```
+
+2. REVOKE: The REVOKE command is used to remove specific privileges from users or roles. It revokes previously granted privileges, restricting their access to certain actions on the database objects.
+
+Example:
+```sql
+-- Revoke the UPDATE privilege on the 'products' table from a user 'user2'
+REVOKE UPDATE ON products FROM user2;
+```
+
+DCL commands are essential for maintaining data security and controlling access to the database. By granting or revoking privileges, database administrators can control who can perform various operations on the database objects, ensuring that sensitive data remains protected and only authorized users have appropriate access.
+
+It's crucial to carefully manage user permissions and privileges to maintain data integrity and prevent unauthorized access to critical data. Database administrators must regularly review and adjust privileges to meet security requirements and adhere to the principle of least privilege, giving users only the minimum level of access they need to perform their tasks.
+
 DCL commands are used to manage the access and permissions of database objects. They control the authorization of users and define their privileges on the database.
 
 Common DCL commands include:
@@ -718,7 +822,81 @@ Example of a DCL command:
 GRANT SELECT, INSERT ON students TO user1;
 ```
 
+Certainly! Here are examples of using DCL (Data Control Language) commands in SQL:
+
+1. GRANT: Grant specific privileges to users or roles.
+
+```sql
+-- Example: Grant SELECT and INSERT privileges on the 'employees' table to a user 'user1'.
+GRANT SELECT, INSERT ON employees TO user1;
+```
+
+In this example, the `GRANT` command is used to give the `SELECT` and `INSERT` privileges on the `employees` table to a user named `user1`. This allows `user1` to retrieve data from and insert new records into the `employees` table.
+
+2. REVOKE: Revoke previously granted privileges from users or roles.
+
+```sql
+-- Example: Revoke the UPDATE privilege on the 'products' table from a user 'user2'.
+REVOKE UPDATE ON products FROM user2;
+```
+
+In this example, the `REVOKE` command is used to remove the `UPDATE` privilege on the `products` table from a user named `user2`. This means that `user2` will no longer be able to modify existing records in the `products` table.
+
+3. GRANT with OPTION:
+
+```sql
+-- Example: Grant SELECT privilege on the 'sales' table to a user 'user3' with the option to grant it further to others.
+GRANT SELECT ON sales TO user3 WITH GRANT OPTION;
+```
+
+In this example, the `GRANT` command is used to give the `SELECT` privilege on the `sales` table to a user named `user3`. Additionally, the `WITH GRANT OPTION` allows `user3` to further grant the `SELECT` privilege to other users or roles.
+
+4. REVOKE with CASCADE:
+
+```sql
+-- Example: Revoke all privileges on the 'inventory' table from a user 'user4' and cascade the revoke to objects depending on it.
+REVOKE ALL PRIVILEGES ON inventory FROM user4 CASCADE;
+```
+
+In this example, the `REVOKE` command is used to remove all privileges on the `inventory` table from a user named `user4`. The `CASCADE` option ensures that the revoke action cascades to objects depending on the `inventory` table, removing permissions from dependent objects as well.
+
+Remember that the syntax and availability of DCL commands may vary slightly between different database management systems (DBMS). Always refer to the specific documentation of your DBMS for the correct syntax and usage of DCL commands. Additionally, be cautious when granting or revoking privileges to ensure data security and adhere to the principle of least privilege.
+
+
 **4. TCL (Transaction Control Language):**
+
+TCL stands for "Transaction Control Language" in SQL (Structured Query Language). TCL commands are used to manage transactions within a relational database. Transactions are a sequence of one or more SQL statements that are executed as a single unit of work. The primary goal of TCL commands is to ensure the integrity and consistency of data when multiple statements need to be executed together as a single logical operation.
+
+There are three main TCL commands in SQL:
+
+1. COMMIT: The COMMIT command is used to permanently save the changes made within a transaction to the database. When a COMMIT is executed, all the changes made by the statements within the transaction are written to the database, and the transaction is completed successfully.
+
+Example:
+```sql
+-- Example: Commit the changes made within the current transaction.
+COMMIT;
+```
+
+2. ROLLBACK: The ROLLBACK command is used to undo the changes made within a transaction and return the database to its original state. When a ROLLBACK is executed, all the changes made by the statements within the transaction are discarded, and the transaction is aborted.
+
+Example:
+```sql
+-- Example: Rollback the changes made within the current transaction.
+ROLLBACK;
+```
+
+3. SAVEPOINT: The SAVEPOINT command is used to set a point within a transaction to which you can later rollback if needed. SAVEPOINTs are useful when you want to undo only part of the changes made within a transaction without rolling back the entire transaction.
+
+Example:
+```sql
+-- Example: Create a SAVEPOINT named 'sp1' within the current transaction.
+SAVEPOINT sp1;
+```
+
+Transactions are essential for maintaining data integrity and consistency in a database. By using TCL commands like COMMIT and ROLLBACK, you can ensure that the changes made by a series of SQL statements are either permanently committed or entirely rolled back, depending on the success or failure of the transaction as a whole.
+
+It's essential to use TCL commands judiciously and to handle transactions appropriately, especially when dealing with critical data operations or concurrent access to the database. Proper use of transactions helps prevent data corruption and ensures that the database remains in a valid and consistent state at all times.
+
 TCL commands are used to manage transactions within the database. A transaction is a sequence of one or more database operations that need to be executed as a single unit of work, ensuring data consistency and integrity.
 
 Common TCL commands include:
@@ -735,6 +913,48 @@ UPDATE employees SET salary = salary + 300 WHERE department = 'Finance';
 ROLLBACK TO sp1; -- Rollback to the savepoint
 COMMIT; -- End the transaction and save changes
 ```
+
+Certainly! Here are examples of using TCL (Transaction Control Language) commands in SQL:
+
+1. COMMIT:
+
+```sql
+-- Example: Commit the changes made within the current transaction.
+BEGIN TRANSACTION;
+UPDATE accounts SET balance = balance - 100 WHERE account_id = 101;
+UPDATE accounts SET balance = balance + 100 WHERE account_id = 102;
+COMMIT;
+```
+
+In this example, we use the `COMMIT` command to permanently save the changes made within the transaction. The transaction starts with the `BEGIN TRANSACTION` statement and includes two `UPDATE` statements that debit $100 from account 101 and credit $100 to account 102. The `COMMIT` command ensures that both `UPDATE` statements are successfully executed as a single unit of work. If there are no errors, the changes are committed to the database.
+
+2. ROLLBACK:
+
+```sql
+-- Example: Rollback the changes made within the current transaction.
+BEGIN TRANSACTION;
+UPDATE inventory SET quantity = quantity - 5 WHERE product_id = 201;
+UPDATE orders SET status = 'FAILED' WHERE order_id = 301;
+ROLLBACK;
+```
+
+In this example, we use the `ROLLBACK` command to undo the changes made within the transaction. The transaction starts with the `BEGIN TRANSACTION` statement and includes two `UPDATE` statements that decrement the inventory quantity for product 201 and mark order 301 as 'FAILED.' However, something went wrong, and we want to cancel both updates and restore the database to its original state.
+
+3. SAVEPOINT:
+
+```sql
+-- Example: Use a SAVEPOINT to set a point within the transaction.
+BEGIN TRANSACTION;
+UPDATE employees SET salary = salary * 1.1 WHERE department = 'IT';
+SAVEPOINT sp1;
+UPDATE employees SET salary = salary * 1.05 WHERE department = 'HR';
+ROLLBACK TO SAVEPOINT sp1;
+COMMIT;
+```
+
+In this example, we use the `SAVEPOINT` command to create a point named 'sp1' within the transaction. The transaction includes two `UPDATE` statements that increase the salary for employees in the IT department and HR department. However, after the second update, we decide to rollback to the 'sp1' savepoint to cancel the changes made to the HR department's salaries. The `COMMIT` command saves the changes made to the IT department's salaries, and the database is updated accordingly.
+
+Remember that TCL commands are essential for managing transactions and ensuring data integrity. It's crucial to use them judiciously to maintain the consistency and validity of the data in the database. Additionally, the specific syntax and behavior of TCL commands may vary between different database management systems (DBMS). Always refer to the documentation of your specific DBMS for the correct usage of TCL commands.
 
 **5. DQL (Data Query Language):**
 DQL commands are used to query and retrieve data from the database. Although not an official SQL category, DQL is commonly used to refer to commands used for data retrieval.
