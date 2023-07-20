@@ -179,7 +179,17 @@ Example:
 DESC employeedetails
 ```
 
-
+```
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| emp_id      | int(11)      | NO   | PRI | NULL    |       |
+| first_name  | varchar(50)  | YES  |     | NULL    |       |
+| last_name   | varchar(50)  | YES  |     | NULL    |       |
+| department  | varchar(100) | YES  |     | NULL    |       |
+| salary      | decimal(10,2)| YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+```
 
 The `DESC employees`; command provides information about each column in the `employees` table. It shows the column name, data type, whether the column allows NULL values, if the column is part of the primary key (PRI), default value, and any extra information.
 
@@ -196,13 +206,13 @@ In SQL, the `ALTER` command is used to modify the structure of an existing datab
 
 The `ALTER` command is versatile and provides several subcommands that are specific to the type of object being altered. The main subcommands used with `ALTER` are:
 
-a. `ALTER TABLE`: Used to modify the structure of a table.
-b. `ALTER VIEW`: Used to modify the definition of a view.
-c. `ALTER DATABASE`: Used to modify database-level properties and settings.
+1. `ALTER TABLE`: Used to modify the structure of a table.
+2. `ALTER VIEW`: Used to modify the definition of a view.
+3. `ALTER DATABASE`: Used to modify database-level properties and settings.
 
 Here are some common uses of the `ALTER` command for each subcommand:
 
-a. `ALTER TABLE`:
+1. `ALTER TABLE`:
 
    - Adding a new column:
      ```sql
@@ -234,7 +244,7 @@ a. `ALTER TABLE`:
      ADD PRIMARY KEY (column_name);
      ```
 
-b. `ALTER VIEW`:
+2. `ALTER VIEW`:
 
    - Modifying the definition of a view:
      ```sql
@@ -244,7 +254,7 @@ b. `ALTER VIEW`:
      WHERE condition;
      ```
 
-c. `ALTER DATABASE`:
+3. `ALTER DATABASE`:
 
    - Modifying database-level properties (e.g., character set or collation):
      ```sql
@@ -259,60 +269,61 @@ c. `ALTER DATABASE`:
      COLLATE collation_name;
      ```
 
+Collation is a set of rules that determine how string comparison and sorting are performed for character data in a database. Collation settings can be specified at the database, table, or column level, and they significantly impact how string comparisons and sorting are handled in your SQL queries. 
+
 It's important to note that not all alterations may be allowed, depending on the specific database management system and the existing constraints or dependencies within the database. Also, some database systems might have additional specific subcommands or restrictions for certain alterations.
 
 Before using the `ALTER` command, make sure to back up your data and review the potential consequences of the changes, as some alterations might affect the existing data or require additional maintenance steps.
 
 Use **ALTER** to perform the following operations:
 
-a. ALTER TABLE NAME (RENAME) - ALTER TABLE <TABLE_NAME> RENAME TO <NEW_TABLE_NAME>;
-b. ALTER TABLE : ADD COLUMN - ALTER TABLE <TABLE_NAME> ADD <COLUMN_NAME> <TYPE(SIZE)>;
--- Use, (COMMA) with to Add Multiple Columns
-c. ALTER TABLE : RENAME COLUMN - ALTER TABLE <TABLE_NAME> RENAME COLUMN <OLD_COLUMN_NAME> TO <NEW_COLUMN_NAME>; -- Use, (COMMA) with full RENAME COLUMN to Change multiple Columns
-d. ALTER TABLE : DROP COLUMN - ALTER TABLE <TABLE_NAME> DROP COLUMN <COLUMN_NAME>;
-e. ALTER TABLE : MODIFY THE TYPE/SIZE OF COLUMN - ALTER TABLE <TABLE_NAME> MODIFY COLUMN <COLUMN_NAME> <NEW_TYPE/(NEW_SIZE)>;
-f. ALTER VIEW - ALTER VIEW <VIEW_NAME> AS <SELECT STATMENT>; -- Later
-g. ALTER VIEW (RENAME) - ALTER TABLE <VIEW_NAME> RENAME TO <NEW_VIEW_NAME>; -- Not Working
+1. ALTER TABLE NAME (RENAME) - `ALTER TABLE <TABLE_NAME> RENAME TO <NEW_TABLE_NAME>;`
+2. ALTER TABLE : ADD COLUMN - `ALTER TABLE <TABLE_NAME> ADD <COLUMN_NAME> <TYPE(SIZE)>;`. Use, (COMMA) with to Add Multiple Columns
+3. ALTER TABLE : RENAME COLUMN - `ALTER TABLE <TABLE_NAME> RENAME COLUMN <OLD_COLUMN_NAME> TO <NEW_COLUMN_NAME>;`. Use, (COMMA) with full RENAME COLUMN to Change multiple Columns
+4. ALTER TABLE : DROP COLUMN - `ALTER TABLE <TABLE_NAME> DROP COLUMN <COLUMN_NAME>;`
+5. ALTER TABLE : MODIFY THE TYPE/SIZE OF COLUMN - `ALTER TABLE <TABLE_NAME> MODIFY COLUMN <COLUMN_NAME> <NEW_TYPE/(NEW_SIZE)>;`
+6. ALTER VIEW - `ALTER VIEW <VIEW_NAME> AS <SELECT STATMENT>;` -- Later
+7. ALTER VIEW (RENAME) - `ALTER TABLE <VIEW_NAME> RENAME TO <NEW_VIEW_NAME>;` -- Not Working
 	or RENAME TABLE <OLD_VIEW_NAME> to <NEW_VIEW_NAME>;
 
 Here are examples of using the `ALTER` command for various operations:
 
-a. ALTER TABLE NAME (RENAME):
+1. ALTER TABLE NAME (RENAME):
 
 ```sql
 -- Assuming we have a table named "employees" and we want to rename it to "staff"
 ALTER TABLE employees RENAME TO staff;
 ```
 
-b. ALTER TABLE: ADD COLUMN (with multiple columns):
+2. ALTER TABLE: ADD COLUMN (with multiple columns):
 
 ```sql
 -- Assuming we have a table named "students" and we want to add two new columns: "age" (INT) and "address" (VARCHAR)
 ALTER TABLE students ADD age INT, ADD address VARCHAR(100);
 ```
 
-c. ALTER TABLE: RENAME COLUMN (with multiple columns):
+3. ALTER TABLE: RENAME COLUMN (with multiple columns):
 
 ```sql
 -- Assuming we have a table named "employees" and we want to rename the columns "fname" to "first_name" and "lname" to "last_name"
 ALTER TABLE employees RENAME COLUMN fname TO first_name, RENAME COLUMN lname TO last_name;
 ```
 
-d. ALTER TABLE: DROP COLUMN:
+4. ALTER TABLE: DROP COLUMN:
 
 ```sql
 -- Assuming we have a table named "products" and we want to drop the column "obsolete"
 ALTER TABLE products DROP COLUMN obsolete;
 ```
 
-e. ALTER TABLE: MODIFY THE TYPE/SIZE OF COLUMN:
+5. ALTER TABLE: MODIFY THE TYPE/SIZE OF COLUMN:
 
 ```sql
 -- Assuming we have a table named "orders" and we want to change the data type of the "quantity" column to DECIMAL(8,2)
 ALTER TABLE orders MODIFY COLUMN quantity DECIMAL(8,2);
 ```
 
-f. ALTER VIEW:
+6. ALTER VIEW:
 
 ```sql
 -- Assuming we have a view named "high_salary_employees" and we want to change its definition to include employees with salaries above 50000
@@ -322,7 +333,7 @@ FROM employees
 WHERE salary > 50000;
 ```
 
-g. ALTER VIEW (RENAME) - Note that renaming a view directly using `ALTER VIEW` is not supported in MySQL. Instead, you can use the `RENAME TABLE` command:
+7. ALTER VIEW (RENAME) - Note that renaming a view directly using `ALTER VIEW` is not supported in MySQL. Instead, you can use the `RENAME TABLE` command:
 
 ```sql
 -- Assuming we have a view named "old_view" and we want to rename it to "new_view"
