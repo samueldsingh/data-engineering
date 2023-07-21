@@ -53,28 +53,29 @@ alter table <table_name> modify column <column_name> <new_type/(new_size),
 
 -- alter used to add/modify/drop indexes/constarints.
 
-drop -
+**Drop**
 1. drop table - drop table if exists table_name;
 2. drop column - alter table table_name drop column column_name;
 
 
-rename -
+**Rename**
 1. rename table - rename table table_name to new_table_name;
 3. rename column - alter table table_name rename column old_column_name to new_column_name;
 
 truncate -
 1. truncate table - truncate table table_name;
 
-comment - 
+**Comment** 
 1. create table with comment - create table <table_name> (<column name> <type>(<field length/size>)) comment = '<comment description>';
 2. add a comment to an existing table. - alter table <table_name> comment = '<comment description>';
 3. drop a comment - alter table <table_name> comment = ''; -- leave it empty
 4. update a comment to an existing table. - alter table <table_name> comment = '<updated comment description>';
 5. display a comment - show table status where name = '<table_name>';
 
--- ****************************dql****************************
 
-select - 
+## DQL
+
+**Select** 
 1. select all from table - select * from <table_name/view_name>;
 2. select specific columns from table - select <list of columns - column1 , column2, column3> from <table_name/view_name>;
 3. select using where clause - select * from <table_name/view_name> where <condition>; -- displays the records based on the given condition.
@@ -112,8 +113,11 @@ SELECT 2, 'Ellen', 35000,'2020-8-7'
 ```
 
 7. insert into select - insert into table_name (<list of columns>)<select statement>; --select <*/list of columns> from <old_table_name>;
+
+```
 insert into students12 (id,s_name)
 (select id,s_name from students1);
+```
 
 **Update**
 1. update single value - update <table_name> set <column_name> = <value> where <condition>;
