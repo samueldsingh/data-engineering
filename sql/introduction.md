@@ -378,9 +378,9 @@ It's important to note that the `DROP` command is a powerful and potentially dan
 Always double-check the object name before executing the `DROP` command, as it is not reversible, and once an object is dropped, it cannot be recovered unless you have a backup of the database.
 
 Give examples for the given DROP commands:
-1. DROP TABLE - DROP TABLE {IF EXISTS} <TABLE_NAME>;
-2. DROP COLUMN - ALTER TABLE <TABLE_NAME> DROP COLUMN <COLUMN_NAME>;
-3. DROP VIEW -  DROP VIEW {IF EXISTS} <VIEW_NAME>;
+1. DROP TABLE: `DROP TABLE {IF EXISTS} <TABLE_NAME>;`
+2. DROP COLUMN: `ALTER TABLE <TABLE_NAME> DROP COLUMN <COLUMN_NAME>;`
+3. DROP VIEW: `DROP VIEW {IF EXISTS} <VIEW_NAME>;`
 
 Sure, here are examples for each of the given `DROP` commands:
 
@@ -477,9 +477,9 @@ It's important to note that renaming database objects should be done with cautio
 Additionally, since there is no standardized `RENAME` command in SQL, it's recommended to consult the specific documentation of your database management system for the correct syntax and procedures for renaming objects in your particular DBMS.
 
 Give examples of using RENAME command using the given:
-1. RENAME TABLE - RENAME TABLE <TABLE_NAME> to <NEW_TABLE_NAME>;
-2. RENAME VIEW - RENAME TABLE <VIEW_NAME> to <NEW_VIEW_NAME>;
-3. RENAME COLUMN - ALTER TABLE <TABLE_NAME> RENAME COLUMN <OLD_COLUMN_NAME> TO <NEW_COLUMN_NAME>;
+1. RENAME TABLE: `RENAME TABLE <TABLE_NAME> to <NEW_TABLE_NAME>;`
+2. RENAME VIEW: `RENAME TABLE <VIEW_NAME> to <NEW_VIEW_NAME>;`
+3. RENAME COLUMN: `ALTER TABLE <TABLE_NAME> RENAME COLUMN <OLD_COLUMN_NAME> TO <NEW_COLUMN_NAME>;`
 
 In most database management systems, including MySQL, PostgreSQL, and SQL Server, there is no specific `RENAME` command for directly renaming tables, views, or columns. Instead, you can use the `ALTER TABLE` command to rename a table or a column.
 
@@ -642,10 +642,10 @@ It's essential to use comments in SQL scripts to improve code quality and mainta
 
 Give examples of using COMMENT command with the following:
 
-1. CREATE TABLE WITH COMMENT - CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>)) COMMENT = '<Comment description>';
-2. ADD A COMMENT TO AN EXISTING TABLE. - ALTER TABLE <TABLE_NAME> COMMENT = '<Comment description>';
-3. DROP A COMMENT - ALTER TABLE <TABLE_NAME> COMMENT = ''; -- Leave it Empty
-4. UPDATE A COMMENT TO AN EXISTING TABLE. - ALTER TABLE <TABLE_NAME> COMMENT = '<Updated comment description>';
+1. CREATE TABLE WITH COMMENT: `CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>)) COMMENT = '<Comment description>';`
+2. ADD A COMMENT TO AN EXISTING TABLE: `ALTER TABLE <TABLE_NAME> COMMENT = '<Comment description>';`
+3. DROP A COMMENT: `ALTER TABLE <TABLE_NAME> COMMENT = '';` -- Leave it Empty
+4. UPDATE A COMMENT TO AN EXISTING TABLE:  `ALTER TABLE <TABLE_NAME> COMMENT = '<Updated comment description>';`
 
 
 In SQL, the syntax for adding, updating, and dropping comments on a table varies depending on the database management system being used. Here are examples for each case using MySQL:
@@ -790,24 +790,24 @@ Remember that the syntax and availability of certain commands may vary slightly 
 Give examples for the following DML commands:
 
 **SELECT -** 
-1. SELECT ALL FROM TABLE - SELECT * FROM <TABLE_NAME/VIEW_NAME>;
-2. SELECT SPECIFIC COLUMNS FROM TABLE - SELECT <LIST of COLUMNS - COLUMN1 , COLUMN2, COLUMN3> FROM <TABLE_NAME/VIEW_NAME>;
-3. SELECT USING WHERE CLAUSE - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION>; -- Displays the records based on the given condition.
-4. SELECT USING DISTINCT - SELECT DISTINCT <COLUMN_NAME>, <LIST OF COLUMNS> FROM <TABLE_NAME>; -- Gives the list Unique Values
-5. SELECT USING AND - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> AND <CONDITION>; -- You can use more conditions under where caluse
-6. SELECT USING OR - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> OR <CONDITION>; -- You can use more conditions under where caluse
-7. SELECT UISNG IN - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IN <LIST OF VALUES SEPERATED BY COMMAS>; -- Display's the List of Values seperated by commas.
-8. SELECT UISNG NOT IN - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> NOT IN <RANGE/SET OF VALUES>; -- Display's the List of excluding values seperated by commas.
-9. SELECT UISNG BETWEEN/NOT BETWEEN  - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> BETWEEN/NOT BETWEEN <VALUE> AND <VALUE>; -- Used to display the range of values, Mostly in dates and numbers.
-10. SELECT UISNG LIKE - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> LIKE <VALUE WITH OR WITHOUT WILD CHARS>; -- pattren matching will be done here. WILD CHARS are %, _
-11. SELECT UISNG LIMIT - SELECT * FROM <TABLE_NAME/VIEW_NAME> LIMIT <RANGE TO BE SELECTED>; -- user to select the range, Example 2[offest],4[range] or 2[range] - Offset is optional. 
-12. SELECT UISNG IS NULL - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IS NULL; -- Dispalys the records with null vaues.
-13. SELECT UISNG IS NOT NULL - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IS NOT NULL; -- Dispalys the records with out null vaues.
-14. SELECT UISNG ORDER BY - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> ORDER BY <COLUMN_NAME/S>; -- Dispalys the records in give oreder [Asc-default/Desc].
-15. SELECT UISNG GROUP BY - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> GROUP BY <COLUMN_NAME/S>; -- Groups the columns based on the list of columns we mention.
-16. SELECT UISNG HAVING - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> GROUP BY <COLUMN_NAME/S> HAVING <CONDITION>; -- additional condition on group by, works similar to where clause
-17. SELECT USING ROLLUP - SELECT <LIST OF COLUMNS WITH AGG FUNCTIONS> FROM <TABLE_NAME> GROUP BY <COLUMN_NAME/S> WITH ROLLUP; -- Get's the total sum values along with the group sum values listed on the group by caluse.
-18. SELECT AS - SELECT <COLUMN_NAME> AS <NEW_COLUMN_NAME> FROM <TABLE_NAME>; -- Column names can be renamed as per our requirement while retrival(Just for the sinle execution/Display).
+1. SELECT ALL FROM TABLE: `SELECT * FROM <TABLE_NAME/VIEW_NAME>;`
+2. SELECT SPECIFIC COLUMNS FROM TABLE: `SELECT <LIST of COLUMNS - COLUMN1 , COLUMN2, COLUMN3> FROM <TABLE_NAME/VIEW_NAME>;`
+3. SELECT USING WHERE CLAUSE: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION>;` -- Displays the records based on the given condition.
+4. SELECT USING DISTINCT: `SELECT DISTINCT <COLUMN_NAME>, <LIST OF COLUMNS> FROM <TABLE_NAME>;` -- Gives the list Unique Values
+5. SELECT USING AND: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> AND <CONDITION>;` -- You can use more conditions under where caluse
+6. SELECT USING OR: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> OR <CONDITION>;` -- You can use more conditions under where caluse
+7. SELECT UISNG IN: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IN <LIST OF VALUES SEPERATED BY COMMAS>;` -- Display's the List of Values seperated by commas.
+8. SELECT UISNG NOT IN: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> NOT IN <RANGE/SET OF VALUES>;` -- Display's the List of excluding values seperated by commas.
+9. SELECT UISNG BETWEEN/NOT BETWEEN: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> BETWEEN/NOT BETWEEN <VALUE> AND <VALUE>;` -- Used to display the range of values, Mostly in dates and numbers.
+10. SELECT UISNG LIKE: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> LIKE <VALUE WITH OR WITHOUT WILD CHARS>;` -- pattren matching will be done here. WILD CHARS are %, _
+11. SELECT UISNG LIMIT: `SELECT * FROM <TABLE_NAME/VIEW_NAME> LIMIT <RANGE TO BE SELECTED>;` -- user to select the range, Example 2[offest],4[range] or 2[range] - Offset is optional. 
+12. SELECT UISNG IS NULL: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IS NULL;` -- Dispalys the records with null vaues.
+13. SELECT UISNG IS NOT NULL: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IS NOT NULL;` -- Dispalys the records with out null vaues.
+14. SELECT UISNG ORDER BY: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> ORDER BY <COLUMN_NAME/S>;` -- Dispalys the records in give oreder [Asc-default/Desc].
+15. SELECT UISNG GROUP BY: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> GROUP BY <COLUMN_NAME/S>;` -- Groups the columns based on the list of columns we mention.
+16. SELECT UISNG HAVING: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> GROUP BY <COLUMN_NAME/S> HAVING <CONDITION>;` -- additional condition on group by, works similar to where clause
+17. SELECT USING ROLLUP: `SELECT <LIST OF COLUMNS WITH AGG FUNCTIONS> FROM <TABLE_NAME> GROUP BY <COLUMN_NAME/S> WITH ROLLUP;` -- Get's the total sum values along with the group sum values listed on the group by caluse.
+18. SELECT AS: `SELECT <COLUMN_NAME> AS <NEW_COLUMN_NAME> FROM <TABLE_NAME>;` -- Column names can be renamed as per our requirement while retrival(Just for the sinle execution/Display).
 
 
 
@@ -1024,6 +1024,51 @@ COMMIT;
 In this example, we use the `SAVEPOINT` command to create a point named 'sp1' within the transaction. The transaction includes two `UPDATE` statements that increase the salary for employees in the IT department and HR department. However, after the second update, we decide to rollback to the 'sp1' savepoint to cancel the changes made to the HR department's salaries. The `COMMIT` command saves the changes made to the IT department's salaries, and the database is updated accordingly.
 
 Remember that TCL commands are essential for managing transactions and ensuring data integrity. It's crucial to use them judiciously to maintain the consistency and validity of the data in the database. Additionally, the specific syntax and behavior of TCL commands may vary between different database management systems (DBMS). Always refer to the documentation of your specific DBMS for the correct usage of TCL commands.
+
+
+4. AUTOCOMMIT
+In the context of Transaction Control Language (TCL) in SQL, `AUTOCOMMIT` refers to a feature that automatically commits each SQL statement as soon as it is executed. When `AUTOCOMMIT` is enabled, every individual SQL statement forms a transaction, and that transaction is automatically committed (permanently saved to the database) as soon as the statement is executed successfully.
+
+By default, most database management systems have `AUTOCOMMIT` enabled. It means that when you execute an SQL statement, such as an `INSERT`, `UPDATE`, or `DELETE`, the changes are immediately made permanent in the database without the need to explicitly commit the transaction.
+
+For example, in a typical scenario with `AUTOCOMMIT` enabled:
+
+```sql
+-- Enable AUTOCOMMIT (It's usually enabled by default)
+SET AUTOCOMMIT ON;
+
+-- Execute an SQL statement
+INSERT INTO employees (emp_id, emp_name) VALUES (101, 'John');
+
+-- The above statement is automatically committed and changes are saved to the database.
+```
+
+However, in some situations, you may want to manage transactions manually by disabling `AUTOCOMMIT`. This allows you to group multiple SQL statements into a single transaction and explicitly control when the transaction should be committed or rolled back.
+
+To disable `AUTOCOMMIT`, you can use the following command:
+
+```sql
+SET AUTOCOMMIT OFF;
+```
+
+After disabling `AUTOCOMMIT`, you need to explicitly commit the transaction using the `COMMIT` command or roll back the transaction using the `ROLLBACK` command.
+
+```sql
+-- Disable AUTOCOMMIT
+SET AUTOCOMMIT OFF;
+
+-- Start a transaction
+BEGIN;
+
+-- Execute multiple SQL statements
+INSERT INTO employees (emp_id, emp_name) VALUES (101, 'John');
+UPDATE employees SET emp_name = 'Alice' WHERE emp_id = 101;
+
+-- Commit the transaction
+COMMIT;
+```
+
+In summary, `AUTOCOMMIT` in TCL allows SQL statements to be automatically committed as soon as they are executed, making each statement its own transaction. If you need more control over transactions, you can disable `AUTOCOMMIT` and manually manage transactions using `COMMIT` and `ROLLBACK` commands.
 
 **5. DQL (Data Query Language):**
 DQL commands are used to query and retrieve data from the database. Although not an official SQL category, DQL is commonly used to refer to commands used for data retrieval.
