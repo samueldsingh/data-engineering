@@ -100,25 +100,13 @@ truncate -
 
 **Insert**
 
-1. insert one into all columns - insert into <table_name> values (<list of values seperated by commas>); -- inserting one record into all columns, no need to list the columns
-2. insert one into specific columns - insert into <table_name> (<list of columns seperated by commas>) values (<list of values seperated by commas>); -- inserting one record into speacific columns, need to list the columns
-3. insert multiple rows into all columns - insert into <table_name> values (<list of values seperated by commas>),(<list of values seperated by commas>),(<list of values seperated by commas>),(<list of values seperated by commas>);-- inserting multiple record into all columns, no need to list the columns
-4. insert multiple rows into specific columns- insert into <table_name> (<list of columns seperated by commas>) values (<list of values seperated by commas>),(<list of values seperated by commas>),(<list of values seperated by commas>),(<list of values seperated by commas>),(<list of values seperated by commas>); -- inserting multiple record into specific columns, need to list the columns
-
-```
-INSERT INTO Employee
-SELECT 1, 'Mike', 3000,'2020-6-7'
-UNION ALL
-SELECT 2, 'Ellen', 35000,'2020-8-7'
-```
-
-5. insert into select - insert into table_name (<list of columns>)<select statement>; --select <*/list of columns> from <old_table_name>;
-
-```
-insert into students12 (id,s_name)
-(select id,s_name from students1);
-```
-
+1. INSERT ONE INTO ALL COLUMNS - INSERT INTO <TABLE_NAME> VALUES (<LIST OF VALUES SEPERATED BY COMMAS>); -- Inserting one record into all columns, No need to list the columns
+2. INSERT ONE INTO SPECIFIC COLUMNS - INSERT INTO <TABLE_NAME> (<LIST OF COLUMNS SEPERATED BY COMMAS>) VALUES (<LIST OF VALUES SEPERATED BY COMMAS>); -- Inserting one record into speacific columns, Need to list the columns
+3. INSERT MULTIPLE ROWS INTO ALL COLUMNS - INSERT INTO <TABLE_NAME> VALUES (<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>);-- Inserting Multiple record into all columns, No need to list the columns
+4. INSERT MULTIPLE ROWS INTO SPECIFIC COLUMNS- INSERT INTO <TABLE_NAME> (<LIST OF COLUMNS SEPERATED BY COMMAS>) VALUES (<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>); -- Inserting Multiple record into specific columns, Need to list the columns
+5. INSERT USING IMPORT -  -- Import the records from the exported csv file
+6. INSERT IGNORE - INSERT IGNORE INTO <TABLE_NAME> VALUES (<LIST OF VALUES SEPERATED BY COMMAS>); --Ignore case helps to bypass the erros during the execution. 
+7. INSERT INTO SELECT - INSERT INTO <TABLE_NAME> (<LIST OF COLUMNS>)<SELECT STATEMENT>; --SELECT <*/LIST OF COLUMNS> FROM <OLD_TABLE_NAME>;
 
 **Update**
 1. update single value - update <table_name> set <column_name> = <value> where <condition>;
