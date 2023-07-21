@@ -787,6 +787,56 @@ ON DUPLICATE KEY UPDATE department = VALUES(department);
 
 Remember that the syntax and availability of certain commands may vary slightly between different database management systems (DBMS). Always refer to the specific documentation of your DBMS for the correct syntax and usage of DML commands.
 
+Give examples for the following DML commands:
+
+**SELECT -** 
+1. SELECT ALL FROM TABLE - SELECT * FROM <TABLE_NAME/VIEW_NAME>;
+2. SELECT SPECIFIC COLUMNS FROM TABLE - SELECT <LIST of COLUMNS - COLUMN1 , COLUMN2, COLUMN3> FROM <TABLE_NAME/VIEW_NAME>;
+3. SELECT USING WHERE CLAUSE - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION>; -- Displays the records based on the given condition.
+4. SELECT USING DISTINCT - SELECT DISTINCT <COLUMN_NAME>, <LIST OF COLUMNS> FROM <TABLE_NAME>; -- Gives the list Unique Values
+5. SELECT USING AND - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> AND <CONDITION>; -- You can use more conditions under where caluse
+6. SELECT USING OR - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> OR <CONDITION>; -- You can use more conditions under where caluse
+7. SELECT UISNG IN - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IN <LIST OF VALUES SEPERATED BY COMMAS>; -- Display's the List of Values seperated by commas.
+8. SELECT UISNG NOT IN - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> NOT IN <RANGE/SET OF VALUES>; -- Display's the List of excluding values seperated by commas.
+9. SELECT UISNG BETWEEN/NOT BETWEEN  - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> BETWEEN/NOT BETWEEN <VALUE> AND <VALUE>; -- Used to display the range of values, Mostly in dates and numbers.
+10. SELECT UISNG LIKE - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> LIKE <VALUE WITH OR WITHOUT WILD CHARS>; -- pattren matching will be done here. WILD CHARS are %, _
+11. SELECT UISNG LIMIT - SELECT * FROM <TABLE_NAME/VIEW_NAME> LIMIT <RANGE TO BE SELECTED>; -- user to select the range, Example 2[offest],4[range] or 2[range] - Offset is optional. 
+12. SELECT UISNG IS NULL - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IS NULL; -- Dispalys the records with null vaues.
+13. SELECT UISNG IS NOT NULL - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IS NOT NULL; -- Dispalys the records with out null vaues.
+14. SELECT UISNG ORDER BY - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> ORDER BY <COLUMN_NAME/S>; -- Dispalys the records in give oreder [Asc-default/Desc].
+15. SELECT UISNG GROUP BY - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> GROUP BY <COLUMN_NAME/S>; -- Groups the columns based on the list of columns we mention.
+16. SELECT UISNG HAVING - SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> GROUP BY <COLUMN_NAME/S> HAVING <CONDITION>; -- additional condition on group by, works similar to where clause
+17. SELECT USING ROLLUP - SELECT <LIST OF COLUMNS WITH AGG FUNCTIONS> FROM <TABLE_NAME> GROUP BY <COLUMN_NAME/S> WITH ROLLUP; -- Get's the total sum values along with the group sum values listed on the group by caluse.
+18. SELECT AS - SELECT <COLUMN_NAME> AS <NEW_COLUMN_NAME> FROM <TABLE_NAME>; -- Column names can be renamed as per our requirement while retrival(Just for the sinle execution/Display).
+
+
+
+**INSERT -**
+1. INSERT ONE INTO ALL COLUMNS - INSERT INTO <TABLE_NAME> VALUES (<LIST OF VALUES SEPERATED BY COMMAS>); -- Inserting one record into all columns, No need to list the columns
+2. INSERT ONE INTO SPECIFIC COLUMNS - INSERT INTO <TABLE_NAME> (<LIST OF COLUMNS SEPERATED BY COMMAS>) VALUES (<LIST OF VALUES SEPERATED BY COMMAS>); -- Inserting one record into speacific columns, Need to list the columns
+3. INSERT MULTIPLE ROWS INTO ALL COLUMNS - INSERT INTO <TABLE_NAME> VALUES (<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>);-- Inserting Multiple record into all columns, No need to list the columns
+4. INSERT MULTIPLE ROWS INTO SPECIFIC COLUMNS- INSERT INTO <TABLE_NAME> (<LIST OF COLUMNS SEPERATED BY COMMAS>) VALUES (<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>),(<LIST OF VALUES SEPERATED BY COMMAS>); -- Inserting Multiple record into specific columns, Need to list the columns
+5. INSERT USING IMPORT -  -- Import the records from the exported csv file
+6. INSERT IGNORE - INSERT IGNORE INTO <TABLE_NAME> VALUES (<LIST OF VALUES SEPERATED BY COMMAS>); --Ignore case helps to bypass the erros during the execution. 
+7. INSERT INTO SELECT - INSERT INTO <TABLE_NAME> (<LIST OF COLUMNS>)<SELECT STATEMENT>; --SELECT <*/LIST OF COLUMNS> FROM <OLD_TABLE_NAME>;
+
+
+**UPDATE -**
+1. UPDATE SINGLE VALUE - UPDATE <TABLE_NAME> SET <COLUMN_NAME> = <VALUE> WHERE <CONDITION>;
+2. UPDATE MULTIPLE VALUES [in Single row] - UPDATE <TABLE_NAME> SET <COLUMN_NAME> = <VALUE>, <COLUMN_NAME_1> = <VALUE_1>, <COLUMN_NAME_2> = <VALUE_2> <etc...> WHERE <CONDITION>;
+3. UPDATE MULTIPLE RECORDS WITH MULTIPLE VALUES - UPDATE <TABLE_NAME>
+SET <COLUMN TO BE UPDATED> = (
+CASE 
+	WHEN <COLUMN TO BE COMPARED>  = <VALUE> THEN <VALUE TO BE UPDATED>
+    WHEN <COLUMN TO BE COMPARED>  = <VALUE> THEN <VALUE TO BE UPDATED>
+    WHEN <COLUMN TO BE COMPARED>  = <VALUE> THEN <VALUE TO BE UPDATED>
+	WHEN <COLUMN TO BE COMPARED>  = <VALUE> THEN <VALUE TO BE UPDATED>
+    END);
+		
+**DELETE -**
+1. DELETE A ROW - DELETE FROM <TABLE_NAME> WHERE <CONDITION> or/and <CONDITION>;
+2. DELETE MULTIPLE ROWS - DELETE FROM <TABLE_NAME> WHERE <CONDITION> or/and <CONDITION>;
+
 **3. DCL (Data Control Language):**
 
 DCL stands for "Data Control Language" in SQL (Structured Query Language). DCL commands are used to control access to data and manage database objects' permissions within a relational database. These commands primarily deal with defining and managing user privileges and access rights to the database objects, ensuring data security and integrity. The two main DCL commands are:
@@ -862,6 +912,12 @@ In this example, the `REVOKE` command is used to remove all privileges on the `i
 
 Remember that the syntax and availability of DCL commands may vary slightly between different database management systems (DBMS). Always refer to the specific documentation of your DBMS for the correct syntax and usage of DCL commands. Additionally, be cautious when granting or revoking privileges to ensure data security and adhere to the principle of least privilege.
 
+Give examples for the following DCL commands:
+
+- GRANT - Grant the permission to the users on specific objects (Schema);
+- REVOKE - Revoke the permission to the users on specific objects (Schema);
+
+
 
 **4. TCL (Transaction Control Language):**
 
@@ -914,7 +970,7 @@ ROLLBACK TO sp1; -- Rollback to the savepoint
 COMMIT; -- End the transaction and save changes
 ```
 
-Certainly! Here are examples of using TCL (Transaction Control Language) commands in SQL:
+Here are examples of using TCL (Transaction Control Language) commands in SQL:
 
 1. COMMIT:
 
@@ -968,6 +1024,345 @@ SELECT id, name, age FROM students WHERE age > 20;
 ```
 
 In summary, SQL commands are categorized into DDL, DML, DCL, and TCL based on their respective purposes: defining and managing the database structure, manipulating data, controlling user access and permissions, and managing transactions. Additionally, DQL commands are used to query and retrieve data from the database. Understanding these categories is essential for effectively managing databases and performing various data operations in SQL.
+
+## 6. SUB-QUERY
+
+SUBQUERY - (QUERY WITHIN QUERY) - SELECT <COLUMN NAMES> FROM TABLE_NAME WHERE COLUMN (= or <> or IN or NOT IN) (SELECT COLUMN_NAME FROM <TABLE_NAME> WHERE <CONDITIONS>)
+
+A subquery, also known as a nested query or inner query, is a query that is embedded within another SQL query. Subqueries are used to retrieve data from one or more tables based on the results of another query. They can be a powerful tool for performing complex queries and data manipulation in SQL.
+
+Let's look at an example to understand how subqueries work:
+
+Consider a database with two tables: `employees` and `departments`.
+
+Table: employees
+
+| emp_id | emp_name | emp_salary | dept_id |
+|--------|----------|------------|---------|
+| 101    | John     | 50000      | 1       |
+| 102    | Alice    | 45000      | 2       |
+| 103    | Bob      | 60000      | 1       |
+| 104    | Mary     | 55000      | 3       |
+
+Table: departments
+
+| dept_id | dept_name |
+|---------|-----------|
+| 1       | IT        |
+| 2       | HR        |
+| 3       | Finance   |
+
+Example 1: Simple Subquery
+
+Suppose we want to retrieve the names of employees who work in the "IT" department. We can achieve this using a subquery as follows:
+
+```sql
+SELECT emp_name
+FROM employees
+WHERE dept_id = (SELECT dept_id FROM departments WHERE dept_name = 'IT');
+```
+
+In this example, the subquery `(SELECT dept_id FROM departments WHERE dept_name = 'IT')` retrieves the department ID for the "IT" department. The outer query then selects the `emp_name` from the `employees` table for those employees whose `dept_id` matches the result of the subquery.
+
+Example 2: Subquery with Aggregate Function
+
+Let's find the average salary of employees in the "Finance" department:
+
+```sql
+SELECT AVG(emp_salary) AS avg_salary
+FROM employees
+WHERE dept_id = (SELECT dept_id FROM departments WHERE dept_name = 'Finance');
+```
+
+In this example, the subquery `(SELECT dept_id FROM departments WHERE dept_name = 'Finance')` gets the department ID for the "Finance" department. The outer query then uses this department ID to calculate the average salary of employees in that department using the `AVG()` aggregate function.
+
+These are just a few simple examples of how subqueries can be used in SQL. Subqueries can be nested within each other or combined with other SQL clauses like `IN`, `NOT IN`, `EXISTS`, `ALL`, `ANY`, etc., to perform more complex data retrieval and manipulation tasks.
+
+## 7. TABLE COPY
+
+- CREATE A TABLE and INSERT THE RECORS INTO THE TABLE bY USING THE SELECT STATEMENT. 
+
+Table copy in SQL refers to the process of duplicating the data and structure of an existing table to create a new table. This is often done when you want to work with a copy of the original data without modifying the original table. Table copy can be useful for various purposes, such as creating backup copies, performing data analysis, or testing changes without affecting the original data.
+
+There are different ways to copy a table in SQL, depending on the database management system (DBMS) you are using. Here, I'll provide examples for two common ways to copy a table:
+
+1. Using CREATE TABLE AS SELECT (CTAS):
+
+The `CREATE TABLE AS SELECT` (CTAS) statement allows you to create a new table based on the results of a SELECT query. It copies both the data and the structure of the original table to the new table.
+
+For example, let's say we have a table called `employees` with columns `emp_id`, `emp_name`, and `emp_salary`, and we want to create a copy of this table:
+
+```sql
+CREATE TABLE employees_copy AS
+SELECT * FROM employees;
+```
+
+In this example, the `employees_copy` table will be created with the same columns and data as the `employees` table.
+
+2. Using INSERT INTO SELECT:
+
+Another way to copy a table is to use the `INSERT INTO SELECT` statement. This method allows you to insert data from an existing table into a new table with the same structure.
+
+```sql
+CREATE TABLE employees_copy (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    emp_salary DECIMAL(10, 2)
+);
+
+INSERT INTO employees_copy
+SELECT * FROM employees;
+```
+
+In this example, we first create an empty table called `employees_copy` with the same structure as the `employees` table. Then, we use the `INSERT INTO SELECT` statement to insert data from the `employees` table into the new table.
+
+Both methods achieve the same result of copying the data and structure of the original table to a new table. The choice between them depends on your specific requirements and the database system you are using.
+
+Give examples of the following commands:
+1. CREATE TABLE <TABLE_NAME> AS (SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME);
+2. INSERT INTO <TABLE_NAME> SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME;
+
+
+Certainly! Here are examples of the given SQL commands:
+
+1. `CREATE TABLE <TABLE_NAME> AS (SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME);`
+
+Example: Creating a new table called `employees_copy` with a subset of columns from the `employees` table:
+
+```sql
+CREATE TABLE employees_copy AS
+SELECT emp_id, emp_name, emp_salary
+FROM employees;
+```
+
+In this example, the `employees_copy` table will be created with columns `emp_id`, `emp_name`, and `emp_salary`, and it will contain the same data as the `employees` table, but only for the selected columns.
+
+2. `INSERT INTO <TABLE_NAME> SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME;`
+
+Example: Inserting data into the `employees_copy` table from the `employees` table:
+
+```sql
+INSERT INTO employees_copy (emp_id, emp_name, emp_salary)
+SELECT emp_id, emp_name, emp_salary
+FROM employees;
+```
+
+In this example, the `employees_copy` table must already exist with the same structure as the `employees` table. The `INSERT INTO SELECT` statement copies the data from the `employees` table into the `employees_copy` table for the specified columns.
+
+These examples demonstrate how to use `CREATE TABLE AS SELECT` and `INSERT INTO SELECT` to copy data from an existing table into a new table or a table with an already defined structure. The difference between the two lies in whether you are creating a new table or inserting data into an existing one.
+
+
+## 8. JOINS
+
+The Joins Available in MYSQL are,
+
+- INNER JOIN -  
+- CROSS JOIN - 
+- INNER STRAIGHT_JOIN - 
+- CROSS STRAIGHT_JOIN - 
+- LEFT JOIN - 
+- RIGHT JOIN - 
+- LEFT OUTER JOIN - 
+- RIGHT OUTER JOIN - 
+- NATURAL JOIN table_factor - 
+- NATURAL INNER LEFT JOIN - 
+- NATURAL INNER RIGHT JOIN - 
+- NATURAL OUTER JOIN - 
+
+### 4 TYPES - INNER,LEFT,RIGHT,CROSS 
+
+- INNER JOIN: JOINS based on the comparison condition and displays only the matching columns.
+
+`SELECT <COLUMN/S> FROM <TABLE_NAME1> INNER JOIN <TABLE_NAME2> ON/WHERE/USING <JOIN CONDITION>;`
+
+- LEFT JOIN - JOINS based on the comparison condition and displays all rows from left table and the matching columns from RIGHT TABLE.
+
+`SELECT <COLUMN/S> FROM <TABLE_NAME1> LEFT JOIN <TABLE_NAME2> ON/WHERE/USING <JOIN CONDITION>;`
+
+- RIGHT JOIN - JOINS based on the comparison condition and displays all rows from right table and the matching columns from left TABLE.
+
+`SELECT <COLUMN/S> FROM <TABLE_NAME1> RIGHT JOIN <TABLE_NAME2> ON/WHERE/USING <JOIN CONDITION>;`
+
+- CROSS JOIN - Doesn't have a join condition and it displayed cartesian product of both tables. 
+
+`SELECT <COLUMN/S> FROM <TABLE_NAME1> CROSS JOIN <TABLE_NAME2>;`
+
+In SQL, a join is a mechanism that allows you to combine rows from two or more tables based on related columns. Joins are fundamental for querying and retrieving data from multiple tables in a relational database. They help establish relationships between tables and provide a way to access data across different tables using a single query.
+
+There are different types of joins in SQL:
+
+1. INNER JOIN: The most common type of join. It returns only the rows where there is a match in both tables based on the specified condition.
+
+2. LEFT JOIN (or LEFT OUTER JOIN): Returns all the rows from the left table and the matching rows from the right table. If there is no match in the right table, NULL values are returned for the columns from the right table.
+
+3. RIGHT JOIN (or RIGHT OUTER JOIN): Similar to the LEFT JOIN, but returns all the rows from the right table and the matching rows from the left table.
+
+4. FULL JOIN (or FULL OUTER JOIN): Returns all the rows from both tables, along with the matching rows. If there is no match in either table, NULL values are returned for the columns from the table without a match.
+
+5. CROSS JOIN: Returns the Cartesian product of two tables, i.e., all possible combinations of rows from both tables.
+
+Here's an example to illustrate the use of joins:
+
+Consider two tables: `employees` and `departments`.
+
+Table: employees
+
+| emp_id | emp_name | dept_id |
+|--------|----------|---------|
+| 1      | John     | 101     |
+| 2      | Alice    | 102     |
+| 3      | Bob      | 101     |
+
+Table: departments
+
+| dept_id | dept_name |
+|---------|-----------|
+| 101     | IT        |
+| 102     | HR        |
+| 103     | Finance   |
+
+Example: INNER JOIN
+
+```sql
+SELECT emp_name, dept_name
+FROM employees
+INNER JOIN departments ON employees.dept_id = departments.dept_id;
+```
+
+In this example, the INNER JOIN is used to combine the `employees` and `departments` tables based on the `dept_id` column. The query will return the `emp_name` from the `employees` table and the corresponding `dept_name` from the `departments` table where there is a match between the `dept_id` columns of both tables.
+
+The result will be:
+
+| emp_name | dept_name |
+|----------|-----------|
+| John     | IT        |
+| Alice    | HR        |
+| Bob      | IT        |
+
+Joins are a powerful feature in SQL and are essential for efficiently working with relational databases where data is distributed across multiple related tables. They enable you to retrieve and combine data from different tables in various ways, allowing for complex data analysis and reporting.
+
+## 9. UNION
+
+- UNION/UNION ALL: The column count should match (UNION - Duplications is not allowed/ UNION ALL - Duplications is allowed)
+
+SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME UNION 
+SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME;
+
+SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME UNION ALL
+SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME;
+ 
+
+In SQL, the `UNION` operator is used to combine the result sets of two or more `SELECT` queries into a single result set. The `UNION` operator removes duplicate rows from the final result set, making it useful for combining data from different tables or for merging data from similar tables.
+
+There are a few key points to note about the `UNION` operator:
+
+1. The number of columns and their data types in all the `SELECT` queries must be the same. If the column names are not the same, you can use aliases to ensure the column names in the final result set are clear.
+
+2. The order of the columns in the `SELECT` queries must also be the same.
+
+Syntax:
+```
+SELECT column1, column2, ...
+FROM table1
+UNION
+SELECT column1, column2, ...
+FROM table2;
+```
+
+Example:
+
+Consider two tables: `employees` and `contractors`.
+
+Table: employees
+
+| emp_id | emp_name | dept_id |
+|--------|----------|---------|
+| 1      | John     | 101     |
+| 2      | Alice    | 102     |
+| 3      | Bob      | 101     |
+
+Table: contractors
+
+| emp_id | emp_name | dept_id |
+|--------|----------|---------|
+| 101    | Dave     | 103     |
+| 102    | Eve      | 102     |
+| 103    | Grace    | 101     |
+
+Example: Using UNION
+
+```sql
+SELECT emp_id, emp_name, dept_id
+FROM employees
+UNION
+SELECT emp_id, emp_name, dept_id
+FROM contractors;
+```
+
+In this example, the `UNION` operator is used to combine the result sets of two `SELECT` queries from the `employees` and `contractors` tables. The final result set will contain all distinct rows from both tables, excluding any duplicate rows. The column names and data types are the same in both `SELECT` queries, which allows them to be combined using the `UNION` operator.
+
+The result will be:
+
+| emp_id | emp_name | dept_id |
+|--------|----------|---------|
+| 1      | John     | 101     |
+| 2      | Alice    | 102     |
+| 3      | Bob      | 101     |
+| 101    | Dave     | 103     |
+| 102    | Eve      | 102     |
+| 103    | Grace    | 101     |
+
+As you can see, the `UNION` operator merges the data from both tables, ensuring that duplicate rows are removed, and presents a single combined result set.
+ 
+## 10. EXCLUDE 
+
+ 
+CONSTRAINTS
+FUNCTIONS
+SUB QUERY
+
+In SQL, there is no specific `EXCLUDE` operator or command like `UNION`, `JOIN`, or `SELECT`. However, if you want to exclude certain rows from the result set based on specific conditions, you can use various SQL clauses and functions to achieve this.
+
+The common SQL clauses that are used to exclude rows from a result set are:
+
+1. `WHERE` clause: The `WHERE` clause is used to filter rows based on specified conditions. It allows you to include only the rows that meet the specified criteria and exclude others.
+
+Example:
+
+```sql
+SELECT emp_id, emp_name
+FROM employees
+WHERE dept_id <> 101;
+```
+
+In this example, the `WHERE` clause is used to exclude employees from the result set whose `dept_id` is equal to 101.
+
+2. `NOT` keyword: The `NOT` keyword is used to negate a condition in the `WHERE` clause. It allows you to exclude rows that satisfy a particular condition.
+
+Example:
+
+```sql
+SELECT emp_id, emp_name
+FROM employees
+WHERE NOT dept_id = 101;
+```
+
+This query will return employees from the `employees` table whose `dept_id` is not equal to 101.
+
+3. `EXISTS` and `NOT EXISTS` subqueries: These subqueries are used with the `WHERE` clause to check for the existence of rows in a related table and include or exclude rows accordingly.
+
+Example:
+
+```sql
+SELECT emp_id, emp_name
+FROM employees
+WHERE EXISTS (SELECT 1 FROM departments WHERE employees.dept_id = departments.dept_id);
+```
+
+This query will return employees from the `employees` table whose `dept_id` matches an existing department in the `departments` table.
+
+In summary, SQL provides various ways to exclude rows from a result set based on specific conditions using the `WHERE` clause, `NOT` keyword, and subqueries. These mechanisms allow you to control which rows are included or excluded in the final result based on your requirements.
+
 
 ```MySQL password : sam@1234```
 
