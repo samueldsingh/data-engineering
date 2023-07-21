@@ -114,57 +114,153 @@ FROM employees;
 
 11. Write an SQL query to print all Worker details from the Worker table order by FIRST_NAME Ascending.
 
+```
+SELECT *
+FROM employees
+ORDER BY first_name ASC;
+```
 
 12. Write an SQL query to print all Worker details from the Worker table order by FIRST_NAME Ascending and DEPARTMENT Descending.
 
+```
+SELECT *
+FROM employees
+ORDER BY first_name ASC, department DESC;
+```
 
 13. Write an SQL query to print details for Workers with the first names “Vipul” and “Satish” from the Worker table.
 
+```
+SELECT *
+FROM employees
+WHERE first_name IN ('Vipul', 'Satish')
+```
 
 14. Write an SQL query to print details of workers excluding first names, “Vipul” and “Satish” from the Worker table.
 
+```
+SELECT *
+FROM employees
+WHERE first_name IN ('Vipul', 'Satish')
+```
 
 15. Write an SQL query to print details of Workers with DEPARTMENT name as “Admin”.
 
+```
+SELECT *
+FROM employees
+WHERE department = 'Admin';
+```
 
 16. Write an SQL query to print details of the Workers whose FIRST_NAME contains ‘a’.
 
+```
+SELECT *
+FROM  employees
+WHERE first_name LIKE '%a%'
+```
 
 17. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‘a’.
 
+```
+SELECT *
+FROM  employees
+WHERE first_name LIKE '%a'
+```
 
 18. Write an SQL query to print details of the Workers whose FIRST_NAME ends with ‘h’ and contains six alphabets.
 
+```
+SELECT *
+FROM employees
+WHERE first_name LIKE '_____h';
+```
 
 19. Write an SQL query to print details of the Workers whose SALARY lies between 100000 and 500000.
 
+```
+SELECT *
+FROM employees
+WHERE salary BETWEEN 100000 AND 500000;
+```
 
 20. Write an SQL query to print details of the Workers who joined in Feb’2014.
 
+```
+SELECT *
+FROM employees
+WHERE joining_date >= '2014-02-01' AND joining_date < '2014-03-01';
+```
 
 21. Write an SQL query to fetch the count of employees working in the department ‘Admin’.
 
+```
+SELECT COUNT(*) AS Admin_employees
+FROM employees
+WHERE department = 'Admin'
+```
 
 22. Write an SQL query to fetch worker names with salaries >= 50000 and <= 100000.
 
+```
+SELECT *
+FROM employees
+WHERE salary >= 50000 and salary <= 100000;
+```
 
 23. Write an SQL query to fetch the no. of workers for each department in descending order.
 
+```
+SELECT department, COUNT(*) AS NumberOfWorkers
+FROM employees
+GROUP BY department
+ORDER BY NumberOfWorkers DESC;
+```
 
 24. Write an SQL query to print details of the Workers who are also Managers.
 
+```
+SELECT *
+FROM employees
+WHERE 
+```
 
 25. Write an SQL query to fetch duplicate records having matching data in some fields of a table.
 
+```
+-- SELECT salary, department, COUNT(*) AS DuplicateCount
+-- FROM employees
+-- GROUP BY salary, department
+-- HAVING COUNT(*) > 1;
+```
 
 26. Write an SQL query to show only odd rows from a table.
 
+```
+SELECT *
+FROM (
+    SELECT *, ROW_NUMBER() OVER (ORDER BY employee_id) AS row_num
+    FROM employees
+) AS temp
+WHERE row_num % 2 = 1;
+```
 
 27. Write an SQL query to show only even rows from a table.
 
+```
+SELECT *
+FROM (
+    SELECT *, ROW_NUMBER() OVER (ORDER BY employee_id) AS row_num
+    FROM employees
+) AS temp
+WHERE row_num % 2 = 0;
+```
 
 28. Write an SQL query to clone a new table from another table.
 
+```
+
+```
  
 29. Write an SQL query to fetch intersecting records of two tables.
 
