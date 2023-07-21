@@ -31,7 +31,9 @@ Common DDL commands include:
 Use **CREATE** command to perform the following operations:
 
 i. CREATE a DATABASE - `CREATE DATABASE <DB_NAME>;`
+
 ii. CREATE a TABLE - `CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>));`
+
 iii. CREATE a VIEW - `CREATE {OR REPLACE} VIEW <VIEW_NAME> AS <SELECT STATMENT>;`
 
 
