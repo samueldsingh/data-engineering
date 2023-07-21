@@ -112,12 +112,13 @@ UNION ALL
 SELECT 2, 'Ellen', 35000,'2020-8-7'
 ```
 
-7. insert into select - insert into table_name (<list of columns>)<select statement>; --select <*/list of columns> from <old_table_name>;
+5. insert into select - insert into table_name (<list of columns>)<select statement>; --select <*/list of columns> from <old_table_name>;
 
 ```
 insert into students12 (id,s_name)
 (select id,s_name from students1);
 ```
+
 
 **Update**
 1. update single value - update <table_name> set <column_name> = <value> where <condition>;
