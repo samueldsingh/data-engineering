@@ -94,28 +94,34 @@ select -
 17. select using rollup - select <list of columns with agg functions> from <table_name> group by <column_name/s> with rollup; -- get's the total sum values along with the group sum values listed on the group by caluse.
 18. select as - select <column_name> as <new_column_name> from <table_name>; -- column names can be renamed as per our requirement while retrival(just for the sinle execution/display).
 
-***************************DML**********************************************************
 
-insert -
+## DML
+
+**Insert**
+
 1. insert one into all columns - insert into <table_name> values (<list of values seperated by commas>); -- inserting one record into all columns, no need to list the columns
 2. insert one into specific columns - insert into <table_name> (<list of columns seperated by commas>) values (<list of values seperated by commas>); -- inserting one record into speacific columns, need to list the columns
 3. insert multiple rows into all columns - insert into <table_name> values (<list of values seperated by commas>),(<list of values seperated by commas>),(<list of values seperated by commas>),(<list of values seperated by commas>);-- inserting multiple record into all columns, no need to list the columns
 4. insert multiple rows into specific columns- insert into <table_name> (<list of columns seperated by commas>) values (<list of values seperated by commas>),(<list of values seperated by commas>),(<list of values seperated by commas>),(<list of values seperated by commas>),(<list of values seperated by commas>); -- inserting multiple record into specific columns, need to list the columns
 
+```
 INSERT INTO Employee
 SELECT 1, 'Mike', 3000,'2020-6-7'
 UNION ALL
 SELECT 2, 'Ellen', 35000,'2020-8-7'
+```
 
 7. insert into select - insert into table_name (<list of columns>)<select statement>; --select <*/list of columns> from <old_table_name>;
 insert into students12 (id,s_name)
 (select id,s_name from students1);
 
-update -
+**Update**
 1. update single value - update <table_name> set <column_name> = <value> where <condition>;
 2. update multiple values - update <table_name> set <column_name> = <value>, <column_name_1> = <value_1>
 							where <condition>;
 3. update multiple records with multiple values - update <table_name>
+
+```
 set <column to be updated> = (
 case 
 	when <column to be compared>  = <value> then <value to be updated>
@@ -123,30 +129,31 @@ case
     when <column to be compared>  = <value> then <value to be updated>
 	when <column to be compared>  = <value> then <value to be updated>
     end);
+```
 		
-delete -
+**Delete**
 1. delete a row - delete from <table_name> where <condition> or/and <condition>;
 2. delete multiple rows - delete from <table_name> where <condition> or/and <condition>;
 
 
--- *********************dcl*********************** -- will be handles by dba's
+## DCL 
+- will be handles by dba's
 
--->> grant , revoke -  database admins
-
-
--- grant - grant the permission to the users on specific objects (schema);
--- revoke - revoke the permission to the users on specific objects (schema);
+- grant , revoke -  database admins
 
 
--- ********************sub-query********************
-
--- 
-
-subquery - (query within query) - select <column names> from table_name where column (= or <> or in or not in) (select column_name from <table_name> where <conditions>)
+- `grant` - grant the permission to the users on specific objects (schema);
+- `revoke` - revoke the permission to the users on specific objects (schema);
 
 
+## sub-query
 
--- ************************tcl********************** 
+- `subquery` - (query within query) - select <column names> from table_name where column (= or <> or in or not in) (select column_name from <table_name> where <conditions>)
+
+
+
+## TCL
+
 -->> transcation => <execute statements> savepoint/s, rollback (to savepoints), commit.
 
 start transaction;
@@ -158,7 +165,7 @@ tcl
 
 set autocommit=0;
 
-
+```
 create table students
 (s_id int,
 s_name varchar(25));
@@ -173,18 +180,17 @@ select * from students;
 insert into students
 values(12,'aishu');
 rollback;
+```
 
+## Table Copy
 
-----------------------------------------------------------------------------
--- ************************table copy***************************
-
--- create a table and insert teh recors into the table by using the select statement. 
+- create a table and insert teh recors into the table by using the select statement. 
 
 1. create table <table_name> as (select (*/list of columns) from table_name);
 2. insert into <table_name> select (*/list of columns) from table_name;
 
 
--- ***************************joins******************************
+## Joins
 
 the joins available in mysql are,
 
@@ -201,36 +207,38 @@ the joins available in mysql are,
 - natural inner right join - 
 - natural outer join - 
 
--- 4 types - inner,left,right,cross 
+4 types - inner,left,right,cross 
 
--- inner join - joins based on the comparison condition and displays only the matching columns.
+- inner join - joins based on the comparison condition and displays only the matching columns.
 
 select <column/s> from <table_name1> inner join <table_name2> on/where/using <join condition>;
 
--- left join - joins based on the comparison condition and displays all rows from left table and the matching columns from right table.
+- left join - joins based on the comparison condition and displays all rows from left table and the matching columns from right table.
 
 select <column/s> from <table_name1> left join <table_name2> on/where/using <join condition>;
 
--- right join - joins based on the comparison condition and displays all rows from right table and the matching columns from left table.
+- right join - joins based on the comparison condition and displays all rows from right table and the matching columns from left table.
 
 select <column/s> from <table_name1> right join <table_name2> on/where/using <join condition>;
 
--- cross join - doesn't have a join condition and it displayed cartesian product of both tables. 
+- cross join - doesn't have a join condition and it displayed cartesian product of both tables. 
 
 select <column/s> from <table_name1> cross join <table_name2>;
 
--- ************union************
 
--- union/union all - the column count should match (union - duplications is not allowed/ union all - duplications is allowed)
+## Union
 
+- union/union all - the column count should match (union - duplications is not allowed/ union all - duplications is allowed)
+
+```
 select (*/list of columns) from table_name union 
 select (*/list of columns) from table_name;
 
 select (*/list of columns) from table_name union all
 select (*/list of columns) from table_name;
+``` 
  
- 
--- exclude 
+## exclude 
 
  
 constraints
