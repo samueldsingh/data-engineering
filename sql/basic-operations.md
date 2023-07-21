@@ -30,12 +30,12 @@ Common DDL commands include:
 
 Use **CREATE** command to perform the following operations:
 
-1. CREATE a DATABASE - `CREATE DATABASE <DB_NAME>;`
-2. CREATE a TABLE - `CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>));`
-3. CREATE a VIEW - `CREATE {OR REPLACE} VIEW <VIEW_NAME> AS <SELECT STATMENT>;`
+i. CREATE a DATABASE - `CREATE DATABASE <DB_NAME>;`
+ii. CREATE a TABLE - `CREATE TABLE <TABLE_NAME> (<COLUMN NAME> <TYPE>(<Field Length/SIZE>));`
+iii. CREATE a VIEW - `CREATE {OR REPLACE} VIEW <VIEW_NAME> AS <SELECT STATMENT>;`
 
 
-**Create a database**
+**i. Create a database**
 
 ```
 CREATE DATABASE SampleDB;
@@ -44,7 +44,7 @@ CREATE DATABASE SampleDB;
 Double-click the db name in the SCHEMAS list in the sidebar to set the db to default db.
 
 
-**Insert tables**
+**ii. Create a tables (Insert table)**
 
 ```
 CREATE TABLE Employees (
@@ -57,7 +57,7 @@ CREATE TABLE Employees (
 ```
 
 
-**Create a view:**
+**iii. Create a view:**
 
 In MySQL, a view is a virtual table that is derived from the result of a SELECT query. It does not store data itself but represents a stored query that can be used as if it were a real table. Views allow you to simplify complex queries, encapsulate logic, and provide an additional layer of security by restricting direct access to underlying tables. Some key points about views in MySQL are:
 
