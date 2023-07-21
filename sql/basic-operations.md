@@ -9,12 +9,12 @@ crud - create, retrive (select), update and delete
 
 
 In sql, the 4 main categories for querying data are:
- - DDL: create, alter, drop, truncate
- - DML: insert, update, delete,
- - TCL: start transaction, savepoint, rollback, commit, set constraint [o]
- - DCL: grant, revoke
- - DQL: select
-In SQL (Structured Query Language), different types of commands are used to interact with databases and manage data. These commands are categorized into four main groups based on their functionality: DDL, DML, DCL, and TCL. Additionally, there is a subset called DQL, which is not an official category but is commonly used to refer to commands used for querying data. Let's explain each category:
+1. DDL: create, alter, drop, truncate
+2. DML: insert, update, delete,
+3. TCL: start transaction, savepoint, rollback, commit, set constraint [o]
+4. DCL: grant, revoke
+5. DQL: select
+
 
 ## 1. DDL (Data Definition Language):
 DDL commands are used to define and manage the structure of the database. They are responsible for creating, altering, and dropping database objects like tables, views, indexes, and schemas. DDL commands do not manipulate the data itself but rather modify the database's structure and schema.
@@ -26,10 +26,6 @@ Common DDL commands include:
 - `DROP`: Used to delete database objects from the database.
 - `TRUNCATE`: Used to remove all data from a table (similar to `DELETE`, but faster).
 
-
-**Examples:**
-
-
 ### 1. CREATE
 
 Use **CREATE** command to perform the following operations:
@@ -39,7 +35,7 @@ Use **CREATE** command to perform the following operations:
 3. CREATE a VIEW - `CREATE {OR REPLACE} VIEW <VIEW_NAME> AS <SELECT STATMENT>;`
 
 
-**1. Create a database**
+**Create a database**
 
 ```
 CREATE DATABASE SampleDB;
@@ -48,7 +44,7 @@ CREATE DATABASE SampleDB;
 Double-click the db name in the SCHEMAS list in the sidebar to set the db to default db.
 
 
-**2. Insert tables**
+**Insert tables**
 
 ```
 CREATE TABLE Employees (
@@ -61,7 +57,7 @@ CREATE TABLE Employees (
 ```
 
 
-**3. Create a view:**
+**Create a view:**
 
 In MySQL, a view is a virtual table that is derived from the result of a SELECT query. It does not store data itself but represents a stored query that can be used as if it were a real table. Views allow you to simplify complex queries, encapsulate logic, and provide an additional layer of security by restricting direct access to underlying tables. Some key points about views in MySQL are:
 
@@ -104,6 +100,8 @@ The `DESC employees`; command provides information about each column in the `emp
 The `USE company_db`; command selects the `company_db` database, and all subsequent queries will be executed within this database until another database is selected.
 
 In summary, the `DESC <TABLE_NAME>;` command is used to describe the structure of a specific table, and the `USE <schema_name>;` command is used to switch to a particular database before executing queries on its tables.
+
+
 
 ### 2. ALTER
 
@@ -599,6 +597,7 @@ In this example, the `ALTER TABLE` statement is used to update the comment for a
 
 Please note that the syntax for adding, updating, and dropping comments may differ in other database management systems. Always refer to the specific documentation of your database system for the correct syntax and options for adding, updating, and dropping comments on tables.
 
+
 ## 2. DML (Data Manipulation Language):
 DML commands are used to manipulate data within the database. They allow you to insert, update, and delete data in the database tables.
 
@@ -757,6 +756,7 @@ CASE
 2. DELETE MULTIPLE ROWS: `DELETE FROM <TABLE_NAME> WHERE <CONDITION> or/and <CONDITION>;`
 
 
+
 ## 3. DCL (Data Control Language):
 
 DCL stands for "Data Control Language" in SQL (Structured Query Language). DCL commands are used to control access to data and manage database objects' permissions within a relational database. These commands primarily deal with defining and managing user privileges and access rights to the database objects, ensuring data security and integrity. The two main DCL commands are:
@@ -839,7 +839,7 @@ Give examples for the following DCL commands:
 
 
 
-**4. TCL (Transaction Control Language):**
+## 4. TCL (Transaction Control Language):
 
 TCL stands for "Transaction Control Language" in SQL (Structured Query Language). TCL commands are used to manage transactions within a relational database. Transactions are a sequence of one or more SQL statements that are executed as a single unit of work. The primary goal of TCL commands is to ensure the integrity and consistency of data when multiple statements need to be executed together as a single logical operation.
 
@@ -977,7 +977,9 @@ COMMIT;
 
 In summary, `AUTOCOMMIT` in TCL allows SQL statements to be automatically committed as soon as they are executed, making each statement its own transaction. If you need more control over transactions, you can disable `AUTOCOMMIT` and manually manage transactions using `COMMIT` and `ROLLBACK` commands.
 
-**5. DQL (Data Query Language):**
+
+
+## 5. DQL (Data Query Language):
 DQL commands are used to query and retrieve data from the database. Although not an official SQL category, DQL is commonly used to refer to commands used for data retrieval.
 
 Common DQL commands include:
@@ -989,6 +991,7 @@ SELECT id, name, age FROM students WHERE age > 20;
 ```
 
 In summary, SQL commands are categorized into DDL, DML, DCL, and TCL based on their respective purposes: defining and managing the database structure, manipulating data, controlling user access and permissions, and managing transactions. Additionally, DQL commands are used to query and retrieve data from the database. Understanding these categories is essential for effectively managing databases and performing various data operations in SQL.
+
 
 ## 6. SUB-QUERY
 
@@ -1042,6 +1045,8 @@ WHERE dept_id = (SELECT dept_id FROM departments WHERE dept_name = 'Finance');
 In this example, the subquery `(SELECT dept_id FROM departments WHERE dept_name = 'Finance')` gets the department ID for the "Finance" department. The outer query then uses this department ID to calculate the average salary of employees in that department using the `AVG()` aggregate function.
 
 These are just a few simple examples of how subqueries can be used in SQL. Subqueries can be nested within each other or combined with other SQL clauses like `IN`, `NOT IN`, `EXISTS`, `ALL`, `ANY`, etc., to perform more complex data retrieval and manipulation tasks.
+
+
 
 ## 7. TABLE COPY
 
@@ -1205,6 +1210,8 @@ The result will be:
 | Bob      | IT        |
 
 Joins are a powerful feature in SQL and are essential for efficiently working with relational databases where data is distributed across multiple related tables. They enable you to retrieve and combine data from different tables in various ways, allowing for complex data analysis and reporting.
+
+
 
 ## 9. UNION
 
