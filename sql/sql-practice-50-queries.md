@@ -264,42 +264,131 @@ WHERE row_num % 2 = 0;
  
 29. Write an SQL query to fetch intersecting records of two tables.
 
+```
+SELECT column1, column2, ...
+FROM table1
+INTERSECT
+SELECT column1, column2, ...
+FROM table2;
+```
  
 30. Write an SQL query to show records from one table that another table does not have.
 
+```
+SELECT *
+FROM table1
+WHERE column_name NOT IN (SELECT column_name FROM table2);
+```
  
 31. Write an SQL query to show the current date and time.
 
+```
+SELECT NOW() AS current_datetime;
+```
  
 32. Write an SQL query to show the top n (say 10) records of a table.
 
+```
+SELECT *
+FROM your_table
+LIMIT 10;
+```
 
 33. Write an SQL query to determine the nth (say n=5) highest salary from a table.
 
+We can use LIMIT 1 to retrieve only one record (the nth highest salary), and OFFSET 4 means we are skipping the first four records, effectively retrieving the fifth highest salary.
+
+```
+SELECT salary
+FROM your_table
+ORDER BY salary DESC
+LIMIT 1 OFFSET 4;
+```
 
 34. Write an SQL query to determine the 5th highest salary without using the TOP or limit method.
 
+To determine the 5th highest salary without using the `TOP` or `LIMIT` method, you can use a combination of the `ORDER BY` clause and a subquery. One approach is to use the `DISTINCT` keyword along with a `LIMIT`-like behavior in the subquery to get the 5th highest salary. Here's how you can do it:
+
+```sql
+SELECT DISTINCT salary
+FROM your_table outer_table
+WHERE 5 = (
+    SELECT COUNT(DISTINCT inner_table.salary)
+    FROM your_table inner_table
+    WHERE inner_table.salary >= outer_table.salary
+);
+```
+
+Replace `your_table` with the name of your actual table.
+
+In this query, we use a subquery to count the number of distinct salary values that are greater than or equal to each salary in the `outer_table`. By using `COUNT(DISTINCT inner_table.salary)`, we effectively get the rank of each salary. The `WHERE 5 = ...` condition then filters the results to only include the 5th highest salary.
+
+This query should give you the 5th highest salary from the table without using the `TOP` or `LIMIT` clauses.
 
 35. Write an SQL query to fetch the list of employees with the same salary.
 
+```
+SELECT salary, COUNT(*) AS employee_count
+FROM employees
+GROUP BY salary
+HAVING COUNT(*) > 1;
+```
 
 36. Write an SQL query to show the second-highest salary from a table.
 
+```
+SELECT salary
+FROM your_table
+ORDER BY salary DESC
+LIMIT 1 OFFSET 1;
+```
 
 37. Write an SQL query to show one row twice in the results from a table.
 
+```
+SELECT column1, column2, column3
+FROM your_table
+WHERE column1 = 'example_value'
+
+UNION ALL
+
+SELECT column1, column2, column3
+FROM your_table
+WHERE column1 = 'example_value';
+```
 
 38. Write an SQL query to fetch intersecting records of two tables.
 
+```
+SELECT columns
+FROM table1
+INNER JOIN table2 ON condition;
+```
 
 39. Write an SQL query to fetch the first 50% of records from a table.
-
+```
+SELECT *
+FROM your_table
+ORDER BY some_column
+LIMIT (SELECT COUNT(*) / 2 FROM your_table);)
+```
 
 40. Write an SQL query to fetch the departments that have less than five people in them.
 
+```
+SELECT department
+FROM employees
+GROUP BY department
+HAVING COUNT(*) < 5;
+```
 
 41. Write an SQL query to show all departments along with the number of people in there.
 
+```
+SELECT department, COUNT(*) as no_of_people
+FROM employees
+GROUP BY department
+```
 
 42. Write an SQL query to show the last record from a table.
 
