@@ -392,28 +392,83 @@ GROUP BY department
 
 42. Write an SQL query to show the last record from a table.
 
+```
+SELECT *
+FROM your_table
+ORDER BY your_primary_key_column DESC
+LIMIT 1;
+```
 
 43. Write an SQL query to fetch the first row of a table.
 
+```
+SELECT *
+FROM your_table
+ORDER BY your_primary_key_column
+LIMIT 1;
+```
 
 44. Write an SQL query to fetch the last five records from a table.
 
+```
+SELECT *
+FROM your_table
+ORDER BY your_primary_key_column DESC
+LIMIT 5;
+```
 
 45. Write an SQL query to print the name of employees having the highest salary in each department.
 
+```
+SELECT
+  first_name,
+  department,
+  salary
+FROM employees e
+WHERE salary = (
+  SELECT MAX(salary) 
+  FROM employees 
+  WHERE department = e.department
+);
+```
  
 46. Write an SQL query to fetch three max salaries from a table.
 
+```
+SELECT DISTINCT first_name, salary
+FROM employees
+ORDER BY salary DESC
+LIMIT 3;
+```
 
 47. Write an SQL query to fetch three min salaries from a table.
 
+```
+SELECT DISTINCT first_name, salary
+FROM employees
+ORDER BY salary ASC
+LIMIT 3;
+```
  
 48. Write an SQL query to fetch nth max salaries from a table.
 
  
 49. Write an SQL query to fetch departments along with the total salaries paid for each of them.
 
+```
+SELECT department, SUM(salary) AS total_salary
+FROM employees
+GROUP BY department;
+```
  
 50. Write an SQL query to fetch the names of workers who earn the highest salary.
 
+```
+SELECT first_name, department, salary
+FROM employees
+WHERE salary = (
+  SELECT MAX(salary)
+  FROM employees
+);
+```
 
