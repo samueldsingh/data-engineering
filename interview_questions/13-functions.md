@@ -1,5 +1,4 @@
 
-
 ## What are functions?
 
 In Python, a function is a block of reusable code that performs a specific task or set of tasks. It allows you to group related instructions together 
@@ -829,7 +828,12 @@ In this example, `reduce()` is used to apply the lambda function `lambda x, y: x
 
 These functions (`map()`, `filter()`, and `reduce()`) are versatile tools for processing data in Python, and using lambda functions enables concise and flexible functional programming approaches.
 
-
+**Example of lambda with reduce:**
+```
+li = [1,2,3,4,5,6,7,8,9,10]
+squared_list = list(map(lambda x: x ** 2, li))
+print(squared_list)
+```
 
 The output is:
 ```
