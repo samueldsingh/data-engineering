@@ -110,4 +110,34 @@ for number in range(1, 101):
 
 ```
 
+## 13. Sort a list.
 
+```
+dict_values = [10, 5, 20, 8, 15]
+dict_keys = ["apple", "banana", "orange", "grape", "kiwi"]
+
+length = len(dict_values)
+i = 0
+while i < length - 1:
+    j = 0
+    while j < length - 1 - i:
+        if dict_values[j] < dict_values[j + 1]:
+            dict_values[j], dict_values[j + 1] = dict_values[j + 1], dict_values[j]
+            dict_keys[j], dict_keys[j + 1] = dict_keys[j + 1], dict_keys[j]
+        j += 1
+    i += 1
+
+# After sorting
+print("After sorting in descending order:")
+print("Values:", dict_values)
+print("Keys:", dict_keys)
+
+sorted_dict = {}
+
+for i in range(len(dict_keys)):
+    key = dict_keys[i]
+    value = dict_values[i]
+    sorted_dict[key] = value
+
+print("The sorted dictionary is:",sorted_dict)
+```
