@@ -145,3 +145,6 @@ Run the server as:
 ```
 python manage.py runserver
 ```
+
+The app that we created:
+![django](https://github.com/samueldsingh/python-dev-90-days-bootcamp/assets/62851341/3b7ddcaf-edd3-4d11-bf1d-0916219c7fd2)
