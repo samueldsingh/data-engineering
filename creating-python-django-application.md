@@ -5,14 +5,18 @@
 3. Install Pycharm (Community version. Ignore Professional version)
 
 ## Creating python django web app
-**Step 1:** Creating new project in the root directory such as, `C:\Users\samue\PyCharmProjects\my_python_project`. Make sure `venv` is selected as the environment and
+**Step 1:** 
+
+Creating new project in the root directory such as, `C:\Users\samue\PyCharmProjects\my_python_project`. Make sure `venv` is selected as the environment and
 check the boxes `Inherit global site packages`, `Make available to all projects` and choose `Create`. A new python project will be created.
 
 **Step 2: Install django using terminal**
+
 Open the terminal in PyCharm and while we are inside the `venv` directory, `(venv) PS C:\Users\samue\PyCharmProjects\my_python_project>`, use `pip install django`
 to install django.
 
 **Step 3: Create a django project (Using django admin command)**
+
 Create a project named, `mydjangosite`, using the command:
 
 ```
@@ -54,6 +58,7 @@ INSTALLED_APPS = [
 ```
 
 **Step 7: Run the server**
+
 Run the server using the following commands, to test if everything is running fine:
 
 ```
@@ -63,6 +68,7 @@ python manage.py runserver
 The django setup is completed. Now we can create and run some webpages to start the website development.
 
 **Step 8: Migrate**
+
 Migrate is done for the databases
 
 ```
@@ -70,6 +76,7 @@ python manage.py migrate
 ```
 
 **Step 9: Create Superuser**
+
 To access the admin section, create Superuser. While creating Supercase, you will have to provide three inputs, username, password, and email address.
 
 ```
@@ -80,17 +87,21 @@ password: Samuelds@7797
 ```
 
 **Step 10: Check admin credentials by logging into admin**
+
 First run the server using, `python manage.py runserver`
 
 Change the url to, `http://127.0.0.1:8000/admin`
 
 **Step 11: Create directory named templates in app**
+
 Close the server using `Ctrl + C`. Go to `myapp` --> `New` --> `Directory` --> `templates`.
 
 **Step 12: Inside template directory create another directory with same name as app**
+
 Go to `templates` --> `New` --> `Directory` --> `myapp`
 
 **Step 13: Create index.html in the myapp directory**
+
 Create an html file in the directory and add a `h1` tag between the `<body>` tag:
 
 ```
@@ -106,9 +117,11 @@ def index(request):
 ```
 
 **Step 15: Copy urls.py from django project to your app**
+
 Copy the urls.py from the `mydjangosite` folder to the `myapp` folder
 
 **Step 16: In your app inside urls.py create url pattern for index veiw**
+
 First import views from the current directory
 
 ```
@@ -151,4 +164,5 @@ The app that we created:
 
 
 **References:**
+
 [Youtube Tutorial](https://youtu.be/4XYsODaQ6Ok)
