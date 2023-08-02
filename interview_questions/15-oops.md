@@ -219,3 +219,51 @@ samuel.get_sinfo()
 samuel.del_marks()
 samuel.get_sinfo()
 ```
+
+The output is:
+```
+Student Information:  100 samuel  65
+Student Information:  100 samuel  90
+Student Information:  100 samuel  None
+```
+
+#### Example 3
+
+```
+
+# Student class
+
+class Student:
+    # State
+    def __init__(self, sid, name, marks):
+        self.sid = sid
+        self.name = name
+        self.marks = marks
+    # Behavior
+    def get_sinfo(self):
+        print("Student info : ", self.sid, self.name, self.marks)
+
+    def get_result(self):
+        if self.marks >= 35:
+            print("Result : PASS : ", self.name)
+        else:
+            print("Result :FAIL  : ", self.name)
+
+    def update_name(self):
+        self.name = "Vigneshwaran Kanagaraj"
+
+
+
+vignesh = Student(100, 'Vignesh K', 56)
+print("Beore update : ", vignesh.get_sinfo())
+vignesh.update_name()
+print("After update : ", vignesh.get_sinfo())
+```
+
+The output is:
+```
+Student info :  100 Vignesh K 56
+Beore update :  None
+Student info :  100 Vigneshwaran Kanagaraj 56
+After update :  None
+```
