@@ -154,9 +154,9 @@ Here, the `Shape` class is an abstract class representing a shape's essential ch
 Object-Oriented Programming helps in building more organized, modular, and extensible code. It is widely used in various programming languages like Python, Java, C++, and more to develop complex software systems with ease.
 
 
-### Steps involved in creating a class
+## Steps involved in creating a class
 
-#### Example 1
+## Example 1
 ```
 # Step1: Defining Class
 
@@ -184,7 +184,7 @@ The output is:
 Employee Information :  6 samuel 26
 ```
 
-#### Example 2
+## Example 2
 
 ```
 
@@ -227,7 +227,7 @@ Student Information:  100 samuel  90
 Student Information:  100 samuel  None
 ```
 
-#### Example 3
+## Example 3
 
 ```
 
@@ -268,7 +268,7 @@ Student info :  100 Vigneshwaran Kanagaraj 56
 After update :  None
 ```
 
-#### What are instance variables and class variables?
+## What are instance variables and class variables?
 
 In object-oriented programming, instance variables and class variables are two types of variables used in classes to store data and maintain state. They have different scopes and behave differently during the lifetime of objects and classes.
 
@@ -321,7 +321,7 @@ In this example, `wheels` is a class variable of the `Car` class. Both `car1` an
 
 It's important to understand the distinction between instance variables and class variables, as they serve different purposes in the design of classes and objects. Instance variables represent unique properties of individual objects, while class variables represent properties shared among all instances of the class.
 
-#### What are instance methods and class methods
+## What are instance methods and class methods
 
 In Python, class methods and instance methods are two types of methods used within classes to perform operations on class-level and instance-level data, respectively. They are defined using decorators (`@classmethod` and `@staticmethod` for class methods) and can access different types of variables within the class.
 
@@ -384,7 +384,7 @@ In this example, `static_method` is a static method of the `MyClass` class. It d
 
 To summarize, instance methods are used to operate on instance-specific data and require the `self` parameter, while class methods operate on class-level data and require the `cls` parameter. Static methods do not require access to instance or class data and are defined using the `@staticmethod` decorator.
 
-#### Explain default constructor and parameterized constructor
+## Explain default constructor and parameterized constructor
 
 In object-oriented programming, constructors are special methods used to initialize objects when they are created from a class. In Python, there are two types of constructors: the default constructor and the parameterized constructor.
 
