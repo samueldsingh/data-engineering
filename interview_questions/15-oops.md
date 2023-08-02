@@ -152,3 +152,70 @@ print(square.area())  # Output: 16
 Here, the `Shape` class is an abstract class representing a shape's essential characteristic – its area. It is not meant to be instantiated, but its subclasses, `Circle` and `Square`, implement the `area()` method to provide specific functionality.
 
 Object-Oriented Programming helps in building more organized, modular, and extensible code. It is widely used in various programming languages like Python, Java, C++, and more to develop complex software systems with ease.
+
+
+### Steps involved in creating a class
+
+#### Example 1
+```
+# Step1: Defining Class
+
+class Employee:
+  def __init__(self, emp_id, name, age):
+    self.emp_id = emp_id
+    self.name = name
+    self.age = age
+  
+  def get_einfo(self):
+    print("Employee Information : ", self.emp_id, self.name, self.age)
+    
+    
+# Step 2 - Create object
+
+sam = Employee(6, "samuel", 26)
+
+# Step3: Method Call
+sam.get_einfo()
+# Employee.get_einfo(sam)
+```
+
+The output is:
+```
+Employee Information :  6 samuel 26
+```
+
+#### Example 2
+
+```
+
+# Step1: Create Class
+class Student:
+  
+    # State
+    def __init__(self, sid, name, marks):
+        self.sid = sid
+        self.name = name
+        self.marks = marks
+        
+    # Behavior
+    def get_sinfo(self):
+        print("Student Information: ", self.sid, self.name, self.marks)
+
+    def update_marks(self, val):
+        self.marks = val
+
+    def del_marks(self):
+        self.marks = None
+
+# Step2: Create Object
+samuel = Student(100, "samuel ", 65)
+
+# Step3: Method Call
+samuel.get_sinfo()
+
+# update marks
+samuel.update_marks(90)
+samuel.get_sinfo()
+samuel.del_marks()
+samuel.get_sinfo()
+```
