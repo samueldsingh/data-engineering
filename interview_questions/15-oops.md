@@ -267,3 +267,162 @@ Beore update :  None
 Student info :  100 Vigneshwaran Kanagaraj 56
 After update :  None
 ```
+
+#### What are instance variables and class variables?
+
+In object-oriented programming, instance variables and class variables are two types of variables used in classes to store data and maintain state. They have different scopes and behave differently during the lifetime of objects and classes.
+
+1. Instance Variable:
+Instance variables are variables that belong to each instance (object) of a class separately. Each object of the class has its own copy of instance variables, and the values of these variables can be unique for each object. They are defined within the `__init__` method of the class and are prefixed with the `self` keyword, which refers to the instance itself.
+
+Example:
+
+```python
+class Car:
+    def __init__(self, make, model):
+        self.make = make   # instance variable
+        self.model = model # instance variable
+
+car1 = Car("Toyota", "Camry")
+car2 = Car("Honda", "Accord")
+
+print(car1.make)  # Output: "Toyota"
+print(car2.make)  # Output: "Honda"
+```
+
+In this example, `make` and `model` are instance variables of the `Car` class. Each instance of the class (e.g., `car1` and `car2`) has its own set of these variables.
+
+2. Class Variable:
+Class variables are variables that belong to the class itself, not to individual instances. They are shared among all instances of the class, meaning that any modification to the class variable will affect all instances of that class. Class variables are typically defined directly within the class, outside of any method, and they are not prefixed with the `self` keyword.
+
+Example:
+
+```python
+class Car:
+    wheels = 4  # class variable
+
+    def __init__(self, make, model):
+        self.make = make   # instance variable
+        self.model = model # instance variable
+
+car1 = Car("Toyota", "Camry")
+car2 = Car("Honda", "Accord")
+
+print(car1.wheels)  # Output: 4
+print(car2.wheels)  # Output: 4
+
+Car.wheels = 6  # Changing the class variable for all instances
+
+print(car1.wheels)  # Output: 6
+print(car2.wheels)  # Output: 6
+```
+
+In this example, `wheels` is a class variable of the `Car` class. Both `car1` and `car2` share the same `wheels` value, and if we modify the `wheels` class variable, it will be reflected in all instances.
+
+It's important to understand the distinction between instance variables and class variables, as they serve different purposes in the design of classes and objects. Instance variables represent unique properties of individual objects, while class variables represent properties shared among all instances of the class.
+
+#### What are instance methods and class methods
+
+In Python, class methods and instance methods are two types of methods used within classes to perform operations on class-level and instance-level data, respectively. They are defined using decorators (`@classmethod` and `@staticmethod` for class methods) and can access different types of variables within the class.
+
+1. Instance Methods:
+Instance methods are the most common type of methods used in classes. They are bound to the instance of the class and can access and modify instance variables. Instance methods take the `self` parameter as the first argument, which represents the instance of the class itself. When calling an instance method on an object, Python automatically passes the instance as the first argument.
+
+Example:
+
+```python
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+
+    def instance_method(self):
+        print("Instance method called with value:", self.value)
+
+obj = MyClass(42)
+obj.instance_method()  # Output: "Instance method called with value: 42"
+```
+
+In this example, `instance_method` is an instance method of the `MyClass` class. It takes the `self` parameter, allowing it to access and use the instance variables (e.g., `self.value`).
+
+2. Class Methods:
+Class methods are methods that are bound to the class itself rather than to the instances. They use the `@classmethod` decorator and take the class as the first argument, often named `cls`. Class methods can be used to perform operations that are related to the class as a whole and not dependent on specific instance data.
+
+Example:
+
+```python
+class MyClass:
+    class_variable = 10
+
+    def __init__(self, value):
+        self.value = value
+
+    @classmethod
+    def class_method(cls):
+        print("Class method called with class variable:", cls.class_variable)
+
+obj = MyClass(42)
+obj.class_method()  # Output: "Class method called with class variable: 10"
+```
+
+In this example, `class_method` is a class method of the `MyClass` class. It uses the `@classmethod` decorator and can access the class-level variable `class_variable` directly through `cls.class_variable`.
+
+3. Static Methods:
+While not specifically mentioned in your question, it's worth noting that there is another type of method called static methods. These methods do not require access to instance-specific or class-specific data. They are defined using the `@staticmethod` decorator and do not take the `self` or `cls` parameters. Static methods are mainly used when a method does not need access to instance data or class data and operates independently.
+
+Example:
+
+```python
+class MyClass:
+    @staticmethod
+    def static_method():
+        print("This is a static method")
+
+MyClass.static_method()  # Output: "This is a static method"
+```
+
+In this example, `static_method` is a static method of the `MyClass` class. It does not require any instance-specific or class-specific data and can be called directly on the class.
+
+To summarize, instance methods are used to operate on instance-specific data and require the `self` parameter, while class methods operate on class-level data and require the `cls` parameter. Static methods do not require access to instance or class data and are defined using the `@staticmethod` decorator.
+
+#### Explain default constructor and parameterized constructor
+
+In object-oriented programming, constructors are special methods used to initialize objects when they are created from a class. In Python, there are two types of constructors: the default constructor and the parameterized constructor.
+
+1. Default Constructor:
+A default constructor is a constructor that is automatically created by Python if no constructor is explicitly defined in a class. It does not take any parameters and is used to create objects with default attribute values. The default constructor can be called using the class name, followed by parentheses, to create an instance of the class.
+
+Example:
+
+```python
+class MyClass:
+    def __init__(self):
+        print("Default constructor called.")
+
+obj = MyClass()  # Output: "Default constructor called."
+```
+
+In this example, `MyClass` has a default constructor, `__init__`, which is called when an object is created using `MyClass()`. Since no explicit constructor is defined, Python creates a default constructor with no parameters.
+
+2. Parameterized Constructor:
+A parameterized constructor is a constructor that takes one or more parameters and is explicitly defined in the class. It allows you to initialize the object with custom attribute values based on the arguments passed during object creation. This type of constructor is useful when you want to customize the object's state during instantiation.
+
+Example:
+
+```python
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+
+    def display_value(self):
+        print("Value:", self.value)
+
+obj1 = MyClass(42)
+obj2 = MyClass(99)
+
+obj1.display_value()  # Output: "Value: 42"
+obj2.display_value()  # Output: "Value: 99"
+```
+
+In this example, `MyClass` has a parameterized constructor, `__init__`, that takes a `value` parameter. When objects `obj1` and `obj2` are created, the constructor is called with the specified arguments, setting the `value` attribute of each object accordingly.
+
+It's worth noting that in Python, you can also have both default and parameterized constructors in a class. When both constructors are defined, the parameterized constructor takes precedence, and the default constructor will not be automatically created. To create an object using the default constructor in such cases, you need to explicitly define the default constructor.
