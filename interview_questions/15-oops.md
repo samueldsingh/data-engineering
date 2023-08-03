@@ -384,6 +384,45 @@ In this example, `static_method` is a static method of the `MyClass` class. It d
 
 To summarize, instance methods are used to operate on instance-specific data and require the `self` parameter, while class methods operate on class-level data and require the `cls` parameter. Static methods do not require access to instance or class data and are defined using the `@staticmethod` decorator.
 
+## What are decorators in python?
+In Python, decorators are a powerful and flexible way to modify or extend the behavior of functions or methods. They allow you to wrap a function inside another function, typically to add some additional functionality before or after the original function's execution.
+
+Decorators are denoted by the `@decorator_name` syntax placed above the function definition. When a decorated function is called, the decorator is invoked first, and then the original function is executed with any modifications made by the decorator.
+
+Here's a basic example of a decorator:
+
+```python
+def my_decorator(func):
+    def wrapper():
+        print("Something is happening before the function is called.")
+        func()
+        print("Something is happening after the function is called.")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print("Hello!")
+
+# Calling the decorated function
+say_hello()
+```
+
+Output:
+```
+Something is happening before the function is called.
+Hello!
+Something is happening after the function is called.
+```
+
+In this example, `my_decorator` is a custom decorator function that takes another function `func` as an argument. The `wrapper` function is defined inside the decorator, which performs some actions before and after calling the original `func`.
+
+When we decorate the `say_hello` function with `@my_decorator`, calling `say_hello()` is equivalent to calling `my_decorator(say_hello)()`. The `say_hello` function is replaced with the `wrapper` function returned by the decorator. Thus, when `say_hello()` is called, the behavior is modified by the `my_decorator`.
+
+Decorators are widely used in Python to add functionalities like logging, timing, authentication, and more to functions without modifying their original code. You can stack multiple decorators on top of each other, and they will be applied in the order they are defined.
+
+Python also provides some built-in decorators like `@staticmethod`, `@classmethod`, and `@property` for specific use cases, and you can create your own custom decorators to suit your needs.
+
+
 ## Explain default constructor and parameterized constructor
 
 In object-oriented programming, constructors are special methods used to initialize objects when they are created from a class. In Python, there are two types of constructors: the default constructor and the parameterized constructor.
