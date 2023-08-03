@@ -423,6 +423,79 @@ Decorators are widely used in Python to add functionalities like logging, timing
 Python also provides some built-in decorators like `@staticmethod`, `@classmethod`, and `@property` for specific use cases, and you can create your own custom decorators to suit your needs.
 
 
+## Example of builtin decorators in pyton
+
+Certainly! Here are some examples of built-in Python decorators:
+
+1. `@staticmethod`:
+This decorator is used to define static methods within a class. Static methods belong to the class and do not have access to instance-specific data.
+
+```python
+class MathOperations:
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+result = MathOperations.add(5, 10)
+print(result)  # Output: 15
+```
+
+2. `@classmethod`:
+This decorator is used to define class methods. Class methods take the class as their first argument (conventionally named `cls`) instead of the instance (`self`).
+
+```python
+class MyClass:
+    class_variable = 10
+
+    @classmethod
+    def get_class_variable(cls):
+        return cls.class_variable
+
+result = MyClass.get_class_variable()
+print(result)  # Output: 10
+```
+
+3. `@property`:
+This decorator is used to create getter methods for class properties. It allows you to access a method like an attribute without using parentheses.
+
+```python
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius
+
+    @property
+    def radius(self):
+        return self._radius
+
+circle = Circle(5)
+print(circle.radius)  # Output: 5
+```
+
+4. `@abstractmethod` (from the `abc` module):
+This decorator is used to define abstract methods within abstract classes. Abstract methods must be implemented by subclasses.
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+rectangle = Rectangle(4, 5)
+print(rectangle.area())  # Output: 20
+```
+
+These are just a few examples of built-in Python decorators. They provide useful functionalities and help in structuring code and maintaining proper object-oriented design principles.
+
 ## Explain default constructor and parameterized constructor
 
 In object-oriented programming, constructors are special methods used to initialize objects when they are created from a class. In Python, there are two types of constructors: the default constructor and the parameterized constructor.
