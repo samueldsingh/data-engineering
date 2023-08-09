@@ -204,7 +204,7 @@ SQL functions play a crucial role in database queries and data manipulation. The
 **10. Commonly used functions:**
 Certainly! Here are examples for each of the SQL functions you mentioned, along with sample outputs:
 
-**BIT_AND() - Bitwise AND:**
+- **BIT_AND() - Bitwise AND:**
 
 Suppose you have a table named `bitwise_values` with a column named `bits`:
 
@@ -223,7 +223,7 @@ FROM bitwise_values;
 
 Output: `001`
 
-**BIT_OR() - Bitwise OR:**
+- **BIT_OR() - Bitwise OR:**
 
 Using the same `bitwise_values` table:
 
@@ -235,7 +235,7 @@ FROM bitwise_values;
 
 Output: `111`
 
-**BIT_XOR() - Bitwise XOR:**
+- **BIT_XOR() - Bitwise XOR:**
 
 Using the same `bitwise_values` table:
 
@@ -247,7 +247,7 @@ FROM bitwise_values;
 
 Output: `000`
 
-**GROUP_CONCAT() - Concatenate Values:**
+- **GROUP_CONCAT() - Concatenate Values:**
 
 Suppose you have a table named `products` with a column named `product_name`:
 
@@ -266,7 +266,7 @@ FROM products;
 
 Output: `Laptop, Smartphone, Tablet, TV`
 
-**JSON_ARRAYAGG() - Aggregate JSON Arrays:**
+- **JSON_ARRAYAGG() - Aggregate JSON Arrays:**
 
 Using the same `products` table:
 
@@ -278,7 +278,7 @@ FROM products;
 
 Output: `["Laptop", "Smartphone", "Tablet", "TV"]`
 
-**JSON_OBJECTAGG() - Aggregate JSON Objects:**
+- **JSON_OBJECTAGG() - Aggregate JSON Objects:**
 
 Suppose you have a table named `employee_salaries` with columns `employee_name` and `salary`:
 
@@ -296,7 +296,7 @@ FROM employee_salaries;
 
 Output: `{"Alice": 50000, "Bob": 60000, "Carol": 55000}`
 
-**STDDEV_POP() - Population Standard Deviation:**
+- **STDDEV_POP() - Population Standard Deviation:**
 
 Suppose you have a table named `exam_scores` with a column named `score`:
 
@@ -315,7 +315,7 @@ FROM exam_scores;
 
 Output: `5.31128874068349`
 
-**STDDEV_SAMP() - Sample Standard Deviation:**
+- **STDDEV_SAMP() - Sample Standard Deviation:**
 
 Using the same `exam_scores` table:
 
@@ -327,7 +327,7 @@ FROM exam_scores;
 
 Output: `5.37360333735491`
 
-**VAR_POP() - Population Variance:**
+- **VAR_POP() - Population Variance:**
 
 Using the same `exam_scores` table:
 
@@ -339,7 +339,7 @@ FROM exam_scores;
 
 Output: `28.1666666666667`
 
-**VARP_SAM() - Sample Variance:**
+- **VARP_SAM() - Sample Variance:**
 
 Using the same `exam_scores` table:
 
