@@ -405,39 +405,40 @@ Please note that the actual outputs may vary based on your data and the specific
 
 
 Other specifiers and their meaning:
-`%a`: Three-characters abbreviated weekday name e.g., Mon, Tue, Wed, etc.
-`%b`: Three-characters abbreviated month name e.g., Jan, Feb, Mar, etc.
-`%c`: Month in numeric e.g., 1, 2, 3…12
-`%D`: Day of the month with English suffix e.g., 0th, 1st, 2nd, etc.
-`%d`: Day of the month with leading zero if it is 1 number e.g., 00, 01,02, …31
-`%e`: Day of the month without leading zero e.g., 1,2,…31
-`%f`: Microseconds in the range of 000000..999999
-`%H`: Hour in 24-hour format with leading zero e.g., 00..23
-`%h`:	Hour in 12-hour format with leading zero e.g., 01, 02…12
-`%I`: Same as %h
-`%i`: Minutes with leading zero e.g., 00, 01,…59
-`%j`: Day of year with leading zero e.g., 001,002,…366
-`%k`: Hour in 24-hour format without leading zero e.g., 0,1,2…23
-`%l`: Hour in 12-hour format without leading zero e.g., 1,2…12
-`%M`: Full month name e.g., January, February,…December
-`%m`: Month name with leading zero e.g., 00,01,02,…12
-`%p`: AM or PM, depending on other time specifiers
-`%r`: Time in 12-hour format hh:mm:ss AM or PM
-`%S`: Seconds with leading zero 00,01,…59
-`%s`: Same as %S
-`%T`: Time in 24-hour format hh:mm:ss
-`%U`: Week number with leading zero when the first day of week is Sunday e.g., 00,01,02…53
-`%u`: Week number with leading zero when the first day of week is Monday e.g., 00,01,02…53
-`%V`: Same as %U; it is used with %X
-`%v`:	Same as %u; it is used with %x
-`%W`: Full name of weekday e.g., Sunday, Monday,…, Saturday
-`%w`: Weekday in number (0=Sunday, 1= Monday,etc.)
-`%X`: Year for the week in four digits where the first day of the week is Sunday; often used with %V
-`%x`: Year for the week, where the first day of the week is Monday, four digits; used with %v
-`%Y`: Four digits year e.g., 2000 and 2001.
-`%y`: Two digits year e.g., 10,11,and 12.
-`%%`: Add percentage (%) character to the output
+- `%a`: Three-characters abbreviated weekday name e.g., Mon, Tue, Wed, etc.
+- `%b`: Three-characters abbreviated month name e.g., Jan, Feb, Mar, etc.
+- `%c`: Month in numeric e.g., 1, 2, 3…12
+- `%D`: Day of the month with English suffix e.g., 0th, 1st, 2nd, etc.
+- `%d`: Day of the month with leading zero if it is 1 number e.g., 00, 01,02, …31
+- `%e`: Day of the month without leading zero e.g., 1,2,…31
+- `%f`: Microseconds in the range of 000000..999999
+- `%H`: Hour in 24-hour format with leading zero e.g., 00..23
+- `%h`:	Hour in 12-hour format with leading zero e.g., 01, 02…12
+- `%I`: Same as %h
+- `%i`: Minutes with leading zero e.g., 00, 01,…59
+- `%j`: Day of year with leading zero e.g., 001,002,…366
+- `%k`: Hour in 24-hour format without leading zero e.g., 0,1,2…23
+- `%l`: Hour in 12-hour format without leading zero e.g., 1,2…12
+- `%M`: Full month name e.g., January, February,…December
+- `%m`: Month name with leading zero e.g., 00,01,02,…12
+- `%p`: AM or PM, depending on other time specifiers
+- `%r`: Time in 12-hour format hh:mm:ss AM or PM
+- `%S`: Seconds with leading zero 00,01,…59
+- `%s`: Same as %S
+- `%T`: Time in 24-hour format hh:mm:ss
+- `%U`: Week number with leading zero when the first day of week is Sunday e.g., 00,01,02…53
+- `%u`: Week number with leading zero when the first day of week is Monday e.g., 00,01,02…53
+- `%V`: Same as %U; it is used with %X
+- `%v`:	Same as %u; it is used with %x
+- `%W`: Full name of weekday e.g., Sunday, Monday,…, Saturday
+- `%w`: Weekday in number (0=Sunday, 1= Monday,etc.)
+- `%X`: Year for the week in four digits where the first day of the week is Sunday; often used with %V
+- `%x`: Year for the week, where the first day of the week is Monday, four digits; used with %v
+- `%Y`: Four digits year e.g., 2000 and 2001.
+- `%y`: Two digits year e.g., 10,11,and 12.
+- `%%`: Add percentage (%) character to the output
 
+Example usage of the above specifiers and their output:
 ```
 SELECT
     DATE_FORMAT('2023-08-04 14:30:45', '%a') AS abbreviated_weekday,
@@ -472,4 +473,40 @@ SELECT
     DATE_FORMAT('2023-08-04 14:30:45', '%Y') AS year_full,
     DATE_FORMAT('2023-08-04 14:30:45', '%y') AS year_short,
     DATE_FORMAT('2023-08-04 14:30:45', '%%') AS percentage
+```
+
+Output is:
+```
+abbreviated_weekday: Thu
+abbreviated_month: Aug
+month_numeric: 8
+day_with_suffix: 4th
+day_with_leading_zero: 04
+day_without_leading_zero: 4
+microseconds: 000000
+hour_24h_with_leading_zero: 14
+hour_12h_with_leading_zero: 02
+hour_12h_same_as_h: 02
+minutes_with_leading_zero: 30
+day_of_year_with_leading_zero: 216
+hour_24h_without_leading_zero: 14
+hour_12h_without_leading_zero: 2
+full_month_name: August
+month_with_leading_zero: 08
+am_pm_indicator: PM
+time_12h_format: 02:30:45 PM
+seconds_with_leading_zero: 45
+same_as_S: 45
+time_24h_format: 14:30:45
+week_number_sunday_start: 31
+week_number_monday_start: 31
+same_as_U_with_X: 31
+same_as_u_with_x: 31
+full_weekday_name: Thursday
+weekday_numeric: 4
+year_week_sunday_start: 2023
+year_week_monday_start: 2023
+year_full: 2023
+year_short: 23
+percentage: %
 ```
