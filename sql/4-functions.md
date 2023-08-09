@@ -138,6 +138,138 @@ SELECT order_date, order_amount, SUM(order_amount) OVER (ORDER BY order_date) AS
 FROM orders;
 ```
 
+More windows functions:
+
+- `DENSE_RANK`: Assigns a rank to every row within its partition based on the ORDER BY clause. It assigns the same rank to the rows with equal values. 
+						If two or more rows have the same rank, then there will be no gaps in the sequence of ranked values.
+- `RANK`: Similar to the DENSE_RANK() function except that there are gaps in the sequence of ranked values when two or more rows have the same rank.
+- `ROW_NUMBER`: Assigns a sequential integer to every row within its partition
+- `FIRST_VALUE`: Returns the value of the specified expression with respect to the first row in the window frame.
+- `LAST_VALUE`: Returns the value of the specified expression with respect to the last row in the window frame.
+- `LAG`: Returns the value of the Nth row before the current row in a partition. It returns NULL if no preceding row exists.
+- `LEAD`: Returns the value of the Nth row after the current row in a partition. It returns NULL if no subsequent row exists.
+- `CUME_DIST`:	Calculates the cumulative distribution of a value in a set of values.
+- `PERCENT_RANK`: Calculates the percentile rank of a row in a partition or result set
+- `NTH_VALUE`: Returns value of argument from Nth row of the window frame 
+- `NTILE`: Distributes the rows for each window partition into a specified number of ranked groups.
+
+Usage of the above functions:
+
+Assume we have a table `sales` with columns `employee_id`, `sales_amount`, and `month`:
+
+| employee_id | sales_amount | month     |
+|-------------|--------------|-----------|
+| 1           | 1000         | January   |
+| 2           | 1500         | January   |
+| 1           | 1200         | February  |
+| 3           | 800          | January   |
+| 2           | 1300         | February  |
+| 3           | 1100         | February  |
+| 1           | 900          | March     |
+| 2           | 1600         | March     |
+| 3           | 1000         | March     |
+
+1. **DENSE_RANK:**
+Assigns a rank to every row within its partition based on the ORDER BY clause. It assigns the same rank to the rows with equal values.
+
+```sql
+SELECT employee_id, month, sales_amount,
+       DENSE_RANK() OVER(PARTITION BY month ORDER BY sales_amount DESC) AS dense_rank
+FROM sales;
+```
+
+2. **RANK:**
+Similar to `DENSE_RANK()` but there are gaps in the sequence of ranked values when two or more rows have the same rank.
+
+```sql
+SELECT employee_id, month, sales_amount,
+       RANK() OVER(PARTITION BY month ORDER BY sales_amount DESC) AS rank
+FROM sales;
+```
+
+3. **ROW_NUMBER:**
+Assigns a sequential integer to every row within its partition.
+
+```sql
+SELECT employee_id, month, sales_amount,
+       ROW_NUMBER() OVER(PARTITION BY month ORDER BY sales_amount DESC) AS row_number
+FROM sales;
+```
+
+4. **FIRST_VALUE:**
+Returns the value of the specified expression with respect to the first row in the window frame.
+
+```sql
+SELECT employee_id, month, sales_amount,
+       FIRST_VALUE(sales_amount) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS first_sales
+FROM sales;
+```
+
+5. **LAST_VALUE:**
+Returns the value of the specified expression with respect to the last row in the window frame.
+
+```sql
+SELECT employee_id, month, sales_amount,
+       LAST_VALUE(sales_amount) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS last_sales
+FROM sales;
+```
+
+6. **LAG:**
+Returns the value of the Nth row before the current row in a partition. It returns NULL if no preceding row exists.
+
+```sql
+SELECT employee_id, month, sales_amount,
+       LAG(sales_amount, 1) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS prev_sales
+FROM sales;
+```
+
+7. **LEAD:**
+Returns the value of the Nth row after the current row in a partition. It returns NULL if no subsequent row exists.
+
+```sql
+SELECT employee_id, month, sales_amount,
+       LEAD(sales_amount, 1) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS next_sales
+FROM sales;
+```
+
+8. **CUME_DIST:**
+Calculates the cumulative distribution of a value in a set of values.
+
+```sql
+SELECT employee_id, month, sales_amount,
+       CUME_DIST() OVER(PARTITION BY month ORDER BY sales_amount DESC) AS cumulative_dist
+FROM sales;
+```
+
+9. **PERCENT_RANK:**
+Calculates the percentile rank of a row in a partition or result set.
+
+```sql
+SELECT employee_id, month, sales_amount,
+       PERCENT_RANK() OVER(PARTITION BY month ORDER BY sales_amount DESC) AS percent_rank
+FROM sales;
+```
+
+10. **NTH_VALUE:**
+Returns the value of an argument from the Nth row of the window frame.
+
+```sql
+SELECT employee_id, month, sales_amount,
+       NTH_VALUE(sales_amount, 2) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS second_highest_sales
+FROM sales;
+```
+
+11. **NTILE:**
+Distributes the rows for each window partition into a specified number of ranked groups.
+
+```sql
+SELECT employee_id, month, sales_amount,
+       NTILE(3) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS ntile_group
+FROM sales;
+```
+
+These window functions allow you to perform complex calculations and analysis over specific partitions of data within your result set, providing valuable insights and information about your data distribution.
+
 **4. String Functions:**
    These functions operate on string values and are often used for text manipulation and formatting. Examples include `SUBSTRING`, `LEFT`, `RIGHT`, `TRIM`, `REPLACE`.
 
@@ -781,59 +913,59 @@ Comparison functions in SQL are used to compare values and determine the relatio
 
 Here are some common comparison functions in SQL:
 
-1. **Equal (`=`):** This function checks if two values are equal.
+- **Equal (`=`):** This function checks if two values are equal.
    
    Example: `SELECT * FROM customers WHERE age = 25;`
 
-2. **Not Equal (`<>` or `!=`):** This function checks if two values are not equal.
+- **Not Equal (`<>` or `!=`):** This function checks if two values are not equal.
    
    Example: `SELECT * FROM products WHERE price <> 0;`
 
-3. **Greater Than (`>`):** This function checks if the left value is greater than the right value.
+- **Greater Than (`>`):** This function checks if the left value is greater than the right value.
    
    Example: `SELECT * FROM orders WHERE total_amount > 1000;`
 
-4. **Less Than (`<`):** This function checks if the left value is less than the right value.
+- **Less Than (`<`):** This function checks if the left value is less than the right value.
    
    Example: `SELECT * FROM employees WHERE salary < 50000;`
 
-5. **Greater Than or Equal To (`>=`):** This function checks if the left value is greater than or equal to the right value.
+- **Greater Than or Equal To (`>=`):** This function checks if the left value is greater than or equal to the right value.
    
    Example: `SELECT * FROM products WHERE stock_quantity >= 10;`
 
-6. **Less Than or Equal To (`<=`):** This function checks if the left value is less than or equal to the right value.
+- **Less Than or Equal To (`<=`):** This function checks if the left value is less than or equal to the right value.
    
    Example: `SELECT * FROM customers WHERE registration_year <= 2020;`
 
-7. **IS NULL:** This function checks if a value is NULL.
+- **IS NULL:** This function checks if a value is NULL.
    
    Example: `SELECT * FROM orders WHERE shipping_address IS NULL;`
 
-8. **IS NOT NULL:** This function checks if a value is not NULL.
+- **IS NOT NULL:** This function checks if a value is not NULL.
    
    Example: `SELECT * FROM employees WHERE department IS NOT NULL;`
 
-9. **BETWEEN:** This function checks if a value is within a specified range (inclusive).
+- **BETWEEN:** This function checks if a value is within a specified range (inclusive).
    
    Example: `SELECT * FROM products WHERE price BETWEEN 10 AND 50;`
 
-10. **NOT BETWEEN:** This function checks if a value is not within a specified range.
+- **NOT BETWEEN:** This function checks if a value is not within a specified range.
    
     Example: `SELECT * FROM customers WHERE age NOT BETWEEN 18 AND 30;`
 
-11. **IN:** This function checks if a value matches any value in a list.
+- **IN:** This function checks if a value matches any value in a list.
    
     Example: `SELECT * FROM orders WHERE status IN ('Pending', 'Processing');`
 
-12. **NOT IN:** This function checks if a value does not match any value in a list.
+- **NOT IN:** This function checks if a value does not match any value in a list.
    
     Example: `SELECT * FROM products WHERE category NOT IN ('Electronics', 'Clothing');`
 
-13. **LIKE:** This function checks if a value matches a pattern. It's often used with wildcard characters `%` (matches any sequence of characters) and `_` (matches a single character).
+- **LIKE:** This function checks if a value matches a pattern. It's often used with wildcard characters `%` (matches any sequence of characters) and `_` (matches a single character).
    
     Example: `SELECT * FROM employees WHERE last_name LIKE 'S%';`
 
-14. **NOT LIKE:** This function checks if a value does not match a pattern.
+- **NOT LIKE:** This function checks if a value does not match a pattern.
    
     Example: `SELECT * FROM products WHERE product_name NOT LIKE '%sale%';`
 
@@ -841,7 +973,7 @@ These comparison functions are crucial for constructing queries that retrieve sp
 
 Certainly! Here are examples for both the `COALESCE` and `IFNULL` functions:
 
-15. **COALESCE:**
+- **COALESCE:**
 
 Suppose you have a table named `students` with columns `student_id`, `first_name`, and `last_name`. Some students have provided a middle name, while others have not. You want to display the full name for each student, including the middle name if available.
 
