@@ -24,57 +24,44 @@ SELECT ROUND(5.678);  -- Output: 6
 
 Certainly! Here are examples of each of the SQL functions you mentioned:
 
-**1. UCASE() - Convert to Uppercase:**
-
-The `UCASE()` function converts a string to uppercase.
+- The `UCASE()` function converts a string to uppercase.
 
 ```sql
 SELECT UCASE('hello world');  -- Output: 'HELLO WORLD'
 ```
 
-**2. LCASE() - Convert to Lowercase:**
-
-The `LCASE()` function converts a string to lowercase.
+- The `LCASE()` function converts a string to lowercase.
 
 ```sql
 SELECT LCASE('Hello World');  -- Output: 'hello world'
 ```
 
-**3. MID() - Extract Substring:**
-
-The `MID()` function extracts a substring from a string starting at a specified position.
+- The `MID()` function extracts a substring from a string starting at a specified position.
 
 ```sql
 SELECT MID('abcdef', 2, 3);  -- Output: 'bcd'
 ```
 
-**4. LENGTH() - Get String Length:**
-
-The `LENGTH()` function returns the length of a string.
+- The `LENGTH()` function returns the length of a string.
 
 ```sql
 SELECT LENGTH('database');  -- Output: 8
 ```
 
-**5. ROUND() - Round Numeric Value:**
-
-The `ROUND()` function rounds a numeric value to a specified number of decimal places.
+- The `ROUND()` function rounds a numeric value to a specified number of decimal places.
 
 ```sql
 SELECT ROUND(5.678, 1);  -- Output: 5.7
 ```
 
-**6. NOW() - Current Date and Time:**
-
-The `NOW()` function returns the current date and time.
+- The `NOW()` function returns the current date and time.
 
 ```sql
 SELECT NOW();  -- Output: Current date and time
 ```
 
-**7. FORMAT() - Format Numeric Value:**
 
-The `FORMAT()` function formats a numeric value with a specified format.
+- The `FORMAT()` function formats a numeric value with a specified format.
 
 ```sql
 SELECT FORMAT(1234567.89, 'C', 'en-US');  -- Output: '$1,234,567.89'
