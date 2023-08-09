@@ -152,6 +152,93 @@ SELECT TRIM('   Text   ');  -- Output: 'Text'
 SELECT REPLACE('Hello', 'H', 'J');  -- Output: 'Jello'
 ```
 
+Other important string functions and the operations they perform are:
+
+- `CONCAT`: Concatenate two or more strings into a single string
+- `INSTR`: Return the position of the first occurrence of a substring in a string
+- `LENGTH`: Get the length of a string in bytes and in characters
+- `LEFT`: Get a specified number of leftmost characters from a string
+- `LOWER`: Convert a string to lowercase
+- `LTRIM`: Remove all leading spaces from a string
+- `REPLACE`: Search and replace a substring in a string
+- `RIGHT`: Get a specified number of rightmost characters from a string
+- `RTRIM`: Remove all trailing spaces from a string
+- `SUBSTRING`: Extract a substring starting from a position with a specific length.
+- `TRIM`: Remove unwanted characters from a string.
+- `UPPER`: Convert a string to uppercase
+- `FIND_IN_SET`: Find a string within a comma-separated list of strings
+- `FORMAT`: Format a number with a specific locale, rounded to the number of decimals
+- `SUBSTRING_INDEX`: Return a substring from a string before a specified number of occurrences of a delimiter
+
+Here are examples for the usage of the above string functions on the string, `Hello World`:
+
+```
+-- CONCAT - Concatenate two or more strings into a single string
+SELECT CONCAT('Hello', ' ', 'World!') AS concatenated_string;
+
+-- INSTR - Return the position of the first occurrence of a substring in a string
+SELECT INSTR('Hello World!', 'World') AS position;
+
+-- LENGTH - Get the length of a string in bytes and in characters
+SELECT LENGTH('Hello World!') AS length_bytes, CHAR_LENGTH('Hello World!') AS length_characters;
+
+-- LEFT - Get a specified number of leftmost characters from a string
+SELECT LEFT('Hello World!', 5) AS leftmost_characters;
+
+-- LOWER - Convert a string to lowercase
+SELECT LOWER('Hello World!') AS lowercase_string;
+
+-- LTRIM - Remove all leading spaces from a string
+SELECT LTRIM('   Hello World!') AS trimmed_string;
+
+-- REPLACE - Search and replace a substring in a string
+SELECT REPLACE('Hello World!', 'World', 'Universe') AS replaced_string;
+
+-- RIGHT - Get a specified number of rightmost characters from a string
+SELECT RIGHT('Hello World!', 6) AS rightmost_characters;
+
+-- RTRIM - Remove all trailing spaces from a string
+SELECT RTRIM('Hello World!    ') AS trimmed_string;
+
+-- SUBSTRING - Extract a substring starting from a position with a specific length
+SELECT SUBSTRING('Hello World!', 7, 5) AS extracted_substring;
+
+-- TRIM - Remove unwanted characters from a string
+SELECT TRIM('   Hello World!   ') AS trimmed_string;
+
+-- UPPER - Convert a string to uppercase
+SELECT UPPER('Hello World!') AS uppercase_string;
+
+-- FIND_IN_SET - Find a string within a comma-separated list of strings
+SELECT FIND_IN_SET('apple', 'banana,apple,orange') AS position_in_list;
+
+-- FORMAT - Format a number with a specific locale, rounded to the number of decimals
+SELECT FORMAT(12345.6789, 2, 'en_US') AS formatted_number;
+
+-- SUBSTRING_INDEX - Return a substring from a string before a specified number of occurrences of a delimiter
+SELECT SUBSTRING_INDEX('apple,banana,orange', ',', 2) AS substring_before_second_comma;
+```
+
+The output is:
+
+```
+concatenated_string: Hello World!
+position: 7
+length_bytes: 12, length_characters: 12
+leftmost_characters: Hello
+lowercase_string: hello world!
+trimmed_string: Hello World!
+replaced_string: Hello Universe!
+rightmost_characters: World!
+trimmed_string: Hello World!
+extracted_substring: World
+trimmed_string: Hello World!
+uppercase_string: HELLO WORLD!
+position_in_list: 2
+formatted_number: 12,345.68
+substring_before_second_comma: apple,banana
+```
+
 **5. Mathematical Functions:**
    These functions perform mathematical operations on numeric values. Examples include `ABS`, `SQUARE`, `POWER`, `SQRT`.
 
@@ -164,6 +251,154 @@ SELECT POWER(2, 3);  -- Output: 8
 
 -- SQRT function to calculate square root
 SELECT SQRT(25);  -- Output: 5
+```
+
+Other common mathematical functions are:
+
+- `ABS()`: Returns the absolute value of a number
+- `CEIL()`: Returns the smallest integer value greater than or equal to the input number (n).
+- `FLOOR()`: Returns the largest integer value not greater than the argument
+- `MOD()`: Returns the remainder of a number divided by another
+- `ROUND()`: Rounds a number to a specified number of decimal places.
+- `POWER()`: Returns the argument raised to the specified power
+- `TRUNCATE()`: Truncates a number to a specified number of decimal places
+- `SQRT(n)`: Returns the square root of n
+- `ACOS(n)`: Returns the arc cosine of n or null if n is not in the range -1 and 1.
+- `ASIN(n)`: Returns the arcsine of n which is the value whose sine is n. It returns null if n is not in the range -1 to 1.
+- `ATAN()`: Returns the arctangent of n.
+- `ATAN2(n,m), ATAN(m,n)`: Returns the arctangent of the two variables n and m
+- `CONV(n,from_base,to_base)`: Converts a number between different number bases
+- `COS(n)`:	Returns the cosine of n, where n is in radians
+- `COT(n)`: Returns the cotangent of n.
+- `CRC32()`: Computes a cyclic redundancy check value and returns a 32-bit unsigned value
+- `DEGREES(n)`: Converts radians to degrees of the argument n
+- `EXP(n)`: Raises to the power of e raised to the power of n
+- `LN(n)`: Returns the natural logarithm of n
+- `LOG(n)`: Returns the natural logarithm of the first argument
+- `LOG10()`: Returns the base-10 logarithm of the argument
+- `LOG2()`: Returns the base-2 logarithm of the argument
+- `PI()`: Returns the value of PI
+- `POW()`: Returns the argument raised to the specified power
+- `RADIANS()`: Returns argument converted to radians
+- `RAND()`: Returns a random floating-point value
+- `SIGN(n)`: Returns the sign of n that can be -1, 0, or 1 depending on whether n is negative, zero, or positive.
+- `SIN(n)`: Returns the sine of n
+- `TAN(n)`: Returns the tangent of n
+
+Example operations of the above mathematical functions along with their output are:
+
+```
+-- ABS() - Returns the absolute value of a number
+SELECT ABS(-5) AS absolute_value;
+
+-- CEIL() - Returns the smallest integer value greater than or equal to the input number
+SELECT CEIL(3.14) AS ceil_value;
+
+-- FLOOR() - Returns the largest integer value not greater than the argument
+SELECT FLOOR(3.14) AS floor_value;
+
+-- MOD() - Returns the remainder of a number divided by another
+SELECT MOD(10, 3) AS modulo_result;
+
+-- ROUND() - Rounds a number to a specified number of decimal places
+SELECT ROUND(3.14159, 2) AS rounded_value;
+
+-- POWER() - Returns the argument raised to the specified power
+SELECT POWER(2, 3) AS power_result;
+
+-- TRUNCATE() - Truncates a number to a specified number of decimal places
+SELECT TRUNCATE(3.14159, 2) AS truncated_value;
+
+-- SQRT() - Returns the square root of n
+SELECT SQRT(25) AS square_root;
+
+-- ACOS() - Returns the arc cosine of n
+SELECT ACOS(0.5) AS arc_cosine;
+
+-- ASIN() - Returns the arcsine of n
+SELECT ASIN(0.5) AS arc_sine;
+
+-- ATAN() - Returns the arctangent of n
+SELECT ATAN(1) AS arc_tangent;
+
+-- ATAN2() - Returns the arctangent of two variables
+SELECT ATAN2(1, 1) AS arc_tangent_2;
+
+-- COS() - Returns the cosine of n
+SELECT COS(0) AS cosine;
+
+-- COT() - Returns the cotangent of n
+SELECT COT(1) AS cotangent;
+
+-- CRC32() - Computes a cyclic redundancy check value
+SELECT CRC32('Hello World!') AS crc32_value;
+
+-- DEGREES() - Converts radians to degrees
+SELECT DEGREES(1.5708) AS degrees;
+
+-- EXP() - Raises to the power of e raised to the power of n
+SELECT EXP(1) AS exponent;
+
+-- LN() - Returns the natural logarithm of n
+SELECT LN(2.71828) AS natural_logarithm;
+
+-- LOG() - Returns the natural logarithm of the first argument
+SELECT LOG(10) AS logarithm;
+
+-- LOG10() - Returns the base-10 logarithm of the argument
+SELECT LOG10(100) AS base_10_logarithm;
+
+-- LOG2() - Returns the base-2 logarithm of the argument
+SELECT LOG2(8) AS base_2_logarithm;
+
+-- PI() - Returns the value of PI
+SELECT PI() AS pi_value;
+
+-- RADIANS() - Returns argument converted to radians
+SELECT RADIANS(180) AS radians;
+
+-- RAND() - Returns a random floating-point value
+SELECT RAND() AS random_value;
+
+-- SIGN() - Returns the sign of n
+SELECT SIGN(-5) AS sign_value;
+
+-- SIN() - Returns the sine of n
+SELECT SIN(0) AS sine;
+
+-- TAN() - Returns the tangent of n
+SELECT TAN(0) AS tangent;
+```
+
+Output is:
+```
+absolute_value: 5
+ceil_value: 4
+floor_value: 3
+modulo_result: 1
+rounded_value: 3.14
+power_result: 8
+truncated_value: 3.14
+square_root: 5
+arc_cosine: 1.0471975511966
+arc_sine: 0.5235987755983
+arc_tangent: 0.7853981633974
+arc_tangent_2: 0.7853981633974
+cosine: 1
+cotangent: 0.64209261593433
+crc32_value: 1414054756
+degrees: 90
+exponent: 2.718281828459
+natural_logarithm: 0.99999932734728
+logarithm: 2.302585092994
+base_10_logarithm: 2
+base_2_logarithm: 3
+pi_value: 3.1415926535898
+radians: 3.1415926535898
+random_value: [random float]
+sign_value: -1
+sine: 0
+tangent: 0
 ```
 
 **6. Conversion Functions:**
@@ -359,7 +594,7 @@ In SQL, specifiers are placeholders or format codes used within certain function
 
 Here are some common examples of specifiers in SQL:
 
-1. **Date and Time Specifiers:**
+**Date and Time Specifiers:**
    - `%Y`: Year with century (e.g., 2023).
    - `%m`: Month (01-12).
    - `%d`: Day of the month (01-31).
@@ -367,25 +602,25 @@ Here are some common examples of specifiers in SQL:
    - `%M`: Minute (00-59).
    - `%S`: Second (00-59).
 
-2. **Number Specifiers:**
+**Number Specifiers:**
    - `%d`: Decimal (integer) value.
    - `%f`: Floating-point value with decimal places.
    - `%e` or `%E`: Scientific notation for floating-point numbers.
 
-3. **String Specifiers:**
+**String Specifiers:**
    - `%s`: String value.
    - `%c`: Character value.
 
-4. **Width and Precision Specifiers:**
+**Width and Precision Specifiers:**
    - `%n.m`: Specifies the minimum width (n) and precision (m) for formatting.
 
-5. **Alignment Specifiers:**
+**Alignment Specifiers:**
    - `%[flags]`: Flags for formatting, like left-align, right-align, etc.
 
-6. **Boolean Specifiers:**
+**Boolean Specifiers:**
    - `%b`: Boolean value (some databases).
 
-7. **Other Specifiers:**
+**Other Specifiers:**
    - `%p`: AM/PM indicator (for time formatting).
    - `%r`: 12-hour time format (for time formatting).
 
@@ -539,3 +774,133 @@ Commonly used date format strings:
 - `%M %e, %Y`: 4-Jul-13
 - `%a, %d %b %Y %T`: hu, 04 Jul 2013 11:20:05
 
+
+**12. Comparision Functions**
+
+Comparison functions in SQL are used to compare values and determine the relationship between them. These functions help in evaluating conditions and producing Boolean results (either `TRUE` or `FALSE`) based on the comparison outcomes. Comparison functions are fundamental for filtering data, creating conditions in queries, and controlling the flow of logic in SQL statements.
+
+Here are some common comparison functions in SQL:
+
+1. **Equal (`=`):** This function checks if two values are equal.
+   
+   Example: `SELECT * FROM customers WHERE age = 25;`
+
+2. **Not Equal (`<>` or `!=`):** This function checks if two values are not equal.
+   
+   Example: `SELECT * FROM products WHERE price <> 0;`
+
+3. **Greater Than (`>`):** This function checks if the left value is greater than the right value.
+   
+   Example: `SELECT * FROM orders WHERE total_amount > 1000;`
+
+4. **Less Than (`<`):** This function checks if the left value is less than the right value.
+   
+   Example: `SELECT * FROM employees WHERE salary < 50000;`
+
+5. **Greater Than or Equal To (`>=`):** This function checks if the left value is greater than or equal to the right value.
+   
+   Example: `SELECT * FROM products WHERE stock_quantity >= 10;`
+
+6. **Less Than or Equal To (`<=`):** This function checks if the left value is less than or equal to the right value.
+   
+   Example: `SELECT * FROM customers WHERE registration_year <= 2020;`
+
+7. **IS NULL:** This function checks if a value is NULL.
+   
+   Example: `SELECT * FROM orders WHERE shipping_address IS NULL;`
+
+8. **IS NOT NULL:** This function checks if a value is not NULL.
+   
+   Example: `SELECT * FROM employees WHERE department IS NOT NULL;`
+
+9. **BETWEEN:** This function checks if a value is within a specified range (inclusive).
+   
+   Example: `SELECT * FROM products WHERE price BETWEEN 10 AND 50;`
+
+10. **NOT BETWEEN:** This function checks if a value is not within a specified range.
+   
+    Example: `SELECT * FROM customers WHERE age NOT BETWEEN 18 AND 30;`
+
+11. **IN:** This function checks if a value matches any value in a list.
+   
+    Example: `SELECT * FROM orders WHERE status IN ('Pending', 'Processing');`
+
+12. **NOT IN:** This function checks if a value does not match any value in a list.
+   
+    Example: `SELECT * FROM products WHERE category NOT IN ('Electronics', 'Clothing');`
+
+13. **LIKE:** This function checks if a value matches a pattern. It's often used with wildcard characters `%` (matches any sequence of characters) and `_` (matches a single character).
+   
+    Example: `SELECT * FROM employees WHERE last_name LIKE 'S%';`
+
+14. **NOT LIKE:** This function checks if a value does not match a pattern.
+   
+    Example: `SELECT * FROM products WHERE product_name NOT LIKE '%sale%';`
+
+These comparison functions are crucial for constructing queries that retrieve specific data based on certain conditions. They allow you to filter and manipulate data according to the logical comparisons you want to make within your SQL statements.
+
+Certainly! Here are examples for both the `COALESCE` and `IFNULL` functions:
+
+15. **COALESCE:**
+
+Suppose you have a table named `students` with columns `student_id`, `first_name`, and `last_name`. Some students have provided a middle name, while others have not. You want to display the full name for each student, including the middle name if available.
+
+Table: students
+
+| student_id | first_name | middle_name | last_name |
+|------------|------------|-------------|-----------|
+| 1          | John       | William     | Smith     |
+| 2          | Mary       | NULL        | Johnson   |
+| 3          | Robert     | Alexander   | Brown     |
+| 4          | Emily      | NULL        | Davis     |
+
+Using the `COALESCE` function:
+
+```sql
+SELECT student_id, COALESCE(middle_name, first_name) AS full_name
+FROM students;
+```
+
+Expected Output:
+
+| student_id | full_name     |
+|------------|---------------|
+| 1          | John William  |
+| 2          | Mary          |
+| 3          | Robert Alexander |
+| 4          | Emily         |
+
+In this example, the `COALESCE` function returns the middle name if it's available, otherwise, it returns the first name. The result is a full name for each student.
+
+16. **IFNULL:**
+
+Suppose you have a table named `products` with columns `product_id`, `product_name`, and `discount_percentage`. Some products have a discount applied, while others do not. You want to display the discount percentage for each product, or "No discount" if there's no discount.
+
+Table: products
+
+| product_id | product_name | discount_percentage |
+|------------|--------------|---------------------|
+| 101        | Laptop       | 10                  |
+| 102        | Smartphone   | NULL                |
+| 103        | Headphones   | 5                   |
+| 104        | Keyboard     | NULL                |
+
+Using the `IFNULL` function:
+
+```sql
+SELECT product_id, IFNULL(discount_percentage, 'No discount') AS discount_info
+FROM products;
+```
+
+Expected Output:
+
+| product_id | discount_info |
+|------------|---------------|
+| 101        | 10            |
+| 102        | No discount   |
+| 103        | 5             |
+| 104        | No discount   |
+
+In this example, the `IFNULL` function returns the discount percentage if it's available, otherwise, it returns "No discount". The result provides clear information about the discount for each product.
+
+Both `COALESCE` and `IFNULL` offer convenient ways to handle NULL values and provide meaningful output in SQL queries.
