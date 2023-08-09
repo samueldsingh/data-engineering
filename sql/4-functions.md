@@ -202,7 +202,8 @@ FROM orders;
 SQL functions play a crucial role in database queries and data manipulation. They help optimize queries, encapsulate logic, and make complex operations more manageable. Each database system may have variations in syntax and function availability, so it's important to consult the documentation specific to your chosen database.
 
 **10. Commonly used functions:**
-Certainly! Here are examples for each of the SQL functions you mentioned, along with sample outputs:
+
+Examples for each of the SQL functions along with sample outputs:
 
 - **BIT_AND() - Bitwise AND:**
 
@@ -351,4 +352,124 @@ FROM exam_scores;
 
 Output: `28.9166666666667`
 
+
+**11. Specifiers**
+
+In SQL, specifiers are placeholders or format codes used within certain functions to indicate how values should be formatted or interpreted. They provide instructions to the database on how to process and display data. Specifiers are often used in functions that deal with data formatting, such as date and time formatting, number formatting, and string formatting. They are typically represented with a percent symbol (%) followed by a letter or symbol that defines the format or behavior to be applied.
+
+Here are some common examples of specifiers in SQL:
+
+1. **Date and Time Specifiers:**
+   - `%Y`: Year with century (e.g., 2023).
+   - `%m`: Month (01-12).
+   - `%d`: Day of the month (01-31).
+   - `%H`: Hour (00-23).
+   - `%M`: Minute (00-59).
+   - `%S`: Second (00-59).
+
+2. **Number Specifiers:**
+   - `%d`: Decimal (integer) value.
+   - `%f`: Floating-point value with decimal places.
+   - `%e` or `%E`: Scientific notation for floating-point numbers.
+
+3. **String Specifiers:**
+   - `%s`: String value.
+   - `%c`: Character value.
+
+4. **Width and Precision Specifiers:**
+   - `%n.m`: Specifies the minimum width (n) and precision (m) for formatting.
+
+5. **Alignment Specifiers:**
+   - `%[flags]`: Flags for formatting, like left-align, right-align, etc.
+
+6. **Boolean Specifiers:**
+   - `%b`: Boolean value (some databases).
+
+7. **Other Specifiers:**
+   - `%p`: AM/PM indicator (for time formatting).
+   - `%r`: 12-hour time format (for time formatting).
+
+Here's an example of using specifiers in a query to format a date and time:
+
+```sql
+SELECT
+    CONCAT(DATE_FORMAT(order_date, '%Y-%m-%d'), ' ', DATE_FORMAT(order_time, '%H:%i:%S')) AS formatted_datetime
+FROM orders;
+```
+
+In this example, `%Y-%m-%d` and `%H:%i:%S` are specifiers used with the `DATE_FORMAT` function to format the `order_date` and `order_time` columns, respectively.
+
+It's important to note that specifiers might vary slightly among different database systems (e.g., MySQL, PostgreSQL, SQL Server). Always refer to the documentation of the specific database you are using to ensure accurate usage of specifiers.
+
 Please note that the actual outputs may vary based on your data and the specific database system you are using. The examples provided use general SQL syntax.
+
+
+Other specifiers and their meaning:
+`%a`: Three-characters abbreviated weekday name e.g., Mon, Tue, Wed, etc.
+`%b`: Three-characters abbreviated month name e.g., Jan, Feb, Mar, etc.
+`%c`: Month in numeric e.g., 1, 2, 3…12
+`%D`: Day of the month with English suffix e.g., 0th, 1st, 2nd, etc.
+`%d`: Day of the month with leading zero if it is 1 number e.g., 00, 01,02, …31
+`%e`: Day of the month without leading zero e.g., 1,2,…31
+`%f`: Microseconds in the range of 000000..999999
+`%H`: Hour in 24-hour format with leading zero e.g., 00..23
+`%h`:	Hour in 12-hour format with leading zero e.g., 01, 02…12
+`%I`: Same as %h
+`%i`: Minutes with leading zero e.g., 00, 01,…59
+`%j`: Day of year with leading zero e.g., 001,002,…366
+`%k`: Hour in 24-hour format without leading zero e.g., 0,1,2…23
+`%l`: Hour in 12-hour format without leading zero e.g., 1,2…12
+`%M`: Full month name e.g., January, February,…December
+`%m`: Month name with leading zero e.g., 00,01,02,…12
+`%p`: AM or PM, depending on other time specifiers
+`%r`: Time in 12-hour format hh:mm:ss AM or PM
+`%S`: Seconds with leading zero 00,01,…59
+`%s`: Same as %S
+`%T`: Time in 24-hour format hh:mm:ss
+`%U`: Week number with leading zero when the first day of week is Sunday e.g., 00,01,02…53
+`%u`: Week number with leading zero when the first day of week is Monday e.g., 00,01,02…53
+`%V`: Same as %U; it is used with %X
+`%v`:	Same as %u; it is used with %x
+`%W`: Full name of weekday e.g., Sunday, Monday,…, Saturday
+`%w`: Weekday in number (0=Sunday, 1= Monday,etc.)
+`%X`: Year for the week in four digits where the first day of the week is Sunday; often used with %V
+`%x`: Year for the week, where the first day of the week is Monday, four digits; used with %v
+`%Y`: Four digits year e.g., 2000 and 2001.
+`%y`: Two digits year e.g., 10,11,and 12.
+`%%`: Add percentage (%) character to the output
+
+```
+SELECT
+    DATE_FORMAT('2023-08-04 14:30:45', '%a') AS abbreviated_weekday,
+    DATE_FORMAT('2023-08-04 14:30:45', '%b') AS abbreviated_month,
+    DATE_FORMAT('2023-08-04 14:30:45', '%c') AS month_numeric,
+    DATE_FORMAT('2023-08-04 14:30:45', '%D') AS day_with_suffix,
+    DATE_FORMAT('2023-08-04 14:30:45', '%d') AS day_with_leading_zero,
+    DATE_FORMAT('2023-08-04 14:30:45', '%e') AS day_without_leading_zero,
+    DATE_FORMAT('2023-08-04 14:30:45', '%f') AS microseconds,
+    DATE_FORMAT('2023-08-04 14:30:45', '%H') AS hour_24h_with_leading_zero,
+    DATE_FORMAT('2023-08-04 14:30:45', '%h') AS hour_12h_with_leading_zero,
+    DATE_FORMAT('2023-08-04 14:30:45', '%I') AS hour_12h_same_as_h,
+    DATE_FORMAT('2023-08-04 14:30:45', '%i') AS minutes_with_leading_zero,
+    DATE_FORMAT('2023-08-04 14:30:45', '%j') AS day_of_year_with_leading_zero,
+    DATE_FORMAT('2023-08-04 14:30:45', '%k') AS hour_24h_without_leading_zero,
+    DATE_FORMAT('2023-08-04 14:30:45', '%l') AS hour_12h_without_leading_zero,
+    DATE_FORMAT('2023-08-04 14:30:45', '%M') AS full_month_name,
+    DATE_FORMAT('2023-08-04 14:30:45', '%m') AS month_with_leading_zero,
+    DATE_FORMAT('2023-08-04 14:30:45', '%p') AS am_pm_indicator,
+    DATE_FORMAT('2023-08-04 14:30:45', '%r') AS time_12h_format,
+    DATE_FORMAT('2023-08-04 14:30:45', '%S') AS seconds_with_leading_zero,
+    DATE_FORMAT('2023-08-04 14:30:45', '%s') AS same_as_S,
+    DATE_FORMAT('2023-08-04 14:30:45', '%T') AS time_24h_format,
+    DATE_FORMAT('2023-08-04 14:30:45', '%U') AS week_number_sunday_start,
+    DATE_FORMAT('2023-08-04 14:30:45', '%u') AS week_number_monday_start,
+    DATE_FORMAT('2023-08-04 14:30:45', '%V') AS same_as_U_with_X,
+    DATE_FORMAT('2023-08-04 14:30:45', '%v') AS same_as_u_with_x,
+    DATE_FORMAT('2023-08-04 14:30:45', '%W') AS full_weekday_name,
+    DATE_FORMAT('2023-08-04 14:30:45', '%w') AS weekday_numeric,
+    DATE_FORMAT('2023-08-04 14:30:45', '%X') AS year_week_sunday_start,
+    DATE_FORMAT('2023-08-04 14:30:45', '%x') AS year_week_monday_start,
+    DATE_FORMAT('2023-08-04 14:30:45', '%Y') AS year_full,
+    DATE_FORMAT('2023-08-04 14:30:45', '%y') AS year_short,
+    DATE_FORMAT('2023-08-04 14:30:45', '%%') AS percentage
+```
