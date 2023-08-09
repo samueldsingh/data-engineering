@@ -8,6 +8,17 @@ SQL functions are pre-defined or user-defined routines that accept zero or more 
      - `LOWER`, `UPPER`: Converts a string to lowercase or uppercase.
      - `LEN`, `CHAR_LENGTH`: Returns the length of a string.
      - `ROUND`, `FLOOR`, `CEIL`: Perform rounding and ceiling/floor operations on numeric values.
+    
+   ```
+-- CONCAT function to concatenate two strings
+SELECT CONCAT('Hello', ' ', 'World');  -- Output: 'Hello World'
+
+-- LEN function to get the length of a string
+SELECT LEN('Database');  -- Output: 8
+
+-- ROUND function to round a numeric value
+SELECT ROUND(5.678);  -- Output: 6
+   ```
 
    - **Aggregate Functions:** These functions operate on a set of values and return a single value. They are used with the `GROUP BY` clause for grouping and summarizing data. Examples include:
      - `SUM`, `AVG`, `MIN`, `MAX`: Perform arithmetic operations on numeric values.
