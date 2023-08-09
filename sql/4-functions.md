@@ -84,6 +84,11 @@ SELECT COUNT(*) FROM orders;  -- Number of orders
 
 -- AVG function to calculate the average of a column
 SELECT AVG(age) FROM customers;  -- Average age of customers
+
+-- CONCAT all the product names for each order
+SELECT order_id, GROUP_CONCAT(product_name ORDER BY product_name ASC SEPARATOR ', ') AS products
+FROM orders
+GROUP BY order_id;
 ```
 
    - **Date and Time Functions:** These functions operate on date and time values. Examples include:
