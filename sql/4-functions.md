@@ -71,7 +71,7 @@ Please note that the availability and syntax of these functions may vary slightl
 
 
    - **Aggregate Functions:** These functions operate on a set of values and return a single value. They are used with the `GROUP BY` clause for grouping and summarizing data. Examples include:
-     - `SUM`, `AVG`, `MIN`, `MAX`: Perform arithmetic operations on numeric values.
+     - `SUM`, `AVG`, `MIN`, `MAX`, `STDDEV`, `VARIANCE`: Perform arithmetic operations on numeric values.
      - `COUNT`: Counts the number of rows or non-null values in a column.
      - `GROUP_CONCAT` (MySQL), `STRING_AGG` (PostgreSQL): Concatenates values from multiple rows into a single string.
 
@@ -85,8 +85,20 @@ SELECT COUNT(*) FROM orders;  -- Number of orders
 -- AVG function to calculate the average of a column
 SELECT AVG(age) FROM customers;  -- Average age of customers
 
+-- Calculate the standard deviation of salary for employees
+SELECT STDDEV(salary) AS standard_deviation
+FROM employees;
+
+-- Calculate the variance of age for customers
+SELECT VARIANCE(age) AS variance
+FROM customers;
+
 -- CONCAT all the product names for each order
 SELECT order_id, GROUP_CONCAT(product_name ORDER BY product_name ASC SEPARATOR ', ') AS products
+FROM orders
+GROUP BY order_id;
+
+SELECT order_id, STRING_AGG(product_name, ', ' ORDER BY product_name ASC) AS products
 FROM orders
 GROUP BY order_id;
 ```
@@ -188,3 +200,155 @@ FROM orders;
    - Table-valued functions return a table as a result.
 
 SQL functions play a crucial role in database queries and data manipulation. They help optimize queries, encapsulate logic, and make complex operations more manageable. Each database system may have variations in syntax and function availability, so it's important to consult the documentation specific to your chosen database.
+
+**10. Commonly used functions:**
+Certainly! Here are examples for each of the SQL functions you mentioned, along with sample outputs:
+
+**BIT_AND() - Bitwise AND:**
+
+Suppose you have a table named `bitwise_values` with a column named `bits`:
+
+| bits  |
+|-------|
+| 101   |
+| 110   |
+| 011   |
+| 111   |
+
+```sql
+-- Calculate bitwise AND of values in the 'bits' column
+SELECT BIT_AND(bits) AS result
+FROM bitwise_values;
+```
+
+Output: `001`
+
+**BIT_OR() - Bitwise OR:**
+
+Using the same `bitwise_values` table:
+
+```sql
+-- Calculate bitwise OR of values in the 'bits' column
+SELECT BIT_OR(bits) AS result
+FROM bitwise_values;
+```
+
+Output: `111`
+
+**BIT_XOR() - Bitwise XOR:**
+
+Using the same `bitwise_values` table:
+
+```sql
+-- Calculate bitwise XOR of values in the 'bits' column
+SELECT BIT_XOR(bits) AS result
+FROM bitwise_values;
+```
+
+Output: `000`
+
+**GROUP_CONCAT() - Concatenate Values:**
+
+Suppose you have a table named `products` with a column named `product_name`:
+
+| product_name |
+|--------------|
+| Laptop       |
+| Smartphone   |
+| Tablet       |
+| TV           |
+
+```sql
+-- Concatenate product names into a single string
+SELECT GROUP_CONCAT(product_name SEPARATOR ', ') AS concatenated_names
+FROM products;
+```
+
+Output: `Laptop, Smartphone, Tablet, TV`
+
+**JSON_ARRAYAGG() - Aggregate JSON Arrays:**
+
+Using the same `products` table:
+
+```sql
+-- Create a JSON array of product names
+SELECT JSON_ARRAYAGG(product_name) AS json_array
+FROM products;
+```
+
+Output: `["Laptop", "Smartphone", "Tablet", "TV"]`
+
+**JSON_OBJECTAGG() - Aggregate JSON Objects:**
+
+Suppose you have a table named `employee_salaries` with columns `employee_name` and `salary`:
+
+| employee_name | salary |
+|---------------|--------|
+| Alice         | 50000  |
+| Bob           | 60000  |
+| Carol         | 55000  |
+
+```sql
+-- Create a JSON object of employee names and salaries
+SELECT JSON_OBJECTAGG(employee_name, salary) AS json_object
+FROM employee_salaries;
+```
+
+Output: `{"Alice": 50000, "Bob": 60000, "Carol": 55000}`
+
+**STDDEV_POP() - Population Standard Deviation:**
+
+Suppose you have a table named `exam_scores` with a column named `score`:
+
+| score |
+|-------|
+| 85    |
+| 90    |
+| 78    |
+| 92    |
+
+```sql
+-- Calculate population standard deviation of exam scores
+SELECT STDDEV_POP(score) AS population_stddev
+FROM exam_scores;
+```
+
+Output: `5.31128874068349`
+
+**STDDEV_SAMP() - Sample Standard Deviation:**
+
+Using the same `exam_scores` table:
+
+```sql
+-- Calculate sample standard deviation of exam scores
+SELECT STDDEV_SAMP(score) AS sample_stddev
+FROM exam_scores;
+```
+
+Output: `5.37360333735491`
+
+**VAR_POP() - Population Variance:**
+
+Using the same `exam_scores` table:
+
+```sql
+-- Calculate population variance of exam scores
+SELECT VAR_POP(score) AS population_variance
+FROM exam_scores;
+```
+
+Output: `28.1666666666667`
+
+**VARP_SAM() - Sample Variance:**
+
+Using the same `exam_scores` table:
+
+```sql
+-- Calculate sample variance of exam scores
+SELECT VAR_SAMP(score) AS sample_variance
+FROM exam_scores;
+```
+
+Output: `28.9166666666667`
+
+Please note that the actual outputs may vary based on your data and the specific database system you are using. The examples provided use general SQL syntax.
