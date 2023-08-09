@@ -25,10 +25,32 @@ SELECT ROUND(5.678);  -- Output: 6
      - `COUNT`: Counts the number of rows or non-null values in a column.
      - `GROUP_CONCAT` (MySQL), `STRING_AGG` (PostgreSQL): Concatenates values from multiple rows into a single string.
 
+```
+-- SUM function to calculate the total of a column
+SELECT SUM(salary) FROM employees;  -- Sum of salaries
+
+-- COUNT function to count the number of rows
+SELECT COUNT(*) FROM orders;  -- Number of orders
+
+-- AVG function to calculate the average of a column
+SELECT AVG(age) FROM customers;  -- Average age of customers
+```
+
    - **Date and Time Functions:** These functions operate on date and time values. Examples include:
      - `NOW`, `CURRENT_TIMESTAMP`: Returns the current date and time.
      - `DATEADD`, `DATEDIFF`: Performs date arithmetic operations.
      - `DATE_FORMAT`, `TO_CHAR`: Formats date and time values as strings.
+
+```
+-- NOW function to get the current date and time
+SELECT NOW();  -- Current date and time
+
+-- DATEADD function to add days to a date
+SELECT DATEADD(DAY, 7, '2023-08-01');  -- Adds 7 days to the given date
+
+-- DATE_FORMAT function to format date as a string
+SELECT DATE_FORMAT('2023-08-04', '%Y-%m-%d');  -- Output: '2023-08-04'
+```
 
 **2. User-Defined Functions (UDFs):**
    Some database systems allow you to define your own functions using SQL or procedural languages like PL/SQL, T-SQL, or PL/pgSQL. UDFs can simplify complex queries and encapsulate business logic.
@@ -39,17 +61,69 @@ SELECT ROUND(5.678);  -- Output: 6
    - `LAG`, `LEAD`: Access values from previous or subsequent rows.
    - `SUM`, `AVG`, `MIN`, `MAX` with `OVER`: Perform calculations over a window of rows.
 
+```
+-- ROW_NUMBER function to assign row numbers
+SELECT emp_name, salary, ROW_NUMBER() OVER (ORDER BY salary DESC) AS rank
+FROM employees;
+
+-- SUM function with OVER clause for running total
+SELECT order_date, order_amount, SUM(order_amount) OVER (ORDER BY order_date) AS running_total
+FROM orders;
+```
+
 **4. String Functions:**
    These functions operate on string values and are often used for text manipulation and formatting. Examples include `SUBSTRING`, `LEFT`, `RIGHT`, `TRIM`, `REPLACE`.
+
+```
+-- SUBSTRING function to extract a substring
+SELECT SUBSTRING('Hello World', 7);  -- Output: 'World'
+
+-- TRIM function to remove leading and trailing spaces
+SELECT TRIM('   Text   ');  -- Output: 'Text'
+
+-- REPLACE function to replace a substring
+SELECT REPLACE('Hello', 'H', 'J');  -- Output: 'Jello'
+```
 
 **5. Mathematical Functions:**
    These functions perform mathematical operations on numeric values. Examples include `ABS`, `SQUARE`, `POWER`, `SQRT`.
 
+```
+-- ABS function to get the absolute value
+SELECT ABS(-10);  -- Output: 10
+
+-- POWER function to calculate power
+SELECT POWER(2, 3);  -- Output: 8
+
+-- SQRT function to calculate square root
+SELECT SQRT(25);  -- Output: 5
+```
+
 **6. Conversion Functions:**
    These functions convert values from one data type to another. Examples include `CAST`, `CONVERT`.
 
+```
+-- CAST function to convert a value to a different data type
+SELECT CAST('123' AS INT);  -- Output: 123
+
+-- CONVERT function to change data type
+SELECT CONVERT('2023-08-04', DATE);  -- Output: '2023-08-04'
+```
+
 **7. Conditional Functions:**
    These functions evaluate conditions and return different values based on the outcome. Examples include `CASE`, `COALESCE`, `NULLIF`.
+
+```
+-- CASE statement to conditionally return values
+SELECT 
+    order_id,
+    CASE
+        WHEN order_amount > 1000 THEN 'High'
+        WHEN order_amount > 500 THEN 'Medium'
+        ELSE 'Low'
+    END AS order_priority
+FROM orders;
+```
 
 **8. Special Functions:**
    Some databases provide functions specific to their features. For example, PostgreSQL has JSON functions for working with JSON data, while MySQL has spatial functions for geographical data.
