@@ -538,3 +538,1518 @@ obj2.display_value()  # Output: "Value: 99"
 In this example, `MyClass` has a parameterized constructor, `__init__`, that takes a `value` parameter. When objects `obj1` and `obj2` are created, the constructor is called with the specified arguments, setting the `value` attribute of each object accordingly.
 
 It's worth noting that in Python, you can also have both default and parameterized constructors in a class. When both constructors are defined, the parameterized constructor takes precedence, and the default constructor will not be automatically created. To create an object using the default constructor in such cases, you need to explicitly define the default constructor.
+
+
+## Interview Questions:
+### 1. What is OOPs
+
+OOP stands for Object-Oriented Programming. It's a programming paradigm that uses objects, which are instances of classes, to structure and organize code. OOP is based on the concept of "objects" and "classes," and it focuses on the design and manipulation of objects to solve complex problems in a more modular and organized way.
+
+Key concepts in OOP include:
+
+1. **Classes:** Classes are blueprints or templates for creating objects. They define the attributes (data) and methods (functions) that the objects will have.
+
+2. **Objects:** Objects are instances of classes. They represent real-world entities and encapsulate both data and behavior.
+
+Sure, let's explain the key concepts of Object-Oriented Programming (OOP) with examples:
+
+**1. Classes and Objects:**
+
+A class is a blueprint for creating objects. It defines the structure and behavior that the objects of the class will have. An object is an instance of a class.
+
+Example: Let's consider a simple class called "Person" that represents a person with a name and age.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+# Creating objects (instances) of the Person class
+person1 = Person("Alice", 30)
+person2 = Person("Bob", 25)
+
+# Accessing object attributes
+print(person1.name)  # Output: Alice
+print(person2.age)   # Output: 25
+```
+
+**2. Encapsulation:**
+
+Encapsulation is the practice of bundling the data (attributes) and methods (functions) that operate on the data into a single unit (the class). It provides control over access to the data and promotes data integrity.
+
+Example: In the "Person" class, we can encapsulate the `name` and `age` attributes by making them private and providing methods to access and update them.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def get_name(self):
+        return self.name
+    
+    def set_age(self, age):
+        if age > 0:
+            self.age = age
+            
+    def get_age(self):
+        return self.age
+
+# Creating an object of the Person class
+person = Person("Alice", 30)
+
+# Accessing and updating attributes using methods
+print(person.get_name())  # Output: Alice
+person.set_age(32)
+print(person.get_age())   # Output: 32
+```
+
+**3. Inheritance:**
+
+Inheritance allows a new class (the derived or child class) to inherit properties and methods from an existing class (the base or parent class).
+
+Example: Let's create a "Student" class that inherits from the "Person" class.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def get_name(self):
+        return self.name
+
+# Define the Student class, inheriting from the Person class
+class Student(Person):
+    def __init__(self, name, age, student_id):
+        super().__init__(name, age)
+        self.student_id = student_id
+
+# Create an object of the Student class
+student = Student("Eve", 20, "ST123")
+
+# Access attributes from the parent class
+print(student.get_name())  # Output: Eve
+print(student.student_id)  # Output: ST123
+```
+
+**4. Polymorphism:**
+
+Polymorphism allows objects of different classes to be treated as objects of a common base class. It enables flexibility and allows a single interface to represent different types of objects.
+
+Example: We'll demonstrate polymorphism using a common method called "introduce" that works for both the "Person" and "Student" classes.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def get_name(self):
+        return self.name
+
+# Define the Student class, inheriting from the Person class
+class Student(Person):
+    def __init__(self, name, age, student_id):
+        super().__init__(name, age)
+        self.student_id = student_id
+
+# Define the introduce function
+def introduce(entity):
+    print("Hello, my name is", entity.get_name())
+
+# Create objects of the classes
+person = Person("Alice", 30)
+student = Student("Eve", 20, "ST123")
+
+# Use the introduce function with different objects
+introduce(person)   # Output: Hello, my name is Alice
+introduce(student)  # Output: Hello, my name is Eve
+```
+
+In this example, the `introduce` function accepts objects of both the "Person" and "Student" classes, demonstrating polymorphism.
+
+OOP helps in structuring code, improving code reusability, making code more manageable, and modeling real-world relationships effectively. It's widely used in various programming languages such as Python, Java, C++, and many more. OOP is especially useful for designing and building large, complex systems, as it promotes modular development and reduces code duplication.
+
+### 2. Why OOPs required
+
+Object-Oriented Programming (OOP) is required for several reasons, mainly to improve code organization, reusability, and maintainability, especially in large and complex software systems. Here are some key reasons why OOP is essential:
+
+1. **Modularity:** OOP promotes modular design by organizing code into reusable and manageable units (classes and objects). This modularity makes it easier to understand and maintain the code.
+
+2. **Code Reusability:** OOP allows you to create classes that can be reused in different parts of the codebase. This reduces redundancy and promotes the reuse of existing components, leading to more efficient development.
+
+3. **Encapsulation:** OOP encapsulates data and behavior within objects, making it easier to manage and control access to data. This helps in preventing unintended interference and improving data integrity.
+
+4. **Abstraction:** OOP allows you to create abstract data types, which hide complex implementation details and only expose essential functionality. Abstraction helps in focusing on what an object does rather than how it does it.
+
+5. **Inheritance:** Inheritance allows you to create new classes based on existing classes, inheriting their attributes and methods. This promotes code reuse and helps in modeling relationships between classes.
+
+6. **Polymorphism:** Polymorphism allows objects of different classes to be treated as objects of a common base class. This promotes flexibility and allows a single interface to represent different types of objects.
+
+7. **Readability and Maintainability:** OOP results in more readable and organized code, making it easier to understand and maintain over time. Changes in one part of the code are less likely to affect other parts, reducing the risk of introducing bugs.
+
+8. **Scalability:** OOP supports building scalable systems by providing a structured way to manage and extend the codebase. As the system grows, OOP principles help maintain a high level of organization.
+
+9. **Real-world Modeling:** OOP allows you to model real-world entities and relationships effectively. This makes the code more intuitive and easier to relate to real-world concepts.
+
+10. **Collaboration:** OOP promotes a clear separation of concerns and can facilitate collaboration among developers. Different team members can work on different classes, making it easier to manage large codebases.
+
+Overall, OOP is a powerful programming paradigm that provides a structured and efficient way to design and build software systems, making them more maintainable, reusable, and scalable.
+
+### 3. Features of OOPs
+
+Object-Oriented Programming (OOP) is a programming paradigm that emphasizes the use of objects and classes to structure code. Here are some key features of OOP:
+
+1. **Classes and Objects:** OOP allows you to create classes, which are blueprints for creating objects. Objects are instances of classes, and they encapsulate both data (attributes) and behavior (methods).
+
+2. **Encapsulation:** Encapsulation is the bundling of data and methods that operate on the data within a single unit (the class). It restricts access to the internal details of an object and provides control over data manipulation.
+
+3. **Inheritance:** Inheritance allows a new class (the derived or child class) to inherit properties and methods from an existing class (the base or parent class). It promotes code reuse and the creation of hierarchies.
+
+4. **Polymorphism:** Polymorphism allows objects of different classes to be treated as objects of a common base class. It enables the use of a single interface to represent various types of objects.
+
+5. **Abstraction:** Abstraction involves creating abstract data types that represent essential features while hiding complex implementation details. It focuses on what an object does rather than how it does it.
+
+6. **Modularity:** OOP promotes modular design by breaking down complex systems into smaller, manageable units (classes). This makes the code easier to understand, maintain, and reuse.
+
+7. **Data Hiding:** OOP provides mechanisms for data hiding, which allows you to hide the implementation details of an object and expose only the necessary interfaces.
+
+8. **Message Passing:** Objects communicate by sending messages to each other. Methods in one object can invoke methods in another object to perform specific tasks.
+
+9. **Dynamic Binding:** Dynamic binding allows the selection of the appropriate method to execute at runtime based on the actual type of object being used. This enables flexibility and late binding.
+
+10. **Overloading and Overriding:** OOP supports method overloading (defining multiple methods with the same name but different parameters) and method overriding (redefining a method in a derived class).
+
+11. **Real-World Modeling:** OOP allows you to model real-world entities, relationships, and interactions, making the code more intuitive and easier to relate to real-world concepts.
+
+These features collectively provide a powerful framework for designing and building software systems that are organized, maintainable, and scalable.
+
+### 4. class vs object
+
+In Object-Oriented Programming (OOP), "class" and "object" are fundamental concepts that play different roles in structuring code. Let's explore the differences between them:
+
+**Class:**
+
+1. **Blueprint:** A class is a blueprint or template for creating objects. It defines the structure and behavior that the objects of that class will have. It specifies the attributes (data) and methods (functions) that the objects can have.
+
+2. **Definition:** A class is a user-defined data type in OOP. It defines a new type with its own characteristics.
+
+3. **Abstraction:** A class represents a generalized concept, abstracting common features that a group of objects of that class will share.
+
+4. **Static:** A class is a static concept in the sense that it doesn't hold actual data. It defines a template that can be used to create objects.
+
+5. **Example:**
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def introduce(self):
+        print("Hello, my name is", self.name)
+```
+
+**Object:**
+
+1. **Instance:** An object is an instance of a class. It is a concrete realization of the class blueprint, with actual data stored in its attributes.
+
+2. **Creation:** Objects are created based on the definition of a class. You can create multiple objects from a single class, each with its own unique data.
+
+3. **State:** An object has a state defined by its attributes. Attributes store the data associated with the object.
+
+4. **Dynamic:** Objects are dynamic entities, and they can interact with each other by invoking methods defined in their class.
+
+5. **Example:**
+```python
+# Creating objects from the Person class
+person1 = Person("Alice", 30)
+person2 = Person("Bob", 25)
+
+# Accessing object attributes and methods
+print(person1.name)         # Output: Alice
+person2.introduce()         # Output: Hello, my name is Bob
+```
+
+In summary, a "class" defines the blueprint for creating objects, while an "object" is a specific instance of that class with its own data (attributes) and behavior (methods). Classes allow you to define the structure and behavior, while objects allow you to work with actual instances based on that definition.
+
+### 5. class vs instance vs local variables. Explain in detail about usecase of each variable
+
+**Class Variables:**
+
+A class variable is a variable that belongs to the class as a whole, rather than to instances (objects) of the class. It is shared among all instances of the class. Class variables are defined within the class but outside any instance methods.
+
+Use Case of Class Variables:
+- **Shared Data:** Class variables are useful when you want to share data among all instances of a class. For example, you can use a class variable to keep track of the number of instances created for that class.
+- **Constant Values:** Class variables can be used to store constant values that are the same for all instances of the class, like default configuration values.
+
+Example:
+```python
+class Circle:
+    # Class variable
+    pi = 3.14159
+
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return Circle.pi * self.radius * self.radius
+
+# Usage
+circle1 = Circle(5)
+circle2 = Circle(7)
+print(circle1.area())  # Output: 78.53975
+print(circle2.area())  # Output: 153.93878
+```
+
+**Instance Variables:**
+
+An instance variable is a variable that belongs to a specific instance (object) of a class. Each instance can have its own set of instance variables. Instance variables are usually defined within the constructor (`__init__` method) of the class.
+
+Use Case of Instance Variables:
+- **Object-specific Data:** Instance variables are used to store data that is specific to each instance. For example, if you're modeling different circles with different radii, each circle object should have its own radius as an instance variable.
+- **State:** Instance variables represent the state of an object, storing attributes that define its current state.
+
+Example:
+```python
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14159 * self.radius * self.radius
+
+# Usage
+circle1 = Circle(5)
+circle2 = Circle(7)
+print(circle1.area())  # Output: 78.53975
+print(circle2.area())  # Output: 153.93878
+```
+
+**Local Variables:**
+
+A local variable is a variable defined within a specific scope, typically within a function or a method. It is accessible only within that specific scope and does not exist outside of it.
+
+Use Case of Local Variables:
+- **Temporary Data:** Local variables are often used to store temporary data or intermediate results within a function or method.
+- **Encapsulation:** Local variables help encapsulate data and logic within a specific function, keeping the data hidden from other parts of the code.
+
+Example:
+```python
+def calculate_area(radius):
+    # Local variable
+    pi = 3.14159
+    return pi * radius * radius
+
+# Usage
+result = calculate_area(5)
+print(result)  # Output: 78.53975
+```
+
+In summary, class variables are shared among all instances of a class, instance variables are specific to each instance, and local variables are used within a specific scope (typically a function) for temporary data or encapsulation. Each type of variable serves a distinct purpose in managing data within your program.
+
+### 6. class vs instance vs static method. Explain in detail about usecase of each Method
+
+**Class Methods:**
+
+A class method is a method that is bound to the class and not the instance (object) of the class. It takes the class as its first argument (usually named `cls`) instead of the instance. Class methods can be called on the class itself, and they can access class-level variables.
+
+Use Case of Class Methods:
+1. **Factory Methods:** Class methods are often used to create alternate constructors for the class. These methods can create instances with specific properties without the need to directly call the constructor.
+2. **Accessing Class-level Data:** Class methods can access and modify class-level variables, which can be useful for maintaining shared data across all instances.
+3. **Utility Functions:** Class methods can be used to create utility functions that are related to the class but do not depend on instance-specific data.
+
+Example:
+```python
+class Circle:
+    pi = 3.14159  # Class variable
+
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return Circle.pi * self.radius * self.radius
+
+    @classmethod
+    def from_diameter(cls, diameter):
+        radius = diameter / 2
+        return cls(radius)
+
+# Usage
+circle1 = Circle(5)
+circle2 = Circle.from_diameter(10)
+print(circle1.area())  # Output: 78.53975
+print(circle2.area())  # Output: 78.53975
+```
+
+**Instance Methods:**
+
+An instance method is a method that operates on an instance (object) of a class. It takes the instance as its first argument (usually named `self`). Instance methods can access instance variables and instance-specific data.
+
+Use Case of Instance Methods:
+1. **Modifying Object State:** Instance methods are used to modify the state (attributes) of an object, providing behavior that operates on the instance's specific data.
+2. **Object-specific Operations:** Instance methods often represent behaviors or actions that are related to the specific instance and involve the instance's data.
+3. **Encapsulation:** Instance methods encapsulate the behavior and operations that are related to a specific object, keeping the logic associated with the instance in one place.
+
+Example:
+```python
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14159 * self.radius * self.radius
+
+# Usage
+circle = Circle(5)
+print(circle.area())  # Output: 78.53975
+```
+
+**Static Methods:**
+
+A static method is a method that belongs to a class but does not have access to instance-specific data or the class itself as its first argument. It's a method that does not modify the state of the instance or class and does not depend on instance-specific data.
+
+Use Case of Static Methods:
+1. **Utility Functions:** Static methods are used for utility functions that are related to the class but do not require access to instance-specific or class-level data.
+2. **Organization:** Static methods can be used to group functions that are logically related to the class, even though they do not require access to instance data.
+
+Example:
+```python
+class MathUtils:
+    @staticmethod
+    def square(n):
+        return n * n
+
+# Usage
+result = MathUtils.square(5)
+print(result)  # Output: 25
+```
+
+In summary, class methods are useful for factory methods, accessing class-level data, and creating utility functions. Instance methods are used for modifying object state, performing object-specific operations, and encapsulating behavior. Static methods are appropriate for utility functions that are logically related to the class but do not depend on instance-specific data or the class itself. Each type of method serves a distinct purpose in managing behavior within a class.
+
+### 7. Importance of init method
+
+The `__init__` method in Python is a special method (also known as a constructor) that is automatically called when an object of a class is created. It plays a crucial role in initializing the attributes (data members) of the object. Here are the key reasons why the `__init__` method is important:
+
+1. **Attribute Initialization:** The primary purpose of the `__init__` method is to initialize the attributes of the object. It allows you to set the initial values for the object's attributes, ensuring that each object starts with the desired state.
+
+2. **Object-specific Data:** The `__init__` method allows you to specify values for the instance variables based on the arguments provided when creating the object. This enables you to create objects with specific characteristics and data.
+
+3. **Encapsulation:** By defining attribute initialization within the `__init__` method, you encapsulate the process of setting the initial state of the object. This promotes clean and consistent object creation.
+
+4. **Consistency:** The `__init__` method ensures that all objects created from the class start with the same set of attributes and default values, providing a consistent structure for all instances.
+
+5. **Constructor Logic:** The `__init__` method can contain additional logic or checks that need to be performed when an object is created. This allows you to enforce constraints, validate input, or perform any necessary setup.
+
+6. **Inheritance:** When a subclass is created, its `__init__` method can use the `super()` function to call the `__init__` method of the parent class. This allows the subclass to inherit and extend the initialization behavior of the parent class.
+
+Example:
+```python
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+        self.area = 3.14159 * radius * radius
+
+# Creating a Circle object
+circle1 = Circle(5)
+print(circle1.radius)  # Output: 5
+print(circle1.area)    # Output: 78.53975
+
+# Creating another Circle object
+circle2 = Circle(7)
+print(circle2.radius)  # Output: 7
+print(circle2.area)    # Output: 153.93878
+```
+
+In this example, the `__init__` method initializes the `radius` attribute, and based on the `radius`, it calculates and initializes the `area` attribute for each `Circle` object. This ensures that each `Circle` object has its own radius and area, encapsulating this logic within the class.
+
+### 8. Importance of self
+
+The `self` parameter is a crucial aspect of object-oriented programming (OOP) in Python. It is a convention used to refer to the instance of the class within its own methods. Understanding the importance of the `self` parameter is essential for properly working with instance variables and methods in Python classes. Here are the key reasons why the `self` parameter is important:
+
+1. **Instance Reference:** `self` allows you to reference the instance of the class, which is essential for accessing and modifying instance-specific attributes (instance variables) and invoking instance methods.
+
+2. **Data Isolation:** `self` ensures that the data within an object remains isolated and does not mix with the data of other instances. Each object has its own set of attributes, and `self` ensures that these attributes are unique to the instance.
+
+3. **Method Invocation:** When you call an instance method within the class, you use `self` to refer to the current instance. This enables the method to operate on the data specific to that instance.
+
+4. **Creating and Initializing Objects:** The `self` parameter is used in the `__init__` method (constructor) to initialize instance variables with the values passed during object creation. It allows you to set up the initial state of the object.
+
+5. **Encapsulation:** By using `self`, you encapsulate the access to instance attributes and methods, making it clear that these attributes and methods belong to the object and are accessed through the instance.
+
+6. **Method Chaining:** When methods of an object return `self`, it allows method chaining. This is a common pattern in Python libraries that allows you to call multiple methods on an object in a single line.
+
+Example:
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def introduce(self):
+        return f"My name is {self.name} and I'm {self.age} years old."
+
+# Creating a Person object
+person = Person("Alice", 30)
+
+# Accessing instance attributes using self
+print(person.introduce())  # Output: My name is Alice and I'm 30 years old.
+```
+
+In this example, the `self` parameter is used to access the `name` and `age` instance attributes within the `introduce` method. This allows the method to provide a personalized introduction based on the instance-specific data. The `self` parameter is essential for maintaining the connection between the object and its attributes/methods, enabling proper encapsulation and isolation of data.
+
+### 9. object life cycle
+
+The object life cycle in Python refers to the various stages an object goes through during its existence in a Python program, from creation to destruction. Understanding the object life cycle is essential for managing resources, memory, and ensuring proper behavior of your Python programs. Here are the key stages in the object life cycle:
+
+1. **Creation (Instantiation):** The first stage is the creation of an object, also known as instantiation. This is typically done using a class constructor (the `__init__` method). At this stage, the object is created in memory, and its instance attributes are initialized.
+
+2. **Usage:** Once an object is created, it can be used in various ways. You can access its attributes, invoke its methods, and perform operations using the object.
+
+3. **Reference Counting:** Python uses a reference counting mechanism to keep track of the number of references to an object. When the reference count drops to zero (meaning there are no more references to the object), the object becomes eligible for garbage collection.
+
+4. **Garbage Collection:** Python has an automatic garbage collector that periodically identifies and releases memory occupied by objects that are no longer reachable (i.e., objects with a reference count of zero). This process frees up memory and helps manage resources.
+
+5. **Destruction (De-allocation):** When an object is no longer needed (i.e., its reference count reaches zero, or it goes out of scope), Python's garbage collector deallocates the memory occupied by the object. At this stage, the `__del__` method, if defined in the class, is called just before the object is destroyed.
+
+It's important to note that the object life cycle is managed automatically by Python's memory management and garbage collection mechanisms. Developers generally don't need to explicitly manage the object's destruction, as Python takes care of it. However, there are cases where you may want to explicitly release resources or perform cleanup, and for that, you can define a `__del__` method in your class.
+
+Example:
+```python
+class MyClass:
+    def __init__(self, value):
+        self.value = value
+        print(f"Object created with value: {self.value}")
+
+    def __del__(self):
+        print(f"Object with value {self.value} destroyed")
+
+# Creating objects
+obj1 = MyClass(1)
+obj2 = MyClass(2)
+
+# Using objects
+print(obj1.value)
+print(obj2.value)
+
+# Objects go out of scope, reference count drops to zero
+del obj1
+del obj2
+
+# Python's garbage collector deallocates memory and calls __del__ method
+```
+
+In this example, the `MyClass` objects are created, used, and eventually go out of scope. Python's garbage collector automatically deallocates the memory occupied by these objects, and the `__del__` method is called just before destruction. The output will show the creation and destruction of the objects.
+
+### 10. Constructor. Explain in detail
+
+A constructor is a special method in object-oriented programming (OOP) languages, including Python, that is automatically called when an object (instance) of a class is created. The primary purpose of a constructor is to initialize the attributes (data members) of the object to a valid or desired initial state.
+
+In Python, the constructor is defined using the special method `__init__`. This method is automatically invoked when you create an object of the class. The `__init__` method can take parameters, and these parameters are used to provide initial values to the attributes of the object.
+
+Key Points about Constructors:
+
+1. **Automatic Invocation:** The `__init__` method is called automatically when an object of the class is created using the class constructor.
+
+2. **Initialization:** The primary purpose of the constructor is to initialize the object's attributes. It ensures that the object starts with a consistent and valid state.
+
+3. **Parameters:** The `__init__` method can take parameters that are used to provide values for the instance variables (attributes) of the object.
+
+4. **Self Parameter:** The first parameter of the `__init__` method is `self`, which represents the instance being created. You use `self` to refer to instance variables and methods within the constructor.
+
+5. **Attribute Initialization:** Inside the `__init__` method, you can use `self` to assign values to instance variables, setting up the initial state of the object.
+
+Example:
+
+```python
+class Person:
+    def __init__(self, name, age):
+        # Initialize instance variables
+        self.name = name
+        self.age = age
+
+# Creating objects using the constructor
+person1 = Person("Alice", 30)
+person2 = Person("Bob", 25)
+
+# Accessing instance variables
+print(person1.name)  # Output: Alice
+print(person1.age)   # Output: 30
+print(person2.name)  # Output: Bob
+print(person2.age)   # Output: 25
+```
+
+In this example, the `Person` class has a constructor (`__init__` method) that takes `name` and `age` as parameters. When objects are created using the constructor, the `name` and `age` attributes of each object are initialized based on the values provided during object creation. The `self` parameter allows us to set the initial state of each object with specific data.
+
+### 11. Constructor life cycle
+
+The constructor life cycle refers to the sequence of events that occur when an object is created in an object-oriented programming language, such as Python. It involves the process of creating the object, initializing its attributes, and setting up its initial state. Let's break down the constructor life cycle into key stages:
+
+1. **Object Creation:** The constructor is called during the creation of an object. It's the first step in the life cycle. When you create an object using the class constructor, the constructor method (`__init__`) is automatically invoked.
+
+2. **Memory Allocation:** Memory is allocated to store the object's data (attributes). The constructor doesn't handle memory allocation directly; the runtime environment takes care of this.
+
+3. **Attribute Initialization:** Inside the constructor, instance variables (attributes) are initialized to specific values. These values are typically provided as arguments to the constructor when the object is created.
+
+4. **Self Parameter:** The constructor receives a special parameter called `self`, which refers to the newly created object. This allows you to set the initial values of the object's attributes.
+
+5. **Setting Up Initial State:** The constructor ensures that the object starts with a consistent and valid state. It may perform additional setup tasks, such as calling other methods or setting default values.
+
+6. **Object Ready for Use:** Once the constructor completes its execution, the object is fully created and initialized. It's now ready to be used in the program, and its attributes can be accessed and modified.
+
+7. **Object Lifetime:** The object remains in memory until it goes out of scope (no longer accessible), at which point it becomes eligible for garbage collection. The `__del__` method (destructor) can be used to define any cleanup actions when the object is destroyed.
+
+Example:
+
+```python
+class Person:
+    def __init__(self, name, age):
+        # Initialize instance variables
+        self.name = name
+        self.age = age
+        print("Constructor called")
+
+# Creating objects using the constructor
+person1 = Person("Alice", 30)
+person2 = Person("Bob", 25)
+
+# Accessing instance variables
+print(person1.name)  # Output: Alice
+print(person2.name)  # Output: Bob
+```
+
+In this example, the constructor (`__init__`) initializes the `name` and `age` attributes of each `Person` object with values provided during object creation. The constructor is called automatically when objects are created, and it ensures that the objects start with the specified initial state.
+
+### 12. Default vs Parameterized Constructor
+
+**Default Constructor:**
+
+A default constructor is a constructor that doesn't take any parameters, and it's provided by the language or implicitly defined in a class if you don't define any constructor explicitly. Its primary purpose is to initialize the object's attributes with default values. In Python, if you don't define a constructor (`__init__` method) in a class, the default constructor is used, which initializes the object without requiring any arguments.
+
+Example of a default constructor:
+
+```python
+class Person:
+    def __init__(self):
+        self.name = "Unknown"
+        self.age = 0
+
+# Using the default constructor
+person = Person()
+print(person.name)  # Output: Unknown
+print(person.age)   # Output: 0
+```
+
+In this example, the `Person` class has a default constructor that initializes the `name` attribute to "Unknown" and the `age` attribute to 0.
+
+**Parameterized Constructor:**
+
+A parameterized constructor is a constructor that accepts parameters and initializes the object's attributes based on the provided values. It allows you to customize the initial state of the object by passing arguments to the constructor. A parameterized constructor is useful when you want to create objects with specific initial values.
+
+Example of a parameterized constructor:
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+# Using the parameterized constructor
+person1 = Person("Alice", 30)
+person2 = Person("Bob", 25)
+
+print(person1.name)  # Output: Alice
+print(person1.age)   # Output: 30
+print(person2.name)  # Output: Bob
+print(person2.age)   # Output: 25
+```
+
+In this example, the `Person` class has a parameterized constructor that accepts `name` and `age` as arguments. When objects are created using this constructor, the `name` and `age` attributes of each object are initialized based on the values provided during object creation.
+
+**Key Differences:**
+
+- A default constructor doesn't take any parameters, while a parameterized constructor does.
+- A default constructor is provided by the language if you don't define any constructor, while a parameterized constructor must be defined explicitly in the class.
+- A default constructor initializes attributes with default values, while a parameterized constructor initializes attributes with values provided during object creation.
+
+In both cases, the goal is to set up the initial state of the object, but a parameterized constructor allows more flexibility in specifying the initial values.
+
+### 13. Constructor Overloading
+
+Constructor overloading is a concept in object-oriented programming (OOP) where a class can have multiple constructors with different parameter lists. Each constructor provides a different way to initialize the object's attributes. When you create an object of the class and pass specific arguments to the constructor, the appropriate constructor is selected based on the arguments' data types and number.
+
+In Python, constructor overloading is not directly supported like it is in some other languages (such as Java or C++), where you can define multiple constructors with different signatures. In Python, there's a single constructor, the `__init__` method, per class. However, you can achieve constructor overloading by using default values for the constructor parameters and handling different cases within the constructor.
+
+Let's illustrate this with an example:
+
+```python
+class Person:
+    def __init__(self, name=None, age=None):
+        if name is not None and age is not None:
+            self.name = name
+            self.age = age
+        elif name is not None:
+            self.name = name
+            self.age = 0
+        else:
+            self.name = "Unknown"
+            self.age = 0
+
+# Using the constructor with different arguments
+person1 = Person("Alice", 30)
+person2 = Person("Bob")
+person3 = Person()
+
+print(person1.name, person1.age)  # Output: Alice 30
+print(person2.name, person2.age)  # Output: Bob 0
+print(person3.name, person3.age)  # Output: Unknown 0
+```
+
+In this example, the `Person` class has a single constructor (`__init__` method) with two parameters: `name` and `age`. By using default values for these parameters, we create a form of constructor overloading. Depending on the arguments provided during object creation, the constructor initializes the attributes of the object accordingly.
+
+Keep in mind that this approach allows you to provide different ways to initialize objects based on the provided arguments, simulating constructor overloading in Python.
+
+### 14. new vs init
+
+`__new__` and `__init__` are both special methods in Python that play distinct roles in the process of object creation and initialization. They serve different purposes and are part of the object life cycle. Let's delve into the differences between these two methods:
+
+1. **`__new__` Method:**
+
+   - The `__new__` method is responsible for creating a new instance of a class. It is called before the `__init__` method.
+   - It receives the class as its first argument (`cls`) and any additional arguments that are passed during object creation.
+   - The primary use case for overriding `__new__` is when you want to customize the object creation process or create objects of a different type (metaclass usage).
+   - The `__new__` method returns a new instance of the class, and it is not responsible for initializing the object's attributes.
+
+Example of `__new__`:
+
+```python
+class CustomString(str):
+    def __new__(cls, value):
+        # Modify the object creation process
+        value = value.upper()
+        instance = super(CustomString, cls).__new__(cls, value)
+        return instance
+
+# Using the __new__ method
+custom_str = CustomString("hello")
+print(custom_str)  # Output: "HELLO"
+```
+
+2. **`__init__` Method:**
+
+   - The `__init__` method is responsible for initializing the attributes of an object after it has been created by the `__new__` method.
+   - It receives the newly created instance as its first argument (`self`) and any additional arguments that were passed during object creation.
+   - The primary use case for overriding `__init__` is to set up the initial state of the object by initializing instance variables.
+
+Example of `__init__`:
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+# Using the __init__ method
+person = Person("Alice", 30)
+print(person.name, person.age)  # Output: "Alice", 30
+```
+
+In summary, `__new__` is responsible for creating the object, while `__init__` is responsible for initializing its attributes. You rarely need to override `__new__` unless you have specific requirements related to object creation. On the other hand, `__init__` is a common method used to set up the initial state of objects.
+
+### 15. Explain below concepts in detail with examples
+a. Encapsulation
+b. Abstraction
+c. Inheritance
+d. Polymorphism
+
+Sure, I'll explain each of these fundamental concepts in object-oriented programming (OOP) in detail and provide examples for better understanding.
+
+**a. Encapsulation:**
+
+Encapsulation is one of the core principles of object-oriented programming. It refers to the practice of bundling the data (attributes) and methods (functions) that operate on the data into a single unit, known as a class. Encapsulation helps in controlling the access to the data and ensures that the implementation details are hidden from the outside world. The internal state of an object is protected, and interactions with the object are carried out through well-defined interfaces.
+
+**Example of Encapsulation:**
+
+```python
+class BankAccount:
+    def __init__(self, account_number, balance):
+        self.account_number = account_number
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+
+    def withdraw(self, amount):
+        if amount > 0 and amount <= self.balance:
+            self.balance -= amount
+        else:
+            print("Insufficient balance")
+
+# Creating an instance of BankAccount
+account = BankAccount("123456", 1000)
+
+# Accessing and modifying the balance through methods
+account.deposit(500)
+account.withdraw(300)
+print(account.balance)  # Output: 1200
+```
+
+In this example, the `BankAccount` class encapsulates the account number and balance attributes. The `deposit` and `withdraw` methods provide controlled access to modify the balance. The implementation details of how the balance is modified are hidden from the outside, ensuring proper encapsulation.
+
+**b. Abstraction:**
+
+Abstraction is the process of simplifying complex reality by modeling classes based on the essential properties and behaviors relevant to the application. It involves hiding the unnecessary details and showing only the necessary parts of an object. Abstraction allows you to focus on what an object does rather than how it does it.
+
+**Example of Abstraction:**
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius ** 2
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+# Using the abstracted Shape class
+shapes = [Circle(5), Rectangle(4, 6)]
+for shape in shapes:
+    print(shape.area())
+
+```
+
+In this example, the `Shape` class represents an abstraction of a geometric shape with an `area` method. The `Circle` and `Rectangle` classes implement the `Shape` interface by providing their specific implementations of the `area` method. The `Shape` class abstracts the concept of calculating the area, allowing us to work with different shapes without worrying about the details of their implementations.
+
+**c. Inheritance:**
+
+Inheritance is a mechanism in which a new class (subclass or derived class) inherits properties and behaviors (attributes and methods) from an existing class (superclass or base class). Inheritance promotes code reuse and allows the creation of more specialized classes based on existing ones.
+
+**Example of Inheritance:**
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+# Creating instances of derived classes
+dog = Dog("Buddy")
+cat = Cat("Whiskers")
+
+# Using the inherited methods
+print(dog.name, dog.speak())  # Output: Buddy Woof!
+print(cat.name, cat.speak())  # Output: Whiskers Meow!
+```
+
+In this example, the `Animal` class serves as the base class with a common `name` attribute and an abstract `speak` method. The `Dog` and `Cat` classes inherit from the `Animal` class and provide their specific implementations of the `speak` method. Inheritance allows the derived classes to reuse the attributes and methods of the base class while adding or overriding functionality.
+
+**d. Polymorphism:**
+
+Polymorphism allows objects of different classes to be treated as objects of a common base class. It enables you to use the same interface (methods or attributes) to represent different data types. Polymorphism simplifies code, enhances flexibility, and supports dynamic behavior.
+
+**Example of Polymorphism:**
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+# Using polymorphism with a common interface
+def animal_sound(animal):
+    return animal.speak()
+
+# Creating instances of derived classes
+dog = Dog("Buddy")
+cat = Cat("Whiskers")
+
+# Using the common interface
+print(animal_sound(dog))  # Output: Woof!
+print(animal_sound(cat))  # Output: Meow!
+```
+
+In this example, the `animal_sound` function accepts an `Animal` object as a parameter, and the `speak` method of the appropriate derived class is called based on the object type. The common interface (`speak` method) allows us to use polymorphism to handle different types of animals without knowing their specific implementations at compile time.
+
+These four concepts—encapsulation, abstraction, inheritance, and polymorphism—are fundamental pillars of object-oriented programming, helping developers build modular, organized, and extensible software systems.
+
+### 16. Method overloading vs Method overriding
+
+Method overloading and method overriding are two important concepts in object-oriented programming, but they serve different purposes and have distinct characteristics. Let's explain each concept in detail and highlight the differences between them.
+
+**Method Overloading:**
+
+Method overloading occurs when a class defines multiple methods with the same name but different parameter lists. The methods must have different numbers or types of parameters. The overloaded methods provide different ways to perform similar operations based on the input arguments. In some programming languages (e.g., Java), method overloading is supported explicitly by the language, allowing you to define multiple methods with the same name within the same class.
+
+**Example of Method Overloading (Python does not support method overloading directly):**
+
+```python
+class Calculator:
+    def add(self, x, y):
+        return x + y
+
+    def add(self, x, y, z):
+        return x + y + z
+
+# Creating an instance of the Calculator class
+calc = Calculator()
+
+# Calling the overloaded add methods
+print(calc.add(2, 3))         # Output: Error (Python does not support overloading)
+print(calc.add(2, 3, 4))      # Output: 9
+```
+
+In this example, we define two methods named `add` in the `Calculator` class, each with a different number of parameters. However, in Python, only the second `add` method will be recognized because Python does not directly support method overloading. The earlier definition of `add` is overwritten.
+
+**Method Overriding:**
+
+Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass (base class). The overridden method in the subclass has the same name, parameters, and return type as the method in the superclass. The goal of method overriding is to customize the behavior of the inherited method in the subclass.
+
+**Example of Method Overriding:**
+
+```python
+class Animal:
+    def make_sound(self):
+        return "Some generic animal sound"
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Meow!"
+
+# Creating instances of derived classes
+dog = Dog()
+cat = Cat()
+
+# Calling the overridden method
+print(dog.make_sound())  # Output: Woof!
+print(cat.make_sound())  # Output: Meow!
+```
+
+In this example, the `Animal` class defines a generic `make_sound` method. The `Dog` and `Cat` classes inherit from `Animal` and provide their specific implementations of the `make_sound` method, overriding the behavior defined in the base class. This allows each subclass to customize the sound it makes.
+
+In summary, method overloading is about defining multiple methods with the same name but different parameter lists, which is not directly supported in Python. Method overriding, on the other hand, is about providing a specialized implementation of a method in a subclass, allowing customization of behavior inherited from the superclass.
+
+### 17. Inheritance types
+
+Inheritance is a fundamental concept in object-oriented programming that allows a new class to inherit properties (attributes and methods) from an existing class. This concept promotes code reuse and allows the creation of more specialized classes based on existing ones. There are several types of inheritance that define the relationship between the base (parent) class and the derived (child) class. Let's explore the common types of inheritance:
+
+1. **Single Inheritance:**
+   
+   In single inheritance, a derived class inherits from only one base class. This is the simplest form of inheritance and is commonly used to create a hierarchical relationship between classes.
+   
+   ```python
+   class Parent:
+       def parent_method(self):
+           print("Parent method")
+
+   class Child(Parent):
+       def child_method(self):
+           print("Child method")
+
+   # Creating an instance of the Child class
+   child = Child()
+   child.parent_method()  # Output: Parent method
+   child.child_method()   # Output: Child method
+   ```
+
+2. **Multiple Inheritance:**
+
+   In multiple inheritance, a derived class inherits from more than one base class. This allows the derived class to inherit properties from multiple parent classes. Care should be taken when using multiple inheritance to avoid the "diamond problem" where ambiguity may arise if multiple parent classes have methods with the same name.
+
+   ```python
+   class Parent1:
+       def parent1_method(self):
+           print("Parent1 method")
+
+   class Parent2:
+       def parent2_method(self):
+           print("Parent2 method")
+
+   class Child(Parent1, Parent2):
+       def child_method(self):
+           print("Child method")
+
+   # Creating an instance of the Child class
+   child = Child()
+   child.parent1_method()  # Output: Parent1 method
+   child.parent2_method()  # Output: Parent2 method
+   child.child_method()    # Output: Child method
+   ```
+
+3. **Multilevel Inheritance:**
+
+   In multilevel inheritance, a derived class is used as the base class for another class. This creates a chain of inheritance, allowing properties to be inherited through multiple levels of classes.
+
+   ```python
+   class Grandparent:
+       def grandparent_method(self):
+           print("Grandparent method")
+
+   class Parent(Grandparent):
+       def parent_method(self):
+           print("Parent method")
+
+   class Child(Parent):
+       def child_method(self):
+           print("Child method")
+
+   # Creating an instance of the Child class
+   child = Child()
+   child.grandparent_method()  # Output: Grandparent method
+   child.parent_method()       # Output: Parent method
+   child.child_method()        # Output: Child method
+   ```
+
+4. **Hierarchical Inheritance:**
+
+   In hierarchical inheritance, multiple derived classes inherit from a single base (parent) class. Each derived class can have its own additional properties and methods while sharing the properties of the base class.
+
+   ```python
+   class Animal:
+       def make_sound(self):
+           print("Generic animal sound")
+
+   class Dog(Animal):
+       def make_sound(self):
+           print("Woof!")
+
+   class Cat(Animal):
+       def make_sound(self):
+           print("Meow!")
+
+   # Creating instances of derived classes
+   dog = Dog()
+   cat = Cat()
+   dog.make_sound()  # Output: Woof!
+   cat.make_sound()  # Output: Meow!
+   ```
+
+These are the main types of inheritance in object-oriented programming. Each type has its own use cases and considerations, and understanding the relationship between base and derived classes is crucial for designing effective class hierarchies.
+
+### 18. MRO principle.Explain in detail
+
+MRO (Method Resolution Order) is a principle in object-oriented programming that defines the order in which classes are searched when invoking a method on an object. The MRO principle is crucial for languages that support multiple inheritance, where a class can inherit attributes and methods from more than one parent class. Python is one such language that uses the C3 Linearization algorithm to determine the MRO.
+
+The MRO principle ensures that the correct method is called when a method is invoked on an object, considering the inheritance hierarchy and the order of method definitions in the classes involved. The goal is to provide a consistent and predictable way to resolve method calls in cases of multiple inheritance.
+
+**MRO Algorithm in Python (C3 Linearization):**
+
+Python uses the C3 Linearization algorithm, also known as C3 superclass linearization, to determine the MRO. This algorithm ensures a consistent and deterministic MRO for classes with multiple inheritance. The C3 Linearization algorithm follows these rules:
+
+1. The base classes are ordered according to their definition in the subclass's inheritance declaration.
+2. The base classes are visited in a left-to-right order, and their base classes (excluding duplicates) are recursively traversed.
+3. If a base class has multiple parent classes, the algorithm considers a merge of the MROs of those parent classes.
+
+**Example of MRO in Python:**
+
+```python
+class A:
+    def method(self):
+        print("Method in class A")
+
+class B(A):
+    def method(self):
+        print("Method in class B")
+
+class C(A):
+    def method(self):
+        print("Method in class C")
+
+class D(B, C):
+    pass
+
+# Creating an instance of class D
+d = D()
+
+# Calling the method
+d.method()
+```
+
+In this example, we have a class hierarchy with multiple inheritance: `D` inherits from both `B` and `C`, which in turn inherit from `A`. When we create an instance of `D` and call the `method`, the MRO determines that the method from class `B` is invoked. The MRO follows the C3 Linearization algorithm, and the output of this code will be:
+
+```
+Method in class B
+```
+
+This demonstrates how the MRO ensures that the method is resolved in a predictable and consistent manner in the presence of multiple inheritance. Understanding the MRO is essential for designing class hierarchies and resolving method calls correctly in Python.
+
+### 19. Access modifiers in Python
+
+Access modifiers in Python are keywords used to define the visibility and accessibility of class members (attributes and methods) in object-oriented programming. Access modifiers help control the level of encapsulation and protect the internal state of objects. In Python, access modifiers are not enforced as strictly as in some other languages like Java, but they provide a way to indicate the intended level of visibility.
+
+Python has three main access modifiers:
+
+1. **Public (No Modifier):**
+   A class member with no access modifier is considered public, which means it can be accessed from anywhere, both within and outside the class.
+
+   ```python
+   class MyClass:
+       def __init__(self):
+           self.public_variable = 10
+
+   obj = MyClass()
+   print(obj.public_variable)  # Output: 10
+   ```
+
+2. **Protected (_ prefix):**
+   A class member with a single underscore prefix (e.g., `_variable`) is considered protected. While Python does not enforce strict protection, this naming convention indicates that the variable or method should not be accessed directly from outside the class. It's a common convention among Python programmers.
+
+   ```python
+   class MyClass:
+       def __init__(self):
+           self._protected_variable = 20
+
+   obj = MyClass()
+   print(obj._protected_variable)  # Output: 20 (although it's a protected variable, it's accessible)
+   ```
+
+3. **Private (__ double underscore prefix):**
+   A class member with a double underscore prefix (e.g., `__variable`) is considered private. This naming convention indicates that the variable or method is intended to be used only within the class and should not be accessed from outside the class.
+
+   ```python
+   class MyClass:
+       def __init__(self):
+           self.__private_variable = 30
+
+   obj = MyClass()
+   # print(obj.__private_variable)  # Error: AttributeError (private variable is not directly accessible)
+   ```
+
+   Note that Python performs name mangling on private attributes, making them harder to access directly from outside the class. However, it's still possible to access them using the `_ClassName__private_variable` syntax, but this is discouraged.
+
+Remember that Python's access modifiers are more of a convention than a strict rule. It's a good practice to use public, protected, and private naming conventions to indicate the intended visibility and prevent accidental misuse. Encapsulation and data hiding are essential principles in object-oriented programming, and access modifiers play a role in achieving these goals.
+
+### 20. Multiple Inheritance. Explain in detail
+
+Multiple inheritance is a feature in object-oriented programming that allows a class to inherit attributes and methods from more than one base class. In other words, a class can have multiple parent classes, and it can inherit the properties of all those parent classes. This concept facilitates code reuse by allowing a single class to combine the features of multiple classes.
+
+In multiple inheritance, a derived (child) class can inherit from two or more base (parent) classes. This allows the derived class to gain access to the attributes and methods defined in each of its parent classes. However, multiple inheritance can introduce some complexities, such as the "diamond problem" and the need for a clear method resolution order (MRO) to resolve method conflicts.
+
+Let's explain multiple inheritance in detail:
+
+**Advantages of Multiple Inheritance:**
+
+1. **Code Reusability:** Multiple inheritance allows a class to reuse the features of multiple classes. This promotes a more modular and efficient design, as common functionalities can be defined in base classes and reused across different classes.
+
+2. **Flexibility:** Multiple inheritance provides flexibility in designing class hierarchies. It allows developers to create complex class relationships and build classes that represent more specific and specialized concepts.
+
+**Example of Multiple Inheritance:**
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass
+
+class Mammal(Animal):
+    def speak(self):
+        return "Mammal sound"
+
+class Bird(Animal):
+    def speak(self):
+        return "Bird sound"
+
+class Bat(Mammal, Bird):
+    pass
+
+# Creating an instance of the Bat class
+bat = Bat("Batty")
+
+# Accessing methods from parent classes
+print(bat.name)         # Output: Batty
+print(bat.speak())      # Output: Mammal sound (MRO favors the first parent class in the declaration, Mammal)
+```
+
+In this example, we have an `Animal` base class with a `name` attribute and a `speak` method. There are two derived classes, `Mammal` and `Bird`, each of which inherits from `Animal` and provides its own implementation of the `speak` method.
+
+The `Bat` class is derived from both `Mammal` and `Bird` using multiple inheritance. Despite the potential for a "diamond problem" (if both `Mammal` and `Bird` inherited from another common class), Python's C3 Linearization algorithm (MRO) resolves the method call, favoring the method from the first parent class declared in the `Bat` class.
+
+**Complexities and Considerations:**
+
+1. **Diamond Problem:** In some cases, multiple inheritance can lead to the "diamond problem" where a class inherits from two classes that have a common base class. This can result in ambiguity when resolving method calls. Python's MRO helps resolve this issue.
+
+2. **Method Resolution Order (MRO):** MRO is essential in multiple inheritance to determine the order in which the parent classes are searched when resolving method calls. Python uses the C3 Linearization algorithm to establish a consistent and predictable MRO.
+
+3. **Avoid Overuse:** While multiple inheritance is a powerful feature, it should be used judiciously to avoid creating overly complex class hierarchies.
+
+4. **Maintainability:** It's important to ensure that the design using multiple inheritance remains understandable and maintainable. Clearly documenting the class hierarchy and understanding the MRO is crucial.
+
+In summary, multiple inheritance allows a class to inherit properties from more than one base class, enhancing code reusability and flexibility. While it brings advantages, it should be used thoughtfully, and developers need to be aware of the complexities it can introduce, such as the diamond problem and the importance of a clear MRO.
+
+21. super keyword importance
+
+The `super()` keyword in Python is essential when working with inheritance, especially in cases of method overriding and cooperative multiple inheritance. It allows a subclass to call a method from its parent class. The `super()` keyword is crucial for maintaining the correct method resolution order (MRO) and ensuring that method calls are properly delegated to the appropriate parent class.
+
+Here are some important use cases and benefits of the `super()` keyword:
+
+1. **Method Overriding:** When a subclass provides its own implementation of a method that is also defined in the parent class, using `super()` allows the subclass to invoke the parent class's method while extending or modifying its behavior.
+
+   ```python
+   class Parent:
+       def say_hello(self):
+           print("Hello from Parent")
+
+   class Child(Parent):
+       def say_hello(self):
+           super().say_hello()  # Calling the parent class's method
+           print("Hello from Child")
+
+   child = Child()
+   child.say_hello()
+   ```
+
+   In this example, the `Child` class overrides the `say_hello()` method from the `Parent` class. By using `super()`, the child class can invoke the parent class's method before adding its own behavior.
+
+2. **Cooperative Multiple Inheritance:** When working with multiple inheritance, the `super()` keyword is crucial to ensure that the method resolution order is consistent and follows the C3 Linearization algorithm (MRO). It allows subclasses to cooperate and call parent class methods in a well-defined order.
+
+   ```python
+   class A:
+       def say_hello(self):
+           print("Hello from A")
+
+   class B(A):
+       def say_hello(self):
+           print("Hello from B")
+           super().say_hello()  # Calling the parent class's method
+
+   class C(A):
+       def say_hello(self):
+           print("Hello from C")
+           super().say_hello()  # Calling the parent class's method
+
+   class D(B, C):
+       pass
+
+   d = D()
+   d.say_hello()
+   ```
+
+   In this example, we have classes `A`, `B`, `C`, and `D`. The `D` class inherits from both `B` and `C`. By using `super()`, we ensure that the MRO is respected, and the `say_hello()` method from class `A` is called once despite the multiple inheritance.
+
+3. **Flexibility and Code Maintenance:** The `super()` keyword enhances code flexibility, as it allows changes in parent classes to propagate to subclasses without needing to modify the subclasses' code. This reduces the risk of code duplication and makes the codebase easier to maintain.
+
+   ```python
+   class Parent:
+       def configure(self):
+           # Configuration logic
+
+   class Child(Parent):
+       def configure(self):
+           super().configure()  # Use the parent's configuration logic
+           # Additional configuration logic specific to the Child class
+   ```
+
+   In this example, if the configuration logic in the `Parent` class changes, the `Child` class can still benefit from the updated logic by using `super()` to invoke the parent's `configure()` method.
+
+Overall, the `super()` keyword is an essential tool for maintaining a clear and consistent hierarchy in class inheritance, enabling method reuse, and ensuring proper cooperation in multiple inheritance scenarios.
+
+22. Calling super class method from sub class
+
+Calling a superclass method from a subclass can be done using the `super()` keyword. The `super()` function allows you to call a method in the parent class from the context of the subclass. This is useful when you want to extend or modify the behavior of the parent class's method in the subclass while still utilizing the functionality of the parent class's method.
+
+Here's an example that demonstrates how to call a superclass method from a subclass:
+
+```python
+class Parent:
+    def greet(self):
+        print("Hello from Parent")
+
+class Child(Parent):
+    def greet(self):
+        # Call the greet() method of the Parent class
+        super().greet()
+        print("Hello from Child")
+
+# Create an instance of the Child class
+child = Child()
+
+# Call the greet() method of the Child class
+child.greet()
+```
+
+In this example, we have a `Parent` class with a `greet()` method, and a `Child` class that inherits from the `Parent` class. The `Child` class overrides the `greet()` method to add its own behavior, but it also wants to call the `greet()` method of the parent class.
+
+When we create an instance of the `Child` class and call its `greet()` method, the `super().greet()` line inside the `Child` class's `greet()` method invokes the `greet()` method of the `Parent` class, and then the additional "Hello from Child" message is printed.
+
+The output of this code will be:
+
+```
+Hello from Parent
+Hello from Child
+```
+
+By using `super()`, you ensure that the parent class's method is invoked, allowing you to extend or modify the behavior in the subclass while still benefiting from the functionality provided by the parent class. This promotes code reuse and maintains a clear hierarchy in the class structure.
+
+23. Difference between public protected private methods Ex: x() _x() __x()
+
+In Python, methods and attributes have different levels of visibility and accessibility, denoted by naming conventions. The naming conventions for methods and attributes indicate their visibility to other parts of the code. Here's the difference between public, protected, and private methods:
+
+1. **Public Methods:**
+   - Public methods have no special naming convention. They are typically named in lowercase with words separated by underscores (snake_case).
+   - Public methods are accessible from outside the class, meaning they can be called directly on an instance of the class.
+
+Example:
+```python
+class MyClass:
+    def public_method(self):
+        print("This is a public method")
+
+obj = MyClass()
+obj.public_method()  # Calling the public method
+```
+
+2. **Protected Methods:**
+   - Protected methods are denoted by a single leading underscore before the method name. For example, `_protected_method`.
+   - Protected methods are a convention in Python, indicating that the method should not be accessed from outside the class, but they are still accessible.
+   - The idea behind protected methods is to indicate to other developers that the method is intended for internal use within the class or its subclasses, but it's not enforced by the language.
+
+Example:
+```python
+class MyClass:
+    def _protected_method(self):
+        print("This is a protected method")
+
+obj = MyClass()
+obj._protected_method()  # Accessing the protected method
+```
+
+3. **Private Methods:**
+   - Private methods are denoted by a double leading underscore before the method name. For example, `__private_method`.
+   - Private methods are meant to be used within the class only. They are name-mangled to make them less accessible from outside the class.
+   - Private methods are not inherited by subclasses.
+
+Example:
+```python
+class MyClass:
+    def __private_method(self):
+        print("This is a private method")
+
+obj = MyClass()
+# Accessing a private method directly will result in an AttributeError
+# obj.__private_method()  # Uncommenting this line will raise an AttributeError
+```
+
+It's important to note that these naming conventions are by convention only, and Python does not enforce access control like some other languages. Developers can still access "protected" and "private" methods, but it's a best practice to respect the intended visibility as indicated by the naming conventions.
+
+In summary:
+- **Public methods** have no special notation and are accessible from outside the class.
+- **Protected methods** have a single leading underscore and are intended for internal use but are still accessible.
+- **Private methods** have a double leading underscore and are intended for use within the class only, and they have name mangling to make them less accessible from outside.
+
+24. Importance of dunder functions
+
+Dunder (double underscore) methods, also known as magic methods or special methods, are a crucial feature in Python. These methods are invoked by specific language constructs and are used to define how objects of a class behave in certain situations. Understanding and implementing dunder methods is important for creating custom classes that work seamlessly with Python's built-in functionalities and for defining the behavior of objects in various contexts. Here's why dunder methods are important:
+
+1. **Operator Overloading:** Dunder methods enable operator overloading, allowing you to define custom behavior for standard operators when applied to objects of your class. For example, you can define the `__add__()` method to specify how instances of your class should behave with the `+` operator.
+
+2. **Custom Representation:** The `__repr__()` and `__str__()` methods allow you to define custom string representations for your objects. This is particularly useful for debugging and improving the readability of your objects when printed.
+
+3. **Context Management:** Dunder methods like `__enter__()` and `__exit__()` are essential for context management using the `with` statement. They allow you to define the setup and cleanup actions for your objects when used in a `with` block.
+
+4. **Iteration:** Dunder methods such as `__iter__()` and `__next__()` enable you to define custom iteration behavior for your objects. This is essential for making instances of your class iterable.
+
+5. **Comparison:** Dunder methods like `__eq__()`, `__lt__()`, and others allow you to define custom comparison behavior for instances of your class. This is crucial for making your objects comparable with the standard comparison operators (`<`, `>`, `==`, etc.).
+
+6. **Attribute Access:** Dunder methods like `__getattr__()`, `__setattr__()`, and `__delattr__()` enable you to define custom behavior for attribute access, assignment, and deletion, respectively.
+
+7. **Dynamic Behavior:** Dunder methods allow you to control the dynamic behavior of your objects. For example, the `__call__()` method lets you define instances of your class as callable, allowing them to be invoked like functions.
+
+8. **Custom Numeric Operations:** Dunder methods such as `__add__()`, `__sub__()`, and others enable you to define custom numeric operations for your objects, allowing them to work seamlessly with numeric operations.
+
+By implementing appropriate dunder methods, you make your custom classes more intuitive, Pythonic, and compatible with existing language constructs and built-in functions. This promotes code readability, reusability, and enhances the overall user experience when working with instances of your classes.
+
+25. __str__ vs __repr__
+
+Both `__str__` and `__repr__` are special methods in Python that deal with providing string representations of objects, but they have distinct purposes and use cases. Let's explore the differences between `__str__` and `__repr__`:
+
+1. **`__str__` Method:**
+   - The `__str__` method is used to define a human-readable string representation of an object.
+   - It's intended to provide a user-friendly, informative string that represents the object in a way that is easy to understand.
+   - The primary use of `__str__` is for end-users and for displaying objects in a readable format.
+   - This method is called by the built-in `str()` function and the `print()` function when an object is passed to it.
+   - If `__str__` is not defined, the default implementation from the base `object` class is used, which provides a basic representation.
+
+Example:
+```python
+class MyClass:
+    def __str__(self):
+        return "This is an instance of MyClass"
+
+obj = MyClass()
+print(obj)  # Output: This is an instance of MyClass
+```
+
+2. **`__repr__` Method:**
+   - The `__repr__` method is used to define an unambiguous, developer-focused string representation of an object.
+   - It's intended to provide a string that, when passed to the Python interpreter (`eval()` or in the interactive console), would create an equivalent object.
+   - The primary use of `__repr__` is for developers, debugging, and inspecting objects.
+   - This method is called by the built-in `repr()` function and is used when displaying objects in the interactive console.
+   - If `__repr__` is not defined, the default implementation from the base `object` class is used, which provides a basic representation.
+
+Example:
+```python
+class MyClass:
+    def __repr__(self):
+        return "MyClass()"
+
+obj = MyClass()
+print(repr(obj))  # Output: MyClass()
+```
+
+In summary:
+- Use `__str__` to define a user-friendly string representation of an object, suitable for end-users and for display.
+- Use `__repr__` to define an unambiguous string representation of an object, suitable for developers, debugging, and creating equivalent objects.
+
+It's common to implement both `__str__` and `__repr__` methods in your classes to provide meaningful representations for both end-users and developers. If only one of them is implemented, the other may use the default implementation provided by the base `object` class.
+
+26. Abstraction, Abstract class. When to use. Explain in detail
+
+**Abstraction** is a fundamental concept in object-oriented programming that focuses on hiding the complex implementation details while exposing a simplified and high-level interface for users. It allows you to represent real-world objects in a more understandable and manageable way.
+
+Abstraction is achieved through the creation of **abstract classes** and **interfaces**. These abstract constructs define a blueprint for derived classes, providing a set of methods (including abstract methods) that must be implemented in the derived classes. Here's a detailed explanation of abstraction and abstract classes:
+
+1. **Abstraction:**
+   - Abstraction helps manage complexity by focusing on what an object does (its behavior) rather than how it does it (its implementation).
+   - It provides a way to create generalized, reusable, and easily maintainable code by defining a clear contract between classes.
+   - Abstraction allows you to build a high-level model of a system, hiding the low-level implementation details, which simplifies the interaction with the system.
+   - It promotes code modularity, making it easier to change or extend the system without affecting other parts of the code.
+   - Abstraction is a crucial principle in object-oriented design, enabling you to create more flexible, adaptable, and understandable software.
+
+2. **Abstract Class:**
+   - An abstract class is a class that cannot be instantiated on its own; it serves as a base for other classes that derive from it.
+   - Abstract classes may contain both regular (non-abstract) methods and abstract methods.
+   - Abstract methods are declared in the abstract class but have no implementation. They are meant to be implemented by derived classes.
+   - Abstract classes provide a common interface that derived classes must follow, ensuring a consistent structure and behavior across multiple subclasses.
+   - Abstract classes define a contract that derived classes must adhere to, promoting code consistency and ensuring that essential methods are implemented.
+
+**When to use abstraction and abstract classes:**
+1. **When designing a hierarchy:** Use abstraction when you have a group of related classes that share common behavior but need to vary in some specific aspects. Create an abstract base class with the shared behavior and define abstract methods that must be implemented by the subclasses.
+
+2. **To enforce a contract:** Use abstraction to define a contract that derived classes must follow. This ensures that certain methods are implemented in all subclasses, providing a consistent interface.
+
+3. **To hide implementation details:** Use abstraction to hide the complex implementation details of a class, exposing only the essential methods and properties that users need to interact with.
+
+4. **When you want to create a blueprint:** Use abstraction to create a blueprint for classes, ensuring that they follow a specific structure and behavior.
+
+Example of an abstract class:
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius * self.radius
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+# Example usage
+circle = Circle(5)
+print(circle.area())  # Output: 78.5
+
+rectangle = Rectangle(4, 6)
+print(rectangle.area())  # Output: 24
+```
+
+In this example, the `Shape` class is an abstract class with an abstract method `area()`. The `Circle` and `Rectangle` classes are derived from the `Shape` class and provide implementations for the `area()` method. The abstract class `Shape` defines a contract that both `Circle` and `Rectangle` classes must adhere to, ensuring that they both have an `area()` method. This abstraction simplifies the interaction with different shapes by providing a consistent interface.
+
+27. Abstract class vs Interface
+
+Both abstract classes and interfaces are used to achieve abstraction and define a contract that derived classes must follow, but they have some key differences in terms of implementation, usage, and their role in object-oriented design.
+
+**Abstract Class:**
+1. An abstract class is a class that cannot be instantiated on its own. It serves as a base for other classes (concrete subclasses) that derive from it.
+2. Abstract classes can have both regular (non-abstract) methods with implementations and abstract methods (declared without implementation).
+3. Abstract methods in an abstract class are meant to be overridden by concrete subclasses, which ensures that derived classes implement essential behavior.
+4. Abstract classes may contain member variables (attributes) that can be shared among subclasses.
+5. A class can inherit from only one abstract class, meaning that there is a restriction on single inheritance when using abstract classes.
+6. Abstract classes are a way to provide a common base and shared behavior for related classes.
+
+**Interface:**
+1. An interface is a completely abstract class in Python. It cannot be instantiated, and all its methods are abstract, meaning they have no implementation.
+2. Interfaces define a contract that classes must adhere to by implementing all the methods declared in the interface.
+3. A class can implement multiple interfaces, which allows for achieving multiple inheritance of interface contracts.
+4. Interfaces are used to specify a set of methods that must be present in implementing classes, but they do not provide any implementation details themselves.
+5. Interfaces are useful for achieving loose coupling and promoting code modularity. They allow different classes to share common behavior without forcing them to be part of a common hierarchy.
+
+**When to Use Abstract Classes and Interfaces:**
+1. **Abstract Class:** Use an abstract class when you want to provide a common base with shared behavior for a group of related classes. If you have methods with default implementations that you want to be available in some derived classes, use an abstract class.
+2. **Interface:** Use an interface when you want to define a contract that multiple classes can adhere to. If you want to ensure that classes provide specific methods but you don't want to impose a common base, use an interface.
+
+Example illustrating the use of an interface:
+```python
+from abc import ABC, abstractmethod
+
+class Drawable(ABC):
+    @abstractmethod
+    def draw(self):
+        pass
+
+class Circle(Drawable):
+    def draw(self):
+        print("Drawing a circle")
+
+class Square(Drawable):
+    def draw(self):
+        print("Drawing a square")
+
+# Example usage
+shapes = [Circle(), Square()]
+for shape in shapes:
+    shape.draw()
+```
+
+In this example, the `Drawable` interface defines the contract that classes must implement the `draw()` method. Both the `Circle` and `Square` classes implement the `Drawable` interface by providing their own implementation of the `draw()` method. This allows them to be used interchangeably in a more abstract and unified way.
