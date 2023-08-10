@@ -574,6 +574,75 @@ SELECT
 FROM orders;
 ```
 
+Conditional functions in SQL are used to perform different actions based on specified conditions. They allow you to control the flow of the query and generate dynamic results based on the values in your data. Commonly used conditional functions include `CASE`, `COALESCE`, `NULLIF`, and `IFNULL`. Let's explore each of them:
+
+1. **CASE Expression:**
+The `CASE` expression allows you to perform conditional logic within a SQL query. It provides a way to return different values or perform different operations based on specified conditions.
+
+Syntax:
+```sql
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    ...
+    ELSE result_else
+END
+```
+
+Example:
+```sql
+SELECT product_name,
+       CASE
+           WHEN stock_quantity > 0 THEN 'In Stock'
+           ELSE 'Out of Stock'
+       END AS stock_status
+FROM products;
+```
+
+2. **COALESCE Function:**
+The `COALESCE` function returns the first non-null expression from a list of expressions. It's often used to provide a fallback value when a column might be null.
+
+Syntax:
+```sql
+COALESCE(expression1, expression2, ...)
+```
+
+Example:
+```sql
+SELECT order_id, COALESCE(discount, 0) AS applied_discount
+FROM orders;
+```
+
+3. **NULLIF Function:**
+The `NULLIF` function compares two expressions and returns `null` if they are equal; otherwise, it returns the first expression. It's useful when you want to handle specific cases where two values should result in null.
+
+Syntax:
+```sql
+NULLIF(expression1, expression2)
+```
+
+Example:
+```sql
+SELECT employee_id, NULLIF(salary, 0) AS valid_salary
+FROM employees;
+```
+
+4. **IFNULL Function:**
+The `IFNULL` function is specific to some database systems like MySQL and returns the first expression if it's not `null`, otherwise, it returns the second expression.
+
+Syntax (MySQL):
+```sql
+IFNULL(expression1, expression2)
+```
+
+Example:
+```sql
+SELECT customer_id, IFNULL(loyalty_points, 0) AS points
+FROM customers;
+```
+
+These conditional functions allow you to make your SQL queries more flexible and adaptive to different situations. They can be used to generate computed columns, handle null values, and create custom result sets based on conditions. Remember that the specific syntax and availability of these functions may vary depending on the database system you are using.
+
 **8. Special Functions:**
    Some databases provide functions specific to their features. For example, PostgreSQL has JSON functions for working with JSON data, while MySQL has spatial functions for geographical data.
 
