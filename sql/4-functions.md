@@ -162,15 +162,238 @@ Key features of window functions include:
 
 3. **Window Frame:** A window frame defines the range of rows that are considered for the calculation. It can be specified using an OFFSET and RANGE or ROWS BETWEEN clause.
 
+Window functions are extremely useful for generating reports, rankings, running totals, and performing complex analytical tasks directly within the SQL query. They help avoid the need for subqueries or self-joins in many cases and provide efficient ways to compute aggregations across rows without compromising individual row information.
+
 Commonly used window functions include:
 
 - `ROW_NUMBER()`: Assigns a unique integer to each row, based on the specified order within each partition.
+
+Sure! Let's use the `ROW_NUMBER()` function in a practical example. Suppose we have a table named `orders` that stores information about customer orders. We want to assign a unique order number to each order within each customer's partition based on the order date.
+
+Table: `orders`
+
+| order_id | customer_id | order_date  |
+|----------|-------------|-------------|
+| 1        | 101         | 2023-08-01  |
+| 2        | 101         | 2023-08-03  |
+| 3        | 102         | 2023-08-02  |
+| 4        | 102         | 2023-08-04  |
+| 5        | 101         | 2023-08-05  |
+
+We can use the `ROW_NUMBER()` function to assign a unique order number within each customer's partition based on the order date. The `PARTITION BY` clause divides the result set into partitions, and the `ORDER BY` clause specifies the order within each partition.
+
+Here's the SQL query using the `ROW_NUMBER()` function:
+
+```sql
+SELECT 
+    order_id, 
+    customer_id, 
+    order_date, 
+    ROW_NUMBER() OVER(PARTITION BY customer_id ORDER BY order_date) AS order_number
+FROM orders;
+```
+
+The output of the query would be:
+
+| order_id | customer_id | order_date  | order_number |
+|----------|-------------|-------------|--------------|
+| 1        | 101         | 2023-08-01  | 1            |
+| 2        | 101         | 2023-08-03  | 2            |
+| 5        | 101         | 2023-08-05  | 3            |
+| 3        | 102         | 2023-08-02  | 1            |
+| 4        | 102         | 2023-08-04  | 2            |
+
+Explanation:
+- For customer with `customer_id` 101, the orders are sorted by `order_date`. The first order (order_id 1) gets assigned the order number 1, the second order (order_id 2) gets assigned the order number 2, and so on.
+- Similarly, for customer with `customer_id` 102, the orders are sorted by `order_date`. The first order (order_id 3) gets assigned the order number 1, and the second order (order_id 4) gets assigned the order number 2.
+
+The `ROW_NUMBER()` function assigns a unique order number to each row within each customer's partition based on the specified order, providing a way to identify the sequence of orders for each customer.
+
 - `RANK()`: Assigns a unique rank to each distinct value in the ordered partition, with gaps for duplicate values.
-- `DENSE_RANK()`: Similar to RANK, but without gaps for duplicate values.
-- `NTILE(n)`: Divides rows into approximately equal parts (tiles) based on the specified integer n.
+
+Suppose we have a table named `scores` that stores the scores of students in a quiz. We want to rank the students based on their scores, and in case of tie scores, we want to assign the same rank to those students and leave gaps for the next rank.
+
+Table: `scores`
+
+| student_id | score |
+|------------|-------|
+| 1          | 90    |
+| 2          | 85    |
+| 3          | 92    |
+| 4          | 90    |
+| 5          | 88    |
+| 6          | 85    |
+
+We can use the `RANK()` function to assign a unique rank to each distinct score within the ordered partition of students based on their scores. The `ORDER BY` clause specifies the order based on which the ranking is determined.
+
+Here's the SQL query using the `RANK()` function:
+
+```sql
+SELECT 
+    student_id, 
+    score,
+    RANK() OVER(ORDER BY score DESC) AS rank
+FROM scores;
+```
+
+The output of the query would be:
+
+| student_id | score | rank |
+|------------|-------|------|
+| 3          | 92    | 1    |
+| 1          | 90    | 2    |
+| 4          | 90    | 2    |
+| 5          | 88    | 4    |
+| 2          | 85    | 5    |
+| 6          | 85    | 5    |
+
+Explanation:
+- The `RANK()` function assigns a unique rank to each distinct score within the ordered partition (the entire result set in this case) based on the descending order of scores.
+- Since there are two students with a score of 90, they share the rank 2, and the next rank is skipped (gap). Similarly, there are two students with a score of 85, and they share the rank 5.
+- The highest score (92) receives rank 1, and the scores are ranked in descending order.
+
+The `RANK()` function provides a way to rank the values in a specific order, handling ties and leaving gaps for the next rank, as shown in the output.
+
+- `DENSE_RANK()`: Assigns a rank to every row within its partition based on the ORDER BY clause. It assigns the same rank to the rows with equal values. If two or more rows have the same rank, then there will be no gaps in the sequence of ranked values.
+
+The `DENSE_RANK()` function assigns a unique rank to each distinct value in the ordered partition, without leaving gaps for duplicate values.
+
+Table: `scores`
+
+| student_id | score |
+|------------|-------|
+| 1          | 90    |
+| 2          | 85    |
+| 3          | 92    |
+| 4          | 90    |
+| 5          | 88    |
+| 6          | 85    |
+
+Here's the SQL query using the `DENSE_RANK()` function:
+
+```sql
+SELECT 
+    student_id, 
+    score,
+    DENSE_RANK() OVER(ORDER BY score DESC) AS dense_rank
+FROM scores;
+```
+
+The output of the query would be:
+
+| student_id | score | dense_rank |
+|------------|-------|------------|
+| 3          | 92    | 1          |
+| 1          | 90    | 2          |
+| 4          | 90    | 2          |
+| 5          | 88    | 3          |
+| 2          | 85    | 4          |
+| 6          | 85    | 4          |
+
+Explanation:
+- The `DENSE_RANK()` function assigns a unique rank to each distinct score within the ordered partition (the entire result set in this case) based on the descending order of scores.
+- Unlike the `RANK()` function, `DENSE_RANK()` does not leave gaps for duplicate values. So, both students with a score of 90 share the rank 2, and the next rank is 3 for the next distinct score.
+- The highest score (92) receives rank 1, and the scores are ranked in descending order.
+
+In this example, the `DENSE_RANK()` function assigns ranks without gaps for duplicate values, resulting in consecutive rank numbers.
+
 - `SUM()`, `AVG()`, `MIN()`, `MAX()`: Perform calculations on a range of rows within a partition.
-- `LEAD()` and `LAG()`: Access the values of the next or previous row within a partition.
+Certainly! Let's use the `SUM()`, `AVG()`, `MIN()`, and `MAX()` functions in a practical example. Suppose we have a table named `sales` that stores information about sales transactions, including the `product_id`, `sale_amount`, and `sale_date`. We want to calculate the total sales amount, average sale amount, minimum sale amount, and maximum sale amount for each product within a specified time period.
+
+Table: `sales`
+
+| product_id | sale_amount | sale_date  |
+|------------|-------------|-------------|
+| 1          | 100         | 2023-08-01  |
+| 1          | 120         | 2023-08-02  |
+| 2          | 150         | 2023-08-01  |
+| 2          | 200         | 2023-08-03  |
+| 1          | 80          | 2023-08-03  |
+
+We can use the `SUM()`, `AVG()`, `MIN()`, and `MAX()` functions along with the `PARTITION BY` clause to calculate these aggregate values within each product's partition, considering only the sales within a specified time period (e.g., August 2023).
+
+Here's the SQL query using these functions:
+
+```sql
+SELECT 
+    product_id, 
+    SUM(sale_amount) OVER(PARTITION BY product_id) AS total_sales,
+    AVG(sale_amount) OVER(PARTITION BY product_id) AS avg_sale,
+    MIN(sale_amount) OVER(PARTITION BY product_id) AS min_sale,
+    MAX(sale_amount) OVER(PARTITION BY product_id) AS max_sale
+FROM sales
+WHERE sale_date BETWEEN '2023-08-01' AND '2023-08-31';
+```
+
+The output of the query would be:
+
+| product_id | total_sales | avg_sale | min_sale | max_sale |
+|------------|-------------|----------|----------|----------|
+| 1          | 300         | 100      | 80       | 120      |
+| 1          | 300         | 100      | 80       | 120      |
+| 1          | 300         | 100      | 80       | 120      |
+| 2          | 350         | 175      | 150      | 200      |
+
+Explanation:
+- The `SUM(sale_amount)` function calculates the total sales amount for each product within the specified time period.
+- The `AVG(sale_amount)` function calculates the average sale amount for each product within the specified time period.
+- The `MIN(sale_amount)` function calculates the minimum sale amount for each product within the specified time period.
+- The `MAX(sale_amount)` function calculates the maximum sale amount for each product within the specified time period.
+- The `PARTITION BY product_id` divides the calculation into separate partitions for each product.
+
+In this example, the query provides a comprehensive summary of the sales performance for each product within the specified time period, including total sales, average sale, minimum sale, and maximum sale.
+
+- `LEAD()`: Returns the value of the Nth row after the current row in a partition. It returns NULL if no subsequent row exists.
+
+Sure! Let's use the `LEAD()` function in a practical example. Suppose we have a table named `employee_sales` that stores information about employee sales data, including the `employee_id`, `sale_amount`, and `sale_date`. We want to calculate the sale amount for the next day's sales for each employee within a specific time period.
+
+Table: `employee_sales`
+
+| employee_id | sale_amount | sale_date  |
+|-------------|-------------|-------------|
+| 1           | 100         | 2023-08-01 |
+| 1           | 120         | 2023-08-02 |
+| 1           | 80          | 2023-08-03 |
+| 2           | 150         | 2023-08-01 |
+| 2           | 200         | 2023-08-03 |
+| 2           | 120         | 2023-08-04 |
+
+We can use the `LEAD()` function to calculate the sale amount for the next day's sales for each employee within the specified time period.
+
+Here's the SQL query using the `LEAD()` function:
+
+```sql
+SELECT 
+    employee_id, 
+    sale_amount,
+    LEAD(sale_amount) OVER(PARTITION BY employee_id ORDER BY sale_date) AS next_day_sale
+FROM employee_sales
+WHERE sale_date BETWEEN '2023-08-01' AND '2023-08-03';
+```
+
+The output of the query would be:
+
+| employee_id | sale_amount | next_day_sale |
+|-------------|-------------|---------------|
+| 1           | 100         | 120           |
+| 1           | 120         | 80            |
+| 2           | 150         | 200           |
+| 2           | 200         | NULL          |
+
+Explanation:
+- The `LEAD(sale_amount)` function calculates the sale amount for the next day's sales for each employee within the specified time period.
+- The `PARTITION BY employee_id` divides the calculation into separate partitions for each employee.
+- The `ORDER BY sale_date` specifies the order based on which the next day's sale is determined.
+
+In this example, the query provides the sale amount for each employee's next day's sales within the specified time period. Note that for the last row of employee 2, there's no subsequent row (next day) within the specified time period, so it returns `NULL`.
+
+- `LAG()`: Returns the value of the Nth row before the current row in a partition. It returns NULL if no preceding row exists.
 - `FIRST_VALUE()` and `LAST_VALUE()`: Access the value of the first or last row within a partition.
+- `CUME_DIST`: Calculates the cumulative distribution of a value in a set of values.
+- `PERCENT_RANK`: Calculates the percentile rank of a row in a partition or result set.
+- `NTH_VALUE`: Returns value of argument from Nth row of the window frame
+- `NTILE(n)`: Divides rows into approximately equal parts (tiles) based on the specified integer n.
+
 
 Example of using a window function:
 
@@ -184,154 +407,6 @@ FROM sales;
 
 In this example, the `SUM()` function is used as a window function. It calculates the cumulative sum of `sale_amount` for each row within the partition defined by `product_id`, and the rows are ordered by `sale_date`.
 
-Window functions are extremely useful for generating reports, rankings, running totals, and performing complex analytical tasks directly within the SQL query. They help avoid the need for subqueries or self-joins in many cases and provide efficient ways to compute aggregations across rows without compromising individual row information.
-
-   These functions operate on a "window" of rows related to the current row. They are used with the `OVER` clause and are often used for analytical calculations. Examples include:
-   - `ROW_NUMBER`, `RANK`, `DENSE_RANK`: Assigns unique numbers to rows within a window.
-   - `LAG`, `LEAD`: Access values from previous or subsequent rows.
-   - `SUM`, `AVG`, `MIN`, `MAX` with `OVER`: Perform calculations over a window of rows.
-
-```
--- ROW_NUMBER function to assign row numbers
-SELECT emp_name, salary, ROW_NUMBER() OVER (ORDER BY salary DESC) AS rank
-FROM employees;
-
--- SUM function with OVER clause for running total
-SELECT order_date, order_amount, SUM(order_amount) OVER (ORDER BY order_date) AS running_total
-FROM orders;
-```
-
-More windows functions:
-
-- `DENSE_RANK`: Assigns a rank to every row within its partition based on the ORDER BY clause. It assigns the same rank to the rows with equal values. 
-						If two or more rows have the same rank, then there will be no gaps in the sequence of ranked values.
-- `RANK`: Similar to the DENSE_RANK() function except that there are gaps in the sequence of ranked values when two or more rows have the same rank.
-- `ROW_NUMBER`: Assigns a sequential integer to every row within its partition
-- `FIRST_VALUE`: Returns the value of the specified expression with respect to the first row in the window frame.
-- `LAST_VALUE`: Returns the value of the specified expression with respect to the last row in the window frame.
-- `LAG`: Returns the value of the Nth row before the current row in a partition. It returns NULL if no preceding row exists.
-- `LEAD`: Returns the value of the Nth row after the current row in a partition. It returns NULL if no subsequent row exists.
-- `CUME_DIST`:	Calculates the cumulative distribution of a value in a set of values.
-- `PERCENT_RANK`: Calculates the percentile rank of a row in a partition or result set
-- `NTH_VALUE`: Returns value of argument from Nth row of the window frame 
-- `NTILE`: Distributes the rows for each window partition into a specified number of ranked groups.
-
-Usage of the above functions:
-
-Assume we have a table `sales` with columns `employee_id`, `sales_amount`, and `month`:
-
-| employee_id | sales_amount | month     |
-|-------------|--------------|-----------|
-| 1           | 1000         | January   |
-| 2           | 1500         | January   |
-| 1           | 1200         | February  |
-| 3           | 800          | January   |
-| 2           | 1300         | February  |
-| 3           | 1100         | February  |
-| 1           | 900          | March     |
-| 2           | 1600         | March     |
-| 3           | 1000         | March     |
-
-1. **DENSE_RANK:**
-Assigns a rank to every row within its partition based on the ORDER BY clause. It assigns the same rank to the rows with equal values.
-
-```sql
-SELECT employee_id, month, sales_amount,
-       DENSE_RANK() OVER(PARTITION BY month ORDER BY sales_amount DESC) AS dense_rank
-FROM sales;
-```
-
-2. **RANK:**
-Similar to `DENSE_RANK()` but there are gaps in the sequence of ranked values when two or more rows have the same rank.
-
-```sql
-SELECT employee_id, month, sales_amount,
-       RANK() OVER(PARTITION BY month ORDER BY sales_amount DESC) AS rank
-FROM sales;
-```
-
-3. **ROW_NUMBER:**
-Assigns a sequential integer to every row within its partition.
-
-```sql
-SELECT employee_id, month, sales_amount,
-       ROW_NUMBER() OVER(PARTITION BY month ORDER BY sales_amount DESC) AS row_number
-FROM sales;
-```
-
-4. **FIRST_VALUE:**
-Returns the value of the specified expression with respect to the first row in the window frame.
-
-```sql
-SELECT employee_id, month, sales_amount,
-       FIRST_VALUE(sales_amount) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS first_sales
-FROM sales;
-```
-
-5. **LAST_VALUE:**
-Returns the value of the specified expression with respect to the last row in the window frame.
-
-```sql
-SELECT employee_id, month, sales_amount,
-       LAST_VALUE(sales_amount) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS last_sales
-FROM sales;
-```
-
-6. **LAG:**
-Returns the value of the Nth row before the current row in a partition. It returns NULL if no preceding row exists.
-
-```sql
-SELECT employee_id, month, sales_amount,
-       LAG(sales_amount, 1) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS prev_sales
-FROM sales;
-```
-
-7. **LEAD:**
-Returns the value of the Nth row after the current row in a partition. It returns NULL if no subsequent row exists.
-
-```sql
-SELECT employee_id, month, sales_amount,
-       LEAD(sales_amount, 1) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS next_sales
-FROM sales;
-```
-
-8. **CUME_DIST:**
-Calculates the cumulative distribution of a value in a set of values.
-
-```sql
-SELECT employee_id, month, sales_amount,
-       CUME_DIST() OVER(PARTITION BY month ORDER BY sales_amount DESC) AS cumulative_dist
-FROM sales;
-```
-
-9. **PERCENT_RANK:**
-Calculates the percentile rank of a row in a partition or result set.
-
-```sql
-SELECT employee_id, month, sales_amount,
-       PERCENT_RANK() OVER(PARTITION BY month ORDER BY sales_amount DESC) AS percent_rank
-FROM sales;
-```
-
-10. **NTH_VALUE:**
-Returns the value of an argument from the Nth row of the window frame.
-
-```sql
-SELECT employee_id, month, sales_amount,
-       NTH_VALUE(sales_amount, 2) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS second_highest_sales
-FROM sales;
-```
-
-11. **NTILE:**
-Distributes the rows for each window partition into a specified number of ranked groups.
-
-```sql
-SELECT employee_id, month, sales_amount,
-       NTILE(3) OVER(PARTITION BY month ORDER BY sales_amount DESC) AS ntile_group
-FROM sales;
-```
-
-These window functions allow you to perform complex calculations and analysis over specific partitions of data within your result set, providing valuable insights and information about your data distribution.
 
 **4. String Functions:**
    These functions operate on string values and are often used for text manipulation and formatting. Examples include `SUBSTRING`, `LEFT`, `RIGHT`, `TRIM`, `REPLACE`.
