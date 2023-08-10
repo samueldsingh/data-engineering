@@ -124,7 +124,7 @@ SELECT DATE_FORMAT('2023-08-04', '%Y-%m-%d');  -- Output: '2023-08-04'
 
 **3. Window Functions (Analytic Functions):**
 
-Window functions (also known as window analytic functions or windowed aggregates) are a powerful feature in SQL that allow you to perform calculations across a set of table rows related to the current row. Unlike traditional aggregate functions like `SUM`, `AVG`, and `COUNT` that collapse multiple rows into a single result, window functions return a value for each row based on a specified window or range of rows.
+[Window functions](https://en.wikipedia.org/wiki/Window_function_(SQL)) (also known as window analytic functions or windowed aggregates) are a powerful feature in SQL that allow you to perform calculations across a set of table rows related to the current row. Unlike traditional aggregate functions like `SUM`, `AVG`, and `COUNT` that collapse multiple rows into a single result, window functions return a value for each row based on a specified window or range of rows.
 
 Key features of window functions include:
 
