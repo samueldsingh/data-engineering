@@ -388,24 +388,269 @@ Explanation:
 In this example, the query provides the sale amount for each employee's next day's sales within the specified time period. Note that for the last row of employee 2, there's no subsequent row (next day) within the specified time period, so it returns `NULL`.
 
 - `LAG()`: Returns the value of the Nth row before the current row in a partition. It returns NULL if no preceding row exists.
-- `FIRST_VALUE()` and `LAST_VALUE()`: Access the value of the first or last row within a partition.
-- `CUME_DIST`: Calculates the cumulative distribution of a value in a set of values.
-- `PERCENT_RANK`: Calculates the percentile rank of a row in a partition or result set.
-- `NTH_VALUE`: Returns value of argument from Nth row of the window frame
-- `NTILE(n)`: Divides rows into approximately equal parts (tiles) based on the specified integer n.
 
+Sure! Let's use the `LAG()` function in a practical example. Suppose we have a table named `stock_prices` that stores daily stock prices for a particular stock, including the `stock_id`, `price`, and `date`. We want to calculate the change in stock price from the previous day for each stock within a specific time period.
 
-Example of using a window function:
+Table: `stock_prices`
 
-Let's assume we have a table named `sales` with columns `product_id`, `sale_amount`, and `sale_date`. To calculate the cumulative sum of `sale_amount` for each product ordered by date:
+| stock_id | price | date       |
+|----------|-------|------------|
+| 1        | 100   | 2023-08-01 |
+| 1        | 120   | 2023-08-02 |
+| 1        | 80    | 2023-08-03 |
+| 2        | 150   | 2023-08-01 |
+| 2        | 200   | 2023-08-03 |
+| 2        | 120   | 2023-08-04 |
+
+We can use the `LAG()` function to calculate the change in stock price from the previous day's price for each stock within the specified time period.
+
+Here's the SQL query using the `LAG()` function:
 
 ```sql
-SELECT product_id, sale_date, sale_amount,
-       SUM(sale_amount) OVER(PARTITION BY product_id ORDER BY sale_date) AS cumulative_sum
+SELECT 
+    stock_id, 
+    price,
+    LAG(price) OVER(PARTITION BY stock_id ORDER BY date) AS previous_day_price
+FROM stock_prices
+WHERE date BETWEEN '2023-08-02' AND '2023-08-04';
+```
+
+The output of the query would be:
+
+| stock_id | price | previous_day_price |
+|----------|-------|--------------------|
+| 1        | 120   | 100                |
+| 1        | 80    | 120                |
+| 2        | 200   | 150                |
+| 2        | 120   | 200                |
+
+Explanation:
+- The `LAG(price)` function calculates the price of the stock from the previous day for each stock within the specified time period.
+- The `PARTITION BY stock_id` divides the calculation into separate partitions for each stock.
+- The `ORDER BY date` specifies the order based on which the previous day's price is determined.
+
+In this example, the query provides the change in stock price from the previous day's price for each stock within the specified time period. Note that for the first day of each stock, there's no preceding row (previous day) within the specified time period, so it returns `NULL`.
+
+- `FIRST_VALUE()` and `LAST_VALUE()`: Access the value of the first or last row within a partition.
+
+Sure! Let's use the `FIRST_VALUE()` and `LAST_VALUE()` functions in a practical example. Suppose we have a table named `orders` that stores information about customer orders, including the `order_id`, `customer_id`, and `order_date`. We want to find the first and last order dates for each customer within a specific time period.
+
+Table: `orders`
+
+| order_id | customer_id | order_date  |
+|----------|-------------|-------------|
+| 1        | 101         | 2023-08-01  |
+| 2        | 101         | 2023-08-03  |
+| 3        | 102         | 2023-08-02  |
+| 4        | 102         | 2023-08-04  |
+| 5        | 101         | 2023-08-05  |
+
+We can use the `FIRST_VALUE()` and `LAST_VALUE()` functions to find the first and last order dates for each customer within the specified time period.
+
+Here's the SQL query using these functions:
+
+```sql
+SELECT DISTINCT
+    customer_id, 
+    FIRST_VALUE(order_date) OVER(PARTITION BY customer_id ORDER BY order_date) AS first_order_date,
+    LAST_VALUE(order_date) OVER(PARTITION BY customer_id ORDER BY order_date ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS last_order_date
+FROM orders
+WHERE order_date BETWEEN '2023-08-01' AND '2023-08-31';
+```
+
+The output of the query would be:
+
+| customer_id | first_order_date | last_order_date |
+|-------------|------------------|-----------------|
+| 101         | 2023-08-01       | 2023-08-05      |
+| 102         | 2023-08-02       | 2023-08-04      |
+
+Explanation:
+- The `FIRST_VALUE(order_date)` function calculates the first order date for each customer within the specified time period.
+- The `LAST_VALUE(order_date) ... ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING` function calculates the last order date for each customer within the specified time period. The `ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING` specifies that the window frame includes all rows within the partition.
+- The `PARTITION BY customer_id` divides the calculation into separate partitions for each customer.
+
+In this example, the query provides the first and last order dates for each customer within the specified time period. The `FIRST_VALUE()` function provides the first order date, and the `LAST_VALUE()` function provides the last order date for each customer.
+
+- `CUME_DIST`: Calculates the cumulative distribution of a value in a set of values.
+
+Sure! Let's use the `CUME_DIST()` function in a practical example. Suppose we have a table named `test_scores` that stores test scores for a group of students. We want to calculate the cumulative distribution of each student's test score within the group.
+
+Table: `test_scores`
+
+| student_id | test_score |
+|------------|------------|
+| 1          | 90         |
+| 2          | 85         |
+| 3          | 92         |
+| 4          | 90         |
+| 5          | 88         |
+| 6          | 85         |
+
+We can use the `CUME_DIST()` function to calculate the cumulative distribution of each student's test score within the group.
+
+Here's the SQL query using the `CUME_DIST()` function:
+
+```sql
+SELECT 
+    student_id, 
+    test_score,
+    CUME_DIST() OVER(ORDER BY test_score DESC) AS cumulative_distribution
+FROM test_scores;
+```
+
+The output of the query would be:
+
+| student_id | test_score | cumulative_distribution |
+|------------|------------|-------------------------|
+| 3          | 92         | 0.3333333333333333      |
+| 1          | 90         | 0.8333333333333334      |
+| 4          | 90         | 0.8333333333333334      |
+| 5          | 88         | 1.0                     |
+| 2          | 85         | 1.0                     |
+| 6          | 85         | 1.0                     |
+
+Explanation:
+- The `CUME_DIST()` function calculates the cumulative distribution of each test score within the group.
+- The `ORDER BY test_score DESC` specifies the order based on which the cumulative distribution is determined.
+- The function returns a value between 0 and 1, representing the cumulative distribution of each test score relative to the other test scores in the group.
+
+In this example, the query provides the cumulative distribution of each student's test score within the group. The highest test score (92) has a cumulative distribution of approximately 0.33, meaning that it is greater than approximately 33% of the other test scores in the group. Similarly, test scores of 90 have a cumulative distribution of approximately 83%, and test scores of 88 and 85 have a cumulative distribution of 100% since they are the lowest scores in the group.
+
+- `PERCENT_RANK`: Calculates the percentile rank of a row in a partition or result set.
+
+Certainly! Let's use the `PERCENT_RANK()` function in a practical example. Suppose we have a table named `exam_scores` that stores exam scores for a group of students. We want to calculate the percentile rank of each student's exam score within the group.
+
+Table: `exam_scores`
+
+| student_id | exam_score |
+|------------|------------|
+| 1          | 90         |
+| 2          | 85         |
+| 3          | 92         |
+| 4          | 90         |
+| 5          | 88         |
+| 6          | 85         |
+
+We can use the `PERCENT_RANK()` function to calculate the percentile rank of each student's exam score within the group.
+
+Here's the SQL query using the `PERCENT_RANK()` function:
+
+```sql
+SELECT 
+    student_id, 
+    exam_score,
+    PERCENT_RANK() OVER(ORDER BY exam_score DESC) AS percentile_rank
+FROM exam_scores;
+```
+
+The output of the query would be:
+
+| student_id | exam_score | percentile_rank |
+|------------|------------|-----------------|
+| 3          | 92         | 0.2             |
+| 1          | 90         | 0.4             |
+| 4          | 90         | 0.4             |
+| 5          | 88         | 0.6             |
+| 2          | 85         | 0.8             |
+| 6          | 85         | 0.8             |
+
+Explanation:
+- The `PERCENT_RANK()` function calculates the percentile rank of each exam score within the group.
+- The `ORDER BY exam_score DESC` specifies the order based on which the percentile rank is determined.
+- The function returns a value between 0 and 1, representing the percentile rank of each exam score relative to the other exam scores in the group.
+
+In this example, the query provides the percentile rank of each student's exam score within the group. The highest exam score (92) has a percentile rank of 0.2, meaning that it is in the top 20% of the exam scores in the group. Similarly, exam scores of 90 have a percentile rank of 0.4, indicating they are in the top 40%, and exam scores of 88 and 85 have a percentile rank of 0.6 and 0.8, respectively, indicating they are in the top 60% and 80% of the exam scores in the group.
+
+- `NTH_VALUE`: Returns value of argument from Nth row of the window frame
+
+Certainly! Let's use the `NTH_VALUE()` function in a practical example. Suppose we have a table named `sales` that stores sales data for a group of products, including the `product_id`, `sales_amount`, and `sales_date`. We want to find the third highest sales amount for each product.
+
+Table: `sales`
+
+| product_id | sales_amount | sales_date  |
+|------------|--------------|-------------|
+| 1          | 100          | 2023-08-01  |
+| 1          | 120          | 2023-08-02  |
+| 1          | 80           | 2023-08-03  |
+| 2          | 150          | 2023-08-01  |
+| 2          | 200          | 2023-08-03  |
+| 2          | 120          | 2023-08-04  |
+
+We can use the `NTH_VALUE()` function to find the third highest sales amount for each product.
+
+Here's the SQL query using the `NTH_VALUE()` function:
+
+```sql
+SELECT 
+    product_id, 
+    NTH_VALUE(sales_amount, 3) OVER(PARTITION BY product_id ORDER BY sales_amount DESC) AS third_highest_sales_amount
 FROM sales;
 ```
 
-In this example, the `SUM()` function is used as a window function. It calculates the cumulative sum of `sale_amount` for each row within the partition defined by `product_id`, and the rows are ordered by `sale_date`.
+The output of the query would be:
+
+| product_id | third_highest_sales_amount |
+|------------|---------------------------|
+| 1          | 80                        |
+| 1          | 100                       |
+| 1          | 120                       |
+| 2          | 120                       |
+| 2          | 150                       |
+| 2          | 200                       |
+
+Explanation:
+- The `NTH_VALUE(sales_amount, 3)` function calculates the third highest sales amount for each product.
+- The `PARTITION BY product_id` divides the calculation into separate partitions for each product.
+- The `ORDER BY sales_amount DESC` specifies the order based on which the third highest sales amount is determined.
+
+In this example, the query provides the third highest sales amount for each product. The `NTH_VALUE()` function retrieves the sales amount at the third position in the ordered list of sales amounts for each product. Note that if there are fewer than three sales amounts for a product, the function may return a value from a different position in the list, or it may return `NULL` if there are not enough values to calculate the third highest sales amount.
+
+- `NTILE(n)`: Divides rows into approximately equal parts (tiles) based on the specified integer n.
+
+Sure! Let's use the `NTILE()` function in a practical example. Suppose we have a table named `employee_salaries` that stores salary information for a group of employees, including the `employee_id`, `salary`, and `department_id`. We want to divide employees into 4 groups based on their salaries, with each group having approximately equal numbers of employees.
+
+Table: `employee_salaries`
+
+| employee_id | salary | department_id |
+|-------------|--------|---------------|
+| 1           | 50000  | 1             |
+| 2           | 60000  | 2             |
+| 3           | 55000  | 1             |
+| 4           | 70000  | 2             |
+| 5           | 45000  | 1             |
+| 6           | 80000  | 2             |
+
+We can use the `NTILE()` function to divide employees into 4 groups based on their salaries.
+
+Here's the SQL query using the `NTILE()` function:
+
+```sql
+SELECT 
+    employee_id, 
+    salary,
+    department_id,
+    NTILE(4) OVER(ORDER BY salary) AS salary_group
+FROM employee_salaries;
+```
+
+The output of the query would be:
+
+| employee_id | salary | department_id | salary_group |
+|-------------|--------|---------------|--------------|
+| 5           | 45000  | 1             | 1            |
+| 1           | 50000  | 1             | 1            |
+| 3           | 55000  | 1             | 2            |
+| 2           | 60000  | 2             | 2            |
+| 4           | 70000  | 2             | 3            |
+| 6           | 80000  | 2             | 4            |
+
+Explanation:
+- The `NTILE(4)` function divides employees into 4 groups based on their salaries.
+- The `ORDER BY salary` specifies the order based on which the employees are divided into salary groups.
+- Each salary group contains approximately the same number of employees, with the lower salaries assigned to lower groups and the higher salaries assigned to higher groups.
+
+In this example, the query provides the salary group for each employee based on their salary. The `NTILE()` function assigns each employee to one of four salary groups, ensuring that each group contains approximately an equal number of employees.
 
 
 **4. String Functions:**
