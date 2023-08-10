@@ -306,58 +306,54 @@ Here are examples for the usage of the above string functions on the string, `He
 
 ```
 -- CONCAT - Concatenate two or more strings into a single string
-SELECT CONCAT('Hello', ' ', 'World!') AS concatenated_string;
+SELECT CONCAT('Hello', ' ', 'World!') AS concatenated_string;		# Output: concatenated_string: Hello World!
 
 -- INSTR - Return the position of the first occurrence of a substring in a string
-SELECT INSTR('Hello World!', 'World') AS position;
+SELECT INSTR('Hello World!', 'World') AS position;		# Output: position: 7	
 
 -- LENGTH - Get the length of a string in bytes and in characters
-SELECT LENGTH('Hello World!') AS length_bytes, CHAR_LENGTH('Hello World!') AS length_characters;
+SELECT LENGTH('Hello World!') AS length_bytes, CHAR_LENGTH('Hello World!') AS length_characters;	# Output: length_bytes: 12, length_characters: 12
 
 -- LEFT - Get a specified number of leftmost characters from a string
-SELECT LEFT('Hello World!', 5) AS leftmost_characters;
+SELECT LEFT('Hello World!', 5) AS leftmost_characters;		# Output: leftmost_characters: Hello
 
 -- LOWER - Convert a string to lowercase
-SELECT LOWER('Hello World!') AS lowercase_string;
+SELECT LOWER('Hello World!') AS lowercase_string;	# Output: lowercase_string: hello world!
 
 -- LTRIM - Remove all leading spaces from a string
-SELECT LTRIM('   Hello World!') AS trimmed_string;
+SELECT LTRIM('   Hello World!') AS trimmed_string;	# Output: trimmed_string: Hello World!
 
 -- REPLACE - Search and replace a substring in a string
-SELECT REPLACE('Hello World!', 'World', 'Universe') AS replaced_string;
+SELECT REPLACE('Hello World!', 'World', 'Universe') AS replaced_string;		# Output: replaced_string: Hello Universe!
 
 -- RIGHT - Get a specified number of rightmost characters from a string
-SELECT RIGHT('Hello World!', 6) AS rightmost_characters;
+SELECT RIGHT('Hello World!', 6) AS rightmost_characters;	# Output: rightmost_characters: World!
 
 -- RTRIM - Remove all trailing spaces from a string
-SELECT RTRIM('Hello World!    ') AS trimmed_string;
+SELECT RTRIM('Hello World!    ') AS trimmed_string;		# Output: trimmed_string: Hello World!
 
 -- SUBSTRING - Extract a substring starting from a position with a specific length
-SELECT SUBSTRING('Hello World!', 7, 5) AS extracted_substring;
+SELECT SUBSTRING('Hello World!', 7, 5) AS extracted_substring;		# Output: extracted_substring: World
 
 -- TRIM - Remove unwanted characters from a string
-SELECT TRIM('   Hello World!   ') AS trimmed_string;
+SELECT TRIM('   Hello World!   ') AS trimmed_string;		# Output: trimmed_string: Hello World!
 
 -- UPPER - Convert a string to uppercase
-SELECT UPPER('Hello World!') AS uppercase_string;
+SELECT UPPER('Hello World!') AS uppercase_string;		# Output: uppercase_string: HELLO WORLD!
 
 -- FIND_IN_SET - Find a string within a comma-separated list of strings
-SELECT FIND_IN_SET('apple', 'banana,apple,orange') AS position_in_list;
+SELECT FIND_IN_SET('apple', 'banana,apple,orange') AS position_in_list;		# Output: position_in_list: 2
 
 -- FORMAT - Format a number with a specific locale, rounded to the number of decimals
-SELECT FORMAT(12345.6789, 2, 'en_US') AS formatted_number;
+SELECT FORMAT(12345.6789, 2, 'en_US') AS formatted_number;		# Output: formatted_number: 12,345.68
 
 -- SUBSTRING_INDEX - Return a substring from a string before a specified number of occurrences of a delimiter
-SELECT SUBSTRING_INDEX('apple,banana,orange', ',', 2) AS substring_before_second_comma;
+SELECT SUBSTRING_INDEX('apple,banana,orange', ',', 2) AS substring_before_second_comma;		# Output: substring_before_second_comma: apple,banana
 ```
 
 The output is:
 
 ```
-concatenated_string: Hello World!
-position: 7
-length_bytes: 12, length_characters: 12
-leftmost_characters: Hello
 lowercase_string: hello world!
 trimmed_string: Hello World!
 replaced_string: Hello Universe!
