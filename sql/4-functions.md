@@ -123,6 +123,41 @@ SELECT DATE_FORMAT('2023-08-04', '%Y-%m-%d');  -- Output: '2023-08-04'
    Some database systems allow you to define your own functions using SQL or procedural languages like PL/SQL, T-SQL, or PL/pgSQL. UDFs can simplify complex queries and encapsulate business logic.
 
 **3. Window Functions (Analytic Functions):**
+
+Window functions (also known as window analytic functions or windowed aggregates) are a powerful feature in SQL that allow you to perform calculations across a set of table rows related to the current row. Unlike traditional aggregate functions like `SUM`, `AVG`, and `COUNT` that collapse multiple rows into a single result, window functions return a value for each row based on a specified window or range of rows.
+
+Key features of window functions include:
+
+1. **Partitioning:** Window functions can be partitioned by one or more columns, dividing the result set into distinct partitions. The calculation is then applied separately to each partition.
+
+2. **Ordering:** Rows within each partition are ordered based on one or more columns. The ordering determines the sequence in which the calculations are performed.
+
+3. **Window Frame:** A window frame defines the range of rows that are considered for the calculation. It can be specified using an OFFSET and RANGE or ROWS BETWEEN clause.
+
+Commonly used window functions include:
+
+- `ROW_NUMBER()`: Assigns a unique integer to each row, based on the specified order within each partition.
+- `RANK()`: Assigns a unique rank to each distinct value in the ordered partition, with gaps for duplicate values.
+- `DENSE_RANK()`: Similar to RANK, but without gaps for duplicate values.
+- `NTILE(n)`: Divides rows into approximately equal parts (tiles) based on the specified integer n.
+- `SUM()`, `AVG()`, `MIN()`, `MAX()`: Perform calculations on a range of rows within a partition.
+- `LEAD()` and `LAG()`: Access the values of the next or previous row within a partition.
+- `FIRST_VALUE()` and `LAST_VALUE()`: Access the value of the first or last row within a partition.
+
+Example of using a window function:
+
+Let's assume we have a table named `sales` with columns `product_id`, `sale_amount`, and `sale_date`. To calculate the cumulative sum of `sale_amount` for each product ordered by date:
+
+```sql
+SELECT product_id, sale_date, sale_amount,
+       SUM(sale_amount) OVER(PARTITION BY product_id ORDER BY sale_date) AS cumulative_sum
+FROM sales;
+```
+
+In this example, the `SUM()` function is used as a window function. It calculates the cumulative sum of `sale_amount` for each row within the partition defined by `product_id`, and the rows are ordered by `sale_date`.
+
+Window functions are extremely useful for generating reports, rankings, running totals, and performing complex analytical tasks directly within the SQL query. They help avoid the need for subqueries or self-joins in many cases and provide efficient ways to compute aggregations across rows without compromising individual row information.
+
    These functions operate on a "window" of rows related to the current row. They are used with the `OVER` clause and are often used for analytical calculations. Examples include:
    - `ROW_NUMBER`, `RANK`, `DENSE_RANK`: Assigns unique numbers to rows within a window.
    - `LAG`, `LEAD`: Access values from previous or subsequent rows.
