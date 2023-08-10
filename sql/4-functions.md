@@ -574,9 +574,9 @@ SELECT
 FROM orders;
 ```
 
-Conditional functions in SQL are used to perform different actions based on specified conditions. They allow you to control the flow of the query and generate dynamic results based on the values in your data. Commonly used conditional functions include `CASE`, `COALESCE`, `NULLIF`, and `IFNULL`. Let's explore each of them:
+Conditional functions in SQL are used to perform different actions based on specified conditions. They allow you to control the flow of the query and generate dynamic results based on the values in your data. Commonly used conditional functions include `CASE`, `COALESCE`, `ISNULL`, `NULLIF`, and `IFNULL`. Let's explore each of them:
 
-1. **CASE Expression:**
+**CASE Expression:**
 The `CASE` expression allows you to perform conditional logic within a SQL query. It provides a way to return different values or perform different operations based on specified conditions.
 
 Syntax:
@@ -599,7 +599,7 @@ SELECT product_name,
 FROM products;
 ```
 
-2. **COALESCE Function:**
+**COALESCE Function:**
 The `COALESCE` function returns the first non-null expression from a list of expressions. It's often used to provide a fallback value when a column might be null.
 
 Syntax:
@@ -613,7 +613,7 @@ SELECT order_id, COALESCE(discount, 0) AS applied_discount
 FROM orders;
 ```
 
-3. **NULLIF Function:**
+**NULLIF Function:**
 The `NULLIF` function compares two expressions and returns `null` if they are equal; otherwise, it returns the first expression. It's useful when you want to handle specific cases where two values should result in null.
 
 Syntax:
@@ -627,7 +627,7 @@ SELECT employee_id, NULLIF(salary, 0) AS valid_salary
 FROM employees;
 ```
 
-4. **IFNULL Function:**
+**IFNULL Function:**
 The `IFNULL` function is specific to some database systems like MySQL and returns the first expression if it's not `null`, otherwise, it returns the second expression.
 
 Syntax (MySQL):
@@ -640,6 +640,25 @@ Example:
 SELECT customer_id, IFNULL(loyalty_points, 0) AS points
 FROM customers;
 ```
+
+**ISNULL Function:**
+The `ISNULL` function is typically used in SQL to check if an expression or column is `null` and return a specified value in case of `null`. It's a common way to handle null values and provide a default or substitute value when needed. Let's see an example of using the `ISNULL` function:
+
+Suppose we have a table called `employees` with columns `employee_id`, `employee_name`, and `salary`, and we want to retrieve the employee names along with their salaries. However, if the salary is `null`, we want to display "Not available" instead.
+
+Here's how you can use the `ISNULL` function in SQL:
+
+```sql
+SELECT employee_id, employee_name, ISNULL(salary, 'Not available') AS displayed_salary
+FROM employees;
+```
+
+In this example:
+- We use the `ISNULL` function to check if the `salary` column is `null`.
+- If the `salary` is `null`, the function returns the specified value `'Not available'`.
+- If the `salary` is not `null`, the original `salary` value is displayed.
+
+This query will return a result set with columns `employee_id`, `employee_name`, and `displayed_salary`. If the salary for a particular employee is `null`, the `displayed_salary` column will show "Not available" for that employee. This is a way to handle and display more meaningful information when dealing with potentially `null` values in the database.
 
 These conditional functions allow you to make your SQL queries more flexible and adaptive to different situations. They can be used to generate computed columns, handle null values, and create custom result sets based on conditions. Remember that the specific syntax and availability of these functions may vary depending on the database system you are using.
 
