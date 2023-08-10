@@ -124,7 +124,35 @@ SELECT DATE_FORMAT('2023-08-04', '%Y-%m-%d');  -- Output: '2023-08-04'
 
 **3. Window Functions (Analytic Functions):**
 
-[Window functions](https://en.wikipedia.org/wiki/Window_function_(SQL)) (also known as window analytic functions or windowed aggregates) are a powerful feature in SQL that allow you to perform calculations across a set of table rows related to the current row. Unlike traditional aggregate functions like `SUM`, `AVG`, and `COUNT` that collapse multiple rows into a single result, window functions return a value for each row based on a specified window or range of rows.
+[Window functions](https://en.wikipedia.org/wiki/Window_function_(SQL)) (also known as window analytic functions or windowed aggregates) is a function which uses values from one or multiple rows to return a value for each row. (This contrasts with an aggregate function, which returns a single value for multiple rows.) Window functions have an OVER clause; any function without an OVER clause is not a window function, but rather an aggregate or single-row (scalar) function. Unlike traditional aggregate functions like `SUM`, `AVG`, and `COUNT` that collapse multiple rows into a single result, window functions return a value for each row based on a specified window or range of rows.
+
+Example:
+As an example, here is a query which uses a window function to compare the salary of each employee with the average salary of their department (example from the PostgreSQL documentation):
+
+```
+SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname) FROM empsalary;
+```
+
+Output is:
+```
+depname  | empno | salary |          avg          
+----------+-------+--------+----------------------
+develop   |    11 |   5200 | 5020.0000000000000000
+develop   |     7 |   4200 | 5020.0000000000000000
+develop   |     9 |   4500 | 5020.0000000000000000
+develop   |     8 |   6000 | 5020.0000000000000000
+develop   |    10 |   5200 | 5020.0000000000000000
+personnel |     5 |   3500 | 3700.0000000000000000
+personnel |     2 |   3900 | 3700.0000000000000000
+sales     |     3 |   4800 | 4866.6666666666666667
+sales     |     1 |   5000 | 4866.6666666666666667
+sales     |     4 |   4800 | 4866.6666666666666667
+(10 rows)
+```
+
+The `PARTITION BY` clause groups rows into partitions, and the function is applied to each partition separately. If the `PARTITION BY` clause is omitted (such as if we have an empty `OVER()` clause), then the entire result set treated as a single partition. For this query, the average salary reported would be the average taken over all rows.
+
+Window functions are evaluated after aggregation (after the `GROUP BY` clause and non-window aggregate functions, for example).
 
 Key features of window functions include:
 
