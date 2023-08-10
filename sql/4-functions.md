@@ -351,22 +351,6 @@ SELECT FORMAT(12345.6789, 2, 'en_US') AS formatted_number;		# Output: formatted_
 SELECT SUBSTRING_INDEX('apple,banana,orange', ',', 2) AS substring_before_second_comma;		# Output: substring_before_second_comma: apple,banana
 ```
 
-The output is:
-
-```
-lowercase_string: hello world!
-trimmed_string: Hello World!
-replaced_string: Hello Universe!
-rightmost_characters: World!
-trimmed_string: Hello World!
-extracted_substring: World
-trimmed_string: Hello World!
-uppercase_string: HELLO WORLD!
-position_in_list: 2
-formatted_number: 12,345.68
-substring_before_second_comma: apple,banana
-```
-
 **5. Mathematical Functions:**
    These functions perform mathematical operations on numeric values. Examples include `ABS`, `SQUARE`, `POWER`, `SQRT`.
 
