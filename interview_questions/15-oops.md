@@ -605,6 +605,8 @@ person.set_age(32)
 print(person.get_age())   # Output: 32
 ```
 
+Encapsulation hides the internal details and state of an object from the outside, providing a controlled and consistent way to interact with the object's behavior.
+
 **3. Inheritance:**
 
 Inheritance allows a new class (the derived or child class) to inherit properties and methods from an existing class (the base or parent class).
@@ -634,9 +636,16 @@ print(student.get_name())  # Output: Eve
 print(student.student_id)  # Output: ST123
 ```
 
+Inheritance allows a new class (derived or subclass) to inherit properties and behavior from an existing class (base or superclass), promoting code reuse, extensibility and hierarchical organization.
+
+
 **4. Polymorphism:**
 
-Polymorphism allows objects of different classes to be treated as objects of a common base class. It enables flexibility and allows a single interface to represent different types of objects.
+Polymorphism allows objects of different classes to be treated as objects of a common base class. It enables flexibility and allows a single interface to represent different types of objects. 
+
+Use Case 1: **Method Overriding:** Inheritance and polymorphism enable you to override methods in derived classes, providing specific implementations while maintaining a common interface defined in the base class.
+
+Use Case 2: **Interface Adherence:** Polymorphism allows multiple classes to adhere to a common interface (e.g., by implementing the same methods from an interface), making it easier to swap out different implementations as needed.
 
 Example: We'll demonstrate polymorphism using a common method called "introduce" that works for both the "Person" and "Student" classes.
 
