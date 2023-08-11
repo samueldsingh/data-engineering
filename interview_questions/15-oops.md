@@ -1726,7 +1726,7 @@ The `Bat` class is derived from both `Mammal` and `Bird` using multiple inherita
 
 In summary, multiple inheritance allows a class to inherit properties from more than one base class, enhancing code reusability and flexibility. While it brings advantages, it should be used thoughtfully, and developers need to be aware of the complexities it can introduce, such as the diamond problem and the importance of a clear MRO.
 
-21. super keyword importance
+### 21. super keyword importance
 
 The `super()` keyword in Python is essential when working with inheritance, especially in cases of method overriding and cooperative multiple inheritance. It allows a subclass to call a method from its parent class. The `super()` keyword is crucial for maintaining the correct method resolution order (MRO) and ensuring that method calls are properly delegated to the appropriate parent class.
 
@@ -1793,7 +1793,7 @@ Here are some important use cases and benefits of the `super()` keyword:
 
 Overall, the `super()` keyword is an essential tool for maintaining a clear and consistent hierarchy in class inheritance, enabling method reuse, and ensuring proper cooperation in multiple inheritance scenarios.
 
-22. Calling super class method from sub class
+### 22. Calling super class method from sub class
 
 Calling a superclass method from a subclass can be done using the `super()` keyword. The `super()` function allows you to call a method in the parent class from the context of the subclass. This is useful when you want to extend or modify the behavior of the parent class's method in the subclass while still utilizing the functionality of the parent class's method.
 
@@ -1830,7 +1830,7 @@ Hello from Child
 
 By using `super()`, you ensure that the parent class's method is invoked, allowing you to extend or modify the behavior in the subclass while still benefiting from the functionality provided by the parent class. This promotes code reuse and maintains a clear hierarchy in the class structure.
 
-23. Difference between public protected private methods Ex: x() _x() __x()
+### 23. Difference between public protected private methods Ex: x() _x() __x()
 
 In Python, methods and attributes have different levels of visibility and accessibility, denoted by naming conventions. The naming conventions for methods and attributes indicate their visibility to other parts of the code. Here's the difference between public, protected, and private methods:
 
@@ -1886,7 +1886,7 @@ In summary:
 - **Protected methods** have a single leading underscore and are intended for internal use but are still accessible.
 - **Private methods** have a double leading underscore and are intended for use within the class only, and they have name mangling to make them less accessible from outside.
 
-24. Importance of dunder functions
+### 24. Importance of dunder functions
 
 Dunder (double underscore) methods, also known as magic methods or special methods, are a crucial feature in Python. These methods are invoked by specific language constructs and are used to define how objects of a class behave in certain situations. Understanding and implementing dunder methods is important for creating custom classes that work seamlessly with Python's built-in functionalities and for defining the behavior of objects in various contexts. Here's why dunder methods are important:
 
@@ -1908,7 +1908,7 @@ Dunder (double underscore) methods, also known as magic methods or special metho
 
 By implementing appropriate dunder methods, you make your custom classes more intuitive, Pythonic, and compatible with existing language constructs and built-in functions. This promotes code readability, reusability, and enhances the overall user experience when working with instances of your classes.
 
-25. __str__ vs __repr__
+### 25. __str__ vs __repr__
 
 Both `__str__` and `__repr__` are special methods in Python that deal with providing string representations of objects, but they have distinct purposes and use cases. Let's explore the differences between `__str__` and `__repr__`:
 
@@ -1952,7 +1952,7 @@ In summary:
 
 It's common to implement both `__str__` and `__repr__` methods in your classes to provide meaningful representations for both end-users and developers. If only one of them is implemented, the other may use the default implementation provided by the base `object` class.
 
-26. Abstraction, Abstract class. When to use. Explain in detail
+### 26. Abstraction, Abstract class. When to use. Explain in detail
 
 **Abstraction** is a fundamental concept in object-oriented programming that focuses on hiding the complex implementation details while exposing a simplified and high-level interface for users. It allows you to represent real-world objects in a more understandable and manageable way.
 
@@ -2015,7 +2015,7 @@ print(rectangle.area())  # Output: 24
 
 In this example, the `Shape` class is an abstract class with an abstract method `area()`. The `Circle` and `Rectangle` classes are derived from the `Shape` class and provide implementations for the `area()` method. The abstract class `Shape` defines a contract that both `Circle` and `Rectangle` classes must adhere to, ensuring that they both have an `area()` method. This abstraction simplifies the interaction with different shapes by providing a consistent interface.
 
-27. Abstract class vs Interface
+### 27. Abstract class vs Interface
 
 Both abstract classes and interfaces are used to achieve abstraction and define a contract that derived classes must follow, but they have some key differences in terms of implementation, usage, and their role in object-oriented design.
 
