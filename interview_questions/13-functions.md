@@ -926,3 +926,34 @@ Python follows the LEGB rule to resolve variable names. When a variable is refer
 
 If a variable is found in the local scope, that value is used. If not found, Python moves to the next scope until the variable is found or if it reaches the built-in scope. If the variable is not found anywhere, a `NameError` will be raised.
 
+## Memory allocation of functions
+
+In Python, memory allocation for functions and related data structures, such as local variables, parameters, and return values, is managed dynamically by the Python runtime using the call stack and heap. Python provides automatic memory management through reference counting and a garbage collector, which helps manage memory allocation and deallocation. Here's how function memory allocation works in Python:
+
+1. **Function Call Stack:**
+   - When a function is called in Python, a new frame is created on the call stack to store the function's local variables, parameters, return address, and other bookkeeping information.
+   - Each function call creates a new stack frame, and the frames are organized in a last-in-first-out (LIFO) manner.
+
+2. **Local Variables and Parameters:**
+   - Local variables declared within a function are stored in the function's stack frame.
+   - Function parameters (arguments) are also stored in the function's stack frame.
+   - These variables and parameters exist only within the scope of the function and are automatically deallocated when the function returns.
+
+3. **Automatic Memory Management:**
+   - Python uses reference counting to keep track of the number of references to an object. When an object's reference count drops to zero (no longer in use), Python's garbage collector automatically reclaims the memory occupied by the object.
+   - The garbage collector detects cyclic references to prevent memory leaks.
+
+4. **Heap Allocation (Objects):**
+   - Complex data structures, such as objects created using classes, are allocated on the heap.
+   - Python's `object` type and custom classes (created using `class` definitions) are examples of heap-allocated objects.
+   - The memory for these objects is managed by Python's memory management system.
+
+5. **Dynamic Memory Allocation:**
+   - In Python, you don't need to explicitly allocate memory for objects or deallocate memory when objects are no longer needed. Python handles this automatically.
+   - When you create objects using constructors or literals (e.g., lists, dictionaries, strings), Python dynamically allocates memory for the objects on the heap.
+
+6. **Reference Counting and Circular References:**
+   - Python's reference counting mechanism detects when an object is no longer accessible, and the associated memory is automatically reclaimed.
+   - Circular references (references forming a cycle) are detected and managed using a garbage collector that identifies and collects unreachable objects.
+
+In summary, Python's memory management system, including the use of the call stack, heap allocation for objects, automatic reference counting, and garbage collection, makes memory allocation and deallocation transparent to the programmer, leading to simplified memory management and reduced risk of memory leaks.
