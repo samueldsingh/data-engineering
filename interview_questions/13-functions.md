@@ -958,6 +958,97 @@ In Python, memory allocation for functions and related data structures, such as 
 
 In summary, Python's memory management system, including the use of the call stack, heap allocation for objects, automatic reference counting, and garbage collection, makes memory allocation and deallocation transparent to the programmer, leading to simplified memory management and reduced risk of memory leaks.
 
+## Parameterized functions
+Parameterized functions are functions that accept input (arguments) when they are called. The arguments provide data to the function allowing it to perform
+specific actions or calculations based on the provided values. Parameterized functions make code more flexible and reusable by allowing the same function to be used with different input values.
+
+A simple example of parameterized functions:
+```
+def greet(name):
+    print("Hello,", name)
+
+# Calling the greet function with different arguments
+greet("Alice")  # Output: Hello, Alice
+greet("Bob")    # Output: Hello, Bob
+```
+
+When defining the function, the parameter `name` is passed to the function `greet`. When the function name is called, an argument is provided for the parameter
+`name` which allows the function to personalize the greeting for different names.
+
+Parameterized functions can have multiple parameters, each separated by a comma, and can be used to pass different types of data, such as numbers, strings, lists, or even other functions, to the function for processing.
+
+Parameterized functions can have different types of parameters based on their usage and behavior. 
+
+In programming, parameterized functions can have different types of parameters based on their usage and behavior. Here are the common types of parameters in parameterized functions:
+
+1. **Positional Parameters**:
+   These are the most common type of parameters in functions. The order of the arguments passed during the function call matters. The values are assigned to parameters based on their position.
+
+```python
+def greet(name, age):
+    return "Hello, " + name + ", you are " + str(age) + " years old."
+
+message = greet("Alice", 30)  # Positional parameters
+print(message)
+```
+
+2. **Keyword Parameters**:
+   In keyword parameters, the arguments are passed using the parameter name, allowing you to specify the values for specific parameters regardless of their position.
+
+```python
+def greet(age, name):  
+   return "Hello, " + name + ", you are " + str(age) + " years old."
+
+print(greet(age=25,name="Sam"))
+```
+
+3. **Default Parameters**:
+   Default parameters have predefined default values in the function definition. If the caller doesn't provide a value for a default parameter, the default value is used.
+
+```python
+def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}"
+
+# Calling the greet function with default and custom values
+message_default = greet("Alice")  # Using the default 'greeting'
+message_custom = greet("Bob", "Hi")  # Using a custom 'greeting'
+
+# Printing the returned messages
+print(message_default)
+print(message_custom)
+```
+
+4. **Variable-Length Parameters**:
+   Variable-length parameters allow a function to accept a variable number of arguments. In Python, you can use `*args` for variable-length positional arguments and `**kwargs` for variable-length keyword arguments.
+
+```python
+def employee_details(*args):
+
+   if len(args) < 3:
+        return "Insufficient details provided for an employee."
+
+   # 'args' is a tuple containing the variable-length arguments
+   name = args[0]
+   designation = args[1]
+   age = args[2]
+
+   details = f"{name} is a/an {designation} who is {age} years old."
+   return details
+
+employee1 = employee_details("John", "Engineer", 30)
+print(employee1)
+```
+
+5. Calling Functions from Lists or Dictionaries:
+You can use the `*` operator to unpack a list or tuple and pass its elements as separate positional arguments to a function. Similarly, you can use the `**` operator to unpack a dictionary and pass its key-value pairs as keyword arguments.
+
+```
+data = ["Alice", 30]
+greet(*data)  # Unpacking list
+
+data_dict = {"name": "Bob", "age": 25}
+greet(**data_dict)  # Unpacking dictionary
+```
 
 Interview functions:
 
