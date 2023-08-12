@@ -957,3 +957,22 @@ In Python, memory allocation for functions and related data structures, such as 
    - Circular references (references forming a cycle) are detected and managed using a garbage collector that identifies and collects unreachable objects.
 
 In summary, Python's memory management system, including the use of the call stack, heap allocation for objects, automatic reference counting, and garbage collection, makes memory allocation and deallocation transparent to the programmer, leading to simplified memory management and reduced risk of memory leaks.
+
+
+Interview functions:
+
+1. What is a function
+2. Why we need to write functions
+3. Define function and explain in detail
+4. State vs Behavior
+5. Function types
+6. Function calling ways
+7. How to print function name. Explain how a function will be loaded
+8. Parameter vs Argument
+9. Variable vs Value
+10. Different ways of calling function
+11. Function overloading
+12. Ananymous function. Explain in detail
+13. Lambda with map filter and reduce functions. Explain in detail with examples
+14. Function memory allocation
+15. Scope of variable. Explain about LEGB rule
