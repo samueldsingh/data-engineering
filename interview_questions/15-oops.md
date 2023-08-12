@@ -540,6 +540,71 @@ In this example, `MyClass` has a parameterized constructor, `__init__`, that tak
 It's worth noting that in Python, you can also have both default and parameterized constructors in a class. When both constructors are defined, the parameterized constructor takes precedence, and the default constructor will not be automatically created. To create an object using the default constructor in such cases, you need to explicitly define the default constructor.
 
 
+## Give example of using classes with parameterized functions
+
+Sure, let's use a common class, such as the `Person` class, to demonstrate default arguments, keyword arguments, variable-length arguments, and pass by reference concepts. We'll create a `Person` class with methods that showcase each of these concepts.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def introduce(self, greeting="Hello"):
+        print(greeting, "I am", self.name, "and I am", self.age, "years old.")
+
+    def update_age(self, new_age):
+        self.age = new_age
+
+    def update_info(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    def display_info(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+
+
+# Example usage
+if __name__ == "__main__":
+    # Using default arguments
+    person1 = Person("Alice", 30)
+    person1.introduce()  # Output: Hello I am Alice and I am 30 years old.
+
+    # Using keyword arguments
+    person2 = Person(age=25, name="Bob")
+    person2.introduce("Hi")  # Output: Hi I am Bob and I am 25 years old.
+
+    # Using variable length arguments
+    def update_person_info(person, **kwargs):
+        person.update_info(**kwargs)
+
+    update_person_info(person1, age=32, country="USA")
+    person1.display_info()
+    # Output:
+    # Name: Alice
+    # Age: 32
+    # Country: USA
+
+    # Using pass by reference (mutability)
+    person3 = person1
+    person3.update_age(35)
+    person1.display_info()
+    # Output:
+    # Name: Alice
+    # Age: 35
+    # Country: USA  (since it's the same object as person1)
+```
+
+In this example, the `Person` class has methods for introducing the person, updating age, updating information using keyword arguments, and displaying information. We demonstrate:
+
+1. Default Arguments: The `introduce` method has a default argument for the greeting, which is used if no greeting is provided.
+2. Keyword Arguments: We create a `Person` instance using keyword arguments (`age` and `name`) and provide a greeting using a keyword argument in the `introduce` method.
+3. Variable Length Arguments: The `update_info` method accepts keyword arguments (`**kwargs`) to update attributes dynamically.
+4. Pass by Reference: We demonstrate pass by reference by assigning `person3` to the same object as `person1`, and any changes made to `person3` affect `person1`.
+
+This example showcases the use of these concepts within a common `Person` class.
+
 ## Interview Questions:
 ### 1. What is OOPs
 
