@@ -3,7 +3,7 @@
 
 ## Interview Questions:
 
-### 1. What is OOPs
+## 1. What is OOPs
 
 - Object-Oriented Programming is a programming paradigm that uses objects, which are instances of classes, to structure and organize code.
 - OOP is based on the concept of "objects" and "classes," and it focuses on the design and manipulation of objects to solve complex problems in a more modular and organized way.
@@ -42,6 +42,8 @@ print(person2.age)   # Output: 25
 
 - Encapsulation is the practice of **bundling the data (attributes) and methods (functions) that operate on the data into a single unit (the class)**. 
 - It provides control over access to the data and promotes data integrity.
+- A class exhibits encapsulation by binding all the instance variables and methods into a single unit.
+- Object exhibit encapsulation when fields are initialized inside objects and methods are accessed logically.
 
 Example: In the "Person" class, we can encapsulate the `name` and `age` attributes by making them private and providing methods to access and update them.
 
@@ -74,7 +76,8 @@ Encapsulation hides the internal details and state of an object from the outside
 
 **3. Inheritance:**
 
-Inheritance allows a new class (the derived or child class) to inherit properties and methods from an existing class (the base or parent class).
+- Inheritance allows a new class (the derived or child class) to inherit properties and methods from an existing class (the base or parent class).
+- The main advantage of inheritance is code reuseability.
 
 Example: Let's create a "Student" class that inherits from the "Person" class.
 
@@ -107,7 +110,9 @@ Inheritance allows a new class (derived or subclass) to inherit properties and b
 **4. Polymorphism:**
 
 - Polymorphism allows objects of different classes to be treated as objects of a common base class.
-- It enables flexibility and allows a single interface to represent different types of objects. 
+- It enables flexibility and allows a single interface to represent different types of objects.
+- Polymorphism means having many forms. It means the same function name (but different signatures) being used for different types.
+- Static polymorphism is achieved using method overloading and dynamic polymorphism is achieved using method overriding.
 
 Use Case 1: **Method Overriding:** Inheritance and polymorphism enable you to override methods in derived classes, providing specific implementations while maintaining a common interface defined in the base class.
 
@@ -145,9 +150,56 @@ introduce(student)  # Output: Hello, my name is Eve
 
 In this example, the `introduce` function accepts objects of both the "Person" and "Student" classes, demonstrating polymorphism.
 
+**5. Abstraction**
+
+Abstraction is a fundamental concept in object-oriented programming (OOP) that allows you to focus on the essential features of an object while hiding the unnecessary implementation details. It simplifies the complexity of real-world entities by creating a model that only includes the relevant attributes and behaviors, making the code more manageable and understandable.
+
+An abstract class is a class that cannot be instantiated and is meant to serve as a blueprint for other classes. It defines a set of abstract methods (methods without implementation) that must be implemented by its concrete subclasses. Abstract classes are used to enforce a specific structure or behavior in the subclasses, ensuring that certain methods are available in all derived classes.
+
+Let's illustrate abstraction with an example:
+
+```python
+from abc import ABC, abstractmethod
+
+# Abstract base class
+class Shape(ABC):
+    @abstractmethod
+    def calculate_area(self):
+        pass
+
+# Concrete subclass
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def calculate_area(self):
+        return 3.14 * self.radius ** 2
+
+# Concrete subclass
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def calculate_area(self):
+        return self.width * self.height
+
+# Usage
+circle = Circle(3)
+rectangle = Rectangle(5, 10)
+
+# Calling the abstract method on concrete objects
+print("Area of circle:", circle.calculate_area())  # Output: Area of circle: 28.26
+print("Area of rectangle:", rectangle.calculate_area())  # Output: Area of rectangle: 50
+```
+
+In this example, we define an abstract base class `Shape` with an abstract method `calculate_area()`. This method must be implemented in any concrete subclass derived from `Shape`. The concrete subclasses `Circle` and `Rectangle` inherit from `Shape` and provide their own implementations of the `calculate_area()` method.
+
+Using abstraction, we create a common interface (the `calculate_area()` method) that all shapes should have, regardless of their specific implementation details. This allows us to treat instances of different shape classes uniformly while ensuring that each shape provides its own implementation of the `calculate_area()` method. The use of abstraction helps in maintaining a consistent structure and behavior across different subclasses, making the code more manageable and extensible.
+
 OOP helps in structuring code, improving code reusability, making code more manageable, and modeling real-world relationships effectively. It's widely used in various programming languages such as Python, Java, C++, and many more. OOP is especially useful for designing and building large, complex systems, as it promotes modular development and reduces code duplication.
 
-### 2. Why OOPs required
+## 2. Why OOPs required
 
 Object-Oriented Programming (OOP) is required for several reasons, mainly to improve code organization, reusability, and maintainability, especially in large and complex software systems. Here are some key reasons why OOP is essential:
 
@@ -173,7 +225,7 @@ Object-Oriented Programming (OOP) is required for several reasons, mainly to imp
 
 Overall, OOP is a powerful programming paradigm that provides a structured and efficient way to design and build software systems, making them more maintainable, reusable, and scalable.
 
-### 3. Features of OOPs
+## 3. Features of OOPs
 
 Object-Oriented Programming (OOP) is a programming paradigm that emphasizes the use of objects and classes to structure code. Here are some key features of OOP:
 
@@ -201,7 +253,7 @@ Object-Oriented Programming (OOP) is a programming paradigm that emphasizes the 
 
 These features collectively provide a powerful framework for designing and building software systems that are organized, maintainable, and scalable.
 
-### 4. class vs object
+## 4. class vs object
 
 In Object-Oriented Programming (OOP), "class" and "object" are fundamental concepts that play different roles in structuring code. Let's explore the differences between them:
 
@@ -249,7 +301,7 @@ person2.introduce()         # Output: Hello, my name is Bob
 
 In summary, a "class" defines the blueprint for creating objects, while an "object" is a specific instance of that class with its own data (attributes) and behavior (methods). Classes allow you to define the structure and behavior, while objects allow you to work with actual instances based on that definition.
 
-### 5. class vs instance vs local variables. Explain in detail about usecase of each variable
+## 5. class vs instance vs local variables. Explain in detail about usecase of each variable
 
 **Class Variables:**
 
@@ -324,7 +376,7 @@ print(result)  # Output: 78.53975
 
 In summary, class variables are shared among all instances of a class, instance variables are specific to each instance, and local variables are used within a specific scope (typically a function) for temporary data or encapsulation. Each type of variable serves a distinct purpose in managing data within your program.
 
-### 6. class vs instance vs static method. Explain in detail about usecase of each Method
+## 6. class vs instance vs static method. Explain in detail about usecase of each Method
 
 **Class Methods:**
 
@@ -403,7 +455,7 @@ print(result)  # Output: 25
 
 In summary, class methods are useful for factory methods, accessing class-level data, and creating utility functions. Instance methods are used for modifying object state, performing object-specific operations, and encapsulating behavior. Static methods are appropriate for utility functions that are logically related to the class but do not depend on instance-specific data or the class itself. Each type of method serves a distinct purpose in managing behavior within a class.
 
-### 7. Importance of init method
+## 7. Importance of init method
 
 The `__init__` method in Python is a special method (also known as a constructor) that is automatically called when an object of a class is created. It plays a crucial role in initializing the attributes (data members) of the object. Here are the key reasons why the `__init__` method is important:
 
@@ -439,7 +491,7 @@ print(circle2.area)    # Output: 153.93878
 
 In this example, the `__init__` method initializes the `radius` attribute, and based on the `radius`, it calculates and initializes the `area` attribute for each `Circle` object. This ensures that each `Circle` object has its own radius and area, encapsulating this logic within the class.
 
-### 8. Importance of self
+## 8. Importance of self
 
 The `self` parameter is a crucial aspect of object-oriented programming (OOP) in Python. It is a convention used to refer to the instance of the class within its own methods. Understanding the importance of the `self` parameter is essential for properly working with instance variables and methods in Python classes. Here are the key reasons why the `self` parameter is important:
 
@@ -474,7 +526,7 @@ print(person.introduce())  # Output: My name is Alice and I'm 30 years old.
 
 In this example, the `self` parameter is used to access the `name` and `age` instance attributes within the `introduce` method. This allows the method to provide a personalized introduction based on the instance-specific data. The `self` parameter is essential for maintaining the connection between the object and its attributes/methods, enabling proper encapsulation and isolation of data.
 
-### 9. object life cycle
+## 9. object life cycle
 
 The object life cycle in Python refers to the various stages an object goes through during its existence in a Python program, from creation to destruction. Understanding the object life cycle is essential for managing resources, memory, and ensuring proper behavior of your Python programs. Here are the key stages in the object life cycle:
 
@@ -517,7 +569,7 @@ del obj2
 
 In this example, the `MyClass` objects are created, used, and eventually go out of scope. Python's garbage collector automatically deallocates the memory occupied by these objects, and the `__del__` method is called just before destruction. The output will show the creation and destruction of the objects.
 
-### 10. Constructor. Explain in detail
+## 10. Constructor. Explain in detail
 
 A constructor is a special method in object-oriented programming (OOP) languages, including Python, that is automatically called when an object (instance) of a class is created. The primary purpose of a constructor is to initialize the attributes (data members) of the object to a valid or desired initial state.
 
@@ -557,7 +609,7 @@ print(person2.age)   # Output: 25
 
 In this example, the `Person` class has a constructor (`__init__` method) that takes `name` and `age` as parameters. When objects are created using the constructor, the `name` and `age` attributes of each object are initialized based on the values provided during object creation. The `self` parameter allows us to set the initial state of each object with specific data.
 
-### 11. Constructor life cycle
+## 11. Constructor life cycle
 
 The constructor life cycle refers to the sequence of events that occur when an object is created in an object-oriented programming language, such as Python. It involves the process of creating the object, initializing its attributes, and setting up its initial state. Let's break down the constructor life cycle into key stages:
 
@@ -596,7 +648,7 @@ print(person2.name)  # Output: Bob
 
 In this example, the constructor (`__init__`) initializes the `name` and `age` attributes of each `Person` object with values provided during object creation. The constructor is called automatically when objects are created, and it ensures that the objects start with the specified initial state.
 
-### 12. Default vs Parameterized Constructor
+## 12. Default vs Parameterized Constructor
 
 **Default Constructor:**
 
@@ -650,7 +702,7 @@ In this example, the `Person` class has a parameterized constructor that accepts
 
 In both cases, the goal is to set up the initial state of the object, but a parameterized constructor allows more flexibility in specifying the initial values.
 
-### 13. Constructor Overloading
+## 13. Constructor Overloading
 
 Constructor overloading is a concept in object-oriented programming (OOP) where a class can have multiple constructors with different parameter lists. Each constructor provides a different way to initialize the object's attributes. When you create an object of the class and pass specific arguments to the constructor, the appropriate constructor is selected based on the arguments' data types and number.
 
@@ -685,7 +737,7 @@ In this example, the `Person` class has a single constructor (`__init__` method)
 
 Keep in mind that this approach allows you to provide different ways to initialize objects based on the provided arguments, simulating constructor overloading in Python.
 
-### 14. new vs init
+## 14. new vs init
 
 `__new__` and `__init__` are both special methods in Python that play distinct roles in the process of object creation and initialization. They serve different purposes and are part of the object life cycle. Let's delve into the differences between these two methods:
 
@@ -732,7 +784,7 @@ print(person.name, person.age)  # Output: "Alice", 30
 
 In summary, `__new__` is responsible for creating the object, while `__init__` is responsible for initializing its attributes. You rarely need to override `__new__` unless you have specific requirements related to object creation. On the other hand, `__init__` is a common method used to set up the initial state of objects.
 
-### 15. Explain below concepts in detail with examples
+## 15. Explain below concepts in detail with examples
 a. Encapsulation
 b. Abstraction
 c. Inheritance
@@ -885,7 +937,11 @@ These four conceptsâ€”encapsulation, abstraction, inheritance, and polymorphismâ
 
 ### 16. Method overloading vs Method overriding
 
-Method overloading and method overriding are two important concepts in object-oriented programming, but they serve different purposes and have distinct characteristics. Let's explain each concept in detail and highlight the differences between them.
+- Methods in python can be called with zero, one or more parameters.
+- The process of calling the same method in different ways by passing different number of
+arguments is called method overloading.
+- Two methods will have the same name, but the latest method will hide previous method.
+- In Python, Method Overloading can't be achived directly but if a method with parameters has default arguments then that method can be called in 2 or more ways. 
 
 **Method Overloading:**
 
@@ -895,6 +951,7 @@ Method overloading occurs when a class defines multiple methods with the same na
 
 ```python
 class Calculator:
+
     def add(self, x, y):
         return x + y
 
