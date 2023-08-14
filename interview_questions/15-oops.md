@@ -827,7 +827,11 @@ In this example, the `BankAccount` class encapsulates the account number and bal
 
 **b. Abstraction:**
 
-Abstraction is the process of simplifying complex reality by modeling classes based on the essential properties and behaviors relevant to the application. It involves hiding the unnecessary details and showing only the necessary parts of an object. Abstraction allows you to focus on what an object does rather than how it does it.
+- Abstraction is the process of simplifying complex reality by modeling classes based on the essential properties and behaviors relevant to the application.
+- Abstraction in OOP is a process of hiding the real implementation of the method by only showing a method signature.In Python, we can achieve abstraction using ABC (abstraction class) or abstract method.
+- It involves hiding the unnecessary details and showing only the necessary parts of an object.
+- Abstraction allows you to focus on what an object does rather than how it does it.
+- ABC is a class from the abc module in Python
 
 **Example of Abstraction:**
 
@@ -973,7 +977,7 @@ In this example, we define two methods named `add` in the `Calculator` class, ea
 
 **Method Overriding:**
 
-Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass (base class). The overridden method in the subclass has the same name, parameters, and return type as the method in the superclass. The goal of method overriding is to customize the behavior of the inherited method in the subclass.
+    Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass (base class). The overridden method in the subclass has the same name, parameters, and return type as the method in the superclass. The goal of method overriding is to customize the behavior of the inherited method in the subclass.
 
 **Example of Method Overriding:**
 
@@ -1005,7 +1009,9 @@ In summary, method overloading is about defining multiple methods with the same 
 
 ### 17. Inheritance types
 
-Inheritance is a fundamental concept in object-oriented programming that allows a new class to inherit properties (attributes and methods) from an existing class. This concept promotes code reuse and allows the creation of more specialized classes based on existing ones. There are several types of inheritance that define the relationship between the base (parent) class and the derived (child) class. Let's explore the common types of inheritance:
+- Inheritance is a fundamental concept in object-oriented programming that allows a new class to inherit properties (attributes and methods) from an existing class.
+- This concept promotes code reuse and allows the creation of more specialized classes based on existing ones.
+- There are several types of inheritance that define the relationship between the base (parent) class and the derived (child) class. Let's explore the common types of inheritance:
 
 1. **Single Inheritance:**
    
@@ -1028,7 +1034,9 @@ Inheritance is a fundamental concept in object-oriented programming that allows 
 
 2. **Multiple Inheritance:**
 
-   In multiple inheritance, a derived class inherits from more than one base class. This allows the derived class to inherit properties from multiple parent classes. Care should be taken when using multiple inheritance to avoid the "diamond problem" where ambiguity may arise if multiple parent classes have methods with the same name.
+- In multiple inheritance, a derived class inherits from more than one base class. This allows the derived class to inherit properties from multiple parent classes.
+- The derived class inherits all the features of the base case.
+- Care should be taken when using multiple inheritance to avoid the "diamond problem" where ambiguity may arise if multiple parent classes have methods with the same name.
 
    ```python
    class Parent1:
@@ -1052,8 +1060,8 @@ Inheritance is a fundamental concept in object-oriented programming that allows 
 
 3. **Multilevel Inheritance:**
 
-   In multilevel inheritance, a derived class is used as the base class for another class. This creates a chain of inheritance, allowing properties to be inherited through multiple levels of classes.
-
+- The multi-level inheritance includes the involvement of at least two or more than two classes. One class inherits the features from a parent class and the newly created sub-class becomes the base class for another new class.
+   
    ```python
    class Grandparent:
        def grandparent_method(self):
@@ -1076,7 +1084,8 @@ Inheritance is a fundamental concept in object-oriented programming that allows 
 
 4. **Hierarchical Inheritance:**
 
-   In hierarchical inheritance, multiple derived classes inherit from a single base (parent) class. Each derived class can have its own additional properties and methods while sharing the properties of the base class.
+- In hierarchical inheritance, multiple derived classes inherit from a single base (parent) class.
+- Each derived class can have its own additional properties and methods while sharing the properties of the base class.
 
    ```python
    class Animal:
@@ -1097,6 +1106,50 @@ Inheritance is a fundamental concept in object-oriented programming that allows 
    dog.make_sound()  # Output: Woof!
    cat.make_sound()  # Output: Meow!
    ```
+
+5. **Hybrid Inheritance**:
+   Hybrid inheritance is a combination of different types of inheritance (usually multiple and multilevel inheritance) within a single program. It's a more complex form of inheritance where classes are derived from multiple base classes and may create a complex inheritance hierarchy.
+
+Here's an example of hybrid inheritance in Python:
+
+```python
+# Base class
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+# Derived classes
+class Employee(Person):
+    def __init__(self, name, emp_id):
+        super().__init__(name)
+        self.emp_id = emp_id
+
+class Student(Person):
+    def __init__(self, name, student_id):
+        super().__init__(name)
+        self.student_id = student_id
+
+# Derived class with multiple base classes
+class Manager(Employee, Student):
+    def __init__(self, name, emp_id, student_id, department):
+        # Call the constructors of both Employee and Student classes
+        Employee.__init__(self, name, emp_id)
+        Student.__init__(self, name, student_id)
+        self.department = department
+
+# Create an object of the Manager class
+manager = Manager("John Doe", "E123", "S456", "IT")
+
+# Access attributes from both base classes
+print("Name:", manager.name)
+print("Employee ID:", manager.emp_id)
+print("Student ID:", manager.student_id)
+print("Department:", manager.department)
+```
+
+In this example, we have three classes: `Person` as the base class, `Employee` and `Student` as derived classes from `Person`, and `Manager` as a class derived from both `Employee` and `Student`. This demonstrates hybrid inheritance, where `Manager` inherits attributes and methods from both `Employee` and `Student`.
+
+Note that hybrid inheritance can lead to complex relationships, and careful design is essential to avoid confusion and maintain the integrity of the program's structure.
 
 These are the main types of inheritance in object-oriented programming. Each type has its own use cases and considerations, and understanding the relationship between base and derived classes is crucial for designing effective class hierarchies.
 
@@ -1545,7 +1598,10 @@ In this example, the `Shape` class is an abstract class with an abstract method 
 
 Both abstract classes and interfaces are used to achieve abstraction and define a contract that derived classes must follow, but they have some key differences in terms of implementation, usage, and their role in object-oriented design.
 
-**Abstract Class:**
+**Abstract Class:** 
+
+An abstract contains one or more abstract methods. An abstract method is a method that is declared, but contains no implementation. Abstract classes may be instantiated and its abstract classes must be implemented by its subclass.
+
 1. An abstract class is a class that cannot be instantiated on its own. It serves as a base for other classes (concrete subclasses) that derive from it.
 2. Abstract classes can have both regular (non-abstract) methods with implementations and abstract methods (declared without implementation).
 3. Abstract methods in an abstract class are meant to be overridden by concrete subclasses, which ensures that derived classes implement essential behavior.
@@ -1554,6 +1610,10 @@ Both abstract classes and interfaces are used to achieve abstraction and define 
 6. Abstract classes are a way to provide a common base and shared behavior for related classes.
 
 **Interface:**
+
+An interface is a collection of method signatures that should be provided by the implementing class. Implementing an interface is a way of writing an organized 
+code and achieving abstraction. 
+
 1. An interface is a completely abstract class in Python. It cannot be instantiated, and all its methods are abstract, meaning they have no implementation.
 2. Interfaces define a contract that classes must adhere to by implementing all the methods declared in the interface.
 3. A class can implement multiple interfaces, which allows for achieving multiple inheritance of interface contracts.
