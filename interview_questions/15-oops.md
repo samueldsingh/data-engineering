@@ -941,7 +941,10 @@ These four conceptsâ€”encapsulation, abstraction, inheritance, and polymorphismâ
 - The process of calling the same method in different ways by passing different number of
 arguments is called method overloading.
 - Two methods will have the same name, but the latest method will hide previous method.
-- In Python, Method Overloading can't be achived directly but if a method with parameters has default arguments then that method can be called in 2 or more ways. 
+- In Python, Method Overloading can't be achived directly but if a method with parameters has default arguments then that method can be called in 2 or more ways.
+- Because the latest method will hide the previous method, we can't achieve method overloading directly and hence we should use default arguments inside method signature.
+- Method overloading is achieved indirectly with default values for parameter or with *args or **kwargs.
+- With *args, we pass a tuple of arguments and with **kwargs, we pass value in key value pair mechanism. 
 
 **Method Overloading:**
 
