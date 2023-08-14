@@ -5,7 +5,8 @@
 
 ### 1. What is OOPs
 
-OOP stands for Object-Oriented Programming. It's a programming paradigm that uses objects, which are instances of classes, to structure and organize code. OOP is based on the concept of "objects" and "classes," and it focuses on the design and manipulation of objects to solve complex problems in a more modular and organized way.
+- Object-Oriented Programming is a programming paradigm that uses objects, which are instances of classes, to structure and organize code.
+- OOP is based on the concept of "objects" and "classes," and it focuses on the design and manipulation of objects to solve complex problems in a more modular and organized way.
 
 Key concepts in OOP include:
 
@@ -13,11 +14,12 @@ Key concepts in OOP include:
 
 2. **Objects:** Objects are instances of classes. They represent real-world entities and encapsulate both data and behavior.
 
-Sure, let's explain the key concepts of Object-Oriented Programming (OOP) with examples:
+Let's see the key feautres of Object-Oriented Programming (OOP) with examples:
 
 **1. Classes and Objects:**
 
-A class is a blueprint for creating objects. It defines the structure and behavior that the objects of the class will have. An object is an instance of a class.
+- A class is a blueprint for creating objects. It defines the structure and behavior that the objects of the class will have.
+- An object is an instance of a class.
 
 Example: Let's consider a simple class called "Person" that represents a person with a name and age.
 
@@ -38,7 +40,8 @@ print(person2.age)   # Output: 25
 
 **2. Encapsulation:**
 
-Encapsulation is the practice of bundling the data (attributes) and methods (functions) that operate on the data into a single unit (the class). It provides control over access to the data and promotes data integrity.
+- Encapsulation is the practice of **bundling the data (attributes) and methods (functions) that operate on the data into a single unit (the class)**. 
+- It provides control over access to the data and promotes data integrity.
 
 Example: In the "Person" class, we can encapsulate the `name` and `age` attributes by making them private and providing methods to access and update them.
 
@@ -103,7 +106,8 @@ Inheritance allows a new class (derived or subclass) to inherit properties and b
 
 **4. Polymorphism:**
 
-Polymorphism allows objects of different classes to be treated as objects of a common base class. It enables flexibility and allows a single interface to represent different types of objects. 
+- Polymorphism allows objects of different classes to be treated as objects of a common base class.
+- It enables flexibility and allows a single interface to represent different types of objects. 
 
 Use Case 1: **Method Overriding:** Inheritance and polymorphism enable you to override methods in derived classes, providing specific implementations while maintaining a common interface defined in the base class.
 
