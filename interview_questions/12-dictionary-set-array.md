@@ -1,6 +1,9 @@
 # 1. Dictionary
 
-A dictionary is an unordered collection of key-value pairs, where each key is unique within the dictionary. It is also known as an associative array or a hash table in other programming languages. Sequences follow indexing mechanism but dictionaries use the `item` function to access the key-value pair in a dictionary.`item` function works by converting the dictionary into a list of tuples.
+A dictionary is an unordered collection of key-value pairs, where each key is unique within the dictionary. 
+- It is also known as an associative array or a hash table in other programming languages.
+- Sequences follow indexing mechanism but dictionaries use the `item` function to access the key-value pair in a dictionary.`item` function works by converting the dictionary into a list of tuples.
+- Key-value is provided in the dictionary to make it more optimized.
 
 They provide fast access to values based on their associated keys, making them suitable for situations where you need to retrieve values by a unique identifier.
 
@@ -23,7 +26,7 @@ We have the given dictionary:
 ```
 order_details = {'order_no': 123213,
                  'ref_no': 3432,
-                 'cust_name': 'Madhu Nettem',
+                 'cust_name': 'Samuel',
                  'del_loc': 'Bangalore',
                  'total_bill': 543.56,
                  'discount': 23,
@@ -34,7 +37,7 @@ order_details = {'order_no': 123213,
 ```
 
 ```
-for key, val in order_details.items():  #  [('eid', 45000), ('name','Madhu Nettem')]
+for key, val in order_details.items():  #  [('eid', 45000), ('name','Samuel')]
     print(key, "-----", val)
 ```
 
@@ -42,7 +45,7 @@ The output is:
 ```
 order_no ----- 123213
 ref_no ----- 3432
-cust_name ----- Madhu Nettem
+cust_name ----- Samuel
 del_loc ----- Bangalore
 total_bill ----- 543.56
 discount ----- 23
@@ -180,7 +183,7 @@ print(deep_copy)  # Output: {'a': [1, 2, 3, 4], 'b': [4, 5, 6]}
 
 The commonly used dictionary functions are: `len()`, `type()`, `str()`, `dict()`.
 The built-in functions are:
-`keys()`, `values()`, `items()`, `update()`, `clear()`, `fromkeys()`, `copy()`, `has_key()`, `pop()`, `popitem()`, `setdefault()`
+`keys()`, `values()`, `items()`, `update()`, `clear()`, `fromkeys()`, `copy()`, `has_key()`, `pop()`, `popitem()`, `setdefault()`, `get()`
 
 Certainly! Here are examples of various dictionary functions and methods in Python:
 
@@ -188,7 +191,7 @@ Certainly! Here are examples of various dictionary functions and methods in Pyth
    - The `len()` function returns the number of key-value pairs in a dictionary.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     my_dict = {"name": "Sam", "age": 25, "city": "Bangalore"}
      print(len(my_dict))  # Output: 3
      ```
 
@@ -196,7 +199,7 @@ Certainly! Here are examples of various dictionary functions and methods in Pyth
    - The `type()` function returns the type of an object, which in this case would be "dict" for a dictionary.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     my_dict = {"name": "Sam", "age": 25, "city": "Bangalore"}
      print(type(my_dict))  # Output: <class 'dict'>
      ```
 
@@ -204,24 +207,24 @@ Certainly! Here are examples of various dictionary functions and methods in Pyth
    - The `str()` function converts a dictionary into a string representation.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     my_dict = {"name": "Sam", "age": 25, "city": "Bangalore"}
      dict_str = str(my_dict)
-     print(dict_str)  # Output: "{'name': 'John', 'age': 30, 'city': 'New York'}"
+     print(dict_str)  # Output: "{'name': 'Sam', 'age': 25, 'city': 'Bangalore'}"
      ```
 
 4. `dict()`:
    - The `dict()` function creates a new dictionary object.
    - Example:
      ```python
-     my_dict = dict(name="John", age=30, city="New York")
-     print(my_dict)  # Output: {'name': 'John', 'age': 30, 'city': 'New York'}
+     my_dict = dict(name="Sam", age=25, city="Bangalore")
+     print(my_dict)  # Output: {"name": "Sam", "age": 25, "city": "Bangalore"}
      ```
 
 5. `keys()`:
    - The `keys()` method returns a list containing all the keys in the dictionary.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     my_dict = {"name": "Sam", "age": 25, "city": "Bangalore"}
      key_list = my_dict.keys()
      print(key_list)  # Output: ['name', 'age', 'city']
      ```
@@ -230,7 +233,7 @@ Certainly! Here are examples of various dictionary functions and methods in Pyth
    - The `values()` method returns a list containing all the values in the dictionary.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     my_dict = {"name": "Sam", "age": 25, "city": "Bangalore"}
      value_list = my_dict.values()
      print(value_list)  # Output: ['John', 30, 'New York']
      ```
@@ -239,26 +242,26 @@ Certainly! Here are examples of various dictionary functions and methods in Pyth
    - The `items()` method returns a list of tuples containing key-value pairs in the dictionary.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     my_dict = {"name": "Sam", "age": 25, "city": "Bangalore"}
      item_list = my_dict.items()
-     print(item_list)  # Output: [('name', 'John'), ('age', 30), ('city', 'New York')]
+     print(item_list)  # Output: [('name', 'Sam'), ('age', 25), ('city', 'Bangalore')]
      ```
 
 8. `update()`:
    - The `update()` method updates the dictionary with key-value pairs from another dictionary or iterable.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30}
-     new_data = {"city": "New York", "country": "USA"}
+     my_dict = {"name": "Sam", "age": 25}
+     new_data = {"city": "Bangalore", "country": "INdia"}
      my_dict.update(new_data)
-     print(my_dict)  # Output: {'name': 'John', 'age': 30, 'city': 'New York', 'country': 'USA'}
+     print(my_dict)  # Output: {"name": "Sam", "age": 25, "city": "Bangalore", 'country': 'India'}
      ```
 
 9. `clear()`:
    - The `clear()` method removes all key-value pairs from the dictionary, making it empty.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30}
+     my_dict = {"name": "Sam", "age": 25}
      my_dict.clear()
      print(my_dict)  # Output: {}
      ```
@@ -273,15 +276,13 @@ Certainly! Here are examples of various dictionary functions and methods in Pyth
       print(my_dict)  # Output: {'name': 'Unknown', 'age': 'Unknown', 'city': 'Unknown'}
       ```
 
-Certainly! Here are examples of some additional dictionary functions and methods:
-
 11. `copy()`:
    - The `copy()` method creates a shallow copy of a dictionary.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     my_dict = {"name": "Sam", "age": 25, "city": "Bangalore"}
      new_dict = my_dict.copy()
-     print(new_dict)  # Output: {'name': 'John', 'age': 30, 'city': 'New York'}
+     print(new_dict)  # Output: {'name': 'Sam', 'age': 25, 'city': 'Bangalore'}
      ```
 
 12. `has_key()` (Deprecated):
@@ -289,7 +290,7 @@ Certainly! Here are examples of some additional dictionary functions and methods
    - Note: In Python 3.x, `has_key()` has been removed. Instead, you can use the `in` operator.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     my_dict = {"name": "Sam", "age": 25, "city": "Bangalore"}
      print("age" in my_dict)  # Output: True
      ```
 
@@ -297,10 +298,10 @@ Certainly! Here are examples of some additional dictionary functions and methods
    - The `pop()` method removes and returns the value associated with the specified key from the dictionary.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     my_dict = {"name": "Sam", "age": 25, "city": "Bangalore"}
      age = my_dict.pop("age")
-     print(age)  # Output: 30
-     print(my_dict)  # Output: {'name': 'John', 'city': 'New York'}
+     print(age)  # Output: 25
+     print(my_dict)  # Output: {"name": "Sam", "city": "Bangalore"}
      ```
 
 14. `popitem()`:
@@ -308,20 +309,20 @@ Certainly! Here are examples of some additional dictionary functions and methods
    - Note: In Python 3.7 and later versions, `popitem()` removes an arbitrary key-value pair instead of the last inserted one.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30, "city": "New York"}
+     my_dict = {"name": "Sam", "age": 25, "city": "Bangalore"}
      item = my_dict.popitem()
-     print(item)  # Output: ('city', 'New York')
-     print(my_dict)  # Output: {'name': 'John', 'age': 30}
+     print(item)  # Output: ('city', 'Bangalore')
+     print(my_dict)  # Output: {'name': 'Sam', 'age': 25}
      ```
 
 15. `setdefault()`:
    - The `setdefault()` method returns the value of a specified key in the dictionary. If the key does not exist, it inserts the key with a default value and returns the default value.
    - Example:
      ```python
-     my_dict = {"name": "John", "age": 30}
-     city = my_dict.setdefault("city", "New York")
-     print(city)  # Output: 'New York'
-     print(my_dict)  # Output: {'name': 'John', 'age': 30, 'city': 'New York'}
+     my_dict = {"name": "Sam", "age": 25}
+    city = my_dict.setdefault("city", "Bangalore")
+    print(city)  # Output: 'Bangalore'
+    print(my_dict)  # Output: {'name': 'Sam', 'age': 25, 'city': 'Bangalore'}
      ```
 
 These are some examples of functions and methods available for working with dictionaries in Python. Dictionaries provide a flexible and efficient way to store and manipulate data using key-value pairs.
@@ -335,12 +336,12 @@ These are just a few examples of functions and methods that can be used with dic
 - It takes two parameters: the key whose value needs to be retrieved, and an optional default value that is returned if the key is not found in the dictionary.
 
 ```
-my_dict = {'name': 'John', 'age': 30, 'country': 'USA'}
+my_dict = {'name': 'Sam', 'age': 25, 'country': 'India'}
 ```
 
 ```
 name = my_dict.get('name')
-print(name)  # Output: John
+print(name)  # Output: Sam
 ```
 
 ``` 
@@ -350,7 +351,7 @@ print(city)  # Output: Unknown (since 'city' key does not exist)
 
 ```
 country = my_dict.get('country', 'Unknown')
-print(country)  # Output: USA
+print(country)  # Output: India
 ```
 
 ## 7. List vs array
@@ -370,8 +371,7 @@ that further enhance the capabilities of arrays for numerical computations and d
 
 ## 8. Set
 - In Python, a set is an unordered collection of unique elements. 
-- It is a built-in data type that is used to 
-store a collection of items where each item is unique. 
+- It is a built-in data type that is used to store a collection of items where each item is unique. 
 - It is a collection of distinct objects of the same type or class of objects. An object can be numbers, alphabets, names, etc.
 - Sets are utilized when an object only needs to exist within a collection of objects.
 
@@ -429,6 +429,26 @@ symmetric_difference_set = set1.symmetric_difference(set2)
 print(symmetric_difference_set)  # Output: {1, 2, 4, 5}
 ```
 
+Other operation that can be performed using set is:
+
+- `add()`: Adds an element to the set
+- `clear()`: Removes all the elements from the set
+- `copy()`: Returns a copy of the set
+- `difference()`: Returns a set containing the difference between two or more sets
+- `difference_update()`:	Removes the items in this set that are also included in another, specified set
+- `discard()`: Remove the specified item
+- `intersection()`: Returns a set, that is the intersection of two or more sets
+- `intersection_update()`:	Removes the items in this set that are not present in other, specified set(s)
+- `isdisjoint()`: Returns whether two sets have a intersection or not
+- `issubset()`: Returns whether another set contains this set or not
+- `issuperset()`: Returns whether this set contains another set or not
+- `pop()`: Removes an element from the set
+- `remove()`: Removes the specified element
+- `symmetric_difference()`: Returns a set with the symmetric differences of two sets
+- `symmetric_difference_update()`:	inserts the symmetric differences from this set and another
+- `union()`: Returns a set containing the union of sets
+- `update()`: Update the set with another set, or any other iterable
+
 ## When to use sets:
 Sets are useful in situations where you need to work with a collection of unique elements
 and perform operations like intersection, union, difference, and symmetric difference.
@@ -481,7 +501,6 @@ we cannot modify the tuple object within the set. Attempting to modify an immuta
 It's important to note that the mutability or immutability of the elements within a set affects how they can 
 be modified or used, but it does not affect the set itself. The set can still be modified by adding or 
 removing elements, regardless of the mutability or immutability of the elements it contains.
-
 
 ## Array
 
