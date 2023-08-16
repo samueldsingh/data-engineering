@@ -1,12 +1,12 @@
 
 
-### Tell me about yourself?
+## Tell me about yourself?
 
 
-### Data Engineering
+## Data Engineering
 "Hello, my name is Samuel David Singh. I am a Data Engineer with expertise in designing and implementing data infrastructure solutions. I have a strong background in managing and processing large-scale data sets, building data pipelines, and ensuring the smooth flow of data between various systems. I am experienced in working with tools and technologies such as AWS, PySpark, Hadoop, Databases and Azure. My goal as a Data Engineer is to optimize data systems, improve data quality, and enable efficient data analysis and processing. I enjoy collaborating with cross-functional teams and leveraging my technical skills to drive data-driven solutions and insights. I am passionate about leveraging data to solve complex business problems and contribute to the success of organizations. I am excited about the ever-evolving field of data engineering and look forward to applying my expertise to tackle challenging data-related projects."
 
-### Python Developer
+## Python Developer
 "Hello, my name is Samuel, and I am a Python developer. With 2 years of experience in Python programming, I have developed a strong foundation in building robust and scalable applications using this versatile language.
 
 Throughout my career, I have successfully delivered various projects, ranging from web development to data analysis and automation. I am proficient in leveraging Python frameworks such as Django and Flask for web development, as well as libraries like NumPy, Pandas, and Matplotlib for data manipulation and visualization.
@@ -299,314 +299,26 @@ Heap data structure is used for dynamic memory which is not related to naming co
 
 ## 15. Explain Garbage Collection mechanism in detail.
 
-- Garbage collection is the process of automatically reclaiming memory that is no longer in use by the program.
-- It works by identifying and freeing up memory occupied by objects that are no longer reachable or referenced by the program.
-- The exact implementation of garbage collection can vary depending on the programming language and the runtime environment, but a general overview of how it works internally is:
-- **Marking:** The garbage collector starts by traversing through all live objects in the program's memory heap. It begins with a set of known root objects, such as global variables or references on the call stack. These root objects are considered live because they are reachable and actively used by the program. The garbage collector marks these objects as live.
-- **Tracing:** The garbage collector then follows references from the marked objects to other objects in the heap. It traverses through the object graph, visiting each referenced object and marking them as live. This process continues until all reachable objects have been marked.
-- **Sweep and Free:** Once the marking phase is complete, the garbage collector performs a sweep phase. It scans the entire heap and identifies objects that are not marked as live. These unmarked objects are considered garbage since they are no longer reachable. The garbage collector frees the memory occupied by these garbage objects, making it available for future allocation.
-- **Compaction (optional):** In some garbage collection implementations, a compaction phase may be performed after the sweep phase. This phase involves rearranging the live objects in memory to minimize fragmentation and optimize memory usage. It moves live objects closer together, creating a contiguous block of free memory.
-- **Repeat:** After the garbage collection cycle is complete, the program continues its execution, and the process may be repeated periodically or as needed to reclaim memory.
+Python's garbage collection mechanism is responsible for automatically reclaiming memory occupied by objects that are no longer in use. It helps to prevent memory leaks and ensures efficient memory management. The garbage collection process in Python is achieved using a combination of techniques, primarily reference counting and cyclic garbage collection.
 
-It's important to note that the specific algorithms and techniques used in garbage collection can vary. Some common approaches include reference counting, mark-and-sweep, and generational collection. Each approach has its own trade-offs in terms of efficiency, latency, and memory overhead. The choice of garbage collection algorithm depends on the programming language, runtime environment, and specific requirements of the application.
+1. **Reference Counting**: Python maintains a reference count for each object. A reference count is the number of references or pointers pointing to the object. When the reference count of an object drops to zero, it means the object is no longer in use and can be safely deallocated. Python's built-in `sys.getrefcount()` function can be used to check the reference count of an object.
 
-**Common Ways to Reduce the Space Complexity**
+2. **Cyclic Garbage Collection**: While reference counting is effective in most cases, it can't handle circular references. Circular references occur when objects reference each other in a cycle, and their reference counts never drop to zero. Python's cyclic garbage collector detects and cleans up circular references. It identifies and collects groups of objects that are mutually referential and no longer accessible from the global scope.
 
-We can follow some best practices to reduce the space complexity. These techniques are supposed to save quite space and make the program efficient. Below are a few practices in Python for memory allocators:
+Python's garbage collector is implemented in the `gc` module. You can interact with it using functions like `gc.collect()`, `gc.get_count()`, and `gc.get_threshold()`.
 
-- **Use List Indexing Carefully:**
-The developer should try to use the "for item in array" instead of "for index in range(len(array))" to save space and time. If our program doesn't need the indexing of the list element, then don't use it.
+Here's how the garbage collection process works in more detail:
 
-- **String Concatenation:**
-String concatenation is not suitable for saving space and time complexity. When possible, we should avoid using '+' for the string concatenation because strings are immutable. When we add the new string to the existing string, Python creates the new string and allocates it to a new address.
+1. **Object Creation**: When an object is created, Python initializes its reference count to 1.
 
-Each string needs a fixed size of memory based on the character and its length. When we change the string, it needs a different amount of memory and requires reallocating.
+2. **Reference Count Increment**: Whenever a reference to the object is made (like assigning it to a variable or passing it as an argument), its reference count is incremented.
 
-- **Use Iterators and Generators:**
-Iterators are very helpful for both time and memory when working on a large set of data. Working with the large dataset, we need data processing immediately and can wait for the program to process the entire data set first.
+3. **Reference Count Decrement**: When a reference to the object goes out of scope or is explicitly set to `None`, its reference count is decremented.
 
-Generators are the special functions used to create the iterator function.
+4. **Circular References**: When circular references exist, reference counting alone can't determine when to deallocate the objects. Python's cyclic garbage collector identifies these situations and breaks the circular reference.
 
-- **Use the Built-in Library when Possible:**
-If we use methods that have already been predefined in the Python library, then import the corresponding library. It would save a lot of space and time. We can also create a module to define the function and import it to the current working program.
+5. **Garbage Collection Triggers**: Python's garbage collector runs automatically when the number of allocations minus deallocations exceeds a threshold. It can also be triggered explicitly using `gc.collect()`. The `gc` module also provides control over the collection frequency and thresholds.
 
+6. **Finalization and Deletion**: Once an object's reference count drops to zero or it's determined to be part of a cyclic garbage collection, the object's `__del__()` method (if defined) is called before the memory is reclaimed.
 
-
-## General caching
-## What is caching?
-- Caching is a technique used in computer systems to store and retrieve frequently accessed or computationally expensive data in a faster and more efficient manner. 
-- In the context of software applications, caching involves storing a copy of data in a cache, which is typically a faster storage medium, such as memory or a dedicated cache server. When a request for the data is made, the system first checks the cache. If the requested data is found in the cache, it can be quickly retrieved, avoiding the need to perform the original, potentially time-consuming operation again. This can significantly speed up subsequent access to the data.
-- The purpose of caching is to reduce latency, improve performance, and minimize the need for repeated computations or expensive data retrieval operations.
-- Caching can occur at various levels within a computer system, including: Hardware Caches, Operating System Caches, Database Caches, Application-Level Caches.
-- Caching provides several benefits, including: Improved Performance, Reduced Resource Usage, Scalability and Cost Savings.
-
-## Data Structures
-
-1. What are datatypes in Python.Explain in detail
-In Python, data types define the nature of the data stored in variables. Each variable in Python has a data type associated with it, which determines the operations that can be performed on that variable and the way the variable is stored in memory.
-
-Here are some of the commonly used data types in Python:
-
-*1. Numeric Types:*
-- `int`: Represents integer values, e.g., 10, -5, 0.
-- `float`: Represents floating-point numbers with decimal places, e.g., 3.14, -2.5, 0.0.
-- `complex`: Represents complex numbers in the form a + bj, where a and b are real numbers, and j represents the imaginary unit.
-
-*2. Sequence Types:*
-- `str`: Represents strings of characters, enclosed in single quotes ('') or double quotes ("").
-- `list`: Represents ordered collections of items, enclosed in square brackets ([]). Lists are mutable, allowing modification of their elements.
-- `tuple`: Represents ordered collections of items, enclosed in parentheses (()). Tuples are immutable, meaning their elements cannot be changed once defined.
-
-*3. Mapping type:*
-- `dict`: Represents key-value pairs, enclosed in curly braces ({}). Each element in a dictionary is a pair consisting of a key and its corresponding value.
-
-*4. Set Types:*
-- `set`: Represents an unordered collection of unique elements. Sets are mutable and do not allow duplicate values.
-- `frozenset`: Represents an immutable version of a set
-
-*5. Boolean Type:*
-- `bool`: Represents boolean values, either True or False. Used in logical expressions and conditions.
-
-*6. NoneType:*
-None: Represents the absence of a value or a null value. It is often used to indicate the absence of a return value from a function
-
-These data types provide different functionalities and operations that can be performed on the data stored in variables. Python is a dynamically typed language, meaning the data type of a variable is determined at runtime based on the assigned value.
-
-3. What are datastructures in Python.Explain in detail
-
-
-4. Generic functions in Python.
-
-In Python, generic functions refer to functions that can operate on different types of objects or arguments, providing a flexible and reusable way to handle various data types. Unlike traditional functions that are designed to work with specific types, generic functions can be defined to handle multiple types using a concept called "type dispatching."
-
-Python provides several mechanisms to implement generic functions:
-
-*Function Overloading*: Function overloading involves defining multiple functions with the same name but different parameter types or a different number of parameters. Python does not support function overloading natively, but you can achieve a similar effect using decorators or conditional logic within a single function.
-
-*Type Annotations and Type Hints*: Python supports adding type annotations and hints to function parameters and return values using the typing module. This allows you to specify the expected types for arguments and return values, providing clarity and enabling type checking tools to verify the correctness of your code.
-
-*Polymorphism and Duck Typing*: Python is a dynamically typed language that follows the principle of "duck typing." This means that the compatibility of objects is determined by their behavior rather than their specific type. Polymorphism allows you to write functions that can accept objects of different types, as long as those objects support the required operations or methods.
-
-*Generic Functions using Third-Party Libraries*: There are third-party libraries, such as functools, singledispatch, and multipledispatch, that provide tools for implementing generic functions in a more structured and explicit manner. These libraries enable you to define functions with specialized behavior for different types using decorators or dispatchers.
-
-By leveraging these techniques, you can write more flexible and reusable code that can handle different types of data without the need for duplicating logic or writing separate functions for each specific type. This promotes code reusability, modularity, and maintainability in your Python programs.
-
-5. Realtime examples for usage of integer,float,boolean,string
-
-
-6. When to use string 
-
-
-7. Importance of String datatype in Python 
-
-
-8. Why and how string is Immutable.Explain in detail
-
-
-9. What is Sequence. Types
-In Python, a sequence is an ordered collection of items. It represents a series of elements that are indexed and can be accessed using integers. Sequences are one of the built-in data types in Python and provide a way to store and manipulate ordered data.
-
-Python provides several types of sequences, including:
-
-1. Strings: Strings are sequences of characters. They represent textual data and can be enclosed in single quotes ('') or double quotes (""). Strings are immutable, which means they cannot be modified once created.
-
-2. Lists: Lists are ordered collections of items. They can contain elements of different data types and are enclosed in square brackets ([]). Lists are mutable, allowing you to modify, add, or remove elements.
-
-3. Tuples: Tuples are similar to lists but are immutable, which means they cannot be modified after creation. Tuples are enclosed in parentheses (()) or can be created without any delimiters. They are often used to represent fixed collections of items.
-
-4. Ranges: Ranges represent a sequence of numbers. They are commonly used in looping constructs to generate a series of integers. Ranges are immutable and can be created using the `range()` function.
-
-5. Bytes and Bytearrays: Bytes and Bytearrays are sequences of integers representing binary data. Bytes are immutable, while Bytearrays are mutable.
-
-6. Sets: Sets are unordered collections of unique elements. They do not allow duplicate values and are useful for operations such as checking for membership and performing set operations like union, intersection, and difference.
-
-7. Dictionaries: Dictionaries are collections of key-value pairs. They are unordered, mutable, and used to store and retrieve data based on keys rather than indexing.
-
-These are the commonly used sequence types in Python. Each type has its own characteristics, properties, and use cases, allowing you to work with different kinds of data and perform various operations efficiently.
-
-10. How to use sequence operations on String
-
-
-10.How memory will be allocated for string 
-In Python, strings are represented as sequences of Unicode characters. The memory allocation for strings in Python involves a few key aspects:
-
-*String Objects*: When you create a string in Python, a string object is created in memory to hold the sequence of characters. The string object consists of a header that contains information such as the length of the string and a reference count. The actual characters of the string are stored in a separate memory block.
-
-*Immutable Nature*: Strings in Python are immutable, which means they cannot be modified after they are created. This immutability allows for efficient memory allocation because the string objects can be safely shared and reused by multiple variables or parts of the program without the risk of unexpected changes.
-
-*Memory Optimization*: Python employs various memory optimization techniques for strings to reduce memory overhead. One such technique is string interning, where Python interns (caches) certain strings to reuse them across the program, saving memory by avoiding redundant string objects. For example, small strings and string literals are automatically interned.
-
-*Reference Counting*: Python uses a reference counting mechanism to manage memory. Each object, including strings, has a reference count associated with it, which keeps track of the number of references to that object. When the reference count of a string drops to zero, meaning there are no more references to it, the memory occupied by the string is automatically released.
-
-Overall, Python manages the memory allocation for strings efficiently by leveraging immutability, string interning, and reference counting mechanisms. These optimizations help minimize memory usage and improve the performance of string operations in Python.
-
-
-11.Explain 10 very freqently used functions in String 
-
-
-12. isdigit() vs isnumeric() vs isdecimal() 
-The `isdigit()`, `isnumeric()`, and `isdecimal()` are three different methods in Python used to check the properties of a string in terms of containing only numeric characters. While they may seem similar, there are some differences in their behavior:
-
-1. `isdigit()`: This method checks if all characters in a string are decimal digits (0-9). However, it returns `False` for strings that contain other numeric characters such as superscripts, subscripts, or digits from other number systems (e.g., Roman numerals). It also returns `False` for empty strings.
-
-2. `isnumeric()`: This method is more inclusive than `isdigit()`. It returns True if all characters in a string are numeric, including digits from other number systems, such as fractions, subscripts, superscripts, and numeric characters from Unicode categories like "Numeric_Type=Digit" or "Numeric_Type=Decimal". Like `isdigit()`, it also returns `False` for empty strings
-
-3. `isdecimal()`: This method is the most restrictive of the three. It returns `True` only if all characters in a string are decimal digits (0-9) and there are no other numeric characters present. It doesn't recognize digits from other number systems or numeric characters with special formatting. Similar to the other two methods, it returns `False` for empty strings.
-
-Here's a summary of their behaviors:
-- `isdigit()`: Returns True if all characters are decimal digits (0-9), False otherwise.
-- `isnumeric()`: Returns True if all characters are numeric, including digits from other number systems, False otherwise.
-- `isdecimal()`: Returns True if all characters are decimal digits (0-9) with no other numeric characters, False otherwise.
-
-In most cases, `isnumeric()` is the most versatile and flexible for checking if a string represents a numeric value, while `isdigit()` and `isdecimal()` are more specific in their requirements. The choice between them depends on the specific use case and the desired behavior for handling numeric strings.
-
-14. find vs index in string 
-
-In Python, both `find()` and `index()` are methods used to search for a substring within a string and return its position. However, there are a few differences in their behavior:
-
-- `find(substring)`: This method searches for the first occurrence of the specified substring within the string. If the substring is found, it returns the index of the first character of the substring. If the substring is not found, it returns -1.
-
-- `index(substring)`: Similar to `find()`, this method also searches for the first occurrence of the specified `substring` within the string. If the substring is found, it returns the index of the first character of the substring. However, if the substring is not found, it raises a `ValueError` exception.
-
-II. Variables:
-===============
-
-
-
-III. IDE PyCharm:
-===================
-1. Different IDEs in market 
-2. Advantages of IDE
-3. Shortcuts in PyCharm (Explain min 10)
-
-IV. Operators:
-===============
-1. Explain in detail about all operators 
-## 2. == (equality) vs is (identity) operator
-
-- "==" is used for equality comparison to compare two values and check if they are equal.
-- "is" operator is used for identity comparison, checking whether two objects refer to the same memory location.
-
-Example:
-```
-a = [1, 2, 3]
-b = [1, 2, 3]
-
-print(a == b)  # True, because the values of a and b are the same
-print(a is b)  # False, because a and b refer to different memory locations
-```
-
-In the example above, the "==" operator returns True because the values of the lists a and b are the same. However, the "is" operator returns False because a and b are separate list objects with different memory locations.
-
-3. and or operators. Explain 2 examples 
-4. Operator precedence.
-5. Subtract 2 numbers and print result program.
-	- Write down all scenarios with different input values 
-
-V. DataTypes Intro:
-====================
-1. Importance of DataTypes.2
-2. Different data types, data structures available in Python
-3. int vs float
-4. Boolean. give all scenarios
-5. 0 vs null
-6. Explain each data type, data structure with real life examples.
-7. CRUD Operations.Give examples for each 
-8. Sequences. Types of sequences. Sequence operations
-9. Explain about below functions and give examples 
-	print()
-	id()
-	type()
-	int()
-	float()
-	complex()
-	bool()	
-	input()
-	
-VI. Keywords:
-=====================
-1. Explain all keywords with examples and areas of usage
-
-VII. Decision Making:
-=====================
-1. What is Decision Making. Explain different scenarios when to go for Decision Making
-2. Give examples for below conditions
-	1. single if : 
-	2. if else:
-	3. if elif else:
-	4. if elif elif else:
-	5. Nested if: 
-3. Prepare Programs for below questions
-	1. Prepare state and assign North South West East 
-	    north = []
-		south = ['Andhra Prades', 'Telangana', 'Karnataka','Tamil Nadu', 'Kerala']
-		west = []
-		east = []
-	2. Prepare dictionary with key as state name and value as "list of districts"
-4. Get employee details(in dict format, empid,name,sal, exp) and update hike for employee with below 
-		If exp is 0 to 2 years - 10% Hike
-				  2 to 5 years - 20% Hike
-				  5 to 8 years - 30% Hike
-				  8+           - No hike
-5. Explain below terms in detail 
-	- Requirement
-	- User Criteria
-	- Validations(Client vs Server)
-6. State vs Behavior . Examples
-
-
-VIII. Loops:
-============
-1. Importance of Loops
-2. while loop. Explain in detail with different use cases 
-3. for loop. Explain in detail with different use cases 
-4. while vs for
-5. Give examples while with if else combination 
-6. Give examples for with if else combination
-7. Control statements.Explain and give examples for each keyword 
-    - break 
-    - continue
-    - pass
-8. Implement 5 examples which covers all topics if elif else for while break/continue/pass
-
-Programs:
-----------
-- Between 1 to 100
-    1. Print all numbers  
-    2. Print even numbers
-    3. Print odd numbers 
-    4. Print all prime numbers
-    5. Print numbers with power of 2 (1 2 4 8 16 32 64)
-    6. Print all numbers which are divisible by 5 and 7 
-    7. Print all numbers which are divisible by 4 or 6
-    8. Print first 14 odd numbers 
-    9. Print first 23 even numbers
-   10. Print first 6 numbers which are divisible by 4 and 6 
-   11. Print all numbers except divisible by 9
-   12. Write for loop to explain all data structures.
-   
-IX. Data Structures:
-=====================
-        1. What are CRUD operations.Explain in detail 
-        2. Sequence.Types. Operations on each sequence
-        3. HTTP Request methods for CRUD. Explain in detail 
-     i. Numbers:
-           1. Types of numbers. Explain each use case 
-           2. type conversions
-           3. Explain different operations of boolean type
-    ii. String:
-           1. Explain about string. 
-           2. Multi line string 
-           3. String is Immutable.Explain in detail 
-           4. CRUD Operations on String
-           5. Sequence operations on String
-           6. Memory allocation of String 
-           7. Explain 10 important functions of String
-
-
-           3. String is Immutable.Explain in detail 
-           4. CRUD Operations on String
-           5. Sequence operations on String
-           6. Memory allocation of String 
-           7. Explain 10 important functions of String
-
+It's important to note that Python's garbage collection mechanism works transparently for the most part, and you generally don't need to manually manage memory. However, understanding how it works can help you write more memory-efficient code and avoid potential issues with circular references.
