@@ -148,9 +148,132 @@ To summarize, when defining `except` blocks, order them from the most specific e
 
 ## 6. Multiple ways of writing except blocks
 
+In Python, you can write `except` blocks in multiple ways to handle exceptions effectively. Here are some ways to write `except` blocks:
 
+1. **Single Exception:**
+   The most basic way to write an `except` block is to catch a single specific exception type. This is useful when you know exactly which exception you want to handle.
+
+   ```python
+   try:
+       # Code that might raise an exception
+   except SomeException:
+       # Handling code for SomeException
+   ```
+
+2. **Multiple Exceptions:**
+   You can catch multiple exceptions in a single `except` block by using parentheses and specifying multiple exception types. This is useful when you want to handle a group of related exceptions in the same way.
+
+   ```python
+   try:
+       # Code that might raise an exception
+   except (ExceptionType1, ExceptionType2):
+       # Handling code for ExceptionType1 or ExceptionType2
+   ```
+
+3. **Individual Except Blocks:**
+   You can also write individual `except` blocks for each exception type. This gives you more control over how each exception is handled.
+
+   ```python
+   try:
+       # Code that might raise an exception
+   except ExceptionType1:
+       # Handling code for ExceptionType1
+   except ExceptionType2:
+       # Handling code for ExceptionType2
+   ```
+
+4. **Using `as` Keyword:**
+   You can use the `as` keyword to assign the caught exception to a variable. This is useful when you need to access exception details.
+
+   ```python
+   try:
+       # Code that might raise an exception
+   except ExceptionType as e:
+       # Handling code using 'e'
+   ```
+
+5. **Handling All Exceptions:**
+   You can use a bare `except` block to catch all exceptions. However, this approach is generally not recommended because it makes it harder to identify and debug issues.
+
+   ```python
+   try:
+       # Code that might raise an exception
+   except:
+       # Handling code for all exceptions
+   ```
+
+6. **Handling Multiple Exceptions with Different Blocks:**
+   You can use a combination of the above methods to handle different exceptions in distinct ways.
+
+   ```python
+   try:
+       # Code that might raise an exception
+   except SpecificException:
+       # Handling code for SpecificException
+   except AnotherSpecificException as e:
+       # Handling code for AnotherSpecificException using 'e'
+   except:
+       # Handling code for all other exceptions
+   ```
+
+When writing `except` blocks, it's important to consider the order in which you define them to ensure that the most specific exceptions are caught before more general ones. This helps ensure proper exception handling and maintain code readability.
 
 ## 7. How to create and raise custom exception
+
+Creating and raising custom exceptions in Python allows you to define your own exception classes to handle specific situations in your code. Here's how you can create and raise custom exceptions:
+
+1. **Create a Custom Exception Class:**
+   To create a custom exception, define a new class that inherits from the built-in `Exception` class or one of its subclasses. You can add custom attributes and methods to your exception class as needed.
+
+   ```python
+   class CustomError(Exception):
+       def __init__(self, message):
+           self.message = message
+           super().__init__(self.message)
+   ```
+
+2. **Raise the Custom Exception:**
+   To raise your custom exception, use the `raise` statement followed by an instance of your custom exception class. You can pass an error message to the constructor of the exception class.
+
+   ```python
+   def some_function(value):
+       if value < 0:
+           raise CustomError("Value cannot be negative")
+       return value
+   ```
+
+3. **Handling Custom Exceptions:**
+   You can catch and handle your custom exceptions using regular `try` and `except` blocks.
+
+   ```python
+   try:
+       result = some_function(-5)
+   except CustomError as ce:
+       print(f"Custom error: {ce.message}")
+   ```
+
+Here's a complete example:
+
+```python
+class CustomError(Exception):
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)
+
+def some_function(value):
+    if value < 0:
+        raise CustomError("Value cannot be negative")
+    return value
+
+try:
+    result = some_function(-5)
+except CustomError as ce:
+    print(f"Custom error: {ce.message}")
+else:
+    print("No custom error occurred")
+```
+
+Custom exceptions are especially useful when you want to create specific error handling scenarios in your code that are not covered by built-in exceptions. They provide more meaningful error messages and allow you to encapsulate your application's specific error conditions.
 
 ## 8. Exception class hierarchy:
 
