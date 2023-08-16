@@ -81,9 +81,9 @@ In Python, a multi-line string is a string that spans across multiple lines and 
    - Multi-line strings can include explicit line breaks and newline characters (`\n`) to insert line breaks within the text.
    - Example:
      ```python
-     address = '''John Doe
-     123 Main Street
-     City, State
+     address = '''Samuel DS,
+     Whitefield,
+     Bangalore.
      '''
      ```
 
@@ -120,14 +120,14 @@ In Python, a string is an immutable data type, which means that once a string ob
 
 2. Creating a String:
    - When you create a string, you assign a sequence of characters to a variable using quotes (`' '` or `" "`).
-   - Example: `name = "John"`
+   - Example: `name = "Sam"`
 
 3. Changing a String:
    - Because strings are immutable, you cannot directly change or modify the characters in an existing string.
    - If you try to modify a string using indexing or assignment, you will encounter an error.
    - Example:
      ```python
-     name = "John"
+     name = "Sam"
      name[0] = 'D'  # Error: 'str' object does not support item assignment
      ```
 
@@ -135,8 +135,8 @@ In Python, a string is an immutable data type, which means that once a string ob
    - Although you can't modify a string in-place, you can create a new string by concatenating or combining existing strings.
    - Example:
      ```python
-     name = "John"
-     new_name = "D" + name[1:]  # Creates a new string "Don"
+     name = "Sam"
+     new_name = "D" + name[1:]  # Creates a new string "Dam"
      ```
 
 5. Immutability Benefits:
@@ -173,15 +173,15 @@ In the context of programming, CRUD stands for Create, Read, Update, and Delete.
 
 1. Create (C):
    - Creating a string is as simple as assigning a value to a variable using quotes (`' '` or `" "`).
-   - Example: `name = "John"`
+   - Example: `name = "Sam"`
 
 2. Read (R):
    - Reading a string involves accessing its characters or sub-strings using indexing or slicing.
    - Example:
      ```python
-     name = "John"
-     print(name[0])  # Output: "J"
-     print(name[1:])  # Output: "ohn"
+     name = "Sam"
+     print(name[0])  # Output: "S"
+     print(name[1:])  # Output: "am"
      ```
 
 3. Update (U):
@@ -189,8 +189,8 @@ In the context of programming, CRUD stands for Create, Read, Update, and Delete.
    - However, you can create a new string by concatenating or combining parts of the original string with the desired modifications.
    - Example:
      ```python
-     name = "John"
-     new_name = "D" + name[1:]  # Creates a new string "Don"
+     name = "Sam"
+     new_name = "D" + name[1:]  # Creates a new string "Dam"
      ```
 
 4. Delete (D):
@@ -198,7 +198,7 @@ In the context of programming, CRUD stands for Create, Read, Update, and Delete.
    - However, you can remove the reference to the string variable, allowing the garbage collector to reclaim the memory occupied by the string object.
    - Example:
      ```python
-     name = "John"
+     name = "Sam"
      del name  # Deletes the reference to the string object
      ```
 
