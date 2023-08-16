@@ -61,7 +61,7 @@ Example:
 dict1 = {100: 10,
          200: {1: 1, 2: 2},
          102.3: 29,
-         True: 'Madhu',
+         True: 'Sam',
          'Message': [1, 2, 3, 4, 5],
          (1, 2, 3): (1, 2, 3),      # Tuples are immutables and can be used as key value pairs
          [1, 2, 3]: {1: 1, 2: 2},  # Wrong, List is mutable
