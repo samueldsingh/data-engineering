@@ -305,7 +305,11 @@ In summary, a "class" defines the blueprint for creating objects, while an "obje
 
 **Class Variables:**
 
-A class variable is a variable that belongs to the class as a whole, rather than to instances (objects) of the class. It is shared among all instances of the class. Class variables are defined within the class but outside any instance methods.
+- A class variable (also called static variables) is a variable that belongs to the class as a whole, rather than to instances (objects) of the class. It is shared among all instances of the class.
+- Class variables are defined within the class but outside any instance methods.
+- As they are not bound to any instance of a class, they can be shared among all objects of a class.
+- Modifying a class variables affects all the objects instance at the same time.
+- Class variable can be used when working with shareable data, where we define class method, `cls` as the first parameter and we can access class parameters.
 
 Use Case of Class Variables:
 - **Shared Data:** Class variables are useful when you want to share data among all instances of a class. For example, you can use a class variable to keep track of the number of instances created for that class.
@@ -332,7 +336,12 @@ print(circle2.area())  # Output: 153.93878
 
 **Instance Variables:**
 
-An instance variable is a variable that belongs to a specific instance (object) of a class. Each instance can have its own set of instance variables. Instance variables are usually defined within the constructor (`__init__` method) of the class.
+- An instance variable is a variable that belongs to a specific instance (object) of a class. Instance variables seperate copy is created in every instance (or object).
+- Instance variables are referenced as `instancename.var`. Each instance can have its own set of instance variables. 
+- Instance variables are usually defined within the constructor (`__init__` method) of the class.
+- They are tied to the particular object instance of the class, hence the contents of an instance variable are completely independent from one object instance to the other.
+- If we have to implement behavior uniquely on each object then we can use instance method with `self` as first parameter and after creating object we can call instance method so that object will be passed as argument to self paramter.
+- If we want separate copy for each object, we can use instance variables.
 
 Use Case of Instance Variables:
 - **Object-specific Data:** Instance variables are used to store data that is specific to each instance. For example, if you're modeling different circles with different radii, each circle object should have its own radius as an instance variable.
@@ -380,7 +389,10 @@ In summary, class variables are shared among all instances of a class, instance 
 
 **Class Methods:**
 
-A class method is a method that is bound to the class and not the instance (object) of the class. It takes the class as its first argument (usually named `cls`) instead of the instance. Class methods can be called on the class itself, and they can access class-level variables.
+- A class method is a method that is bound to the class and not the instance (object) of the class. A class method cannot access data from any specific instance or object. It can access any class variable or static method.
+- The class method defines the behavior of the class.
+- It takes the class as its first argument (usually named `cls`) instead of the instance as parameter to know about the state of that class.
+- Class methods can be called on the class itself, and they can access class-level variables.
 
 Use Case of Class Methods:
 1. **Factory Methods:** Class methods are often used to create alternate constructors for the class. These methods can create instances with specific properties without the need to directly call the constructor.
@@ -412,7 +424,10 @@ print(circle2.area())  # Output: 78.53975
 
 **Instance Methods:**
 
-An instance method is a method that operates on an instance (object) of a class. It takes the instance as its first argument (usually named `self`). Instance methods can access instance variables and instance-specific data.
+- An instance method defines the behavior of the object. It operates on an instance variable (object) of a class.
+- It takes the instance as its first argument (usually named `self`). Instance methods can access instance variables and instance-specific data.
+- Instance methods require an object of its class to be created before it can be called.
+- To invoke an instance method, create an object of the class in which the method is defined.
 
 Use Case of Instance Methods:
 1. **Modifying Object State:** Instance methods are used to modify the state (attributes) of an object, providing behavior that operates on the instance's specific data.
@@ -434,6 +449,11 @@ print(circle.area())  # Output: 78.53975
 ```
 
 **Static Methods:**
+
+- The static method does not take any specific parameter.
+- Static Method cannot access or modify the class state.
+- Static methods do not know about class state. These methods are used to do some utility tasks by taking some parameters.
+- To define a static method we use @staticmethod decorator.
 
 A static method is a method that belongs to a class but does not have access to instance-specific data or the class itself as its first argument. It's a method that does not modify the state of the instance or class and does not depend on instance-specific data.
 
@@ -492,6 +512,11 @@ print(circle2.area)    # Output: 153.93878
 In this example, the `__init__` method initializes the `radius` attribute, and based on the `radius`, it calculates and initializes the `area` attribute for each `Circle` object. This ensures that each `Circle` object has its own radius and area, encapsulating this logic within the class.
 
 ## 8. Importance of self
+
+- `self` is a default variable that stores the memory address of the instance of the current class. `self` becomes the first method for the instance and constructor method.
+- `self` is used to represent the instance of the class itself.
+- With `self`, we can access the attribute and the method of the class in python.
+- While calling instance method using object, first object will be passed as argument to the self parameter.
 
 The `self` parameter is a crucial aspect of object-oriented programming (OOP) in Python. It is a convention used to refer to the instance of the class within its own methods. Understanding the importance of the `self` parameter is essential for properly working with instance variables and methods in Python classes. Here are the key reasons why the `self` parameter is important:
 
@@ -939,11 +964,10 @@ In this example, the `animal_sound` function accepts an `Animal` object as a par
 
 These four concepts—encapsulation, abstraction, inheritance, and polymorphism—are fundamental pillars of object-oriented programming, helping developers build modular, organized, and extensible software systems.
 
-### 16. Method overloading vs Method overriding
+## 16. Method overloading vs Method overriding
 
 - Methods in python can be called with zero, one or more parameters.
-- The process of calling the same method in different ways by passing different number of
-arguments is called method overloading.
+- The process of calling the same method in different ways by passing different number of arguments is called method overloading.
 - Two methods will have the same name, but the latest method will hide previous method.
 - In Python, Method Overloading can't be achived directly but if a method with parameters has default arguments then that method can be called in 2 or more ways.
 - Because the latest method will hide the previous method, we can't achieve method overloading directly and hence we should use default arguments inside method signature.
@@ -1007,7 +1031,7 @@ In this example, the `Animal` class defines a generic `make_sound` method. The `
 
 In summary, method overloading is about defining multiple methods with the same name but different parameter lists, which is not directly supported in Python. Method overriding, on the other hand, is about providing a specialized implementation of a method in a subclass, allowing customization of behavior inherited from the superclass.
 
-### 17. Inheritance types
+## 17. Inheritance types
 
 - Inheritance is a fundamental concept in object-oriented programming that allows a new class to inherit properties (attributes and methods) from an existing class.
 - This concept promotes code reuse and allows the creation of more specialized classes based on existing ones.
@@ -1153,7 +1177,7 @@ Note that hybrid inheritance can lead to complex relationships, and careful desi
 
 These are the main types of inheritance in object-oriented programming. Each type has its own use cases and considerations, and understanding the relationship between base and derived classes is crucial for designing effective class hierarchies.
 
-### 18. MRO principle.Explain in detail
+## 18. MRO principle.Explain in detail
 
 MRO (Method Resolution Order) is a principle in object-oriented programming that defines the order in which classes are searched when invoking a method on an object. The MRO principle is crucial for languages that support multiple inheritance, where a class can inherit attributes and methods from more than one parent class. Python is one such language that uses the C3 Linearization algorithm to determine the MRO.
 
@@ -1200,14 +1224,18 @@ Method in class B
 
 This demonstrates how the MRO ensures that the method is resolved in a predictable and consistent manner in the presence of multiple inheritance. Understanding the MRO is essential for designing class hierarchies and resolving method calls correctly in Python.
 
-### 19. Access modifiers in Python
+## 19. Access modifiers in Python
 
-Access modifiers in Python are keywords used to define the visibility and accessibility of class members (attributes and methods) in object-oriented programming. Access modifiers help control the level of encapsulation and protect the internal state of objects. In Python, access modifiers are not enforced as strictly as in some other languages like Java, but they provide a way to indicate the intended level of visibility.
+- The access modifiers in Python are used to modify the default scope of variables. Access modifiers in Python are keywords used to define the visibility and accessibility of class members (attributes and methods) in object-oriented programming.
+- Access modifiers help control the level of encapsulation and protect the internal state of objects. In Python, access modifiers are not enforced as strictly as in some other languages like Java, but they provide a way to indicate the intended level of visibility.
 
 Python has three main access modifiers:
 
 1. **Public (No Modifier):**
    A class member with no access modifier is considered public, which means it can be accessed from anywhere, both within and outside the class.
+
+- The members of a class that are declared public are easily accessible from any part of the program.
+- All data members and member functions of a class are public by default.
 
    ```python
    class MyClass:
@@ -1221,6 +1249,9 @@ Python has three main access modifiers:
 2. **Protected (_ prefix):**
    A class member with a single underscore prefix (e.g., `_variable`) is considered protected. While Python does not enforce strict protection, this naming convention indicates that the variable or method should not be accessed directly from outside the class. It's a common convention among Python programmers.
 
+- The members of a class that are declared protected are only accessible to a class derived from it.
+- Data members of a class are declared protected by adding a single underscore `_` symbol before the data member of that class.
+
    ```python
    class MyClass:
        def __init__(self):
@@ -1230,8 +1261,12 @@ Python has three main access modifiers:
    print(obj._protected_variable)  # Output: 20 (although it's a protected variable, it's accessible)
    ```
 
-3. **Private (__ double underscore prefix):**
+4. **Private (__ double underscore prefix):**
    A class member with a double underscore prefix (e.g., `__variable`) is considered private. This naming convention indicates that the variable or method is intended to be used only within the class and should not be accessed from outside the class.
+
+- The members of a class that are declared private are accessible within the class only.
+- Private access modifier is the most secure access modifier.
+- Data members of a class are declared private by adding a double underscore `__` symbol before the data member of that class. 
 
    ```python
    class MyClass:
@@ -1246,7 +1281,7 @@ Python has three main access modifiers:
 
 Remember that Python's access modifiers are more of a convention than a strict rule. It's a good practice to use public, protected, and private naming conventions to indicate the intended visibility and prevent accidental misuse. Encapsulation and data hiding are essential principles in object-oriented programming, and access modifiers play a role in achieving these goals.
 
-### 20. Multiple Inheritance. Explain in detail
+## 20. Multiple Inheritance. Explain in detail
 
 Multiple inheritance is a feature in object-oriented programming that allows a class to inherit attributes and methods from more than one base class. In other words, a class can have multiple parent classes, and it can inherit the properties of all those parent classes. This concept facilitates code reuse by allowing a single class to combine the features of multiple classes.
 
@@ -1305,9 +1340,12 @@ The `Bat` class is derived from both `Mammal` and `Bird` using multiple inherita
 
 In summary, multiple inheritance allows a class to inherit properties from more than one base class, enhancing code reusability and flexibility. While it brings advantages, it should be used thoughtfully, and developers need to be aware of the complexities it can introduce, such as the diamond problem and the importance of a clear MRO.
 
-### 21. super keyword importance
+## 21. super keyword importance
 
-The `super()` keyword in Python is essential when working with inheritance, especially in cases of method overriding and cooperative multiple inheritance. It allows a subclass to call a method from its parent class. The `super()` keyword is crucial for maintaining the correct method resolution order (MRO) and ensuring that method calls are properly delegated to the appropriate parent class.
+- The `super()` function is used to give access to methods and properties of a parent or sibling class. 
+- The `super()` function returns an object that represents the parent class.
+- The `super()` keyword in Python is essential when working with inheritance, especially in cases of method overriding and cooperative multiple inheritance. It allows a subclass to call a method from its parent class.
+- The `super()` keyword is crucial for maintaining the correct method resolution order (MRO) and ensuring that method calls are properly delegated to the appropriate parent class.
 
 Here are some important use cases and benefits of the `super()` keyword:
 
@@ -1372,7 +1410,7 @@ Here are some important use cases and benefits of the `super()` keyword:
 
 Overall, the `super()` keyword is an essential tool for maintaining a clear and consistent hierarchy in class inheritance, enabling method reuse, and ensuring proper cooperation in multiple inheritance scenarios.
 
-### 22. Calling super class method from sub class
+## 22. Calling super class method from sub class
 
 Calling a superclass method from a subclass can be done using the `super()` keyword. The `super()` function allows you to call a method in the parent class from the context of the subclass. This is useful when you want to extend or modify the behavior of the parent class's method in the subclass while still utilizing the functionality of the parent class's method.
 
@@ -1409,7 +1447,7 @@ Hello from Child
 
 By using `super()`, you ensure that the parent class's method is invoked, allowing you to extend or modify the behavior in the subclass while still benefiting from the functionality provided by the parent class. This promotes code reuse and maintains a clear hierarchy in the class structure.
 
-### 23. Difference between public protected private methods Ex: x() _x() __x()
+## 23. Difference between public protected private methods Ex: x() _x() __x()
 
 In Python, methods and attributes have different levels of visibility and accessibility, denoted by naming conventions. The naming conventions for methods and attributes indicate their visibility to other parts of the code. Here's the difference between public, protected, and private methods:
 
@@ -1465,7 +1503,7 @@ In summary:
 - **Protected methods** have a single leading underscore and are intended for internal use but are still accessible.
 - **Private methods** have a double leading underscore and are intended for use within the class only, and they have name mangling to make them less accessible from outside.
 
-### 24. Importance of dunder functions
+## 24. Importance of dunder functions
 
 Dunder (double underscore) methods, also known as magic methods or special methods, are a crucial feature in Python. These methods are invoked by specific language constructs and are used to define how objects of a class behave in certain situations. Understanding and implementing dunder methods is important for creating custom classes that work seamlessly with Python's built-in functionalities and for defining the behavior of objects in various contexts. Here's why dunder methods are important:
 
@@ -1487,7 +1525,7 @@ Dunder (double underscore) methods, also known as magic methods or special metho
 
 By implementing appropriate dunder methods, you make your custom classes more intuitive, Pythonic, and compatible with existing language constructs and built-in functions. This promotes code readability, reusability, and enhances the overall user experience when working with instances of your classes.
 
-### 25. __str__ vs __repr__
+## 25. __str__ vs __repr__
 
 Both `__str__` and `__repr__` are special methods in Python that deal with providing string representations of objects, but they have distinct purposes and use cases. Let's explore the differences between `__str__` and `__repr__`:
 
@@ -1531,7 +1569,7 @@ In summary:
 
 It's common to implement both `__str__` and `__repr__` methods in your classes to provide meaningful representations for both end-users and developers. If only one of them is implemented, the other may use the default implementation provided by the base `object` class.
 
-### 26. Abstraction, Abstract class. When to use. Explain in detail
+## 26. Abstraction, Abstract class. When to use. Explain in detail
 
 **Abstraction** is a fundamental concept in object-oriented programming that focuses on hiding the complex implementation details while exposing a simplified and high-level interface for users. It allows you to represent real-world objects in a more understandable and manageable way.
 
@@ -1594,7 +1632,7 @@ print(rectangle.area())  # Output: 24
 
 In this example, the `Shape` class is an abstract class with an abstract method `area()`. The `Circle` and `Rectangle` classes are derived from the `Shape` class and provide implementations for the `area()` method. The abstract class `Shape` defines a contract that both `Circle` and `Rectangle` classes must adhere to, ensuring that they both have an `area()` method. This abstraction simplifies the interaction with different shapes by providing a consistent interface.
 
-### 27. Abstract class vs Interface
+## 27. Abstract class vs Interface
 
 Both abstract classes and interfaces are used to achieve abstraction and define a contract that derived classes must follow, but they have some key differences in terms of implementation, usage, and their role in object-oriented design.
 
@@ -1649,7 +1687,21 @@ for shape in shapes:
 
 In this example, the `Drawable` interface defines the contract that classes must implement the `draw()` method. Both the `Circle` and `Square` classes implement the `Drawable` interface by providing their own implementation of the `draw()` method. This allows them to be used interchangeably in a more abstract and unified way.
 
+## 28. Special functions
 
+- `__init__`: The `__init__` function is called every time an object is created from a class. The `__init__` method lets the class initialize the object's attributes and serves no other purpose. It is only used within classes
+
+- `__str__`: The `__str__` method in Python represents the class objects as a string – it can be used for classes. The `__str__` method should be defined in a way that is easy to read and outputs all the members of the class.
+           This method is also used as a debugging tool when the members of a class need to be checked.
+__repr__ : In Python, __repr__ is a special method used to represent a class's objects as a string. __repr__ is called by the repr() built-in function.
+           You can define your own string representation of your class objects using the __repr__ method. 
+           Special methods are a set of predefined methods used to enrich your classes.
+__iter__ : The Python iter() function returns an iterator for the given object. The iter() function creates an object which can be iterated one element at a time.
+           These objects are useful when coupled with loops like for loop, while loop.
+   
+__next__  :The __next__() method must return the next item in the sequence. On reaching the end, and in subsequent calls, it must raise StopIteration
+
+# Extras
 Object-Oriented Programming (OOP) is a programming paradigm that organizes code into objects, each representing a real-world entity or concept. It focuses on structuring code around objects that have data (attributes) and behavior (methods), and these objects interact with each other to perform tasks. OOP provides several key concepts to achieve this organization, including encapsulation, inheritance, polymorphism, and abstraction. Let's dive into each of these concepts in detail:
 
 1. **Class:**
