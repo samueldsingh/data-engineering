@@ -1,5 +1,5 @@
 
-## What are functions?
+## 1. What is a function
 
 In Python, a function is a block of reusable code that performs a specific task or set of tasks. It allows you to group related instructions together 
 and execute them by calling the function name. Functions are a fundamental concept in programming, and they play a crucial role in organizing and 
@@ -80,7 +80,32 @@ What are the advantages of using functions:
 - Achieves Code reusability
 - When enhancements are required, we need "code changes" in only one place
 
-## 2. What is the difference between arguments and parameters in a function
+## 2. Why we need to write functions
+
+
+
+## 3. Define function and explain in detail
+
+
+
+## 4. State vs Behavior
+
+
+
+## 5. Function types
+
+
+
+## 6. Function calling ways
+
+
+
+## 7. How to print function name. Explain how a function will be loaded
+
+
+
+## 8. Parameter vs Argument
+
 In the context of functions, "arguments" and "parameters" are related but distinct concepts. They refer to different things in the function definition 
 and function call:
 
@@ -106,6 +131,36 @@ and function call:
 In summary, parameters are the variables defined in the function declaration, whereas arguments are the actual values or expressions passed to a function 
 during its invocation. Parameters define the expected input structure, while arguments provide the specific data to be processed by the function. 
 It's essential to ensure that the number and order of arguments match the parameters in the function definition to avoid errors.
+
+## 9. Variable vs Value
+
+
+
+## 10. Different ways of calling function
+
+
+
+## 11. Function overloading
+
+
+
+## 12. Ananymous function. Explain in detail
+
+
+
+## 13. Lambda with map filter and reduce functions. Explain in detail with examples
+
+
+
+
+## 14. Function memory allocation
+
+
+
+## 15. Scope of variable. Explain about LEGB rule
+
+
+
 
 ## 3. Give examples of all arithmetic operations using functions
 
