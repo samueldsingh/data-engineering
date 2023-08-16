@@ -55,7 +55,7 @@ It's worth noting that Python's garbage collector is highly optimized and typica
 
 It's important to note that the specific algorithms and techniques used in garbage collection can vary. Some common approaches include reference counting, mark-and-sweep, and generational collection. Each approach has its own trade-offs in terms of efficiency, latency, and memory overhead. The choice of garbage collection algorithm depends on the programming language, runtime environment, and specific requirements of the application.
 
-## 5. Memory Management in Python 
+## 4. Memory Management in Python 
 Memory management in Python is handled automatically by the Python runtime environment through a combination of techniques, including reference counting and garbage collection.
 
 1. Reference Counting: Python uses a reference counting mechanism to keep track of the number of references to an object. Each object in Python has a reference count associated with it, which is incremented when a new reference to the object is created and decremented when a reference is deleted or goes out of scope. When the reference count of an object reaches zero, it means that no more references exist to that object, and the memory occupied by the object can be freed immediately.
@@ -68,7 +68,7 @@ Python's memory management also includes memory allocation and deallocation stra
 
 Overall, Python's memory management is designed to be automatic and transparent to the programmer. Developers can focus on writing code without explicitly managing memory allocation and deallocation, relying on the runtime environment to handle memory management tasks efficiently.
 
-## 6. Dynamically typed programming. Explain examples.
+## 5. Dynamically typed programming. Explain examples.
 
 Dynamically typed programming refers to a programming language feature where variable types are determined at runtime rather than being explicitly declared or defined in the code. In dynamically typed languages, variables can hold values of any type, and their types can be changed during the execution of the program.
 
@@ -135,7 +135,7 @@ In this example, the `print_name` function accepts any object that has a `name` 
 
 These examples highlight the flexibility and versatility of dynamically typed programming languages like Python, where variable types can be determined at runtime, allowing for dynamic behavior and easy expression of complex ideas.
 
-## 7. Initializing variable, static,dynamic way 
+## 6. Initializing variable, static,dynamic way 
 Initializing a variable refers to assigning an initial value to it before it is used in a program. In programming languages, there are generally two ways to initialize variables: statically and dynamically.
 
 1. Static Initialization:
@@ -166,7 +166,7 @@ Dynamic initialization allows for more flexibility in handling varying or user-s
 
 Both static and dynamic initialization have their use cases depending on the requirements of the program. Static initialization is suitable when the initial values are known and fixed at compile-time, while dynamic initialization is useful when the values need to be determined or updated during runtime.
 
-## 8. Assigning value to multiple variables. Explain 
+## 7. Assigning value to multiple variables. Explain 
 
 Assigning values to multiple variables is a common operation in programming. In Python, you can assign values to multiple variables in a single line using multiple assignment or unpacking.
 
