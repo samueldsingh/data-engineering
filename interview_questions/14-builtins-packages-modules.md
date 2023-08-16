@@ -69,8 +69,8 @@ def greet(name):
 # Another script using the custom module
 import my_module
 
-message = my_module.greet("Alice")
-print(message)  # Output: Hello, Alice!
+message = my_module.greet("Sam")
+print(message)  # Output: Hello, Sam!
 ```
 
 In summary, a "file" is a storage entity that holds data, while a "module" is a collection of code elements that can be imported and used in other Python scripts.
@@ -96,8 +96,8 @@ You can use the functions from the module in another Python script:
 ```python
 import my_module
 
-message = my_module.greet("Alice")
-print(message)  # Output: Hello, Alice!
+message = my_module.greet("Sam")
+print(message)  # Output: Hello, Sam!
 ```
 
 **Package:**
@@ -223,7 +223,7 @@ Built-in libraries in Python are modules and packages that are included with the
    ```python
    import json
 
-   data = {'name': 'Alice', 'age': 30}
+   data = {'name': 'Sam', 'age': 26}
    json_string = json.dumps(data)   # Convert dictionary to JSON string
    ```
 
@@ -576,17 +576,17 @@ Example of Serialization and Deserialization using JSON:
 import json
 
 # Data to be serialized
-data = {'name': 'Alice', 'age': 30, 'city': 'New York'}
+data = {'name': 'Sam', 'age': 26, 'city': 'Bangalore'}
 
 # Serialization: Convert data to JSON format
 serialized_data = json.dumps(data)
 
-print(serialized_data)  # Output: {"name": "Alice", "age": 30, "city": "New York"}
+print(serialized_data)  # Output: {'name': 'Sam', 'age': 26, 'city': 'Bangalore'}
 
 # Deserialization: Convert JSON data back to Python data structures
 deserialized_data = json.loads(serialized_data)
 
-print(deserialized_data)  # Output: {'name': 'Alice', 'age': 30, 'city': 'New York'}
+print(deserialized_data)  # Output: {'name': 'Sam', 'age': 26, 'city': 'Bangalore'}
 ```
 
 In this example, the `json.dumps()` function serializes the data to a JSON-formatted string, and the `json.loads()` function deserializes the JSON string back into Python data structures.
@@ -619,12 +619,12 @@ from collections import OrderedDict
 
 # Create an ordered dictionary
 person_info = OrderedDict()
-person_info['name'] = 'Alice'
-person_info['age'] = 30
-person_info['city'] = 'New York'
+person_info['name'] = 'Sam'
+person_info['age'] = 26
+person_info['city'] = 'Bangalore'
 
 print(person_info)
-# Output: OrderedDict([('name', 'Alice'), ('age', 30), ('city', 'New York')])
+# Output: OrderedDict([('name', 'Sam'), ('age', 26), ('city', 'Bangalore')])
 ```
 
 3. `namedtuple`:
