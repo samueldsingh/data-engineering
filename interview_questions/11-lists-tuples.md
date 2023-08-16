@@ -579,8 +579,6 @@ The space complexity of lists and tuples in Python differs based on their charac
 
 In general, tuples tend to have slightly lower space complexity than lists due to their immutability and lack of dynamic resizing overhead. However, the difference in space complexity between lists and tuples is typically negligible unless dealing with a very large number of elements.
 
-In summary, the choice between lists and tuples should be based on whether you need mutability (use lists) or immutability (use tuples). The time and space complexity differences are relatively minor and should not be a primary factor in making this decision.
-
 
 *3. Mutability:*
 The main difference between a list and a tuple is mutability. A list is mutable, which means its elements can be modified after creation. On the other hand, a tuple is immutable, which means its elements cannot be modified once the tuple is created. In other words, you can add, remove, or change elements in a list, but you cannot do so in a tuple.
@@ -598,4 +596,53 @@ Tuples are generally more lightweight and faster than lists in terms of performa
 *7. Use as Dictionary Keys:*
 Tuples can be used as keys in dictionaries, whereas lists cannot. Since tuples are immutable, they provide a reliable and hashable representation for dictionary keys. This allows tuples to be used in scenarios where you need an unchangeable, unique identifier for dictionary entries.
 
+*8. Size difference:*
+
+Since tuples are immutable, Python allocates bigger chunks of memory with minimal overhead. Python, on the contrary, allots smaller memory chunks for lists. The tuple would therefore have less memory than the list. If we have a huge number of items, this makes tuples a little more memory-efficient than lists.
+
+For example, consider creating a list and a tuple with the identical items and comparing their sizes:
+
+```
+# Code to show the difference in the size of a list and a tuple  
+  
+#creating a list and a tuple  
+list_ = ["Python", "Lists", "Tuples", "Differences"]  
+tuple_ = ("Python", "Lists", "Tuples", "Differences")  
+# printing sizes   
+print("Size of tuple: ", tuple_.__sizeof__())  
+print("Size of list: ", list_.__sizeof__())  
+```
+
+The output is:
+```
+Size of tuple:  28
+Size of list:  52
+```
+
+*9.Available Functions*
+
+Tuples have fewer built-in functions than lists. We may leverage the in-built function `dir([object])` to access all the corresponding methods for the list and tuple.
+
+Example:
+```
+# printing directory of list  
+print("List Directory:", dir(list))
+print("Tuple Directory:", dir(tuple))
+```
+
+The output is:
+
+```
+List Directory: ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+
+No. of methods: 46
+
+Tuple Directory: ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'count', 'index'] 
+
+No. of methods: 33
+```
+
 It's important to note that the choice between using a list or a tuple depends on the specific requirements of your program. If you need mutability and dynamic modifications, a list is the appropriate choice. If you need immutability and a collection of constant elements, a tuple is a better fit.
+
+
+In summary, the choice between lists and tuples should be based on whether you need mutability (use lists) or immutability (use tuples). The time and space complexity differences are relatively minor and should not be a primary factor in making this decision.
