@@ -590,3 +590,82 @@ print(deserialized_data)  # Output: {'name': 'Alice', 'age': 30, 'city': 'New Yo
 ```
 
 In this example, the `json.dumps()` function serializes the data to a JSON-formatted string, and the `json.loads()` function deserializes the JSON string back into Python data structures.
+
+## 15. Collections, modules, classes, properties
+
+1. `defaultdict`:
+A `defaultdict` is a subclass of the built-in `dict` class. It provides a default value for the keys that are not present in the dictionary.
+
+```python
+from collections import defaultdict
+
+# Create a defaultdict with int as default factory
+word_count = defaultdict(int)
+
+# Count the occurrences of words in a sentence
+sentence = "This is a sample sentence for demonstration purposes"
+for word in sentence.split():
+    word_count[word] += 1
+
+print(word_count)
+# Output: defaultdict(<class 'int'>, {'This': 1, 'is': 1, 'a': 1, 'sample': 1, 'sentence': 1, 'for': 1, 'demonstration': 1, 'purposes': 1})
+```
+
+2. `OrderedDict`:
+An `OrderedDict` is a dictionary subclass that maintains the order of elements based on the insertion order.
+
+```python
+from collections import OrderedDict
+
+# Create an ordered dictionary
+person_info = OrderedDict()
+person_info['name'] = 'Alice'
+person_info['age'] = 30
+person_info['city'] = 'New York'
+
+print(person_info)
+# Output: OrderedDict([('name', 'Alice'), ('age', 30), ('city', 'New York')])
+```
+
+3. `namedtuple`:
+A `namedtuple` is a subclass of a tuple that allows you to give names to each position in the tuple, making it more readable.
+
+```python
+from collections import namedtuple
+
+# Create a named tuple
+Point = namedtuple('Point', ['x', 'y'])
+p = Point(3, 5)
+
+print(p.x)  # Output: 3
+print(p.y)  # Output: 5
+```
+
+4. `frozenset`:
+A `frozenset` is an immutable version of a set. It is useful when you want to create a set that can be used as a dictionary key or an element of another set.
+
+```python
+# Create a frozenset
+fruits = frozenset(["apple", "banana", "orange"])
+
+# Use frozenset in a dictionary
+fruit_dict = {fruits: "fruit set"}
+print(fruit_dict)
+# Output: {frozenset({'orange', 'banana', 'apple'}): 'fruit set'}
+```
+
+5. `Counter`:
+A `Counter` is a dictionary subclass that counts the occurrences of elements in an iterable.
+
+```python
+from collections import Counter
+
+# Create a Counter
+colors = ["red", "blue", "green", "red", "blue", "red", "yellow"]
+color_counter = Counter(colors)
+
+print(color_counter)
+# Output: Counter({'red': 3, 'blue': 2, 'green': 1, 'yellow': 1})
+```
+
+These data structures from the `collections` module provide additional functionality beyond the standard built-in data structures in Python.
