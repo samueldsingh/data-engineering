@@ -511,8 +511,37 @@ print(tuple3)  # ([1, 2, 3, 5], 'abc')
 ```
 
 In the above example, the shallow copy tuple2 and the original tuple tuple1 share the same list object, so modifying the list in tuple2 also affects tuple1. However, the deep copy tuple3 is completely independent, so modifying its list doesn't affect the original tuple.
-          
-## 9. list vs tuple
+
+## 9. range vs xrange
+In Python 2, `range()` and `xrange()` are both used to generate sequences of numbers, but there is a key difference between them in terms of memory usage and efficiency. 
+
+1. `range()`: The `range()` function generates a list of numbers and stores the entire list in memory. This can be memory-intensive when dealing with large ranges.
+
+Example:
+```python
+numbers = range(1, 11)  # Generates a list of numbers from 1 to 10
+print(numbers)
+```
+
+2. `xrange()`: The `xrange()` function, on the other hand, generates numbers on the fly as you iterate through them. It doesn't store the entire sequence in memory, making it more memory-efficient, especially for large ranges.
+
+Example:
+```python
+numbers = xrange(1, 11)  # Generates a sequence of numbers from 1 to 10
+print(numbers)
+```
+
+In Python 3, `xrange()` has been removed, and the behavior of `range()` is similar to the memory-efficient behavior of `xrange()` in Python 2. So, you can simply use `range()` in Python 3 without worrying about memory efficiency.
+
+For example:
+```python
+numbers = range(1, 11)  # Generates a sequence of numbers from 1 to 10
+print(numbers)
+```
+
+In conclusion, if you're using Python 2, you can consider using `xrange()` for memory efficiency with large ranges. In Python 3, simply use `range()` for similar memory-efficient behavior.
+
+## 10. list vs tuple
 
 Lists and tuples are both sequence data types in Python, but they have some technical differences:
 
