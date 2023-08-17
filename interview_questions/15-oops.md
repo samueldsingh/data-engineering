@@ -30,11 +30,11 @@ class Person:
         self.age = age
 
 # Creating objects (instances) of the Person class
-person1 = Person("Alice", 30)
-person2 = Person("Bob", 25)
+person1 = Person("Sam", 26)
+person2 = Person("Ben", 25)
 
 # Accessing object attributes
-print(person1.name)  # Output: Alice
+print(person1.name)  # Output: Sam
 print(person2.age)   # Output: 25
 ```
 
@@ -64,12 +64,12 @@ class Person:
         return self.age
 
 # Creating an object of the Person class
-person = Person("Alice", 30)
+person = Person("Sam", 26)
 
 # Accessing and updating attributes using methods
-print(person.get_name())  # Output: Alice
-person.set_age(32)
-print(person.get_age())   # Output: 32
+print(person.get_name())  # Output: Sam
+person.set_age(22)
+print(person.get_age())   # Output: 22
 ```
 
 Encapsulation hides the internal details and state of an object from the outside, providing a controlled and consistent way to interact with the object's behavior.
@@ -97,11 +97,11 @@ class Student(Person):
         self.student_id = student_id
 
 # Create an object of the Student class
-student = Student("Eve", 20, "ST123")
+student = Student("Sam", 26, "123")
 
 # Access attributes from the parent class
-print(student.get_name())  # Output: Eve
-print(student.student_id)  # Output: ST123
+print(student.get_name())  # Output: Sam
+print(student.student_id)  # Output: 123
 ```
 
 Inheritance allows a new class (derived or subclass) to inherit properties and behavior from an existing class (base or superclass), promoting code reuse, extensibility and hierarchical organization.
@@ -140,12 +140,12 @@ def introduce(entity):
     print("Hello, my name is", entity.get_name())
 
 # Create objects of the classes
-person = Person("Alice", 30)
-student = Student("Eve", 20, "ST123")
+person = Person("Sam", 26)
+student = Student("Ben", 20, "123")
 
 # Use the introduce function with different objects
-introduce(person)   # Output: Hello, my name is Alice
-introduce(student)  # Output: Hello, my name is Eve
+introduce(person)   # Output: Hello, my name is Sam
+introduce(student)  # Output: Hello, my name is Ben
 ```
 
 In this example, the `introduce` function accepts objects of both the "Person" and "Student" classes, demonstrating polymorphism.
@@ -291,12 +291,12 @@ class Person:
 5. **Example:**
 ```python
 # Creating objects from the Person class
-person1 = Person("Alice", 30)
-person2 = Person("Bob", 25)
+person1 = Person("Sam", 26)
+person2 = Person("Ben", 25)
 
 # Accessing object attributes and methods
-print(person1.name)         # Output: Alice
-person2.introduce()         # Output: Hello, my name is Bob
+print(person1.name)         # Output: Sam
+person2.introduce()         # Output: Hello, my name is Ben
 ```
 
 In summary, a "class" defines the blueprint for creating objects, while an "object" is a specific instance of that class with its own data (attributes) and behavior (methods). Classes allow you to define the structure and behavior, while objects allow you to work with actual instances based on that definition.
@@ -543,10 +543,10 @@ class Person:
         return f"My name is {self.name} and I'm {self.age} years old."
 
 # Creating a Person object
-person = Person("Alice", 30)
+person = Person("Sam", 26)
 
 # Accessing instance attributes using self
-print(person.introduce())  # Output: My name is Alice and I'm 30 years old.
+print(person.introduce())  # Output: My name is Sam and I'm 26 years old.
 ```
 
 In this example, the `self` parameter is used to access the `name` and `age` instance attributes within the `introduce` method. This allows the method to provide a personalized introduction based on the instance-specific data. The `self` parameter is essential for maintaining the connection between the object and its attributes/methods, enabling proper encapsulation and isolation of data.
@@ -625,13 +625,13 @@ class Person:
         self.age = age
 
 # Creating objects using the constructor
-person1 = Person("Alice", 30)
-person2 = Person("Bob", 25)
+person1 = Person("Sam", 30)
+person2 = Person("Ben", 25)
 
 # Accessing instance variables
-print(person1.name)  # Output: Alice
+print(person1.name)  # Output: Sam
 print(person1.age)   # Output: 30
-print(person2.name)  # Output: Bob
+print(person2.name)  # Output: Ben
 print(person2.age)   # Output: 25
 ```
 
@@ -666,12 +666,12 @@ class Person:
         print("Constructor called")
 
 # Creating objects using the constructor
-person1 = Person("Alice", 30)
-person2 = Person("Bob", 25)
+person1 = Person("Sam", 30)
+person2 = Person("Ben", 25)
 
 # Accessing instance variables
-print(person1.name)  # Output: Alice
-print(person2.name)  # Output: Bob
+print(person1.name)  # Output: Sam
+print(person2.name)  # Output: Ben
 ```
 
 In this example, the constructor (`__init__`) initializes the `name` and `age` attributes of each `Person` object with values provided during object creation. The constructor is called automatically when objects are created, and it ensures that the objects start with the specified initial state.
@@ -714,9 +714,9 @@ class Person:
 person1 = Person("Alice", 30)
 person2 = Person("Bob", 25)
 
-print(person1.name)  # Output: Alice
+print(person1.name)  # Output: Sam
 print(person1.age)   # Output: 30
-print(person2.name)  # Output: Bob
+print(person2.name)  # Output: Ben
 print(person2.age)   # Output: 25
 ```
 
@@ -756,8 +756,8 @@ person1 = Person("Alice", 30)
 person2 = Person("Bob")
 person3 = Person()
 
-print(person1.name, person1.age)  # Output: Alice 30
-print(person2.name, person2.age)  # Output: Bob 0
+print(person1.name, person1.age)  # Output: Sam 30
+print(person2.name, person2.age)  # Output: Ben 0
 print(person3.name, person3.age)  # Output: Unknown 0
 ```
 
@@ -806,8 +806,8 @@ class Person:
         self.age = age
 
 # Using the __init__ method
-person = Person("Alice", 30)
-print(person.name, person.age)  # Output: "Alice", 30
+person = Person("Sam", 30)
+print(person.name, person.age)  # Output: "Sam", 30
 ```
 
 In summary, `__new__` is responsible for creating the object, while `__init__` is responsible for initializing its attributes. You rarely need to override `__new__` unless you have specific requirements related to object creation. On the other hand, `__init__` is a common method used to set up the initial state of objects.
@@ -1734,11 +1734,11 @@ class Person:
         self.age = age
 
 # Creating objects of the Person class
-person1 = Person("Alice", 30)
-person2 = Person("Bob", 25)
+person1 = Person("Sam", 30)
+person2 = Person("Ben", 25)
 
-print(person1.name, person1.age)  # Output: Alice 30
-print(person2.name, person2.age)  # Output: Bob 25
+print(person1.name, person1.age)  # Output: Sam 30
+print(person2.name, person2.age)  # Output: Ben 25
 ```
 
 In this example, the `__init__` method initializes the `name` and `age` attributes of each `Person` object with the values provided during object creation.
