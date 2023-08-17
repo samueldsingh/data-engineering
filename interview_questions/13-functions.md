@@ -1261,7 +1261,7 @@ Square of value: 49
 ```
 
 
-## 27. Parameterized functions
+## 23. Parameterized functions
 Parameterized functions are functions that accept input (arguments) when they are called. The arguments provide data to the function allowing it to perform
 specific actions or calculations based on the provided values. Parameterized functions make code more flexible and reusable by allowing the same function to be used with different input values.
 
