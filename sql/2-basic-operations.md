@@ -23,8 +23,10 @@ DDL commands are used to define and manage the structure of the database. They a
 Common DDL commands include:
 - `CREATE`: Used to create database objects like tables, views, indexes, etc.
 - `ALTER`: Used to modify the structure of existing database objects.
-- `DROP`: Used to delete database objects from the database.
-- `TRUNCATE`: Used to remove all data from a table (similar to `DELETE`, but faster).
+- `DROP`: Used to remove the whole database or table indexes, data, and more
+- `TRUNCATE`: Used to remove all rows from a table (similar to `DELETE`, but faster).
+
+
 
 ### 1. CREATE
 
