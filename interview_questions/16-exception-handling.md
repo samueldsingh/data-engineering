@@ -57,6 +57,63 @@ In summary, errors encompass a wide range of issues, while exceptions specifical
 
 ## 3. Different exception classes used in your project
 
+In Python, exceptions are represented as classes. Here are some of the commonly used built-in exception classes:
+
+1. **BaseException**: The base class for all built-in exceptions. It provides common methods like `__str__()` to display exception information.
+
+2. **Exception**: The base class for all non-system-exiting exceptions. It's commonly used to catch general exceptions.
+
+3. **ArithmeticError**: The base class for arithmetic exceptions.
+
+4. **ZeroDivisionError**: Raised when dividing by zero.
+
+5. **AssertionError**: Raised when an `assert` statement fails.
+
+6. **TypeError**: Raised when an operation or function is applied to an object of inappropriate type.
+
+7. **ValueError**: Raised when an operation or function receives an argument of correct type but with an inappropriate value.
+
+8. **IndexError**: Raised when trying to access an index that is out of range.
+
+9. **KeyError**: Raised when a dictionary is accessed with a key that doesn't exist.
+
+10. **NameError**: Raised when a local or global name is not found.
+
+11. **FileNotFoundError**: Raised when trying to open a file that does not exist.
+
+12. **IOError**: Raised when an I/O operation (e.g., reading/writing a file) fails.
+
+13. **ImportError**: Raised when an import statement fails.
+
+14. **IndentationError**: Base class for syntax errors related to incorrect indentation.
+
+15. **SyntaxError**: Raised when there is a syntax error in the code.
+
+16. **RuntimeError**: Raised when an error does not fall under any specific category.
+
+17. **KeyError**: Raised when a key is not found in a dictionary.
+
+18. **ValueError**: Raised when a function receives an argument of the correct type but with an invalid value.
+
+19. **TypeError**: Raised when an operation or function is applied to an object of inappropriate type.
+
+20. **StopIteration**: Raised by an iterator's `__next__()` method to signal that there are no further items.
+
+21. **SystemExit**: Raised when the interpreter is asked to exit.
+
+22. **KeyboardInterrupt**: Raised when the user interrupts the program (usually with `Ctrl+C`).
+
+23. **MemoryError**: Raised when an operation runs out of memory.
+
+24. **OverflowError**: Raised when an arithmetic operation exceeds the limits of its data type.
+
+25. **RecursionError**: Raised when the maximum recursion depth is exceeded.
+
+26. **NotImplementedError**: Raised when an abstract method that needs to be overridden in a subclass is not implemented.
+
+27. **FileExistsError**: Raised when trying to create a file or directory that already exists.
+
+These are just a few examples of the built-in exception classes in Python. Custom exceptions can also be created by subclassing the `Exception` class or any of its subclasses. Handling exceptions and using the appropriate exception classes helps make your code more robust and reliable.
 
 ## 4. try vs except vs else vs finally. Explain in detail
 
