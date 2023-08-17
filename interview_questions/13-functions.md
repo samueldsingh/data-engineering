@@ -653,7 +653,73 @@ In summary, Python's memory management system, including the use of the call sta
 
 ## 15. Scope of variable. Explain about LEGB rule
 
+The LEGB rule is an acronym that stands for Local, Enclosing, Global, and Built-in. It describes the order in which Python searches for variables in different scopes. Here's an explanation of each scope:
 
+1. Local (L) Scope:
+   - Variables defined within a function have local scope.
+   - They are only accessible within the function where they are defined.
+   - Example:
+
+     ```python
+     def my_function():
+         local_variable = 10
+         print(local_variable)
+
+     my_function()  # Output: 10
+     # Trying to access local_variable here would result in an error
+     ```
+
+2. Enclosing (E) Scope:
+   - This scope applies to nested functions, where each nested function has access to its own local variables and variables from outer functions.
+   - Example:
+
+     ```python
+     def outer_function():
+         outer_variable = 10
+
+         def inner_function():
+             print(outer_variable)
+
+         inner_function()  # Output: 10
+
+     outer_function()
+     ```
+
+     In this example, the inner function `inner_function()` has access to the `outer_variable` defined in the outer function `outer_function()`.
+
+3. Global (G) Scope:
+   - Variables defined at the top-level of a module or declared as global inside a function have global scope.
+   - They are accessible from anywhere within the module.
+   - Example:
+
+     ```python
+     global_variable = 10
+
+     def my_function():
+         print(global_variable)
+
+     my_function()  # Output: 10
+     ```
+
+     In this example, `global_variable` is defined outside of any function, making it accessible within the `my_function()`.
+
+4. Built-in (B) Scope:
+   - This scope includes the built-in functions and modules available in Python by default, such as `print()`, `len()`, and `range()`.
+   - These functions are globally accessible without the need for an import statement.
+   - Example:
+
+     ```python
+     def my_function():
+         print(len("Hello"))
+
+     my_function()  # Output: 5
+     ```
+
+     In this example, `len()` is a built-in function that can be used directly without importing any module.
+
+Python follows the LEGB rule to resolve variable names. When a variable is referenced, Python searches for it in the local scope first, then in any enclosing scopes, followed by the global scope, and finally in the built-in scope.
+
+If a variable is found in the local scope, that value is used. If not found, Python moves to the next scope until the variable is found or if it reaches the built-in scope. If the variable is not found anywhere, a `NameError` will be raised.
 
 
 ## 16. Give examples of all arithmetic operations using functions
@@ -1194,75 +1260,6 @@ Enter value: 7
 Square of value: 49
 ```
 
-## 25. Explain the scope of variable using LEGB rule
-
-The LEGB rule is an acronym that stands for Local, Enclosing, Global, and Built-in. It describes the order in which Python searches for variables in different scopes. Here's an explanation of each scope:
-
-1. Local (L) Scope:
-   - Variables defined within a function have local scope.
-   - They are only accessible within the function where they are defined.
-   - Example:
-
-     ```python
-     def my_function():
-         local_variable = 10
-         print(local_variable)
-
-     my_function()  # Output: 10
-     # Trying to access local_variable here would result in an error
-     ```
-
-2. Enclosing (E) Scope:
-   - This scope applies to nested functions, where each nested function has access to its own local variables and variables from outer functions.
-   - Example:
-
-     ```python
-     def outer_function():
-         outer_variable = 10
-
-         def inner_function():
-             print(outer_variable)
-
-         inner_function()  # Output: 10
-
-     outer_function()
-     ```
-
-     In this example, the inner function `inner_function()` has access to the `outer_variable` defined in the outer function `outer_function()`.
-
-3. Global (G) Scope:
-   - Variables defined at the top-level of a module or declared as global inside a function have global scope.
-   - They are accessible from anywhere within the module.
-   - Example:
-
-     ```python
-     global_variable = 10
-
-     def my_function():
-         print(global_variable)
-
-     my_function()  # Output: 10
-     ```
-
-     In this example, `global_variable` is defined outside of any function, making it accessible within the `my_function()`.
-
-4. Built-in (B) Scope:
-   - This scope includes the built-in functions and modules available in Python by default, such as `print()`, `len()`, and `range()`.
-   - These functions are globally accessible without the need for an import statement.
-   - Example:
-
-     ```python
-     def my_function():
-         print(len("Hello"))
-
-     my_function()  # Output: 5
-     ```
-
-     In this example, `len()` is a built-in function that can be used directly without importing any module.
-
-Python follows the LEGB rule to resolve variable names. When a variable is referenced, Python searches for it in the local scope first, then in any enclosing scopes, followed by the global scope, and finally in the built-in scope.
-
-If a variable is found in the local scope, that value is used. If not found, Python moves to the next scope until the variable is found or if it reaches the built-in scope. If the variable is not found anywhere, a `NameError` will be raised.
 
 ## 27. Parameterized functions
 Parameterized functions are functions that accept input (arguments) when they are called. The arguments provide data to the function allowing it to perform
@@ -1274,8 +1271,8 @@ def greet(name):
     print("Hello,", name)
 
 # Calling the greet function with different arguments
-greet("Alice")  # Output: Hello, Alice
-greet("Bob")    # Output: Hello, Bob
+greet("Sam")  # Output: Hello, Sam
+greet("Ben")    # Output: Hello, Ben
 ```
 
 When defining the function, the parameter `name` is passed to the function `greet`. When the function name is called, an argument is provided for the parameter
@@ -1294,7 +1291,7 @@ In programming, parameterized functions can have different types of parameters b
 def greet(name, age):
     return "Hello, " + name + ", you are " + str(age) + " years old."
 
-message = greet("Alice", 30)  # Positional parameters
+message = greet("Sam", 30)  # Positional parameters
 print(message)
 ```
 
@@ -1349,10 +1346,10 @@ print(employee1)
 You can use the `*` operator to unpack a list or tuple and pass its elements as separate positional arguments to a function. Similarly, you can use the `**` operator to unpack a dictionary and pass its key-value pairs as keyword arguments.
 
 ```
-data = ["Alice", 30]
+data = ["Sam", 30]
 greet(*data)  # Unpacking list
 
-data_dict = {"name": "Bob", "age": 25}
+data_dict = {"name": "Sam", "age": 25}
 greet(**data_dict)  # Unpacking dictionary
 ```
 
