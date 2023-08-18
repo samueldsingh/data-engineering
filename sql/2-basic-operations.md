@@ -1143,9 +1143,9 @@ These examples demonstrate how to use `CREATE TABLE AS SELECT` and `INSERT INTO 
 
 The Joins Available in MYSQL are,
 
-- INNER JOIN -  
-- CROSS JOIN - 
-- INNER STRAIGHT_JOIN - 
+- INNER JOIN: Returns only the rows where there is a match in both tables.
+- CROSS JOIN: Returns the Cartesian product of both tables.
+- INNER STRAIGHT_JOIN: 
 - CROSS STRAIGHT_JOIN - 
 - LEFT JOIN - 
 - RIGHT JOIN - 
@@ -1154,7 +1154,108 @@ The Joins Available in MYSQL are,
 - NATURAL JOIN table_factor - 
 - NATURAL INNER LEFT JOIN - 
 - NATURAL INNER RIGHT JOIN - 
-- NATURAL OUTER JOIN - 
+- NATURAL OUTER JOIN -
+
+The various types of joins in SQL:
+
+Assume we have two tables: `orders` and `customers`.
+
+**orders Table:**
+```
+order_id | customer_id | order_date
+1        | 101         | 2023-01-10
+2        | 102         | 2023-02-15
+3        | 101         | 2023-03-20
+```
+
+**customers Table:**
+```
+customer_id | customer_name
+101         | Alice
+102         | Bob
+103         | Carol
+```
+
+- **INNER JOIN:** Returns only the rows where there is a match in both tables.
+```sql
+SELECT orders.order_id, customers.customer_name
+FROM orders
+INNER JOIN customers ON orders.customer_id = customers.customer_id;
+```
+Output:
+```
+order_id | customer_name
+1        | Alice
+2        | Bob
+3        | Alice
+```
+
+- **CROSS JOIN:** Returns the Cartesian product of both tables.
+```sql
+SELECT orders.order_id, customers.customer_name
+FROM orders
+CROSS JOIN customers;
+```
+Output:
+```
+order_id | customer_name
+1        | Alice
+1        | Bob
+1        | Carol
+2        | Alice
+2        | Bob
+2        | Carol
+3        | Alice
+3        | Bob
+3        | Carol
+```
+
+- **LEFT JOIN:** Returns all rows from the left table and matching rows from the right table.
+```sql
+SELECT orders.order_id, customers.customer_name
+FROM orders
+LEFT JOIN customers ON orders.customer_id = customers.customer_id;
+```
+Output:
+```
+order_id | customer_name
+1        | Alice
+2        | Bob
+3        | Alice
+```
+
+- **RIGHT JOIN:** Returns all rows from the right table and matching rows from the left table.
+```sql
+SELECT orders.order_id, customers.customer_name
+FROM orders
+RIGHT JOIN customers ON orders.customer_id = customers.customer_id;
+```
+Output:
+```
+order_id | customer_name
+1        | Alice
+2        | Bob
+NULL     | Carol
+```
+
+- **LEFT OUTER JOIN:** Similar to LEFT JOIN, also includes unmatched rows from the left table.
+- **RIGHT OUTER JOIN:** Similar to RIGHT JOIN, also includes unmatched rows from the right table.
+
+- **NATURAL JOIN:** Matches rows based on columns with the same name in both tables.
+```sql
+SELECT orders.order_id, customers.customer_name
+FROM orders
+NATURAL JOIN customers;
+```
+Output:
+```
+order_id | customer_name
+1        | Alice
+2        | Bob
+3        | Alice
+```
+
+These examples illustrate various join types in SQL and their corresponding outputs. The actual output may vary based on the specific data in your tables.
 
 ### 4 TYPES - INNER,LEFT,RIGHT,CROSS 
 
