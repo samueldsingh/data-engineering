@@ -9,13 +9,15 @@ OLAP (Online Analytical Processing):
 OLAP is a technology used for performing complex analysis on large volumes of data. It focuses on supporting business intelligence and decision-making 
 processes. OLAP databases are designed for efficient querying and analysis of data from multiple dimensions, such as time, geography, product, and 
 customer. These databases are typically optimized for read-intensive operations and provide features like multidimensional data modeling, aggregations, 
-and advanced analytics capabilities. OLAP systems are commonly used for generating reports, performing data mining, and supporting ad-hoc analysis. Examples include Snowflake, Microsoft SQL Server Analysis Services (SSAS), Amazon Redshift, Google BigQuery
+and advanced analytics capabilities. OLAP systems are commonly used for generating reports, performing data mining, and supporting ad-hoc analysis. Examples include Data Warehouse (Snowflake, Amazon Redshift, Google BigQuery), OLAP Cubes (Microsoft SQL Server Analysis Services, Oracle OLAP) and columnar databases 
+(Vertica, Amazon Redshift Spectrum.).
 
 OLTP (Online Transaction Processing):
 OLTP refers to the management of transactional or operational data in real-time. It deals with the day-to-day transactional operations of an organization, 
 such as inserting, updating, and deleting records in a database. OLTP systems are optimized for handling high volumes of small, short-lived transactions. 
 They prioritize data integrity, concurrency control, and transactional consistency. OLTP databases are typically structured using a normalized data model 
 and focus on efficient read and write operations. OLTP systems are commonly used in applications like e-commerce, banking systems, and order processing systems.
+Examples: Relational Database (MySQL, PostgreSQL, Oracle, Microsoft SQL Server). NoSQL Databases (MongoDB (document-based), Cassandra (columnar), and Redis (key-value store)).
 
 In summary, OLAP is geared towards analytical tasks and supports complex querying and analysis, while OLTP is designed for transactional processing, handling 
 real-time transactions efficiently. Both OLAP and OLTP serve different purposes and are used in different scenarios based on the nature of data processing 
