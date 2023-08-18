@@ -5,6 +5,26 @@
 OLAP (Online Analytical Processing) and OLTP (Online Transaction Processing) are two different approaches to data processing in the field of databases. 
 Here's a brief explanation of each:
 
+--------------------------------------------------
+| OLAP |     OLTP      |     
+--------------------------------------------------
+|Used for performing complex analysis on large volumes of data.|   Refers to the management of transactional or operational data in real-time     |   
+--------------------------------------------------
+| It focuses on supporting business intelligence and decision-making 
+processes. |    Deals with the day-to-day transactional operations of an organization, 
+such as inserting, updating, and deleting records in a database.     |   
+--------------------------------------------------
+| Typically optimized for read-intensive operations and provide features like multidimensional data modeling, aggregations, 
+and advanced analytics capabilities.   |  Optimized for handling high volumes of small, short-lived transactions.   |   
+--------------------------------------------------
+| Designed for efficient querying and analysis of data from multiple dimensions, such as time, geography, product, and 
+customer  |   |   
+--------------------------------------------------
+|   |   |   
+--------------------------------------------------
+|   |   |   
+--------------------------------------------------
+
 OLAP (Online Analytical Processing):
 OLAP is a technology used for performing complex analysis on large volumes of data. It focuses on supporting business intelligence and decision-making 
 processes. OLAP databases are designed for efficient querying and analysis of data from multiple dimensions, such as time, geography, product, and 
