@@ -9,7 +9,6 @@ Here's a brief explanation of each:
 | OLAP |     OLTP      |     
 --------------------------------------------------
 |Used for performing complex analysis on large volumes of data.|   Refers to the management of transactional or operational data in real-time     |   
-
 | It focuses on supporting business intelligence and decision-making 
 processes. |    Deals with the day-to-day transactional operations of an organization, 
 such as inserting, updating, and deleting records in a database.     |   
