@@ -754,6 +754,19 @@ CASE
 	WHEN <COLUMN TO BE COMPARED>  = <VALUE> THEN <VALUE TO BE UPDATED>
     END);
 ```
+
+Example:
+```
+UPDATE students
+SET score = (
+    CASE 
+        WHEN student_id = 101 THEN 95
+        WHEN student_id = 102 THEN 80
+        WHEN student_id = 103 THEN 85
+        WHEN student_id = 104 THEN 92
+    END)
+WHERE student_id IN (101, 102, 103, 104);
+```
 		
 **DELETE**
 1. DELETE A ROW: `DELETE FROM <TABLE_NAME> WHERE <CONDITION> or/and <CONDITION>;`
