@@ -57,3 +57,38 @@ In this example, the `employees` table has multiple constraints defined:
 - `UNIQUE` ensures that each `emp_name` is unique across all rows in the table.
 - `FOREIGN KEY` establishes a relationship between the `department` column and the `dept_name` column in the `departments` table.
 - `CHECK` ensures that the `salary` column must have a non-negative value.
+
+
+Creating a table with all the constraints:
+
+Sure! Here's an example of how you can create a table with various constraints in SQL, including PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, DEFAULT, INDEX, AUTO_INCREMENT, and ENUM.
+
+```sql
+CREATE TABLE Orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE NOT NULL,
+    total_amount DECIMAL(10, 2),
+    status ENUM('Pending', 'Shipped', 'Delivered') DEFAULT 'Pending',
+    CONSTRAINT fk_customer FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
+    CONSTRAINT chk_total_amount CHECK (total_amount > 0),
+    INDEX idx_order_date (order_date),
+    UNIQUE (order_id)
+);
+
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    city VARCHAR(50),
+    CONSTRAINT ck_city CHECK (city IN ('New York', 'Los Angeles', 'Chicago')),
+    CONSTRAINT df_name DEFAULT 'Unknown' FOR first_name
+);
+```
+
+In this example:
+- The `Orders` table has a primary key `order_id` with AUTO_INCREMENT, a foreign key `customer_id` referencing the `Customers` table, a NOT NULL constraint on `order_date`, a CHECK constraint on `total_amount`, an ENUM column `status`, an INDEX on `order_date`, and a UNIQUE constraint on `order_id`.
+- The `Customers` table has a primary key `customer_id`, NOT NULL constraints on `first_name` and `last_name`, a UNIQUE constraint on `email`, a CHECK constraint on `city`, and a DEFAULT constraint on `first_name`.
+
+Please note that the specific syntax and supported features may vary depending on the database system you are using (e.g., MySQL, PostgreSQL, SQL Server). Make sure to adjust the data types, constraint names, and other details according to your database system's syntax.
