@@ -149,7 +149,35 @@ In summary, the main differences between `DELETE`, `DROP`, and `TRUNCATE` are in
 
 It's important to choose the appropriate command based on your specific use case and the outcome you intend to achieve.
 
-## 6. Explain DDL, DML, DCL, TCL and DQL.
+## 6. Primary Key, Foreign Key and Integrity Constraints in RDBMS:
+
+In a Relational Database Management System (RDBMS), primary keys, foreign keys, and integrity constraints are essential concepts for maintaining data integrity and ensuring the accuracy and consistency of the database. Here's an explanation of each of these terms:
+
+1. **Primary Key**:
+   - A primary key is a unique identifier for each record in a table. It ensures that each row in the table is uniquely identified and can be used to retrieve and manipulate data.
+   - A primary key constraint enforces the uniqueness and non-nullability of the key column(s).
+   - In most cases, a primary key is composed of one or more columns that uniquely identify a row.
+   - Primary keys are used as reference points for establishing relationships between tables.
+
+2. **Foreign Key**:
+   - A foreign key is a column or set of columns in a table that is used to establish a link between the data in two tables.
+   - The foreign key in one table refers to the primary key in another table, creating a relationship between the two tables.
+   - Foreign key constraints ensure that the values in the foreign key column(s) correspond to values in the referenced primary key column(s).
+   - Foreign keys are used to enforce referential integrity, which maintains the consistency and accuracy of data across related tables.
+
+3. **Integrity Constraints**:
+   - Integrity constraints are rules defined on database tables to ensure the validity and accuracy of data.
+   - They help maintain data integrity by enforcing certain conditions on the data that is inserted, updated, or deleted from the tables.
+   - Common integrity constraints include:
+     - Primary Key Constraint: Ensures uniqueness and non-nullability of primary key columns.
+     - Foreign Key Constraint: Enforces referential integrity between tables by ensuring values in the foreign key match values in the primary key.
+     - Unique Constraint: Ensures uniqueness of values in specified columns.
+     - Check Constraint: Enforces a specific condition on a column's values.
+     - Not Null Constraint: Ensures that a column cannot contain null values.
+
+Integrity constraints and key relationships are fundamental in ensuring data consistency and accuracy within a relational database. They prevent the creation of inconsistent, redundant, or incorrect data entries, and they provide a structured way to model and maintain relationships between tables.
+
+## 7. Explain DDL, DML, DCL, TCL and DQL.
 
 In SQL (Structured Query Language), different types of commands are used to interact with databases and manage data. These commands are categorized into four main groups based on their functionality: DDL, DML, DCL, and TCL. Additionally, there is a subset called DQL, which is not an official category but is commonly used to refer to commands used for querying data. Let's explain each category:
 
