@@ -78,6 +78,7 @@ The `CREATE VIEW` statement is used to create a virtual table in a database base
 Here are examples of using the `CREATE VIEW` and `CREATE OR REPLACE VIEW` commands:
 
 **Example 1: Creating a View**
+
 Suppose you have a database with a `Customers` table and an `Orders` table, and you want to create a view that displays customer names along with their total order amounts.
 
 ```sql
@@ -91,6 +92,7 @@ GROUP BY c.customer_id;
 In this example, the `CustomerOrderSummary` view is created based on the result of the `SELECT` statement. The view will display customer names and their total order amounts.
 
 **Example 2: Replacing an Existing View**
+
 Suppose you want to update the `CustomerOrderSummary` view with additional information. You can use the `CREATE OR REPLACE VIEW` command.
 
 ```sql
