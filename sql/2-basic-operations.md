@@ -1141,193 +1141,311 @@ These examples demonstrate how to use `CREATE TABLE AS SELECT` and `INSERT INTO 
 
 ## 8. JOINS
 
-The Joins Available in MYSQL are,
+In SQL, a join is a mechanism that allows you to combine rows from two or more tables based on related columns. Joins are fundamental for querying and retrieving data from multiple tables in a relational database. They help establish relationships between tables and provide a way to access data across different tables using a single query.
 
-- INNER JOIN: Returns only the rows where there is a match in both tables.
-- CROSS JOIN: Returns the Cartesian product of both tables.
-- INNER STRAIGHT_JOIN: 
-- CROSS STRAIGHT_JOIN - 
-- LEFT JOIN - 
-- RIGHT JOIN - 
-- LEFT OUTER JOIN - 
-- RIGHT OUTER JOIN - 
-- NATURAL JOIN table_factor - 
-- NATURAL INNER LEFT JOIN - 
-- NATURAL INNER RIGHT JOIN - 
-- NATURAL OUTER JOIN -
-
-The various types of joins in SQL:
-
-Assume we have two tables: `orders` and `customers`.
-
-**orders Table:**
-```
-order_id | customer_id | order_date
-1        | 101         | 2023-01-10
-2        | 102         | 2023-02-15
-3        | 101         | 2023-03-20
-```
-
-**customers Table:**
-```
-customer_id | customer_name
-101         | Alice
-102         | Bob
-103         | Carol
-```
-
-- **INNER JOIN:** Returns only the rows where there is a match in both tables.
-```sql
-SELECT orders.order_id, customers.customer_name
-FROM orders
-INNER JOIN customers ON orders.customer_id = customers.customer_id;
-```
-Output:
-```
-order_id | customer_name
-1        | Alice
-2        | Bob
-3        | Alice
-```
-
-- **CROSS JOIN:** Returns the Cartesian product of both tables.
-```sql
-SELECT orders.order_id, customers.customer_name
-FROM orders
-CROSS JOIN customers;
-```
-Output:
-```
-order_id | customer_name
-1        | Alice
-1        | Bob
-1        | Carol
-2        | Alice
-2        | Bob
-2        | Carol
-3        | Alice
-3        | Bob
-3        | Carol
-```
-
-- **LEFT JOIN:** Returns all rows from the left table and matching rows from the right table.
-```sql
-SELECT orders.order_id, customers.customer_name
-FROM orders
-LEFT JOIN customers ON orders.customer_id = customers.customer_id;
-```
-Output:
-```
-order_id | customer_name
-1        | Alice
-2        | Bob
-3        | Alice
-```
-
-- **RIGHT JOIN:** Returns all rows from the right table and matching rows from the left table.
-```sql
-SELECT orders.order_id, customers.customer_name
-FROM orders
-RIGHT JOIN customers ON orders.customer_id = customers.customer_id;
-```
-Output:
-```
-order_id | customer_name
-1        | Alice
-2        | Bob
-NULL     | Carol
-```
-
-- **LEFT OUTER JOIN:** Similar to LEFT JOIN, also includes unmatched rows from the left table.
-- **RIGHT OUTER JOIN:** Similar to RIGHT JOIN, also includes unmatched rows from the right table.
-
-- **NATURAL JOIN:** Matches rows based on columns with the same name in both tables.
-```sql
-SELECT orders.order_id, customers.customer_name
-FROM orders
-NATURAL JOIN customers;
-```
-Output:
-```
-order_id | customer_name
-1        | Alice
-2        | Bob
-3        | Alice
-```
-
-These examples illustrate various join types in SQL and their corresponding outputs. The actual output may vary based on the specific data in your tables.
 
 ### 4 TYPES - INNER,LEFT,RIGHT,CROSS 
 
-- INNER JOIN: JOINS based on the comparison condition and displays only the matching columns.
+- `INNER JOIN`: The most common type of join. It returns only the rows where there is a match in both tables based on the specified condition.
 
 `SELECT <COLUMN/S> FROM <TABLE_NAME1> INNER JOIN <TABLE_NAME2> ON/WHERE/USING <JOIN CONDITION>;`
 
-- LEFT JOIN - JOINS based on the comparison condition and displays all rows from left table and the matching columns from RIGHT TABLE.
+We'll use a simple scenario of `INNER JOIN` with two tables: `Customers` and `Orders`.
+
+**Customers Table:**
+| customer_id | first_name | last_name |
+|-------------|------------|-----------|
+| 1           | John       | Smith     |
+| 2           | Jane       | Doe       |
+| 3           | Michael    | Johnson   |
+
+**Orders Table:**
+| order_id | customer_id | order_date | total_amount |
+|----------|-------------|------------|--------------|
+| 101      | 1           | 2023-04-15 | 150.00       |
+| 102      | 2           | 2023-04-20 | 200.00       |
+
+Now, let's use an `INNER JOIN` to retrieve the customer's first name, last name, order ID, order date, and total amount for customers who have placed orders:
+
+```sql
+SELECT Customers.first_name, Customers.last_name, Orders.order_id, Orders.order_date, Orders.total_amount
+FROM Customers
+INNER JOIN Orders ON Customers.customer_id = Orders.customer_id;
+```
+
+In this query:
+- We use the `INNER JOIN` clause to combine the `Customers` and `Orders` tables based on the matching `customer_id` column.
+- The `ON` keyword specifies the condition for joining the tables (`Customers.customer_id = Orders.customer_id`).
+- The `SELECT` statement retrieves the first name, last name from the `Customers` table, and order ID, order date, and total amount from the `Orders` table.
+
+The output will look like:
+
+| first_name | last_name | order_id | order_date | total_amount |
+|------------|-----------|----------|------------|--------------|
+| John       | Smith     | 101      | 2023-04-15 | 150.00       |
+| Jane       | Doe       | 102      | 2023-04-20 | 200.00       |
+
+In this output, we can see the information for customers who have placed orders, where the data from both tables is combined based on the common `customer_id` column.
+
+- `LEFT JOIN` or (`LEFT OUTER JOIN`): Returns all the rows from the left table and the matching rows from the right table. If there is no match in the right table, NULL values are returned for the columns from the right table.
 
 `SELECT <COLUMN/S> FROM <TABLE_NAME1> LEFT JOIN <TABLE_NAME2> ON/WHERE/USING <JOIN CONDITION>;`
 
-- RIGHT JOIN - JOINS based on the comparison condition and displays all rows from right table and the matching columns from left TABLE.
+In SQL, `LEFT JOIN` and `LEFT OUTER JOIN` are essentially the same and can be used interchangeably. Both of these phrases refer to the same type of join operation. The `OUTER` keyword is optional and doesn't change the functionality of the join.
+
+Both `LEFT JOIN` and `LEFT OUTER JOIN` perform the following operation:
+
+- They retrieve all records from the left table (the table mentioned before the `LEFT JOIN` clause) and the matching records from the right table (the table mentioned after the `LEFT JOIN` clause).
+- If there is no match for a record in the left table, the columns from the right table will contain NULL values.
+
+We'll use `LEFT JOIN` and `LEFT OUTER JOIN` to give the same result:
+
+Assume we have two tables, `Customers` and `Orders`:
+
+**Customers Table:**
+| customer_id | first_name | last_name |
+|-------------|------------|-----------|
+| 1           | John       | Smith     |
+| 2           | Jane       | Doe       |
+
+**Orders Table:**
+| order_id | customer_id | total_amount |
+|----------|-------------|--------------|
+| 101      | 1           | 150.00       |
+| 102      | 3           | 200.00       |
+
+Using `LEFT JOIN`:
+```sql
+SELECT Customers.first_name, Customers.last_name, Orders.order_id, Orders.total_amount
+FROM Customers
+LEFT JOIN Orders ON Customers.customer_id = Orders.customer_id;
+```
+
+Using `LEFT OUTER JOIN`:
+```sql
+SELECT Customers.first_name, Customers.last_name, Orders.order_id, Orders.total_amount
+FROM Customers
+LEFT OUTER JOIN Orders ON Customers.customer_id = Orders.customer_id;
+```
+
+In both cases, the result will be:
+
+| first_name | last_name | order_id | total_amount |
+|------------|-----------|----------|--------------|
+| John       | Smith     | 101      | 150.00       |
+| Jane       | Doe       | NULL     | NULL         |
+
+As you can see, both `LEFT JOIN` and `LEFT OUTER JOIN` return the same result, where all records from the left table (`Customers`) are returned along with matching records from the right table (`Orders`). If there's no match in the right table, the columns from the right table will contain NULL values.
+
+- `RIGHT JOIN` or ((`RIGHT OUTER JOIN`): ): Similar to the LEFT JOIN, but returns all the rows from the right table and the matching rows from the left table.
 
 `SELECT <COLUMN/S> FROM <TABLE_NAME1> RIGHT JOIN <TABLE_NAME2> ON/WHERE/USING <JOIN CONDITION>;`
 
-- CROSS JOIN - Doesn't have a join condition and it displayed cartesian product of both tables. 
+We'll perform a `RIGHT JOIN` using the same example with the `Customers` and `Orders` tables:
+
+**Customers Table:**
+| customer_id | first_name | last_name |
+|-------------|------------|-----------|
+| 1           | John       | Smith     |
+| 2           | Jane       | Doe       |
+
+**Orders Table:**
+| order_id | customer_id | total_amount |
+|----------|-------------|--------------|
+| 101      | 1           | 150.00       |
+| 102      | 3           | 200.00       |
+
+Using `RIGHT JOIN` (which is also known as `RIGHT OUTER JOIN`):
+
+```sql
+SELECT Customers.first_name, Customers.last_name, Orders.order_id, Orders.total_amount
+FROM Customers
+RIGHT JOIN Orders ON Customers.customer_id = Orders.customer_id;
+```
+
+Expected Result:
+
+| first_name | last_name | order_id | total_amount |
+|------------|-----------|----------|--------------|
+| John       | Smith     | 101      | 150.00       |
+| NULL       | NULL      | 102      | 200.00       |
+
+In this `RIGHT JOIN` example:
+- All records from the right table (`Orders`) are returned along with matching records from the left table (`Customers`).
+- If there's no match in the left table, the columns from the left table will contain NULL values.
+
+In this specific example, since there's no customer with `customer_id` 3 in the `Customers` table, the resulting record has NULL values for `first_name` and `last_name` from the `Customers` table.
+
+- `CROSS JOIN`: Returns the Cartesian product of two tables, i.e., all possible combinations of rows from both tables.
 
 `SELECT <COLUMN/S> FROM <TABLE_NAME1> CROSS JOIN <TABLE_NAME2>;`
 
-In SQL, a join is a mechanism that allows you to combine rows from two or more tables based on related columns. Joins are fundamental for querying and retrieving data from multiple tables in a relational database. They help establish relationships between tables and provide a way to access data across different tables using a single query.
+A `CROSS JOIN`, also known as a Cartesian product, combines each row from one table with every row from another table. It doesn't require any specific conditions for joining; it simply creates all possible combinations of rows from both tables. Here's an example using two simple tables: `Colors` and `Sizes`.
 
-There are different types of joins in SQL:
+**Colors Table:**
+| color_id | color_name |
+|----------|------------|
+| 1        | Red        |
+| 2        | Blue       |
 
-1. INNER JOIN: The most common type of join. It returns only the rows where there is a match in both tables based on the specified condition.
-
-2. LEFT JOIN (or LEFT OUTER JOIN): Returns all the rows from the left table and the matching rows from the right table. If there is no match in the right table, NULL values are returned for the columns from the right table.
-
-3. RIGHT JOIN (or RIGHT OUTER JOIN): Similar to the LEFT JOIN, but returns all the rows from the right table and the matching rows from the left table.
-
-4. FULL JOIN (or FULL OUTER JOIN): Returns all the rows from both tables, along with the matching rows. If there is no match in either table, NULL values are returned for the columns from the table without a match.
-
-5. CROSS JOIN: Returns the Cartesian product of two tables, i.e., all possible combinations of rows from both tables.
-
-Here's an example to illustrate the use of joins:
-
-Consider two tables: `employees` and `departments`.
-
-Table: employees
-
-| emp_id | emp_name | dept_id |
-|--------|----------|---------|
-| 1      | John     | 101     |
-| 2      | Alice    | 102     |
-| 3      | Bob      | 101     |
-
-Table: departments
-
-| dept_id | dept_name |
+**Sizes Table:**
+| size_id | size_name |
 |---------|-----------|
-| 101     | IT        |
-| 102     | HR        |
-| 103     | Finance   |
+| 1       | Small     |
+| 2       | Medium    |
 
-Example: INNER JOIN
-
+Using `CROSS JOIN`:
 ```sql
-SELECT emp_name, dept_name
-FROM employees
-INNER JOIN departments ON employees.dept_id = departments.dept_id;
+SELECT Colors.color_name, Sizes.size_name
+FROM Colors
+CROSS JOIN Sizes;
 ```
 
-In this example, the INNER JOIN is used to combine the `employees` and `departments` tables based on the `dept_id` column. The query will return the `emp_name` from the `employees` table and the corresponding `dept_name` from the `departments` table where there is a match between the `dept_id` columns of both tables.
+Expected Result:
 
-The result will be:
+| color_name | size_name |
+|------------|-----------|
+| Red        | Small     |
+| Red        | Medium    |
+| Blue       | Small     |
+| Blue       | Medium    |
 
-| emp_name | dept_name |
-|----------|-----------|
-| John     | IT        |
-| Alice    | HR        |
-| Bob      | IT        |
+In this example:
+- The `CROSS JOIN` combines every row from the `Colors` table with every row from the `Sizes` table.
+- The result is a combination of all possible colors and sizes.
 
-Joins are a powerful feature in SQL and are essential for efficiently working with relational databases where data is distributed across multiple related tables. They enable you to retrieve and combine data from different tables in various ways, allowing for complex data analysis and reporting.
+Keep in mind that `CROSS JOIN` can generate a large number of rows if both tables have many records. It's important to use it with caution and ensure it's used appropriately for your specific use case.
+
+- `FULL JOIN (or FULL OUTER JOIN)`: Returns all the rows from both tables, along with the matching rows. If there is no match in either table, NULL values are returned for the columns from the table without a match.
+
+Let's perform a `FULL JOIN` (also known as a `FULL OUTER JOIN`) using an example with two tables: `Customers` and `Orders`.
+
+**Customers Table:**
+| customer_id | first_name | last_name |
+|-------------|------------|-----------|
+| 1           | John       | Smith     |
+| 2           | Jane       | Doe       |
+| 3           | Michael    | Johnson   |
+
+**Orders Table:**
+| order_id | customer_id | total_amount |
+|----------|-------------|--------------|
+| 101      | 1           | 150.00       |
+| 102      | 2           | 200.00       |
+
+Using `FULL JOIN` (or `FULL OUTER JOIN`):
+
+```sql
+SELECT Customers.first_name, Customers.last_name, Orders.order_id, Orders.total_amount
+FROM Customers
+FULL JOIN Orders ON Customers.customer_id = Orders.customer_id;
+```
+
+Expected Result:
+
+| first_name | last_name | order_id | total_amount |
+|------------|-----------|----------|--------------|
+| John       | Smith     | 101      | 150.00       |
+| Jane       | Doe       | 102      | 200.00       |
+| Michael    | Johnson   | NULL     | NULL         |
+
+In this example:
+- The `FULL JOIN` combines all records from both the `Customers` and `Orders` tables.
+- If there's a match, the columns from both tables are combined based on the matching `customer_id`.
+- If there's no match for a customer in the `Orders` table or an order in the `Customers` table, the respective columns will contain NULL values.
+
+The result includes all customers and their orders, and customers without orders or orders without customers.
+
+-`SELF JOIN`: A self join is a type of SQL join operation in which a table is joined with itself. In other words, you treat a single table as if it were two separate tables and then perform a regular join operation between these two "virtual" tables. A self join is often used to establish relationships between rows within the same table based on related columns.
+
+```
+SELECT alias1.column_name, alias2.column_name
+FROM table_name alias1
+JOIN table_name alias2 ON alias1.join_condition = alias2.join_condition;
+```
+
+Let's perform a self join using an example with the `Employees` table, where we'll find the manager for each employee. Here's the data:
+
+**Employees Table:**
+| emp_id | first_name | last_name | manager_id |
+|--------|------------|-----------|------------|
+| 1      | John       | Smith     | NULL       |
+| 2      | Jane       | Doe       | 1          |
+| 3      | Michael    | Johnson   | 1          |
+| 4      | Emily      | Brown     | 2          |
+
+Using a self join to find employees and their managers:
+
+```sql
+SELECT e1.first_name AS employee, e2.first_name AS manager
+FROM Employees e1
+LEFT JOIN Employees e2 ON e1.manager_id = e2.emp_id;
+```
+
+Expected Result:
+
+| employee | manager  |
+|----------|----------|
+| John     | NULL     |
+| Jane     | John     |
+| Michael  | John     |
+| Emily    | Jane     |
+
+In this example:
+- We use a self join by creating two aliases (`e1` and `e2`) of the `Employees` table.
+- The `LEFT JOIN` condition links the employee's `manager_id` with the manager's `emp_id`.
+- The query retrieves the first name of employees and the first name of their respective managers.
+
+The result shows employees along with their corresponding managers. John has no manager (`manager_id` is NULL), and the other employees have managers based on their `manager_id`.
+
+-`NATURAL JOIN`: A `NATURAL JOIN` is a type of join operation that automatically matches columns with the same name from two tables. It's a shorthand way to join tables based on columns that share the same name without explicitly specifying the columns to join on. Here's an example using two simple tables: `Employees` and `Departments`.
+
+**Employees Table:**
+| emp_id | first_name | last_name | department_id |
+|--------|------------|-----------|---------------|
+| 1      | John       | Smith     | 101           |
+| 2      | Jane       | Doe       | 102           |
+| 3      | Michael    | Johnson   | 101           |
+| 4      | Emily      | Brown     | 103           |
+
+**Departments Table:**
+| department_id | department_name |
+|---------------|-----------------|
+| 101           | HR              |
+| 102           | Finance         |
+| 103           | Marketing       |
+
+Using `NATURAL JOIN`:
+
+```sql
+SELECT emp_id, first_name, last_name, department_name
+FROM Employees
+NATURAL JOIN Departments;
+```
+
+Expected Result:
+
+| emp_id | first_name | last_name | department_name |
+|--------|------------|-----------|-----------------|
+| 1      | John       | Smith     | HR              |
+| 2      | Jane       | Doe       | Finance         |
+| 3      | Michael    | Johnson   | HR              |
+
+In this example:
+- The `NATURAL JOIN` automatically matches columns with the same name (`department_id`) in both tables (`Employees` and `Departments`).
+- It performs an inner join based on the matched columns.
+- The resulting table includes only the matched rows, and the duplicate column (`department_id`) is removed from the output.
+
+Please note that the use of `NATURAL JOIN` might be limited in certain scenarios, especially when working with more complex database schemas or when columns have the same name but different meanings in the context of the tables. It's important to carefully consider the use of `NATURAL JOIN` and ensure that it aligns with your data and query requirements.
+
+The other available `JOINS` in MYSQL are:
+
+- INNER STRAIGHT_JOIN
+- CROSS STRAIGHT_JOIN
+- NATURAL JOIN table_factor
+- NATURAL INNER LEFT JOIN
+- NATURAL INNER RIGHT JOIN
+- NATURAL OUTER JOIN
 
 
 
