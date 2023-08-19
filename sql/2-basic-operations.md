@@ -429,7 +429,7 @@ To rename a table in MySQL, you can use the `ALTER TABLE` statement with the `RE
 
 ```sql
 -- Rename table 'old_table_name' to 'new_table_name'
-ALTER TABLE old_table_name RENAME TO new_table_name;
+ALTER TABLE old_table_name RENAME new_table_name;
 ```
 
 2. RENAME TABLE (PostgreSQL):
@@ -752,7 +752,7 @@ Give examples for the following DML commands:
 
 
 **INSERT -**
-1. INSERT ONE INTO ALL COLUMNS: `INSERT INTO <TABLE_NAME> VALUES (<LIST OF VALUES SEPERATED BY COMMAS>);`  Inserting one record into all columns, No need to list the columns.
+1. INSERT ONE INTO ALL COLUMNS: `INSERT INTO <TABLE_NAME> VALUES (<LIST OF VALUES SEPERATED BY COMMAS>);` Inserting one record into all columns, No need to list the columns.
 
 2. INSERT ONE INTO SPECIFIC COLUMNS - `INSERT INTO <TABLE_NAME> (<LIST OF COLUMNS SEPERATED BY COMMAS>) VALUES (<LIST OF VALUES SEPERATED BY COMMAS>);`. Inserting one record into speacific columns, Need to list the columns
 
@@ -766,6 +766,132 @@ Give examples for the following DML commands:
 
 7. INSERT INTO SELECT: `INSERT INTO <TABLE_NAME> (<LIST OF COLUMNS>)<SELECT STATEMENT>;`. SELECT <*/LIST OF COLUMNS> FROM <OLD_TABLE_NAME>;
 
+**1. INSERT ONE INTO ALL COLUMNS:**  Inserting one record into all columns, No need to list the columns.
+
+The INSERT INTO statement is used to add new rows (records) into a table in a database.
+
+```
+INSERT INTO Employees (emp_id, first_name, last_name, department_id)
+VALUES (3, 'Michael', 'Johnson', 101);
+```
+
+**2. INSERT ONE INTO SPECIFIC COLUMNS:** Inserting one record into speacific columns, Need to list the columns
+
+Here's an example of using the INSERT INTO statement to insert data into specific columns of a hypothetical `Customers` table:
+
+```
+INSERT INTO Customers (first_name, last_name, email)
+VALUES ('Michael', 'Johnson', 'michael@example.com');
+```
+
+**3. INSERT MULTIPLE ROWS INTO ALL COLUMNS:** Inserting Multiple record into all columns, No need to list the columns
+
+Here's an example of using the `INSERT INTO` statement to insert multiple rows into all columns of a hypothetical `Orders` table:
+
+```
+INSERT INTO Orders VALUES
+(3, 101, '2023-08-01', 120.00),
+(4, 103, '2023-08-05', 300.00),
+(5, 102, '2023-08-10', 180.00);
+```
+
+**4. INSERT MULTIPLE ROWS INTO SPECIFIC COLUMNS**: Inserting Multiple record into specific columns, Need to list the columns 
+
+Here's an example of using the INSERT INTO statement to insert multiple rows into specific columns of a hypothetical Products table:
+
+```
+INSERT INTO Products (product_id, product_name, category, price) VALUES
+(3, 'Tablet', 'Electronics', 300),
+(4, 'Headphones', 'Accessories', 50),
+(5, 'Camera', 'Electronics', 600);
+```
+
+**5. INSERT USING IMPORT**: Import the records from the exported csv file
+
+**6. INSERT IGNORE**: Ignore case helps to bypass the erros during the execution.
+
+`INSERT IGNORE INTO <TABLE_NAME> VALUES (<LIST OF VALUES SEPERATED BY COMMAS>);`
+
+The `INSERT IGNORE` statement is used in MySQL to insert data into a table. If a duplicate key error occurs while inserting data, the `IGNORE` keyword prevents the error from causing the entire statement to fail. Instead, the statement continues to execute, ignoring the duplicate key error and skipping the insertion of duplicate rows.
+
+Here's an example of using the `INSERT IGNORE` statement to insert data into a hypothetical `Customers` table:
+
+**Customers Table:**
+| customer_id | first_name | last_name | email              |
+|-------------|------------|-----------|--------------------|
+| 1           | John       | Smith     | john@example.com  |
+| 2           | Jane       | Doe       | jane@example.com  |
+
+Inserting new customer records with potential duplicates:
+
+```sql
+INSERT IGNORE INTO Customers (customer_id, first_name, last_name, email)
+VALUES
+(3, 'Michael', 'Johnson', 'michael@example.com'),
+(1, 'Alex', 'Brown', 'alex@example.com'); -- Duplicate customer_id
+```
+
+After executing this SQL statement, the `Customers` table will be updated as follows:
+
+| customer_id | first_name | last_name | email              |
+|-------------|------------|-----------|--------------------|
+| 1           | John       | Smith     | john@example.com  |
+| 2           | Jane       | Doe       | jane@example.com  |
+| 3           | Michael    | Johnson   | michael@example.com|
+
+In this example:
+- The `INSERT IGNORE` statement specifies the `Customers` table as the target table.
+- The `VALUES` keyword is followed by a list of sets of values, each enclosed in parentheses and separated by commas.
+- The first set of values is inserted as a new record since it doesn't conflict with existing records.
+- The second set of values contains a duplicate `customer_id` (1), but the `IGNORE` keyword prevents the error from stopping the insertion process. The duplicate row is ignored.
+
+Please note that the behavior of `INSERT IGNORE` is specific to MySQL. Other databases may have similar functionality using different syntax or options.
+
+**7. INSERT INTO SELECT**: `INSERT INTO <TABLE_NAME> (<LIST OF COLUMNS>)<SELECT STATEMENT>;`. SELECT <*/LIST OF COLUMNS> FROM <OLD_TABLE_NAME>;
+
+Certainly! The `INSERT INTO ... SELECT` statement allows you to insert data into a table by selecting it from another table or using a `SELECT` query. This is useful for copying data from one table to another or transforming data before insertion. Here's the syntax:
+
+```sql
+INSERT INTO target_table (column1, column2, ...)
+SELECT column1, column2, ...
+FROM source_table
+WHERE condition;
+```
+
+Here's an example using a hypothetical `NewCustomers` table and an existing `Customers` table:
+
+**Customers Table:**
+| customer_id | first_name | last_name |
+|-------------|------------|-----------|
+| 1           | John       | Smith     |
+| 2           | Jane       | Doe       |
+
+**NewCustomers Table:**
+| customer_id | first_name | last_name |
+|-------------|------------|-----------|
+
+Copying data from `Customers` to `NewCustomers`:
+
+```sql
+INSERT INTO NewCustomers (customer_id, first_name, last_name)
+SELECT customer_id, first_name, last_name
+FROM Customers;
+```
+
+After executing this SQL statement, the `NewCustomers` table will be updated to match the `Customers` table:
+
+| customer_id | first_name | last_name |
+|-------------|------------|-----------|
+| 1           | John       | Smith     |
+| 2           | Jane       | Doe       |
+
+In this example:
+- The `INSERT INTO NewCustomers` statement specifies the target table as `NewCustomers`.
+- The column list specifies the columns in `NewCustomers` that you want to populate.
+- The `SELECT` statement retrieves data from the `Customers` table.
+- The selected columns from `Customers` match the columns specified in the `INSERT INTO` statement.
+
+This allows you to insert data from one table into another table using a single `INSERT INTO ... SELECT` statement. You can also apply transformations, filtering, or aggregations within the `SELECT` statement before inserting the data.
 
 **UPDATE**
 
@@ -778,11 +904,11 @@ Give examples for the following DML commands:
 ```
 SET <COLUMN TO BE UPDATED> = (
 CASE 
-	WHEN <COLUMN TO BE COMPARED>  = <VALUE> THEN <VALUE TO BE UPDATED>
     WHEN <COLUMN TO BE COMPARED>  = <VALUE> THEN <VALUE TO BE UPDATED>
     WHEN <COLUMN TO BE COMPARED>  = <VALUE> THEN <VALUE TO BE UPDATED>
-	WHEN <COLUMN TO BE COMPARED>  = <VALUE> THEN <VALUE TO BE UPDATED>
-    END);
+    WHEN <COLUMN TO BE COMPARED>  = <VALUE> THEN <VALUE TO BE UPDATED>
+    WHEN <COLUMN TO BE COMPARED>  = <VALUE> THEN <VALUE TO BE UPDATED>
+END);
 ```
 
 Example:
