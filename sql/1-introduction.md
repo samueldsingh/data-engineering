@@ -105,7 +105,51 @@ For example, within the "CompanyDB" database, you might have different schemas l
 In summary, a database is a container that holds related data, while a schema is a logical blueprint that defines the structure and organization of the database. The schema provides a way to organize and categorize the database objects, making it easier to manage and maintain the data within the database.
 
 
-## 5. Explain DDL, DML, DCL, TCL and DQL.
+## 5. Difference between DELETE, DROP and TRUNCATE
+
+In SQL, `DELETE`, `DROP`, and `TRUNCATE` are three different commands that serve distinct purposes when dealing with database tables and data:
+
+1. **DELETE**:
+   - The `DELETE` command is used to remove specific rows from a table based on a specified condition.
+   - It can be used with the `WHERE` clause to specify which rows to delete.
+   - It is a DML (Data Manipulation Language) operation.
+   - The `DELETE` command is slower than `TRUNCATE` as it generates individual delete operations for each row.
+
+   Example:
+   ```sql
+   DELETE FROM employees WHERE department = 'HR';
+   ```
+
+2. **DROP**:
+   - The `DROP` command is used to remove an entire database object, such as a table, index, or view.
+   - It permanently removes the object from the database.
+   - It is a DDL (Data Definition Language) operation.
+   - Be cautious when using `DROP` as it cannot be undone, and all associated data will be lost.
+
+   Example:
+   ```sql
+   DROP TABLE employees;
+   ```
+
+3. **TRUNCATE**:
+   - The `TRUNCATE` command is used to remove all rows from a table while preserving the table structure.
+   - It is faster than the `DELETE` command as it doesn't generate individual delete operations for each row.
+   - It is a DDL operation.
+   - It is often used when you want to remove all data from a table without removing the table itself.
+
+   Example:
+   ```sql
+   TRUNCATE TABLE orders;
+   ```
+
+In summary, the main differences between `DELETE`, `DROP`, and `TRUNCATE` are in their purposes and effects on the database:
+- `DELETE` removes specific rows from a table based on a condition.
+- `DROP` removes an entire database object permanently.
+- `TRUNCATE` removes all rows from a table while keeping the table structure intact and is faster than `DELETE`.
+
+It's important to choose the appropriate command based on your specific use case and the outcome you intend to achieve.
+
+## 6. Explain DDL, DML, DCL, TCL and DQL.
 
 In SQL (Structured Query Language), different types of commands are used to interact with databases and manage data. These commands are categorized into four main groups based on their functionality: DDL, DML, DCL, and TCL. Additionally, there is a subset called DQL, which is not an official category but is commonly used to refer to commands used for querying data. Let's explain each category:
 
