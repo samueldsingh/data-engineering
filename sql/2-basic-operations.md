@@ -4,10 +4,6 @@ In SQL (Structured Query Language), different types of commands are used to inte
 categorized into four main groups based on their functionality: DDL, DML, DCL, and TCL. Additionally, there is a subset called DQL, which 
 is not an official category but is commonly used to refer to commands used for querying data. Let's explain each category:
 
-The crud operation refers to:
-crud - create, retrive (select), update and delete
-
-
 In sql, the 4 main categories for querying data are:
 1. DDL: create, alter, drop, truncate
 2. DML: insert, update, delete,
@@ -25,7 +21,6 @@ Common DDL commands include:
 - `ALTER`: Used to modify the structure of existing database objects.
 - `DROP`: Used to remove the whole database or table indexes, data, and more
 - `TRUNCATE`: Used to remove all rows from a table (similar to `DELETE`, but faster).
-
 
 
 ### 1. CREATE
@@ -48,7 +43,7 @@ CREATE DATABASE SampleDB;
 Double-click the db name in the SCHEMAS list in the sidebar to set the db to default db.
 
 
-**ii. Create a tables (Insert table)**
+**ii. Create a tables (Schema)**
 
 ```
 CREATE TABLE Employees (
@@ -63,7 +58,10 @@ CREATE TABLE Employees (
 
 **iii. Create a view:**
 
-In MySQL, a view is a virtual table that is derived from the result of a SELECT query. It does not store data itself but represents a stored query that can be used as if it were a real table. Views allow you to simplify complex queries, encapsulate logic, and provide an additional layer of security by restricting direct access to underlying tables. Some key points about views in MySQL are:
+- In MySQL, a view is a virtual table that is derived from the result of a SELECT query. It does not store data itself but represents a stored query that can be used as if it were a real table.
+- Views allow you to simplify complex queries, encapsulate logic, and provide an additional layer of security by restricting direct access to underlying tables.
+
+- Some key points about views in MySQL are:
 
 Definition (query using  SELECT, INSERT, UPDATE, and DELETE statements), simplify complex queries (views once created for complex query stays unaffected), data abstraction (underlying complexity of the tables are hidden), security (limit users' access to specific columns or rows), Read-Only and Updatable Views (can be either read-only or updatable), performance (do not store data; they are merely stored queries.slight performance overhead).
 
@@ -75,6 +73,37 @@ FROM Employees
 WHERE department = 'HR';
 ```
 
+The `CREATE VIEW` statement is used to create a virtual table in a database based on the result of a `SELECT` statement. This virtual table, known as a view, allows you to retrieve and manipulate data from multiple tables or queries as if it were a single table. The `OR REPLACE` option allows you to update an existing view if it already exists with the same name.
+
+Here are examples of using the `CREATE VIEW` and `CREATE OR REPLACE VIEW` commands:
+
+**Example 1: Creating a View**
+Suppose you have a database with a `Customers` table and an `Orders` table, and you want to create a view that displays customer names along with their total order amounts.
+
+```sql
+CREATE VIEW CustomerOrderSummary AS
+SELECT c.first_name, c.last_name, SUM(o.total_amount) AS total_spent
+FROM Customers c
+JOIN Orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id;
+```
+
+In this example, the `CustomerOrderSummary` view is created based on the result of the `SELECT` statement. The view will display customer names and their total order amounts.
+
+**Example 2: Replacing an Existing View**
+Suppose you want to update the `CustomerOrderSummary` view with additional information. You can use the `CREATE OR REPLACE VIEW` command.
+
+```sql
+CREATE OR REPLACE VIEW CustomerOrderSummary AS
+SELECT c.first_name, c.last_name, SUM(o.total_amount) AS total_spent, COUNT(o.order_id) AS order_count
+FROM Customers c
+JOIN Orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id;
+```
+
+In this example, the `CREATE OR REPLACE VIEW` command updates the existing `CustomerOrderSummary` view with the new `SELECT` statement that includes both total order amounts and the count of orders for each customer.
+
+After creating or updating a view, you can query the view just like you would a regular table. Views are particularly useful when you need to simplify complex queries, restrict access to certain columns, or provide a consistent interface to data for users or applications.
 
 **Explain DESC <TABLE_NAME> and USE <schema_name>**
 
