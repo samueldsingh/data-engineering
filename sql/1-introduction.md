@@ -177,7 +177,71 @@ In a Relational Database Management System (RDBMS), primary keys, foreign keys, 
 
 Integrity constraints and key relationships are fundamental in ensuring data consistency and accuracy within a relational database. They prevent the creation of inconsistent, redundant, or incorrect data entries, and they provide a structured way to model and maintain relationships between tables.
 
-## 7. Explain DDL, DML, DCL, TCL and DQL.
+## 7. Difference between SQL and NoSQL Databases.
+
+SQL (Structured Query Language) and NoSQL (Not Only SQL) databases are two different types of database management systems, each designed to cater to different types of data and use cases. Here's a comparison of the key differences between SQL and NoSQL databases:
+
+**Data Model:**
+
+1. **SQL:**
+   - SQL databases use a structured data model with predefined schemas.
+   - Data is organized into tables with rows and columns, where each column has a specific data type.
+   - Relationships between tables are established using foreign keys.
+
+2. **NoSQL:**
+   - NoSQL databases use flexible and schema-less data models.
+   - Data is stored in collections, documents, graphs, or key-value pairs, depending on the type of NoSQL database.
+   - Relationships can be established, but they are typically more flexible and may not follow strict referential integrity rules.
+
+**Scalability:**
+
+1. **SQL:**
+   - Traditional SQL databases are typically designed for vertical scaling (scaling up by adding more resources to a single server).
+   - Scaling horizontally (adding more servers to distribute the load) can be challenging for large-scale applications.
+
+2. **NoSQL:**
+   - NoSQL databases are designed for horizontal scalability, making it easier to distribute data across multiple servers or nodes.
+
+**Data Consistency:**
+
+1. **SQL:**
+   - SQL databases provide strong data consistency with ACID (Atomicity, Consistency, Isolation, Durability) properties.
+   - Transactions are used to ensure data integrity.
+
+2. **NoSQL:**
+   - NoSQL databases often prioritize availability and partition tolerance over strong consistency.
+   - Different types of NoSQL databases offer various consistency models, including eventual consistency.
+
+**Query Language:**
+
+1. **SQL:**
+   - SQL databases use the SQL query language for data manipulation and retrieval.
+   - SQL provides a standardized way to query and manage data.
+
+2. **NoSQL:**
+   - NoSQL databases may use different query languages or APIs, depending on the type of database. Some use specialized query languages, while others may use programming languages.
+
+**Use Cases:**
+
+1. **SQL:**
+   - SQL databases are well-suited for structured data with well-defined relationships.
+   - Commonly used for OLTP (Online Transaction Processing) applications.
+
+2. **NoSQL:**
+   - NoSQL databases are suitable for unstructured or semi-structured data.
+   - Ideal for applications requiring high scalability, such as web applications, real-time analytics, IoT, and more.
+
+**Examples:**
+
+1. **SQL:**
+   - MySQL, PostgreSQL, Oracle, SQL Server
+
+2. **NoSQL:**
+   - MongoDB, Cassandra, Couchbase, Redis, Neo4j
+
+Ultimately, the choice between SQL and NoSQL databases depends on the specific requirements of your application. Some projects may even use a combination of both types to leverage their respective strengths for different parts of the system.
+
+## 8. Explain DDL, DML, DCL, TCL and DQL.
 
 In SQL (Structured Query Language), different types of commands are used to interact with databases and manage data. These commands are categorized into four main groups based on their functionality: DDL, DML, DCL, and TCL. Additionally, there is a subset called DQL, which is not an official category but is commonly used to refer to commands used for querying data. Let's explain each category:
 
