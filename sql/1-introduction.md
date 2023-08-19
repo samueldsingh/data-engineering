@@ -313,7 +313,35 @@ Databases can be classified into different types based on various criteria, incl
 
 These are just a few types of databases, and there are many more specialized databases designed for specific use cases and requirements. The choice of database type depends on factors such as the nature of the data, the performance requirements, the application's needs, and scalability considerations.
 
-## 10. Explain DDL, DML, DCL, TCL and DQL.
+## 10. What is the order of execution of SQL commands?
+
+In SQL, the order of execution of SQL commands generally follows the sequence of clauses within a single statement. However, for a more complex query involving multiple statements or transactions, the order of execution can vary. Here's a simplified overview of the order of execution for a single SQL statement:
+
+1. **FROM**: Specifies the source tables or views from which data will be retrieved.
+
+2. **JOIN**: Combines rows from different tables based on specified conditions.
+
+3. **WHERE**: Filters rows based on specified conditions.
+
+4. **GROUP BY**: Groups rows that have the same values in specified columns.
+
+5. **HAVING**: Filters grouped rows based on specified conditions.
+
+6. **SELECT**: Retrieves columns or expressions to be displayed in the result set.
+
+7. **DISTINCT**: Removes duplicate rows from the result set.
+
+8. **ORDER BY**: Sorts the result set based on specified columns.
+
+9. **LIMIT/OFFSET**: Retrieves a subset of rows from the result set.
+
+10. **INSERT/UPDATE/DELETE**: Modifies data in the tables.
+
+11. **COMMIT/ROLLBACK**: Commits or rolls back a transaction.
+
+Keep in mind that the actual execution order might vary depending on the specific database management system you are using, as different systems may optimize the execution plan differently. Additionally, if your SQL statement involves subqueries, views, or more complex operations, the order of execution may involve more steps and substeps.
+
+## 11. Explain DDL, DML, DCL, TCL and DQL.
 
 In SQL (Structured Query Language), different types of commands are used to interact with databases and manage data. These commands are categorized into four main groups based on their functionality: DDL, DML, DCL, and TCL. Additionally, there is a subset called DQL, which is not an official category but is commonly used to refer to commands used for querying data. Let's explain each category:
 
@@ -1628,34 +1656,6 @@ WHERE EXISTS (SELECT 1 FROM departments WHERE employees.dept_id = departments.de
 This query will return employees from the `employees` table whose `dept_id` matches an existing department in the `departments` table.
 
 In summary, SQL provides various ways to exclude rows from a result set based on specific conditions using the `WHERE` clause, `NOT` keyword, and subqueries. These mechanisms allow you to control which rows are included or excluded in the final result based on your requirements.
-
-## 11. What is the order of execution of SQL commands?
-
-In SQL, the order of execution of SQL commands generally follows the sequence of clauses within a single statement. However, for a more complex query involving multiple statements or transactions, the order of execution can vary. Here's a simplified overview of the order of execution for a single SQL statement:
-
-1. **FROM**: Specifies the source tables or views from which data will be retrieved.
-
-2. **JOIN**: Combines rows from different tables based on specified conditions.
-
-3. **WHERE**: Filters rows based on specified conditions.
-
-4. **GROUP BY**: Groups rows that have the same values in specified columns.
-
-5. **HAVING**: Filters grouped rows based on specified conditions.
-
-6. **SELECT**: Retrieves columns or expressions to be displayed in the result set.
-
-7. **DISTINCT**: Removes duplicate rows from the result set.
-
-8. **ORDER BY**: Sorts the result set based on specified columns.
-
-9. **LIMIT/OFFSET**: Retrieves a subset of rows from the result set.
-
-10. **INSERT/UPDATE/DELETE**: Modifies data in the tables.
-
-11. **COMMIT/ROLLBACK**: Commits or rolls back a transaction.
-
-Keep in mind that the actual execution order might vary depending on the specific database management system you are using, as different systems may optimize the execution plan differently. Additionally, if your SQL statement involves subqueries, views, or more complex operations, the order of execution may involve more steps and substeps.
 
 ```MySQL password : sam@1234```
 
