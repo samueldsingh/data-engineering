@@ -107,7 +107,8 @@ In this example, the `CREATE OR REPLACE VIEW` command updates the existing `Cust
 
 After creating or updating a view, you can query the view just like you would a regular table. Views are particularly useful when you need to simplify complex queries, restrict access to certain columns, or provide a consistent interface to data for users or applications.
 
-**Explain DESC <TABLE_NAME> and USE <schema_name>**
+
+**iv. Explain DESC <TABLE_NAME> and USE <schema_name>**
 
 The MySQL command `DESC <TABLE_NAME>;` is used to retrieve information about the columns (field names) and their data types of a specific table in the currently selected database. The `USE <schema_name>;` command is used to select or switch to a particular database or schema. 
 
@@ -137,12 +138,10 @@ The `USE company_db`; command selects the `company_db` database, and all subsequ
 In summary, the `DESC <TABLE_NAME>;` command is used to describe the structure of a specific table, and the `USE <schema_name>;` command is used to switch to a particular database before executing queries on its tables.
 
 
-
 ### 2. ALTER
 
-*-- ALTER USED TO ADD/MODIFY/DROP INDEXES/CONSTARINTS.*
-
-In SQL, the `ALTER` command is used to modify the structure of an existing database object, such as a table, view, or database itself. It allows you to add, modify, or delete columns, change data types, rename objects, and perform various other changes to adapt the database schema to evolving requirements.
+- In SQL, the `ALTER` command is used to modify the structure of an existing database object, such as a table, view, or database itself.
+- It allows you to add, modify, or delete columns, change data types, rename objects, and perform various other changes to adapt the database schema to evolving requirements.
 
 The `ALTER` command is versatile and provides several subcommands that are specific to the type of object being altered. The main subcommands used with `ALTER` are:
 
