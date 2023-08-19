@@ -241,7 +241,37 @@ SQL (Structured Query Language) and NoSQL (Not Only SQL) databases are two diffe
 
 Ultimately, the choice between SQL and NoSQL databases depends on the specific requirements of your application. Some projects may even use a combination of both types to leverage their respective strengths for different parts of the system.
 
-## 8. Explain DDL, DML, DCL, TCL and DQL.
+## 8. What is the order of execution of sql commands:
+
+In SQL, the logical order of execution for a query involving the `SELECT` statement is as follows:
+
+1. **FROM Clause:**
+   The `FROM` clause specifies the tables from which the data will be retrieved. The DBMS retrieves data from the specified tables and forms a temporary result set, often called a "virtual table" or "derived table," that combines the data from the tables.
+
+2. **JOINs:**
+   If there are any `JOIN` clauses specified in the `FROM` clause, the DBMS performs the necessary joins to combine data from multiple tables based on the specified join conditions. The result of the joins is incorporated into the temporary result set.
+
+3. **WHERE Clause:**
+   The `WHERE` clause is applied to the temporary result set after the `FROM` clause and any joins have been processed. It filters the data based on the specified conditions, retaining only the rows that meet the criteria.
+
+4. **GROUP BY Clause:**
+   If a `GROUP BY` clause is present in the query, the data is grouped according to the specified grouping columns. This creates groups of rows that share the same values in the specified columns.
+
+5. **HAVING Clause:**
+   The `HAVING` clause is applied to the grouped data (if a `GROUP BY` clause is present) after the `WHERE` clause. It filters the grouped data based on aggregate functions and conditions.
+
+6. **SELECT Clause:**
+   The `SELECT` clause is applied after all the previous clauses. It specifies the columns to be included in the final result set. This clause can include column expressions, calculations, and aggregate functions.
+
+7. **ORDER BY Clause:**
+   If an `ORDER BY` clause is specified, the DBMS sorts the final result set based on the specified columns and sort orders.
+
+8. **LIMIT/OFFSET (if applicable):**
+   If a `LIMIT` or `OFFSET` clause is used, it limits the number of rows returned in the result set or specifies a starting point for the result set.
+
+It's important to understand that this logical order of execution doesn't always reflect the actual physical execution steps taken by the database management system. Modern database systems often use query optimization techniques to reorganize the execution plan for better performance. However, they ensure that the end result adheres to the logical order of execution to produce correct and expected results.
+
+## 9. Explain DDL, DML, DCL, TCL and DQL.
 
 In SQL (Structured Query Language), different types of commands are used to interact with databases and manage data. These commands are categorized into four main groups based on their functionality: DDL, DML, DCL, and TCL. Additionally, there is a subset called DQL, which is not an official category but is commonly used to refer to commands used for querying data. Let's explain each category:
 
