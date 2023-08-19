@@ -1421,6 +1421,33 @@ This query will return employees from the `employees` table whose `dept_id` matc
 
 In summary, SQL provides various ways to exclude rows from a result set based on specific conditions using the `WHERE` clause, `NOT` keyword, and subqueries. These mechanisms allow you to control which rows are included or excluded in the final result based on your requirements.
 
+## 11. What is the order of execution of SQL commands?
+
+In SQL, the order of execution of SQL commands generally follows the sequence of clauses within a single statement. However, for a more complex query involving multiple statements or transactions, the order of execution can vary. Here's a simplified overview of the order of execution for a single SQL statement:
+
+1. **FROM**: Specifies the source tables or views from which data will be retrieved.
+
+2. **JOIN**: Combines rows from different tables based on specified conditions.
+
+3. **WHERE**: Filters rows based on specified conditions.
+
+4. **GROUP BY**: Groups rows that have the same values in specified columns.
+
+5. **HAVING**: Filters grouped rows based on specified conditions.
+
+6. **SELECT**: Retrieves columns or expressions to be displayed in the result set.
+
+7. **DISTINCT**: Removes duplicate rows from the result set.
+
+8. **ORDER BY**: Sorts the result set based on specified columns.
+
+9. **LIMIT/OFFSET**: Retrieves a subset of rows from the result set.
+
+10. **INSERT/UPDATE/DELETE**: Modifies data in the tables.
+
+11. **COMMIT/ROLLBACK**: Commits or rolls back a transaction.
+
+Keep in mind that the actual execution order might vary depending on the specific database management system you are using, as different systems may optimize the execution plan differently. Additionally, if your SQL statement involves subqueries, views, or more complex operations, the order of execution may involve more steps and substeps.
 
 ```MySQL password : sam@1234```
 
