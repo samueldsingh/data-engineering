@@ -151,6 +151,15 @@ The `ALTER` command is versatile and provides several subcommands that are speci
 
 Here are some common uses of the `ALTER` command for each subcommand:
 
+1. ALTER TABLE NAME (RENAME) - `ALTER TABLE <TABLE_NAME> RENAME TO <NEW_TABLE_NAME>;`
+2. ALTER TABLE : ADD COLUMN - `ALTER TABLE <TABLE_NAME> ADD <COLUMN_NAME> <TYPE(SIZE)>;`. Use, (COMMA) with to Add Multiple Columns
+3. ALTER TABLE : RENAME COLUMN - `ALTER TABLE <TABLE_NAME> RENAME COLUMN <OLD_COLUMN_NAME> TO <NEW_COLUMN_NAME>;`. Use, (COMMA) with full RENAME COLUMN to Change multiple Columns
+4. ALTER TABLE : DROP COLUMN - `ALTER TABLE <TABLE_NAME> DROP COLUMN <COLUMN_NAME>;`
+5. ALTER TABLE : MODIFY THE TYPE/SIZE OF COLUMN - `ALTER TABLE <TABLE_NAME> MODIFY COLUMN <COLUMN_NAME> <NEW_TYPE/(NEW_SIZE)>;`
+6. ALTER VIEW - `ALTER VIEW <VIEW_NAME> AS <SELECT STATMENT>;` -- Later
+7. ALTER VIEW (RENAME) - `ALTER TABLE <VIEW_NAME> RENAME TO <NEW_VIEW_NAME>;` -- Not Working
+	or RENAME TABLE <OLD_VIEW_NAME> to <NEW_VIEW_NAME>;
+
 1. `ALTER TABLE`:
 
    - Adding a new column:
@@ -214,18 +223,8 @@ It's important to note that not all alterations may be allowed, depending on the
 
 Before using the `ALTER` command, make sure to back up your data and review the potential consequences of the changes, as some alterations might affect the existing data or require additional maintenance steps.
 
-Use **ALTER** to perform the following operations:
 
-1. ALTER TABLE NAME (RENAME) - `ALTER TABLE <TABLE_NAME> RENAME TO <NEW_TABLE_NAME>;`
-2. ALTER TABLE : ADD COLUMN - `ALTER TABLE <TABLE_NAME> ADD <COLUMN_NAME> <TYPE(SIZE)>;`. Use, (COMMA) with to Add Multiple Columns
-3. ALTER TABLE : RENAME COLUMN - `ALTER TABLE <TABLE_NAME> RENAME COLUMN <OLD_COLUMN_NAME> TO <NEW_COLUMN_NAME>;`. Use, (COMMA) with full RENAME COLUMN to Change multiple Columns
-4. ALTER TABLE : DROP COLUMN - `ALTER TABLE <TABLE_NAME> DROP COLUMN <COLUMN_NAME>;`
-5. ALTER TABLE : MODIFY THE TYPE/SIZE OF COLUMN - `ALTER TABLE <TABLE_NAME> MODIFY COLUMN <COLUMN_NAME> <NEW_TYPE/(NEW_SIZE)>;`
-6. ALTER VIEW - `ALTER VIEW <VIEW_NAME> AS <SELECT STATMENT>;` -- Later
-7. ALTER VIEW (RENAME) - `ALTER TABLE <VIEW_NAME> RENAME TO <NEW_VIEW_NAME>;` -- Not Working
-	or RENAME TABLE <OLD_VIEW_NAME> to <NEW_VIEW_NAME>;
-
-Here are examples of using the `ALTER` command for various operations:
+More examples of using the `ALTER` command for various operations:
 
 **1. ALTER TABLE NAME (RENAME):**
 
@@ -286,42 +285,12 @@ These are some examples of using the `ALTER` command in MySQL to modify tables a
 
 In SQL, the `DROP` command is used to remove or delete database objects, such as tables, views, indexes, or even entire databases. It permanently deletes the specified object from the database, and the data and structure associated with that object are no longer available.
 
-The syntax for the `DROP` command varies depending on the type of object you want to drop. Here are some common uses of the `DROP` command:
-
-1. Drop a Table:
-```sql
-DROP TABLE table_name;
-```
-This command deletes the specified table along with all its data and associated indexes, triggers, and constraints. Be careful when using this command, as it is irreversible, and all data in the table will be lost.
-
-2. Drop a View:
-```sql
-DROP VIEW view_name;
-```
-This command removes the specified view from the database. Views are virtual tables based on SQL queries, and dropping a view does not delete any actual data; it only removes the definition of the view.
-
-3. Drop an Index:
-```sql
-DROP INDEX index_name ON table_name;
-```
-This command deletes the specified index associated with a table. Indexes are used to improve the performance of queries, and dropping an index will not affect the table's data but might impact query performance.
-
-4. Drop a Database:
-```sql
-DROP DATABASE database_name;
-```
-This command permanently removes the specified database and all its objects, including tables, views, procedures, and more. Be extremely cautious when using this command, as all data in the database will be lost.
-
-It's important to note that the `DROP` command is a powerful and potentially dangerous operation, so it should be used with care. Always make sure to have proper backups before performing any `DROP` operation, especially when dealing with critical data.
-
-Always double-check the object name before executing the `DROP` command, as it is not reversible, and once an object is dropped, it cannot be recovered unless you have a backup of the database.
-
-Give examples for the given DROP commands:
+Examples of using the `DROP` command:
 1. DROP TABLE: `DROP TABLE {IF EXISTS} <TABLE_NAME>;`
 2. DROP COLUMN: `ALTER TABLE <TABLE_NAME> DROP COLUMN <COLUMN_NAME>;`
 3. DROP VIEW: `DROP VIEW {IF EXISTS} <VIEW_NAME>;`
 
-Sure, here are examples for each of the given `DROP` commands:
+The syntax for the `DROP` command varies depending on the type of object you want to drop. Here are some common uses of the `DROP` command:
 
 **1. DROP TABLE:**
 
@@ -364,7 +333,25 @@ DROP VIEW IF EXISTS customer_info_view;
 
 This command will check if the view named `customer_info_view` exists before attempting to drop it. If the view exists, it will be dropped; otherwise, it will do nothing, avoiding an error if the view does not exist.
 
+**4. Drop an Index:**
+
+```sql
+DROP INDEX index_name ON table_name;
+```
+This command deletes the specified index associated with a table. Indexes are used to improve the performance of queries, and dropping an index will not affect the table's data but might impact query performance.
+
+**4. Drop a Database:**
+```sql
+DROP DATABASE database_name;
+```
+This command permanently removes the specified database and all its objects, including tables, views, procedures, and more. Be extremely cautious when using this command, as all data in the database will be lost.
+
 Remember, using the `DROP` command is irreversible, and it permanently deletes database objects. Always ensure that you have a proper backup before performing any `DROP` operation, especially in a production environment. Be cautious when using the `DROP` command to avoid accidental data loss.
+
+It's important to note that the `DROP` command is a powerful and potentially dangerous operation, so it should be used with care. Always make sure to have proper backups before performing any `DROP` operation, especially when dealing with critical data.
+
+Always double-check the object name before executing the `DROP` command, as it is not reversible, and once an object is dropped, it cannot be recovered unless you have a backup of the database.
+
 
 ### 4. RENAME 
 
@@ -1726,3 +1713,101 @@ WHERE EXISTS (SELECT 1 FROM departments WHERE employees.dept_id = departments.de
 This query will return employees from the `employees` table whose `dept_id` matches an existing department in the `departments` table.
 
 In summary, SQL provides various ways to exclude rows from a result set based on specific conditions using the `WHERE` clause, `NOT` keyword, and subqueries. These mechanisms allow you to control which rows are included or excluded in the final result based on your requirements.
+
+## CASE, WHEN, END:
+
+In SQL, the `CASE` expression is used for conditional logic. It allows you to perform different actions based on conditions within a query. The `CASE` expression can be used in both the `SELECT` and `UPDATE` statements to determine values or perform actions based on specified conditions.
+
+The general syntax of the `CASE` expression is as follows:
+
+```sql
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    ...
+    ELSE default_result
+END
+```
+
+Here's when the `CASE` expression is commonly used:
+
+1. **In the SELECT Statement:** The `CASE` expression is often used in the `SELECT` statement to create computed columns or customize the output of the query. It allows you to transform data based on different conditions. For example, you can use it to assign labels or categories to data, calculate new values, or create conditional aggregations.
+
+2. **In the UPDATE Statement:** The `CASE` expression can also be used in the `UPDATE` statement to conditionally modify values in a column. This is useful when you want to update specific rows based on certain conditions. You can use the `CASE` expression in combination with the `SET` clause to determine the new value to assign to a column based on different conditions.
+
+3. **In Other SQL Statements:** The `CASE` expression can also be used in other SQL statements where conditional logic is required. For example, it can be used within the `WHERE` clause to filter rows based on conditions, or in combination with other statements to achieve specific outcomes.
+
+Remember that the `CASE` expression allows you to evaluate multiple conditions and return different values based on those conditions. The `CASE` expression ends with `END`, indicating the conclusion of the conditional logic.
+
+A simple example of using the `CASE` expression in a `SELECT` statement:
+
+```sql
+SELECT
+    customer_name,
+    CASE
+        WHEN registration_date < '2023-01-01' THEN 'OLD'
+        ELSE 'NEW'
+    END AS "Registration Status"
+FROM customers;
+```
+
+In this example, the `CASE` expression determines the "Registration Status" based on the registration date of customers. If the registration date is before January 1, 2023, the status is 'OLD', otherwise, it's 'NEW'.
+
+Let's look at more examples of using the `CASE` expression with both the `SELECT` and `UPDATE` commands:
+
+**Example 1: Using CASE in SELECT:**
+
+Assume you have a `Students` table with columns `student_id`, `first_name`, `last_name`, and `grade`. You want to categorize students based on their grades:
+
+```sql
+SELECT
+    student_id,
+    first_name,
+    last_name,
+    grade,
+    CASE
+        WHEN grade >= 90 THEN 'A'
+        WHEN grade >= 80 THEN 'B'
+        WHEN grade >= 70 THEN 'C'
+        ELSE 'D'
+    END AS grade_category
+FROM Students;
+```
+
+In this example, the `CASE` expression categorizes students based on their grades into 'A', 'B', 'C', or 'D' categories.
+
+**Example 2: Using CASE in UPDATE:**
+
+Assume you have a `Employees` table with columns `employee_id`, `first_name`, `last_name`, and `years_of_service`. You want to update the `salary` column based on years of service:
+
+```sql
+UPDATE Employees
+SET salary = 
+    CASE
+        WHEN years_of_service >= 5 THEN salary * 1.1
+        ELSE salary
+    END;
+```
+
+In this example, the `CASE` expression increases the salary by 10% for employees with 5 or more years of service.
+
+**Example 3: Using CASE with Multiple Conditions:**
+
+Assume you have an `Orders` table with columns `order_id`, `order_date`, and `order_status`. You want to identify orders as 'On Time', 'Delayed', or 'Pending' based on their order status and order date:
+
+```sql
+SELECT
+    order_id,
+    order_date,
+    order_status,
+    CASE
+        WHEN order_status = 'Shipped' AND order_date <= '2023-08-31' THEN 'On Time'
+        WHEN order_status = 'Shipped' AND order_date > '2023-08-31' THEN 'Delayed'
+        ELSE 'Pending'
+    END AS delivery_status
+FROM Orders;
+```
+
+In this example, the `CASE` expression categorizes orders into different delivery statuses based on their order status and order date.
+
+Remember that the `CASE` expression is a powerful tool for implementing conditional logic within SQL queries. It allows you to handle various scenarios and customize the output or perform actions based on conditions.
