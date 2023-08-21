@@ -272,23 +272,30 @@ Ultimately, the choice between SQL and NoSQL databases depends on the specific r
 
 
 In summary:
+
 SQL Database:
-SQL databases are based on a structured and relational data model. They use tables with predefined schemas to store and organize data. SQL databases follow 
-the ACID (Atomicity, Consistency, Isolation, Durability) properties, ensuring data integrity and consistency. They support powerful querying capabilities 
-using SQL, allowing for complex joins, filtering, and aggregation operations. SQL databases are well-suited for structured and transactional data, such as 
-financial records, user profiles, and inventory management.
+
+- SQL databases are based on a structured and relational data model. They use tables with predefined schemas to store and organize data.
+- SQL databases follow the ACID (Atomicity, Consistency, Isolation, Durability) properties, ensuring data integrity and consistency.
+- They support powerful querying capabilities using SQL, allowing for complex joins, filtering, and aggregation operations. SQL databases are well-suited for structured and transactional data, such as financial records, user profiles, and inventory management.
 
 Example:
-Let's consider an example of an e-commerce application with an SQL database. We might have tables such as `Customers`, `Orders`, and `Products`. The `Customers` 
-table would store information about customers, including their names, addresses, and contact details. The `Orders` table would store order-related information, 
-such as order IDs, customer IDs, product IDs, and quantities. The `Products` table would store product details like names, prices, and descriptions. We can 
-perform SQL queries like joining the tables to retrieve order details for a specific customer or calculating the total revenue generated from a particular 
+Let's consider an example of an e-commerce application with an SQL database. 
+- We might have tables such as `Customers`, `Orders`, and `Products`.
+- The `Customers` table would store information about customers, including their names, addresses, and contact details.
+- The `Orders` table would store order-related information, such as order IDs, customer IDs, product IDs, and quantities. The `Products` table would store product details like names, prices, and descriptions.
+- We can perform SQL queries like joining the tables to retrieve order details for a specific customer or calculating the total revenue generated from a particular 
 product.
 
 NoSQL Database:
-NoSQL databases are designed for flexible and scalable data storage. They offer non-relational data models, allowing for unstructured, semi-structured, or 
-key-value based data storage. NoSQL databases prioritize scalability, performance, and horizontal data distribution. They can handle large volumes of data 
-and provide high-speed data access. NoSQL databases relax some of the ACID properties to achieve scalability and availability. NoSQL databases are suitable 
+
+- NoSQL databases are designed for flexible and scalable data storage.
+- They offer non-relational data models, allowing for unstructured, semi-structured, or 
+key-value based data storage. NoSQL databases prioritize scalability, performance, and horizontal data distribution.
+- They can handle large volumes of data 
+and provide high-speed data access.
+- NoSQL databases relax some of the ACID properties to achieve scalability and availability.
+- NoSQL databases are suitable 
 for scenarios with rapidly changing data structures, real-time data ingestion, and applications that require horizontal scaling, such as social media 
 analytics, IoT data storage, and content management systems.
 
@@ -298,7 +305,7 @@ users. Instead of using predefined schemas and tables, a NoSQL database can stor
 or a comment and can have different attributes based on its type. The database can handle a variety of data structures without needing to modify the schema. 
 This flexibility allows for easy scalability as the application grows and evolves.
 
-In summary, SQL databases are based on structured and relational data models, supporting powerful querying with SQL. They are suitable for structured and 
+SQL databases are based on structured and relational data models, supporting powerful querying with SQL. They are suitable for structured and 
 transactional data. NoSQL databases offer flexible data models, scalability, and high-speed access. They are suitable for unstructured or rapidly changing 
 data requirements. The choice between SQL and NoSQL databases depends on the specific needs of an application, the data model, scalability requirements, 
 and the desired level of consistency and querying capabilities.
