@@ -1,3 +1,4 @@
+
 # Basic operations on a database
 
 In SQL (Structured Query Language), different types of commands are used to interact with databases and manage data. These commands are 
@@ -723,17 +724,58 @@ Give examples for the following DML commands:
 4. SELECT USING DISTINCT: `SELECT DISTINCT <COLUMN_NAME>, <LIST OF COLUMNS> FROM <TABLE_NAME>;` -- Gives the list Unique Values
 5. SELECT USING AND: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> AND <CONDITION>;` -- You can use more conditions under where caluse
 6. SELECT USING OR: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> OR <CONDITION>;` -- You can use more conditions under where caluse
-7. SELECT UISNG IN: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IN <LIST OF VALUES SEPERATED BY COMMAS>;` -- Display's the List of Values seperated by commas.
-8. SELECT UISNG NOT IN: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> NOT IN <RANGE/SET OF VALUES>;` -- Display's the List of excluding values seperated by commas.
-9. SELECT UISNG BETWEEN/NOT BETWEEN: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> BETWEEN/NOT BETWEEN <VALUE> AND <VALUE>;` -- Used to display the range of values, Mostly in dates and numbers.
-10. SELECT UISNG LIKE: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> LIKE <VALUE WITH OR WITHOUT WILD CHARS>;` -- pattren matching will be done here. WILD CHARS are %, _
-11. SELECT UISNG LIMIT: `SELECT * FROM <TABLE_NAME/VIEW_NAME> LIMIT <RANGE TO BE SELECTED>;` -- user to select the range, Example 2[offest],4[range] or 2[range] - Offset is optional. 
-12. SELECT UISNG IS NULL: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IS NULL;` -- Dispalys the records with null vaues.
-13. SELECT UISNG IS NOT NULL: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IS NOT NULL;` -- Dispalys the records with out null vaues.
-14. SELECT UISNG ORDER BY: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> ORDER BY <COLUMN_NAME/S>;` -- Dispalys the records in give oreder [Asc-default/Desc].
-15. SELECT UISNG GROUP BY: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> GROUP BY <COLUMN_NAME/S>;` -- Groups the columns based on the list of columns we mention.
-16. SELECT UISNG HAVING: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> GROUP BY <COLUMN_NAME/S> HAVING <CONDITION>;` -- additional condition on group by, works similar to where clause
-17. SELECT USING ROLLUP: `SELECT <LIST OF COLUMNS WITH AGG FUNCTIONS> FROM <TABLE_NAME> GROUP BY <COLUMN_NAME/S> WITH ROLLUP;` -- Get's the total sum values along with the group sum values listed on the group by caluse.
+7. SELECT USING IN: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IN <LIST OF VALUES SEPERATED BY COMMAS>;` -- Display's the List of Values seperated by commas.
+8. SELECT USING NOT IN: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> NOT IN <RANGE/SET OF VALUES>;` -- Display's the List of excluding values seperated by commas.
+9. SELECT USING BETWEEN/NOT BETWEEN: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> BETWEEN/NOT BETWEEN <VALUE> AND <VALUE>;` -- Used to display the range of values, Mostly in dates and numbers.
+10. SELECT USING LIKE: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> LIKE <VALUE WITH OR WITHOUT WILD CHARS>;` -- pattren matching will be done here. WILD CHARS are %, _
+11. SELECT USING LIMIT: `SELECT * FROM <TABLE_NAME/VIEW_NAME> LIMIT <RANGE TO BE SELECTED>;` -- user to select the range, Example 2[offest],4[range] or 2[range] - Offset is optional. 
+12. SELECT USING IS NULL: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IS NULL;` -- Dispalys the records with null vaues.
+13. SELECT USING IS NOT NULL: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <COLUMN_NAME> IS NOT NULL;` -- Dispalys the records with out null vaues.
+14. SELECT USING ORDER BY: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> ORDER BY <COLUMN_NAME/S>;` -- Dispalys the records in give oreder [Asc-default/Desc].
+15. SELECT USING GROUP BY: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> GROUP BY <COLUMN_NAME/S>;` -- Groups the columns based on the list of columns we mention.
+16. SELECT USING HAVING: `SELECT * FROM <TABLE_NAME/VIEW_NAME> WHERE <CONDITION> GROUP BY <COLUMN_NAME/S> HAVING <CONDITION>;` -- additional condition on group by, works similar to where clause
+17. SELECT USING ROLLUP: `SELECT <LIST OF COLUMNS WITH AGG FUNCTIONS> FROM <TABLE_NAME> GROUP BY <COLUMN_NAME/S> WITH ROLLUP;` -- Get's the total sum values along with the group sum values listed on the group by clause.
+
+The ROLLUP clause in SQL is used to generate subtotals and grand totals for aggregated data. It's often used in combination with the GROUP BY clause to create a hierarchical summary of data. Let's consider an example using a hypothetical sales database with a "sales" table containing information about sales transactions. The table might have columns such as "product_category," "region," "year," and "sales_amount."
+
+Here's an example of using the ROLLUP clause to generate subtotals and grand totals for sales amounts based on product categories and regions:
+
+```sql
+SELECT product_category, region, year, SUM(sales_amount) AS total_sales
+FROM sales
+GROUP BY ROLLUP (product_category, region, year);
+```
+
+In this example, the query calculates the total sales amounts for various combinations of product categories, regions, and years using the ROLLUP clause. The result will include rows that represent subtotals and grand totals.
+
+The output might look something like this:
+
+```
+product_category | region | year | total_sales
+-----------------+--------+------+------------
+Electronics      | East   | 2021 | 25000
+Electronics      | East   | 2022 | 30000
+Electronics      | East   |      | 55000  -- Subtotal for Electronics and East
+Electronics      | West   | 2021 | 18000
+Electronics      | West   | 2022 | 22000
+Electronics      | West   |      | 40000  -- Subtotal for Electronics and West
+Electronics      |        |      | 95000  -- Grand Total for Electronics
+
+Clothing         | East   | 2021 | 15000
+Clothing         | East   | 2022 | 17000
+Clothing         | East   |      | 32000  -- Subtotal for Clothing and East
+Clothing         | West   | 2021 | 12000
+Clothing         | West   | 2022 | 14000
+Clothing         | West   |      | 26000  -- Subtotal for Clothing and West
+Clothing         |        |      | 58000  -- Grand Total for Clothing
+
+                |        |      | 153000 -- Grand Total for all categories and regions
+```
+
+In this output, you can see subtotals for each product category within each region, as well as grand totals for each category and region combination and an overall grand total for all categories and regions.
+
+The ROLLUP clause is a powerful tool for creating hierarchical summaries and gaining insights from aggregated data.
+
 18. SELECT AS: `SELECT <COLUMN_NAME> AS <NEW_COLUMN_NAME> FROM <TABLE_NAME>;` -- Column names can be renamed as per our requirement while retrival(Just for the sinle execution/Display).
 
 
@@ -919,7 +961,13 @@ WHERE student_id IN (101, 102, 103, 104);
 
 ## 3. DCL (Data Control Language):
 
-DCL stands for "Data Control Language" in SQL (Structured Query Language). DCL commands are used to control access to data and manage database objects' permissions within a relational database. These commands primarily deal with defining and managing user privileges and access rights to the database objects, ensuring data security and integrity. The two main DCL commands are:
+- DCL stands for "Data Control Language" in SQL (Structured Query Language).
+- DCL commands are used to control access to data and manage database objects' permissions within a relational database.
+- These commands primarily deal with defining and managing user privileges and access rights to the database objects, ensuring data security and integrity.
+- By granting or revoking privileges, database administrators can control who can perform various operations on the database objects, ensuring that sensitive data remains protected and only authorized users have appropriate access.
+- It's crucial to carefully manage user permissions and privileges to maintain data integrity and prevent unauthorized access to critical data.
+- Database administrators must regularly review and adjust privileges to meet security requirements and adhere to the principle of least privilege, giving users only the minimum level of access they need to perform their tasks.
+- The two main DCL commands are: `GRANT` and `REVOKE`.
 
 1. GRANT: The GRANT command is used to give specific privileges and permissions to users or roles. Privileges include the ability to perform certain actions on database objects, such as SELECT, INSERT, UPDATE, DELETE, and more.
 
@@ -929,6 +977,7 @@ Example:
 GRANT SELECT, INSERT ON employees TO user1;
 ```
 
+
 2. REVOKE: The REVOKE command is used to remove specific privileges from users or roles. It revokes previously granted privileges, restricting their access to certain actions on the database objects.
 
 Example:
@@ -937,38 +986,6 @@ Example:
 REVOKE UPDATE ON products FROM user2;
 ```
 
-DCL commands are essential for maintaining data security and controlling access to the database. By granting or revoking privileges, database administrators can control who can perform various operations on the database objects, ensuring that sensitive data remains protected and only authorized users have appropriate access.
-
-It's crucial to carefully manage user permissions and privileges to maintain data integrity and prevent unauthorized access to critical data. Database administrators must regularly review and adjust privileges to meet security requirements and adhere to the principle of least privilege, giving users only the minimum level of access they need to perform their tasks.
-
-DCL commands are used to manage the access and permissions of database objects. They control the authorization of users and define their privileges on the database.
-
-Common DCL commands include:
-- `GRANT`: Used to give users specific privileges on database objects.
-- `REVOKE`: Used to revoke previously granted privileges.
-
-Example of a DCL command:
-```sql
-GRANT SELECT, INSERT ON students TO user1;
-```
-
-Certainly! Here are examples of using DCL (Data Control Language) commands in SQL:
-
-1. GRANT: Grant specific privileges to users or roles.
-
-```sql
--- Example: Grant SELECT and INSERT privileges on the 'employees' table to a user 'user1'.
-GRANT SELECT, INSERT ON employees TO user1;
-```
-
-In this example, the `GRANT` command is used to give the `SELECT` and `INSERT` privileges on the `employees` table to a user named `user1`. This allows `user1` to retrieve data from and insert new records into the `employees` table.
-
-2. REVOKE: Revoke previously granted privileges from users or roles.
-
-```sql
--- Example: Revoke the UPDATE privilege on the 'products' table from a user 'user2'.
-REVOKE UPDATE ON products FROM user2;
-```
 
 In this example, the `REVOKE` command is used to remove the `UPDATE` privilege on the `products` table from a user named `user2`. This means that `user2` will no longer be able to modify existing records in the `products` table.
 
@@ -992,20 +1009,15 @@ In this example, the `REVOKE` command is used to remove all privileges on the `i
 
 Remember that the syntax and availability of DCL commands may vary slightly between different database management systems (DBMS). Always refer to the specific documentation of your DBMS for the correct syntax and usage of DCL commands. Additionally, be cautious when granting or revoking privileges to ensure data security and adhere to the principle of least privilege.
 
-Give examples for the following DCL commands:
-
-- GRANT - Grant the permission to the users on specific objects (Schema);
-- REVOKE - Revoke the permission to the users on specific objects (Schema);
-
-
 
 ## 4. TCL (Transaction Control Language):
 
-TCL stands for "Transaction Control Language" in SQL (Structured Query Language). TCL commands are used to manage transactions within a relational database. Transactions are a sequence of one or more SQL statements that are executed as a single unit of work. The primary goal of TCL commands is to ensure the integrity and consistency of data when multiple statements need to be executed together as a single logical operation.
+- TCL stands for "Transaction Control Language" in SQL (Structured Query Language).
+- TCL commands are used to manage transactions within a relational database. Transactions are a sequence of one or more SQL statements that are executed as a single unit of work.
+- The primary goal of TCL commands is to ensure the integrity and consistency of data when multiple statements need to be executed together as a single logical operation.
+- There are three main TCL commands in SQL: `COMMIT`, `ROLLBACK` and `SAVEPOINT`.
 
-There are three main TCL commands in SQL:
-
-1. COMMIT: The COMMIT command is used to permanently save the changes made within a transaction to the database. When a COMMIT is executed, all the changes made by the statements within the transaction are written to the database, and the transaction is completed successfully.
+1. `COMMIT`: The COMMIT command is used to **permanently save the changes made within a transaction to the database**. When a COMMIT is executed, all the changes made by the statements within the transaction are written to the database, and the transaction is completed successfully.
 
 Example:
 ```sql
@@ -1013,7 +1025,7 @@ Example:
 COMMIT;
 ```
 
-2. ROLLBACK: The ROLLBACK command is used to undo the changes made within a transaction and return the database to its original state. When a ROLLBACK is executed, all the changes made by the statements within the transaction are discarded, and the transaction is aborted.
+2. `ROLLBACK`: The ROLLBACK command is used to **undo the changes made within a transaction and return the database to its original state**. When a ROLLBACK is executed, all the changes made by the statements within the transaction are discarded, and the transaction is aborted.
 
 Example:
 ```sql
@@ -1021,7 +1033,7 @@ Example:
 ROLLBACK;
 ```
 
-3. SAVEPOINT: The SAVEPOINT command is used to set a point within a transaction to which you can later rollback if needed. SAVEPOINTs are useful when you want to undo only part of the changes made within a transaction without rolling back the entire transaction.
+3. `SAVEPOINT`: The `SAVEPOINT` command is used to set a point within a transaction to which you can later rollback if needed. SAVEPOINTs are useful when you want to undo only part of the changes made within a transaction without rolling back the entire transaction.
 
 Example:
 ```sql
@@ -1035,10 +1047,7 @@ It's essential to use TCL commands judiciously and to handle transactions approp
 
 TCL commands are used to manage transactions within the database. A transaction is a sequence of one or more database operations that need to be executed as a single unit of work, ensuring data consistency and integrity.
 
-Common TCL commands include:
-- `COMMIT`: Used to permanently save changes made by a transaction.
-- `ROLLBACK`: Used to undo the changes made by a transaction and revert the database to its previous state.
-- `SAVEPOINT`: Used to set a savepoint within a transaction, allowing partial rollback.
+
 
 Example of a TCL command:
 ```sql
@@ -1050,7 +1059,7 @@ ROLLBACK TO sp1; -- Rollback to the savepoint
 COMMIT; -- End the transaction and save changes
 ```
 
-Here are examples of using TCL (Transaction Control Language) commands in SQL:
+More examples of using TCL (Transaction Control Language) commands in SQL:
 
 1. COMMIT:
 
@@ -1094,9 +1103,9 @@ Remember that TCL commands are essential for managing transactions and ensuring 
 
 
 4. AUTOCOMMIT
-In the context of Transaction Control Language (TCL) in SQL, `AUTOCOMMIT` refers to a feature that automatically commits each SQL statement as soon as it is executed. When `AUTOCOMMIT` is enabled, every individual SQL statement forms a transaction, and that transaction is automatically committed (permanently saved to the database) as soon as the statement is executed successfully.
-
-By default, most database management systems have `AUTOCOMMIT` enabled. It means that when you execute an SQL statement, such as an `INSERT`, `UPDATE`, or `DELETE`, the changes are immediately made permanent in the database without the need to explicitly commit the transaction.
+- In the context of Transaction Control Language (TCL) in SQL, `AUTOCOMMIT` refers to a feature that automatically commits each SQL statement as soon as it is executed.
+- When `AUTOCOMMIT` is enabled, every individual SQL statement forms a transaction, and that transaction is automatically committed (permanently saved to the database) as soon as the statement is executed successfully.
+- By default, most database management systems have `AUTOCOMMIT` enabled. It means that when you execute an SQL statement, such as an `INSERT`, `UPDATE`, or `DELETE`, the changes are immediately made permanent in the database without the need to explicitly commit the transaction.
 
 For example, in a typical scenario with `AUTOCOMMIT` enabled:
 
@@ -1140,6 +1149,7 @@ In summary, `AUTOCOMMIT` in TCL allows SQL statements to be automatically commit
 
 
 ## 5. DQL (Data Query Language):
+
 DQL commands are used to query and retrieve data from the database. Although not an official SQL category, DQL is commonly used to refer to commands used for data retrieval.
 
 Common DQL commands include:
@@ -1155,9 +1165,14 @@ In summary, SQL commands are categorized into DDL, DML, DCL, and TCL based on th
 
 ## 6. SUB-QUERY
 
-SUBQUERY - (QUERY WITHIN QUERY) - SELECT <COLUMN NAMES> FROM TABLE_NAME WHERE COLUMN (= or <> or IN or NOT IN) (SELECT COLUMN_NAME FROM <TABLE_NAME> WHERE <CONDITIONS>)
+- A subquery, also known as a nested query or inner query, is a query that is embedded within another SQL query.
+- Subqueries are used to retrieve data from one or more tables based on the results of another query. They can be a powerful tool for performing complex queries and data manipulation in SQL.
+- Subqueries are used to break down complex tasks into smaller steps and are often employed within SELECT, INSERT, UPDATE, and DELETE statements.
 
-A subquery, also known as a nested query or inner query, is a query that is embedded within another SQL query. Subqueries are used to retrieve data from one or more tables based on the results of another query. They can be a powerful tool for performing complex queries and data manipulation in SQL.
+- The syntax for using a sub-query is:
+``` 
+SELECT <COLUMN NAMES> FROM TABLE_NAME WHERE COLUMN (= or <> or IN or NOT IN) (SELECT COLUMN_NAME FROM <TABLE_NAME> WHERE <CONDITIONS>)
+```
 
 Let's look at an example to understand how subqueries work:
 
@@ -1210,9 +1225,9 @@ These are just a few simple examples of how subqueries can be used in SQL. Subqu
 
 ## 7. TABLE COPY
 
-- CREATE A TABLE and INSERT THE RECORS INTO THE TABLE bY USING THE SELECT STATEMENT. 
-
-Table copy in SQL refers to the process of duplicating the data and structure of an existing table to create a new table. This is often done when you want to work with a copy of the original data without modifying the original table. Table copy can be useful for various purposes, such as creating backup copies, performing data analysis, or testing changes without affecting the original data.
+- Table copy in SQL refers to the process of duplicating the data and structure of an existing table to create a new table.
+- This is often done when you want to work with a copy of the original data without modifying the original table.
+- Table copy can be useful for various purposes, such as creating backup copies, performing data analysis, or testing changes without affecting the original data.
 
 There are different ways to copy a table in SQL, depending on the database management system (DBMS) you are using. Here, I'll provide examples for two common ways to copy a table:
 
@@ -1253,7 +1268,7 @@ Give examples of the following commands:
 2. INSERT INTO <TABLE_NAME> SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME;
 
 
-Certainly! Here are examples of the given SQL commands:
+Here are examples of the given SQL commands:
 
 1. `CREATE TABLE <TABLE_NAME> AS (SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME);`
 
@@ -1594,14 +1609,45 @@ The other available `JOINS` in MYSQL are:
 
 ## 9. UNION
 
-- UNION/UNION ALL: The column count should match (UNION - Duplications is not allowed/ UNION ALL - Duplications is allowed)
+The UNION function in SQL is used to combine the result sets of two or more SELECT queries into a single result set, removing duplicate rows. It's particularly useful when you want to merge data from different tables or queries that have the same structure.
 
-SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME UNION 
-SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME;
+The basic syntax of the UNION operation is as follows:
 
-SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME UNION ALL
-SELECT (*/LIST OF COLUMNS) FROM TABLE_NAME;
- 
+```sql
+SELECT columns FROM table1
+UNION
+SELECT columns FROM table2;
+```
+
+Key points to understand about the UNION function:
+
+1. **Column Matching:** The SELECT statements within the UNION operation must have the same number of columns, and the corresponding columns must have compatible data types.
+
+2. **Duplicate Removal:** By default, the UNION operation removes duplicate rows from the result set. If you want to include duplicates, you can use the UNION ALL keyword.
+
+3. **Order of Results:** The order of rows in the result set is not guaranteed to be in any specific order unless you use an ORDER BY clause.
+
+Here's a simple example to illustrate how UNION works:
+
+Suppose you have two tables: "Employees" and "Contractors." Both tables have the same structure with columns "first_name" and "last_name."
+
+```sql
+-- Query 1
+SELECT first_name, last_name
+FROM Employees
+
+UNION
+
+-- Query 2
+SELECT first_name, last_name
+FROM Contractors;
+```
+
+In this example, the result of the UNION operation will combine the first names and last names from both the "Employees" and "Contractors" tables, removing any duplicates. If you use UNION ALL instead of UNION, duplicates will be retained.
+
+Keep in mind that the columns and their data types must match between the SELECT statements. If they don't, you might need to use aliases or convert data types as needed.
+
+UNION is a powerful tool for combining data from different sources and simplifying the process of querying and retrieving merged results.
 
 In SQL, the `UNION` operator is used to combine the result sets of two or more `SELECT` queries into a single result set. The `UNION` operator removes duplicate rows from the final result set, making it useful for combining data from different tables or for merging data from similar tables.
 
@@ -1665,56 +1711,9 @@ The result will be:
 
 As you can see, the `UNION` operator merges the data from both tables, ensuring that duplicate rows are removed, and presents a single combined result set.
  
-## 10. EXCLUDE 
 
- 
-CONSTRAINTS
-FUNCTIONS
-SUB QUERY
 
-In SQL, there is no specific `EXCLUDE` operator or command like `UNION`, `JOIN`, or `SELECT`. However, if you want to exclude certain rows from the result set based on specific conditions, you can use various SQL clauses and functions to achieve this.
-
-The common SQL clauses that are used to exclude rows from a result set are:
-
-1. `WHERE` clause: The `WHERE` clause is used to filter rows based on specified conditions. It allows you to include only the rows that meet the specified criteria and exclude others.
-
-Example:
-
-```sql
-SELECT emp_id, emp_name
-FROM employees
-WHERE dept_id <> 101;
-```
-
-In this example, the `WHERE` clause is used to exclude employees from the result set whose `dept_id` is equal to 101.
-
-2. `NOT` keyword: The `NOT` keyword is used to negate a condition in the `WHERE` clause. It allows you to exclude rows that satisfy a particular condition.
-
-Example:
-
-```sql
-SELECT emp_id, emp_name
-FROM employees
-WHERE NOT dept_id = 101;
-```
-
-This query will return employees from the `employees` table whose `dept_id` is not equal to 101.
-
-3. `EXISTS` and `NOT EXISTS` subqueries: These subqueries are used with the `WHERE` clause to check for the existence of rows in a related table and include or exclude rows accordingly.
-
-Example:
-
-```sql
-SELECT emp_id, emp_name
-FROM employees
-WHERE EXISTS (SELECT 1 FROM departments WHERE employees.dept_id = departments.dept_id);
-```
-
-This query will return employees from the `employees` table whose `dept_id` matches an existing department in the `departments` table.
-
-In summary, SQL provides various ways to exclude rows from a result set based on specific conditions using the `WHERE` clause, `NOT` keyword, and subqueries. These mechanisms allow you to control which rows are included or excluded in the final result based on your requirements.
-
-## CASE, WHEN, END:
+## 10. CASE, WHEN, END:
 
 In SQL, the `CASE` expression is used for conditional logic. It allows you to perform different actions based on conditions within a query. The `CASE` expression can be used in both the `SELECT` and `UPDATE` statements to determine values or perform actions based on specified conditions.
 
