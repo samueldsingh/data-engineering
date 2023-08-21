@@ -38,8 +38,8 @@ RDBMS is a type of DBMS that manages data in a relational database model. In the
 
 In summary, both DBMS and RDBMS are software systems used to manage data, but RDBMS is a specific type of DBMS that follows the relational model, providing structured data organization and enforcing data relationships through keys and integrity constraints.
 
-## 2. Examples of DBMS and RDBMS:
 
+## 2. Examples of DBMS and RDBMS:
 
 There are several types of Database Management Systems (DBMS) based on their data models, architectures, and functionalities. Here are some of the most common types of DBMS:
 
@@ -79,7 +79,7 @@ Each type of DBMS serves specific use cases and requirements, and the choice of 
 
 14. **Redis:** Redis is an in-memory data structure store that can function as a database, cache, and message broker. It is widely used for caching frequently accessed data and supporting real-time data analytics.
 
-RDBMS (Relational Database Management System):
+**RDBMS (Relational Database Management System):**
 
 1. **MySQL:** MySQL is an open-source relational database management system known for its speed, reliability, and ease of use. It is widely used in web applications and is the default database for popular content management systems like WordPress.
 
@@ -270,6 +270,39 @@ SQL (Structured Query Language) and NoSQL (Not Only SQL) databases are two diffe
 
 Ultimately, the choice between SQL and NoSQL databases depends on the specific requirements of your application. Some projects may even use a combination of both types to leverage their respective strengths for different parts of the system.
 
+
+In summary:
+SQL Database:
+SQL databases are based on a structured and relational data model. They use tables with predefined schemas to store and organize data. SQL databases follow 
+the ACID (Atomicity, Consistency, Isolation, Durability) properties, ensuring data integrity and consistency. They support powerful querying capabilities 
+using SQL, allowing for complex joins, filtering, and aggregation operations. SQL databases are well-suited for structured and transactional data, such as 
+financial records, user profiles, and inventory management.
+
+Example:
+Let's consider an example of an e-commerce application with an SQL database. We might have tables such as `Customers`, `Orders`, and `Products`. The `Customers` 
+table would store information about customers, including their names, addresses, and contact details. The `Orders` table would store order-related information, 
+such as order IDs, customer IDs, product IDs, and quantities. The `Products` table would store product details like names, prices, and descriptions. We can 
+perform SQL queries like joining the tables to retrieve order details for a specific customer or calculating the total revenue generated from a particular 
+product.
+
+NoSQL Database:
+NoSQL databases are designed for flexible and scalable data storage. They offer non-relational data models, allowing for unstructured, semi-structured, or 
+key-value based data storage. NoSQL databases prioritize scalability, performance, and horizontal data distribution. They can handle large volumes of data 
+and provide high-speed data access. NoSQL databases relax some of the ACID properties to achieve scalability and availability. NoSQL databases are suitable 
+for scenarios with rapidly changing data structures, real-time data ingestion, and applications that require horizontal scaling, such as social media 
+analytics, IoT data storage, and content management systems.
+
+Example:
+Consider a social media application that utilizes a NoSQL database. The application may store user profiles, posts, comments, and relationships between 
+users. Instead of using predefined schemas and tables, a NoSQL database can store data as JSON documents. Each document represents a user profile, a post, 
+or a comment and can have different attributes based on its type. The database can handle a variety of data structures without needing to modify the schema. 
+This flexibility allows for easy scalability as the application grows and evolves.
+
+In summary, SQL databases are based on structured and relational data models, supporting powerful querying with SQL. They are suitable for structured and 
+transactional data. NoSQL databases offer flexible data models, scalability, and high-speed access. They are suitable for unstructured or rapidly changing 
+data requirements. The choice between SQL and NoSQL databases depends on the specific needs of an application, the data model, scalability requirements, 
+and the desired level of consistency and querying capabilities.
+
 ## 8. What is the order of execution of sql commands:
 
 In SQL, the logical order of execution for a query involving the `SELECT` statement is as follows:
@@ -297,49 +330,8 @@ In SQL, the logical order of execution for a query involving the `SELECT` statem
 
 It's important to understand that this logical order of execution doesn't always reflect the actual physical execution steps taken by the database management system. Modern database systems often use query optimization techniques to reorganize the execution plan for better performance. However, they ensure that the end result adheres to the logical order of execution to produce correct and expected results.
 
-## 9. Different types of database:
 
-Databases can be classified into different types based on various criteria, including their structure, usage, and technology. Here are some common types of databases:
-
-1. **Relational Databases (RDBMS):**
-   Relational databases are structured around tables with rows and columns. Data is organized into tables, and relationships between tables are established using keys. Examples of relational database management systems (RDBMS) include MySQL, PostgreSQL, Oracle Database, Microsoft SQL Server, and SQLite.
-
-2. **NoSQL Databases:**
-   NoSQL databases are designed to handle large volumes of unstructured or semi-structured data. They don't rely on a fixed schema like relational databases. Types of NoSQL databases include document databases (e.g., MongoDB), key-value stores (e.g., Redis), column-family stores (e.g., Apache Cassandra), and graph databases (e.g., Neo4j).
-
-3. **Object-Oriented Databases:**
-   Object-oriented databases store data as objects, similar to how they are used in object-oriented programming languages. These databases are well-suited for applications that work with complex and interconnected data structures.
-
-4. **Graph Databases:**
-   Graph databases are designed to store and manage data in the form of nodes and edges, representing entities and their relationships. They are particularly useful for applications that involve complex relationships and network analysis.
-
-5. **Columnar Databases:**
-   Columnar databases store data in columns rather than rows, which can provide significant performance improvements for certain types of analytical queries. They are commonly used for data warehousing and analytics.
-
-6. **Time-Series Databases:**
-   Time-series databases specialize in storing and querying time-stamped data, such as sensor readings, financial data, and logs. They are optimized for efficient storage and retrieval of time-series data.
-
-7. **In-Memory Databases:**
-   In-memory databases store data entirely in the system's main memory (RAM) rather than on disk. This can greatly enhance data access speed and query performance.
-
-8. **Spatial Databases:**
-   Spatial databases are designed to store and manage spatial or geographic data, such as maps, locations, and coordinates. They provide specialized spatial indexing and querying capabilities.
-
-9. **Distributed Databases:**
-   Distributed databases are spread across multiple physical or virtual servers. They are designed to handle high availability, scalability, and fault tolerance.
-
-10. **Cloud Databases:**
-    Cloud databases are hosted and managed in cloud environments. They can be relational, NoSQL, or specialized databases, and they offer advantages like scalability and managed services.
-
-11. **OLAP (Online Analytical Processing) Databases:**
-    OLAP databases are designed for complex queries and reporting tasks. They are optimized for analytics and data warehousing.
-
-12. **Document Databases:**
-    Document databases store data in flexible, semi-structured documents, such as JSON or XML. They are well-suited for applications where data structures vary and evolve over time.
-
-These are just a few types of databases, and there are many more specialized databases designed for specific use cases and requirements. The choice of database type depends on factors such as the nature of the data, the performance requirements, the application's needs, and scalability considerations.
-
-## 10. What is OLAP and OLTP
+## 9. What is OLAP and OLTP
 
 OLAP (Online Analytical Processing) and OLTP (Online Transaction Processing) are two different approaches to data processing in the field of databases. 
 Here's a brief explanation of each:
@@ -362,7 +354,7 @@ In summary, OLAP is geared towards analytical tasks and supports complex queryin
 real-time transactions efficiently. Both OLAP and OLTP serve different purposes and are used in different scenarios based on the nature of data processing 
 requirements.
 
-## 11. What is structured, semi-structured and unstructured data?
+## 10. What is structured, semi-structured and unstructured data?
 
 Structured, semi-structured, and unstructured data are different classifications based on the organization and format of data. Here's a brief explanation 
 of each type:
@@ -389,7 +381,7 @@ a document with text content (unstructured) accompanied by metadata tags (semi-s
 of data as structured, semi-structured, or unstructured helps in understanding the level of organization and format, and it influences the approaches 
 and tools used for data storage, processing, and analysis.
 
-## 12. Explain database, data warehouse and data lake.
+## 11. Explain database, data warehouse and data lake.
 
 Certainly! Here's an explanation of database, data warehouse, and data lake:
 
@@ -417,7 +409,7 @@ aggregated data for business intelligence and reporting, and a data lake is a la
 data analysis and exploration needs. Each of these concepts serves different purposes and plays a crucial role in managing and analyzing data within 
 organizations.
 
-## 13. Explain row storage vs column storage
+## 12. Explain row storage vs column storage
 
 Row storage and column storage are two different approaches to how data is stored and organized within a database. Here's an explanation of each:
 
@@ -486,42 +478,8 @@ These examples highlight how row storage and column storage differ in terms of d
 processing and accessing complete rows, while column storage is advantageous for analytical processing and efficient column-based computations. Modern 
 databases often employ hybrid storage models that leverage the benefits of both approaches to optimize performance for different types of queries and workloads.
 
-## 14. Explain sql vs nosql databases.
 
-SQL (Structured Query Language) and NoSQL (Not Only SQL) are two different types of database systems. Here's an explanation of each along with an example:
-
-SQL Database:
-SQL databases are based on a structured and relational data model. They use tables with predefined schemas to store and organize data. SQL databases follow 
-the ACID (Atomicity, Consistency, Isolation, Durability) properties, ensuring data integrity and consistency. They support powerful querying capabilities 
-using SQL, allowing for complex joins, filtering, and aggregation operations. SQL databases are well-suited for structured and transactional data, such as 
-financial records, user profiles, and inventory management.
-
-Example:
-Let's consider an example of an e-commerce application with an SQL database. We might have tables such as `Customers`, `Orders`, and `Products`. The `Customers` 
-table would store information about customers, including their names, addresses, and contact details. The `Orders` table would store order-related information, 
-such as order IDs, customer IDs, product IDs, and quantities. The `Products` table would store product details like names, prices, and descriptions. We can 
-perform SQL queries like joining the tables to retrieve order details for a specific customer or calculating the total revenue generated from a particular 
-product.
-
-NoSQL Database:
-NoSQL databases are designed for flexible and scalable data storage. They offer non-relational data models, allowing for unstructured, semi-structured, or 
-key-value based data storage. NoSQL databases prioritize scalability, performance, and horizontal data distribution. They can handle large volumes of data 
-and provide high-speed data access. NoSQL databases relax some of the ACID properties to achieve scalability and availability. NoSQL databases are suitable 
-for scenarios with rapidly changing data structures, real-time data ingestion, and applications that require horizontal scaling, such as social media 
-analytics, IoT data storage, and content management systems.
-
-Example:
-Consider a social media application that utilizes a NoSQL database. The application may store user profiles, posts, comments, and relationships between 
-users. Instead of using predefined schemas and tables, a NoSQL database can store data as JSON documents. Each document represents a user profile, a post, 
-or a comment and can have different attributes based on its type. The database can handle a variety of data structures without needing to modify the schema. 
-This flexibility allows for easy scalability as the application grows and evolves.
-
-In summary, SQL databases are based on structured and relational data models, supporting powerful querying with SQL. They are suitable for structured and 
-transactional data. NoSQL databases offer flexible data models, scalability, and high-speed access. They are suitable for unstructured or rapidly changing 
-data requirements. The choice between SQL and NoSQL databases depends on the specific needs of an application, the data model, scalability requirements, 
-and the desired level of consistency and querying capabilities.
-
-## 15. Explain file formats in databases.
+## 13. Explain file formats in databases.
 
 File formats in databases refer to the specific formats used to store and organize data within database systems. Different database management systems (DBMS) 
 use various file formats to store and retrieve data efficiently. Here are explanations of some commonly used file formats:
@@ -560,7 +518,7 @@ These are just a few examples of file formats used in databases. The choice of f
 requirements for data storage and retrieval, and the tools or applications that need to work with the data. Each file format has its own characteristics 
 and advantages, enabling efficient data storage, querying, and interoperability within the database ecosystem.
 
-## 16. Explain delimiters 
+## 14. Explain delimiters 
 
 In the context of databases, delimiters refer to characters or sequences of characters used to separate or mark the boundaries of data elements within a database. Delimiters play an essential role in parsing, extracting, and interpreting data correctly. Here are a few key aspects related to delimiters in databases:
 
