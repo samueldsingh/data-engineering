@@ -1514,7 +1514,7 @@ In this example:
 
 The result includes all customers and their orders, and customers without orders or orders without customers.
 
--`SELF JOIN`: A self join is a type of SQL join operation in which a table is joined with itself. In other words, you treat a single table as if it were two separate tables and then perform a regular join operation between these two "virtual" tables. A self join is often used to establish relationships between rows within the same table based on related columns.
+- `SELF JOIN`: A self join is a type of SQL join operation in which a table is joined with itself. In other words, you treat a single table as if it were two separate tables and then perform a regular join operation between these two "virtual" tables. A self join is often used to establish relationships between rows within the same table based on related columns.
 
 ```
 SELECT alias1.column_name, alias2.column_name
@@ -1556,7 +1556,7 @@ In this example:
 
 The result shows employees along with their corresponding managers. John has no manager (`manager_id` is NULL), and the other employees have managers based on their `manager_id`.
 
--`NATURAL JOIN`: A `NATURAL JOIN` is a type of join operation that automatically matches columns with the same name from two tables. It's a shorthand way to join tables based on columns that share the same name without explicitly specifying the columns to join on. Here's an example using two simple tables: `Employees` and `Departments`.
+- `NATURAL JOIN`: A `NATURAL JOIN` is a type of join operation that automatically matches columns with the same name from two tables. It's a shorthand way to join tables based on columns that share the same name without explicitly specifying the columns to join on. Here's an example using two simple tables: `Employees` and `Departments`.
 
 **Employees Table:**
 | emp_id | first_name | last_name | department_id |
