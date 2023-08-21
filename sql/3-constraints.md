@@ -35,6 +35,21 @@ Commonly used constraints in SQL include:
 9. **ENUM** Constraint: An ENUM constraint is used to define a custom data type that represents **a set of predefined constant values for a column**. It allows you to
     specify that a column can only take one of the specified values, and any attempt to insert a value outside the predefined set will result in an error.
 
+Constraints can be used with several SQL commands, including:
+
+1. **CREATE TABLE:** Constraints are often defined when creating a new table. They ensure that the data entered into the table adheres to specific rules.
+
+2. **ALTER TABLE:** Constraints can also be added or modified after a table has already been created using the `ALTER TABLE` command.
+
+3. **INSERT:** Constraints are checked when inserting new rows into a table to ensure that the data being inserted adheres to the defined rules.
+
+4. **UPDATE:** Constraints are checked when updating existing rows in a table to maintain data integrity.
+
+5. **DELETE:** Constraints can be used to prevent the deletion of rows that would violate data integrity rules.
+
+
+### Using constraints with CREATE Table
+
 Examples of using constraints:
 
 ```sql
@@ -61,7 +76,7 @@ In this example, the `employees` table has multiple constraints defined:
 
 Creating a table with all the constraints:
 
-Sure! Here's an example of how you can create a table with various constraints in SQL, including PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, DEFAULT, INDEX, AUTO_INCREMENT, and ENUM.
+Create a table with various constraints in SQL, including PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, DEFAULT, INDEX, AUTO_INCREMENT, and ENUM.
 
 ```sql
 CREATE TABLE Orders (
@@ -93,3 +108,193 @@ In this example:
 - By giving constraints a name using the CONSTRAINT keyword, you make it easier to manage and reference them.
 
 Please note that the specific syntax and supported features may vary depending on the database system you are using (e.g., MySQL, PostgreSQL, SQL Server). Make sure to adjust the data types, constraint names, and other details according to your database system's syntax.
+
+
+### USING CONSTRAINTS WITH ALTER 
+
+Use the `ALTER TABLE` command to add various constraints to an existing table named "Employees" in SQL, including PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, DEFAULT, INDEX, AUTO_INCREMENT, and ENUM. Please note that the example provided assumes the table and related columns already exist.
+
+```sql
+-- Adding a PRIMARY KEY constraint
+ALTER TABLE Employees
+ADD PRIMARY KEY (employee_id);
+
+-- Adding a FOREIGN KEY constraint
+ALTER TABLE Employees
+ADD CONSTRAINT fk_department
+FOREIGN KEY (department_id) REFERENCES Departments(department_id);
+
+-- Adding a UNIQUE constraint
+ALTER TABLE Employees
+ADD CONSTRAINT uk_email UNIQUE (email);
+
+-- Adding a NOT NULL constraint
+ALTER TABLE Employees
+MODIFY COLUMN first_name VARCHAR(50) NOT NULL;
+
+-- Adding a CHECK constraint
+ALTER TABLE Employees
+ADD CONSTRAINT chk_salary CHECK (salary > 0);
+
+-- Adding a DEFAULT constraint
+ALTER TABLE Employees
+ALTER COLUMN hire_date SET DEFAULT CURRENT_DATE;
+
+-- Adding an INDEX
+ALTER TABLE Employees
+ADD INDEX idx_last_name (last_name);
+
+-- Adding an AUTO_INCREMENT attribute (Assuming it's supported by the database)
+ALTER TABLE Employees
+MODIFY COLUMN employee_id INT AUTO_INCREMENT;
+
+-- Adding an ENUM column
+ALTER TABLE Employees
+ADD COLUMN gender ENUM('Male', 'Female', 'Other');
+```
+
+In this example:
+
+- The `ALTER TABLE` command is used to modify the table schema.
+- `employee_id` is added as the primary key using the `ADD PRIMARY KEY` constraint.
+- A foreign key constraint `fk_department` is added to link the `department_id` column to the `Departments` table.
+- A unique constraint `uk_email` is added to the `email` column to enforce uniqueness.
+- The `first_name` column is modified to be `NOT NULL`.
+- A `CHECK` constraint `chk_salary` is added to ensure that the salary is greater than 0.
+- The `hire_date` column is set to have a default value of the current date.
+- An index named `idx_last_name` is added to the `last_name` column.
+- The `employee_id` column is modified to be auto-incremented.
+- A new `gender` column of ENUM type is added.
+
+Please note that the syntax might vary based on the specific database system you are using, and some constraints might not be supported in all systems. Always refer to the documentation of your database management system for the accurate syntax and supported constraints.
+
+### Using constraints with INSERT command
+
+Certainly! Below is an example that demonstrates using the mentioned constraints (`PRIMARY KEY`, `FOREIGN KEY`, `UNIQUE`, `NOT NULL`, `CHECK`, `DEFAULT`, `INDEX`, `AUTO_INCREMENT`, and `ENUM`) with the `INSERT` command. This example assumes a simplified table named "Students" with various columns.
+
+```sql
+-- CREATE TABLE Students
+CREATE TABLE Students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    gender ENUM('Male', 'Female', 'Other') NOT NULL,
+    age INT CHECK (age >= 18),
+    department_id INT,
+    email VARCHAR(100) UNIQUE,
+    registration_date DATE DEFAULT CURRENT_DATE,
+    INDEX idx_last_name (last_name)
+);
+
+-- INSERT data with constraints
+INSERT INTO Students (first_name, last_name, gender, age, department_id, email)
+VALUES ('John', 'Doe', 'Male', 20, 1, 'john.doe@example.com');
+
+-- INSERT data with NULL values (assuming NULL is allowed)
+INSERT INTO Students (first_name, last_name, gender)
+VALUES ('Jane', 'Smith', 'Female');
+
+-- INSERT data with default values
+INSERT INTO Students (first_name, last_name, gender, age)
+VALUES ('Alice', 'Johnson', 'Female', 22);
+
+-- INSERT data that violates CHECK constraint
+-- This will fail if age is less than 18
+
+-- INSERT data with duplicate email (UNIQUE constraint violation)
+-- This will fail if the email is already in use
+```
+
+In this example:
+
+- A table named "Students" is created with various constraints (`PRIMARY KEY`, `UNIQUE`, `NOT NULL`, `CHECK`, `DEFAULT`, `ENUM`, `AUTO_INCREMENT`, `INDEX`).
+- The `INSERT` command is used to add data that adheres to the defined constraints.
+- You can see examples of inserting data with different combinations of constraints, including NULL values, default values, and data that violates constraints.
+
+Please remember to adapt the column names, table names, and constraints according to your specific database schema and SQL dialect. Also, keep in mind that some constraints and features may not be supported in all database systems. Always refer to your database's documentation for accurate syntax and supported features.
+
+### Using constraints with UPDATE command
+
+Here's an example that demonstrates using the mentioned constraints (`PRIMARY KEY`, `FOREIGN KEY`, `UNIQUE`, `NOT NULL`, `CHECK`, `DEFAULT`, `INDEX`, `AUTO_INCREMENT`, and `ENUM`) with the `UPDATE` command. This example assumes a simplified table named "Employees" with various columns.
+
+```sql
+-- CREATE TABLE Employees
+CREATE TABLE Employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    department_id INT,
+    email VARCHAR(100) UNIQUE,
+    salary DECIMAL(10, 2) CHECK (salary > 0),
+    hire_date DATE DEFAULT CURRENT_DATE,
+    gender ENUM('Male', 'Female', 'Other') NOT NULL
+);
+
+-- INSERT data with constraints
+INSERT INTO Employees (first_name, last_name, email, salary, gender)
+VALUES ('John', 'Doe', 'john.doe@example.com', 50000.00, 'Male');
+
+-- UPDATE data with constraints
+UPDATE Employees
+SET salary = 55000.00
+WHERE employee_id = 1;
+
+-- Attempt to UPDATE data violating CHECK constraint
+-- This will fail if salary is set to a non-positive value
+
+-- Attempt to UPDATE data violating UNIQUE constraint
+-- This will fail if the email is already in use
+```
+
+In this example:
+
+- A table named "Employees" is created with various constraints (`PRIMARY KEY`, `UNIQUE`, `NOT NULL`, `CHECK`, `DEFAULT`, `ENUM`, `AUTO_INCREMENT`).
+- The `INSERT` command adds an employee with data that adheres to the defined constraints.
+- The `UPDATE` command modifies an employee's salary, adhering to the constraints.
+- You can see examples of using the `UPDATE` command to violate the `CHECK` constraint and the `UNIQUE` constraint. These attempts will fail due to the constraint violations.
+
+As always, adapt the column names, table names, and constraints based on your specific database schema and SQL dialect. Constraints and features can vary between database systems, so consult your database's documentation for accurate syntax and supported features.
+
+**Using constraints with DELETE command**:
+
+Below is an example that demonstrates using the mentioned constraints (`PRIMARY KEY`, `FOREIGN KEY`, `UNIQUE`, `NOT NULL`, `CHECK`, `DEFAULT`, `INDEX`, `AUTO_INCREMENT`, and `ENUM`) with the `DELETE` command. This example assumes a simplified table named "Employees" with various columns.
+
+```sql
+-- CREATE TABLE Employees
+CREATE TABLE Employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    department_id INT,
+    email VARCHAR(100) UNIQUE,
+    salary DECIMAL(10, 2) CHECK (salary > 0),
+    hire_date DATE DEFAULT CURRENT_DATE,
+    gender ENUM('Male', 'Female', 'Other') NOT NULL
+);
+
+-- INSERT data with constraints
+INSERT INTO Employees (first_name, last_name, email, salary, gender)
+VALUES ('John', 'Doe', 'john.doe@example.com', 50000.00, 'Male');
+
+-- DELETE data with constraints
+DELETE FROM Employees
+WHERE employee_id = 1;
+
+-- Attempt to DELETE data with a FOREIGN KEY constraint
+-- This will fail if the department_id is still referred to by other records
+
+-- Attempt to DELETE data with a NOT NULL constraint
+-- This will fail if the column value is set to NULL
+
+-- Attempt to DELETE data with a CHECK constraint
+-- This will fail if salary is less than or equal to 0
+```
+
+In this example:
+
+- A table named "Employees" is created with various constraints (`PRIMARY KEY`, `UNIQUE`, `NOT NULL`, `CHECK`, `DEFAULT`, `ENUM`, `AUTO_INCREMENT`).
+- The `INSERT` command adds an employee with data that adheres to the defined constraints.
+- The `DELETE` command removes an employee's data.
+- You can see examples of using the `DELETE` command to violate constraints such as the `FOREIGN KEY` constraint (if other records depend on the department), the `NOT NULL` constraint, and the `CHECK` constraint.
+
+Always adjust the column names, table names, and constraints according to your specific database schema and SQL dialect. Constraints and features can vary between database systems, so refer to your database's documentation for accurate syntax and supported features.
