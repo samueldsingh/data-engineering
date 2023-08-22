@@ -36,10 +36,6 @@ The star schema extends one dimension, while the snowflake schema extends over m
 - The process involves dividing a table into multiple smaller tables and linking them using foreign keys.
 - Normalization follows a set of rules, often referred to as normal forms, to ensure data is organized efficiently.
 
-**The goals of normalization are to:**
-- to be able to characterize the level of redundancy in a relational schema
-- Provide mechanisms for transforming schemas in order to remove redundancy
-
 
 **Why would we want to normalize a database?**
 
@@ -48,18 +44,6 @@ The star schema extends one dimension, while the snowflake schema extends over m
 - First, it enforces data consistency. Data entry can get messy, and at times people will fill out fields differently.
 - Secondly, because duplicates are reduced, modification of any data becomes safer and simpler. 
 - Lastly, since tables are smaller and organized more by object, its easier to alter the database schema.
-
-**Difference between normalized and denormalized databases:**
-
-Normalized and denormalized tables are two different approaches to designing a relational database schema. Each approach has its own advantages and disadvantages, and the choice between them depends on factors such as data integrity, query performance, and maintenance.
-
-- Normalization requires much more joins than denormalized tables considering they have more tables which means slower performance.
-- Denormalized tables enable **data redundancy** whereas normalized table eliminates **data redundancy**.
-- Normalization ensures better data integrity through its design. During data entry, duplicates can easily identified and reduced.
-- Secondly, because duplicates are reduced, modification of any data becomes safer and simpler.
-- Since tables are smaller and organized more by object, its easier to alter the database schema.
-- Extending the snowflake schema while ensuring data consistency is much easier.
-
 
 **Advantages and Disadvantages:**
 
@@ -77,6 +61,7 @@ Advantages of Normalized Tables:
 - Improved data integrity: Updates and modifications are less likely to result in anomalies.
 - Easier maintenance: Changes are made in one place, reducing the risk of errors.
 - More efficient storage: Smaller tables require less storage space.
+- Eliminate data anomaly: Insert anomaly, Update anomaly, Delete anomaly.
 
 Disadvantages of Normalized Tables:
 - More complex queries: Retrieving data often requires joining multiple tables, which can lead to complex queries.
@@ -94,16 +79,58 @@ Disadvantages of Denormalized Tables:
 - Increased data redundancy: Data can be duplicated, leading to potential inconsistencies.
 - Maintenance challenges: Updates and modifications need to be carefully managed to avoid inconsistencies.
 - Larger storage requirements: Duplicated data requires more storage space.
+- Data anomaly: like insert anomaly, update anomaly and delete anomaly are more frequent.
 
 
 **Choosing Between Normalized and Denormalized Tables:**
 - Use normalized tables when data integrity and consistency are of utmost importance, such as in transactional systems.
 - Use denormalized tables when read performance is a top priority, such as in reporting or analytics applications.
+- Use normalized tables when building simpler small scale applications that are easier to manage and when you want a flexible application that needs an update more often than required.
+- If you want to ensure that data insert, updates and delete do not result in data inconsistencies, use normalization.
 - Consider a hybrid approach: Depending on the specific requirements of your application, you might choose to denormalize certain tables for performance while keeping others normalized for data integrity.
+- For reporting and analytics, where query performance is a primary concern, denormalized tables can significantly improve query response times by reducing the need for complex joins.
+- Offline processing, where data is extracted, transformed and loaded, denormalized tables can speed up ETL process.
+- When infrequent updates to the application is needed, use denormalized tables.
 
 It's important to note that there is no one-size-fits-all solution. The choice between normalized and denormalized tables should be made based on the specific needs of your application and the trade-offs you're willing to make between data integrity and performance.
 
+**Difference between normalized and denormalized databases**:
 
+Normalized and denormalized databases are two contrasting approaches to designing the structure of a relational database. Each approach has its own advantages and trade-offs based on factors such as data integrity, query performance, and storage efficiency. Here's a comparison of normalized and denormalized databases:
+
+**Normalized Databases:**
+
+1. **Minimize Data Redundancy:** Normalized databases aim to eliminate data redundancy by organizing data into separate tables and linking them with relationships (foreign keys). Each piece of data is stored only once.
+
+2. **Data Integrity:** Normalization helps maintain data integrity by reducing the chances of inconsistent or duplicate data. Updates are made in a single place, reducing the risk of anomalies.
+
+3. **Flexibility:** Changes to data are easier to manage because modifications are typically localized to individual tables.
+
+4. **Smaller Storage:** Normalized databases often require less storage space since data redundancy is minimized.
+
+5. **Efficient Updates:** Updates to data in normalized databases are generally more efficient due to the smaller data size and fewer affected rows.
+
+6. **Complex Joins:** Normalized databases may require multiple joins to retrieve related data, which can affect query performance.
+
+**Denormalized Databases:**
+
+1. **Data Redundancy:** Denormalized databases intentionally introduce controlled data redundancy by combining data from multiple tables into a single table. This can improve query performance but might lead to data integrity challenges.
+
+2. **Query Performance:** Denormalization can lead to faster query performance since data is already consolidated in a single table, reducing the need for complex joins.
+
+3. **Simplified Queries:** Queries can be simpler and require fewer joins in denormalized databases.
+
+4. **Aggregation and Reporting:** Denormalization is often favored for reporting and analytics scenarios where complex queries need to be executed quickly.
+
+5. **Data Anomalies:** Data anomalies like update, insert, and delete anomalies can occur more frequently in denormalized databases due to the redundancy.
+
+6. **Maintenance Complexity:** Updates to data in denormalized databases can be more complex and may require changes in multiple places.
+
+7. **Increased Storage:** Denormalized databases can require more storage space due to the redundancy.
+
+In practice, the choice between normalized and denormalized databases depends on the specific requirements of the application. Normalization is typically favored for transactional systems where data integrity is critical. Denormalization is often used in data warehousing and reporting systems where query performance is a priority and where the risk of data anomalies can be managed.
+
+It's important to strike a balance between normalization and denormalization based on the needs of the application, understanding that there might be cases where a combination of both approaches is appropriate.
 
 ## 3. Adding foreign keys
 
