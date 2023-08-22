@@ -222,3 +222,27 @@ A deletion anomaly happens when you delete a record and unintentionally delete o
 **Data anomalies**
 
 The more normalized the database, the less prone it will be to these anomalies. For example, most 3NF tables can’t have an update, insertion, and deletion anomalies. This makes normalization sound great. But, don’t forget the downsides of normalization as well — those long queries.
+
+## 5. What are the relationships in RDBMS:
+
+In relational database management systems (RDBMS), relationships define how data in different tables are related or linked together. Relationships are established using keys, typically primary keys and foreign keys, to maintain data integrity and ensure accurate associations between records in different tables. There are three main types of relationships in RDBMS:
+
+1. **One-to-One Relationship (1:1):**
+In a one-to-one relationship, each record in one table is related to one and only one record in another table, and vice versa. This type of relationship is not very common due to the potential for data redundancy. One-to-one relationships are used when you need to split data into separate tables for organizational reasons without introducing data redundancy.
+
+Example:
+Consider a database for an organization. You might have an "Employees" table and a "ContactInfo" table. Each employee has a single contact information record, and each contact information record corresponds to a specific employee.
+
+2. **One-to-Many Relationship (1:N):**
+In a one-to-many relationship, a record in one table is related to one or more records in another table, but each record in the second table is related to only one record in the first table. This is the most common type of relationship in relational databases.
+
+Example:
+Using the same "Employees" table, you could have a "Projects" table. Each employee can be assigned to multiple projects, but each project is associated with only one employee.
+
+3. **Many-to-Many Relationship (N:M):**
+In a many-to-many relationship, multiple records in one table are related to multiple records in another table. To implement a many-to-many relationship, you typically use an intermediate table, often called a junction or linking table, to map the associations between the two tables.
+
+Example:
+Consider a university database with a "Students" table and a "Courses" table. Since each student can enroll in multiple courses, and each course can have multiple students, you would create an intermediate "Enrollments" table to track which students are enrolled in which courses.
+
+These relationships help maintain data consistency, prevent data duplication, and allow for efficient querying and retrieval of related data. They're a fundamental concept in relational databases and are critical for building well-structured, normalized database schemas.
