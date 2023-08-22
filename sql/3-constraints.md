@@ -142,7 +142,7 @@ ADD COLUMN gender ENUM('Male', 'Female', 'Other');
 
 -- Adding a DEFAULT constraint
 ALTER TABLE Employees
-ALTER COLUMN hire_date SET DEFAULT CURRENT_DATE;
+ADD COLUMN status VARCHAR(20) DEFAULT 'Active';
 
 -- Adding a NOT NULL constraint
 ALTER TABLE Employees
