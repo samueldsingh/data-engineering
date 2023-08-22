@@ -136,13 +136,13 @@ ADD CONSTRAINT chk_salary CHECK (salary > 0);
 ALTER TABLE Employees
 ADD INDEX idx_last_name (last_name);
 
--- Adding a DEFAULT constraint
-ALTER TABLE Employees
-ALTER COLUMN hire_date SET DEFAULT CURRENT_DATE;
-
 -- Adding an ENUM column
 ALTER TABLE Employees
 ADD COLUMN gender ENUM('Male', 'Female', 'Other');
+
+-- Adding a DEFAULT constraint
+ALTER TABLE Employees
+ALTER COLUMN hire_date SET DEFAULT CURRENT_DATE;
 
 -- Adding a NOT NULL constraint
 ALTER TABLE Employees
