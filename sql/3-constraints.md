@@ -128,29 +128,29 @@ FOREIGN KEY (department_id) REFERENCES Departments(department_id);
 ALTER TABLE Employees
 ADD CONSTRAINT uk_email UNIQUE (email);
 
--- Adding a NOT NULL constraint
-ALTER TABLE Employees
-MODIFY COLUMN first_name VARCHAR(50) NOT NULL;
-
 -- Adding a CHECK constraint
 ALTER TABLE Employees
 ADD CONSTRAINT chk_salary CHECK (salary > 0);
-
--- Adding a DEFAULT constraint
-ALTER TABLE Employees
-ALTER COLUMN hire_date SET DEFAULT CURRENT_DATE;
 
 -- Adding an INDEX
 ALTER TABLE Employees
 ADD INDEX idx_last_name (last_name);
 
--- Adding an AUTO_INCREMENT attribute (Assuming it's supported by the database)
+-- Adding a DEFAULT constraint
 ALTER TABLE Employees
-MODIFY COLUMN employee_id INT AUTO_INCREMENT;
+ALTER COLUMN hire_date SET DEFAULT CURRENT_DATE;
 
 -- Adding an ENUM column
 ALTER TABLE Employees
 ADD COLUMN gender ENUM('Male', 'Female', 'Other');
+
+-- Adding a NOT NULL constraint
+ALTER TABLE Employees
+MODIFY COLUMN first_name VARCHAR(50) NOT NULL;
+
+-- Adding an AUTO_INCREMENT attribute (Assuming it's supported by the database)
+ALTER TABLE Employees
+MODIFY COLUMN employee_id INT AUTO_INCREMENT;
 ```
 
 In this example:
