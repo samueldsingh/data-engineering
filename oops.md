@@ -175,3 +175,32 @@ The output is:
 Employee info during joining : 100  -  Samuel DS  -  10000
 Employee info after 1 year   : 100  -  Samuel DS  -  13000.0
 ```
+
+## Object Creation
+
+The `init` method helps to construct object by initializing the data.
+
+Step1 : Object creation : 2 parts : 
+             I. Employee  
+            II. (100, 'Samuel DS', 10000)
+Step2 : Python will check and find the address of Employee
+Step3 : First python creates empty object(wrapper) of Employee class
+        Employee class `__init__` method will be called, 
+        passes 
+                1. Address of empty object to self parameter         ==> self
+                2. the tuple of arguments will be passed to remaining parameters  ==> (eid, name, sal) 
+Step4 : Data passes to local variables (eid, name, sal)               
+Step5 :         self.eid = 100 
+                self.name = 'Madhu Nettem'
+                self.sal = '15000'
+                            LHS eid = instance variable
+                            RHS eid = local variable 
+        ==> Local variable eid data,we are setting to instance variable 
+
+Step 6: Once object construction is done, address will be given to variable(madhu)        
+
+Note:
+--------
+-  Inside object data will be initialized.
+- `__init__` method helps to initialize the STATE of object(instance)
+
