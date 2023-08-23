@@ -12,7 +12,7 @@ Everthing is an object in Python. It focuses on the design and manipulation of o
     available in all derived classes.
 - OOPs is mainly used for modularity, reusability, collaboration, modelling real world systems and extensibility.
 
-## Using OOPs
+## 1. Using OOPs
 
 The three steps used while working with OOPs is:
 - Step 1: Defining Class
@@ -176,31 +176,51 @@ Employee info during joining : 100  -  Samuel DS  -  10000
 Employee info after 1 year   : 100  -  Samuel DS  -  13000.0
 ```
 
-## Object Creation
+## 2. SELF- Object Creation
 
 The `init` method helps to construct object by initializing the data.
 
-Step1 : Object creation : 2 parts : 
-             I. Employee  
-            II. (100, 'Samuel DS', 10000)
-Step2 : Python will check and find the address of Employee
-Step3 : First python creates empty object(wrapper) of Employee class
-        Employee class `__init__` method will be called, 
+Step 1: 
+
+Object creation : 2 parts : 
+1. Employee  
+2. (100, 'Samuel DS', 10000)
+
+Step 2: 
+
+Python will check and find the address of Employee
+
+Step 3: 
+- First python creates empty object(wrapper) of Employee class
+- Employee class `__init__` method will be called, 
         passes 
                 1. Address of empty object to self parameter         ==> self
                 2. the tuple of arguments will be passed to remaining parameters  ==> (eid, name, sal) 
-Step4 : Data passes to local variables (eid, name, sal)               
-Step5 :         self.eid = 100 
-                self.name = 'Madhu Nettem'
-                self.sal = '15000'
-                            LHS eid = instance variable
-                            RHS eid = local variable 
-        ==> Local variable eid data,we are setting to instance variable 
 
-Step 6: Once object construction is done, address will be given to variable(madhu)        
+Step 4: Data passes to local variables (eid, name, sal)               
+
+Step 5:         
+```
+self.eid = 100             LHS eid = instance variable, RHS eid = local variable
+self.name = 'Samuel DS'
+self.sal = '10000'
+                                                 
+==> Local variable eid data,we are setting to instance variable 
+```
+
+Step 6: 
+
+Once object construction is done, address will be given to variable `(samuel)`        
 
 Note:
---------
 -  Inside object data will be initialized.
 - `__init__` method helps to initialize the STATE of object(instance)
+
+
+## 3. Fields & Methods
+
+- The state of a class is represented by the fields (Instance variables, Class variables)
+- The behavior of a class is represented by the Methods (Instance Method, Class Method, Static Method)
+
+## 4. Constructors
 
