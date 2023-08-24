@@ -224,3 +224,23 @@ Note:
 
 ## 4. Constructors
 
+## 5. OOPs features
+
+- Encapsulation (Binding Data Members and Member Methods into Single entity).
+- Inheritance (super class, sub class mechanism).
+- Polymorphism (Method Overloading using Static Polymorphism and Method Overriding using Dynamic Polymorphism).
+- Abstraction (Hiding the implementation details in the methods of  a class). 
+- In normal class, abstraction is 0%. In abstract class, it's between 0-100%. In interface, abstraction is 100%.
+
+`setter`, `getter`, `hasattar`, `delattar` on class and objects
+
+## 5.1 Encapsulation
+
+## 5.2 Inheritance
+
+
+
+## 5.3 Polymorphism
+
+## 5.4 Abstraction
+
