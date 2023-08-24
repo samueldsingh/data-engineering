@@ -1254,6 +1254,10 @@ Please note that `setattr`, `getattr`, and `delattr` work with regular attribute
 
 ## 19. MRO principle.Explain in detail
 
+- Denotes the way a programming language resolves a method or attribute.
+- Defines the order in which the base classes are searched when executing a method
+- First, the method or attribute is searched within a class and then it follows the order we specified while inheriting.
+
 MRO (Method Resolution Order) is a principle in object-oriented programming that defines the order in which classes are searched when invoking a method on an object. The MRO principle is crucial for languages that support multiple inheritance, where a class can inherit attributes and methods from more than one parent class. Python is one such language that uses the C3 Linearization algorithm to determine the MRO.
 
 The MRO principle ensures that the correct method is called when a method is invoked on an object, considering the inheritance hierarchy and the order of method definitions in the classes involved. The goal is to provide a consistent and predictable way to resolve method calls in cases of multiple inheritance.
