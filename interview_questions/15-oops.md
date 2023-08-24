@@ -702,6 +702,9 @@ In this example, the `Person` class has a default constructor that initializes t
 
 A parameterized constructor is a constructor that accepts parameters and initializes the object's attributes based on the provided values. It allows you to customize the initial state of the object by passing arguments to the constructor. A parameterized constructor is useful when you want to create objects with specific initial values.
 
+- Constructor overloading is achieved using default arguments (parameter in construction have predefined values), positional arguments (arguments are passed
+  to construction in the order they are defined) and keyword arguments (pass values to constructor parameters by explicitly mentioning the parameter names followed by the values).
+
 Example of a parameterized constructor:
 
 ```python
