@@ -1015,7 +1015,7 @@ In this example, we define two methods named `add` in the `Calculator` class, ea
 
 **Method Overriding:**
 
-    Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass (base class). The overridden method in the subclass has the same name, parameters, and return type as the method in the superclass. The goal of method overriding is to customize the behavior of the inherited method in the subclass.
+Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass (base class). The overridden method in the subclass has the same name, parameters, and return type as the method in the superclass. The goal of method overriding is to customize the behavior of the inherited method in the subclass.
 
 **Example of Method Overriding:**
 
