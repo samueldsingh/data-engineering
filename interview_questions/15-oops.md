@@ -1292,7 +1292,7 @@ class D(B, C):
 d = D()
 
 # Calling the method
-d.method()
+d.method()        # Output: Method in class B
 ```
 
 In this example, we have a class hierarchy with multiple inheritance: `D` inherits from both `B` and `C`, which in turn inherit from `A`. When we create an instance of `D` and call the `method`, the MRO determines that the method from class `B` is invoked. The MRO follows the C3 Linearization algorithm, and the output of this code will be:
@@ -1303,64 +1303,7 @@ Method in class B
 
 This demonstrates how the MRO ensures that the method is resolved in a predictable and consistent manner in the presence of multiple inheritance. Understanding the MRO is essential for designing class hierarchies and resolving method calls correctly in Python.
 
-## 20. Access modifiers in Python
-
-- The access modifiers in Python are used to modify the default scope of variables. Access modifiers in Python are keywords used to define the visibility and accessibility of class members (attributes and methods) in object-oriented programming.
-- Access modifiers help control the level of encapsulation and protect the internal state of objects. In Python, access modifiers are not enforced as strictly as in some other languages like Java, but they provide a way to indicate the intended level of visibility.
-
-Python has three main access modifiers:
-
-1. **Public (No Modifier):**
-   A class member with no access modifier is considered public, which means it can be accessed from anywhere, both within and outside the class.
-
-- The members of a class that are declared public are easily accessible from any part of the program.
-- All data members and member functions of a class are public by default.
-
-   ```python
-   class MyClass:
-       def __init__(self):
-           self.public_variable = 10
-
-   obj = MyClass()
-   print(obj.public_variable)  # Output: 10
-   ```
-
-2. **Protected (_ prefix):**
-   A class member with a single underscore prefix (e.g., `_variable`) is considered protected. While Python does not enforce strict protection, this naming convention indicates that the variable or method should not be accessed directly from outside the class. It's a common convention among Python programmers.
-
-- The members of a class that are declared protected are only accessible to a class derived from it.
-- Data members of a class are declared protected by adding a single underscore `_` symbol before the data member of that class.
-
-   ```python
-   class MyClass:
-       def __init__(self):
-           self._protected_variable = 20
-
-   obj = MyClass()
-   print(obj._protected_variable)  # Output: 20 (although it's a protected variable, it's accessible)
-   ```
-
-4. **Private (__ double underscore prefix):**
-   A class member with a double underscore prefix (e.g., `__variable`) is considered private. This naming convention indicates that the variable or method is intended to be used only within the class and should not be accessed from outside the class.
-
-- The members of a class that are declared private are accessible within the class only.
-- Private access modifier is the most secure access modifier.
-- Data members of a class are declared private by adding a double underscore `__` symbol before the data member of that class. 
-
-   ```python
-   class MyClass:
-       def __init__(self):
-           self.__private_variable = 30
-
-   obj = MyClass()
-   # print(obj.__private_variable)  # Error: AttributeError (private variable is not directly accessible)
-   ```
-
-   Note that Python performs name mangling on private attributes, making them harder to access directly from outside the class. However, it's still possible to access them using the `_ClassName__private_variable` syntax, but this is discouraged.
-
-Remember that Python's access modifiers are more of a convention than a strict rule. It's a good practice to use public, protected, and private naming conventions to indicate the intended visibility and prevent accidental misuse. Encapsulation and data hiding are essential principles in object-oriented programming, and access modifiers play a role in achieving these goals.
-
-## 21. Multiple Inheritance. Explain in detail
+## 20. Multiple Inheritance. Explain in detail
 
 Multiple inheritance is a feature in object-oriented programming that allows a class to inherit attributes and methods from more than one base class. In other words, a class can have multiple parent classes, and it can inherit the properties of all those parent classes. This concept facilitates code reuse by allowing a single class to combine the features of multiple classes.
 
@@ -1419,7 +1362,7 @@ The `Bat` class is derived from both `Mammal` and `Bird` using multiple inherita
 
 In summary, multiple inheritance allows a class to inherit properties from more than one base class, enhancing code reusability and flexibility. While it brings advantages, it should be used thoughtfully, and developers need to be aware of the complexities it can introduce, such as the diamond problem and the importance of a clear MRO.
 
-## 22. super keyword importance
+## 21. super keyword importance
 
 - The `super()` function is used to give access to methods and properties of a parent or sibling class. 
 - The `super()` function returns an object that represents the parent class.
@@ -1442,6 +1385,10 @@ Here are some important use cases and benefits of the `super()` keyword:
 
    child = Child()
    child.say_hello()
+
+   # Output is:
+   # Hello from Parent
+   # Hello from Child
    ```
 
    In this example, the `Child` class overrides the `say_hello()` method from the `Parent` class. By using `super()`, the child class can invoke the parent class's method before adding its own behavior.
@@ -1468,6 +1415,11 @@ Here are some important use cases and benefits of the `super()` keyword:
 
    d = D()
    d.say_hello()
+
+   # Output is:
+   Hello from B
+   Hello from C
+   Hello from A
    ```
 
    In this example, we have classes `A`, `B`, `C`, and `D`. The `D` class inherits from both `B` and `C`. By using `super()`, we ensure that the MRO is respected, and the `say_hello()` method from class `A` is called once despite the multiple inheritance.
@@ -1489,7 +1441,7 @@ Here are some important use cases and benefits of the `super()` keyword:
 
 Overall, the `super()` keyword is an essential tool for maintaining a clear and consistent hierarchy in class inheritance, enabling method reuse, and ensuring proper cooperation in multiple inheritance scenarios.
 
-## 23. Calling super class method from sub class
+## 22. Calling super class method from sub class
 
 Calling a superclass method from a subclass can be done using the `super()` keyword. The `super()` function allows you to call a method in the parent class from the context of the subclass. This is useful when you want to extend or modify the behavior of the parent class's method in the subclass while still utilizing the functionality of the parent class's method.
 
@@ -1511,6 +1463,10 @@ child = Child()
 
 # Call the greet() method of the Child class
 child.greet()
+
+# Output:
+# Hello from Parent
+# Hello from Child
 ```
 
 In this example, we have a `Parent` class with a `greet()` method, and a `Child` class that inherits from the `Parent` class. The `Child` class overrides the `greet()` method to add its own behavior, but it also wants to call the `greet()` method of the parent class.
@@ -1525,6 +1481,63 @@ Hello from Child
 ```
 
 By using `super()`, you ensure that the parent class's method is invoked, allowing you to extend or modify the behavior in the subclass while still benefiting from the functionality provided by the parent class. This promotes code reuse and maintains a clear hierarchy in the class structure.
+
+## 23. Access modifiers in Python
+
+- The access modifiers in Python are used to modify the default scope of variables. Access modifiers in Python are keywords used to define the visibility and accessibility of class members (attributes and methods) in object-oriented programming.
+- Access modifiers help control the level of encapsulation and protect the internal state of objects. In Python, access modifiers are not enforced as strictly as in some other languages like Java, but they provide a way to indicate the intended level of visibility.
+
+Python has three main access modifiers:
+
+1. **Public (No Modifier):**
+   A class member with no access modifier is considered public, which means it can be accessed from anywhere, both within and outside the class.
+
+- The members of a class that are declared public are easily accessible from any part of the program.
+- All data members and member functions of a class are public by default.
+
+   ```python
+   class MyClass:
+       def __init__(self):
+           self.public_variable = 10
+
+   obj = MyClass()
+   print(obj.public_variable)  # Output: 10
+   ```
+
+2. **Protected (_ prefix):**
+   A class member with a single underscore prefix (e.g., `_variable`) is considered protected. While Python does not enforce strict protection, this naming convention indicates that the variable or method should not be accessed directly from outside the class. It's a common convention among Python programmers.
+
+- The members of a class that are declared protected are only accessible to a class derived from it.
+- Data members of a class are declared protected by adding a single underscore `_` symbol before the data member of that class.
+
+   ```python
+   class MyClass:
+       def __init__(self):
+           self._protected_variable = 20
+
+   obj = MyClass()
+   print(obj._protected_variable)  # Output: 20 (although it's a protected variable, it's accessible)
+   ```
+
+4. **Private (__ double underscore prefix):**
+   A class member with a double underscore prefix (e.g., `__variable`) is considered private. This naming convention indicates that the variable or method is intended to be used only within the class and should not be accessed from outside the class.
+
+- The members of a class that are declared private are accessible within the class only.
+- Private access modifier is the most secure access modifier.
+- Data members of a class are declared private by adding a double underscore `__` symbol before the data member of that class. 
+
+   ```python
+   class MyClass:
+       def __init__(self):
+           self.__private_variable = 30
+
+   obj = MyClass()
+   # print(obj.__private_variable)  # Error: AttributeError (private variable is not directly accessible)
+   ```
+
+   Note that Python performs name mangling on private attributes, making them harder to access directly from outside the class. However, it's still possible to access them using the `_ClassName__private_variable` syntax, but this is discouraged.
+
+Remember that Python's access modifiers are more of a convention than a strict rule. It's a good practice to use public, protected, and private naming conventions to indicate the intended visibility and prevent accidental misuse. Encapsulation and data hiding are essential principles in object-oriented programming, and access modifiers play a role in achieving these goals.
 
 ## 24. Difference between public protected private methods Ex: x() _x() __x()
 
