@@ -898,6 +898,10 @@ shapes = [Circle(5), Rectangle(4, 6)]
 for shape in shapes:
     print(shape.area())
 
+
+The output is:
+78.5
+24
 ```
 
 In this example, the `Shape` class represents an abstraction of a geometric shape with an `area` method. The `Circle` and `Rectangle` classes implement the `Shape` interface by providing their specific implementations of the `area` method. The `Shape` class abstracts the concept of calculating the area, allowing us to work with different shapes without worrying about the details of their implementations.
