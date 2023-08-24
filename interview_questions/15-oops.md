@@ -1229,7 +1229,10 @@ print(getattr(person, 'name'))  # Output: John
 print(getattr(person, 'age', 30))  # Output: 30 (default value since 'age' doesn't exist)
 ```
 
-3. **`delattr`**:
+3. **`hasattr`**:
+`hasattr()` is a built-in Python function that allows you to check if an object has a particular attribute. It takes two arguments: the object and the attribute name as a string. It returns True if the attribute exists, and False otherwise. I've explained `hasattr()` in a previous response, so you can refer to that explanation for details and an example.
+
+4. **`delattr`**:
 The `delattr` function is used to delete an attribute from an object. It takes two arguments: the object and the attribute name as a string. Here's the syntax:
 
 ```python
