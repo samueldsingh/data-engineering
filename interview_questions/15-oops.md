@@ -976,6 +976,41 @@ print(animal_sound(cat))  # Output: Meow!
 
 In this example, the `animal_sound` function accepts an `Animal` object as a parameter, and the `speak` method of the appropriate derived class is called based on the object type. The common interface (`speak` method) allows us to use polymorphism to handle different types of animals without knowing their specific implementations at compile time.
 
+Another example:
+```
+class Animal:
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        print("Dog barks")
+
+class Cat(Animal):
+    def speak(self):
+        print("Cat meows")
+
+class Cow(Animal):
+    def speak(self):
+        print("Cow moos")
+
+# Creating instances of the subclasses
+dog = Dog()
+cat = Cat()
+cow = Cow()
+
+# Using polymorphism to call the speak() method
+animals = [dog, cat, cow]
+
+for animal in animals:
+    animal.speak()
+
+# The output is:
+Dog barks
+Cat meows
+Cow moos
+```
+
 These four concepts—encapsulation, abstraction, inheritance, and polymorphism—are fundamental pillars of object-oriented programming, helping developers build modular, organized, and extensible software systems.
 
 ## 16. Method overloading (Static Polymorphism) vs Method overriding (Dynamic Polymorphism)
