@@ -374,3 +374,5 @@ Common use cases for decorators include:
 - **Authorization**: Checking whether a user has the necessary permissions to execute a function.
 
 Overall, decorators provide a clean and elegant way to modify or extend the behavior of functions in a flexible and reusable manner, making them an essential tool in Python programming.
+
+## Function execution time
