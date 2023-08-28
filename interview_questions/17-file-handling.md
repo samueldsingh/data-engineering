@@ -88,6 +88,273 @@ In general, there are various types of files used in computing, each serving a s
 
 These are just a few examples of the many types of files used in computing. Each type serves a specific purpose and is designed to accommodate different kinds of data and information.
 
+## Give example of reading, writing and updating a json file
+
+Certainly! Here's an example of how to read, write, and update a JSON file in Python:
+
+1. **Reading a JSON File:**
+
+Assume you have a JSON file named "data.json" with the following content:
+
+```json
+{
+    "name": "John Doe",
+    "age": 30,
+    "city": "New York"
+}
+```
+
+You can read and parse the JSON data using the following code:
+
+```python
+import json
+
+with open("data.json", "r") as file:
+    data = json.load(file)
+
+print("Read JSON data:", data)
+```
+
+2. **Writing to a JSON File:**
+
+You can create a dictionary representing JSON data and then write it to a file using the following code:
+
+```python
+data_to_write = {
+    "name": "Jane Smith",
+    "age": 25,
+    "city": "Los Angeles"
+}
+
+with open("new_data.json", "w") as file:
+    json.dump(data_to_write, file, indent=4)
+
+print("Data written to new_data.json")
+```
+
+3. **Updating a JSON File:**
+
+You can read the existing JSON data, update it, and then write the updated data back to the file using the following code:
+
+```python
+with open("data.json", "r") as file:
+    existing_data = json.load(file)
+
+existing_data["age"] = 31
+existing_data["city"] = "San Francisco"
+
+with open("data.json", "w") as file:
+    json.dump(existing_data, file, indent=4)
+
+print("JSON data updated and written back to data.json")
+```
+
+After running these code snippets, you'll have the following outcomes:
+
+- **Reading a JSON File:**
+  ```
+  Read JSON data: {'name': 'John Doe', 'age': 30, 'city': 'New York'}
+  ```
+
+- **Writing to a JSON File:**
+  A new file named "new_data.json" will be created with the contents:
+  ```json
+  {
+      "name": "Jane Smith",
+      "age": 25,
+      "city": "Los Angeles"
+  }
+  ```
+
+- **Updating a JSON File:**
+  The "data.json" file will be updated to:
+  ```json
+  {
+      "name": "John Doe",
+      "age": 31,
+      "city": "San Francisco"
+  }
+  ```
+
+These examples illustrate how to read, write, and update JSON files using Python's built-in `json` module.
+
+## Give example of reading, writing and updating a csv file
+
+Example of how to read, write, and update a CSV file in Python:
+
+1. **Reading a CSV File:**
+
+Assume you have a CSV file named "data.csv" with the following content:
+
+```
+Name,Age,City
+John,30,New York
+Jane,25,Los Angeles
+```
+
+You can read the CSV data using the `csv` module in Python:
+
+```python
+import csv
+
+with open("data.csv", "r") as file:
+    reader = csv.reader(file)
+    next(reader)  # Skip the header row
+    for row in reader:
+        name, age, city = row
+        print("Name:", name, "Age:", age, "City:", city)
+```
+
+2. **Writing to a CSV File:**
+
+You can create a list of lists representing rows of CSV data and then write it to a file using the `csv` module:
+
+```python
+data_to_write = [
+    ["Alice", 28, "Chicago"],
+    ["Bob", 35, "Seattle"]
+]
+
+with open("new_data.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Name", "Age", "City"])  # Write header
+    writer.writerows(data_to_write)  # Write data rows
+
+print("Data written to new_data.csv")
+```
+
+3. **Updating a CSV File:**
+
+You can read the existing CSV data, update it, and then write the updated data back to the file using the `csv` module:
+
+```python
+updated_data = []
+
+with open("data.csv", "r") as file:
+    reader = csv.reader(file)
+    header = next(reader)
+    updated_data.append(header)
+    for row in reader:
+        if row[0] == "John":
+            row[1] = "31"
+            row[2] = "San Francisco"
+        updated_data.append(row)
+
+with open("data.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerows(updated_data)
+
+print("CSV data updated and written back to data.csv")
+```
+
+After running these code snippets, you'll have the following outcomes:
+
+- **Reading a CSV File:**
+  ```
+  Name: John Age: 30 City: New York
+  Name: Jane Age: 25 City: Los Angeles
+  ```
+
+- **Writing to a CSV File:**
+  A new file named "new_data.csv" will be created with the contents:
+  ```
+  Name,Age,City
+  Alice,28,Chicago
+  Bob,35,Seattle
+  ```
+
+- **Updating a CSV File:**
+  The "data.csv" file will be updated to:
+  ```
+  Name,Age,City
+  John,31,San Francisco
+  Jane,25,Los Angeles
+  ```
+
+These examples demonstrate how to read, write, and update CSV files using Python's built-in `csv` module.
+
+## Example of reading, writing and updating a txt file
+
+Example of how to read, write, and update a text file in Python:
+
+1. **Reading a Text File:**
+
+Assume you have a text file named "data.txt" with the following content:
+
+```
+Line 1: Hello, world!
+Line 2: This is a text file.
+```
+
+You can read the text file line by line using the following code:
+
+```python
+with open("data.txt", "r") as file:
+    lines = file.readlines()
+    for line in lines:
+        print(line.strip())  # strip() to remove newline characters
+```
+
+2. **Writing to a Text File:**
+
+You can write new content to a text file using the following code:
+
+```python
+new_content = [
+    "New line 1: Added through Python",
+    "New line 2: Writing to text files"
+]
+
+with open("new_data.txt", "w") as file:
+    for line in new_content:
+        file.write(line + "\n")
+
+print("Data written to new_data.txt")
+```
+
+3. **Updating a Text File:**
+
+You can read the existing content of a text file, update it, and then write the updated content back to the file:
+
+```python
+updated_content = []
+
+with open("data.txt", "r") as file:
+    lines = file.readlines()
+    for line in lines:
+        updated_line = line.replace("world", "Python")
+        updated_content.append(updated_line)
+
+with open("data.txt", "w") as file:
+    file.writelines(updated_content)
+
+print("Text file updated and written back to data.txt")
+```
+
+After running these code snippets, you'll have the following outcomes:
+
+- **Reading a Text File:**
+  ```
+  Line 1: Hello, world!
+  Line 2: This is a text file.
+  ```
+
+- **Writing to a Text File:**
+  A new file named "new_data.txt" will be created with the contents:
+  ```
+  New line 1: Added through Python
+  New line 2: Writing to text files
+  ```
+
+- **Updating a Text File:**
+  The "data.txt" file will be updated to:
+  ```
+  Line 1: Hello, Python!
+  Line 2: This is a text file.
+  ```
+
+These examples illustrate how to read, write, and update text files using Python's built-in file handling capabilities.
+
 ## 3. File open modes
 
 In Python, the `open()` function is used to open files. It takes two arguments: the file name and the file mode. The file mode specifies the purpose of opening the file, such as reading, writing, or appending. Here are the different file open modes:
@@ -141,6 +408,51 @@ with open('file.txt', 'r+') as f:
     content = f.read()
     f.write('Adding new content.')
 ```
+
+Sure, let's go through examples of file open modes using `w+`, `a+`, and `r+`:
+
+8. **`w+` Mode - Write and Read:**
+
+The `w+` mode opens a file for writing and reading. If the file exists, it will be truncated (emptied), and if it doesn't exist, a new file will be created. You can both write and read from the file.
+
+```python
+# Writing and reading using w+ mode
+with open("write_read_file.txt", "w+") as file:
+    file.write("Hello, world!\n")
+    file.seek(0)  # Go back to the beginning of the file
+    content = file.read()
+
+print("Content:", content)
+```
+
+9. **`a+` Mode - Append and Read:**
+
+The `a+` mode opens a file for appending and reading. If the file exists, new data will be appended at the end, and if it doesn't exist, a new file will be created. You can both append new content and read the file.
+
+```python
+# Appending and reading using a+ mode
+with open("append_read_file.txt", "a+") as file:
+    file.write("This is appended content.\n")
+    file.seek(0)  # Go back to the beginning of the file
+    content = file.read()
+
+print("Content:", content)
+```
+
+10. **`r+` Mode - Read and Write:**
+
+The `r+` mode opens a file for both reading and writing. If the file exists, you can read and write to it without truncating it. If it doesn't exist, you'll get a `FileNotFoundError`.
+
+```python
+# Reading and writing using r+ mode
+with open("read_write_file.txt", "r+") as file:
+    content = file.read()
+    file.write("\nThis is added using r+ mode.")
+
+print("Content:", content)
+```
+
+Please note that when using the `write` method, it will overwrite existing content and write new content from the current file position. You might need to use the `seek` method to move the file pointer if you want to read content after writing or vice versa. Also, remember that opening files in modes that allow both writing and reading can have some complexities in terms of file pointer positioning, so be cautious when using them.
 
 It's important to note that combining modes is possible, such as `'rb'` for reading binary files or `'a+'` for reading and appending. When using the `open()` function with the `with` statement, the file is automatically closed when the block is exited, ensuring proper resource management.
 
