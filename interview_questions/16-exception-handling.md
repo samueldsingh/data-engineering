@@ -505,3 +505,58 @@ Let's go through each of the SOLID principles with examples:
    Suppose you have a high-level class `NotificationService` that depends on a low-level class `EmailSender`. Instead, you can create an abstraction like an `IMessageSender` interface that both `NotificationService` and `EmailSender` implement. This way, `NotificationService` depends on an abstraction rather than a concrete implementation.
 
 These examples illustrate how applying the SOLID principles can lead to better-designed, more maintainable, and flexible code by promoting separation of concerns, modularity, and abstraction.
+
+## 11. Use 5 different ways to write the same program:
+1. Using builtin functions
+2. Using normal business logic (while, if-else, for)
+3. Using functions
+4. Using OOPs
+5. Using exception handling
+
+**1. Using builtin function**
+
+```
+l1 = [1,2,3,4]
+print("Length of list:",len(l1))    # Output: Length of list: 4
+```
+
+**2. Using normal business logic (while, if-else, for)**
+
+```
+l1 = [1,2,3,4]
+length = 0
+for i in l1:
+    length += 1
+print("Length of list:", length)     # Output: Length of list: 4
+```
+
+**3. Using functions**
+
+```
+def find_length(list):
+    length = 0
+    for i in list:
+        length += 1
+    return length
+
+list = [1,2,3,4]
+print("Length of list:",find_length(list)))        # Output: Length of list: 4
+```
+
+**4. Using OOPs**
+
+```
+class FindLength:
+    l1 = [1,2,3,4]
+
+    @classmethod
+    def find_length(cls):
+        length = 0
+        for i in cls.l1:
+            length += 1
+        return length
+
+print("Length of list:", FindLength.find_length())        # # Output: Length of list: 4
+```
+
+**5. Using exception handling**
