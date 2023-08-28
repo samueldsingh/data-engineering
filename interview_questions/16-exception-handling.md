@@ -647,3 +647,144 @@ In this example, the function `validate_age` takes an age as input and raises a 
 
 In each case, the `raise` statement is used to manually raise an exception with a custom error message. The `try` block then catches these exceptions and provides appropriate error handling.
 
+## 14. try-except-else-finally
+
+Certainly! Here's an example that uses the `try`, `except`, `else`, and `finally` blocks in Python to showcase their functionalities:
+
+```python
+def divide(a, b):
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        print("Error: Division by zero.")
+    else:
+        print("Division result:", result)
+    finally:
+        print("Division operation completed.")
+
+# Example 1: Division with a non-zero denominator
+try:
+    divide(10, 2)
+except Exception as e:
+    print("Outer exception:", e)
+
+# Example 2: Division by zero
+try:
+    divide(5, 0)
+except Exception as e:
+    print("Outer exception:", e)
+```
+
+In this example:
+
+- The `divide` function attempts to perform division between two numbers. The `try` block contains the division operation, and the `except` block catches the `ZeroDivisionError` if division by zero occurs. The `else` block is executed if the division is successful, and the `finally` block is executed regardless of whether an exception occurred or not.
+
+- In the first example, `divide(10, 2)` is called, resulting in a successful division. The output will be:
+  ```
+  Division result: 5.0
+  Division operation completed.
+  ```
+
+- In the second example, `divide(5, 0)` is called, causing a `ZeroDivisionError`. The output will be:
+  ```
+  Error: Division by zero.
+  Division operation completed.
+  Outer exception: Division by zero.
+  ```
+
+In both cases, you can see the behavior of the `try`, `except`, `else`, and `finally` blocks:
+
+- The `try` block contains the code that may raise an exception.
+- If an exception occurs, the `except` block is executed, and the program proceeds from there.
+- If no exception occurs, the `else` block is executed after the `try` block.
+- The `finally` block is always executed, whether an exception occurred or not, and it's commonly used for cleanup operations.
+
+Remember that the order of execution is: `try` -> `except` (if exception occurs) or `else` (if no exception occurs) -> `finally`.
+
+## 15. Custom Exceptions
+
+Custom exceptions, also known as user-defined exceptions, are exceptions that you create yourself to handle specific error scenarios in your code. While programming languages provide a set of built-in exception classes to handle common error situations, there are times when you encounter application-specific error conditions that are not adequately covered by these built-in exceptions. This is where custom exceptions come into play.
+
+Here's an explanation of custom exceptions and how to use them effectively:
+
+1. **Creating a Custom Exception Class:**
+   To create a custom exception, you define a new class that inherits from a base exception class (often `Exception` or a more specific built-in exception). You can add additional attributes and methods to the custom exception class to provide more information about the error.
+
+   ```python
+   class CustomError(Exception):
+       def __init__(self, message):
+           self.message = message
+           super().__init__(message)
+   ```
+
+2. **Raising Custom Exceptions:**
+   You can raise your custom exception using the `raise` keyword just like you would with built-in exceptions. When you raise a custom exception, you're signaling that a specific error condition has occurred.
+
+   ```python
+   def some_function():
+       if some_condition:
+           raise CustomError("Custom error message")
+   ```
+
+3. **Catching Custom Exceptions:**
+   To handle custom exceptions, use `try` and `except` blocks in your code. You catch the custom exception type and can access its attributes to provide context about the error.
+
+   ```python
+   try:
+       some_function()
+   except CustomError as ce:
+       print("Caught custom exception:", ce.message)
+   ```
+
+4. **Benefits of Custom Exceptions:**
+   - **Clarity and Context:** Custom exceptions provide clearer error messages tailored to the specific error scenario, making it easier to understand the issue.
+   - **Modularization:** They help modularize your code by encapsulating error-handling logic within the custom exception class itself.
+   - **Consistency:** Using custom exceptions throughout your codebase ensures consistency in how errors are reported and handled.
+   - **Readability:** Code that uses custom exceptions is more readable and expressive because it directly communicates the nature of the error.
+
+5. **Best Practices:**
+   - **Meaningful Names:** Choose meaningful names for your custom exceptions that accurately describe the error scenario.
+   - **Inherit from Base Classes:** Inherit from the appropriate base exception class to maintain compatibility with exception handling mechanisms.
+   - **Add Context:** Include additional attributes or methods in your custom exception class to provide context for the error.
+
+Custom exceptions are a powerful tool for improving the error-handling capabilities of your code. By creating well-structured custom exceptions, you can enhance the clarity and maintainability of your codebase while effectively communicating error conditions to developers using your code.
+
+Example of defining and using a custom exception class in Python:
+
+```python
+class NotEnoughBalanceError(Exception):
+    def __init__(self, balance, amount):
+        self.balance = balance
+        self.amount = amount
+        super().__init__(f"Not enough balance: {balance} to withdraw {amount}")
+
+def withdraw_balance(balance, amount):
+    if amount > balance:
+        raise NotEnoughBalanceError(balance, amount)
+    return balance - amount
+
+try:
+    account_balance = 500
+    withdrawal_amount = 700
+    new_balance = withdraw_balance(account_balance, withdrawal_amount)
+    print("Withdrawal successful. New balance:", new_balance)
+except NotEnoughBalanceError as nebe:
+    print("Withdrawal error:", nebe)
+```
+
+In this example:
+
+- We define a custom exception class named `NotEnoughBalanceError` that inherits from the built-in `Exception` class. It takes the current balance and the withdrawal amount as parameters and generates an error message indicating the insufficient balance for the withdrawal.
+
+- The `withdraw_balance` function attempts to withdraw an amount from an account balance. If the withdrawal amount is greater than the account balance, it raises the `NotEnoughBalanceError`.
+
+- The `try` block attempts to withdraw an amount from an account with a balance of 500, where the withdrawal amount is 700. This should trigger the `NotEnoughBalanceError`.
+
+- The `except` block catches the custom exception and prints an error message.
+
+The expected output for the above code is:
+```
+Withdrawal error: Not enough balance: 500 to withdraw 700
+```
+
+This example demonstrates how to create a custom exception class to handle specific error scenarios and how to raise and catch that custom exception in your code. Custom exceptions can make your code more readable and provide better context about the nature of errors.
