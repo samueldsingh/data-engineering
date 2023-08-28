@@ -376,3 +376,83 @@ Common use cases for decorators include:
 Overall, decorators provide a clean and elegant way to modify or extend the behavior of functions in a flexible and reusable manner, making them an essential tool in Python programming.
 
 ## Function execution time
+
+Function execution time in Python refers to the amount of time it takes for a specific function or a block of code to complete its execution. It's an important metric for measuring the performance of your code and identifying potential bottlenecks or areas for optimization. Python provides several ways to measure function execution time.
+
+One common way to measure function execution time is by using the `time` module, which provides a `time()` function that returns the current time in seconds since the epoch (a reference point commonly set to January 1, 1970).
+
+Here's a basic example of how you can measure the execution time of a function using the `time` module:
+
+```python
+import time
+
+def my_function():
+    # Code you want to measure
+
+start_time = time.time()
+my_function()
+end_time = time.time()
+
+execution_time = end_time - start_time
+print(f"Execution time: {execution_time} seconds")
+```
+
+However, this method might not be very accurate for measuring short execution times, as it relies on the system's clock and can be affected by other processes running on your computer.
+
+For more accurate measurements, you can use the `timeit` module, which is designed specifically for measuring small code snippets. It automatically repeats the execution of a code snippet and provides statistical information about the execution time, which can help you get a better understanding of the average execution time.
+
+Here's an example using the `timeit` module:
+
+```python
+import timeit
+
+def my_function():
+    # Code you want to measure
+
+execution_time = timeit.timeit(my_function, number=1000)  # Execute the function 1000 times
+print(f"Average execution time: {execution_time / 1000} seconds")
+```
+
+In this example, the `timeit.timeit()` function runs the `my_function` 1000 times and calculates the average execution time.
+
+Keep in mind that the execution time of a function can vary due to factors such as the complexity of the code, the input data, the system's load, and the underlying hardware. It's also worth noting that Python provides more advanced profiling tools, like the `cProfile` module, which can help you analyze the performance of your code in more detail.
+
+**Function execution time for fibonacci series**
+
+We'll look at an example that demonstrates measuring the execution time of a simple function using both the `time` module and the `timeit` module:
+
+```python
+import time
+import timeit
+
+# Function to measure
+def fibonacci_recursive(n):
+    if n <= 1:
+        return n
+    return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+
+# Using the time module
+start_time = time.time()
+result = fibonacci_recursive(30)
+end_time = time.time()
+
+execution_time = end_time - start_time
+print(f"Fibonacci recursive result: {result}")
+print(f"Execution time using time module: {execution_time:.6f} seconds")
+
+# Using the timeit module
+def timeit_fibonacci():
+    fibonacci_recursive(30)
+
+execution_time = timeit.timeit(timeit_fibonacci, number=100)
+average_execution_time = execution_time / 100
+print(f"Average execution time using timeit module: {average_execution_time:.6f} seconds")
+
+# Output is:
+Fibonacci recursive result: 832040
+Execution time using time module: 0.425689 seconds
+```
+
+In this example, the `fibonacci_recursive` function calculates the Fibonacci number using a recursive approach. We measure its execution time using both the `time` module and the `timeit` module.
+
+Remember that the actual execution times may vary depending on your computer's performance and load. The `timeit` approach provides a more accurate measurement of the average execution time by repeating the function call multiple times.
