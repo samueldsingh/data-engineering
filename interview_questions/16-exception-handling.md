@@ -334,76 +334,40 @@ Custom exceptions are especially useful when you want to create specific error h
 
 ## 8. Exception class hierarchy:
 
-- The Python exception class hierarchy consists of a multiple exception classes spread across a handful of important base class types.
-- This allows our code to explicitly catch or rescue the raised exception and programmatically react to it in an appropriate manner.
-- Exception is the super class of all exceptions.
-- While a fatal error will halt execution of the current application, all non-fatal exceptions allow execution to continue.
+In many programming languages, including Python, there is a hierarchy of exception classes that are organized in a way that allows for more specific and detailed exception handling. This hierarchy is often rooted in a base or parent exception class, and various child exception classes inherit from it. Here's a brief overview of the typical exception class hierarchy:
 
-In Python, exceptions are organized in a hierarchy of classes that are derived from the built-in `BaseException` class. This hierarchy allows you to catch specific types of exceptions and handle them accordingly. The exception class hierarchy provides a way to categorize and differentiate various types of errors that can occur during program execution. Here's an overview of the exception class hierarchy:
+1. **Base Exception Class:**
+   - At the root of most exception hierarchies is a base exception class (e.g., `BaseException` in Python). All other exception classes inherit from this base class.
 
-1. **BaseException**:
-   - The root class for all built-in exceptions in Python.
-   - All other exception classes inherit from this class.
-   - It is not recommended to directly catch this exception; instead, catch more specific exceptions.
+2. **Standard Library Exceptions:**
+   - Programming languages and standard libraries typically provide a set of built-in exception classes for common error scenarios. For example, in Python, you have exceptions like `ValueError`, `TypeError`, `ZeroDivisionError`, and many others. These exceptions are organized into a hierarchy where they inherit from the base `Exception` class.
 
-2. **Exception**:
-   - The base class for most exceptions that are commonly raised.
-   - It is more specific than `BaseException` and is generally the base class for user-defined exceptions.
+3. **Custom Exceptions:**
+   - Developers can create their own custom exception classes by subclassing existing exceptions or the base exception class. Custom exceptions are used to handle application-specific error scenarios that aren't covered by standard exceptions. For instance, if you're developing a file handling application, you might create a custom `FileNotFoundError` exception.
 
-3. **StandardError (Python 2)**:
-   - In Python 2, this is a base class for most built-in exceptions.
-   - However, in Python 3, `StandardError` is removed, and all exceptions inherit directly from `BaseException`.
+Here's a simplified example of how the exception class hierarchy might look in Python:
 
-4. **ArithmeticError**:
-   - A base class for arithmetic-related exceptions.
-   - Includes exceptions like `ZeroDivisionError` and `FloatingPointError`.
+```python
+BaseException
+└── Exception
+    ├── ArithmeticError
+    │   ├── ZeroDivisionError
+    ├── LookupError
+    │   ├── IndexError
+    │   ├── KeyError
+    ├── ValueError
+    │   ├── TypeError
+    └── ...
+```
 
-5. **LookupError**:
-   - A base class for exceptions related to lookup operations (e.g., indexing, dictionary key access).
-   - Includes exceptions like `IndexError` and `KeyError`.
+In this hierarchy:
 
-6. **AssertionError**:
-   - Raised when an `assert` statement fails.
+- `BaseException` is the root of all exceptions.
+- `Exception` is a common base class for most exceptions.
+- `ArithmeticError`, `LookupError`, `ValueError`, and others are more specific exception categories.
+- Further down, you have specific exceptions like `ZeroDivisionError`, `IndexError`, `KeyError`, `TypeError`, etc., each with a more specific meaning.
 
-7. **TypeError**:
-   - Raised when an operation or function is applied to an object of inappropriate type.
-
-8. **ValueError**:
-   - Raised when a function receives an argument of the correct type but an inappropriate value.
-
-9. **IOError (Python 2)**, **OSError (Python 3)**:
-   - Raised when an I/O operation fails (e.g., reading or writing a file).
-
-10. **FileNotFoundError (Python 3.3+)**:
-    - A specific exception for file not found errors.
-
-11. **EnvironmentError**:
-    - A parent class for exceptions related to the environment, including I/O operations.
-
-12. **RuntimeError**:
-    - A generic runtime error that is raised when an error does not fall under any other category.
-
-13. **StopIteration**:
-    - Raised to signal the end of an iterator.
-
-14. **KeyError**:
-    - Raised when a dictionary key is not found.
-
-15. **IndexError**:
-    - Raised when an index of a sequence is out of range.
-
-16. **NameError**:
-    - Raised when a local or global name is not found.
-
-17. **ImportError**:
-    - Raised when an import statement fails.
-
-18. **AttributeError**:
-    - Raised when an attribute reference or assignment fails.
-
-And many more...
-
-By understanding the exception class hierarchy, you can catch and handle specific types of exceptions more effectively in your code. It allows you to provide targeted error handling based on the nature of the error.
+When you handle exceptions in your code, you can catch exceptions at different levels of specificity. For example, if you want to handle all arithmetic-related errors, you can catch `ArithmeticError`. If you want to handle only division by zero errors, you can catch `ZeroDivisionError`. This hierarchical structure allows you to write more targeted exception handling code, making it easier to deal with different error scenarios in your program.
 
 ## 9. How to handle multiple exceptions
 
@@ -413,15 +377,15 @@ To handle multiple exceptions in Python, you can use multiple `except` blocks, e
 
 ```python
 try:
-    # Code that might raise exceptions
-    num = int(input("Enter a number: "))
-    result = 10 / num
+    x = int(input("Enter a number: "))
+    result = 10 / x
+    print("Division result:", result)
 except ZeroDivisionError:
-    print("Error: Cannot divide by zero")
+    print("Division by zero is not allowed.")
 except ValueError:
-    print("Error: Invalid input, please enter a number")
+    print("Invalid input. Please enter a valid number.")
 except Exception as e:
-    print("An error occurred:", e)
+    print("An exception occurred:", e)
 ```
 
 In this example, we have used three different `except` blocks:
@@ -556,7 +520,130 @@ class FindLength:
             length += 1
         return length
 
-print("Length of list:", FindLength.find_length())        # # Output: Length of list: 4
+print("Length of list:", FindLength.find_length())        # Output: Length of list: 4
 ```
 
 **5. Using exception handling**
+
+```
+l1 = [1,2,3,4]
+
+def find_length(l1):
+    try:
+        length = 0
+        for i in l1:
+            length += 1
+        return length
+    except:
+        pass
+
+print("Length of list:",find_length(l1))         # Output: Length of list: 4
+```
+
+## 12. What are the four ways to handle exceptions
+
+We'll look at an example of using four different ways to handle exceptions in Python.
+
+Suppose we have a simple function that divides two numbers:
+
+```python
+def divide(a, b):
+    return a / b
+```
+
+Now let's use this function within a `try` block and demonstrate the four ways to handle exceptions:
+
+```python
+try:
+    result = divide(10, 0)  # This will cause a ZeroDivisionError
+except:
+    print("An exception occurred")
+
+try:
+    result = divide(10, 0)  # This will cause a ZeroDivisionError
+except Exception as e:
+    print("An exception occurred:", e)
+
+try:
+    result = divide(10, 0)  # This will cause a ZeroDivisionError
+except ZeroDivisionError as zde:
+    print("Division by zero error:", zde)
+
+try:
+    result = divide(10, '2')  # This will cause a TypeError
+except ValueError as v:
+    print("Value error:", v)
+except ZeroDivisionError as zde:
+    print("Division by zero error:", zde)
+except Exception as e:
+    print("An exception occurred:", e)
+```
+
+Explanation for each part:
+
+1. **`except:`** - This is a catch-all block that will catch any exception raised within the `try` block. However, it's generally not a good practice to catch all exceptions without providing specific error handling.
+
+2. **`except Exception as e:`** - This block catches any exception that is derived from the base `Exception` class. It's a better practice than using the catch-all block because it's more specific.
+
+3. **`except ZeroDivisionError as zde:`** - This block catches only the `ZeroDivisionError` exception. It's a good practice to catch specific exceptions when you know what kind of errors might occur.
+
+4. **Perfect/Ideal approach:**
+   This approach uses multiple `except` blocks in decreasing order of specificity. This ensures that specific exceptions are caught and handled first, and if none of those match, a more general catch-all exception block can be used to handle any remaining exceptions.
+
+In the example above, the fourth approach is considered ideal because it provides a structured way to handle exceptions, starting with the most specific exceptions and then gradually becoming more general. This approach ensures that you handle known exceptions in a targeted way and handle any unexpected exceptions in a fallback manner.
+
+## 13. Raise exception manually
+
+Raising an exception manually, also known as "throwing" an exception, is a programming technique where you deliberately trigger an exception in your code to handle exceptional situations. This is useful when you encounter a situation that doesn't conform to the normal flow of your program, and you want to communicate this exceptional state to the calling code.
+
+Here's how you can manually raise an exception in most programming languages, including Python:
+
+```python
+raise ExceptionType("Error message")
+```
+
+- **`ExceptionType`**: This is the type of exception you want to raise, like `ValueError`, `TypeError`, or a custom exception class that you've defined.
+- **`"Error message"`**: This is an optional message that provides additional information about the exception. It can help programmers understand what went wrong when reading the error message.
+
+Here are some key points about raising exceptions manually:
+
+1. **Signaling Errors:** Raising exceptions manually allows you to signal to the caller that a certain error condition has occurred. This can be more informative than simply returning an error code or status.
+
+2. **Custom Error Conditions:** You can use manual exception raising to handle specific situations that aren't covered by standard exception handling. For example, in a function that processes files, you might raise an exception if the file doesn't exist or if it's in an unsupported format.
+
+3. **Error Context:** By providing a descriptive error message, you give developers using your code a better understanding of the issue and how to address it. This can make debugging and troubleshooting easier.
+
+4. **Exception Hierarchy:** In languages like Python, you can create custom exception classes by subclassing built-in exception classes. This allows you to create a hierarchy of exceptions that reflect the structure of your application and the different types of errors that might occur.
+
+5. **Exception Handling:** When you raise an exception, it's important that the calling code has appropriate exception handling in place (using `try` and `except` blocks) to catch and respond to the raised exception. If the exception isn't caught, it will propagate up the call stack until it's handled or until the program terminates.
+
+6. **Control Flow:** Manually raising exceptions can alter the control flow of your program. For example, you might raise an exception to exit a loop prematurely or to indicate that a certain condition should trigger a different path in your code.
+
+Remember that while manually raising exceptions can be powerful for handling exceptional scenarios, it's important to use them judiciously and provide clear and meaningful error messages. This will help developers who use your code understand the issue and take appropriate actions to resolve it.
+
+Let's look at an example of manually raising an exception in Python using the `raise` statement:
+
+```python
+def validate_age(age):
+    if age < 0:
+        raise ValueError("Age cannot be negative.")
+    if age < 18:
+        raise ValueError("You must be at least 18 years old.")
+    return "Age is valid."
+
+try:
+    user_age = int(input("Enter your age: "))
+    validation_result = validate_age(user_age)
+    print(validation_result)
+except ValueError as ve:
+    print("Error:", ve)
+
+# When we set input to -5, output is "Error: Age cannot be negative."
+# When we set input to 15, output is "Error: You must be at least 18 years old."
+# When we set input to 18, output is "Age is valid."
+```
+
+In this example, the function `validate_age` takes an age as input and raises a `ValueError` if the age is either negative or less than 18. The `try` block then calls this function and handles the potential exceptions:
+
+In each case, the `raise` statement is used to manually raise an exception with a custom error message. The `try` block then catches these exceptions and provides appropriate error handling.
+
