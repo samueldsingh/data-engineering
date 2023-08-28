@@ -445,3 +445,63 @@ except Exception as e:
 ```
 
 In this case, the `except (ZeroDivisionError, ValueError):` block will catch both `ZeroDivisionError` and `ValueError` exceptions.
+
+## 10. What are the SOLID principles?
+
+The SOLID principles are a set of five design principles that were introduced to help developers create more maintainable, flexible, and scalable software. These principles were coined by Robert C. Martin and are widely used in object-oriented programming to guide the design and organization of code. The SOLID acronym stands for:
+
+1. **S - Single Responsibility Principle (SRP)**:
+   - A class should have only one reason to change.
+   - Each class should have a single responsibility or focus, making it easier to understand, maintain, and modify.
+
+2. **O - Open/Closed Principle (OCP)**:
+   - Software entities (classes, modules, functions) should be open for extension but closed for modification.
+   - You should be able to add new functionality to a system without altering its existing code.
+
+3. **L - Liskov Substitution Principle (LSP)**:
+   - Objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program.
+   - Subtypes must be substitutable for their base types without altering program properties like correctness, task completion, etc.
+
+4. **I - Interface Segregation Principle (ISP)**:
+   - Clients should not be forced to depend on interfaces they do not use.
+   - It's better to have multiple smaller, specialized interfaces rather than a single large one.
+
+5. **D - Dependency Inversion Principle (DIP)**:
+   - High-level modules should not depend on low-level modules. Both should depend on abstractions.
+   - Abstractions should not depend on details. Details should depend on abstractions.
+   
+These principles collectively provide guidelines for writing maintainable, flexible, and robust code. By adhering to these principles, developers can create codebases that are easier to extend, refactor, and maintain over time. They are applicable to various programming languages and paradigms, not just object-oriented programming.
+
+Let's go through each of the SOLID principles with examples:
+
+**1. Single Responsibility Principle (SRP):**
+   This principle states that a class should have only one reason to change. It should have a single responsibility.
+
+   Example:
+   Suppose you're building a class `FileManager` that handles both reading from and writing to files. If later you need to change the file reading logic, it might unintentionally affect the file writing logic. It's better to split this into two classes: `FileReader` and `FileWriter`, each with a single responsibility.
+
+**2. Open/Closed Principle (OCP):**
+   This principle emphasizes that software entities should be open for extension but closed for modification.
+
+   Example:
+   Imagine you have a class `Shape` with methods for calculating area. Instead of modifying this class every time you add a new shape, you can extend it by creating new classes like `Circle` and `Rectangle` that inherit from `Shape` and provide their own area calculation methods.
+
+**3. Liskov Substitution Principle (LSP):**
+   This principle states that objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program.
+
+   Example:
+   If you have a class hierarchy with a base class `Bird` and subclasses `Sparrow` and `Ostrich`, instances of `Sparrow` and `Ostrich` should be able to replace instances of `Bird` without causing issues. They should adhere to the same interface and behavior expected from `Bird`.
+
+**4. Interface Segregation Principle (ISP):**
+   This principle suggests that clients should not be forced to depend on interfaces they do not use. It encourages creating smaller, specialized interfaces.
+
+   Example:
+   Consider an interface `Worker` with methods `work()` and `eat()`. If a class only needs the `work()` method, it's better to create a separate interface, like `Workable`, with just that method. This way, classes only need to implement the methods they use.
+
+**5. Dependency Inversion Principle (DIP):**
+   This principle states that high-level modules should not depend on low-level modules; both should depend on abstractions.
+
+   Example:
+   Suppose you have a high-level class `NotificationService` that depends on a low-level class `EmailSender`. Instead, you can create an abstraction like an `IMessageSender` interface that both `NotificationService` and `EmailSender` implement. This way, `NotificationService` depends on an abstraction rather than a concrete implementation.
+
+These examples illustrate how applying the SOLID principles can lead to better-designed, more maintainable, and flexible code by promoting separation of concerns, modularity, and abstraction.
