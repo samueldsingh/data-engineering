@@ -1,5 +1,5 @@
 
-## 0. Controller, Service and DAO
+## 1. Controller, Service and DAO
 
 In the context of software development, the terms "controller," "service," and "DAO" stand for specific components of an application's architecture, especially in the context of a design pattern like MVC (Model-View-Controller). Here's an explanation of each term:
 
@@ -22,7 +22,7 @@ In Python applications, these components can be organized in various ways based 
 
 Remember that while these terms have specific meanings in the context of certain architectural patterns, their exact usage can vary based on the application's structure and the design decisions made by the development team.
 
-## 1. Importance of file
+## 2. Importance of file
 
 Files are an essential part of programming and have significant importance in Python for various reasons:
 
@@ -52,7 +52,7 @@ Files are an essential part of programming and have significant importance in Py
 
 Python provides built-in functions and libraries for efficient file handling, such as `open()`, context managers (`with` statement), and various file modes (read, write, append, binary). Proper file handling enhances program reliability, data integrity, and interaction with external data sources.
 
-## 2. Different files in general
+## 3. Different files in general
 
 In general, there are various types of files used in computing, each serving a specific purpose and format. Here are some common types of files:
 
@@ -88,9 +88,9 @@ In general, there are various types of files used in computing, each serving a s
 
 These are just a few examples of the many types of files used in computing. Each type serves a specific purpose and is designed to accommodate different kinds of data and information.
 
-## Give example of reading, writing and updating a json file
+## 4. Give example of reading, writing and updating a json file
 
-Certainly! Here's an example of how to read, write, and update a JSON file in Python:
+Here's an example of how to read, write, and update a JSON file in Python:
 
 1. **Reading a JSON File:**
 
@@ -579,9 +579,13 @@ try:
     # Opening a file, writing content, and closing the file with exception handling
     file = open("example.txt", "w")  # Open the file in write mode
     file.write("Hello, world!\n")    # Write content to the file
-except IOError as e:
-    print("An error occurred:", e)
-else:
+except IOError as io:
+    print("An error occurred:", io)
+except FileNotFoundError as fnf:
+    print("File not found at specified path", fnf)
+except Exception as e:
+    print("An exception occured:", e)
+finally:
     file.close()  # Close the file if no exception occurred
     print("File closed.")
 ```
@@ -592,7 +596,7 @@ In this example:
 - Inside the `try` block, the `open` function is used to open a file named "example.txt" in write mode (`"w"`).
 - The `write` method is used to write the string "Hello, world!\n" to the file.
 - If an `IOError` (or any exception related to file I/O) occurs, the `except` block is executed, which prints an error message.
-- If no exception occurs, the `else` block is executed, and the `close` method is called to close the file.
+- If no exception occurs, the `else` block is executed, and the `close` method is called to close the file. `else` can be used in place of `finally`.
 
 By using exception handling, your code can handle errors gracefully and provide meaningful error messages to help identify and diagnose any issues that may arise during file operations.
 
@@ -747,18 +751,14 @@ class FileHandling:
         print("Read data : ", data)
         f_obj.close()
 
-myfile = FileHandling("write_data4.txt") # C:/Users/madhu/Desktop/write_data4.txt
+myfile = FileHandling("write_data.txt") # C:/Users/uname/Desktop/write_data4.txt
 data = 'Hello world. This is my fourth file using oops concepts'
 myfile.write_data(data, 'w')
 myfile.read_data('r')
-'''
-data = 'Hello world. This is my third file'
-file_obj = FileHandling("C:/Users/name/Desktop/write_data3.txt",data)
-file_obj.write_data()
 
-file_obj = FileHandling()
-file_obj.write_data(f_path,data)
-'''
+# Output:
+File type  <_io.TextIOWrapper name='write_data.txt' mode='w' encoding='cp1252'> <class '_io.TextIOWrapper'>
+Read data :  Hello world. This is my fourth file using oops concepts
 ```
 
 Example of how to create a class with instance methods to open a file, write to it, and close the file using object-oriented programming (OOP) concepts:
@@ -1031,6 +1031,169 @@ if file:
     FileHandler.close_file(file)
 
 print("File handling using OOP static methods completed.")
+```
+
+## Example of performing a read on a file
+
+```
+my_file = open("read_data1.txt", 'r')   # 1 # C:/Users/nette/Desktop/
+f_data = my_file.read()   # 2
+print(f_data)
+
+counter = 0
+for line in f_data.split(" "):
+    if "Python" in line:
+        counter += 1
+
+print("Python word repeated times in file:", counter)
+
+my_file.close()
+
+# Output:
+Hello World. This is a Python test file. Python is amazing.
+Python word repeated times in file: 2
+```
+
+## Perform a read using functions
+
+```
+def find_word_count(file, word):
+    my_file = open(file, 'r')
+    f_data = my_file.read()
+    counter = 0
+    for line in f_data.split(" "):
+        if word in line:
+            counter += 1
+
+    return f"The word {word} appears {counter} times."
+
+file = "read_data1.txt"
+word = input("Enter the word to search: ")
+print(find_word_count(file, word))
+```
+
+Example:
+```
+Enter the word to search: Python
+The word Python appears 2 times.
+```
+
+## Perform a read using exceptional handling
+
+def find_word_count(file, word):
+    try:
+        with open(file, 'r') as my_file:
+            f_data = my_file.read()
+            counter = 0
+            for line in f_data.split(" "):
+                if word in line:
+                    counter += 1
+            return f"The word {word} appears {counter} times."
+    except FileNotFoundError as fne:
+        return "File not found: {fne}"
+    except Exception as e:
+        return f"An error occurred: {e}"
+
+file = "read_data1.txt"
+word = input("Enter the word to search: ")
+result = find_word_count(file, word)
+print(result)
+
+## Perform a read using OOPS instance method
+
+```
+class WordCounter:
+    def __init__(self, file):
+        self.file = file
+
+    def find_word_count(self, word):
+        try:
+            with open(self.file, 'r') as my_file:
+                f_data = my_file.read()
+                counter = 0
+                for line in f_data.split(" "):
+                    if word in line:
+                        counter += 1
+                return f"The word {word} appears {counter} times."
+        except FileNotFoundError as fne:
+            return "File not found: {fne}"
+        except Exception as e:
+            return f"An error occurred: {e}"
+
+# Create an instance of the WordCounter Class
+file = "read_data1.txt"
+word_counter = WordCounter(file)
+
+
+# Call the instance method and print the result
+word = input("Enter the word to search: ")
+result = word_counter.find_word_count(word)
+print(result)
+```
+
+The output is:
+```
+Enter the word to search: amazing
+The word amazing appears 1 times.
+```
+
+## Perform a read using OOPs class method
+
+```
+class WordCounter:
+    def __init__(self, file):
+        self.file = file
+
+    @classmethod
+    def find_word_count(cls, file, word):
+        try:
+            with open(file, 'r') as my_file:
+                f_data = my_file.read()
+                counter = 0
+                for line in f_data.split(" "):
+                    if word in line:
+                        counter += 1
+                return f"The word {word} appears {counter} times."
+        except FileNotFoundError:
+            return "File not found."
+        except Exception as e:
+            return f"An error occurred: {e}"
+
+# Prompt the user for a word to search
+word = input("Enter the word to search: ")
+
+# Call the class method and print the result
+file = "read_data1.txt"
+result = WordCounter.find_word_count(file, word)
+print(result)
+```
+
+## Perform a read using OOPs static method.
+
+```
+class WordCounter:
+    @staticmethod
+    def find_word_count(file, word):
+        try:
+            with open(file, 'r') as my_file:
+                f_data = my_file.read()
+                counter = 0
+                for line in f_data.split(" "):
+                    if word in line:
+                        counter += 1
+                return f"The word {word} appears {counter} times."
+        except FileNotFoundError:
+            return "File not found."
+        except Exception as e:
+            return f"An error occurred: {e}"
+
+# Prompt the user for a word to search
+word = input("Enter the word to search: ")
+
+# Call the static method and print the result
+file = "read_data1.txt"
+result = WordCounter.find_word_count(file, word)
+print(result)
 ```
 
 ## 5. Importance of context manager.Explain in detail
