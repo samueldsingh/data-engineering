@@ -89,6 +89,8 @@ Encapsulation hides the internal details and state of an object from the outside
 
 - Inheritance allows a new class (the derived or child class) to inherit properties and methods from an existing class (the base or parent class).
 - The main advantage of inheritance is code reuseability.
+- Inheritance is a mechanism that allows the subclass to inherit all the properties from a super class.
+- Inheritance is used in a 'is-a' relationship between superclass and subclass.
 
 Example: We'll create a base class Employee with attributes name and salary. Then, create subclasses Manager and Developer with additional attributes. Ensure that the subclass constructors call the base class constructor.
 
@@ -858,7 +860,12 @@ In summary, `__new__` is responsible for creating the object, while `__init__` i
 
 ## 15. Explain why composition might be preferred over inheritance in certain situations. Write a Python class that demonstrates the concept of composition.
 
-
+- Classes should achieve polymorphic behavior and code reuse by their composition rather than inheritance from a base or parent class.
+- To get the higher design flexibility, the design principle says that composition should be favored over inheritance.
+- Inheritance should only be used when subclass ‘is a’ superclass.
+- Inheritance cannot be used for code reuse.
+- If there is no ‘is a’ relationship, then use composition for code reuse.
+- In inheritance, the base class can extend the functionality of the superclass by allowing overriding of methods. Whereas, in composition the base class cannot extend the functionality of the super class, only the superclass can be used as is without any modification.
 
 
 ## 16. Method overloading (Static Polymorphism) vs Method overriding (Dynamic Polymorphism)
@@ -1076,13 +1083,13 @@ These are the main types of inheritance in object-oriented programming. Each typ
 
 ## 18. Explain settr, gettr, hasattr and delattr
 
-The four different Python functions or concepts: `setattr`, `getattr`, `attr`, and `delattr` are used to manipulate attributes of objects.
+The four different Python functions or concepts: `settr`, `gettr`, `hasattr`, and `delattr` are used to manipulate attributes of objects.
 
-1. **`setattr`**:
-The `setattr` function is used to set the value of an attribute of an object. It takes three arguments: the object, the attribute name as a string, and the value to be assigned to that attribute. Here's the syntax:
+1. **`settr`**:
+The `settr` function is used to set the value of an attribute of an object. It takes three arguments: the object, the attribute name as a string, and the value to be assigned to that attribute. Here's the syntax:
 
 ```python
-setattr(object, attribute_name, value)
+settr(object, attribute_name, value)
 ```
 
 Example:
@@ -1091,12 +1098,12 @@ class Person:
     pass
 
 person = Person()
-setattr(person, 'name', 'John')
+settr(person, 'name', 'John')
 print(person.name)  # Output: John
 ```
 
-2. **`getattr`**:
-The `getattr` function is used to retrieve the value of an attribute of an object. It takes two arguments: the object and the attribute name as a string. Optionally, you can provide a default value as a second argument, which will be returned if the attribute doesn't exist on the object. Here's the syntax:
+2. **`gettr`**:
+The `gettr` function is used to retrieve the value of an attribute of an object. It takes two arguments: the object and the attribute name as a string. Optionally, you can provide a default value as a second argument, which will be returned if the attribute doesn't exist on the object. Here's the syntax:
 
 ```python
 getattr(object, attribute_name, default_value)
