@@ -7,6 +7,7 @@
 
 - Object-Oriented Programming is a programming paradigm that uses objects, which are instances of classes, to structure and organize code.
 - OOP is based on the concept of "objects" and "classes," and it focuses on the design and manipulation of objects to solve complex problems in a more modular and organized way.
+- It promotes the use of objects to model real-world entities and their interactions.
 
 Key concepts in OOP include:
 
@@ -17,9 +18,6 @@ Key concepts in OOP include:
 Let's see the key feautres of Object-Oriented Programming (OOP) with examples:
 
 **1. Classes and Objects:**
-
-- A class is a blueprint for creating objects. It defines the structure and behavior that the objects of the class will have.
-- An object is an instance of a class.
 
 Example: Let's consider a simple class called "Person" that represents a person with a name and age.
 
@@ -45,31 +43,44 @@ print(person2.age)   # Output: 25
 - A class exhibits encapsulation by binding all the instance variables and methods into a single unit.
 - Object exhibit encapsulation when fields are initialized inside objects and methods are accessed logically.
 
-Example: In the "Person" class, we can encapsulate the `name` and `age` attributes by making them private and providing methods to access and update them.
+Example: In the "BankAccount" class, we can encapsulate the `balance` and `account_no` attributes by making them private and providing methods to access and update them.
 
 ```python
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-    
-    def get_name(self):
-        return self.name
-    
-    def set_age(self, age):
-        if age > 0:
-            self.age = age
-            
-    def get_age(self):
-        return self.age
+class BankAccount:
+    def __init__(self, account_no, initial_balance = 0):
+        self._account_no = account_no
+        self._balance = initial_balance
 
-# Creating an object of the Person class
-person = Person("Sam", 26)
+    def deposit(self, amount):
+        if amount > 0:
+            self._balance += amount
+            print(f"Deposited {amount}. New Balance: {self._balance}")
+        else:
+            print("Invalid deposit amount.")
 
-# Accessing and updating attributes using methods
-print(person.get_name())  # Output: Sam
-person.set_age(22)
-print(person.get_age())   # Output: 22
+    def withdraw (self, amount):
+        if 0 < amount < self._balance:
+            self._balance -= amount
+            print(f"Withdrawn {amount}. New Balance: {self._balance}")
+        else:
+            print("Insufficient funds or invalid withdrawal amount.")
+
+    def display_balance(self):
+        print(f"Account {self._account_no} balance: {self._balance}")
+
+# Create a BankAccount instance
+account = BankAccount("12345")
+
+# Access methods to interact with the account
+account.deposit(1000)
+account.withdraw(300)
+account.display_balance()
+
+# Output:
+Deposited 1000. New Balance: 1000
+Withdrawn 300. New Balance: 700
+Account 12345 balance: 700
+
 ```
 
 Encapsulation hides the internal details and state of an object from the outside, providing a controlled and consistent way to interact with the object's behavior.
@@ -79,29 +90,58 @@ Encapsulation hides the internal details and state of an object from the outside
 - Inheritance allows a new class (the derived or child class) to inherit properties and methods from an existing class (the base or parent class).
 - The main advantage of inheritance is code reuseability.
 
-Example: Let's create a "Student" class that inherits from the "Person" class.
+Example: We'll create a base class Employee with attributes name and salary. Then, create subclasses Manager and Developer with additional attributes. Ensure that the subclass constructors call the base class constructor.
 
 ```python
-class Person:
-    def __init__(self, name, age):
+class Employee:
+    def __init__(self, name, salary):
         self.name = name
-        self.age = age
-    
-    def get_name(self):
-        return self.name
+        self.salary = salary
 
-# Define the Student class, inheriting from the Person class
-class Student(Person):
-    def __init__(self, name, age, student_id):
-        super().__init__(name, age)
-        self.student_id = student_id
+    def display_info(self):
+        print(f"Name: {self.name}\nSalary: ${self.salary}")
 
-# Create an object of the Student class
-student = Student("Sam", 26, "123")
 
-# Access attributes from the parent class
-print(student.get_name())  # Output: Sam
-print(student.student_id)  # Output: 123
+class Manager(Employee):
+    def __init__(self, name, salary, department):
+        super().__init__(name, salary)
+        self.department = department
+
+    def display_info(self):
+        super().display_info()
+        print(f"Department: {self.department}")
+
+
+class Developer(Employee):
+    def __init__(self, name, salary, programming_language):
+        super().__init__(name, salary)
+        self.programming_language = programming_language
+
+    def display_info(self):
+        super().display_info()
+        print(f"Programming Language: {self.programming_language}")
+
+
+# Create instances of Manager and Developer
+manager = Manager("John Manager", 80000, "Engineering")
+developer = Developer("Alice Developer", 60000, "Python")
+
+# Display information using inheritance
+print("Manager Info:")
+manager.display_info()
+print("\nDeveloper Info:")
+developer.display_info()
+
+# Output:
+Manager Info:
+Name: John Manager
+Salary: $80000
+Department: Engineering
+
+Developer Info:
+Name: Alice Developer
+Salary: $60000
+Programming Language: Python
 ```
 
 Inheritance allows a new class (derived or subclass) to inherit properties and behavior from an existing class (base or superclass), promoting code reuse, extensibility and hierarchical organization.
@@ -121,31 +161,25 @@ Use Case 2: **Interface Adherence:** Polymorphism allows multiple classes to adh
 Example: We'll demonstrate polymorphism using a common method called "introduce" that works for both the "Person" and "Student" classes.
 
 ```python
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-    
-    def get_name(self):
-        return self.name
+class Vehicle:
+    def start(self):
+        return "Ignition"
 
-# Define the Student class, inheriting from the Person class
-class Student(Person):
-    def __init__(self, name, age, student_id):
-        super().__init__(name, age)
-        self.student_id = student_id
+class Car(Vehicle):
+    def start(self):
+        return "Car started"
 
-# Define the introduce function
-def introduce(entity):
-    print("Hello, my name is", entity.get_name())
+class Motorcycle(Vehicle):
+    def start(self):
+        return "Motorcycle started"
 
-# Create objects of the classes
-person = Person("Sam", 26)
-student = Student("Ben", 20, "123")
+# create instances for the derived classes
+car = Car()
+motorcycle = Motorcycle()
 
-# Use the introduce function with different objects
-introduce(person)   # Output: Hello, my name is Sam
-introduce(student)  # Output: Hello, my name is Ben
+# Call the overriden method
+print(car.start())            # Output: Car started
+print(motorcycle.start())     # Output: Motorcycle started
 ```
 
 In this example, the `introduce` function accepts objects of both the "Person" and "Student" classes, demonstrating polymorphism.
@@ -449,11 +483,11 @@ print(circle.area())  # Output: 78.53975
 ```
 
 **Static Methods:**
-
+- Static method is a general utility method that performs a task in isolation.
+- Inside this method, we don’t use instance or class variable because this static method doesn’t take any parameters like `self` and `cls`.
 - The static method does not take any specific parameter.
-- Static Method cannot access or modify the class state.
-- Static methods do not know about class state. These methods are used to do some utility tasks by taking some parameters.
-- To define a static method we use @staticmethod decorator.
+- Static Method cannot access or modify the class state and these methods are used to do some utility tasks by taking some parameters.
+- To define a static method we use `@staticmethod` decorator.
 
 A static method is a method that belongs to a class but does not have access to instance-specific data or the class itself as its first argument. It's a method that does not modify the state of the instance or class and does not depend on instance-specific data.
 
