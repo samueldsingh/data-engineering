@@ -521,6 +521,518 @@ with open('output.bin', 'wb') as file:
 
 Remember to use the `with` statement to ensure that the file is properly closed after you are done working with it. This is important for proper resource management and to avoid issues like unclosed files and memory leaks.
 
+## Give example open, read-write-append, close without exception handling
+
+Let's look at an example of how to open a file, write content to it, and close the file without using explicit exception handling:
+
+```python
+# Opening a file, writing content, and closing the file without exception handling
+file = open("example.txt", "w")  # Open the file in write mode
+file.write("Hello, world!\n")    # Write content to the file
+file.close()                     # Close the file
+
+print("File closed.")
+```
+
+In this example:
+
+- The `open` function is used to open a file named "example.txt" in write mode (`"w"`).
+- The `write` method is used to write the string "Hello, world!\n" to the file.
+- The `close` method is called to close the file.
+
+Another example of opening a file, reading from it, writing to it, appending to it, and closing the file without explicit exception handling:
+
+```python
+# Opening a file, reading from it, writing to it, appending to it, and closing the file without exception handling
+file = open("example.txt", "r+")  # Open the file in read and write mode
+
+# Reading from the file
+content = file.read()
+print("Content read from the file:", content)
+
+# Writing to the file
+file.write("This is new content written using r+ mode.\n")
+
+# Appending to the file
+file.write("This is appended content using r+ mode.\n")
+
+file.close()  # Close the file
+
+print("File closed.")
+```
+
+In this example:
+
+- The `open` function is used to open a file named "example.txt" in read and write mode (`"r+"`).
+- The `read` method is used to read the entire content of the file.
+- The `write` method is used to write new content to the file (overwriting some of the existing content) and to append content to the end of the file.
+- The `close` method is used to close the file.
+
+However, it's important to note that not using explicit exception handling can leave your code vulnerable to errors. If an exception occurs while working with files (e.g., if the file cannot be opened due to permissions, or if there's an issue with writing), your program might terminate unexpectedly. Therefore, it's a good practice to include exception handling when working with files to ensure that your code is robust and can handle unexpected situations gracefully.
+
+## Give examples of open, write and close a file using exception handling
+
+Certainly! Here's an example of how to open a file, write content to it, and close the file with proper exception handling:
+
+```python
+try:
+    # Opening a file, writing content, and closing the file with exception handling
+    file = open("example.txt", "w")  # Open the file in write mode
+    file.write("Hello, world!\n")    # Write content to the file
+except IOError as e:
+    print("An error occurred:", e)
+else:
+    file.close()  # Close the file if no exception occurred
+    print("File closed.")
+```
+
+In this example:
+
+- The `try` block is used to enclose the code that may raise an exception.
+- Inside the `try` block, the `open` function is used to open a file named "example.txt" in write mode (`"w"`).
+- The `write` method is used to write the string "Hello, world!\n" to the file.
+- If an `IOError` (or any exception related to file I/O) occurs, the `except` block is executed, which prints an error message.
+- If no exception occurs, the `else` block is executed, and the `close` method is called to close the file.
+
+By using exception handling, your code can handle errors gracefully and provide meaningful error messages to help identify and diagnose any issues that may arise during file operations.
+
+Another example of opening a file, reading from it, writing to it, appending to it, and closing the file with proper exception handling:
+
+```python
+try:
+    # Opening a file, reading from it, writing to it, appending to it, and closing the file with exception handling
+    file = open("example.txt", "r+")  # Open the file in read and write mode
+
+    try:
+        # Reading from the file
+        content = file.read()
+        print("Content read from the file:", content)
+
+        # Writing to the file
+        file.write("This is new content written using r+ mode.\n")
+
+        # Appending to the file
+        file.write("This is appended content using r+ mode.\n")
+
+    except IOError as e:
+        print("An error occurred during file operations:", e)
+    finally:
+        file.close()  # Close the file in the finally block to ensure it's closed regardless of exceptions
+
+except IOError as e:
+    print("An error occurred when opening the file:", e)
+
+print("File handling completed.")
+```
+
+In this example:
+
+- The outer `try` block is used to handle any potential issues that might occur when opening the file.
+- Inside the outer `try` block, the inner `try` block is used to enclose the code that performs reading, writing, and appending to the file. If any exception occurs during these operations, the inner `except` block is executed.
+- The `finally` block is used to close the file, ensuring it's closed regardless of whether an exception occurred during the inner operations.
+- If there's an exception when opening the file, the outer `except` block handles that exception.
+
+By using exception handling in multiple levels (both for file opening and file operations), your code can handle errors gracefully and provide meaningful error messages to help identify and diagnose any issues that may arise during file handling.
+
+# Open, write and close a file using functions
+
+Certainly! Here are examples of how to create functions to open, write to, and close a file in Python:
+
+**Opening, Writing, and Closing a File Using Functions:**
+
+```python
+def open_write_close_file(filename, content):
+    try:
+        file = open(filename, "w")  # Open the file in write mode
+        file.write(content)         # Write content to the file
+    except IOError as e:
+        print("An error occurred:", e)
+    finally:
+        file.close()               # Close the file
+
+# Usage
+filename = "output.txt"
+content_to_write = "Hello, this is written using a function."
+open_write_close_file(filename, content_to_write)
+print("File handling using functions completed.")
+```
+
+In this example:
+
+- The `open_write_close_file` function takes a filename and content as arguments.
+- Inside the function, it attempts to open the file in write mode, write the content, and close the file.
+- Proper exception handling is included to catch potential errors.
+
+Remember that using functions like this is a good way to encapsulate file handling logic and improve code organization and readability.
+
+Another example of how to create functions to open a file, read from it, write to it, append to it, and close the file in Python:
+
+```python
+def open_file(filename, mode):
+    try:
+        file = open(filename, mode)
+        return file
+    except IOError as e:
+        print("An error occurred when opening the file:", e)
+        return None
+
+def read_from_file(file):
+    content = file.read()
+    return content
+
+def write_to_file(file, content):
+    try:
+        file.write(content)
+    except IOError as e:
+        print("An error occurred when writing to the file:", e)
+
+def append_to_file(file, content):
+    try:
+        file.write(content)
+    except IOError as e:
+        print("An error occurred when appending to the file:", e)
+
+def close_file(file):
+    file.close()
+
+# Usage
+filename = "example.txt"
+content_to_write = "This is new content."
+content_to_append = "This is appended content."
+
+# Open file, write, append, and close using functions
+file = open_file(filename, "r+")
+if file:
+    content = read_from_file(file)
+    print("Content read from the file:", content)
+
+    write_to_file(file, content_to_write)
+    append_to_file(file, content_to_append)
+
+    close_file(file)
+    print("File handling using functions completed.")
+```
+
+In this example:
+
+- Separate functions are defined to encapsulate different aspects of file handling: opening the file, reading from the file, writing to the file, appending to the file, and closing the file.
+- The functions handle exception cases and return appropriate values.
+- By using these functions, you can handle different file operations in a more modular and organized manner.
+
+Using functions like these can make your code more maintainable and readable, as well as provide a structured way to handle file operations with proper exception handling.
+
+## Give example to open, write and close a file using OOPs concept of instance method
+
+An example of using OOPs concept instance method:
+```
+class FileHandling:
+    def __init__(self, file_obj):
+        self.file_obj = file_obj
+
+    def write_data(self, in_data, mode):
+        try:
+            file_obj = open(self.file_obj, mode)
+            print("File type ", file_obj, type(file_obj))
+            file_obj.write(in_data)  # TextIOWrapper.write(my_file,in_data)
+        except FileNotFoundError as fnf:
+            print("File not found at specified path")
+            print(fnf)
+        finally:
+            # condition to check whether object my_file exists or not
+            file_obj.close()
+
+    def read_data(self, mode):
+        f_obj = open(self.file_obj,mode)
+        data = f_obj.read()
+        print("Read data : ", data)
+        f_obj.close()
+
+myfile = FileHandling("write_data4.txt") # C:/Users/madhu/Desktop/write_data4.txt
+data = 'Hello world. This is my fourth file using oops concepts'
+myfile.write_data(data, 'w')
+myfile.read_data('r')
+'''
+data = 'Hello world. This is my third file'
+file_obj = FileHandling("C:/Users/name/Desktop/write_data3.txt",data)
+file_obj.write_data()
+
+file_obj = FileHandling()
+file_obj.write_data(f_path,data)
+'''
+```
+
+Example of how to create a class with instance methods to open a file, write to it, and close the file using object-oriented programming (OOP) concepts:
+
+```python
+class FileHandler:
+    def __init__(self, filename):
+        self.filename = filename
+        self.file = None
+    
+    def open_file(self, mode):
+        try:
+            self.file = open(self.filename, mode)
+            print(f"File '{self.filename}' opened in {mode} mode.")
+        except IOError as e:
+            print("An error occurred when opening the file:", e)
+    
+    def write_to_file(self, content):
+        try:
+            self.file.write(content)
+            print("Content written to the file.")
+        except AttributeError:
+            print("File not opened. Call open_file() first.")
+        except IOError as e:
+            print("An error occurred when writing to the file:", e)
+    
+    def close_file(self):
+        if self.file:
+            self.file.close()
+            print("File closed.")
+        else:
+            print("File is not open.")
+
+# Usage
+filename = "oop_example.txt"
+content_to_write = "This is content written using OOP."
+
+# Creating an instance of FileHandler
+file_handler = FileHandler(filename)
+
+# Opening, writing, and closing using instance methods
+file_handler.open_file("w")
+file_handler.write_to_file(content_to_write)
+file_handler.close_file()
+
+print("File handling using OOP instance methods completed.")
+```
+
+In this example:
+
+- The `FileHandler` class is defined with instance methods to open a file, write to it, and close the file.
+- The constructor `__init__` initializes the filename and sets the `file` attribute to `None`.
+- The `open_file`, `write_to_file`, and `close_file` methods are instance methods that perform their respective file operations.
+- Proper exception handling is included in each method.
+
+By using OOP concepts and instance methods, you can encapsulate file handling logic within a class, making your code more organized and modular.
+
+Another example of using object-oriented programming (OOP) concepts to create a class with instance methods for opening, reading from, writing to, appending to, and closing a file:
+
+```python
+class FileHandler:
+    def __init__(self, filename):
+        self.filename = filename
+        self.file = None
+    
+    def open_file(self, mode):
+        try:
+            self.file = open(self.filename, mode)
+            print(f"File '{self.filename}' opened in {mode} mode.")
+        except IOError as e:
+            print("An error occurred when opening the file:", e)
+    
+    def read_from_file(self):
+        try:
+            content = self.file.read()
+            print("Content read from the file:", content)
+        except AttributeError:
+            print("File not opened. Call open_file() first.")
+        except IOError as e:
+            print("An error occurred when reading from the file:", e)
+    
+    def write_to_file(self, content):
+        try:
+            self.file.write(content)
+            print("Content written to the file.")
+        except AttributeError:
+            print("File not opened. Call open_file() first.")
+        except IOError as e:
+            print("An error occurred when writing to the file:", e)
+    
+    def append_to_file(self, content):
+        try:
+            self.file.write(content)
+            print("Content appended to the file.")
+        except AttributeError:
+            print("File not opened. Call open_file() first.")
+        except IOError as e:
+            print("An error occurred when appending to the file:", e)
+    
+    def close_file(self):
+        if self.file:
+            self.file.close()
+            print("File closed.")
+        else:
+            print("File is not open.")
+
+# Usage
+filename = "oop_file_example.txt"
+content_to_write = "This is content written using OOP."
+content_to_append = "\nThis is appended content using OOP."
+
+# Creating an instance of FileHandler
+file_handler = FileHandler(filename)
+
+# Opening, reading, writing, appending, and closing using instance methods
+file_handler.open_file("r+")
+file_handler.read_from_file()
+file_handler.write_to_file(content_to_write)
+file_handler.append_to_file(content_to_append)
+file_handler.close_file()
+
+print("File handling using OOP instance methods completed.")
+```
+
+In this example:
+
+- The `FileHandler` class is defined with instance methods to open a file, read from it, write to it, append to it, and close the file.
+- The constructor `__init__` initializes the filename and sets the `file` attribute to `None`.
+- Each method includes proper exception handling to handle potential errors.
+- By using OOP principles, you can create a more organized and modular approach to file handling in your code.
+
+## Open, write and close a file using OOPs concept static method
+
+An example of using OOPs static method concept to handle file
+
+```
+class FileHandling:
+
+    @staticmethod
+    def write_data(file_path, in_data):
+        try:
+            file_obj = open(file_path, 'w+')  
+            file_obj.write(in_data)           
+        except FileNotFoundError as fnf:
+            print("File not found at specified path", fnf)
+        finally:
+            file_obj.close()                   
+
+file_p = "write_data5.txt"
+data = 'Fifth file using static method in oops'
+FileHandling.write_data(file_p, data)
+```
+
+An example of how to create a class with static methods to open a file, write to it, and close the file using object-oriented programming (OOP) concepts:
+
+```python
+class FileHandler:
+    @staticmethod
+    def open_file(filename, mode):
+        try:
+            file = open(filename, mode)
+            print(f"File '{filename}' opened in {mode} mode.")
+            return file
+        except IOError as e:
+            print("An error occurred when opening the file:", e)
+            return None
+    
+    @staticmethod
+    def write_to_file(file, content):
+        try:
+            file.write(content)
+            print("Content written to the file.")
+        except AttributeError:
+            print("File is not open.")
+        except IOError as e:
+            print("An error occurred when writing to the file:", e)
+    
+    @staticmethod
+    def close_file(file):
+        if file:
+            file.close()
+            print("File closed.")
+        else:
+            print("File is not open.")
+
+# Usage
+filename = "oop_static_example.txt"
+content_to_write = "This is content written using OOP static methods."
+
+# Opening, writing, and closing using static methods
+file = FileHandler.open_file(filename, "w")
+if file:
+    FileHandler.write_to_file(file, content_to_write)
+    FileHandler.close_file(file)
+
+print("File handling using OOP static methods completed.")
+```
+
+In this example:
+
+- The `FileHandler` class is defined with static methods to open a file, write to it, and close the file.
+- Static methods don't require an instance of the class to be called; you can call them directly on the class itself.
+- The `open_file` method accepts a filename and mode as arguments and returns the opened file (or `None` in case of an error).
+- The `write_to_file` and `close_file` methods accept the file object as an argument.
+- Proper exception handling is included in each static method.
+
+Using static methods in a class is useful when you have methods that don't require access to instance-specific data but are still logically related to the class's functionality.
+
+```
+class FileHandler:
+    @staticmethod
+    def open_file(filename, mode):
+        try:
+            file = open(filename, mode)
+            print(f"File '{filename}' opened in {mode} mode.")
+            return file
+        except IOError as e:
+            print("An error occurred when opening the file:", e)
+            return None
+    
+    @staticmethod
+    def read_from_file(file):
+        try:
+            content = file.read()
+            print("Content read from the file:", content)
+        except AttributeError:
+            print("File is not open.")
+        except IOError as e:
+            print("An error occurred when reading from the file:", e)
+    
+    @staticmethod
+    def write_to_file(file, content):
+        try:
+            file.write(content)
+            print("Content written to the file.")
+        except AttributeError:
+            print("File is not open.")
+        except IOError as e:
+            print("An error occurred when writing to the file:", e)
+    
+    @staticmethod
+    def append_to_file(file, content):
+        try:
+            file.write(content)
+            print("Content appended to the file.")
+        except AttributeError:
+            print("File is not open.")
+        except IOError as e:
+            print("An error occurred when appending to the file:", e)
+    
+    @staticmethod
+    def close_file(file):
+        if file:
+            file.close()
+            print("File closed.")
+        else:
+            print("File is not open.")
+
+# Usage
+filename = "oop_static_file_example.txt"
+content_to_write = "This is content written using OOP static methods."
+content_to_append = "\nThis is appended content using OOP static methods."
+
+# Opening, reading, writing, appending, and closing using static methods
+file = FileHandler.open_file(filename, "r+")
+if file:
+    FileHandler.read_from_file(file)
+    FileHandler.write_to_file(file, content_to_write)
+    FileHandler.append_to_file(file, content_to_append)
+    FileHandler.close_file(file)
+
+print("File handling using OOP static methods completed.")
+```
+
 ## 5. Importance of context manager.Explain in detail
 
 A context manager in Python is a mechanism that allows you to properly manage resources, such as files or network connections, by allocating and releasing them automatically when they are no longer needed. Context managers are implemented using a protocol that defines two methods: `__enter__()` and `__exit__()`.
