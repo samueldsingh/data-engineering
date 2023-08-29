@@ -150,9 +150,10 @@ Inheritance allows a new class (derived or subclass) to inherit properties and b
 **4. Polymorphism:**
 
 - Polymorphism allows objects of different classes to be treated as objects of a common base class.
-- It enables flexibility and allows a single interface to represent different types of objects.
+- It enables you to use the same interface (methods or attributes) to represent different data types. 
 - Polymorphism means having many forms. It means the same function name (but different signatures) being used for different types.
 - Static polymorphism is achieved using method overloading and dynamic polymorphism is achieved using method overriding.
+- Polymorphism simplifies code, enhances flexibility, and supports dynamic behavior.
 
 Use Case 1: **Method Overriding:** Inheritance and polymorphism enable you to override methods in derived classes, providing specific implementations while maintaining a common interface defined in the base class.
 
@@ -186,9 +187,15 @@ In this example, the `introduce` function accepts objects of both the "Person" a
 
 **5. Abstraction**
 
-Abstraction is a fundamental concept in object-oriented programming (OOP) that allows you to focus on the essential features of an object while hiding the unnecessary implementation details. It simplifies the complexity of real-world entities by creating a model that only includes the relevant attributes and behaviors, making the code more manageable and understandable.
-
-An abstract class is a class that cannot be instantiated and is meant to serve as a blueprint for other classes. It defines a set of abstract methods (methods without implementation) that must be implemented by its concrete subclasses. Abstract classes are used to enforce a specific structure or behavior in the subclasses, ensuring that certain methods are available in all derived classes.
+- Abstraction is the process of simplifying complex reality by modeling classes based on the essential properties and behaviors relevant to the application.
+- Abstraction in OOP is a process of hiding the real implementation of the method by only showing a method signature.In Python, we can achieve abstraction using `ABC` (abstraction class) or abstract method.
+- It involves hiding the unnecessary details and showing only the necessary parts of an object.
+- Abstraction allows you to focus on what an object does rather than how it does it.
+- ABC is a class from the abc module in Python
+- In a normal class, we have all concrete method and abstraction is 0%.
+- In an abstraction class, abstraction can be between 0-100%. We can have either all concrete methods, or all abstract methods, or a combination of both abstract
+  and concrete methods.
+- In a interface, we have all abstract methods
 
 Let's illustrate abstraction with an example:
 
@@ -849,203 +856,10 @@ print(person.name, person.age)  # Output: "Sam", 30
 
 In summary, `__new__` is responsible for creating the object, while `__init__` is responsible for initializing its attributes. You rarely need to override `__new__` unless you have specific requirements related to object creation. On the other hand, `__init__` is a common method used to set up the initial state of objects.
 
-## 15. Explain below concepts in detail with examples
-a. Encapsulation
-b. Abstraction
-c. Inheritance
-d. Polymorphism
-
-Sure, I'll explain each of these fundamental concepts in object-oriented programming (OOP) in detail and provide examples for better understanding.
-
-**a. Encapsulation:**
-
-Encapsulation is one of the core principles of object-oriented programming. It refers to the practice of bundling the data (attributes) and methods (functions) that operate on the data into a single unit, known as a class. Encapsulation helps in controlling the access to the data and ensures that the implementation details are hidden from the outside world. The internal state of an object is protected, and interactions with the object are carried out through well-defined interfaces.
-
-**Example of Encapsulation:**
-
-```python
-class BankAccount:
-    def __init__(self, account_number, balance):
-        self.account_number = account_number
-        self.balance = balance
-
-    def deposit(self, amount):
-        if amount > 0:
-            self.balance += amount
-
-    def withdraw(self, amount):
-        if amount > 0 and amount <= self.balance:
-            self.balance -= amount
-        else:
-            print("Insufficient balance")
-
-# Creating an instance of BankAccount
-account = BankAccount("123456", 1000)
-
-# Accessing and modifying the balance through methods
-account.deposit(500)
-account.withdraw(300)
-print(account.balance)  # Output: 1200
-```
-
-In this example, the `BankAccount` class encapsulates the account number and balance attributes. The `deposit` and `withdraw` methods provide controlled access to modify the balance. The implementation details of how the balance is modified are hidden from the outside, ensuring proper encapsulation.
-
-**b. Abstraction:**
-
-- Abstraction is the process of simplifying complex reality by modeling classes based on the essential properties and behaviors relevant to the application.
-- Abstraction in OOP is a process of hiding the real implementation of the method by only showing a method signature.In Python, we can achieve abstraction using ABC (abstraction class) or abstract method.
-- It involves hiding the unnecessary details and showing only the necessary parts of an object.
-- Abstraction allows you to focus on what an object does rather than how it does it.
-- ABC is a class from the abc module in Python
-- In a normal class, we have all concrete method and abstraction is 0%.
-- In an abstraction class, abstraction can be between 0-100%. We can have either all concrete methods, or all abstract methods, or a combination of both abstract
-  and concrete methods.
-- In a interface, we have all abstract methods
-
-**Example of Abstraction:**
-
-```python
-from abc import ABC, abstractmethod
-
-class Shape(ABC):
-    @abstractmethod
-    def area(self):
-        pass
-
-class Circle(Shape):
-    def __init__(self, radius):
-        self.radius = radius
-
-    def area(self):
-        return 3.14 * self.radius ** 2
-
-class Rectangle(Shape):
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-
-    def area(self):
-        return self.width * self.height
-
-# Using the abstracted Shape class
-shapes = [Circle(5), Rectangle(4, 6)]
-for shape in shapes:
-    print(shape.area())
+## 15. Explain why composition might be preferred over inheritance in certain situations. Write a Python class that demonstrates the concept of composition.
 
 
-The output is:
-78.5
-24
-```
 
-In this example, the `Shape` class represents an abstraction of a geometric shape with an `area` method. The `Circle` and `Rectangle` classes implement the `Shape` interface by providing their specific implementations of the `area` method. The `Shape` class abstracts the concept of calculating the area, allowing us to work with different shapes without worrying about the details of their implementations.
-
-**c. Inheritance:**
-
-Inheritance is a mechanism in which a new class (subclass or derived class) inherits properties and behaviors (attributes and methods) from an existing class (superclass or base class). Inheritance promotes code reuse and allows the creation of more specialized classes based on existing ones.
-
-**Example of Inheritance:**
-
-```python
-class Animal:
-    def __init__(self, name):
-        self.name = name
-
-    def speak(self):
-        pass
-
-class Dog(Animal):
-    def speak(self):
-        return "Woof!"
-
-class Cat(Animal):
-    def speak(self):
-        return "Meow!"
-
-# Creating instances of derived classes
-dog = Dog("Buddy")
-cat = Cat("Whiskers")
-
-# Using the inherited methods
-print(dog.name, dog.speak())  # Output: Buddy Woof!
-print(cat.name, cat.speak())  # Output: Whiskers Meow!
-```
-
-In this example, the `Animal` class serves as the base class with a common `name` attribute and an abstract `speak` method. The `Dog` and `Cat` classes inherit from the `Animal` class and provide their specific implementations of the `speak` method. Inheritance allows the derived classes to reuse the attributes and methods of the base class while adding or overriding functionality.
-
-**d. Polymorphism:**
-
-Polymorphism allows objects of different classes to be treated as objects of a common base class. It enables you to use the same interface (methods or attributes) to represent different data types. Polymorphism simplifies code, enhances flexibility, and supports dynamic behavior.
-
-**Example of Polymorphism:**
-
-```python
-class Animal:
-    def __init__(self, name):
-        self.name = name
-
-    def speak(self):
-        pass
-
-class Dog(Animal):
-    def speak(self):
-        return "Woof!"
-
-class Cat(Animal):
-    def speak(self):
-        return "Meow!"
-
-# Using polymorphism with a common interface
-def animal_sound(animal):
-    return animal.speak()
-
-# Creating instances of derived classes
-dog = Dog("Buddy")
-cat = Cat("Whiskers")
-
-# Using the common interface
-print(animal_sound(dog))  # Output: Woof!
-print(animal_sound(cat))  # Output: Meow!
-```
-
-In this example, the `animal_sound` function accepts an `Animal` object as a parameter, and the `speak` method of the appropriate derived class is called based on the object type. The common interface (`speak` method) allows us to use polymorphism to handle different types of animals without knowing their specific implementations at compile time.
-
-Another example:
-```
-class Animal:
-    def speak(self):
-        pass
-
-class Dog(Animal):
-    def speak(self):
-        print("Dog barks")
-
-class Cat(Animal):
-    def speak(self):
-        print("Cat meows")
-
-class Cow(Animal):
-    def speak(self):
-        print("Cow moos")
-
-# Creating instances of the subclasses
-dog = Dog()
-cat = Cat()
-cow = Cow()
-
-# Using polymorphism to call the speak() method
-animals = [dog, cat, cow]
-
-for animal in animals:
-    animal.speak()
-
-# The output is:
-Dog barks
-Cat meows
-Cow moos
-```
-
-These four concepts—encapsulation, abstraction, inheritance, and polymorphism—are fundamental pillars of object-oriented programming, helping developers build modular, organized, and extensible software systems.
 
 ## 16. Method overloading (Static Polymorphism) vs Method overriding (Dynamic Polymorphism)
 
