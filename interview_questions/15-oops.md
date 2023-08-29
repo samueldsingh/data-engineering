@@ -867,6 +867,39 @@ In summary, `__new__` is responsible for creating the object, while `__init__` i
 - If there is no ‘is a’ relationship, then use composition for code reuse.
 - In inheritance, the base class can extend the functionality of the superclass by allowing overriding of methods. Whereas, in composition the base class cannot extend the functionality of the super class, only the superclass can be used as is without any modification.
 
+Composition is a design principle in object-oriented programming where a class contains an instance of another class as a member, enabling complex behavior by combining smaller, more manageable components. Here's an example of a Python class that demonstrates composition:
+
+```python
+class Engine:
+    def start(self):
+        print("Engine started")
+
+    def stop(self):
+        print("Engine stopped")
+
+
+class Car:
+    def __init__(self):
+        self.engine = Engine()  # Composition: Car has an Engine
+
+    def start(self):
+        print("Car starting...")
+        self.engine.start()
+
+    def stop(self):
+        print("Car stopping...")
+        self.engine.stop()
+
+
+# Usage
+my_car = Car()
+my_car.start()
+my_car.stop()
+```
+
+In this example, we have two classes: `Engine` and `Car`. The `Car` class composes an `Engine` instance within it. This means that a `Car` "has an" `Engine`. The `Car` class has its own methods (`start` and `stop`), and it delegates some of its functionality to the `Engine` instance through composition.
+
+When you create an instance of `Car` and call its `start` and `stop` methods, you'll notice that it also invokes the corresponding methods of the `Engine` instance it contains. This demonstrates the concept of composition, where smaller components (in this case, the `Engine` class) are combined to build more complex and capable objects (the `Car` class).
 
 ## 16. Method overloading (Static Polymorphism) vs Method overriding (Dynamic Polymorphism)
 
