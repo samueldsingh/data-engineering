@@ -178,7 +178,7 @@ After running these code snippets, you'll have the following outcomes:
 
 These examples illustrate how to read, write, and update JSON files using Python's built-in `json` module.
 
-## Give example of reading, writing and updating a csv file
+## 5. Give example of reading, writing and updating a csv file
 
 Example of how to read, write, and update a CSV file in Python:
 
@@ -273,7 +273,7 @@ After running these code snippets, you'll have the following outcomes:
 
 These examples demonstrate how to read, write, and update CSV files using Python's built-in `csv` module.
 
-## Example of reading, writing and updating a txt file
+## 6. Example of reading, writing and updating a txt file
 
 Example of how to read, write, and update a text file in Python:
 
@@ -355,7 +355,7 @@ After running these code snippets, you'll have the following outcomes:
 
 These examples illustrate how to read, write, and update text files using Python's built-in file handling capabilities.
 
-## 3. File open modes
+## 7. File open modes
 
 In Python, the `open()` function is used to open files. It takes two arguments: the file name and the file mode. The file mode specifies the purpose of opening the file, such as reading, writing, or appending. Here are the different file open modes:
 
@@ -456,7 +456,7 @@ Please note that when using the `write` method, it will overwrite existing conte
 
 It's important to note that combining modes is possible, such as `'rb'` for reading binary files or `'a+'` for reading and appending. When using the `open()` function with the `with` statement, the file is automatically closed when the block is exited, ensuring proper resource management.
 
-## 4. How to work with files. Open read/write/append Close. Give examples
+## 8. How to work with files. Open read/write/append Close. Give examples
 
 Working with files in Python involves several steps: opening a file, reading from or writing to it, and then closing it. The `open()` function is used to open files, and you can specify the mode in which you want to work with the file. Here are examples of how to open, read, write, append, and close files:
 
@@ -521,7 +521,7 @@ with open('output.bin', 'wb') as file:
 
 Remember to use the `with` statement to ensure that the file is properly closed after you are done working with it. This is important for proper resource management and to avoid issues like unclosed files and memory leaks.
 
-## Give example open, read-write-append, close without exception handling
+## 9. Give example open, read-write-append, close without exception handling
 
 Let's look at an example of how to open a file, write content to it, and close the file without using explicit exception handling:
 
@@ -570,7 +570,7 @@ In this example:
 
 However, it's important to note that not using explicit exception handling can leave your code vulnerable to errors. If an exception occurs while working with files (e.g., if the file cannot be opened due to permissions, or if there's an issue with writing), your program might terminate unexpectedly. Therefore, it's a good practice to include exception handling when working with files to ensure that your code is robust and can handle unexpected situations gracefully.
 
-## Give examples of open, write and close a file using exception handling
+## 10. Give examples of open, write and close a file using exception handling
 
 Certainly! Here's an example of how to open a file, write content to it, and close the file with proper exception handling:
 
@@ -638,7 +638,7 @@ In this example:
 
 By using exception handling in multiple levels (both for file opening and file operations), your code can handle errors gracefully and provide meaningful error messages to help identify and diagnose any issues that may arise during file handling.
 
-# Open, write and close a file using functions
+# 11. Open, write and close a file using functions
 
 Certainly! Here are examples of how to create functions to open, write to, and close a file in Python:
 
@@ -725,7 +725,7 @@ In this example:
 
 Using functions like these can make your code more maintainable and readable, as well as provide a structured way to handle file operations with proper exception handling.
 
-## Give example to open, write and close a file using OOPs concept of instance method
+## 12. Give example to open, write and close a file using OOPs concept of instance method
 
 An example of using OOPs concept instance method:
 ```
@@ -890,7 +890,7 @@ In this example:
 - Each method includes proper exception handling to handle potential errors.
 - By using OOP principles, you can create a more organized and modular approach to file handling in your code.
 
-## Open, write and close a file using OOPs concept static method
+## 13. Open, write and close a file using OOPs concept static method
 
 An example of using OOPs static method concept to handle file
 
@@ -1033,16 +1033,17 @@ if file:
 print("File handling using OOP static methods completed.")
 ```
 
-## Example of performing a read on a file
+## 14. Example of performing a read on a file
 
 ```
 my_file = open("read_data1.txt", 'r')   # 1 # C:/Users/nette/Desktop/
 f_data = my_file.read()   # 2
 print(f_data)
 
+word = input("Enter a word: ")
 counter = 0
 for line in f_data.split(" "):
-    if "Python" in line:
+    if word in line:
         counter += 1
 
 print("Python word repeated times in file:", counter)
@@ -1054,7 +1055,7 @@ Hello World. This is a Python test file. Python is amazing.
 Python word repeated times in file: 2
 ```
 
-## Perform a read using functions
+## 15. Perform a read using functions
 
 ```
 def find_word_count(file, word):
@@ -1078,8 +1079,9 @@ Enter the word to search: Python
 The word Python appears 2 times.
 ```
 
-## Perform a read using exceptional handling
+## 16. Perform a read using exceptional handling
 
+```
 def find_word_count(file, word):
     try:
         with open(file, 'r') as my_file:
@@ -1098,8 +1100,9 @@ file = "read_data1.txt"
 word = input("Enter the word to search: ")
 result = find_word_count(file, word)
 print(result)
+```
 
-## Perform a read using OOPS instance method
+## 17. Perform a read using OOPS instance method
 
 ```
 class WordCounter:
@@ -1137,7 +1140,7 @@ Enter the word to search: amazing
 The word amazing appears 1 times.
 ```
 
-## Perform a read using OOPs class method
+## 18. Perform a read using OOPs class method
 
 ```
 class WordCounter:
@@ -1168,7 +1171,7 @@ result = WordCounter.find_word_count(file, word)
 print(result)
 ```
 
-## Perform a read using OOPs static method.
+## 19. Perform a read using OOPs static method.
 
 ```
 class WordCounter:
@@ -1196,7 +1199,7 @@ result = WordCounter.find_word_count(file, word)
 print(result)
 ```
 
-## 5. Importance of context manager.Explain in detail
+## 20. Importance of context manager.Explain in detail
 
 A context manager in Python is a mechanism that allows you to properly manage resources, such as files or network connections, by allocating and releasing them automatically when they are no longer needed. Context managers are implemented using a protocol that defines two methods: `__enter__()` and `__exit__()`.
 
@@ -1234,9 +1237,37 @@ with open('example.txt', 'r') as file:
 
 In the first example, you need to explicitly close the file, and if an exception occurs before the `file.close()` line, the file might not be closed properly. In the second example, the context manager takes care of opening and closing the file automatically, even if an exception occurs.
 
+**Context manager with exceptional handling**
+
+Example of using a context manager with exceptional handling for file operations:
+
+```python
+try:
+    with open("example.txt", "r") as file:
+        content = file.read()
+        # Simulate a potential exception
+        result = 10 / 0
+        print(content)
+except ZeroDivisionError:
+    print("Error: Division by zero.")
+except FileNotFoundError:
+    print("Error: File not found.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+```
+
+In this example, we:
+
+1. Use the `with` statement to open the file "example.txt" for reading.
+2. Inside the `with` block, read the content of the file and then intentionally create a division by zero exception to simulate an error.
+3. Since an exception occurs, the control transfers to the relevant `except` block, in this case, `ZeroDivisionError`, where we print an error message.
+4. If no division by zero error occurred, the content of the file would have been printed before encountering the exception.
+
+Using a context manager with exceptional handling ensures that the file is automatically closed, even if an exception occurs within the block. This helps in proper resource management and error handling.
+
 In summary, context managers play a crucial role in ensuring resource management, error handling, and cleaner code in Python. They make programming more efficient, maintainable, and less error-prone, especially when dealing with resources that need proper allocation and release.
 
-## 6. enter vs exit
+## 21. enter vs exit
 
 In Python, `__enter__()` and `__exit__()` are special methods used to define the behavior of context managers. They are part of the context manager protocol and are used to establish and release a context for a block of code.
 
@@ -1279,7 +1310,7 @@ In this example, the `MyContext` class defines the `__enter__()` and `__exit__()
 
 Using the context manager with `with` statements ensures proper resource management and error handling, making your code more reliable and maintainable.
 
-## 7. How to open text,csv,excel,pdf,image,audio,video,jpeg using open and with statements
+## 22. How to open text, csv, excel, pdf, image, audio, video, jpeg using `open` and `with` statements
 
 The `open()` function is commonly used to open files in text mode. However, for different file formats like CSV, Excel, PDF, images, audio, and video, you will need to use different libraries specifically designed for those formats. Here's a general overview of how to open and work with these different file types using various libraries in Python:
 
@@ -1353,7 +1384,7 @@ The `open()` function is commonly used to open files in text mode. However, for 
 
 Remember that working with different file formats often requires installing additional libraries beyond the built-in `open()` function. Always make sure to install the required libraries using tools like `pip` before using them in your code.
 
-## 8. Importance of file handling in python
+## 23. Importance of file handling in python
 
 File handling in Python is crucial for several reasons:
 
@@ -1379,12 +1410,15 @@ File handling in Python is crucial for several reasons:
 
 In Python, the built-in functions and libraries for file handling, such as `open()`, `read()`, `write()`, and context managers (`with` statement), make it easy to work with files. Proper file handling helps in improving the efficiency, reliability, and maintainability of programs that involve data storage, manipulation, and analysis.
 
-## 9. Different file handling operations:
+## 24. Different file handling operations:
 
 - `r`:	Opens a file for reading. (default)
-- `w`:	Opens a file for writing. Creates a new file if it does not exist or truncates the file if it exists.
-- `x`:	Opens a file for exclusive creation. If the file already exists, the operation fails.
 - `a`:	Opens a file for appending at the end of the file without truncating it. Creates a new file if it does not exist.
+- `w`:	Opens a file for writing. Creates a new file if it does not exist or truncates the file if it exists.
+- `r+`: Reads and writes data into file. Previous data will not be deleted.
+- `a+`: Appends and reads data of file. If file does not exists,will create new file and writes data
+- `w+`: Writes and reads data of file. Previous data in the file will be deleted.
+- `x`:	Opens a file for exclusive creation. If the file already exists, the operation fails.
 - `t`:	Opens in text mode. (default)
 - `b`:	Opens in binary mode.
 - `+`:	Opens a file for updating (reading and writing)
