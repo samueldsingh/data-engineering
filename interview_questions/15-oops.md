@@ -1867,6 +1867,33 @@ print(person2.name, person2.age)  # Output: Ben 25
 
 In this example, the `__init__` method initializes the `name` and `age` attributes of each `Person` object with the values provided during object creation.
 
+## 31. When to use static vs instance vs class method
+
+In object-oriented programming, Python offers three types of methods: instance methods, class methods, and static methods. Each type of method serves a different purpose and has its own use cases. Here's when to use each type of method:
+
+1. **Instance Methods**:
+   - **Use Case**: Instance methods are the most common type of methods and are used to work with instance-specific data. They have access to the instance attributes and can modify their values.
+   - **When to Use**: Use instance methods when the behavior of the method depends on or modifies the state of the instance. For example, methods that perform calculations involving instance attributes, modify attributes, or perform actions based on instance data.
+   - **Syntax**: Defined without any decorators or special parameters. The first parameter is always `self`.
+
+2. **Class Methods**:
+   - **Use Case**: Class methods are used to work with class-level data and perform operations related to the class itself rather than its instances. They have access to class attributes and can modify them.
+   - **When to Use**: Use class methods when the behavior of the method is related to the class as a whole, and it doesn't depend on instance-specific data. For example, methods that create or manipulate class-level attributes, configurations, or perform operations that involve the entire class.
+   - **Syntax**: Defined using the `@classmethod` decorator. The first parameter is always `cls`, which refers to the class itself.
+
+3. **Static Methods**:
+   - **Use Case**: Static methods are used when the method doesn't depend on instance attributes or class-level data. They behave like regular functions but are defined within the class namespace for organization.
+   - **When to Use**: Use static methods when you need a utility function related to the class but not directly tied to instance or class-specific behavior. Static methods are often used for helper functions that have a logical connection to the class.
+   - **Syntax**: Defined using the `@staticmethod` decorator. They don't have any special parameters like `self` or `cls`.
+
+In summary:
+
+- Use **instance methods** when you need to work with instance-specific data and behavior.
+- Use **class methods** when you need to work with class-level data and behavior that involves the class as a whole.
+- Use **static methods** when you need a utility function that doesn't depend on instance or class-specific data.
+
+Remember that choosing the appropriate method type depends on the specific requirements of your code. Each type has its own benefits and is designed to serve a particular purpose in your object-oriented design.
+
 # Extras
 
 Object-Oriented Programming (OOP) is a programming paradigm that organizes code into objects, each representing a real-world entity or concept. It focuses on structuring code around objects that have data (attributes) and behavior (methods), and these objects interact with each other to perform tasks. OOP provides several key concepts to achieve this organization, including encapsulation, inheritance, polymorphism, and abstraction. Let's dive into each of these concepts in detail:
