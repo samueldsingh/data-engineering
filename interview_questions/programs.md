@@ -158,3 +158,33 @@ n=10
 fibonacci(n)
 print(f"The first {n} Fibonacci numbers are:", fib_numbers)
 ```
+
+## 15. Function execution time using decorator
+
+```
+import time
+
+def calculate_execution_time(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        end_time = time.time()
+        exe_time = end_time - start_time
+        result = func(*args, **kwargs)
+        print(f"Execution time of {func.__name__}: {exe_time:.6f} seconds")
+        return result
+    return wrapper
+
+@calculate_execution_time
+def fibonacci(n):
+    fib_series = [0, 1]
+
+    for i in range(2, n):
+        next_fib = fib_series[i - 1] + fib_series[i - 2]
+        fib_series.append(next_fib)
+
+    return fib_series
+
+n = int(input("Enter a number: "))
+fib_numbers = fibonacci(n)
+print(f"The first {n} Fibonacci numbers are:", fib_numbers)
+```
