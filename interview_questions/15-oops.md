@@ -193,11 +193,13 @@ In this example, the `introduce` function accepts objects of both the "Person" a
 - Abstraction in OOP is a process of hiding the real implementation of the method by only showing a method signature.In Python, we can achieve abstraction using `ABC` (abstraction class) or abstract method.
 - It involves hiding the unnecessary details and showing only the necessary parts of an object.
 - Abstraction allows you to focus on what an object does rather than how it does it.
-- ABC is a class from the abc module in Python
+- Abstract classes are meant to be subclassed and they cannot be instantiated.
+- Abstract methods are declared in abstract classes but don't have an implementation.
+- Abstract classes provide a way to define a common interface for subclasses while leaving the implementation details to them.
 - In a normal class, we have all concrete method and abstraction is 0%.
 - In an abstraction class, abstraction can be between 0-100%. We can have either all concrete methods, or all abstract methods, or a combination of both abstract
   and concrete methods.
-- In a interface, we have all abstract methods
+- In an interface, we have all abstract methods.
 
 Let's illustrate abstraction with an example:
 
@@ -1114,68 +1116,99 @@ Note that hybrid inheritance can lead to complex relationships, and careful desi
 
 These are the main types of inheritance in object-oriented programming. Each type has its own use cases and considerations, and understanding the relationship between base and derived classes is crucial for designing effective class hierarchies.
 
-## 18. Explain settr, gettr, hasattr and delattr
+## 18. Explain setter, getter, hasattr and delattr
 
-The four different Python functions or concepts: `settr`, `gettr`, `hasattr`, and `delattr` are used to manipulate attributes of objects.
+In the context of Object-Oriented Programming (OOP) in Python, the terms "setter," "getter," `hasattr`, and `delattr` have specific meanings and functions related to managing object attributes. These concepts are used to encapsulate and control access to an object's attributes, providing better data abstraction and security. Let's delve into each concept:
 
-1. **`settr`**:
-The `settr` function is used to set the value of an attribute of an object. It takes three arguments: the object, the attribute name as a string, and the value to be assigned to that attribute. Here's the syntax:
+1. **Setter and Getter Methods**:
 
-```python
-settr(object, attribute_name, value)
+   In Python, setter and getter methods are used to control the assignment and retrieval of an object's attributes. They provide an interface to modify or access private attributes, allowing you to enforce data validation, encapsulation, and other behaviors.
+
+   - **Setter Method** (`setter`):
+     A setter method is used to set the value of an attribute in an object. It allows you to control the way attributes are assigned and perform validation if necessary.
+
+   - **Getter Method** (`getter`):
+     A getter method is used to retrieve the value of an attribute from an object. It can be used to control how attribute values are accessed or return calculated values based on the attributes.
+
+   Example:
+   ```python
+   class Person:
+       def __init__(self):
+           self._name = ""
+
+       def set_name(self, name):
+           self._name = name
+
+       def get_name(self):
+           return self._name
+
+   person = Person()
+   person.set_name("Alice")
+   print(person.get_name())  # Output: Alice
+   ```
+
+2. **`hasattr` Method**:
+
+   The `hasattr` function is used to check if an object has a specific attribute. It takes an object and an attribute name as arguments and returns `True` if the attribute exists in the object, otherwise, it returns `False`.
+
+   Example:
+   ```python
+   class Person:
+       name = "Alice"
+
+   person = Person()
+   print(hasattr(person, "name"))  # Output: True
+   print(hasattr(person, "age"))   # Output: False
+   ```
+
+3. **`delattr` Method**:
+
+   The `delattr` function is used to delete a specific attribute from an object. It takes an object and an attribute name as arguments and removes the attribute from the object.
+
+   Example:
+   ```python
+   class Person:
+       name = "Alice"
+
+   person = Person()
+   delattr(person, "name")
+   print(hasattr(person, "name"))  # Output: False
+   ```
+
+These concepts are important in OOP as they promote encapsulation, abstraction, and controlled access to object attributes. Getter and setter methods help manage attribute access, while `hasattr` and `delattr` functions provide ways to dynamically check and manipulate attributes at runtime.
+
+## 19. Implement a Python class that uses properties (getter and setter methods) to control access to its attributes. Explain the advantages of using properties.
+
+- The main purpose of using getters and setters in object-oriented programs is to ensure data encapsulation.
+- Getters and Setters in python are often used when:
+    - We use getters & setters to add validation logic around getting and setting a value.
+    - To avoid direct access of a class field i.e. private variables cannot be accessed directly or modified by external user.
+- To achieve getters & setters property, if we define normal `get()` and `set()` methods, it will not reflect any special implementation.
+- To achieve such functionality Python has a special function `property()`, one of the in-built decorators.
+- The main purpose of any decorator is to change your class methods or attributes in such a way so that the user of your class no need to make any change in their code.
+
+```
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius     # Protected attribute
+
+    @property
+    def radius(self):
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        if value > 0:
+            self._radius = value
+
+circle = Circle(5)
+print(circle.radius)         # Using the getter
+circle.radius = 7            # Using the setter
 ```
 
-Example:
-```python
-class Person:
-    pass
+Properties allow you to control access to attributes, enabling validation and encapsulation. They provide a clean interface for attribute manipulation.
 
-person = Person()
-settr(person, 'name', 'John')
-print(person.name)  # Output: John
-```
-
-2. **`gettr`**:
-The `gettr` function is used to retrieve the value of an attribute of an object. It takes two arguments: the object and the attribute name as a string. Optionally, you can provide a default value as a second argument, which will be returned if the attribute doesn't exist on the object. Here's the syntax:
-
-```python
-getattr(object, attribute_name, default_value)
-```
-
-Example:
-```python
-class Person:
-    name = 'John'
-
-person = Person()
-print(getattr(person, 'name'))  # Output: John
-print(getattr(person, 'age', 30))  # Output: 30 (default value since 'age' doesn't exist)
-```
-
-3. **`hasattr`**:
-`hasattr()` is a built-in Python function that allows you to check if an object has a particular attribute. It takes two arguments: the object and the attribute name as a string. It returns True if the attribute exists, and False otherwise. I've explained `hasattr()` in a previous response, so you can refer to that explanation for details and an example.
-
-4. **`delattr`**:
-The `delattr` function is used to delete an attribute from an object. It takes two arguments: the object and the attribute name as a string. Here's the syntax:
-
-```python
-delattr(object, attribute_name)
-```
-
-Example:
-```python
-class Person:
-    name = 'John'
-
-person = Person()
-print(person.name)  # Output: John
-delattr(person, 'name')
-# After deleting the attribute 'name', trying to access it will raise an AttributeError
-```
-
-Please note that `setattr`, `getattr`, and `delattr` work with regular attributes of an object. If you're working with properties, methods, or other more complex attributes, their behavior might differ. Also, Python encourages the use of dot notation for attribute access and assignment whenever possible, as it's more readable and conventional. These functions are usually used in scenarios where attribute names are determined dynamically or when dealing with more complex attribute manipulation.
-
-## 19. MRO principle.Explain in detail
+## 20. MRO principle.Explain in detail
 
 - Denotes the way a programming language resolves a method or attribute.
 - Defines the order in which the base classes are searched when executing a method
@@ -1226,7 +1259,7 @@ Method in class B
 
 This demonstrates how the MRO ensures that the method is resolved in a predictable and consistent manner in the presence of multiple inheritance. Understanding the MRO is essential for designing class hierarchies and resolving method calls correctly in Python.
 
-## 20. Multiple Inheritance. Explain in detail
+## 21. Multiple Inheritance. Explain in detail
 
 Multiple inheritance is a feature in object-oriented programming that allows a class to inherit attributes and methods from more than one base class. In other words, a class can have multiple parent classes, and it can inherit the properties of all those parent classes. This concept facilitates code reuse by allowing a single class to combine the features of multiple classes.
 
@@ -1285,7 +1318,7 @@ The `Bat` class is derived from both `Mammal` and `Bird` using multiple inherita
 
 In summary, multiple inheritance allows a class to inherit properties from more than one base class, enhancing code reusability and flexibility. While it brings advantages, it should be used thoughtfully, and developers need to be aware of the complexities it can introduce, such as the diamond problem and the importance of a clear MRO.
 
-## 21. super keyword importance
+## 22. super keyword importance
 
 - The `super()` function is used to give access to methods and properties of a parent or sibling class. 
 - The `super()` function returns an object that represents the parent class.
@@ -1364,7 +1397,7 @@ Here are some important use cases and benefits of the `super()` keyword:
 
 Overall, the `super()` keyword is an essential tool for maintaining a clear and consistent hierarchy in class inheritance, enabling method reuse, and ensuring proper cooperation in multiple inheritance scenarios.
 
-## 22. Calling super class method from sub class
+## 23. Calling super class method from sub class
 
 Calling a superclass method from a subclass can be done using the `super()` keyword. The `super()` function allows you to call a method in the parent class from the context of the subclass. This is useful when you want to extend or modify the behavior of the parent class's method in the subclass while still utilizing the functionality of the parent class's method.
 
@@ -1405,7 +1438,7 @@ Hello from Child
 
 By using `super()`, you ensure that the parent class's method is invoked, allowing you to extend or modify the behavior in the subclass while still benefiting from the functionality provided by the parent class. This promotes code reuse and maintains a clear hierarchy in the class structure.
 
-## 23. Access modifiers in Python
+## 24. Access modifiers in Python
 
 - The access modifiers in Python are used to modify the default scope of variables. Access modifiers in Python are keywords used to define the visibility and accessibility of class members (attributes and methods) in object-oriented programming.
 - Access modifiers help control the level of encapsulation and protect the internal state of objects. In Python, access modifiers are not enforced as strictly as in some other languages like Java, but they provide a way to indicate the intended level of visibility.
@@ -1462,7 +1495,7 @@ Python has three main access modifiers:
 
 Remember that Python's access modifiers are more of a convention than a strict rule. It's a good practice to use public, protected, and private naming conventions to indicate the intended visibility and prevent accidental misuse. Encapsulation and data hiding are essential principles in object-oriented programming, and access modifiers play a role in achieving these goals.
 
-## 24. Difference between public protected private methods Ex: x() _x() __x()
+## 25. Difference between public protected private methods Ex: x() _x() __x()
 
 In Python, methods and attributes have different levels of visibility and accessibility, denoted by naming conventions. The naming conventions for methods and attributes indicate their visibility to other parts of the code. Here's the difference between public, protected, and private methods:
 
@@ -1518,7 +1551,7 @@ In summary:
 - **Protected methods** have a single leading underscore and are intended for internal use but are still accessible.
 - **Private methods** have a double leading underscore and are intended for use within the class only, and they have name mangling to make them less accessible from outside.
 
-## 25. Importance of dunder functions
+## 26. Importance of dunder functions
 
 Dunder (double underscore) methods, also known as magic methods or special methods, are a crucial feature in Python. These methods are invoked by specific language constructs and are used to define how objects of a class behave in certain situations. Understanding and implementing dunder methods is important for creating custom classes that work seamlessly with Python's built-in functionalities and for defining the behavior of objects in various contexts. Here's why dunder methods are important:
 
@@ -1540,7 +1573,7 @@ Dunder (double underscore) methods, also known as magic methods or special metho
 
 By implementing appropriate dunder methods, you make your custom classes more intuitive, Pythonic, and compatible with existing language constructs and built-in functions. This promotes code readability, reusability, and enhances the overall user experience when working with instances of your classes.
 
-## 26. __str__ vs __repr__
+## 27. `__str__` vs `__repr__`
 
 Both `__str__` and `__repr__` are special methods in Python that deal with providing string representations of objects, but they have distinct purposes and use cases. Let's explore the differences between `__str__` and `__repr__`:
 
@@ -1584,7 +1617,7 @@ In summary:
 
 It's common to implement both `__str__` and `__repr__` methods in your classes to provide meaningful representations for both end-users and developers. If only one of them is implemented, the other may use the default implementation provided by the base `object` class.
 
-## 27. Abstraction, Abstract class. When to use. Explain in detail
+## 87. Abstraction, Abstract class. When to use. Explain in detail
 
 **Abstraction** is a fundamental concept in object-oriented programming that focuses on hiding the complex implementation details while exposing a simplified and high-level interface for users. It allows you to represent real-world objects in a more understandable and manageable way.
 
@@ -1647,7 +1680,7 @@ print(rectangle.area())  # Output: 24
 
 In this example, the `Shape` class is an abstract class with an abstract method `area()`. The `Circle` and `Rectangle` classes are derived from the `Shape` class and provide implementations for the `area()` method. The abstract class `Shape` defines a contract that both `Circle` and `Rectangle` classes must adhere to, ensuring that they both have an `area()` method. This abstraction simplifies the interaction with different shapes by providing a consistent interface.
 
-## 28. Abstract class vs Interface
+## 29. Abstract class vs Interface
 
 Both abstract classes and interfaces are used to achieve abstraction and define a contract that derived classes must follow, but they have some key differences in terms of implementation, usage, and their role in object-oriented design.
 
@@ -1702,7 +1735,7 @@ for shape in shapes:
 
 In this example, the `Drawable` interface defines the contract that classes must implement the `draw()` method. Both the `Circle` and `Square` classes implement the `Drawable` interface by providing their own implementation of the `draw()` method. This allows them to be used interchangeably in a more abstract and unified way.
 
-## 29. Special functions
+## 30. Special functions
 
 - `__init__`: The `__init__` function is called every time an object is created from a class. The `__init__` method lets the class initialize the object's attributes and serves no other purpose. It is only used within classes
 
@@ -1715,7 +1748,7 @@ In this example, the `Drawable` interface defines the contract that classes must
    
 - `__next__`: The `__next__()` method must return the next item in the sequence. On reaching the end, and in subsequent calls, it must raise `StopIteration`.
 
-## 30. What is the purpose of __init__ constructor?
+## 31. What is the purpose of __init__ constructor?
 
 - `__init__` is short for initialization.
 - It is a constructor which gets called when you make an instance of the class.
@@ -1755,7 +1788,7 @@ print(person2.name, person2.age)  # Output: Ben 25
 
 In this example, the `__init__` method initializes the `name` and `age` attributes of each `Person` object with the values provided during object creation.
 
-## 31. When to use static vs instance vs class method
+## 32. When to use static vs instance vs class method
 
 In object-oriented programming, Python offers three types of methods: instance methods, class methods, and static methods. Each type of method serves a different purpose and has its own use cases. Here's when to use each type of method:
 
