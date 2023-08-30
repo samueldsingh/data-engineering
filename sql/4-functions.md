@@ -1002,6 +1002,35 @@ The output would be:
 | Michael    | Johnson   | 75000.00           |
 ```
 
+Suppose you have a table named `students` with columns `student_id`, `first_name`, and `last_name`. Some students have provided a middle name, while others have not. You want to display the full name for each student, including the middle name if available.
+
+Table: students
+
+| student_id | first_name | middle_name | last_name |
+|------------|------------|-------------|-----------|
+| 1          | John       | William     | Smith     |
+| 2          | Mary       | NULL        | Johnson   |
+| 3          | Robert     | Alexander   | Brown     |
+| 4          | Emily      | NULL        | Davis     |
+
+Using the `COALESCE` function:
+
+```sql
+SELECT student_id, COALESCE(middle_name, first_name) AS full_name
+FROM students;
+```
+
+Expected Output:
+
+| student_id | full_name     |
+|------------|---------------|
+| 1          | John William  |
+| 2          | Mary          |
+| 3          | Robert Alexander |
+| 4          | Emily         |
+
+In this example, the `COALESCE` function returns the middle name if it's available, otherwise, it returns the first name. The result is a full name for each student.
+
 **NULLIF Function:**
 
 - The `NULLIF` function compares two expressions and returns `null` if they are equal; otherwise, it returns the first expression.
@@ -1047,6 +1076,37 @@ The output of this query would be:
 ```
 
 As you can see, the adjusted_salary column contains NULL values for employees whose salary was originally 75000.00, while the other salaries remain unchanged.
+
+
+
+Suppose you have a table named `products` with columns `product_id`, `product_name`, and `discount_percentage`. Some products have a discount applied, while others do not. You want to display the discount percentage for each product, or "No discount" if there's no discount.
+
+Table: products
+
+| product_id | product_name | discount_percentage |
+|------------|--------------|---------------------|
+| 101        | Laptop       | 10                  |
+| 102        | Smartphone   | NULL                |
+| 103        | Headphones   | 5                   |
+| 104        | Keyboard     | NULL                |
+
+Using the `IFNULL` function:
+
+```sql
+SELECT product_id, IFNULL(discount_percentage, 'No discount') AS discount_info
+FROM products;
+```
+
+Expected Output:
+
+| product_id | discount_info |
+|------------|---------------|
+| 101        | 10            |
+| 102        | No discount   |
+| 103        | 5             |
+| 104        | No discount   |
+
+In this example, the `IFNULL` function returns the discount percentage if it's available, otherwise, it returns "No discount". The result provides clear information about the discount for each product.
 
 
 **IFNULL Function:**
@@ -1144,6 +1204,7 @@ These conditional functions allow you to make your SQL queries more flexible and
 
 **8. Special Functions:**
    Some databases provide functions specific to their features. For example, PostgreSQL has JSON functions for working with JSON data, while MySQL has spatial functions for geographical data.
+
 
 **9. Scalar vs. Table-Valued Functions:**
    - Scalar functions return a single value.
@@ -1490,7 +1551,7 @@ Commonly used date format strings:
 - `%a, %d %b %Y %T`: hu, 04 Jul 2013 11:20:05
 
 
-**12. Comparision Functions**
+## 12. Comparision functions
 
 Comparison functions in SQL are used to compare values and determine the relationship between them. These functions help in evaluating conditions and producing Boolean results (either `TRUE` or `FALSE`) based on the comparison outcomes. Comparison functions are fundamental for filtering data, creating conditions in queries, and controlling the flow of logic in SQL statements.
 
@@ -1553,69 +1614,3 @@ Here are some common comparison functions in SQL:
     Example: `SELECT * FROM products WHERE product_name NOT LIKE '%sale%';`
 
 These comparison functions are crucial for constructing queries that retrieve specific data based on certain conditions. They allow you to filter and manipulate data according to the logical comparisons you want to make within your SQL statements.
-
-Certainly! Here are examples for both the `COALESCE` and `IFNULL` functions:
-
-- **COALESCE:**
-
-Suppose you have a table named `students` with columns `student_id`, `first_name`, and `last_name`. Some students have provided a middle name, while others have not. You want to display the full name for each student, including the middle name if available.
-
-Table: students
-
-| student_id | first_name | middle_name | last_name |
-|------------|------------|-------------|-----------|
-| 1          | John       | William     | Smith     |
-| 2          | Mary       | NULL        | Johnson   |
-| 3          | Robert     | Alexander   | Brown     |
-| 4          | Emily      | NULL        | Davis     |
-
-Using the `COALESCE` function:
-
-```sql
-SELECT student_id, COALESCE(middle_name, first_name) AS full_name
-FROM students;
-```
-
-Expected Output:
-
-| student_id | full_name     |
-|------------|---------------|
-| 1          | John William  |
-| 2          | Mary          |
-| 3          | Robert Alexander |
-| 4          | Emily         |
-
-In this example, the `COALESCE` function returns the middle name if it's available, otherwise, it returns the first name. The result is a full name for each student.
-
-16. **IFNULL:**
-
-Suppose you have a table named `products` with columns `product_id`, `product_name`, and `discount_percentage`. Some products have a discount applied, while others do not. You want to display the discount percentage for each product, or "No discount" if there's no discount.
-
-Table: products
-
-| product_id | product_name | discount_percentage |
-|------------|--------------|---------------------|
-| 101        | Laptop       | 10                  |
-| 102        | Smartphone   | NULL                |
-| 103        | Headphones   | 5                   |
-| 104        | Keyboard     | NULL                |
-
-Using the `IFNULL` function:
-
-```sql
-SELECT product_id, IFNULL(discount_percentage, 'No discount') AS discount_info
-FROM products;
-```
-
-Expected Output:
-
-| product_id | discount_info |
-|------------|---------------|
-| 101        | 10            |
-| 102        | No discount   |
-| 103        | 5             |
-| 104        | No discount   |
-
-In this example, the `IFNULL` function returns the discount percentage if it's available, otherwise, it returns "No discount". The result provides clear information about the discount for each product.
-
-Both `COALESCE` and `IFNULL` offer convenient ways to handle NULL values and provide meaningful output in SQL queries.
