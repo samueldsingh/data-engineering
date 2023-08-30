@@ -1815,6 +1815,49 @@ In summary:
 
 Remember that choosing the appropriate method type depends on the specific requirements of your code. Each type has its own benefits and is designed to serve a particular purpose in your object-oriented design.
 
+## 33. Name mangling
+
+Name mangling is a mechanism in Python's object-oriented programming (OOP) that changes the name of a variable or method in a class to make it more "private" and less likely to clash with names in subclasses or external code. This is achieved by adding a double underscore prefix to the name.
+
+The primary purpose of name mangling is to create a level of name privacy within a class, indicating that certain attributes or methods are intended to be used only within the class they are defined in. However, it's important to note that name mangling is not a strict form of data hiding or encapsulation; it's more about making attributes and methods less accessible outside the class.
+
+Here's how name mangling works:
+
+1. A name that starts with two underscores and doesn’t end with two or more underscores is changed to `_classname__name`. The `classname` is the name of the class in which the attribute/method is defined, and `name` is the actual name of the attribute/method.
+
+2. A name that starts and ends with double underscores (`__name__`) is reserved for special methods or attributes in Python, like `__init__`, `__str__`, etc.
+
+Here's an example to illustrate name mangling:
+
+```python
+class MyClass:
+    def __init__(self):
+        self.__private_attribute = 42  # Name mangling applied to __private_attribute
+
+    def __private_method(self):
+        return "This is a private method."
+
+obj = MyClass()
+
+# Accessing a name-mangled attribute
+# Note: Using the mangled name directly is discouraged.
+print(obj._MyClass__private_attribute)  # Output: 42
+
+# Attempting to access the mangled method (will raise an AttributeError)
+try:
+    print(obj._MyClass__private_method())
+except AttributeError as e:
+    print("Error:", e)  # Output: Error: 'MyClass' object has no attribute '_MyClass__private_method'
+
+# Accessing the private attribute using a getter method (convention)
+def get_private_attribute(obj):
+    return obj._MyClass__private_attribute
+
+print(get_private_attribute(obj))  # Output: 42
+```
+
+It's important to note that while name mangling provides a degree of privacy, it doesn't prevent determined users from accessing or modifying these "private" attributes or methods. It's more of a convention rather than a strict security feature. Python developers are trusted to follow the convention and respect the intention of name mangling to enhance code maintainability and readability.
+
 # Extras
 
 Object-Oriented Programming (OOP) is a programming paradigm that organizes code into objects, each representing a real-world entity or concept. It focuses on structuring code around objects that have data (attributes) and behavior (methods), and these objects interact with each other to perform tasks. OOP provides several key concepts to achieve this organization, including encapsulation, inheritance, polymorphism, and abstraction. Let's dive into each of these concepts in detail:
