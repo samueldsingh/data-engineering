@@ -141,3 +141,20 @@ for i in range(len(dict_keys)):
 
 print("The sorted dictionary is:",sorted_dict)
 ```
+
+## 14. Fibonacci series
+
+```
+def fibonacci(n):
+  fib_series = [0,1]
+  
+  for i in range (2,n+1):
+    next_fib = fib_series[i-1] + fib_series[i-2]
+    fib_series.append(next_fib)
+    
+  return fib_series
+  
+n=10
+fibonacci(n)
+print(f"The first {n} Fibonacci numbers are:", fib_numbers)
+```
