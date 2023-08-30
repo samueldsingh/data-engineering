@@ -1858,6 +1858,210 @@ print(get_private_attribute(obj))  # Output: 42
 
 It's important to note that while name mangling provides a degree of privacy, it doesn't prevent determined users from accessing or modifying these "private" attributes or methods. It's more of a convention rather than a strict security feature. Python developers are trusted to follow the convention and respect the intention of name mangling to enhance code maintainability and readability.
 
+## 34. Observer design pattern
+
+**Implement a simple example of the Observer design pattern in Python. Explain how this pattern promotes loose coupling between objects.**
+
+- The Observer Design Pattern is a behavioral design pattern that defines a one-to-many relationship between objects.
+- In this pattern, when one object (the subject) changes its state, all its dependents (observers) are notified and updated automatically.
+- This pattern is used to achieve loose coupling between objects, where changes in one object do not directly depend on the structure of other objects.
+
+**Example**
+
+```
+class Subject:
+    def __init__(self):
+        self._observers = []
+
+    def add_observer(self, observer):
+        self._observers.append(observer)
+
+    def remove_observer(self, observer):
+        self._observers.remove(observer)
+
+    def notify_observers(self, data):
+        for observer in self._observers:
+            observer.update(data)
+
+class Observer:
+    def update(self, data):
+        pass # Update logic goes here
+
+# Usage
+subject = Subject()
+observer1 = Observer()
+observer2 = Observer()
+subject.add_observer(observer1)
+subject.add_observer(observer2)
+subject.notify_observers("Data has changed")
+```
+
+Sure, let's consider a simple example of a news agency (subject) and news subscribers (observers) using the Observer design pattern.
+
+```python
+class NewsSubscriber:
+    def update(self, news):
+        pass
+
+class NewsAgency:
+    def __init__(self):
+        self._subscribers = []
+
+    def add_subscriber(self, subscriber):
+        self._subscribers.append(subscriber)
+
+    def remove_subscriber(self, subscriber):
+        self._subscribers.remove(subscriber)
+
+    def notify_subscribers(self, news):
+        for subscriber in self._subscribers:
+            subscriber.update(news)
+
+    def publish_news(self, news):
+        print(f"News Agency publishing: {news}")
+        self.notify_subscribers(news)
+
+class EmailSubscriber(NewsSubscriber):
+    def __init__(self, email):
+        self._email = email
+
+    def update(self, news):
+        print(f"Email sent to {self._email}: {news}")
+
+class SMSSubscriber(NewsSubscriber):
+    def __init__(self, phone):
+        self._phone = phone
+
+    def update(self, news):
+        print(f"SMS sent to {self._phone}: {news}")
+
+# Create news agency
+news_agency = NewsAgency()
+
+# Create subscribers
+email_subscriber1 = EmailSubscriber("subscriber1@example.com")
+email_subscriber2 = EmailSubscriber("subscriber2@example.com")
+sms_subscriber = SMSSubscriber("555-1234")
+
+# Add subscribers to news agency
+news_agency.add_subscriber(email_subscriber1)
+news_agency.add_subscriber(email_subscriber2)
+news_agency.add_subscriber(sms_subscriber)
+
+# Publish news
+news_agency.publish_news("Breaking news: Important event occurred!")
+
+# Remove a subscriber
+news_agency.remove_subscriber(email_subscriber2)
+
+# Publish another news
+news_agency.publish_news("Latest update: Weather forecast changed!")
+```
+
+In this example:
+
+- `NewsSubscriber`: Defines the interface for news subscribers with the `update` method.
+
+- `NewsAgency`: Represents the subject (news agency) that maintains a list of subscribers and notifies them when news is published.
+
+- `EmailSubscriber` and `SMSSubscriber`: Concrete observer classes that implement the `update` method to react to news updates.
+
+This pattern promotes loose coupling between objects in the following ways:
+
+1. **Subject-Observer Separation**: The subject (`NewsAgency`) and observers (`NewsSubscriber`) are kept separate. Observers don't need to know the internal details of the subject. They only depend on the interface provided by the subject.
+
+2. **Dynamic Registration**: Observers can be added or removed dynamically without affecting the subject or other observers. This promotes flexibility and easy extensibility.
+
+3. **Decoupled Communication**: The subject doesn't need to know the concrete classes of its observers. It communicates with them through the observer interface, maintaining a level of abstraction.
+
+4. **Minimal Dependencies**: Observers depend only on the subject's interface, not its implementation. This reduces the impact of changes in the subject's internals.
+
+By using the Observer design pattern, the news agency can broadcast news to multiple subscribers without tightly coupling the news agency and individual subscribers. This separation of concerns makes the code more maintainable, adaptable, and modular.
+
+## 35. Metaclass
+
+**Explain the concept of a metaclass in Python. How does it relate to class creation and inheritance? Provide an example to illustrate its usage.**
+
+A metaclass is a class that defines the behavior of other classes, often referred to as its instances. In Python, classes themselves are instances of metaclasses. Metaclasses allow you to customize the behavior of class creation, method resolution, and other aspects of class behavior. They play a role in inheritance by controlling how new classes are created.
+
+Example:
+
+```
+class Meta(type):
+    def __new__(cls, name, bases, dct):
+        dct['custom_attr'] = 100
+        return super().__new__(cls, name, bases, dct)
+
+class MyClass(metaclass=Meta):
+    pass
+
+obj = MyClass()
+print(obj.custom_attr) # Output: 100
+```
+
+## 36. Factory Method
+
+**Describe the concept of a Factory Method pattern in Python. Provide an example of its implementation and explain how it promotes loose coupling and flexibility in object creation.**
+
+The Factory Method pattern involves creating an interface for creating objects but allowing subclasses to decide which class to instantiate. This promotes loose coupling by separating the client code from the concrete object creation.
+
+```
+# Implement the Factory Method pattern for creating different types of pizzas
+# (cheese, pepperoni, veggie) using a PizzaFactory class.
+
+class Pizza:
+    def prepare(self):
+        pass
+
+    def bake(self):
+        pass
+
+    def cut(self):
+        pass
+
+    def box(self):
+        pass
+
+class CheesePizza(Pizza):
+    def prepare(self):
+        print("Preparing Cheese Pizza")
+
+class PepperoniPizza(Pizza):
+    def prepare(self):
+        print("Preparing Pepperoni Pizza")
+
+class VeggiePizza(Pizza):
+    def prepare(self):
+        print("Preparing Veggie Pizza")
+
+class PizzaFactory:
+    @staticmethod
+    def create_pizza(pizza_type):
+        if pizza_type == "cheese":
+            return CheesePizza()
+        elif pizza_type == "pepperoni":
+            return PepperoniPizza()
+        elif pizza_type == "veggie":
+            return VeggiePizza()
+        else:
+            raise ValueError("Invalid pizza type")
+
+# Create different types of pizzas using the factory
+cheese_pizza = PizzaFactory.create_pizza("cheese")
+pepperoni_pizza = PizzaFactory.create_pizza("pepperoni")
+veggie_pizza = PizzaFactory.create_pizza("veggie")
+
+# Demonstrate pizza preparation
+cheese_pizza.prepare()
+pepperoni_pizza.prepare()
+veggie_pizza.prepare()
+
+# Output:
+Preparing Cheese Pizza
+Preparing Pepperoni Pizza
+Preparing Veggie Pizza
+```
+
 # Extras
 
 Object-Oriented Programming (OOP) is a programming paradigm that organizes code into objects, each representing a real-world entity or concept. It focuses on structuring code around objects that have data (attributes) and behavior (methods), and these objects interact with each other to perform tasks. OOP provides several key concepts to achieve this organization, including encapsulation, inheritance, polymorphism, and abstraction. Let's dive into each of these concepts in detail:
