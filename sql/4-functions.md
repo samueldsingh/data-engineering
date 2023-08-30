@@ -897,18 +897,52 @@ tangent: 0
 ```
 
 **6. Conversion Functions:**
-   These functions convert values from one data type to another. Examples include `CAST`, `CONVERT`.
+
+- These functions converts a value into the specified datatype or character set. Examples include `CAST`, `CONVERT`.
+- The syntax for cast is:
+```
+CAST(value AS datatype)
+```
+
+- The syntax for convert is:
+```
+CONVERT(value, type)
+```
 
 ```
--- CAST function to convert a value to a different data type
-SELECT CAST('123' AS INT);  -- Output: 123
+-- CAST function to convert a value to a specified data type
+SELECT CAST('123' AS SIGNED);  -- Output: 123
+
+-- Convert a value to a TIME datatype:
+SELECT CAST("14:06:10" AS TIME);      -- Output: 14:06:10
+
+-- Convert a value to a SIGNED datatype:
+SELECT CAST(5-10 AS SIGNED);      -- Output: -5
+
+-- Convert a value to CHAR datatype:
+SELECT CONVERT(150, CHAR);      -- Output: 150
+
+-- Convert a value to a TIME datatype:
+SELECT CONVERT("14:06:10", TIME);      -- Output: 14:06:10
 
 -- CONVERT function to change data type
 SELECT CONVERT('2023-08-04', DATE);  -- Output: '2023-08-04'
 ```
 
 **7. Conditional Functions:**
-   These functions evaluate conditions and return different values based on the outcome. Examples include `CASE`, `COALESCE`, `NULLIF`.
+
+- Conditional statements in MySQL refer to the use of control structures to conditionally execute code based on certain conditions.
+- These statements are primarily used within SQL queries and stored procedures to determine the flow of the program and perform different actions depending on whether a specified condition is true or false.
+- Examples include `CASE`, `COALESCE`, `NULLIF`, `IFNULL` and `IF`.
+
+
+**CASE**
+
+The CASE statement goes through conditions and return a value when the first condition is met (like an IF-THEN-ELSE statement). So, once a condition is true, it will stop reading and return the result.
+
+If no conditions are true, it will return the value in the ELSE clause.
+
+If there is no ELSE part and no conditions are true, it returns NULL.
 
 ```
 -- CASE statement to conditionally return values
@@ -922,47 +956,56 @@ SELECT
 FROM orders;
 ```
 
-Conditional functions in SQL are used to perform different actions based on specified conditions. They allow you to control the flow of the query and generate dynamic results based on the values in your data. Commonly used conditional functions include `CASE`, `COALESCE`, `ISNULL`, `NULLIF`, and `IFNULL`. Let's explore each of them:
-
-**CASE Expression:**
-The `CASE` expression allows you to perform conditional logic within a SQL query. It provides a way to return different values or perform different operations based on specified conditions.
-
-Syntax:
-```sql
-CASE
-    WHEN condition1 THEN result1
-    WHEN condition2 THEN result2
-    ...
-    ELSE result_else
-END
+The following SQL will order the customers by City. However, if City is NULL, then order by Country:
 ```
-
-Example:
-```sql
-SELECT product_name,
-       CASE
-           WHEN stock_quantity > 0 THEN 'In Stock'
-           ELSE 'Out of Stock'
-       END AS stock_status
-FROM products;
+SELECT CustomerName, City, Country FROM Customers
+ORDER BY (CASE
+WHEN City IS NULL THEN Country
+ELSE City
+END);
 ```
 
 **COALESCE Function:**
+
 The `COALESCE` function returns the first non-null expression from a list of expressions. It's often used to provide a fallback value when a column might be null.
 
-Syntax:
+Select first non-null value in a list
 ```sql
-COALESCE(expression1, expression2, ...)
+SELECT COALESCE(NULL, 1, 2, 'W3Schools.com');      # Output: 1
 ```
 
-Example:
-```sql
-SELECT order_id, COALESCE(discount, 0) AS applied_discount
-FROM orders;
+Example: Conside the table `employees` with the following data:
+
+| id | first_name | last_name | salary   | hire_date  |
+|----|------------|-----------|----------|------------|
+| 1  | John       | Doe       | 50000.00 | 2020-03-15 |
+| 2  | Jane       | Smith     | NULL     | 2021-01-10 |
+| 3  | Michael    | Johnson   | 75000.00 | 2022-06-20 |
+
+Suppose we want to retrieve the employee names and their salaries, but if the salary is null, we want to display "Salary not available". We can use COALESCE for this purpose:
+
+```
+SELECT 
+    first_name, 
+    last_name, 
+    COALESCE(CAST(salary AS VARCHAR), 'Salary not available') AS formatted_salary
+FROM employees;
+```
+
+The output would be:
+
+```
+| first_name | last_name | formatted_salary   |
+|------------|-----------|--------------------|
+| John       | Doe       | 50000.00           |
+| Jane       | Smith     | Salary not available |
+| Michael    | Johnson   | 75000.00           |
 ```
 
 **NULLIF Function:**
-The `NULLIF` function compares two expressions and returns `null` if they are equal; otherwise, it returns the first expression. It's useful when you want to handle specific cases where two values should result in null.
+
+- The `NULLIF` function compares two expressions and returns `null` if they are equal; otherwise, it returns the first expression.
+- It's often used to handle cases where you want to replace a specific value with `NULL`.
 
 Syntax:
 ```sql
@@ -971,12 +1014,46 @@ NULLIF(expression1, expression2)
 
 Example:
 ```sql
-SELECT employee_id, NULLIF(salary, 0) AS valid_salary
+SELECT NULLIF("Hello", "world");      # Output: Hello
+```
+
+Let's consider the same employees table from the previous example, with the following data:
+
+| id | first_name | last_name | salary   | hire_date  |
+|----|------------|-----------|----------|------------|
+| 1  | John       | Doe       | 50000.00 | 2020-03-15 |
+| 2  | Jane       | Smith     | NULL     | 2021-01-10 |
+| 3  | Michael    | Johnson   | 75000.00 | 2022-06-20 |
+
+Suppose we want to retrieve the salaries of employees but replace any salary value of 75000.00 with NULL. We can use the NULLIF function for this purpose:
+
+```
+SELECT 
+    first_name, 
+    last_name, 
+    NULLIF(salary, 75000.00) AS adjusted_salary
 FROM employees;
 ```
 
+In this query, we're using NULLIF to check if the salary column equals 75000.00. If it does, the function returns NULL; otherwise, it returns the actual value of the salary column.
+
+The output of this query would be:
+```
+| first_name | last_name | adjusted_salary |
+|------------|-----------|-----------------|
+| John       | Doe       | 50000.00        |
+| Jane       | Smith     | NULL            |
+| Michael    | Johnson   | NULL            |
+```
+
+As you can see, the adjusted_salary column contains NULL values for employees whose salary was originally 75000.00, while the other salaries remain unchanged.
+
+
 **IFNULL Function:**
-The `IFNULL` function is specific to some database systems like MySQL and returns the first expression if it's not `null`, otherwise, it returns the second expression.
+
+- The IFNULL() function returns a specified value if the expression is NULL.
+- If the expression is NOT NULL, this function returns the expression.
+- It's similar to the COALESCE function but specifically designed for cases where you want to handle NULL values with a fallback.
 
 Syntax (MySQL):
 ```sql
@@ -985,28 +1062,83 @@ IFNULL(expression1, expression2)
 
 Example:
 ```sql
-SELECT customer_id, IFNULL(loyalty_points, 0) AS points
-FROM customers;
+SELECT IFNULL("Hello", "W3Schools.com");      # Output: Hello
+SELECT IFNULL(NULL, 500);      # Output: 500
 ```
 
-**ISNULL Function:**
-The `ISNULL` function is typically used in SQL to check if an expression or column is `null` and return a specified value in case of `null`. It's a common way to handle null values and provide a default or substitute value when needed. Let's see an example of using the `ISNULL` function:
+Let's use the same employees table:
 
-Suppose we have a table called `employees` with columns `employee_id`, `employee_name`, and `salary`, and we want to retrieve the employee names along with their salaries. However, if the salary is `null`, we want to display "Not available" instead.
+| id | first_name | last_name | salary   | hire_date  |
+|----|------------|-----------|----------|------------|
+| 1  | John       | Doe       | 50000.00 | 2020-03-15 |
+| 2  | Jane       | Smith     | NULL     | 2021-01-10 |
+| 3  | Michael    | Johnson   | 75000.00 | 2022-06-20 |
 
-Here's how you can use the `ISNULL` function in SQL:
+Suppose we want to retrieve the employee names along with their salaries, but for employees with NULL salaries, we want to display "Salary not available" instead. We can use the IFNULL function for this purpose:
 
-```sql
-SELECT employee_id, employee_name, ISNULL(salary, 'Not available') AS displayed_salary
+```
+SELECT 
+    first_name, 
+    last_name, 
+    IFNULL(CAST(salary AS VARCHAR), 'Salary not available') AS formatted_salary
 FROM employees;
 ```
 
-In this example:
-- We use the `ISNULL` function to check if the `salary` column is `null`.
-- If the `salary` is `null`, the function returns the specified value `'Not available'`.
-- If the `salary` is not `null`, the original `salary` value is displayed.
+In this query, we're using `IFNULL` to check if the salary column is `NULL`. If it is, we're casting it to a string and displaying "Salary not available". If it's not `NULL`, we're displaying the actual salary.
 
-This query will return a result set with columns `employee_id`, `employee_name`, and `displayed_salary`. If the salary for a particular employee is `null`, the `displayed_salary` column will show "Not available" for that employee. This is a way to handle and display more meaningful information when dealing with potentially `null` values in the database.
+The output of this query would be similar to the output when using `COALESCE`:
+
+| first_name | last_name | formatted_salary   |
+|------------|-----------|--------------------|
+| John       | Doe       | 50000.00           |
+| Jane       | Smith     | Salary not available |
+| Michael    | Johnson   | 75000.00           |
+
+
+**ISNULL Function:**
+
+The ISNULL() function returns 1 or 0 depending on whether an expression is NULL.
+
+If expression is NULL, this function returns 1. Otherwise, it returns 0.
+
+```
+SELECT ISNULL("");      # Output: 0
+SELECT ISNULL("Hello world!");      # Output: 0
+```
+
+Let's consider the same `employees` table and data as before:
+
+```
+| id | first_name | last_name | salary   | hire_date  |
+|----|------------|-----------|----------|------------|
+| 1  | John       | Doe       | 50000.00 | 2020-03-15 |
+| 2  | Jane       | Smith     | NULL     | 2021-01-10 |
+| 3  | Michael    | Johnson   | 75000.00 | 2022-06-20 |
+```
+
+Suppose we want to retrieve the employee names along with their salaries, but for employees with `NULL` salaries, we want to display "Salary not available" instead. We can use the `ISNULL` function for this purpose:
+
+```sql
+SELECT 
+    first_name, 
+    last_name, 
+    ISNULL(CAST(salary AS VARCHAR), 'Salary not available') AS formatted_salary
+FROM employees;
+```
+
+In this query, we're using `ISNULL` to check if the `salary` column is `NULL`. If it is, we're casting it to a string and displaying "Salary not available". If it's not `NULL`, we're displaying the actual salary.
+
+The output of this query would be similar to the output when using `COALESCE` and `IFNULL`:
+
+```
+| first_name | last_name | formatted_salary   |
+|------------|-----------|--------------------|
+| John       | Doe       | 50000.00           |
+| Jane       | Smith     | Salary not available |
+| Michael    | Johnson   | 75000.00           |
+```
+
+Just like `IFNULL`, `ISNULL` is specific to certain database systems (Microsoft SQL Server and Sybase), whereas `COALESCE` is more widely supported across different database systems.
 
 These conditional functions allow you to make your SQL queries more flexible and adaptive to different situations. They can be used to generate computed columns, handle null values, and create custom result sets based on conditions. Remember that the specific syntax and availability of these functions may vary depending on the database system you are using.
 
