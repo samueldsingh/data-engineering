@@ -105,15 +105,24 @@ GROUP BY order_id;
 
    - **Date and Time Functions:** These functions operate on date and time values. Examples include:
      - `NOW`, `CURRENT_TIMESTAMP`: Returns the current date and time.
+     - With `NOW`, 
+     - With `CURRENT_TIMESTAMP`, the date and time is returned as `"YYYY-MM-DD HH-MM-SS" (string)` or as `YYYYMMDDHHMMSS.uuuuuu (numeric)`.
      - `DATEADD`, `DATEDIFF`: Performs date arithmetic operations.
      - `DATE_FORMAT`, `TO_CHAR`: Formats date and time values as strings.
+     - `ADDTIME()` function adds a time interval to a time/datetime and then returns the time/datetime.
 
 ```
 -- NOW function to get the current date and time
 SELECT NOW();  -- Current date and time
 
--- DATEADD function to add days to a date
-SELECT DATEADD(DAY, 7, '2023-08-01');  -- Adds 7 days to the given date
+-- The ADDDATE() function adds a time/date interval to a date and then returns the date.
+SELECT ADDDATE(CURDATE(), INTERVAL 10 DAY);      # Output: 2023-09-10
+
+-- DATEADD function to add days to a date. Same as ADDDATE() function
+SELECT DATE_ADD(CURRENT_DATE(), INTERVAL 10 DAY);      # Output: Adds 10 days to the current date
+
+-- Add 5 days, 2 hours, 10 minutes, 5 seconds, and 3 microseconds to a time and return the datetime:
+SELECT ADDTIME(CURRENT_TIMESTAMP(), "5 2:10:5.000003");
 
 -- DATE_FORMAT function to format date as a string
 SELECT DATE_FORMAT('2023-08-04', '%Y-%m-%d');  -- Output: '2023-08-04'
