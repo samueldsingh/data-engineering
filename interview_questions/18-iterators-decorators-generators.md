@@ -375,7 +375,7 @@ Common use cases for decorators include:
 
 Overall, decorators provide a clean and elegant way to modify or extend the behavior of functions in a flexible and reusable manner, making them an essential tool in Python programming.
 
-## Function execution time
+## 8. Function execution time
 
 Function execution time in Python refers to the amount of time it takes for a specific function or a block of code to complete its execution. It's an important metric for measuring the performance of your code and identifying potential bottlenecks or areas for optimization. Python provides several ways to measure function execution time.
 
@@ -456,3 +456,152 @@ Execution time using time module: 0.425689 seconds
 In this example, the `fibonacci_recursive` function calculates the Fibonacci number using a recursive approach. We measure its execution time using both the `time` module and the `timeit` module.
 
 Remember that the actual execution times may vary depending on your computer's performance and load. The `timeit` approach provides a more accurate measurement of the average execution time by repeating the function call multiple times.
+
+## 9. How can you use a decorator to implement a simple authentication mechanism for certain functions? Explain how you could extend this idea to handle user roles and permissions.
+
+```
+authenticated_users = ["user1", "user2"]  # List of authenticated users
+
+def authentication_required(func):
+    def wrapper(username, *args, **kwargs):
+        if username in authenticated_users:
+            return func(username, *args, **kwargs)
+        else:
+            raise ValueError("Authentication failed")
+    return wrapper
+
+@authentication_required
+def sensitive_function(username):
+    print(f"Welcome, {username}! This is a sensitive function.")
+
+@authentication_required
+def another_sensitive_function(username):
+    print(f"Hello, {username}! Another sensitive function here.")
+
+# Try calling the functions with different usernames
+try:
+    sensitive_function("user1")  # Should work
+    sensitive_function("user3")  # Should raise authentication error
+    another_sensitive_function("user2")  # Should work
+except ValueError as e:
+    print(e)
+```
+
+Extending the authentication mechanism to handle user roles and permissions can be done by modifying the decorator and adding additional logic to check user roles and their associated permissions. Here's an example of how you could achieve this:
+
+```python
+user_data = {
+    "user1": {"role": "admin", "permissions": ["read", "write"]},
+    "user2": {"role": "user", "permissions": ["read"]}
+}
+
+def has_permission(permission):
+    def permission_decorator(func):
+        def wrapper(username, *args, **kwargs):
+            if username in user_data and permission in user_data[username]["permissions"]:
+                return func(username, *args, **kwargs)
+            else:
+                raise ValueError("Permission denied")
+        return wrapper
+    return permission_decorator
+
+def has_role(role):
+    def role_decorator(func):
+        def wrapper(username, *args, **kwargs):
+            if username in user_data and user_data[username]["role"] == role:
+                return func(username, *args, **kwargs)
+            else:
+                raise ValueError("Role check failed")
+        return wrapper
+    return role_decorator
+
+@has_permission("read")
+def read_data(username):
+    print(f"{username} is reading data.")
+
+@has_permission("write")
+def write_data(username):
+    print(f"{username} is writing data.")
+
+@has_role("admin")
+def admin_task(username):
+    print(f"{username} is performing an admin task.")
+
+# Try calling the functions with different usernames and roles
+try:
+    read_data("user1")  # Should work
+    write_data("user2")  # Should raise permission error
+    admin_task("user1")  # Should raise role error
+    admin_task("user3")  # Should raise role error
+except ValueError as e:
+    print(e)
+```
+
+In this example, two decorators, `has_permission` and `has_role`, are defined. They take permission and role strings respectively and return decorators that check if the user has the required permission or role before allowing the function to execute. You can then apply these decorators to different functions based on their required permissions or roles.
+
+
+## 10. Implement a timing decorator that allows you to measure the execution time of either a specific function or a block of code using the with statement.
+```
+import time
+import functools
+
+
+def calculate_execution_time(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        end_time = time.time()
+        exe_time = end_time - start_time
+        result = func(*args, **kwargs)
+        print(f"Execution time of {func.__name__}: {exe_time:.6f} seconds")
+        return result
+    return wrapper
+
+@calculate_execution_time
+def fibonacci(n):
+    fib_series = [0, 1]
+
+    for i in range(2, n):
+        next_fib = fib_series[i - 1] + fib_series[i - 2]
+        fib_series.append(next_fib)
+
+    return fib_series
+
+n = int(input("Enter a number: "))
+fib_numbers = fibonacci(n)
+print(f"The first {n} Fibonacci numbers are:", fib_numbers)
+
+# Output is:
+Enter a number: 50
+Execution time of fibonacci: 0.000000 seconds
+The first 50 Fibonacci numbers are: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040, 1346269, 2178309, 3524578, 5702887, 9227465, 14930352, 24157817, 39088169, 63245986, 102334155, 165580141, 267914296, 433494437, 701408733, 1134903170, 1836311903, 2971215073, 4807526976, 7778742049]
+```
+
+## 11. Design a decorator that converts the return value of a function to uppercase or lowercase, based on a provided argument. Demonstrate its usage on a sample function.
+
+```
+def case_converter(target_case):
+    def case_decorator(func):
+        def wrapper(*args, **kwargs):
+            result = func(*args, **kwargs)
+            if target_case == "upper":
+                return result.upper()
+            elif target_case == "lower":
+                return result.lower()
+            else:
+                raise ValueError("Invalid target case")
+        return wrapper
+    return case_decorator
+
+@case_converter("upper")
+def greet(name):
+    return f"Hello, {name}!"
+
+@case_converter("lower")
+def announce(message):
+    return f"ATTENTION: {message}"
+
+print(greet("Sam"))  # Prints: HELLO, SAM!
+print(announce("Important Notice"))  # Prints: attention: important notice
+```
+
