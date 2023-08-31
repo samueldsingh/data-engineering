@@ -519,7 +519,7 @@ In this example, the query provides the cumulative distribution of each student'
 
 - `PERCENT_RANK`: Calculates the percentile rank of a row in a partition or result set.
 
-Certainly! Let's use the `PERCENT_RANK()` function in a practical example. Suppose we have a table named `exam_scores` that stores exam scores for a group of students. We want to calculate the percentile rank of each student's exam score within the group.
+Let's use the `PERCENT_RANK()` function in a practical example. Suppose we have a table named `exam_scores` that stores exam scores for a group of students. We want to calculate the percentile rank of each student's exam score within the group.
 
 Table: `exam_scores`
 
