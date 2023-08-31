@@ -259,7 +259,14 @@ WHERE row_num % 2 = 0;
 28. Write an SQL query to clone a new table from another table.
 
 ```
+CREATE TABLE new_table AS
+SELECT * FROM original_table;
 
+
+CREATE TABLE new_table AS
+SELECT column1, column2, ...
+FROM original_table
+WHERE condition;
 ```
  
 29. Write an SQL query to fetch intersecting records of two tables.
@@ -314,7 +321,7 @@ FROM (
         salary,
         ROW_NUMBER() OVER (ORDER BY salary DESC) AS row_num
     FROM employees
-) ranked_salaries
+) AS ranked_salaries
 WHERE row_num = 5;
 ```
 
