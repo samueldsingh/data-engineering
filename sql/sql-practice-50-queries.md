@@ -307,23 +307,16 @@ LIMIT 1 OFFSET 4;
 
 34. Write an SQL query to determine the 5th highest salary without using the TOP or limit method.
 
-To determine the 5th highest salary without using the `TOP` or `LIMIT` method, you can use a combination of the `ORDER BY` clause and a subquery. One approach is to use the `DISTINCT` keyword along with a `LIMIT`-like behavior in the subquery to get the 5th highest salary. Here's how you can do it:
-
-```sql
-SELECT DISTINCT salary
-FROM your_table outer_table
-WHERE 5 = (
-    SELECT COUNT(DISTINCT inner_table.salary)
-    FROM your_table inner_table
-    WHERE inner_table.salary >= outer_table.salary
-);
 ```
-
-Replace `your_table` with the name of your actual table.
-
-In this query, we use a subquery to count the number of distinct salary values that are greater than or equal to each salary in the `outer_table`. By using `COUNT(DISTINCT inner_table.salary)`, we effectively get the rank of each salary. The `WHERE 5 = ...` condition then filters the results to only include the 5th highest salary.
-
-This query should give you the 5th highest salary from the table without using the `TOP` or `LIMIT` clauses.
+SELECT salary
+FROM (
+    SELECT
+        salary,
+        ROW_NUMBER() OVER (ORDER BY salary DESC) AS row_num
+    FROM employees
+) ranked_salaries
+WHERE row_num = 5;
+```
 
 35. Write an SQL query to fetch the list of employees with the same salary.
 
