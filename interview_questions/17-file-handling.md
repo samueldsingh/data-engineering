@@ -88,7 +88,59 @@ In general, there are various types of files used in computing, each serving a s
 
 These are just a few examples of the many types of files used in computing. Each type serves a specific purpose and is designed to accommodate different kinds of data and information.
 
-## 4. Give example of reading, writing and updating a json file
+## 4. Different file handling operations:
+
+- `r`:	Opens a file for reading. (default)
+- `a`:	Opens a file for appending at the end of the file without truncating it. Creates a new file if it does not exist.
+- `w`:	Opens a file for writing. Creates a new file if it does not exist or truncates the file if it exists.
+- `r+`: Reads and writes data into file. Previous data will not be deleted.
+- `a+`: Appends and reads data of file. If file does not exists,will create new file and writes data
+- `w+`: Writes and reads data of file. Previous data in the file will be deleted.
+- `x`:	Opens a file for exclusive creation. If the file already exists, the operation fails.
+- `t`:	Opens in text mode. (default)
+- `b`:	Opens in binary mode.
+- `+`:	Opens a file for updating (reading and writing)
+
+## 5. Give example of reading, writing and updating a csv file
+
+```
+import csv
+
+# Reading a CSV File
+with open('data.csv', 'r', newline='') as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+
+# Writing to a CSV File
+data_to_write = [
+    ['Name', 'Age', 'City'],
+    ['Alice', 25, 'New York'],
+    ['Bob', 30, 'Los Angeles'],
+    ['Charlie', 22, 'Chicago']
+]
+
+with open('new_data.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerows(data_to_write)
+
+# Updating a CSV File
+data_to_update = [
+    ['Dave', 28, 'San Francisco'],
+    ['Eve', 35, 'Seattle']
+]
+
+with open('new_data.csv', 'a', newline='') as file:  # Use 'a' mode to append to an existing file
+    writer = csv.writer(file)
+    writer.writerows(data_to_update)
+
+# Reading the Updated CSV File
+with open('new_data.csv', 'r', newline='') as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+```
+
 
 Here's an example of how to read, write, and update a JSON file in Python:
 
@@ -1410,18 +1462,7 @@ File handling in Python is crucial for several reasons:
 
 In Python, the built-in functions and libraries for file handling, such as `open()`, `read()`, `write()`, and context managers (`with` statement), make it easy to work with files. Proper file handling helps in improving the efficiency, reliability, and maintainability of programs that involve data storage, manipulation, and analysis.
 
-## 24. Different file handling operations:
-
-- `r`:	Opens a file for reading. (default)
-- `a`:	Opens a file for appending at the end of the file without truncating it. Creates a new file if it does not exist.
-- `w`:	Opens a file for writing. Creates a new file if it does not exist or truncates the file if it exists.
-- `r+`: Reads and writes data into file. Previous data will not be deleted.
-- `a+`: Appends and reads data of file. If file does not exists,will create new file and writes data
-- `w+`: Writes and reads data of file. Previous data in the file will be deleted.
-- `x`:	Opens a file for exclusive creation. If the file already exists, the operation fails.
-- `t`:	Opens in text mode. (default)
-- `b`:	Opens in binary mode.
-- `+`:	Opens a file for updating (reading and writing)
+## 24. 
 
 File handling operations in Python allow you to interact with files on your system. The common file handling operations include:
 
