@@ -945,25 +945,26 @@ Method overriding occurs when a subclass provides a specific implementation of a
 **Example of Method Overriding:**
 
 ```python
-class Animal:
-    def make_sound(self):
-        return "Some generic animal sound"
+# Create a base class Person with attributes name and age. Then create a subclass Student that overrides the __init__ method to include a student_id attribute. # Use super() to ensure the base class's initialization is still performed.
 
-class Dog(Animal):
-    def make_sound(self):
-        return "Woof!"
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-class Cat(Animal):
-    def make_sound(self):
-        return "Meow!"
+class Student(Person):
+    def __init__(self, name, age, student_id):
+        super().__init__(name, age)  # Call the base class's __init__ method
+        self.student_id = student_id
 
-# Creating instances of derived classes
-dog = Dog()
-cat = Cat()
+# Create instances of Student
+student = Student("Alice", 20, "12345")
 
-# Calling the overridden method
-print(dog.make_sound())  # Output: Woof!
-print(cat.make_sound())  # Output: Meow!
+# Display student information
+print(f"Name: {student.name}")
+print(f"Age: {student.age}")
+print(f"Student ID: {student.student_id}")
+
 ```
 
 In this example, the `Animal` class defines a generic `make_sound` method. The `Dog` and `Cat` classes inherit from `Animal` and provide their specific implementations of the `make_sound` method, overriding the behavior defined in the base class. This allows each subclass to customize the sound it makes.
