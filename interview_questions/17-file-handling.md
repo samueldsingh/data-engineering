@@ -1,16 +1,22 @@
 
 ## 1. Controller, Service and DAO
 
-In the context of software development, the terms "controller," "service," and "DAO" stand for specific components of an application's architecture, especially in the context of a design pattern like MVC (Model-View-Controller). Here's an explanation of each term:
+"Controller," "service," and "DAO" stand for specific components of an application's architecture, especially in the context of a design pattern like MVC (Model-View-Controller). Here's an explanation of each term:
 
 **1. Controller:**
-A controller is a component responsible for handling user input and interaction within an application. It acts as an intermediary between the user interface (view) and the application's logic (model). The controller receives user requests from the view, processes them, interacts with the model to retrieve or manipulate data, and sends the appropriate response back to the view. It helps separate the concerns of user interaction and application logic.
+- A controller is responsible for handling user input and interaction within an application.
+- It acts as an intermediary between the user interface (view) and the application's logic (model).
+- The controller receives user requests from the view, processes them, interacts with the model to retrieve or manipulate data, and sends the appropriate response back to the view. It helps separate the concerns of user interaction and application logic.
 
 **2. Service:**
-A service is a component that encapsulates specific business logic or functionality in an application. Services are often used to provide a higher-level abstraction over data manipulation or operations. They can include complex calculations, data validation, and interactions with multiple data sources or models. Services are designed to be reusable and independent of specific user interface or presentation concerns.
+- A service is a component that encapsulates specific business logic or functionality in an application.
+- Services are often used to provide a higher-level abstraction over data manipulation or operations.
+- They can include complex calculations, data validation, and interactions with multiple data sources or models. Services are designed to be reusable and independent of specific user interface or presentation concerns.
 
 **3. DAO (Data Access Object):**
-DAO is a design pattern that separates the data access logic from the rest of the application. The DAO pattern provides an interface to interact with a data source (such as a database) without exposing the underlying implementation details. It encapsulates the CRUD (Create, Read, Update, Delete) operations and ensures that data access concerns are isolated. DAOs are often used to abstract the database interactions and make it easier to switch to different data sources or adapt to changes in data storage technologies.
+- DAO is a design pattern that separates the data access logic from the rest of the application.
+- The DAO pattern provides an interface to interact with a data source (such as a database) without exposing the underlying implementation details.
+- It encapsulates the CRUD (Create, Read, Update, Delete) operations and ensures that data access concerns are isolated. DAOs are often used to abstract the database interactions and make it easier to switch to different data sources or adapt to changes in data storage technologies.
 
 In Python applications, these components can be organized in various ways based on the architectural pattern you're following. For instance, in a web application using a framework like Flask or Django:
 
