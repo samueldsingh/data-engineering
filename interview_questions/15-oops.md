@@ -996,6 +996,29 @@ In summary, method overloading is about defining multiple methods with the same 
    child.child_method()   # Output: Child method
    ```
 
+```
+class Animal:
+    def __init__(self, species):
+        self.species = species
+    
+    def make_sound(self):
+        pass
+
+class Dog(Animal):
+    def __init__(self, name):
+        super().__init__('Dog')
+        self.name = name
+    
+    def make_sound(self):
+        return "Woof!"
+
+# Creating an instance of the Dog class
+my_dog = Dog("Buddy")
+
+print(f"{my_dog.name} is a {my_dog.species}")        # Output: Buddy is a Dog
+print(f"{my_dog.name} says: {my_dog.make_sound()}")        # Output: Buddy says: Woof!
+```
+
 2. **Multiple Inheritance:**
 
 - In multiple inheritance, a derived class inherits from more than one base class. This allows the derived class to inherit properties from multiple parent classes.
@@ -1022,6 +1045,42 @@ In summary, method overloading is about defining multiple methods with the same 
    child.child_method()    # Output: Child method
    ```
 
+```
+class Animal:
+    def __init__(self, species):
+        self.species = species
+    
+    def make_sound(self):
+        pass
+
+class Bird(Animal):
+    def __init__(self, name):
+        super().__init__('Bird')
+        self.name = name
+    
+    def make_sound(self):
+        return "Chirp!"
+
+class Mammal(Animal):
+    def __init__(self, name):
+        super().__init__('Mammal')
+        self.name = name
+    
+    def make_sound(self):
+        return "Roar!"
+
+class Platypus(Bird, Mammal):
+    def __init__(self, name):
+        Bird.__init__(self, name)
+        Mammal.__init__(self, name)
+
+# Creating an instance of the Platypus class
+my_platypus = Platypus("Perry")
+
+print(f"{my_platypus.name} is a {my_platypus.species}")        # Output: Perry is a Mammal
+print(f"{my_platypus.name} says: {my_platypus.make_sound()}")        # Output: Perry says: Chirp!
+```
+
 3. **Multilevel Inheritance:**
 
 - The multi-level inheritance includes the involvement of at least two or more than two classes. One class inherits the features from a parent class and the newly created sub-class becomes the base class for another new class.
@@ -1045,6 +1104,36 @@ In summary, method overloading is about defining multiple methods with the same 
    child.parent_method()       # Output: Parent method
    child.child_method()        # Output: Child method
    ```
+
+```
+class Animal:
+    def __init__(self, species):
+        self.species = species
+    
+    def make_sound(self):
+        pass
+
+class Bird(Animal):
+    def __init__(self, name):
+        super().__init__('Bird')
+        self.name = name
+    
+    def make_sound(self):
+        return "Chirp!"
+
+class Penguin(Bird):
+    def __init__(self, name):
+        super().__init__(name)
+    
+    def make_sound(self):
+        return "Honk!"
+
+# Creating an instance of the Penguin class
+penguin = Penguin("Pingu")
+
+print(f"{penguin.name} is a {penguin.species}")        # Output: Pingu is a Bird
+print(f"{penguin.name} says: {penguin.make_sound()}")        # Output: Pingu says: Honk!
+```
 
 4. **Hierarchical Inheritance:**
 
