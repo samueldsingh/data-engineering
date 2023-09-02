@@ -268,7 +268,7 @@ CSV files are very easy to work with programmatically. Any language that support
 Let's read a `data.csv` file with the following content:
 
 ```
-1, 2, 3, 4, 5
+a, b, c, d, e
 ```
 
 ```
@@ -321,7 +321,7 @@ The output is:
   Processed 3 lines.
   ```
 
-**Reading CSV Files Into a Dictionary With csv**
+**Reading CSV Files into a Dictionary With csv**
 
 Rather than deal with a list of individual String elements, you can read CSV data directly into a dictionary (technically, an Ordered Dictionary) as well.
 
@@ -373,7 +373,34 @@ Bob,30,Los Angeles
 Charlie,22,Chicago
 ```
 
+**Writing CSV file from a dictionary with csv**
 
+Since you can read our data into a dictionary, it’s only fair that you should be able to write it out from a dictionary as well:
+
+```
+import csv
+
+with open('data.csv', mode='w', newline='') as csv_file:
+    fieldnames = ['emp_name', 'dept', 'birth_month']
+    writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+    writer.writeheader()
+    writer.writerow({'emp_name': 'John Smith', 'dept': 'Accounting', 'birth_month': 'November'})
+    writer.writerow({'emp_name': 'Erica Meyers', 'dept': 'IT', 'birth_month': 'March'})
+
+# A new file, data.csv with the following output is created:
+emp_name,dept,birth_month
+John Smith,Accounting,November
+Erica Meyers,IT,March
+```
+
+Unlike `DictReader`, the fieldnames parameter is required when writing a dictionary. Without a list of fieldnames, the `Dictwriter` can’t know which keys to use to retrieve values from your dictionaries. `Dictwriter` also uses the keys in fieldnames to write out the first row as column names.
+
+Most CSV reading, processing, and writing tasks can be easily handled by the basic csv Python library. If you have a lot of data to read and process, the pandas library provides quick and easy CSV handling capabilities as well. 
+
+Take an indepth look into [importing data using csv python library and pandas library](https://realpython.com/python-csv/#optional-python-csv-reader-parameters).
+
+**Updating a csv file**
 
 ```
 # Updating a CSV File
