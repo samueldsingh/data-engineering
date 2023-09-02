@@ -108,36 +108,7 @@ These are just a few examples of the many types of files used in computing. Each
 - `+`:	Opens a file for updating (reading and writing)
 
 
-
-3. **Updating a Text File:**
-
-
-
-After running these code snippets, you'll have the following outcomes:
-
-- **Reading a Text File:**
-  ```
-  Line 1: Hello, world!
-  Line 2: This is a text file.
-  ```
-
-- **Writing to a Text File:**
-  A new file named "new_data.txt" will be created with the contents:
-  ```
-  New line 1: Added through Python
-  New line 2: Writing to text files
-  ```
-
-- **Updating a Text File:**
-  The "data.txt" file will be updated to:
-  ```
-  Line 1: Hello, Python!
-  Line 2: This is a text file.
-  ```
-
-These examples illustrate how to read, write, and update text files using Python's built-in file handling capabilities.
-
-## 6. Give example of reading, writing and updating a txt file
+## 5. Give example of reading, writing and updating a txt file
 
 **Reading a text file:**
 
@@ -242,7 +213,7 @@ New line 3: Hello world!
   New line 3: Hello Python!
 ```
 
-## 5. Give example of reading, writing and updating a csv file
+## 6. Give example of reading, writing and updating a csv file
 
 Exchanging information through text files is a common way to share info between programs. One of the most popular formats for exchanging data is the CSV format. 
 The Python [csv library](https://docs.python.org/3/library/csv.html) will work for most cases. If your work requires lots of data or numerical analysis, the [pandas library](http://pandas.pydata.org/) has CSV parsing capabilities as well, which should handle the rest.
@@ -421,7 +392,9 @@ with open('new_data.csv', 'r', newline='') as file:
 ```
 
 
-Here's an example of how to read, write, and update a JSON file in Python:
+## 7. Read, write and update a `json` file
+
+Python supports JSON through a built-in package called JSON. To use this feature, we import the JSON package in Python script. The text in JSON is done through quoted-string which contains the value in key-value mapping within { }. To handle the data flow in a file, the JSON library in Python uses `dump()` or `dumps()` function to convert the Python objects into their respective JSON object, so it makes it easy to write data to files. 
 
 1. **Reading a JSON File:**
 
@@ -447,6 +420,11 @@ print("Read JSON data:", data)
 ```
 
 2. **Writing to a JSON File:**
+
+`json.dump()` method is a way of writing JSON to a file. The JSON package has the “dump” function which directly writes the dictionary to a file in the form of JSON, without needing to convert it into an actual JSON object. It takes 2 parameters:
+
+- `dictionary` – the name of a dictionary which should be converted to a JSON object.
+- `file pointer` – pointer of the file opened in write or append mode.
 
 You can create a dictionary representing JSON data and then write it to a file using the following code:
 
@@ -508,104 +486,6 @@ After running these code snippets, you'll have the following outcomes:
   ```
 
 These examples illustrate how to read, write, and update JSON files using Python's built-in `json` module.
-
-## 5. Give example of reading, writing and updating a csv file
-
-Example of how to read, write, and update a CSV file in Python:
-
-1. **Reading a CSV File:**
-
-Assume you have a CSV file named "data.csv" with the following content:
-
-```
-Name,Age,City
-John,30,New York
-Jane,25,Los Angeles
-```
-
-You can read the CSV data using the `csv` module in Python:
-
-```python
-import csv
-
-with open("data.csv", "r") as file:
-    reader = csv.reader(file)
-    next(reader)  # Skip the header row
-    for row in reader:
-        name, age, city = row
-        print("Name:", name, "Age:", age, "City:", city)
-```
-
-2. **Writing to a CSV File:**
-
-You can create a list of lists representing rows of CSV data and then write it to a file using the `csv` module:
-
-```python
-data_to_write = [
-    ["Alice", 28, "Chicago"],
-    ["Bob", 35, "Seattle"]
-]
-
-with open("new_data.csv", "w", newline="") as file:
-    writer = csv.writer(file)
-    writer.writerow(["Name", "Age", "City"])  # Write header
-    writer.writerows(data_to_write)  # Write data rows
-
-print("Data written to new_data.csv")
-```
-
-3. **Updating a CSV File:**
-
-You can read the existing CSV data, update it, and then write the updated data back to the file using the `csv` module:
-
-```python
-updated_data = []
-
-with open("data.csv", "r") as file:
-    reader = csv.reader(file)
-    header = next(reader)
-    updated_data.append(header)
-    for row in reader:
-        if row[0] == "John":
-            row[1] = "31"
-            row[2] = "San Francisco"
-        updated_data.append(row)
-
-with open("data.csv", "w", newline="") as file:
-    writer = csv.writer(file)
-    writer.writerows(updated_data)
-
-print("CSV data updated and written back to data.csv")
-```
-
-After running these code snippets, you'll have the following outcomes:
-
-- **Reading a CSV File:**
-  ```
-  Name: John Age: 30 City: New York
-  Name: Jane Age: 25 City: Los Angeles
-  ```
-
-- **Writing to a CSV File:**
-  A new file named "new_data.csv" will be created with the contents:
-  ```
-  Name,Age,City
-  Alice,28,Chicago
-  Bob,35,Seattle
-  ```
-
-- **Updating a CSV File:**
-  The "data.csv" file will be updated to:
-  ```
-  Name,Age,City
-  John,31,San Francisco
-  Jane,25,Los Angeles
-  ```
-
-These examples demonstrate how to read, write, and update CSV files using Python's built-in `csv` module.
-
-## 6. Example of reading, writing and updating a txt file
-
 
 
 ## 7. File open modes
@@ -709,70 +589,6 @@ Please note that when using the `write` method, it will overwrite existing conte
 
 It's important to note that combining modes is possible, such as `'rb'` for reading binary files or `'a+'` for reading and appending. When using the `open()` function with the `with` statement, the file is automatically closed when the block is exited, ensuring proper resource management.
 
-## 8. How to work with files. Open read/write/append Close. Give examples
-
-Working with files in Python involves several steps: opening a file, reading from or writing to it, and then closing it. The `open()` function is used to open files, and you can specify the mode in which you want to work with the file. Here are examples of how to open, read, write, append, and close files:
-
-1. **Opening a File for Reading (`'r'` Mode):**
-
-```python
-# Open the file for reading
-with open('sample.txt', 'r') as file:
-    content = file.read()
-    print(content)
-# File automatically closes when the block is exited
-```
-
-2. **Opening a File for Writing (`'w'` Mode):**
-
-```python
-# Open the file for writing
-with open('output.txt', 'w') as file:
-    file.write("Hello, world!\n")
-    file.write("This is a new line.")
-# File automatically closes when the block is exited
-```
-
-3. **Opening a File for Appending (`'a'` Mode):**
-
-```python
-# Open the file for appending
-with open('output.txt', 'a') as file:
-    file.write("\nAppending more content.")
-# File automatically closes when the block is exited
-```
-
-4. **Reading and Writing to a File (`'r+'` Mode):**
-
-```python
-# Open the file for reading and writing
-with open('sample.txt', 'r+') as file:
-    content = file.read()
-    file.write("\nAdding new content.")
-# File automatically closes when the block is exited
-```
-
-5. **Reading Binary Data (`'rb'` Mode):**
-
-```python
-# Open a binary file for reading
-with open('image.jpg', 'rb') as file:
-    binary_data = file.read()
-    print(len(binary_data), "bytes read")
-# File automatically closes when the block is exited
-```
-
-6. **Writing Binary Data (`'wb'` Mode):**
-
-```python
-# Open a binary file for writing
-binary_data = b'\x48\x65\x6c\x6c\x6f'
-with open('output.bin', 'wb') as file:
-    file.write(binary_data)
-# File automatically closes when the block is exited
-```
-
-Remember to use the `with` statement to ensure that the file is properly closed after you are done working with it. This is important for proper resource management and to avoid issues like unclosed files and memory leaks.
 
 ## 9. Give example open, read-write-append, close without exception handling
 
