@@ -725,7 +725,8 @@ In this example, the constructor (`__init__`) initializes the `name` and `age` a
 
 **Default Constructor:**
 
-A default constructor is a constructor that doesn't take any parameters, and it's provided by the language or implicitly defined in a class if you don't define any constructor explicitly. Its primary purpose is to initialize the object's attributes with default values. In Python, if you don't define a constructor (`__init__` method) in a class, the default constructor is used, which initializes the object without requiring any arguments.
+- A default constructor is a constructor that doesn't take any parameters, and it's provided by the language or implicitly defined in a class if you don't define any constructor explicitly.
+- Its primary purpose is to initialize the object's attributes with default values. In Python, if you don't define a constructor (`__init__` method) in a class, the default constructor is used, which initializes the object without requiring any arguments.
 
 Example of a default constructor:
 
@@ -745,10 +746,9 @@ In this example, the `Person` class has a default constructor that initializes t
 
 **Parameterized Constructor:**
 
-A parameterized constructor is a constructor that accepts parameters and initializes the object's attributes based on the provided values. It allows you to customize the initial state of the object by passing arguments to the constructor. A parameterized constructor is useful when you want to create objects with specific initial values.
-
-- Constructor overloading is achieved using default arguments (parameter in construction have predefined values), positional arguments (arguments are passed
-  to construction in the order they are defined) and keyword arguments (pass values to constructor parameters by explicitly mentioning the parameter names followed by the values).
+- A parameterized constructor is a constructor that accepts parameters and initializes the object's attributes based on the provided values.
+- It allows you to customize the initial state of the object by passing arguments to the constructor.
+- A parameterized constructor is useful when you want to create objects with specific initial values.
 
 Example of a parameterized constructor:
 
@@ -780,7 +780,11 @@ In both cases, the goal is to set up the initial state of the object, but a para
 
 ## 13. Constructor Overloading
 
-Constructor overloading happens where a class can have multiple constructors with different parameter lists. Each constructor provides a different way to initialize the object's attributes. When you create an object of the class and pass specific arguments to the constructor, the appropriate constructor is selected based on the arguments' data types and number.
+- Constructor overloading happens where a class can have multiple constructors with different parameter lists.
+- Each constructor provides a different way to initialize the object's attributes.
+- When you create an object of the class and pass specific arguments to the constructor, the appropriate constructor is selected based on the arguments' data types and number.
+- Constructor overloading is achieved using default arguments (parameter in construction have predefined values), positional arguments (arguments are passed
+to construction in the order they are defined) and keyword arguments (pass values to constructor parameters by explicitly mentioning the parameter names followed by the values).
 
 In Python, constructor overloading is not directly supported like it is in some other languages (such as Java or C++), where you can define multiple constructors with different signatures. In Python, there's a single constructor, the `__init__` method, per class. However, you can achieve constructor overloading by using default values for the constructor parameters and handling different cases within the constructor.
 
@@ -940,7 +944,9 @@ In this example, we define two methods named `add` in the `Calculator` class, ea
 
 **Method Overriding:**
 
-Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass (base class). The overridden method in the subclass has the same name, parameters, and return type as the method in the superclass. The goal of method overriding is to customize the behavior of the inherited method in the subclass.
+- Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass (base class).
+- The overridden method in the subclass has the same name, parameters, and return type as the method in the superclass.
+- The goal of method overriding is to customize the behavior of the inherited method in the subclass.
 
 **Example of Method Overriding:**
 
@@ -973,9 +979,11 @@ In summary, method overloading is about defining multiple methods with the same 
 
 ## 17. Inheritance types
 
-- Inheritance is a fundamental concept in object-oriented programming that allows a new class to inherit properties (attributes and methods) from an existing class.
+- Inheritance allows a new class to inherit properties (attributes and methods) from an existing class.
 - This concept promotes code reuse and allows the creation of more specialized classes based on existing ones.
-- There are several types of inheritance that define the relationship between the base (parent) class and the derived (child) class. Let's explore the common types of inheritance:
+- There are several types of inheritance that define the relationship between the base (parent) class and the derived (child) class.
+- The subclass inherits the interface and implementation of superclass, and subclass objects can be used to replace superclass objects in the application.
+
 
 1. **Single Inheritance:**
    
