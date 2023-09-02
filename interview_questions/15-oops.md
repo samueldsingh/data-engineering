@@ -983,49 +983,43 @@ In summary, method overloading is about defining multiple methods with the same 
 - This concept promotes code reuse and allows the creation of more specialized classes based on existing ones.
 - There are several types of inheritance that define the relationship between the base (parent) class and the derived (child) class.
 - The subclass inherits the interface and implementation of superclass, and subclass objects can be used to replace superclass objects in the application.
+- A child class can also provide its specific implementation to the methods of the parent class.
+- For example, In the real world, Car is a sub-class of a Vehicle class. We can create a Car by inheriting the properties of a Vehicle such as Wheels, Colors, Fuel tank, engine, and add extra properties in Car as required.
 
+Based upon the number of child and parent classes involved, there are five types of inheritance:
+1. Single inheritance
+2. Multiple Inheritance
+3. Multilevel inheritance
+4. Hierarchical Inheritance
+5. Hybrid Inheritance
 
 1. **Single Inheritance:**
    
-   In single inheritance, a derived class inherits from only one base class. This is the simplest form of inheritance and is commonly used to create a hierarchical relationship between classes.
+- In single inheritance, a sub class inherits from only one base class. This is the simplest form of inheritance and is commonly used to create a hierarchical relationship between classes.
    
    ```python
-   class Parent:
-       def parent_method(self):
-           print("Parent method")
+  # Base class
+    class Vehicle:
+        def Vehicle_info(self):
+            print('Inside Vehicle class')
 
-   class Child(Parent):
-       def child_method(self):
-           print("Child method")
+    # Child class
+    class Car(Vehicle):
+        def car_info(self):
+            print('Inside Car class')
 
-   # Creating an instance of the Child class
-   child = Child()
-   child.parent_method()  # Output: Parent method
-   child.child_method()   # Output: Child method
+    # Create object of Car
+    car = Car()
+
+    # access Vehicle's info using car object
+    car.Vehicle_info()
+    car.car_info()
+
+    # Output:
+    Inside Vehicle class
+    Inside Car class
    ```
 
-```
-class Animal:
-    def __init__(self, species):
-        self.species = species
-    
-    def make_sound(self):
-        pass
-
-class Dog(Animal):
-    def __init__(self, name):
-        super().__init__('Dog')
-        self.name = name
-    
-    def make_sound(self):
-        return "Woof!"
-
-# Creating an instance of the Dog class
-my_dog = Dog("Buddy")
-
-print(f"{my_dog.name} is a {my_dog.species}")        # Output: Buddy is a Dog
-print(f"{my_dog.name} says: {my_dog.make_sound()}")        # Output: Buddy says: Woof!
-```
 
 2. **Multiple Inheritance:**
 
@@ -1033,114 +1027,80 @@ print(f"{my_dog.name} says: {my_dog.make_sound()}")        # Output: Buddy says:
 - The derived class inherits all the features of the base case.
 - Care should be taken when using multiple inheritance to avoid the "diamond problem" where ambiguity may arise if multiple parent classes have methods with the same name.
 
-   ```python
-   class Parent1:
-       def parent1_method(self):
-           print("Parent1 method")
-
-   class Parent2:
-       def parent2_method(self):
-           print("Parent2 method")
-
-   class Child(Parent1, Parent2):
-       def child_method(self):
-           print("Child method")
-
-   # Creating an instance of the Child class
-   child = Child()
-   child.parent1_method()  # Output: Parent1 method
-   child.parent2_method()  # Output: Parent2 method
-   child.child_method()    # Output: Child method
-   ```
-
 ```
-class Animal:
-    def __init__(self, species):
-        self.species = species
-    
-    def make_sound(self):
-        pass
+# Parent class 1
+class Person:
+    def person_info(self, name, age):
+        print('Inside Person class')
+        print('Name:', name, 'Age:', age)
 
-class Bird(Animal):
-    def __init__(self, name):
-        super().__init__('Bird')
-        self.name = name
-    
-    def make_sound(self):
-        return "Chirp!"
+# Parent class 2
+class Company:
+    def company_info(self, company_name, location):
+        print('Inside Company class')
+        print('Name:', company_name, 'location:', location)
 
-class Mammal(Animal):
-    def __init__(self, name):
-        super().__init__('Mammal')
-        self.name = name
-    
-    def make_sound(self):
-        return "Roar!"
+# Child class
+class Employee(Person, Company):
+    def Employee_info(self, salary, skill):
+        print('Inside Employee class')
+        print('Salary:', salary, 'Skill:', skill)
 
-class Platypus(Bird, Mammal):
-    def __init__(self, name):
-        Bird.__init__(self, name)
-        Mammal.__init__(self, name)
+# Create object of Employee
+emp = Employee()
 
-# Creating an instance of the Platypus class
-my_platypus = Platypus("Perry")
+# access data
+emp.person_info('Jessa', 28)
+emp.company_info('Google', 'Atlanta')
+emp.Employee_info(12000, 'Machine Learning')
 
-print(f"{my_platypus.name} is a {my_platypus.species}")        # Output: Perry is a Mammal
-print(f"{my_platypus.name} says: {my_platypus.make_sound()}")        # Output: Perry says: Chirp!
+# Output:
+Inside Person class
+Name: Jessa Age: 28
+
+Inside Company class
+Name: Google location: Atlanta
+
+Inside Employee class
+Salary: 12000 Skill: Machine Learning
 ```
+
+In the above example, we created two parent classes `Person` and `Company` respectively. Then we create one child called `Employee` which inherit from Person and Company classes.
 
 3. **Multilevel Inheritance:**
 
-- The multi-level inheritance includes the involvement of at least two or more than two classes. One class inherits the features from a parent class and the newly created sub-class becomes the base class for another new class.
+- In multi-level inheritance, one class inherits the features from a parent class and the newly created sub-class becomes the base class for another new class.
+- In other words, a class inherits from a child class or derived class.
+- Suppose three classes A, B, C. A is the superclass, B is the child class of A, C is the child class of B. In other words, we can say a *chain of classes is called multilevel inheritance*.
    
-   ```python
-   class Grandparent:
-       def grandparent_method(self):
-           print("Grandparent method")
-
-   class Parent(Grandparent):
-       def parent_method(self):
-           print("Parent method")
-
-   class Child(Parent):
-       def child_method(self):
-           print("Child method")
-
-   # Creating an instance of the Child class
-   child = Child()
-   child.grandparent_method()  # Output: Grandparent method
-   child.parent_method()       # Output: Parent method
-   child.child_method()        # Output: Child method
-   ```
-
 ```
-class Animal:
-    def __init__(self, species):
-        self.species = species
-    
-    def make_sound(self):
-        pass
+# Base class
+class Vehicle:
+    def Vehicle_info(self):
+        print('Inside Vehicle class')
 
-class Bird(Animal):
-    def __init__(self, name):
-        super().__init__('Bird')
-        self.name = name
-    
-    def make_sound(self):
-        return "Chirp!"
+# Child class
+class Car(Vehicle):
+    def car_info(self):
+        print('Inside Car class')
 
-class Penguin(Bird):
-    def __init__(self, name):
-        super().__init__(name)
-    
-    def make_sound(self):
-        return "Honk!"
+# Child class
+class SportsCar(Car):
+    def sports_car_info(self):
+        print('Inside SportsCar class')
 
-# Creating an instance of the Penguin class
-penguin = Penguin("Pingu")
+# Create object of SportsCar
+s_car = SportsCar()
 
-print(f"{penguin.name} is a {penguin.species}")        # Output: Pingu is a Bird
-print(f"{penguin.name} says: {penguin.make_sound()}")        # Output: Pingu says: Honk!
+# access Vehicle's and Car info using SportsCar object
+s_car.Vehicle_info()
+s_car.car_info()
+s_car.sports_car_info()
+
+# Output:
+Inside Vehicle class
+Inside Car class
+Inside SportsCar class
 ```
 
 4. **Hierarchical Inheritance:**
