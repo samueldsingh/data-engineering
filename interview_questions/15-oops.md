@@ -1214,6 +1214,9 @@ Note that hybrid inheritance can lead to complex relationships, and careful desi
 
 These are the main types of inheritance in object-oriented programming. Each type has its own use cases and considerations, and understanding the relationship between base and derived classes is crucial for designing effective class hierarchies.
 
+[Detailed look at inheritance and composition](https://realpython.com/inheritance-composition-python/)
+
+
 ## 18. Explain setter, getter, hasattr and delattr
 
 In the context of Object-Oriented Programming (OOP) in Python, the terms "setter," "getter," `hasattr`, and `delattr` have specific meanings and functions related to managing object attributes. These concepts are used to encapsulate and control access to an object's attributes, providing better data abstraction and security. Let's delve into each concept:
