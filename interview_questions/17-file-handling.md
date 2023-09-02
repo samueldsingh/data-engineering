@@ -107,7 +107,169 @@ These are just a few examples of the many types of files used in computing. Each
 - `b`:	Opens in binary mode.
 - `+`:	Opens a file for updating (reading and writing)
 
+
+
+3. **Updating a Text File:**
+
+
+
+After running these code snippets, you'll have the following outcomes:
+
+- **Reading a Text File:**
+  ```
+  Line 1: Hello, world!
+  Line 2: This is a text file.
+  ```
+
+- **Writing to a Text File:**
+  A new file named "new_data.txt" will be created with the contents:
+  ```
+  New line 1: Added through Python
+  New line 2: Writing to text files
+  ```
+
+- **Updating a Text File:**
+  The "data.txt" file will be updated to:
+  ```
+  Line 1: Hello, Python!
+  Line 2: This is a text file.
+  ```
+
+These examples illustrate how to read, write, and update text files using Python's built-in file handling capabilities.
+
+## 6. Give example of reading, writing and updating a txt file
+
+**Reading a text file:**
+
+Assume you have a text file named "read_data.txt" with the following content:
+
+```
+Hello World. This is a Python test file. Python is amazing.
+```
+
+You can read the text file by using the following code:
+
+  ```
+  my_file = open("read_data1.txt", 'r')
+  f_data = my_file.read()
+  print(f_data)
+
+  counter = 0
+  for line in f_data.split(" "):
+      if "Python" in line:
+          counter += 1
+
+  print("Python word repeated times in file:", counter)
+
+  my_file.close()
+
+  # The output will be:
+  # Hello World. This is a Python test file. Python is amazing.
+  # Python word repeated times in file: 2
+  ```
+
+Assume you have a text file named "data.txt" with the following content:
+
+```
+Line 1: Hello, world!
+Line 2: This is a text file.
+```
+
+You can read the text file line by line using the following code:
+
+  ```python
+  with open("data.txt", "r") as file:
+      lines = file.readlines()
+      for line in lines:
+          print(line.strip())  # strip() to remove newline characters
+
+  # Output is:
+  Line 1: Hello, world!
+  Line 2: This is a text file.
+  ```
+
+**Writing to a text file**
+
+You can write new content to a text file using the following code:
+
+  ```python
+  new_content = [
+      "New line 1: Added through Python",
+      "New line 2: Writing to text files"
+  ]
+
+  with open("data.txt", "w") as file:
+      for line in new_content:
+          file.write(line + "\n")
+
+  print("Data written to new_data.txt")
+ 
+  Output:
+  A "data.txt" file with the following content is created.
+  New line 1: Added through Python
+  New line 2: Writing to text files
+  ```
+
+**Update a text file**
+
+You can read the existing content of a text file, update it, and then write the updated content back to the file:
+
+Consider a `data.txt` file with the following contents:
+
+```
+New line 1: Added through Python
+New line 2: Writing to text files
+New line 3: Hello world!
+```
+
+  ```python
+  updated_content = []
+
+  with open("data.txt", "r") as file:
+      lines = file.readlines()
+      for line in lines:
+          updated_line = line.replace("world", "Python")
+          updated_content.append(updated_line)
+
+  with open("data.txt", "w") as file:
+      file.writelines(updated_content)
+
+  print("Text file updated and written back to data.txt")
+
+  # The file after updating is:
+  New line 1: Added through Python
+  New line 2: Writing to text files
+  New line 3: Hello Python!
+```
+
 ## 5. Give example of reading, writing and updating a csv file
+
+Exchanging information through text files is a common way to share info between programs. One of the most popular formats for exchanging data is the CSV format. 
+The Python [csv library](https://docs.python.org/3/library/csv.html) will work for most cases. If your work requires lots of data or numerical analysis, the [pandas library](http://pandas.pydata.org/) has CSV parsing capabilities as well, which should handle the rest.
+
+A CSV file (Comma Separated Values file) is a type of plain text file that uses specific structuring to arrange tabular data. Because it’s a plain text file, it can contain only actual text data—in other words, printable ASCII or Unicode characters.
+
+The structure of a CSV file is given away by its name. Normally, CSV files use a comma to separate each specific data value. Here’s what that structure looks like:
+
+```
+column 1 name,column 2 name, column 3 name
+first row data 1,first row data 2,first row data 3
+second row data 1,second row data 2,second row data 3
+...
+```
+
+Notice how each piece of data is separated by a comma. Normally, the first line identifies each piece of data — in other words, the name of a data column. Every subsequent line after that is actual data and is limited only by file size constraints.
+
+In general, the separator character is called a delimiter, and the comma is not the only one used. Other popular delimiters include the tab (\t), colon (:) and semi-colon (;) characters. Properly parsing a CSV file requires us to know which delimiter is being used.
+
+CSV files are very easy to work with programmatically. Any language that supports text file input and string manipulation (like Python) can work with CSV files directly.
+
+
+Let's read a `data.csv` file with the following content:
+
+```
+1, 2, 3, 4, 5
+```
 
 ```
 import csv
@@ -118,6 +280,49 @@ with open('data.csv', 'r', newline='') as file:
     for row in reader:
         print(row)
 
+# The output is:
+['a', ' b', ' c', ' d', ' e']
+```
+
+Let's read the data.txt file with the csv module in python:
+
+```
+name,department,birthday month
+John Smith,Accounting,November
+Erica Meyers,IT,March
+```
+
+To read the data:
+
+  ```
+  import csv
+
+  with open('data.csv') as csv_file:
+      csv_reader = csv.reader(csv_file, delimiter=',')
+      line_count = 0
+      for row in csv_reader:
+          if line_count == 0:
+              print(f'Column names are {", ".join(row)}')
+              line_count += 1
+          else:
+              print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
+              line_count += 1
+
+      print(f'Processed {line_count} lines.')
+  ```
+
+
+The output is:
+
+  ```
+  Column names are name, department, birthday month
+	  John Smith works in the Accounting department, and was born in November.
+	  Erica Meyers works in the IT department, and was born in March.
+  Processed 3 lines.
+  ```
+
+
+```
 # Writing to a CSV File
 data_to_write = [
     ['Name', 'Age', 'City'],
@@ -333,85 +538,7 @@ These examples demonstrate how to read, write, and update CSV files using Python
 
 ## 6. Example of reading, writing and updating a txt file
 
-Example of how to read, write, and update a text file in Python:
 
-1. **Reading a Text File:**
-
-Assume you have a text file named "data.txt" with the following content:
-
-```
-Line 1: Hello, world!
-Line 2: This is a text file.
-```
-
-You can read the text file line by line using the following code:
-
-```python
-with open("data.txt", "r") as file:
-    lines = file.readlines()
-    for line in lines:
-        print(line.strip())  # strip() to remove newline characters
-```
-
-2. **Writing to a Text File:**
-
-You can write new content to a text file using the following code:
-
-```python
-new_content = [
-    "New line 1: Added through Python",
-    "New line 2: Writing to text files"
-]
-
-with open("new_data.txt", "w") as file:
-    for line in new_content:
-        file.write(line + "\n")
-
-print("Data written to new_data.txt")
-```
-
-3. **Updating a Text File:**
-
-You can read the existing content of a text file, update it, and then write the updated content back to the file:
-
-```python
-updated_content = []
-
-with open("data.txt", "r") as file:
-    lines = file.readlines()
-    for line in lines:
-        updated_line = line.replace("world", "Python")
-        updated_content.append(updated_line)
-
-with open("data.txt", "w") as file:
-    file.writelines(updated_content)
-
-print("Text file updated and written back to data.txt")
-```
-
-After running these code snippets, you'll have the following outcomes:
-
-- **Reading a Text File:**
-  ```
-  Line 1: Hello, world!
-  Line 2: This is a text file.
-  ```
-
-- **Writing to a Text File:**
-  A new file named "new_data.txt" will be created with the contents:
-  ```
-  New line 1: Added through Python
-  New line 2: Writing to text files
-  ```
-
-- **Updating a Text File:**
-  The "data.txt" file will be updated to:
-  ```
-  Line 1: Hello, Python!
-  Line 2: This is a text file.
-  ```
-
-These examples illustrate how to read, write, and update text files using Python's built-in file handling capabilities.
 
 ## 7. File open modes
 
