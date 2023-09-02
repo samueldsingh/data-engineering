@@ -321,6 +321,37 @@ The output is:
   Processed 3 lines.
   ```
 
+**Reading CSV Files Into a Dictionary With csv**
+
+Rather than deal with a list of individual String elements, you can read CSV data directly into a dictionary (technically, an Ordered Dictionary) as well.
+
+```
+import csv
+
+with open('data.csv', mode='r') as csv_file:
+    csv_reader = csv.DictReader(csv_file)
+    line_count = 0
+    for row in csv_reader:
+        if line_count == 0:
+            print(f'Column names are {", ".join(row)}')
+            line_count += 1
+        print(f'\t{row["name"]} works in the {row["department"]} department, and was born in {row["birthday month"]}.')
+        line_count += 1
+    print(f'Processed {line_count} lines.')
+
+# The output is:
+Column names are name, department, birthday month
+    John Smith works in the Accounting department, and was born in November.
+    Erica Meyers works in the IT department, and was born in March.
+Processed 3 lines.
+```
+
+The first line of the CSV file is assumed to contain the keys to use to build the dictionary. If you don’t have these in your CSV file, you should specify your own keys by setting the `fieldnames` optional parameter to a list containing them.
+
+
+**Writing to a csv file**
+
+You can also write to a CSV file using a `writer` object and the `.write_row()` method:
 
 ```
 # Writing to a CSV File
@@ -335,6 +366,16 @@ with open('new_data.csv', 'w', newline='') as file:
     writer = csv.writer(file)
     writer.writerows(data_to_write)
 
+# The output is:
+Name,Age,City
+Alice,25,New York
+Bob,30,Los Angeles
+Charlie,22,Chicago
+```
+
+
+
+```
 # Updating a CSV File
 data_to_update = [
     ['Dave', 28, 'San Francisco'],
