@@ -2158,6 +2158,98 @@ Preparing Pepperoni Pizza
 Preparing Veggie Pizza
 ```
 
+## 37. How to avoid diamond problem
+
+In Python, the diamond problem can be avoided because the language uses a method resolution order (MRO) mechanism known as the C3 Linearization or C3 superclass linearization algorithm. This mechanism ensures that the order in which base classes are considered for method resolution is predictable and eliminates ambiguities. Here's how you can avoid the diamond problem in Python:
+
+1. **Use Super() Function:**
+   The `super()` function is a built-in function in Python that allows you to call methods of a base class in a way that respects the MRO. By using `super()`, you ensure that the methods of base classes are called in a consistent order.
+
+   Example:
+
+   ```python
+   class A:
+       def method(self):
+           print("A's method")
+
+   class B(A):
+       def method(self):
+           print("B's method")
+           super().method()
+
+   class C(A):
+       def method(self):
+           print("C's method")
+           super().method()
+
+   class D(B, C):
+       pass
+
+   d = D()
+   d.method()
+   ```
+
+   In this example, calling `d.method()` will output:
+   ```
+   B's method
+   C's method
+   A's method
+   ```
+
+   The `super().method()` calls the method from the next class in the MRO.
+
+2. **Use Composition Over Inheritance:**
+   Another way to avoid the diamond problem in Python is to use composition instead of multiple inheritance. Instead of inheriting from multiple classes, create instances of the classes you want to use and delegate calls to their methods as needed. This approach can make your code more explicit and easier to maintain.
+
+   Example:
+
+   ```python
+   class A:
+       def method(self):
+           print("A's method")
+
+   class B:
+       def method(self):
+           print("B's method")
+
+   class C(A):
+       pass
+
+   class D(B):
+       pass
+
+   class E:
+       def method(self):
+           print("E's method")
+
+   class F:
+       def method(self):
+           print("F's method")
+
+   class G:
+       def method(self):
+           print("G's method")
+
+   class H(C, E, D):
+       def method(self):
+           print("H's method")
+
+   class I(F, G):
+       def method(self):
+           print("I's method")
+
+   class J(H, I):
+       def method(self):
+           print("J's method")
+
+   j = J()
+   j.method()
+   ```
+
+   This code uses composition and delegation to call the methods of individual classes without relying on multiple inheritance.
+
+By following these principles and understanding Python's MRO, you can effectively avoid the diamond problem when designing your class hierarchies in Python.
+
 # Extras
 
 Object-Oriented Programming (OOP) is a programming paradigm that organizes code into objects, each representing a real-world entity or concept. It focuses on structuring code around objects that have data (attributes) and behavior (methods), and these objects interact with each other to perform tasks. OOP provides several key concepts to achieve this organization, including encapsulation, inheritance, polymorphism, and abstraction. Let's dive into each of these concepts in detail:
