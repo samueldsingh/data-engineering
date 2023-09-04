@@ -1026,6 +1026,7 @@ Based upon the number of child and parent classes involved, there are five types
 - In multiple inheritance, a derived class inherits from more than one base class. This allows the derived class to inherit properties from multiple parent classes.
 - The derived class inherits all the features of the base case.
 - Care should be taken when using multiple inheritance to avoid the "diamond problem" where ambiguity may arise if multiple parent classes have methods with the same name.
+- "Diamond problem" can be avoided by using `super` keyword and sometimes using composition over inheritance.
 
   ```python
   # Parent class 1
@@ -1079,35 +1080,35 @@ graph TD;
     B-->C;
 ```
    
-```
-# Base class
-class Vehicle:
+   ```
+    # Base class
+    class Vehicle:
     def Vehicle_info(self):
         print('Inside Vehicle class')
 
-# Child class
-class Car(Vehicle):
-    def car_info(self):
-        print('Inside Car class')
+    # Child class
+    class Car(Vehicle):
+        def car_info(self):
+            print('Inside Car class')
 
-# Child class
-class SportsCar(Car):
-    def sports_car_info(self):
-        print('Inside SportsCar class')
+    # Child class
+    class SportsCar(Car):
+        def sports_car_info(self):
+            print('Inside SportsCar class')
 
-# Create object of SportsCar
-s_car = SportsCar()
+    # Create object of SportsCar
+    s_car = SportsCar()
 
-# access Vehicle's and Car info using SportsCar object
-s_car.Vehicle_info()
-s_car.car_info()
-s_car.sports_car_info()
+    # access Vehicle's and Car info using SportsCar object
+    s_car.Vehicle_info()
+    s_car.car_info()
+    s_car.sports_car_info()
 
-# Output:
-Inside Vehicle class
-Inside Car class
-Inside SportsCar class
-```
+    # Output:
+    Inside Vehicle class
+    Inside Car class
+    Inside SportsCar class
+   ```
 
 In the above example, we can see there are three classes named `Vehicle`, `Car`, `SportsCar`. `Vehicle` is the superclass, `Car` is a child of Vehicle, `SportsCar` is a child of Car. So we can see the **chaining of classes**.
 
@@ -1124,34 +1125,34 @@ graph TD;
     A-->D;
 ```
 
-```
-class Vehicle:
-    def info(self):
-        print("This is Vehicle")
+   ```
+    class Vehicle:
+        def info(self):
+            print("This is Vehicle")
 
-class Car(Vehicle):
-    def car_info(self, name):
-        print("Car name is:", name)
+    class Car(Vehicle):
+        def car_info(self, name):
+            print("Car name is:", name)
 
-class Truck(Vehicle):
-    def truck_info(self, name):
-        print("Truck name is:", name)
+    class Truck(Vehicle):
+        def truck_info(self, name):
+            print("Truck name is:", name)
 
-obj1 = Car()
-obj1.info()
-obj1.car_info('BMW')
+    obj1 = Car()
+    obj1.info()
+    obj1.car_info('BMW')
 
-obj2 = Truck()
-obj2.info()
-obj2.truck_info('Ford')
+    obj2 = Truck()
+    obj2.info()
+    obj2.truck_info('Ford')
 
-# The output is:
-This is Vehicle
-Car name is: BMW
+    # The output is:
+    This is Vehicle
+    Car name is: BMW
 
-This is Vehicle
-Truck name is: Ford
-```
+    This is Vehicle
+    Truck name is: Ford
+   ```
 
 
 5. **Hybrid Inheritance**:
@@ -1170,36 +1171,36 @@ graph TD;
 
 Here's an example of hybrid inheritance in Python:
 
-```python
-class Vehicle:
-    def vehicle_info(self):
-        print("Inside Vehicle class")
+   ```python
+    class Vehicle:
+        def vehicle_info(self):
+            print("Inside Vehicle class")
 
-class Car(Vehicle):
-    def car_info(self):
-        print("Inside Car class")
+    class Car(Vehicle):
+        def car_info(self):
+            print("Inside Car class")
+    
+    class Truck(Vehicle):
+        def truck_info(self):
+            print("Inside Truck class")
 
-class Truck(Vehicle):
-    def truck_info(self):
-        print("Inside Truck class")
+    # Sports Car can inherits properties of Vehicle and Car
+    class SportsCar(Car, Vehicle):
+        def sports_car_info(self):
+            print("Inside SportsCar class")
 
-# Sports Car can inherits properties of Vehicle and Car
-class SportsCar(Car, Vehicle):
-    def sports_car_info(self):
-        print("Inside SportsCar class")
+    # create object
+    s_car = SportsCar()
 
-# create object
-s_car = SportsCar()
+    s_car.vehicle_info()
+    s_car.car_info()
+    s_car.sports_car_info()
 
-s_car.vehicle_info()
-s_car.car_info()
-s_car.sports_car_info()
-
-# Output:
-Inside Vehicle class
-Inside Car class
-Inside SportsCar class
-```
+    # Output:
+    Inside Vehicle class
+    Inside Car class
+    Inside SportsCar class
+   ```
 
 In the above example, hierarchical and multiple inheritance exists. Here we created, parent class Vehicle and two child classes named Car and Truck this is hierarchical inheritance.
 
