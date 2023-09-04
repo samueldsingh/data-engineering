@@ -1125,6 +1125,7 @@ graph TD;
     A-->D;
 ```
 
+
    ```
     class Vehicle:
         def info(self):
@@ -1147,11 +1148,11 @@ graph TD;
     obj2.truck_info('Ford')
 
     # The output is:
-    This is Vehicle
-    Car name is: BMW
+    # This is Vehicle
+    # Car name is: BMW
 
-    This is Vehicle
-    Truck name is: Ford
+    # This is Vehicle
+    # Truck name is: Ford
    ```
 
 
