@@ -1164,8 +1164,8 @@ graph TD;
     A-->B;
     A-->C;
     B-->D;
-    C-->D;
     A-->D;
+    C-->D;
 ```
 
 Here's an example of hybrid inheritance in Python:
