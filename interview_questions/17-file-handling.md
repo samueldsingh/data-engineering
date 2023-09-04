@@ -394,17 +394,111 @@ with open('new_data.csv', 'r', newline='') as file:
 
 ## 7. Read, write and update a `json` file
 
-Python supports JSON through a built-in package called JSON. To use this feature, we import the JSON package in Python script. The text in JSON is done through quoted-string which contains the value in key-value mapping within { }. To handle the data flow in a file, the JSON library in Python uses `dump()` or `dumps()` function to convert the Python objects into their respective JSON object, so it makes it easy to write data to files. 
+- Javascript Object Notation (JSON) is a script (executable) file which is made of text in a programming language and it is used to store and transfer the data.
+- JSON is language independent and because of that, it is used for storing or transferring data in files.  
+- Python supports JSON through a built-in package called JSON.
+- To use this feature, we import the JSON package in Python script. The text in JSON is done through quoted-string which contains the value in key-value mapping within `{ }`.
+- To handle the data flow in a file, the JSON library in Python uses `dump()` or `dumps()` function to convert the Python objects into their respective JSON object, so it makes it easy to write data to files.
 
-1. **Reading a JSON File:**
+**Serializing and deserializing complex JSON data**
+
+- The conversion of data from JSON object string is known as [Serialization](https://www.geeksforgeeks.org/serialize-and-deserialize-complex-json-in-python/) and its opposite string JSON object is known as Deserialization. 
+- Serializing JSON refers to the transformation of data into a series of bytes (hence serial) to be stored or transmitted across a network.
+- JSON Object is defined using curly braces `{}` and consists of a key-value pair. It is important to note that the JSON object key is a string and its value can be any primitive(e.g. int, string, null) or complex data types(e.g. array).
+- To handle the data flow in a file, the JSON library in Python uses `dump()` or `dumps()` function to convert the Python objects into their respective JSON object, so it makes it easy to write data to files.
+
+A list of python and json objects are given below:
+
+| Python Objects      | JSON Objects |
+| ----------- | ----------- |
+| Dict      | Object       |
+| list, tuple   | array       |
+| str   | string   |
+| int, long, float	|  numbers	|
+| True	| true	|
+| False	| false	|
+| None	| null	|
+
+
+1. **Writing a JSON File:**
+
+**Method 1: Writing JSON to a file in Python using `json.dumps()`** 
+
+The JSON package in Python has a function called `json.dumps()` that helps in converting a dictionary to a JSON object. It takes two parameters:
+
+- `dictionary` – the name of a dictionary which should be converted to a JSON object.
+- `indent` – defines the number of units for indentation
+
+After converting the dictionary to a JSON object, simply write it to a file using the `write` function:
+
+```
+import json
+
+# Data to be written
+dictionary = {
+    "name": "samuel",
+    "emp_id": 7,
+    "salary": 50000,
+    "ph_no": "9123203986"
+}
+
+# Serializing json
+json_object = json.dumps(dictionary, indent=4)
+
+# Writing to sample.json
+with open("data.json", "w") as outfile:
+	outfile.write(json_object)
+
+# Output:
+A data.json file with the following output is created:
+{"name": "samuel", "emp_id": 7, "salary": 50000, "ph_no": "9123203986"}
+```
+
+**Method 2: Writing JSON to a file in Python using `json.dump()`**
+
+- Another way of writing JSON to a file is by using `json.dump()` method.
+- The JSON package has the `dump` function which directly writes the dictionary to a file in the form of JSON, without needing to convert it into an actual JSON object.
+- It takes 2 parameters:
+  - `dictionary` – the name of a dictionary which should be converted to a JSON object.
+  - `file pointer` – pointer of the file opened in write or append mode.
+
+```
+import json
+
+# Data to be written
+dictionary = {
+    "name": "samuel",
+    "emp_id": 7,
+    "salary": 50000,
+    "ph_no": "9123203986"
+}
+
+with open("data.json", "w") as outfile:
+    json.dump(dictionary, outfile)
+
+# Output:
+A data.json file with the following output is created:
+{"name": "samuel", "emp_id": 7, "salary": 50000, "ph_no": "9123203986"}
+```
+
+2. **Reading a JSON File:**
+
+- The `load` method is used for deserialization, i.e. conversion of JSON objects into their respective Python objects.
+- If you have used JSON data from another program or obtained it as a string format of JSON, then it can easily be deserialized with `load()`, which is usually used to load from a string, otherwise, the root object is in a list or Dict.
+
+**Reading JSON from a file using `json.load()`**
+
+- The JSON package has `json.load()` function that loads the JSON content from a JSON file into a dictionary. It takes one parameter:
+- **File pointer:** A file pointer that points to a JSON file.
 
 Assume you have a JSON file named "data.json" with the following content:
 
 ```json
 {
-    "name": "John Doe",
-    "age": 30,
-    "city": "New York"
+    "name": "samuel",
+    "emp_id": 007,
+    "salary": 50000,
+    "ph_no": "9123203986"
 }
 ```
 
@@ -413,32 +507,17 @@ You can read and parse the JSON data using the following code:
 ```python
 import json
 
-with open("data.json", "r") as file:
-    data = json.load(file)
+# Opening JSON file
+with open('data.json', 'r') as openfile:
+    # Reading from json file
+    json_object = json.load(openfile)
 
-print("Read JSON data:", data)
-```
+print(json_object)
+print(type(json_object))
 
-2. **Writing to a JSON File:**
-
-`json.dump()` method is a way of writing JSON to a file. The JSON package has the “dump” function which directly writes the dictionary to a file in the form of JSON, without needing to convert it into an actual JSON object. It takes 2 parameters:
-
-- `dictionary` – the name of a dictionary which should be converted to a JSON object.
-- `file pointer` – pointer of the file opened in write or append mode.
-
-You can create a dictionary representing JSON data and then write it to a file using the following code:
-
-```python
-data_to_write = {
-    "name": "Jane Smith",
-    "age": 25,
-    "city": "Los Angeles"
-}
-
-with open("new_data.json", "w") as file:
-    json.dump(data_to_write, file, indent=4)
-
-print("Data written to new_data.json")
+# Output: The console give the output
+{'name': 'samuel', 'emp_id': 7, 'salary': 50000, 'ph_no': '9123203986'}
+<class 'dict'>
 ```
 
 3. **Updating a JSON File:**
@@ -449,43 +528,25 @@ You can read the existing JSON data, update it, and then write the updated data 
 with open("data.json", "r") as file:
     existing_data = json.load(file)
 
-existing_data["age"] = 31
-existing_data["city"] = "San Francisco"
+existing_data["age"] = 26
+existing_data["city"] = "Bangalore"
 
 with open("data.json", "w") as file:
     json.dump(existing_data, file, indent=4)
 
 print("JSON data updated and written back to data.json")
+
+# Output:
+The file is updated as:
+{
+    "name": "samuel",
+    "emp_id": 7,
+    "salary": 50000,
+    "ph_no": "9123203986",
+    "age": 26,
+    "city": "Bangalore"
+}
 ```
-
-After running these code snippets, you'll have the following outcomes:
-
-- **Reading a JSON File:**
-  ```
-  Read JSON data: {'name': 'John Doe', 'age': 30, 'city': 'New York'}
-  ```
-
-- **Writing to a JSON File:**
-  A new file named "new_data.json" will be created with the contents:
-  ```json
-  {
-      "name": "Jane Smith",
-      "age": 25,
-      "city": "Los Angeles"
-  }
-  ```
-
-- **Updating a JSON File:**
-  The "data.json" file will be updated to:
-  ```json
-  {
-      "name": "John Doe",
-      "age": 31,
-      "city": "San Francisco"
-  }
-  ```
-
-These examples illustrate how to read, write, and update JSON files using Python's built-in `json` module.
 
 
 ## 7. File open modes
@@ -1479,7 +1540,7 @@ File handling in Python is crucial for several reasons:
 
 In Python, the built-in functions and libraries for file handling, such as `open()`, `read()`, `write()`, and context managers (`with` statement), make it easy to work with files. Proper file handling helps in improving the efficiency, reliability, and maintainability of programs that involve data storage, manipulation, and analysis.
 
-## 24. 
+## 24. Give a list of file handling operations
 
 File handling operations in Python allow you to interact with files on your system. The common file handling operations include:
 
