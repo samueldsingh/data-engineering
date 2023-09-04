@@ -883,7 +883,7 @@ Based upon the number of child and parent classes involved, there are five types
 
 
 
-1. **Single Inheritance:**
+**1. Single Inheritance:**
    
 - In single inheritance, a sub class inherits from only one base class. This is the simplest form of inheritance and is commonly used to create a hierarchical relationship between classes.
    
@@ -911,7 +911,7 @@ Based upon the number of child and parent classes involved, there are five types
    ```
 
 
-2. **Multiple Inheritance:**
+**2. Multiple Inheritance:**
 
 - In multiple inheritance, a derived class inherits from more than one base class. This allows the derived class to inherit properties from multiple parent classes.
 - The derived class inherits all the features of the base case.
@@ -958,7 +958,7 @@ Based upon the number of child and parent classes involved, there are five types
 
 In the above example, we created two parent classes `Person` and `Company` respectively. Then we create one child called `Employee` which inherit from Person and Company classes.
 
-3. **Multilevel Inheritance:**
+**3. Multilevel Inheritance:**
 
 - In multi-level inheritance, one class inherits the features from a parent class and the newly created sub-class becomes the base class for another new class.
 - In other words, a class inherits from a child class or derived class.
@@ -994,7 +994,7 @@ graph TD;
 
 In the above example, we can see there are three classes named `Vehicle`, `Car`, `SportsCar`. `Vehicle` is the superclass, `Car` is a child of Vehicle, `SportsCar` is a child of Car. So we can see the **chaining of classes**.
 
-4. **Hierarchical Inheritance:**
+**4. Hierarchical Inheritance:**
 
 - In Hierarchical inheritance, more than one child class is derived from a single parent class.
 - In other words, we can say one parent class and multiple child classes.
@@ -1031,7 +1031,7 @@ graph TD;
    ```
 
 
-5. **Hybrid Inheritance**:
+**5. Hybrid Inheritance**:
 
 - Hybrid inheritance is a combination of different types of inheritance (usually multiple and multilevel inheritance) within a single program.
 - It's a more complex form of inheritance where classes are derived from multiple base classes and may create a complex inheritance hierarchy.
