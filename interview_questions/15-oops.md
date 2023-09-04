@@ -874,11 +874,13 @@ In summary, `__new__` is responsible for creating the object, while `__init__` i
 - For example, In the real world, Car is a sub-class of a Vehicle class. We can create a Car by inheriting the properties of a Vehicle such as Wheels, Colors, Fuel tank, engine, and add extra properties in Car as required.
 
 Based upon the number of child and parent classes involved, there are five types of inheritance:
+
 1. Single inheritance
 2. Multiple Inheritance
 3. Multilevel inheritance
 4. Hierarchical Inheritance
 5. Hybrid Inheritance
+
 
 
 1. **Single Inheritance:**
