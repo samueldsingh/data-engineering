@@ -556,7 +556,7 @@ print(circle2.area)    # Output: 153.93878
 
 In this example, the `__init__` method initializes the `radius` attribute, and based on the `radius`, it calculates and initializes the `area` attribute for each `Circle` object. This ensures that each `Circle` object has its own radius and area, encapsulating this logic within the class.
 
-## 8. Importance of self
+## 8. Importance of `self`
 
 - `self` is a default variable that stores the memory address of the instance of the current class. `self` becomes the first method for the instance and constructor method.
 - `self` is used to represent the instance of the class itself.
@@ -817,7 +817,7 @@ In this example, the `Person` class has a single constructor (`__init__` method)
 
 Keep in mind that this approach allows you to provide different ways to initialize objects based on the provided arguments, simulating constructor overloading in Python.
 
-## 14. new vs init
+## 14. `__new__` vs `__init__`
 
 `__new__` and `__init__` are both special methods in Python that play distinct roles in the process of object creation and initialization. They serve different purposes and are part of the object life cycle. Let's delve into the differences between these two methods:
 
@@ -864,120 +864,7 @@ print(person.name, person.age)  # Output: "Sam", 30
 
 In summary, `__new__` is responsible for creating the object, while `__init__` is responsible for initializing its attributes. You rarely need to override `__new__` unless you have specific requirements related to object creation. On the other hand, `__init__` is a common method used to set up the initial state of objects.
 
-## 15. Explain why composition might be preferred over inheritance in certain situations. Write a Python class that demonstrates the concept of composition.
-
-- Classes should achieve polymorphic behavior and code reuse by their composition rather than inheritance from a base or parent class.
-- To get the higher design flexibility, the design principle says that composition should be favored over inheritance.
-- Inheritance should only be used when subclass ‘is a’ superclass.
-- Inheritance cannot be used for code reuse.
-- If there is no ‘is a’ relationship, then use composition for code reuse.
-- In inheritance, the base class can extend the functionality of the superclass by allowing overriding of methods. Whereas, in composition the base class cannot extend the functionality of the super class, only the superclass can be used as is without any modification.
-
-Composition is a design principle in object-oriented programming where a class contains an instance of another class as a member, enabling complex behavior by combining smaller, more manageable components. Here's an example of a Python class that demonstrates composition:
-
-```python
-class Engine:
-    def start(self):
-        print("Engine started")
-
-    def stop(self):
-        print("Engine stopped")
-
-
-class Car:
-    def __init__(self):
-        self.engine = Engine()  # Composition: Car has an Engine
-
-    def start(self):
-        print("Car starting...")
-        self.engine.start()
-
-    def stop(self):
-        print("Car stopping...")
-        self.engine.stop()
-
-
-# Usage
-my_car = Car()
-my_car.start()
-my_car.stop()
-```
-
-In this example, we have two classes: `Engine` and `Car`. The `Car` class composes an `Engine` instance within it. This means that a `Car` "has an" `Engine`. The `Car` class has its own methods (`start` and `stop`), and it delegates some of its functionality to the `Engine` instance through composition.
-
-When you create an instance of `Car` and call its `start` and `stop` methods, you'll notice that it also invokes the corresponding methods of the `Engine` instance it contains. This demonstrates the concept of composition, where smaller components (in this case, the `Engine` class) are combined to build more complex and capable objects (the `Car` class).
-
-## 16. Method overloading (Static Polymorphism) vs Method overriding (Dynamic Polymorphism)
-
-- Methods in python can be called with zero, one or more parameters.
-- The process of calling the same method in different ways by passing different number of arguments is called method overloading.
-- Two methods will have the same name, but the latest method will hide previous method.
-- In Python, Method Overloading can't be achived directly but if a method with parameters has default arguments then that method can be called in 2 or more ways.
-- Because the latest method will hide the previous method, we can't achieve method overloading directly and hence we should use default arguments inside method signature.
-- Method overloading is achieved indirectly with default values for parameter or with *args or **kwargs.
-- With *args, we pass a tuple of arguments and with **kwargs, we pass value in key value pair mechanism. 
-
-**Method Overloading:**
-
-Method overloading occurs when a class defines multiple methods with the same name but different parameter lists. The methods must have different numbers or types of parameters. The overloaded methods provide different ways to perform similar operations based on the input arguments. In some programming languages (e.g., Java), method overloading is supported explicitly by the language, allowing you to define multiple methods with the same name within the same class.
-
-**Example of Method Overloading (Python does not support method overloading directly):**
-
-```python
-class Calculator:
-
-    def add(self, x, y):
-        return x + y
-
-    def add(self, x, y, z):
-        return x + y + z
-
-# Creating an instance of the Calculator class
-calc = Calculator()
-
-# Calling the overloaded add methods
-print(calc.add(2, 3))         # Output: Error (Python does not support overloading)
-print(calc.add(2, 3, 4))      # Output: 9
-```
-
-In this example, we define two methods named `add` in the `Calculator` class, each with a different number of parameters. However, in Python, only the second `add` method will be recognized because Python does not directly support method overloading. The earlier definition of `add` is overwritten.
-
-**Method Overriding:**
-
-- Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass (base class).
-- The overridden method in the subclass has the same name, parameters, and return type as the method in the superclass.
-- The goal of method overriding is to customize the behavior of the inherited method in the subclass.
-
-**Example of Method Overriding:**
-
-```python
-# Create a base class Person with attributes name and age. Then create a subclass Student that overrides the __init__ method to include a student_id attribute. # Use super() to ensure the base class's initialization is still performed.
-
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-class Student(Person):
-    def __init__(self, name, age, student_id):
-        super().__init__(name, age)  # Call the base class's __init__ method
-        self.student_id = student_id
-
-# Create instances of Student
-student = Student("Alice", 20, "12345")
-
-# Display student information
-print(f"Name: {student.name}")
-print(f"Age: {student.age}")
-print(f"Student ID: {student.student_id}")
-
-```
-
-In this example, the `Animal` class defines a generic `make_sound` method. The `Dog` and `Cat` classes inherit from `Animal` and provide their specific implementations of the `make_sound` method, overriding the behavior defined in the base class. This allows each subclass to customize the sound it makes.
-
-In summary, method overloading is about defining multiple methods with the same name but different parameter lists, which is not directly supported in Python. Method overriding, on the other hand, is about providing a specialized implementation of a method in a subclass, allowing customization of behavior inherited from the superclass.
-
-## 17. Inheritance types
+## 15. Inheritance types
 
 - Inheritance allows a new class to inherit properties (attributes and methods) from an existing class.
 - This concept promotes code reuse and allows the creation of more specialized classes based on existing ones.
@@ -1199,8 +1086,340 @@ These are the main types of inheritance in object-oriented programming. Each typ
 
 [Detailed look at inheritance and composition](https://realpython.com/inheritance-composition-python/)
 
+## 16. `super()` function importance
 
-## 18. Explain setter, getter, hasattr and delattr
+- The `super()` function is used to give access to methods and properties of a parent or sibling class. In child class, we can refer to parent class by using the `super()` function. 
+- The `super()` function returns a temporary object of the parent class that allows us to call a parent class method inside a child class method.
+- The `super()` keyword in Python is essential when working with inheritance, especially in cases of method overriding and cooperative multiple inheritance. It allows a subclass to call a method from its parent class.
+- The `super()` keyword is crucial for maintaining the correct method resolution order (MRO) and ensuring that method calls are properly delegated to the appropriate parent class.
+- We can use the `super()` function in both single and multiple inheritances.
+- The `super()` function support code reusability as there is no need to write the entire function
+
+Example:
+
+```
+class Company:
+    def company_name(self):
+        return 'Google'
+
+class Employee(Company):
+    def info(self):
+        # Calling the superclass method using super()function
+        c_name = super().company_name()
+        print("Jessa works at", c_name)
+
+# Creating object of child class
+emp = Employee()
+emp.info()
+
+# Output:
+Jessa works at Google
+```
+
+In the above example, we create a parent class `Company` and child class `Employee`. In Employee class, we call the parent class method by using a `super()` function.
+
+## 17. Calling super class method from sub class
+
+Calling a superclass method from a subclass can be done using the `super()` keyword. The `super()` function allows you to call a method in the parent class from the context of the subclass. This is useful when you want to extend or modify the behavior of the parent class's method in the subclass while still utilizing the functionality of the parent class's method.
+
+Here's an example that demonstrates how to call a superclass method from a subclass:
+
+```python
+class Parent:
+    def greet(self):
+        print("Hello from Parent")
+
+class Child(Parent):
+    def greet(self):
+        # Call the greet() method of the Parent class
+        super().greet()
+        print("Hello from Child")
+
+# Create an instance of the Child class
+child = Child()
+
+# Call the greet() method of the Child class
+child.greet()
+
+# Output:
+# Hello from Parent
+# Hello from Child
+```
+
+In this example, we have a `Parent` class with a `greet()` method, and a `Child` class that inherits from the `Parent` class. The `Child` class overrides the `greet()` method to add its own behavior, but it also wants to call the `greet()` method of the parent class.
+
+When we create an instance of the `Child` class and call its `greet()` method, the `super().greet()` line inside the `Child` class's `greet()` method invokes the `greet()` method of the `Parent` class, and then the additional "Hello from Child" message is printed.
+
+The output of this code will be:
+
+```
+Hello from Parent
+Hello from Child
+```
+
+By using `super()`, you ensure that the parent class's method is invoked, allowing you to extend or modify the behavior in the subclass while still benefiting from the functionality provided by the parent class. This promotes code reuse and maintains a clear hierarchy in the class structure.
+
+## 18. `issubclass()` and `isinstance()`
+
+**issubclass()**
+
+In Python, we can verify whether a particular class is a subclass of another class. For this purpose, we can use Python built-in function `issubclass()`. This function returns `True` if the given class is the subclass of the specified class. Otherwise, it returns `False`.
+
+The syntax is:
+
+```
+issubclass(class, classinfo)
+```
+
+where `class` is the class to be checked and `isclass` is the class, type, or a tuple of classes or data types
+
+```
+class Company:
+    def fun1(self):
+        print("Inside parent class")
+
+class Employee(Company):
+    def fun2(self):
+        print("Inside child class.")
+
+class Player:
+    def fun3(self):
+        print("Inside Player class.")
+
+# Result True
+print(issubclass(Employee, Company))
+
+# Result False
+print(issubclass(Employee, list))
+
+# Result False
+print(issubclass(Player, Company))
+
+# Result True
+print(issubclass(Employee, (list, Company)))
+
+# Result True
+print(issubclass(Company, (list, Company)))
+```
+
+**isinstance()**
+
+The Python’s `isinstance()` function checks whether the object or variable is an instance of the specified class type or data type.
+
+For example, `isinstance(name, str)` checks if `name` is an instance of a class `str`.
+
+The syntax for using `isinstance()` is:
+
+```
+isinstance(object, classinfo)
+```
+
+**isinstance() with Python Class**
+
+```
+class Employee:
+
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+
+class Person:
+
+    def __init__(self, name, sex):
+        self.name = name
+        self.sex = sex
+
+emp = Employee("Emma", 11000)
+per = Person("Brent", "male")
+
+# Checking if a emp object is an instance of Employee
+print(isinstance(emp, Employee))
+# Output True
+
+# Checking if the per object is an instance of Employee
+print(isinstance(per, Employee))
+# Output False
+```
+
+[isinstance() function in python](https://pynative.com/python-isinstance-explained-with-examples/)
+
+## 19. Method overriding and method overloading
+
+In inheritance, all members available in the parent class are by default available in the child class. If the child class does not satisfy with parent class implementation, then the child class is allowed to redefine that method by extending additional functions in the child class. This concept is called *method overriding*.
+
+When a child class method has the same name, same parameters, and same return type as a method in its superclass, then the method in the child is said to *override* the method in the parent class.
+
+```
+class Vehicle:
+    def max_speed(self):
+        print("max speed is 100 Km/Hour")
+
+class Car(Vehicle):
+    # overridden the implementation of Vehicle class
+    def max_speed(self):
+        print("max speed is 200 Km/Hour")
+
+# Creating object of Car class
+car = Car()
+car.max_speed()
+
+# Output:
+max speed is 200 Km/Hour
+```
+
+- Methods in python can be called with zero, one or more parameters.
+- The process of calling the same method in different ways by passing different number of arguments is called method overloading.
+- Two methods will have the same name, but the latest method will hide previous method.
+- In Python, Method Overloading can't be achived directly but if a method with parameters has default arguments then that method can be called in 2 or more ways.
+- Because the latest method will hide the previous method, we can't achieve method overloading directly and hence we should use default arguments inside method signature.
+- Method overloading is achieved indirectly with default values for parameter or with *args or **kwargs.
+- With *args, we pass a tuple of arguments and with **kwargs, we pass value in key value pair mechanism. 
+
+**Method Overloading:**
+
+Method overloading occurs when a class defines multiple methods with the same name but different parameter lists. The methods must have different numbers or types of parameters. The overloaded methods provide different ways to perform similar operations based on the input arguments. In some programming languages (e.g., Java), method overloading is supported explicitly by the language, allowing you to define multiple methods with the same name within the same class.
+
+**Example of Method Overloading (Python does not support method overloading directly):**
+
+```python
+class Calculator:
+
+    def add(self, x, y):
+        return x + y
+
+    def add(self, x, y, z):
+        return x + y + z
+
+# Creating an instance of the Calculator class
+calc = Calculator()
+
+# Calling the overloaded add methods
+print(calc.add(2, 3))         # Output: Error (Python does not support overloading)
+print(calc.add(2, 3, 4))      # Output: 9
+```
+
+In this example, we define two methods named `add` in the `Calculator` class, each with a different number of parameters. However, in Python, only the second `add` method will be recognized because Python does not directly support method overloading. The earlier definition of `add` is overwritten.
+
+**Method Overriding:**
+
+- Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its superclass (base class).
+- The overridden method in the subclass has the same name, parameters, and return type as the method in the superclass.
+- The goal of method overriding is to customize the behavior of the inherited method in the subclass.
+
+**Example of Method Overriding:**
+
+```python
+# Create a base class Person with attributes name and age. Then create a subclass Student that overrides the __init__ method to include a student_id attribute. # Use super() to ensure the base class's initialization is still performed.
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+class Student(Person):
+    def __init__(self, name, age, student_id):
+        super().__init__(name, age)  # Call the base class's __init__ method
+        self.student_id = student_id
+
+# Create instances of Student
+student = Student("Alice", 20, "12345")
+
+# Display student information
+print(f"Name: {student.name}")
+print(f"Age: {student.age}")
+print(f"Student ID: {student.student_id}")
+```
+
+In this example, the `Person` class initializes the Person's name and age. The `Student` classes inherits the `name` and `age` attributes from the `Person` class
+by calling the constructor `__init__` of the base class and initializes the attributes along with its own attribute `student_id`. 
+
+By inheriting from the super class, code reuse is simplified along with the creation of specialized classes that have additional attributes or behaviors.
+
+In summary, method overloading is about defining multiple methods with the same name but different parameter lists, which is not directly supported in Python. Method overriding, on the other hand, is about providing a specialized implementation of a method in a subclass, allowing customization of behavior inherited from the superclass.
+
+## 20. Method resolution order
+
+In Python, Method Resolution Order(MRO) is the order by which *Python looks for a method or attribute*. First, the method or attribute is searched within a class, and then it follows the order we specified while inheriting.
+
+This order is also called the Linearization of a class, and a set of rules is called MRO (Method Resolution Order). *The MRO plays an essential role in multiple inheritances as a single method may be found in multiple parent classes*.
+
+In multiple inheritance, the following search order is followed.
+
+- First, it searches in the current parent class if not available, then searches in the parents class specified while inheriting (that is left to right.)
+- We can get the MRO of a class. For this purpose, we can use either the `mro` attribute or the `mro()` method.
+
+**Example**
+
+```
+class A:
+    def process(self):
+        print(" In class A")
+
+class B(A):
+    def process(self):
+        print(" In class B")
+
+class C(B, A):
+    def process(self):
+        print(" In class C")
+
+# Creating object of C class
+C1 = C()
+C1.process()
+print(C.mro())
+# In class C
+# [<class '__main__.C'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>]
+```
+
+In the above example, we create three classes named A, B and C. Class B is inherited from A, class C inherits from B and A. When we create an object of the C class and calling the process() method, Python looks for the process() method in the current class in the C class itself.
+
+Then search for parent classes, namely B and A, because C class inherit from B and A. that is, C(B, A) and *always search in left to right manner*.
+
+## 21. Explain why composition might be preferred over inheritance in certain situations. Write a Python class that demonstrates the concept of composition.
+
+- Classes should achieve polymorphic behavior and code reuse by their composition rather than inheritance from a base or parent class.
+- To get the higher design flexibility, the design principle says that composition should be favored over inheritance.
+- Inheritance should only be used when subclass ‘is a’ superclass.
+- Inheritance cannot be used for code reuse.
+- If there is no ‘is a’ relationship, then use composition for code reuse.
+- In inheritance, the base class can extend the functionality of the superclass by allowing overriding of methods. Whereas, in composition the base class cannot extend the functionality of the super class, only the superclass can be used as is without any modification.
+
+Composition is a design principle in object-oriented programming where a class contains an instance of another class as a member, enabling complex behavior by combining smaller, more manageable components. Here's an example of a Python class that demonstrates composition:
+
+```python
+class Engine:
+    def start(self):
+        print("Engine started")
+
+    def stop(self):
+        print("Engine stopped")
+
+
+class Car:
+    def __init__(self):
+        self.engine = Engine()  # Composition: Car has an Engine
+
+    def start(self):
+        print("Car starting...")
+        self.engine.start()
+
+    def stop(self):
+        print("Car stopping...")
+        self.engine.stop()
+
+
+# Usage
+my_car = Car()
+my_car.start()
+my_car.stop()
+```
+
+In this example, we have two classes: `Engine` and `Car`. The `Car` class composes an `Engine` instance within it. This means that a `Car` "has an" `Engine`. The `Car` class has its own methods (`start` and `stop`), and it delegates some of its functionality to the `Engine` instance through composition.
+
+When you create an instance of `Car` and call its `start` and `stop` methods, you'll notice that it also invokes the corresponding methods of the `Engine` instance it contains. This demonstrates the concept of composition, where smaller components (in this case, the `Engine` class) are combined to build more complex and capable objects (the `Car` class).
+
+
+## 22. Explain setter, getter, hasattr and delattr
 
 In the context of Object-Oriented Programming (OOP) in Python, the terms "setter," "getter," `hasattr`, and `delattr` have specific meanings and functions related to managing object attributes. These concepts are used to encapsulate and control access to an object's attributes, providing better data abstraction and security. Let's delve into each concept:
 
@@ -1261,7 +1480,7 @@ In the context of Object-Oriented Programming (OOP) in Python, the terms "setter
 
 These concepts are important in OOP as they promote encapsulation, abstraction, and controlled access to object attributes. Getter and setter methods help manage attribute access, while `hasattr` and `delattr` functions provide ways to dynamically check and manipulate attributes at runtime.
 
-## 19. Implement a Python class that uses properties (getter and setter methods) to control access to its attributes. Explain the advantages of using properties.
+## 23. Implement a Python class that uses properties (getter and setter methods) to control access to its attributes. Explain the advantages of using properties.
 
 - The main purpose of using getters and setters in object-oriented programs is to ensure data encapsulation.
 - Getters and Setters in python are often used when:
@@ -1292,235 +1511,7 @@ circle.radius = 7            # Using the setter
 
 Properties allow you to control access to attributes, enabling validation and encapsulation. They provide a clean interface for attribute manipulation.
 
-## 20. MRO principle.Explain in detail
 
-- Denotes the way a programming language resolves a method or attribute.
-- Defines the order in which the base classes are searched when executing a method
-- First, the method or attribute is searched within a class and then it follows the order we specified while inheriting.
-
-MRO (Method Resolution Order) is a principle in object-oriented programming that defines the order in which classes are searched when invoking a method on an object. The MRO principle is crucial for languages that support multiple inheritance, where a class can inherit attributes and methods from more than one parent class. Python is one such language that uses the C3 Linearization algorithm to determine the MRO.
-
-The MRO principle ensures that the correct method is called when a method is invoked on an object, considering the inheritance hierarchy and the order of method definitions in the classes involved. The goal is to provide a consistent and predictable way to resolve method calls in cases of multiple inheritance.
-
-**MRO Algorithm in Python (C3 Linearization):**
-
-Python uses the C3 Linearization algorithm, also known as C3 superclass linearization, to determine the MRO. This algorithm ensures a consistent and deterministic MRO for classes with multiple inheritance. The C3 Linearization algorithm follows these rules:
-
-1. The base classes are ordered according to their definition in the subclass's inheritance declaration.
-2. The base classes are visited in a left-to-right order, and their base classes (excluding duplicates) are recursively traversed.
-3. If a base class has multiple parent classes, the algorithm considers a merge of the MROs of those parent classes.
-
-**Example of MRO in Python:**
-
-```python
-class A:
-    def method(self):
-        print("Method in class A")
-
-class B(A):
-    def method(self):
-        print("Method in class B")
-
-class C(A):
-    def method(self):
-        print("Method in class C")
-
-class D(B, C):
-    pass
-
-# Creating an instance of class D
-d = D()
-
-# Calling the method
-d.method()        # Output: Method in class B
-```
-
-In this example, we have a class hierarchy with multiple inheritance: `D` inherits from both `B` and `C`, which in turn inherit from `A`. When we create an instance of `D` and call the `method`, the MRO determines that the method from class `B` is invoked. The MRO follows the C3 Linearization algorithm, and the output of this code will be:
-
-```
-Method in class B
-```
-
-This demonstrates how the MRO ensures that the method is resolved in a predictable and consistent manner in the presence of multiple inheritance. Understanding the MRO is essential for designing class hierarchies and resolving method calls correctly in Python.
-
-## 21. Multiple Inheritance. Explain in detail
-
-Multiple inheritance is a feature in object-oriented programming that allows a class to inherit attributes and methods from more than one base class. In other words, a class can have multiple parent classes, and it can inherit the properties of all those parent classes. This concept facilitates code reuse by allowing a single class to combine the features of multiple classes.
-
-In multiple inheritance, a derived (child) class can inherit from two or more base (parent) classes. This allows the derived class to gain access to the attributes and methods defined in each of its parent classes. However, multiple inheritance can introduce some complexities, such as the "diamond problem" and the need for a clear method resolution order (MRO) to resolve method conflicts.
-
-Let's explain multiple inheritance in detail:
-
-**Advantages of Multiple Inheritance:**
-
-1. **Code Reusability:** Multiple inheritance allows a class to reuse the features of multiple classes. This promotes a more modular and efficient design, as common functionalities can be defined in base classes and reused across different classes.
-
-2. **Flexibility:** Multiple inheritance provides flexibility in designing class hierarchies. It allows developers to create complex class relationships and build classes that represent more specific and specialized concepts.
-
-**Example of Multiple Inheritance:**
-
-```python
-class Animal:
-    def __init__(self, name):
-        self.name = name
-
-    def speak(self):
-        pass
-
-class Mammal(Animal):
-    def speak(self):
-        return "Mammal sound"
-
-class Bird(Animal):
-    def speak(self):
-        return "Bird sound"
-
-class Bat(Mammal, Bird):
-    pass
-
-# Creating an instance of the Bat class
-bat = Bat("Batty")
-
-# Accessing methods from parent classes
-print(bat.name)         # Output: Batty
-print(bat.speak())      # Output: Mammal sound (MRO favors the first parent class in the declaration, Mammal)
-```
-
-In this example, we have an `Animal` base class with a `name` attribute and a `speak` method. There are two derived classes, `Mammal` and `Bird`, each of which inherits from `Animal` and provides its own implementation of the `speak` method.
-
-The `Bat` class is derived from both `Mammal` and `Bird` using multiple inheritance. Despite the potential for a "diamond problem" (if both `Mammal` and `Bird` inherited from another common class), Python's C3 Linearization algorithm (MRO) resolves the method call, favoring the method from the first parent class declared in the `Bat` class.
-
-**Complexities and Considerations:**
-
-1. **Diamond Problem:** In some cases, multiple inheritance can lead to the "diamond problem" where a class inherits from two classes that have a common base class. This can result in ambiguity when resolving method calls. Python's MRO helps resolve this issue.
-
-2. **Method Resolution Order (MRO):** MRO is essential in multiple inheritance to determine the order in which the parent classes are searched when resolving method calls. Python uses the C3 Linearization algorithm to establish a consistent and predictable MRO.
-
-3. **Avoid Overuse:** While multiple inheritance is a powerful feature, it should be used judiciously to avoid creating overly complex class hierarchies.
-
-4. **Maintainability:** It's important to ensure that the design using multiple inheritance remains understandable and maintainable. Clearly documenting the class hierarchy and understanding the MRO is crucial.
-
-In summary, multiple inheritance allows a class to inherit properties from more than one base class, enhancing code reusability and flexibility. While it brings advantages, it should be used thoughtfully, and developers need to be aware of the complexities it can introduce, such as the diamond problem and the importance of a clear MRO.
-
-## 22. super keyword importance
-
-- The `super()` function is used to give access to methods and properties of a parent or sibling class. 
-- The `super()` function returns an object that represents the parent class.
-- The `super()` keyword in Python is essential when working with inheritance, especially in cases of method overriding and cooperative multiple inheritance. It allows a subclass to call a method from its parent class.
-- The `super()` keyword is crucial for maintaining the correct method resolution order (MRO) and ensuring that method calls are properly delegated to the appropriate parent class.
-
-Here are some important use cases and benefits of the `super()` keyword:
-
-1. **Method Overriding:** When a subclass provides its own implementation of a method that is also defined in the parent class, using `super()` allows the subclass to invoke the parent class's method while extending or modifying its behavior.
-
-   ```python
-   class Parent:
-       def say_hello(self):
-           print("Hello from Parent")
-
-   class Child(Parent):
-       def say_hello(self):
-           super().say_hello()  # Calling the parent class's method
-           print("Hello from Child")
-
-   child = Child()
-   child.say_hello()
-
-   # Output is:
-   # Hello from Parent
-   # Hello from Child
-   ```
-
-   In this example, the `Child` class overrides the `say_hello()` method from the `Parent` class. By using `super()`, the child class can invoke the parent class's method before adding its own behavior.
-
-2. **Cooperative Multiple Inheritance:** When working with multiple inheritance, the `super()` keyword is crucial to ensure that the method resolution order is consistent and follows the C3 Linearization algorithm (MRO). It allows subclasses to cooperate and call parent class methods in a well-defined order.
-
-   ```python
-   class A:
-       def say_hello(self):
-           print("Hello from A")
-
-   class B(A):
-       def say_hello(self):
-           print("Hello from B")
-           super().say_hello()  # Calling the parent class's method
-
-   class C(A):
-       def say_hello(self):
-           print("Hello from C")
-           super().say_hello()  # Calling the parent class's method
-
-   class D(B, C):
-       pass
-
-   d = D()
-   d.say_hello()
-
-   # Output is:
-   Hello from B
-   Hello from C
-   Hello from A
-   ```
-
-   In this example, we have classes `A`, `B`, `C`, and `D`. The `D` class inherits from both `B` and `C`. By using `super()`, we ensure that the MRO is respected, and the `say_hello()` method from class `A` is called once despite the multiple inheritance.
-
-3. **Flexibility and Code Maintenance:** The `super()` keyword enhances code flexibility, as it allows changes in parent classes to propagate to subclasses without needing to modify the subclasses' code. This reduces the risk of code duplication and makes the codebase easier to maintain.
-
-   ```python
-   class Parent:
-       def configure(self):
-           # Configuration logic
-
-   class Child(Parent):
-       def configure(self):
-           super().configure()  # Use the parent's configuration logic
-           # Additional configuration logic specific to the Child class
-   ```
-
-   In this example, if the configuration logic in the `Parent` class changes, the `Child` class can still benefit from the updated logic by using `super()` to invoke the parent's `configure()` method.
-
-Overall, the `super()` keyword is an essential tool for maintaining a clear and consistent hierarchy in class inheritance, enabling method reuse, and ensuring proper cooperation in multiple inheritance scenarios.
-
-## 23. Calling super class method from sub class
-
-Calling a superclass method from a subclass can be done using the `super()` keyword. The `super()` function allows you to call a method in the parent class from the context of the subclass. This is useful when you want to extend or modify the behavior of the parent class's method in the subclass while still utilizing the functionality of the parent class's method.
-
-Here's an example that demonstrates how to call a superclass method from a subclass:
-
-```python
-class Parent:
-    def greet(self):
-        print("Hello from Parent")
-
-class Child(Parent):
-    def greet(self):
-        # Call the greet() method of the Parent class
-        super().greet()
-        print("Hello from Child")
-
-# Create an instance of the Child class
-child = Child()
-
-# Call the greet() method of the Child class
-child.greet()
-
-# Output:
-# Hello from Parent
-# Hello from Child
-```
-
-In this example, we have a `Parent` class with a `greet()` method, and a `Child` class that inherits from the `Parent` class. The `Child` class overrides the `greet()` method to add its own behavior, but it also wants to call the `greet()` method of the parent class.
-
-When we create an instance of the `Child` class and call its `greet()` method, the `super().greet()` line inside the `Child` class's `greet()` method invokes the `greet()` method of the `Parent` class, and then the additional "Hello from Child" message is printed.
-
-The output of this code will be:
-
-```
-Hello from Parent
-Hello from Child
-```
-
-By using `super()`, you ensure that the parent class's method is invoked, allowing you to extend or modify the behavior in the subclass while still benefiting from the functionality provided by the parent class. This promotes code reuse and maintains a clear hierarchy in the class structure.
 
 ## 24. Access modifiers in Python
 
@@ -1579,7 +1570,7 @@ Python has three main access modifiers:
 
 Remember that Python's access modifiers are more of a convention than a strict rule. It's a good practice to use public, protected, and private naming conventions to indicate the intended visibility and prevent accidental misuse. Encapsulation and data hiding are essential principles in object-oriented programming, and access modifiers play a role in achieving these goals.
 
-## 25. Difference between public protected private methods Ex: x() _x() __x()
+## 25. Difference between public protected private methods Ex: `x()`, `_x()`, `__x()`
 
 In Python, methods and attributes have different levels of visibility and accessibility, denoted by naming conventions. The naming conventions for methods and attributes indicate their visibility to other parts of the code. Here's the difference between public, protected, and private methods:
 
