@@ -1163,9 +1163,9 @@ Truck name is: Ford
 graph TD;
     A-->B;
     A-->C;
-    A-->D;
     B-->D;
     C-->D;
+    A-->D;
 ```
 
 Here's an example of hybrid inheritance in Python:
