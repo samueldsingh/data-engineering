@@ -1113,70 +1113,97 @@ In the above example, we can see there are three classes named `Vehicle`, `Car`,
 
 4. **Hierarchical Inheritance:**
 
-- In hierarchical inheritance, multiple derived classes inherit from a single base (parent) class.
+- In Hierarchical inheritance, more than one child class is derived from a single parent class.
+- In other words, we can say one parent class and multiple child classes.
 - Each derived class can have its own additional properties and methods while sharing the properties of the base class.
 
-   ```python
-   class Animal:
-       def make_sound(self):
-           print("Generic animal sound")
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    A-->D;
+```
 
-   class Dog(Animal):
-       def make_sound(self):
-           print("Woof!")
+```
+class Vehicle:
+    def info(self):
+        print("This is Vehicle")
 
-   class Cat(Animal):
-       def make_sound(self):
-           print("Meow!")
+class Car(Vehicle):
+    def car_info(self, name):
+        print("Car name is:", name)
 
-   # Creating instances of derived classes
-   dog = Dog()
-   cat = Cat()
-   dog.make_sound()  # Output: Woof!
-   cat.make_sound()  # Output: Meow!
-   ```
+class Truck(Vehicle):
+    def truck_info(self, name):
+        print("Truck name is:", name)
+
+obj1 = Car()
+obj1.info()
+obj1.car_info('BMW')
+
+obj2 = Truck()
+obj2.info()
+obj2.truck_info('Ford')
+
+# The output is:
+This is Vehicle
+Car name is: BMW
+
+This is Vehicle
+Truck name is: Ford
+```
+
 
 5. **Hybrid Inheritance**:
-   Hybrid inheritance is a combination of different types of inheritance (usually multiple and multilevel inheritance) within a single program. It's a more complex form of inheritance where classes are derived from multiple base classes and may create a complex inheritance hierarchy.
+
+- Hybrid inheritance is a combination of different types of inheritance (usually multiple and multilevel inheritance) within a single program.
+- It's a more complex form of inheritance where classes are derived from multiple base classes and may create a complex inheritance hierarchy.
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    A-->D;
+    B-->D;
+    C-->D;
+```
 
 Here's an example of hybrid inheritance in Python:
 
 ```python
-# Base class
-class Person:
-    def __init__(self, name):
-        self.name = name
+class Vehicle:
+    def vehicle_info(self):
+        print("Inside Vehicle class")
 
-# Derived classes
-class Employee(Person):
-    def __init__(self, name, emp_id):
-        super().__init__(name)
-        self.emp_id = emp_id
+class Car(Vehicle):
+    def car_info(self):
+        print("Inside Car class")
 
-class Student(Person):
-    def __init__(self, name, student_id):
-        super().__init__(name)
-        self.student_id = student_id
+class Truck(Vehicle):
+    def truck_info(self):
+        print("Inside Truck class")
 
-# Derived class with multiple base classes
-class Manager(Employee, Student):
-    def __init__(self, name, emp_id, student_id, department):
-        # Call the constructors of both Employee and Student classes
-        Employee.__init__(self, name, emp_id)
-        Student.__init__(self, name, student_id)
-        self.department = department
+# Sports Car can inherits properties of Vehicle and Car
+class SportsCar(Car, Vehicle):
+    def sports_car_info(self):
+        print("Inside SportsCar class")
 
-# Create an object of the Manager class
-manager = Manager("John Doe", "E123", "S456", "IT")
+# create object
+s_car = SportsCar()
 
-# Access attributes from both base classes
-print("Name:", manager.name)
-print("Employee ID:", manager.emp_id)
-print("Student ID:", manager.student_id)
-print("Department:", manager.department)
+s_car.vehicle_info()
+s_car.car_info()
+s_car.sports_car_info()
+
+# Output:
+Inside Vehicle class
+Inside Car class
+Inside SportsCar class
 ```
 
-In this example, we have three classes: `Person` as the base class, `Employee` and `Student` as derived classes from `Person`, and `Manager` as a class derived from both `Employee` and `Student`. This demonstrates hybrid inheritance, where `Manager` inherits attributes and methods from both `Employee` and `Student`.
+In the above example, hierarchical and multiple inheritance exists. Here we created, parent class Vehicle and two child classes named Car and Truck this is hierarchical inheritance.
+
+Another is SportsCar inherit from two parent classes named Car and Vehicle. This is multiple inheritance.
 
 Note that hybrid inheritance can lead to complex relationships, and careful design is essential to avoid confusion and maintain the integrity of the program's structure.
 
