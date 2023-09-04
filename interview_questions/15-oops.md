@@ -1072,6 +1072,12 @@ In the above example, we created two parent classes `Person` and `Company` respe
 - In multi-level inheritance, one class inherits the features from a parent class and the newly created sub-class becomes the base class for another new class.
 - In other words, a class inherits from a child class or derived class.
 - Suppose three classes A, B, C. A is the superclass, B is the child class of A, C is the child class of B. In other words, we can say a *chain of classes is called multilevel inheritance*.
+
+```mermaid
+graph TD;
+    A-->B;
+    B-->C;
+```
    
 ```
 # Base class
@@ -1102,6 +1108,8 @@ Inside Vehicle class
 Inside Car class
 Inside SportsCar class
 ```
+
+In the above example, we can see there are three classes named `Vehicle`, `Car`, `SportsCar`. `Vehicle` is the superclass, `Car` is a child of Vehicle, `SportsCar` is a child of Car. So we can see the **chaining of classes**.
 
 4. **Hierarchical Inheritance:**
 
