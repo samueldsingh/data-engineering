@@ -548,6 +548,149 @@ The file is updated as:
 }
 ```
 
+## Give example of reading, writing and updating excel files
+
+- Nearly 54% of businesses use Excel to perform arithmetic operations, analyze data, create visualizations, and generate reports. You can also perform predictive modeling tasks like regression and clustering using Excel.
+
+- However, despite Excel’s undisputed strengths, the tool comes with its own set of drawbacks, making it, at times, inefficient when performing specific tasks involving huge datasets. 
+
+- One limitation of Excel is its inability to handle large amounts of data. You can run into serious performance issues when trying to perform complex operations on a lot of data entries in Excel, especially if your formulas and macros are not optimized for performance.
+
+- Excel can also become very time-consuming if you need to perform repetitive tasks. For instance, if you need to replicate an analysis on multiple Excel files every week, you would have to open them manually and copy-paste the same formulas over and over.
+
+- These drawbacks can be solved by automating Excel workflows with Python. Tasks like spreadsheet consolidation, data cleaning, and predictive modeling can be done in minutes using a simple Python script that writes to an Excel file.
+
+- Excel users can also create a scheduler in Python that runs the script automatically at different time intervals, dramatically reducing the amount of human intervention required to perform the same task again and again.
+
+- Some common operations that python can be used to perform on excel are:
+  - Read and write Excel files using Python
+  - Create arithmetic operations and Excel formulas
+  - Manipulate Excel worksheets
+  - Build visualizations in Python and save them to an Excel file
+  - Format Excel cell colors and styles using Python
+ 
+**OpenPyxl**
+
+- Openpyxl is a Python library that allows users to read Excel files and write to them. 
+- This framework can help you write functions, format spreadsheets, create reports, and build charts directly in Python without even having to open an Excel application.
+- Furthermore, Openpyxl allows users to iterate through worksheets and perform the same analysis on multiple sets of data at the same time.
+
+**Reading excel file in python with Openpyxl**
+
+**1. Loading the workbook with Openpyxl**
+
+The `load_workbook()` function from the openpyxl module loads the excel workbook. It allows the user to access and manipulate the data in the Excel file using Python.
+
+```
+import openpyxl 
+wb = openpyxl.load_workbook('file.xlsx')
+```
+
+After loading, simply call the active worksheet, which is the first sheet in the workbook, using the following line of code as:
+
+```
+ws = wb.active
+```
+
+If you know the name of the worksheet, you can also access it by its name. We will be using the “sheet1”:
+
+```
+ws = wb['sheet1']
+```
+
+Count the number of rows and columns in this worksheet:
+- To find the maximum number of rows and columns in the worksheet `ws`, use `ws.max_row` and `ws.max_column` functions. The `str()` function is used to convert the integer values returned by `ws.max_row` and `ws.max_column` into strings so that they can be concatenated with the rest of the string.
+
+```
+print('Total number of rows: '+str(ws.max_row)+'. And total number of columns: '+str(ws.max_column))
+```
+
+**2. Reading Data From a Cell**
+
+To retrieve data from a specific cell with Openpyxl, you can type the cell’s value in like this:
+
+```
+print('The value in cell A1 is: '+ws['A1'].value)
+```
+
+**3. Reading Data From Multiple Cells**
+
+To print all cell values in a certain row of the spreadsheet, you can write a simple `for loop` to iterate through all the values in a specific row:
+
+```
+values = [ws.cell(row=1,column=i).value for i in range(1,ws.max_column+1)]
+print(values)
+```
+
+The above code will print all the values in the first row.
+
+To print the first 10 rows from Column 1 to Column 6:
+
+```
+# reading data from a range of cells (from column 1 to 6)
+
+my_list = list()
+
+for value in ws.iter_rows(
+    min_row=1, max_row=11, min_col=1, max_col=6, 
+    values_only=True):
+    my_list.append(value)
+    
+for ele1,ele2,ele3,ele4,ele5,ele6 in my_list:
+    (print ("{:<8}{:<35}{:<10}
+             {:<10}{:<15}{:<15}".format(ele1,ele2,ele3,ele4,ele5,ele6)))
+```
+
+- The `iter_rows()` method takes in the parameters `min_row`, `max_row`, `min_col`, and `max_col` to specify the range of cells to read from.
+- The `values_only=True` parameter ensures that only the values of the cells are returned, not any formatting or other metadata.
+- The `<` symbol is used to left-align the values within their respective columns, and the `{:8}` syntax specifies the width of each column.
+
+**4. Writing to excel files**
+
+**4.1 Writing to a cell**:
+- You can access a cell directly, using its key, `ws['K1'] = 'Sum of Sales'`. The string `'Sum of Sales'` gets assigned to the cell `K1`.
+- Alternatively, you can specify the row and column position of the cell that you’d like to write to, `ws.cell(row=1, column=11, value = 'Sum of Sales')`. The `cell()` method is used to specify the cell to write to.
+- Every time you write to an Excel file with Openpyxl, you need to save your changes with the following line of code or they will not be reflected in the worksheet, `wb.save('filename.xlsx')`.
+- Make sure to close the Excel file before saving your changes. You can then open it again to make sure that the change is reflected in your worksheet.
+
+**4.2 Creating a New Column**
+
+Let’s add the sum of sales in every region and write it to column `K`. We will do this for the sales data in the first row:
+
+```
+row_position = 2
+col_position = 7
+
+total_sales = ((ws.cell(row=row_position, column=col_position).value)+
+               (ws.cell(row=row_position, column=col_position+1).value)+
+               (ws.cell(row=row_position, column=col_position+2).value)+
+               (ws.cell(row=row_position, column=col_position+3).value))
+
+ws.cell(row=2,column=11).value=total_sales
+wb.save('videogamesales.xlsx')
+```
+
+
+
+## Give example of reading, writing and updating zip files
+
+ZIP is an archive file format that supports lossless data compression. By lossless compression, we mean that the compression algorithm allows the original data to be perfectly reconstructed from the compressed data. So, a ZIP file is a single file containing one or more compressed files, offering an ideal way to make large files smaller and keep related files together.
+
+ZIP files are mainly used to:
+- To reduce storage requirements.
+- To improve transfer speed over standard connections.
+
+The inbuilt [zipfile](https://docs.python.org/3.11/library/zipfile.html) module provided by Python is used to work with zip files.
+
+[GFG](https://www.geeksforgeeks.org/working-zip-files-python/), [Real Python](https://realpython.com/python-zipfile/)
+
+## Give example of reading, writing and updating pdf files
+
+
+
+## Give example of reading, writing and updating xml files
+
+
 
 ## 7. File open modes
 
