@@ -1027,43 +1027,43 @@ Based upon the number of child and parent classes involved, there are five types
 - The derived class inherits all the features of the base case.
 - Care should be taken when using multiple inheritance to avoid the "diamond problem" where ambiguity may arise if multiple parent classes have methods with the same name.
 
-```
-# Parent class 1
-class Person:
-    def person_info(self, name, age):
-        print('Inside Person class')
-        print('Name:', name, 'Age:', age)
+  ```python
+  # Parent class 1
+    class Person:
+        def person_info(self, name, age):
+            print('Inside Person class')
+            print('Name:', name, 'Age:', age)
 
-# Parent class 2
-class Company:
-    def company_info(self, company_name, location):
-        print('Inside Company class')
-        print('Name:', company_name, 'location:', location)
+    # Parent class 2
+    class Company:
+        def company_info(self, company_name, location):
+            print('Inside Company class')
+            print('Name:', company_name, 'location:', location)
 
-# Child class
-class Employee(Person, Company):
-    def Employee_info(self, salary, skill):
-        print('Inside Employee class')
-        print('Salary:', salary, 'Skill:', skill)
+    # Child class
+    class Employee(Person, Company):
+        def Employee_info(self, salary, skill):
+            print('Inside Employee class')
+            print('Salary:', salary, 'Skill:', skill)
 
-# Create object of Employee
-emp = Employee()
+    # Create object of Employee
+    emp = Employee()
 
-# access data
-emp.person_info('Jessa', 28)
-emp.company_info('Google', 'Atlanta')
-emp.Employee_info(12000, 'Machine Learning')
+    # access data
+    emp.person_info('Jessa', 28)
+    emp.company_info('Google', 'Atlanta')
+    emp.Employee_info(12000, 'Machine Learning')
 
-# Output:
-Inside Person class
-Name: Jessa Age: 28
+    # Output:
+    # Inside Person class
+    # Name: Jessa Age: 28
 
-Inside Company class
-Name: Google location: Atlanta
+    # Inside Company class
+    # Name: Google location: Atlanta
 
-Inside Employee class
-Salary: 12000 Skill: Machine Learning
-```
+    # Inside Employee class
+    # Salary: 12000 Skill: Machine Learning
+   ```
 
 In the above example, we created two parent classes `Person` and `Company` respectively. Then we create one child called `Employee` which inherit from Person and Company classes.
 
