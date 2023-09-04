@@ -993,6 +993,7 @@ Based upon the number of child and parent classes involved, there are five types
 4. Hierarchical Inheritance
 5. Hybrid Inheritance
 
+
 1. **Single Inheritance:**
    
 - In single inheritance, a sub class inherits from only one base class. This is the simplest form of inheritance and is commonly used to create a hierarchical relationship between classes.
@@ -1079,35 +1080,27 @@ graph TD;
     A-->B;
     B-->C;
 ```
-   
-   ```
-    # Base class
-    class Vehicle:
-    def Vehicle_info(self):
-        print('Inside Vehicle class')
 
-    # Child class
+   ```
+    class Vehicle:
+        def Vehicle_info(self):
+            print("Inside Vehicle class")
+
     class Car(Vehicle):
         def car_info(self):
-            print('Inside Car class')
+            print("Inside Car class")
 
-    # Child class
     class SportsCar(Car):
-        def sports_car_info(self):
-            print('Inside SportsCar class')
+        def sc_info(self):
+            print("Inside SportsCar class")
 
-    # Create object of SportsCar
-    s_car = SportsCar()
+    # create instance of bike
+    sc = SportsCar()
 
-    # access Vehicle's and Car info using SportsCar object
-    s_car.Vehicle_info()
-    s_car.car_info()
-    s_car.sports_car_info()
-
-    # Output:
-    Inside Vehicle class
-    Inside Car class
-    Inside SportsCar class
+    # Access Vehicle's and Car's info using bike instance
+    sc.Vehicle_info()
+    sc.car_info()
+    sc.sc_info()
    ```
 
 In the above example, we can see there are three classes named `Vehicle`, `Car`, `SportsCar`. `Vehicle` is the superclass, `Car` is a child of Vehicle, `SportsCar` is a child of Car. So we can see the **chaining of classes**.
@@ -1129,14 +1122,14 @@ graph TD;
    ```
     class Vehicle:
         def info(self):
-            print("This is Vehicle")
+            print("This is a vehicle")
 
     class Car(Vehicle):
-        def car_info(self, name):
+        def car_info(self, name)
             print("Car name is:", name)
 
     class Truck(Vehicle):
-        def truck_info(self, name):
+        def truck_info(self, name)
             print("Truck name is:", name)
 
     obj1 = Car()
@@ -1145,14 +1138,7 @@ graph TD;
 
     obj2 = Truck()
     obj2.info()
-    obj2.truck_info('Ford')
-
-    # The output is:
-    # This is Vehicle
-    # Car name is: BMW
-
-    # This is Vehicle
-    # Truck name is: Ford
+    obj2.truck_info('Volvo')
    ```
 
 
