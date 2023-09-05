@@ -123,9 +123,9 @@ It's important to note that different SDLC models may organize and approach thes
 Certainly! Here's a textual representation of a UML class diagram for a real-time project with Controller, Service, and DAO objects. In this example, let's consider a simplified online shopping system as the real-time project.
 
 ```
---------------------------                         --------------------------                                       --------------------------
-|       Controller                   |             |        Service         |                                       |          DAO           |
---------------------------                         --------------------------                                       -------------------------- 
+--------------------------                         --------------------------                                     --------------------------
+|       Controller                   |             |        Service         |                                     |          DAO           |
+--------------------------                         --------------------------                                     -------------------------- 
 | - shoppingCart: ShoppingCart       |   |                                                   |        |                                              |
 | - customer: Customer               |   |                                                   |        |                                              |
 |-------------------------           |   |                                                   |        |                                              |
@@ -134,7 +134,7 @@ Certainly! Here's a textual representation of a UML class diagram for a real-tim
 | + checkout(): Order                |   |                                                   |        |                                              |
 |--------------------------          |   | + processOrder(order: Order): boolean             |        |  + fetchCustomerById(id: String): Customer   |
 |                                    |   | + calculateTotalPrice(cart: ShoppingCart): double |        |  + saveOrder(order: Order): boolean          |
---------------------------           |          ----------------------                       |                   --------------------------
+--------------------------           |   |           ----------------------                  |        |          --------------------------          |
 ```
 
 In this UML class diagram:
