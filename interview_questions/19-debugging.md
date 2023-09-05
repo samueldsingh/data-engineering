@@ -150,6 +150,36 @@ In this UML class diagram:
 
 This is a simplified example, and in a real-time project, you would likely have additional classes and relationships. The above diagram provides a basic illustration of how Controller, Service, and DAO objects can interact in a real-time project like an online shopping system. You can use UML modeling tools to create a more detailed and visually appealing version of this diagram, including additional classes, attributes, and relationships as needed for your specific project.
 
+Here's a simplified textual representation of a UML class diagram for a real-time GIS (Geographic Information System) project, illustrating the key components - Controller, Service, and DAO objects:
+
+```
+------------------------         ------------------------        ------------------------
+|      Controller     |         |       Service        |        |         DAO          |
+------------------------         ------------------------        ------------------------
+| - map: Map           |         |                      |        |                      |
+| - layer: Layer       |         |                      |        |                      |
+|----------------------|         |                      |        |                      |
+| + displayMap(): void |         |                      |        |                      |
+| + addLayer(layer: Layer): void | |                  |        |                      |
+| + removeLayer(layer: Layer): void | |              |        |                      |
+|----------------------|    | + queryData(layer: Layer, location: Location): Data | + retrieveMapData(): Map |
+|                         |    | + analyzeData(data: Data): AnalysisResult | + saveData(data: Data): boolean |
+------------------------         |----------------------|        ------------------------
+```
+
+In this UML class diagram:
+
+- The `Controller` class represents the controller object responsible for managing user interactions within the GIS application. It contains references to a `Map` and a `Layer` object.
+  - It has methods to display the map (`displayMap`), add layers to the map (`addLayer`), and remove layers from the map (`removeLayer`).
+
+- The `Service` class represents the service layer, which contains GIS-related business logic.
+  - It has methods to query data from layers based on a location (`queryData`), analyze data (`analyzeData`), and perform various GIS-related operations.
+
+- The `DAO` (Data Access Object) class represents the data access layer, responsible for interacting with data sources such as GIS databases.
+  - It has methods to retrieve map data (`retrieveMapData`), save data (`saveData`), and interact with geographic data.
+
+Please note that this is a simplified representation, and in a real-time GIS project, you would likely have a more complex class structure with additional classes and relationships. The diagram above serves as a basic illustration of how Controller, Service, and DAO objects can interact in a real-time GIS project. You can use UML modeling tools to create a more detailed and comprehensive version of this diagram tailored to your specific project's requirements.
+
 ## 1. Importance of debugging
 
 Debugging is a critical aspect of software development that involves identifying and resolving errors, bugs, and issues in code. It plays a crucial role in ensuring the quality, functionality, and reliability of software applications. Here are some reasons highlighting the importance of debugging:
