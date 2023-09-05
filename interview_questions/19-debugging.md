@@ -82,7 +82,7 @@ In a GIS context, these components (controller, service, and DAO) work together 
 The Software Development Life Cycle (SDLC) consists of a series of phases or stages that guide the development of software from initial concept to deployment and maintenance. These stages help ensure that the software is built efficiently, meets user requirements, and is of high quality. While there are various SDLC models, such as the Waterfall model, Agile, and DevOps, the fundamental stages are often present in most approaches. Here are the typical stages of the SDLC:
 
 
-1. **Requirement gathering: Planning**:
+1. **Requirement gathering - Planning:**
    - In this initial phase, project stakeholders define the objectives, scope, and feasibility of the software project. This includes identifying the project's goals, budget, and schedule.
    - Key activities involve requirements gathering, risk assessment, resource allocation, and project planning. Project managers create a project plan outlining tasks, timelines, and dependencies.
 
@@ -120,7 +120,7 @@ It's important to note that different SDLC models may organize and approach thes
 
 ## UML Diagram
 
-Certainly! Here's a textual representation of a UML class diagram for a real-time project with Controller, Service, and DAO objects. In this example, let's consider a simplified online shopping system as the real-time project.
+Here's a textual representation of a UML class diagram for a real-time project with Controller, Service, and DAO objects. In this example, let's consider a simplified online shopping system as the real-time project.
 
 ```
 --------------------------                         --------------------------                                     --------------------------
@@ -150,21 +150,21 @@ In this UML class diagram:
 
 This is a simplified example, and in a real-time project, you would likely have additional classes and relationships. The above diagram provides a basic illustration of how Controller, Service, and DAO objects can interact in a real-time project like an online shopping system. You can use UML modeling tools to create a more detailed and visually appealing version of this diagram, including additional classes, attributes, and relationships as needed for your specific project.
 
-Here's a simplified textual representation of a UML class diagram for a real-time GIS (Geographic Information System) project, illustrating the key components - Controller, Service, and DAO objects:
+Let's look at a simplified textual representation of a UML class diagram for a real-time GIS (Geographic Information System) project, illustrating the key components - Controller, Service, and DAO objects:
 
 ```
-------------------------         ------------------------        ------------------------
-|      Controller     |         |       Service        |        |         DAO          |
-------------------------         ------------------------        ------------------------
-| - map: Map           |         |                      |        |                      |
-| - layer: Layer       |         |                      |        |                      |
-|----------------------|         |                      |        |                      |
-| + displayMap(): void |         |                      |        |                      |
-| + addLayer(layer: Layer): void | |                  |        |                      |
-| + removeLayer(layer: Layer): void | |              |        |                      |
-|----------------------|    | + queryData(layer: Layer, location: Location): Data | + retrieveMapData(): Map |
-|                         |    | + analyzeData(data: Data): AnalysisResult | + saveData(data: Data): boolean |
-------------------------         |----------------------|        ------------------------
+      ------------------------                              ------------------------                                ------------------------
+|           Controller              |         |                    Service                          |        |              DAO                 |
+      ------------------------                              ------------------------                                ------------------------
+| - map: Map                        |         |                                                     |        |                                  |
+| - layer: Layer                    |         |                                                     |        |                                  |
+|----------------------             |         |                                                     |        |                                  |
+| + displayMap(): void              |         |                                                     |        |                                  |
+| + addLayer(layer: Layer): void    |         |                                                     |        |                                  |
+| + removeLayer(layer: Layer): void |         |                                                     |        |                                  |
+|----------------------             |         | + queryData(layer: Layer, location: Location): Data |        |  + retrieveMapData(): Map        |
+|                                   |         | + analyzeData(data: Data): AnalysisResult           |        |  + saveData(data: Data): boolean |
+|------------------------           |         |            ----------------------                   |        |     ------------------------     |
 ```
 
 In this UML class diagram:
