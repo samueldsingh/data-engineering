@@ -670,6 +670,51 @@ ws.cell(row=2,column=11).value=total_sales
 wb.save('videogamesales.xlsx')
 ```
 
+**4.3 Appending new rows**
+
+To append a new row to the workbook, simply create a tuple with the values you’d like to include and write it to the sheet:
+
+```
+new_row = (1,'The Legend of Zelda',1986,'Action','Nintendo',3.74,0.93,1.69,0.14,6.51,6.5)
+
+ws.append(new_row)
+    
+wb.save('videogamesales.xlsx')
+```
+
+You can confirm that this data has been appended by printing the last row in the workbook:
+
+```
+values = [ws.cell(row=ws.max_row,column=i).value for i in range(1,ws.max_column+1)]
+print(values)
+```
+
+- This code uses list comprehension to extract the values of all cells in the last row of a worksheet *ws* in a spreadsheet.
+- The `range()` function generates a sequence of numbers from 1 to the maximum number of columns in the worksheet `ws`.
+- The `ws.max_column` attribute returns the maximum number of columns in the worksheet.
+- The `ws.cell()` method returns the cell object at the specified row and column.
+- In this case, it returns the cell object at the last row and the current column in the loop.
+- The value attribute of the cell object returns the value of the cell.
+- The list comprehension creates a list of values by iterating over the range of columns and extracting the value of each cell in the last row.
+- The resulting list is assigned to the variable values.
+- Finally, the `print()` function is used to display the list of values.
+
+The following output will be generated:
+
+```
+[1, 'The Legend of Zelda', 1986, 'Action', 'Nintendo', 3.74, 0.93, 1.69, 0.14, 6.51, 6.5]
+```
+
+**4.4 Deleting rows**
+
+To delete the new row we just created, you can run the following line of code:
+
+```
+ws.delete_rows(ws.max_row, 1) # row number, number of rows to delete
+
+wb.save('videogamesales.xlsx')
+```
+
 - [DataCamp - Reading, writing and updating excel sheets](https://www.datacamp.com/tutorial/python-excel-tutorial)
 - [FreeCodeCamp- Reading, writing and updating excel sheets](https://www.freecodecamp.org/news/how-to-create-read-update-and-search-through-excel-files-using-python-c70680d811d4/)
 
