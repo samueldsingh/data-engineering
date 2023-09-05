@@ -670,7 +670,8 @@ ws.cell(row=2,column=11).value=total_sales
 wb.save('videogamesales.xlsx')
 ```
 
-
+- [DataCamp - Reading, writing and updating excel sheets](https://www.datacamp.com/tutorial/python-excel-tutorial)
+- [FreeCodeCamp- Reading, writing and updating excel sheets](https://www.freecodecamp.org/news/how-to-create-read-update-and-search-through-excel-files-using-python-c70680d811d4/)
 
 ## Give example of reading, writing and updating zip files
 
