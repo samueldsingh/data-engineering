@@ -732,6 +732,7 @@ The inbuilt [zipfile](https://docs.python.org/3.11/library/zipfile.html) module 
 
 ## Give example of reading, writing and updating pdf files
 
+[DataCamp] - (https://www.datacamp.com/tutorial/reading-and-editing-pdfs-and-word-documents-from-python)
 
 
 ## Give example of reading, writing and updating xml files
