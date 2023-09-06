@@ -216,7 +216,205 @@ Debugging is a critical aspect of software development that involves identifying
 
 In conclusion, debugging is an integral part of the software development lifecycle. It ensures that software is functional, reliable, and user-friendly. By investing time and effort in debugging, developers can create better software products and contribute to a more efficient and successful development process.
 
-## 2. Debugging shortcuts(F6,F5...)
+## 2. Types of errors in python
+
+   Errors are the problems in a program due to which the program will stop the execution. On the other hand, exceptions are raised when some internal events occur which changes the normal flow of the program. 
+
+Two types of Error occurs in python. 
+1. Syntax errors
+2. Logical errors (Exceptions) 
+
+**1. Syntax errors:** When proper syntax (like missing colon) and indentation errors occurs, it can be corrected by following the error message.
+
+**2. Logical errors (Exceptions):** The runtime errors that occur after passing the syntax error are the logical erros or the exceptions. Example include ZeroDivisionError or ImportError (when the module is missing).
+
+- Exceptions can be handled using the try-except-finally block
+- When an error and an exception are raised then we handle that with the help of the Handling method.
+- **Raising exceptions for a predefined condition**. When we want to code for the limitation of certain conditions then we can raise an exception. 
+
+```
+# put unsafe operation in try block
+try:
+	print("code start")
+		
+	# unsafe operation perform
+	print(1 / 0)
+
+# if error occur the it goes in except block
+except:
+	print("an error occurs")
+
+# final code in finally block
+finally:
+	print("GeeksForGeeks")
+
+# Output:
+code start
+an error occurs
+GeeksForGeeks
+```
+
+```
+# try for unsafe code
+try:
+	amount = 1999
+	if amount < 2999:
+		
+		# raise the ValueError
+		raise ValueError("please add money in your account")
+	else:
+		print("You are eligible to purchase DSA Self Paced course")
+			
+# if false then raise the value error
+except ValueError as e:
+		print(e)
+```
+
+Common built-in exception errors are:
+
+- `IndexError`:	When the wrong index of a list is retrieved.
+- `AssertionError`:	It occurs when the assert statement fails
+- `AttributeError`:	It occurs when an attribute assignment is failed.
+- `ImportError`:	It occurs when an imported module is not found.
+- `KeyError`:	It occurs when the key of the dictionary is not found.
+- `NameError`:	It occurs when the variable is not defined.
+- `MemoryError`:	It occurs when a program runs out of memory.
+- `TypeError`:	It occurs when a function and operation are applied in an incorrect type
+
+## 3. Purpose of print statement in debugging
+
+The `print` statement (or function) is a commonly used tool in debugging for several purposes:
+
+1. **Inspecting Variables**: You can use `print` statements to output the values of variables at different points in your code. This helps you understand the state of your program at those specific moments. For example:
+
+   ```python
+   x = 10
+   print("The value of x is:", x)
+   ```
+
+   This can be invaluable for tracking down bugs related to incorrect variable values.
+
+2. **Flow Control**: You can use `print` statements to trace the flow of your program. By printing messages at different points in your code, you can confirm whether the code is executing in the expected order and catch issues related to unexpected branching or loops.
+
+   ```python
+   print("Entering function foo")
+   foo()
+   print("Exiting function foo")
+   ```
+
+3. **Debugging Information**: In addition to variable values, you can print debugging information like function names, timestamps, or other relevant details. This can be especially useful for understanding the context of a problem or monitoring the progress of your program.
+
+   ```python
+   import datetime
+   print("Starting program at:", datetime.datetime.now())
+   ```
+
+4. **Identifying Control Flow Issues**: By placing `print` statements at various points in your code, you can detect if certain code blocks are not being executed when they should be or if they are being executed unexpectedly. This can help identify issues related to conditional statements and loops.
+
+   ```python
+   if condition:
+       print("Condition is True")
+   else:
+       print("Condition is False")
+   ```
+
+5. **Logging and Tracing**: In larger applications, you might use more advanced logging libraries, but `print` statements can serve as a simple form of logging. You can log information about what your code is doing, potential errors, or events of interest.
+
+6. **Quick Testing**: When you're writing code incrementally, you can use `print` statements to quickly check whether certain parts of your code are working as expected before moving on to more complex debugging techniques.
+
+However, it's important to note that while `print` statements are a useful debugging tool, they have some limitations. They can clutter your code, and if left in production code, they can slow it down or expose sensitive information. In more complex debugging scenarios or for production-level logging, consider using dedicated debugging tools and logging libraries that offer more control and flexibility.
+
+[printing in debugging](https://stackoverflow.com/questions/6579496/using-print-statements-only-to-debug)
+
+
+## 4. How to use the pdb module for debugging
+
+- Debugging in Python is facilitated by `pdb` module (python debugger) which comes built-in to the Python standard library.
+- It is actually defined as the class `pdb` which internally makes use of bdb(basic debugger functions) and cmd (support for line-oriented command interpreters) modules.
+- The major advantage of pdb is it runs purely in the command line, thereby making it great for debugging code on remote servers when we don’t have the privilege of a GUI-based debugger.
+- `pdb` supports:
+  - Setting breakpoints
+  - Stepping through code
+  - Source code listing
+  - Viewing stack traces
+
+## 4. pdb module
+
+The `pdb` module in Python is a built-in debugging tool that stands for "Python Debugger." It provides an interactive command-line interface for debugging Python programs. The `pdb` module allows you to set breakpoints, step through code, inspect variables, and track the flow of execution in your programs. It's a powerful tool for diagnosing and fixing issues in your code.
+
+Here's how you can use the `pdb` module to debug your Python programs:
+
+1. **Import the `pdb` Module**: Start by importing the `pdb` module at the beginning of your script.
+
+   ```python
+   import pdb
+   ```
+
+2. **Set Breakpoints**: Place the `pdb.set_trace()` function call at the point in your code where you want the debugger to start. This is typically where you suspect an issue or want to inspect variables.
+
+   ```python
+   def calculate_total(a, b):
+       total = a + b
+       pdb.set_trace()  # Debugger will stop here
+       return total
+
+   result = calculate_total(5, 7)
+   ```
+
+3. **Run the Program**: When you run your script, execution will pause when it reaches the `pdb.set_trace()` line, and you'll enter the debugger prompt.
+
+4. **Debugger Commands**: Once you're in the debugger prompt, you can use various commands to navigate and inspect your code. Some common commands include:
+
+   - `n` or `next`: Execute the current line and move to the next line.
+   - `s` or `step`: Step into a function call.
+   - `c` or `continue`: Continue execution until the next breakpoint.
+   - `q` or `quit`: Exit the debugger and stop the program.
+   - `p variable_name`: Print the value of a variable.
+   - `l` or `list`: Show the source code around the current line.
+   - `h` or `help`: Display help for debugger commands.
+
+5. **Continue Debugging**: You can use the debugger commands to navigate through your code, inspect variables, and identify issues. The debugger will guide you through each step of the execution.
+
+6. **Exiting the Debugger**: Once you've finished debugging, you can exit the debugger using the `q` or `quit` command. This will terminate the program if it's still running.
+
+The `pdb` module provides a straightforward way to perform interactive debugging directly within your Python code. It's especially useful for identifying errors, understanding the flow of execution, and inspecting variable values. Keep in mind that while the `pdb` module is powerful, there are also more feature-rich and user-friendly debugging tools available, especially within integrated development environments (IDEs) like Visual Studio Code, PyCharm, and others.
+
+## 5. pdb module commands
+
+The `pdb` module provides a variety of commands that you can use while debugging your Python code. These commands help you navigate through the code, inspect variables, and control the flow of execution. Here are some of the commonly used `pdb` commands:
+
+1. `h` or `help`: Display a list of available commands or get help for a specific command.
+2. `q` or `quit`: Exit the debugger and terminate the program.
+3. `n` or `next`: Continue execution until the next line in the current function is reached.
+4. `s` or `step`: Execute the current line and stop at the first possible occasion (either in a called function or at the next line).
+5. `c` or `continue`: Continue execution until the next breakpoint is encountered.
+6. `l` or `list`: Show the source code around the current line. It will display the 11 lines around the current line by default.
+7. `p` or `print`: Print the value of a variable.
+   Example: `p variable_name`
+8. `pp`: Pretty-print the value of an expression.
+9. `a` or `args`: Print the arguments passed to the current function.
+10. `w` or `where`: Print a stack trace, showing the list of active frames.
+11. `u` or `up`: Move the current frame one level up in the stack trace.
+12. `d` or `down`: Move the current frame one level down in the stack trace.
+13. `b` or `break`: Set a breakpoint at a specific line number or function name.
+   Example: `b filename:line_number` or `b function_name`
+14. `cl` or `clear`: Clear a breakpoint at a specific line number.
+   Example: `cl filename:line_number`
+15. `disable`: Disable a breakpoint at a specific line number or function name.
+16. `enable`: Enable a disabled breakpoint.
+17. `r` or `return`: Continue execution until the current function returns.
+18. `j` or `jump`: Set the next line that will be executed. Use with caution.
+   Example: `j line_number`
+19. `tbreak`: Temporary breakpoint. It behaves like a breakpoint but is automatically removed after being hit.
+   Example: `tbreak filename:line_number`
+20. `list breakpoints` or `b`: List all breakpoints that have been set.
+21. `commands`: Set a list of debugger commands to run when a breakpoint is hit.
+
+These are just some of the many commands available in the `pdb` module. You can use them to control the debugger's behavior, inspect variables, step through code, and analyze the flow of execution in your Python program. To get detailed information about any command, you can use the `h` or `help` command followed by the command's name.
+
+Remember that the `pdb` module provides an interactive debugger, so you can experiment with these commands directly in the debugger prompt to understand how they work and how they can help you debug your code effectively.
+
+## Debugging shortcuts(F6,F5...)
 
 Debugging shortcuts are keyboard shortcuts or commands that are designed to help developers quickly navigate and troubleshoot code during the debugging process. These shortcuts can save time and make the debugging experience more efficient. Here are some common debugging shortcuts used in various integrated development environments (IDEs) and code editors:
 
@@ -272,78 +470,3 @@ Debugging shortcuts are keyboard shortcuts or commands that are designed to help
 
 These shortcuts may vary slightly depending on the IDE or code editor you're using. It's recommended to refer to the documentation of your specific development environment to find the exact shortcuts for debugging operations. Mastering these shortcuts can significantly improve your efficiency while debugging code and help you identify and fix issues more quickly.
 
-## 3. pdb module
-
-The `pdb` module in Python is a built-in debugging tool that stands for "Python Debugger." It provides an interactive command-line interface for debugging Python programs. The `pdb` module allows you to set breakpoints, step through code, inspect variables, and track the flow of execution in your programs. It's a powerful tool for diagnosing and fixing issues in your code.
-
-Here's how you can use the `pdb` module to debug your Python programs:
-
-1. **Import the `pdb` Module**: Start by importing the `pdb` module at the beginning of your script.
-
-   ```python
-   import pdb
-   ```
-
-2. **Set Breakpoints**: Place the `pdb.set_trace()` function call at the point in your code where you want the debugger to start. This is typically where you suspect an issue or want to inspect variables.
-
-   ```python
-   def calculate_total(a, b):
-       total = a + b
-       pdb.set_trace()  # Debugger will stop here
-       return total
-
-   result = calculate_total(5, 7)
-   ```
-
-3. **Run the Program**: When you run your script, execution will pause when it reaches the `pdb.set_trace()` line, and you'll enter the debugger prompt.
-
-4. **Debugger Commands**: Once you're in the debugger prompt, you can use various commands to navigate and inspect your code. Some common commands include:
-
-   - `n` or `next`: Execute the current line and move to the next line.
-   - `s` or `step`: Step into a function call.
-   - `c` or `continue`: Continue execution until the next breakpoint.
-   - `q` or `quit`: Exit the debugger and stop the program.
-   - `p variable_name`: Print the value of a variable.
-   - `l` or `list`: Show the source code around the current line.
-   - `h` or `help`: Display help for debugger commands.
-
-5. **Continue Debugging**: You can use the debugger commands to navigate through your code, inspect variables, and identify issues. The debugger will guide you through each step of the execution.
-
-6. **Exiting the Debugger**: Once you've finished debugging, you can exit the debugger using the `q` or `quit` command. This will terminate the program if it's still running.
-
-The `pdb` module provides a straightforward way to perform interactive debugging directly within your Python code. It's especially useful for identifying errors, understanding the flow of execution, and inspecting variable values. Keep in mind that while the `pdb` module is powerful, there are also more feature-rich and user-friendly debugging tools available, especially within integrated development environments (IDEs) like Visual Studio Code, PyCharm, and others.
-
-## 4. pdb module commands
-
-The `pdb` module provides a variety of commands that you can use while debugging your Python code. These commands help you navigate through the code, inspect variables, and control the flow of execution. Here are some of the commonly used `pdb` commands:
-
-1. `h` or `help`: Display a list of available commands or get help for a specific command.
-2. `q` or `quit`: Exit the debugger and terminate the program.
-3. `n` or `next`: Continue execution until the next line in the current function is reached.
-4. `s` or `step`: Execute the current line and stop at the first possible occasion (either in a called function or at the next line).
-5. `c` or `continue`: Continue execution until the next breakpoint is encountered.
-6. `l` or `list`: Show the source code around the current line. It will display the 11 lines around the current line by default.
-7. `p` or `print`: Print the value of a variable.
-   Example: `p variable_name`
-8. `pp`: Pretty-print the value of an expression.
-9. `a` or `args`: Print the arguments passed to the current function.
-10. `w` or `where`: Print a stack trace, showing the list of active frames.
-11. `u` or `up`: Move the current frame one level up in the stack trace.
-12. `d` or `down`: Move the current frame one level down in the stack trace.
-13. `b` or `break`: Set a breakpoint at a specific line number or function name.
-   Example: `b filename:line_number` or `b function_name`
-14. `cl` or `clear`: Clear a breakpoint at a specific line number.
-   Example: `cl filename:line_number`
-15. `disable`: Disable a breakpoint at a specific line number or function name.
-16. `enable`: Enable a disabled breakpoint.
-17. `r` or `return`: Continue execution until the current function returns.
-18. `j` or `jump`: Set the next line that will be executed. Use with caution.
-   Example: `j line_number`
-19. `tbreak`: Temporary breakpoint. It behaves like a breakpoint but is automatically removed after being hit.
-   Example: `tbreak filename:line_number`
-20. `list breakpoints` or `b`: List all breakpoints that have been set.
-21. `commands`: Set a list of debugger commands to run when a breakpoint is hit.
-
-These are just some of the many commands available in the `pdb` module. You can use them to control the debugger's behavior, inspect variables, step through code, and analyze the flow of execution in your Python program. To get detailed information about any command, you can use the `h` or `help` command followed by the command's name.
-
-Remember that the `pdb` module provides an interactive debugger, so you can experiment with these commands directly in the debugger prompt to understand how they work and how they can help you debug your code effectively.
