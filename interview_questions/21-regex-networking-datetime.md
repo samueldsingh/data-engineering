@@ -158,12 +158,25 @@ $	represents Ends with
 
 ## API call
 
-An API call, or API request, allows one application to request data or services from another application. Most web applications regularly make API calls.
+An API call, or API request, allows one application to request data or services from another application. Most web applications regularly make API calls. [API](https://www.cloudflare.com/learning/security/api/what-is-api-call/#:~:text=Application%20programming%20interfaces%20(APIs)%20are,provide%20a%20service%20or%20information.)
 
 An API consists of three parts:
-- Request URL: 
-- Request Method: 
-- Payload: A payload in API is the actual data pack that is sent with the GET method in HTTP. It is the crucial information that you submit
-  to the server when you are making an API request. The payload can be sent or received in various formats, including JSON. Usually, the payload is denoted using the “{}” in a query string.
+- Request URL: A request URL consists of an HTTP method, a base URL, and a resource URI. The request header also includes parameters such as the content type and authorization information. The following format to construct a request URL: `<HTTP method> http(s)://<host>:<port>/api/public/<resource URI>`. The following example shows a URL for a request that returns a list of all projects: `GET http://<host name>:<port number>/api/public/tdm/v1/projects`.
+- Request Method: The message that is sent by a client to a server is what is known as an HTTP request. An HTTP request is an action to be performed on a resource identified by a given Request-URL. [HTTP requests](https://rapidapi.com/blog/api-glossary/http-request-methods/#:~:text=An%20HTTP%20request%20is%20an,is%20assigned%20a%20specific%20purpose.)
+- Payload: When each unit of data is transmitted, it boasts two essential parts: the header/overhead identifier and the actual information dubbed payload. A payload in API is the actual data pack that is sent with the GET method in HTTP. It is the crucial information that you submit to the server when you are making an API request. The payload can be sent or received in various formats, including JSON. Usually, the payload is denoted using the `“{}”` in a query string. [Payload](https://rapidapi.com/blog/api-glossary/payload/#:~:text=A%20payload%20in%20API%20is,%7B%7D%E2%80%9D%20in%20a%20query%20string.)
+
+Let's consider the JSON web service response:
+
+```
+{
+    "status":"OK",
+    "data":
+        {
+            "message": "Welcome, world!"
+        }
+}
+```
+
+In the above example, the payload is the Welcome, World! Since it is the part of the query string that the user is interested in. The rest of the information is referred to as the overhead data. This is because it is only used to show the source or destination and display authenticity.
 
 [Making HTTPS requests in Python](https://www.datacamp.com/tutorial/making-http-requests-in-python)
