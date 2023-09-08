@@ -85,4 +85,26 @@ print(a)
 
 [GFG - DateTime](https://www.geeksforgeeks.org/python-datetime-datetime-class/)
 
-4. `TimeDelta`: A duration expressing the difference between two date, time, or datetime instances to microsecond resolution.
+4. `TimeDelta`: A duration expresses the difference between two date, time, or datetime instances to microsecond resolution. Timedelta class is used for calculating differences between dates and represents a duration.
+
+```
+# Timedelta function demonstration
+
+from datetime import datetime, timedelta
+
+# creating datetime objects
+date1 = datetime(2023, 1, 3)
+date2 = datetime(2023, 2, 3)
+
+# difference between dates
+diff = date2 - date1
+print("Difference in dates:", diff)
+
+# Adding days to date1
+date1 += timedelta(days = 4)
+print("Date1 after 4 days:", date1)
+
+# Subtracting days from date1
+date1 -= timedelta(15)
+print("Date1 before 15 days:", date1)
+```
