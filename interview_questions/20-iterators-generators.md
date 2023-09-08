@@ -1,4 +1,9 @@
 
+When you need speed of execution, prefer iterator and when you need better memory management prefer generator. A Python iterator object implements two special methods, `__iter__()` and `__next__()`, collectively called the iterator protocol, to iterate or loop through iterables like lists and tuples.
+
+[Iterator and generator](https://www.programiz.com/python-programming/iterator)
+
+
 ## 1. Iterator protocol in python
 
 The iterator protocol defines a standard way to produce a sequence of values (either finite or infinite), and potentially a return value when all values have 
