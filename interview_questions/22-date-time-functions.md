@@ -98,13 +98,35 @@ date2 = datetime(2023, 2, 3)
 
 # difference between dates
 diff = date2 - date1
-print("Difference in dates:", diff)
+print("Difference in dates:", diff)      # Output: Difference in dates: 31 days, 0:00:00
 
 # Adding days to date1
 date1 += timedelta(days = 4)
-print("Date1 after 4 days:", date1)
+print("Date1 after 4 days:", date1)      # Output: Date1 after 4 days: 2023-01-07 00:00:00
 
 # Subtracting days from date1
 date1 -= timedelta(15)
-print("Date1 before 15 days:", date1)
+print("Date1 before 15 days:", date1)    # Output: Date1 before 15 days: 2022-12-23 00:00:00
+
+# Timedelta class provides only one function which is total_seconds(). This method returns the
+# duration provided by the timedelta object in the number of seconds.
+
+from datetime import timedelta
+
+# Getting minimum value
+obj = timedelta(hours=1)
+print(obj.total_seconds())         # Output: 3600.0
+
+obj = timedelta(minutes=1)
+print(obj.total_seconds())         # Output: 60.0
+
+obj = timedelta(days=1)
+print(obj.total_seconds())         # Output: 86400.0
+```
+
+Operations supported by Timedelta Class are Addition (+), Subtraction (-), Multiplication (*), Division (/), Floor division (//), Modulo (%), +(timedelta),
+-(timedelta), abs(timedelta), str(timedelta), repr(timedelta)
+
+```
+
 ```
