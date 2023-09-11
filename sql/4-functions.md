@@ -1,5 +1,7 @@
 SQL functions are pre-defined or user-defined routines that accept zero or more arguments and return a value or a table result. They are used to perform various operations on data within an SQL database. SQL functions are categorized into several types based on their functionality. Let's dive into the details of SQL functions:
 
+[SQL functions](https://blog.hubspot.com/website/mysql-functions#:~:text=MySQL%20functions%20are%20powerful%20tools,easy%2Dto%2Dnavigate%20databases.)
+
 **1. Built-in (System) Functions:**
    These functions are provided by the database management system and are available for use without any additional setup.
 
