@@ -129,4 +129,35 @@ Operations supported by Timedelta Class are Addition (+), Subtraction (-), Multi
 
 ```
 
+from datetime import timedelta
+
+# creating the timedelta object
+t1 = timedelta(days=1)
+print("Original timedelta:", t1)        # Output: Original timedelta: 1 day, 0:00:00
+
+# multiplication
+t2 = t1*5.5
+print("After Multiplication:", t2)      # Output: After Multiplication: 5 days, 12:00:00
+
+# Subtraction
+res = t2 - t1
+print("After Subtraction:", res)        # Output: After Subtraction: 4 days, 12:00:00
+
+# addition
+res += t2
+print("After Addition:", res)           # Output: After Addition: 10 days, 0:00:00
+
+# division
+res = t2/2.5
+print("After division:", res)           # Output: After division: 2 days, 4:48:00
+
+# floor division
+res = t2 //2
+print("After floor division:", res)     # Output: After floor division: 2 days, 18:00:00
+
+# Modulo
+res = t2%timedelta(days=3)
+print("After Modulo:", res)             # Output: After Modulo: 2 days, 12:00:00
 ```
+
+
