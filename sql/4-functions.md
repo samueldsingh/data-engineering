@@ -137,6 +137,8 @@ SELECT DATE_FORMAT('2023-08-04', '%Y-%m-%d');  -- Output: '2023-08-04'
 
 [Window functions](https://en.wikipedia.org/wiki/Window_function_(SQL)) (also known as window analytic functions or windowed aggregates) is a function which uses values from one or multiple rows to return a value for each row. (This contrasts with an aggregate function, which returns a single value for multiple rows.) Window functions have an OVER clause; any function without an OVER clause is not a window function, but rather an aggregate or single-row (scalar) function. Unlike traditional aggregate functions like `SUM`, `AVG`, and `COUNT` that collapse multiple rows into a single result, window functions return a value for each row based on a specified window or range of rows.
 
+The set of rows using which function operates on current row is termed as Window.
+
 Example:
 As an example, here is a query which uses a window function to compare the salary of each employee with the average salary of their department (example from the PostgreSQL documentation):
 
