@@ -298,3 +298,302 @@ In this example:
 - You can see examples of using the `DELETE` command to violate constraints such as the `FOREIGN KEY` constraint (if other records depend on the department), the `NOT NULL` constraint, and the `CHECK` constraint.
 
 Always adjust the column names, table names, and constraints according to your specific database schema and SQL dialect. Constraints and features can vary between database systems, so refer to your database's documentation for accurate syntax and supported features.
+
+
+**ASSIGNMENT**
+
+1.	Create database
+
+2. Create table accounts
+
+```
+-- 2. Create table accounts
+-- CREATE TABLE accounts (
+-- account_no INT,
+-- user_name VARCHAR(15),
+-- bank_name VARCHAR (15),
+-- email VARCHAR (20),
+-- balance DECIMAL(10,2),
+-- created_on DATETIME,
+-- customer_id INT
+-- );
+```
+
+3.	Columns account_no, user_name,bank_name,email,balance,created_on, customer_id
+
+```
+CREATE TABLE customer (
+Customer_id INT,
+first_name VARCHAR (15),
+last_name VARCHAR (15),
+DOB DATE,
+address VARCHAR (50)
+);
+```
+
+4.	Create table customer details
+5.	Customer_id,first_name,last_name,DOB,address
+
+6.	Add column phone_number to customer details and it should accept only 10 numbers, not more than or less than 10 numbers. (apply this on existing table)
+
+```
+-- ALTER TABLE customer
+-- ADD phone_number VARCHAR(10) NOT NULL,
+-- ADD CONSTRAINT check_ph_no_len CHECK (LENGTH(phone_number)=10);
+```
+
+7.	Apply default as currenttime on created_on field from accounts table(apply on existing table
+
+```
+ALTER TABLE accounts
+MODIFY created_on TIMESTAMP DEFAULT (CURRENT_TIMESTAMP);
+```
+
+8.	Create a new parent and child table with 5 records in it.
+
+
+9. display customer_id,bank_name,email,phone_number(use joins)
+
+
+10. use without joins
+
+11.	How can you add a PRIMARY KEY constraint to the "emp_id" column of the "employees" table? 
+
+```
+ALTER TABLE employees
+ADD PRIMARY KEY (employee_id);
+```
+
+12.	Explain the purpose of the UNIQUE constraint and how it differs from the PRIMARY KEY constraint.
+
+- UNIQUE ensures that the values in a specific column or a combination of columns are unique across all rows in the table. 
+- It allows each value to appear only once in the column. 
+- PK also ensures that each row in a table has a unique identifier, and it cannot have NULL values.
+
+13.	How do you add a UNIQUE constraint to the "email" column of the "employees" table to ensure email addresses are unique?
+
+```
+-- To add column, syntax is:
+-- ALTER TABLE table
+-- ADD [COLUMN] column_name column_definition [FIRST|AFTER existing_column];
+```
+
+```
+-- ADD email column to "employees"
+ALTER TABLE employees
+ADD COLUMN email VARCHAR(25) AFTER department; 
+ALTER TABLE employees 
+ADD CONSTRAINT unique_email UNIQUE (email)
+```
+
+14. What is the FOREIGN KEY constraint, and how can you use it to establish a relationship between the "employees" and "departments" tables?
+
+- A foreign key is a column or columns in a database that (e.g. table_1.column_a) that are linked to a column in a different table (table_2.column_b).
+- The existence of a foreign key column establishes a foreign key constraint – a database rule that ensures that a value can be added or updated in column_a only if the same value already exists in column_b.
+
+15.	How do you add a FOREIGN KEY constraint to the "department_id" column of the "employees" table, referencing the "department_id" column of the "departments" table?
+
+```
+ALTER TABLE Employees
+ADD CONSTRAINT fk_department
+FOREIGN KEY (department_id) REFERENCES Departments(department_id);
+```
+
+16.	Explain the concept of cascading referential integrity using the ON DELETE CASCADE option in a FOREIGN KEY constraint.
+
+- Cascading referential integrity constraints define the actions to be taken when a record in a parent table (the table with the primary key) is deleted or updated.
+- It helps maintain the integrity and consistency of data across related tables.
+- One of the options to implement cascading referential integrity is using the ON DELETE CASCADE option in a FOREIGN KEY constraint. 
+- Cascading is used with the drop command when we want to drop a parent table, even when a child table exists.
+
+17. How do you enforce that the "age" column in the "employees" table must have values greater than or equal to 18 using the CHECK constraint?
+
+```
+ALTER TABLE Employees
+ADD CONSTRAINT chk_age CHECK (age > 18);
+```
+
+18.	How can you use the DEFAULT constraint to set a default value of "Unknown" for the "department" column of the "employees" table?
+
+```
+ALTER TABLE Employees
+ALTER department SET DEFAULT 'Unknown';
+```
+
+`9. How do you create a composite PRIMARY KEY on the "emp_id" and "department_id" columns of the "employees" table?
+
+```
+ALTER TABLE employees
+ADD CONSTRAINT pk_employee_department PRIMARY KEY (employee_id, department);
+```
+
+20. Explain the concept of multi-column UNIQUE constraint and how it ensures uniqueness across multiple columns.
+
+- A multi-column UNIQUE constraint, also known as a composite UNIQUE constraint, is a database constraint that ensures the uniqueness of combinations of values across multiple columns in a table.
+- a multi-column UNIQUE constraint enforces uniqueness for combinations of values in multiple columns. 
+- This means that no two rows in the table can have the same combination of values in the specified columns
+
+- 21.	How can you use the NOT NULL constraint to enforce that the "first_name" and "last_name" columns in the "employees" table must not contain NULL values?
+
+```
+ALTER TABLE employees
+MODIFY COLUMN first_name VARCHAR(50) NOT NULL;
+
+ALTER TABLE employees
+MODIFY COLUMN last_name VARCHAR(50) NOT NULL;
+```
+
+22.	How do you remove the PRIMARY KEY constraint from the "emp_id" column of the "employees" table?
+
+```
+ALTER TABLE employees
+DROP PRIMARY KEY;
+```
+
+23.	Explain the purpose of the INDEX constraint, and how can you add an index on the "department" column to improve query performance?
+
+- Indexing makes columns faster to query by creating pointers to where data is stored within a database.
+- Imagine you want to find a piece of information that is within a large database. If the data you are looking for is towards the very end, this query would take a long time to run.
+
+```
+ALTER TABLE employees
+ADD INDEX idx_department (department);
+```
+
+24.	How do you drop the UNIQUE constraint from the "email" column of the "employees" table?
+
+```
+ALTER TABLE employees
+DROP INDEX unique_email;
+```
+
+25.	How can you use the FOREIGN KEY constraint with the ON UPDATE CASCADE option to automatically update related records when the primary key is modified?
+
+- You can use the FOREIGN KEY constraint with the ON UPDATE CASCADE option to automatically update related records in the child table when the primary key in the parent table is modified. 
+- This is useful when you want to maintain referential integrity and ensure that changes in the primary key value propagate to the foreign key references in other tables. 
+
+
+26.	How do you add a FOREIGN KEY constraint with the ON DELETE SET NULL option to set the "department_id" to NULL in the "employees" table if the referenced department is deleted?
+
+
+27.	How can you add a CHECK constraint to ensure that the "age" column in the "employees" table must be between 18 and 60?
+
+```
+ALTER TABLE employees
+ADD CONSTRAINT CHK_PersonAge CHECK (Age>=18 AND Age <=60);
+```
+
+28.	Explain the purpose of the PRIMARY KEY AUTO_INCREMENT attribute and how it works with the "emp_id" column.
+
+- It designates a column (or a set of columns) as the primary key for a table. 
+- It instructs the database to automatically generate a unique value for the primary key column whenever a new row is inserted into the table. 
+
+29.	How do you alter the "department" column of the "employees" table to increase its maximum length from 20 to 50 characters?
+
+```
+ALTER TABLE employees
+MODIFY COLUMN department VARCHAR(50);
+```
+
+
+30.	How can you use the FOREIGN KEY constraint with the ON DELETE RESTRICT option to prevent deletion of a department if it has associated employees in the "employees" table?
+
+
+## JOINS
+
+1. What is a JOIN in MySQL, and how does it work?
+
+- Join statement is used for connecting data between several tables in a database based on the common fields in those tables.
+- The same column name and data type are generally present in the tables being linked as common values.
+
+
+2. Explain the differences between INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL JOIN in MySQL with examples.
+
+- (INNER) JOIN: Returns records that have matching values in both tables
+- LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+- RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+- FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+
+3. How can you retrieve the first and last names of employees along with their corresponding department names using an INNER JOIN?
+
+```
+SELECT employees.first_name, employees.last_name, departments.department_name
+FROM employees
+INNER JOIN departments ON employees.department_id = departments.department_id;
+```
+
+4. Write a SQL query to find the employees who do not belong to any department using a LEFT JOIN.
+
+```
+SELECT employees.first_name, employees.last_name
+FROM employees
+LEFT JOIN departments ON employees.department_id = departments.department_id
+WHERE departments.department_id IS NULL;
+```
+
+5. How do you get a list of all departments and the number of employees in each department using an INNER JOIN and GROUP BY?
+
+```
+SELECT departments.department_name, COUNT(employees.employee_id) AS employee_count
+FROM departments
+INNER JOIN employees ON departments.department_id = employees.department_id
+GROUP BY departments.department_name;
+```
+
+6. Explain the concept of self-join and provide an example of its usage in the "employee" table.
+
+- A self-join is a type of SQL join where a table is joined with itself. In other words, you use the same table for both the left and right sides of the join operation. Self-joins are often used when you have a hierarchical or recursive relationship within a single table, such as in organizational structures or when modeling data with parent-child relationships.
+
+
+Let's say you want to retrieve a list of employees along with their managers' names. You can use a self-join to accomplish this:
+
+```
+SELECT e.first_name AS employee_first_name,
+       e.last_name AS employee_last_name,
+       m.first_name AS manager_first_name,
+       m.last_name AS manager_last_name
+FROM employees e
+LEFT JOIN employees m ON e.manager_id = m.emp_id;
+```
+
+-- 7. Write a SQL query to find the employees who have the same department as Michael Johnson using a self-join.
+
+```
+SELECT e1.first_name, e1.last_name
+FROM employees e1
+JOIN employees e2 
+ON e1.department = e2.department
+WHERE e2.first_name = 'Monika' AND e2.last_name = 'Arora';
+```
+
+8. How can you use an OUTER JOIN to retrieve the employees and their respective department names, including employees without a department?
+
+```
+SELECT e.first_name, e.last_name, d.department_name
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.department_id;
+```
+
+9. Write a SQL query to find the employees who have the same department as John Doe and Jane Smith using a self-join and an INNER JOIN.
+
+```
+-- Using a self-join with INNER JOIN
+SELECT e1.first_name, e1.last_name, e1.department
+FROM employees e1
+INNER JOIN employees e2 ON e1.department = e2.department
+WHERE (e2.first_name = 'Niharika' AND e2.last_name = 'Verma') OR (e2.first_name = 'Monika' AND e2.last_name = 'Arora');
+```
+
+10. Write a SQL query to find the second highest salary for each department along with the employees' names using a self-join and RANK() window function.
+
+```
+WITH RankedSalaries AS 
+(
+SELECT first_name, department, salary,
+RANK() OVER (PARTITION BY department ORDER BY salary) AS salary_rank
+FROM employees
+)
+SELECT rs.department, rs.first_name, rs.salary
+FROM RankedSalaries rs
+WHERE rs.salary_rank = 2;
+```
