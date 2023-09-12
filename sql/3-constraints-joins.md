@@ -48,7 +48,7 @@ Constraints can be used with several SQL commands, including:
 5. **DELETE:** Constraints can be used to prevent the deletion of rows that would violate data integrity rules.
 
 
-### Using constraints with CREATE Table
+## Using constraints with CREATE Table
 
 Examples of using constraints:
 
