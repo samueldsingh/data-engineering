@@ -627,7 +627,7 @@ ALTER TABLE Employees
 ALTER department SET DEFAULT 'Unknown';
 ```
 
-`9. How do you create a composite PRIMARY KEY on the "emp_id" and "department_id" columns of the "employees" table?
+19. How do you create a composite PRIMARY KEY on the "emp_id" and "department_id" columns of the "employees" table?
 
 ```
 ALTER TABLE employees
