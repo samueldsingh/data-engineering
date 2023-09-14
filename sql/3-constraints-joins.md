@@ -6,7 +6,7 @@ on the values stored in the table columns. They help maintain the consistency, a
 Commonly used constraints in SQL include:
 
 1. **PRIMARY KEY** Constraint: Ensures that **each row in a table has a unique identifier, and it cannot have NULL values**. Typically, the primary key is
-   used to uniquely identify each record in the table.
+   used to uniquely identify each record in the table. It is a combination of a NOT NULL and UNIQUE constraint.
 
 
 2. **UNIQUE** Constraint: Ensures that the **values in a specific column or a combination of columns are unique across all rows in the table**. It allows
@@ -14,7 +14,7 @@ Commonly used constraints in SQL include:
 
 
 3. **FOREIGN KEY** Constraint: Establishes a relationship between two tables, where the values in one table's column must match the values in another
-   table's primary key column. This constraint ensures referential integrity between related tables.
+   table's primary key column. This constraint ensures referential integrity between related tables. It prevents actions that would destroy links between tables.
 
 
 4. **NOT NULL** Constraint: Ensures that a column cannot have NULL values. It requires all rows in the table to have a value in that column.
@@ -26,14 +26,12 @@ Commonly used constraints in SQL include:
 
 6. **DEFAULT** Constraint: Sets a default value for a column if no value is explicitly provided during an insert operation.
 
-7. **INDEX** Constraint: An index is a database object that provides a quick lookup of data based on the values in one or more columns of a table. It acts like
-   a roadmap that allows the database engine to find specific rows efficiently without having to scan the entire table.
+7. **INDEX** Constraint: Indexing used for easy and quick retrival. It allocates the row_id for each row. An index is a database object that provides a quick lookup of data based on the values in one or more columns of a table. It acts like a roadmap that allows the database engine to find specific rows efficiently without having to scan the entire table.
 
 8. **AUTO INCREMENT** Constraint: An auto-increment constraint, also known as an auto-incrementing or identity column, is a database feature that automatically
    generates a unique, incremental value for a column when a new row is inserted into a table. 
 
-9. **ENUM** Constraint: An ENUM constraint is used to define a custom data type that represents **a set of predefined constant values for a column**. It allows you to
-    specify that a column can only take one of the specified values, and any attempt to insert a value outside the predefined set will result in an error.
+9. **ENUM** Constraint: An ENUM constraint is used to define a custom data type that represents **a set of predefined constant values for a column**. It allows you to specify that a column can only take one of the specified values, and any attempt to insert a value outside the predefined set will result in an error.
 
 Constraints can be used with several SQL commands, including:
 
@@ -46,6 +44,215 @@ Constraints can be used with several SQL commands, including:
 4. **UPDATE:** Constraints are checked when updating existing rows in a table to maintain data integrity.
 
 5. **DELETE:** Constraints can be used to prevent the deletion of rows that would violate data integrity rules.
+
+
+## 1. NOT NULL
+
+- Specifies that a column cannot have null values
+
+```
+-- Syntax :
+
+CREATE TABLE <Table_Name>(
+<Column_name_1> <Type> NOT NULL,
+<Column_name_2> <Type>(<Limit>),
+<Column_name_3> <Type>(<Limit>));
+
+-- Example :
+
+CREATE TABLE vikey_Company(
+s_no INT NOT NULL,
+name VARCHAR(30),
+comments VARCHAR(100));
+
+INSERT INTO vikey_Company VALUES ('1','Danny','This is for testing'); -- Positive case
+INSERT INTO vikey_Company VALUES ('2','','This is for testing NOT NULL'); -- Positive case
+INSERT INTO vikey_Company (name, comments) VALUES ('Sunny','This is for testing NOT NULL'); -- Negative case
+```
+
+## 2. UNIQUE
+
+- A table can have more than one unique key. It's like a primary key but accepts one null value per column.
+
+```
+SELECT * FROM ranjeet_academy;
+
+CREATE TABLE Ranjeet_Academy(
+s_no INT,
+s_name VARCHAR(30) UNIQUE,
+s_city VARCHAR(20),
+S_ph_no INT UNIQUE);
+
+INSERT INTO Ranjeet_Academy VALUES ('1','Harsha','Bangalore','81448'); -- Correct values
+INSERT INTO Ranjeet_Academy VALUES ('2','Vishnu','Bangalore','81448'); -- Repeat the ph_number 
+INSERT INTO Ranjeet_Academy VALUES ('3','Harsha','Bangalore','86548'); -- Repeat the name
+INSERT INTO Ranjeet_Academy VALUES ('4','','Bangalore','52345'); -- Null Value
+INSERT INTO Ranjeet_Academy (s_no,s_city,S_ph_no)VALUES ('5','Bangalore','81468'); -- Skip Value
+INSERT INTO Ranjeet_Academy VALUES ('6','','Bangalore','52345'); -- One more Null Value
+```
+
+## 3. CHECK
+
+- Allows you to specify a condition that must be satisfied for each row in the table. It restricts the values that can be inserted or updated in a specific column.
+
+```
+CREATE TABLE Election_Data(
+E_ID INT NOT NULL,
+Voter_Name VARCHAR(30),
+Voter_Age INT CHECK (Voter_Age>=18));
+
+INSERT INTO Election_Data VALUES ('1','Danny','20'); -- Plus case
+INSERT INTO Election_Data VALUES ('2','Sunny','18'); -- Equal case
+INSERT INTO Election_Data VALUES ('3','Bunny','15'); -- Minus case
+```
+
+## 4. ENUM
+
+- It allows the given listed values and null values.
+
+```
+CREATE TABLE Dheeraj_Sports(
+s_no INT,
+s_name VARCHAR(30),
+s_city INT,
+S_ph_no INT,
+s_langues ENUM('Telugu','Tamil','Kannada','Hindi','English','Malayalam'));
+
+INSERT INTO Dheeraj_Sports VALUES ('1','Malavika','002','354564646','Malayalam'); -- Postive
+INSERT INTO Dheeraj_Sports VALUES ('2','Balaji','003','363566646','French'); -- Negative
+INSERT INTO Dheeraj_Sports VALUES ('3','Sekhar','005','363546566',''); -- Empty Value
+INSERT INTO Dheeraj_Sports (s_no, s_name, s_city, S_ph_no)VALUES ('3','Rushi','009','635656464'); -- Null Value
+```
+
+## 5. DEFAULT
+
+- Default is used to replace the empty value with the given default value.
+
+```
+CREATE TABLE Vignesh_Biriyani(
+Chef_ID_no INT NOT NULL,
+Chef_name VARCHAR(30),
+Chef_city VARCHAR(15) DEFAULT 'DINDIGUL');
+
+INSERT INTO Vignesh_Biriyani VALUES ('1','Mani','Tiruvannamalai'); -- Postive case
+INSERT INTO Vignesh_Biriyani VALUES ('2','Rushi',''); -- Null value
+INSERT INTO Vignesh_Biriyani (Chef_ID_no, Chef_name) VALUES ('3','Balaji'); -- returns 'DINDIGUL'
+```
+
+## 6. INDEX 
+
+- Indexing used for easy and quick retrival. it allocates the row_id for each row.
+
+```
+CREATE TABLE Malavika_Foods(
+Item_ID INT,
+Item_name VARCHAR(30),
+city VARCHAR(30),
+Item_Price INT,
+index(item_name)
+);
+
+INSERT INTO Malavika_Foods values
+('1','Puttu','BLR','198'),
+('2','Appam','TRV','1248'),
+('3','Vellappam','KOC','176'),
+('4','Fish','HYD','36'),
+('6','Kappa','KNR','287');
+
+CREATE INDEX food_index ON malavika_foods(item_name);
+DESC malavika_foods;
+
+SELECT * FROM malavika_foods USE INDEX (food_index);
+SELECT * FROM malavika_foods;
+```
+
+## 7. PRIMARY KEY 
+
+- Used to identify each record in the table uniquely.
+
+```
+CREATE TABLE Sekhars_Blog(
+Reader_ID INT PRIMARY KEY,
+Reader_name VARCHAR(30),
+Reader_city VARCHAR(3));
+
+INSERT INTO Sekhars_Blog VALUES ('1','Mani','TRL'); -- Postive case
+INSERT INTO Sekhars_Blog VALUES ('','Rushi','VZK'); -- Null value (Fails)
+INSERT INTO Sekhars_Blog (Reader_name, Reader_city) VALUES ('Balaji', 'ERD'); -- No case (Fails)
+```
+
+## 8. AUTO_INCREMENT 
+
+- Mainly used to generate the auto increment values.
+
+```
+CREATE TABLE Mr_Khan_Library(
+s_ID INT AUTO_INCREMENT primary key,
+s_name VARCHAR(30),
+s_city varchar(25)
+);
+
+ALTER TABLE Mr_Khan_Library AUTO_INCREMENT = 100;
+select * from Mr_Khan_Library;
+
+INSERT INTO Mr_Khan_Library VALUES ('1','Mani','Tiruvannamalai'); -- Postive case
+INSERT INTO Mr_Khan_Library VALUES ('','Rushi','Visakapatnam'); -- Null value (Fails)
+INSERT INTO Mr_Khan_Library (s_name,s_city)VALUES ('Abhi','Hyderabad'); -- Skip the value (s_ID will be 100)
+INSERT INTO Mr_Khan_Library VALUES ('-4','Harsha','Bangalore'); -- Negative case
+INSERT INTO Mr_Khan_Library (s_name,s_city)VALUES ('Akhil','hyd');		-- (s_ID will be 101)
+INSERT INTO Mr_Khan_Library (s_name,s_city)VALUES ('Akhil','hyd');		-- (s_ID will be 102)
+```
+
+## 9. Foreign Key Constraint
+
+- Used to link multiple tables, The forign key of one table matches with primary key of another table.
+
+```
+SET FOREIGN_KEY_CHECKS=0;
+
+CREATE TABLE Suchandan_Hotels (  
+Dish_ID int NOT NULL,   
+Dish_name varchar(15) PRIMARY KEY,   
+Price INT
+);
+
+CREATE TABLE Bhaskar_Chats (  
+Chat_ID int NOT NULL,   
+Chat_name varchar(15),   
+Price INT,
+FOREIGN KEY (Chat_name) REFERENCES Suchandan_Hotels(Dish_name)
+);
+
+DESC Suchandan_Hotels;
+DESC Bhaskar_Chats;
+
+SELECT * FROM Suchandan_Hotels;
+SELECT * FROM Bhaskar_Chats;
+
+
+INSERT INTO Suchandan_Hotels VALUES 
+('321','Pani Puri',100),
+('342','Roti',150),
+('374','Tea',99),
+('384','Biriyani',500);
+
+INSERT INTO Bhaskar_Chats VALUES 
+('321','Pani Puri',30),
+('342','Masala Puri',35),
+('374','Samosa',20),
+('384','Vada Pav',25);
+
+INSERT INTO Suchandan_Hotels VALUES ('542','Butter Roti','200');
+INSERT INTO Suchandan_Hotels VALUES ('842','Butter Roti','300'); -- Trying to insert duplicate value into primary key (Fails)
+
+INSERT INTO Bhaskar_Chats VALUES ('543','Aloo Tikki','40');
+INSERT INTO Bhaskar_Chats VALUES ('654','Aloo Tikki','20'); -- Trying to insert duplicate value into foreign key
+```
+
+## COMPOSITE KEYS
+
+- A composite key is a candidate key that consists of two or more attributes (table columns) that together uniquely identify an entity occurrence (table row).
+
 
 
 ## Using constraints with CREATE Table
@@ -110,7 +317,7 @@ In this example:
 Please note that the specific syntax and supported features may vary depending on the database system you are using (e.g., MySQL, PostgreSQL, SQL Server). Make sure to adjust the data types, constraint names, and other details according to your database system's syntax.
 
 
-### USING CONSTRAINTS WITH ALTER 
+## USING CONSTRAINTS WITH ALTER 
 
 Use the `ALTER TABLE` command to add various constraints to an existing table named "Employees" in SQL, including PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, DEFAULT, INDEX, AUTO_INCREMENT, and ENUM. Please note that the example provided assumes the table and related columns already exist.
 
@@ -168,7 +375,7 @@ In this example:
 
 Please note that the syntax might vary based on the specific database system you are using, and some constraints might not be supported in all systems. Always refer to the documentation of your database management system for the accurate syntax and supported constraints.
 
-### Using constraints with INSERT command
+## Using constraints with INSERT command
 
 Certainly! Below is an example that demonstrates using the mentioned constraints (`PRIMARY KEY`, `FOREIGN KEY`, `UNIQUE`, `NOT NULL`, `CHECK`, `DEFAULT`, `INDEX`, `AUTO_INCREMENT`, and `ENUM`) with the `INSERT` command. This example assumes a simplified table named "Students" with various columns.
 
@@ -213,7 +420,7 @@ In this example:
 
 Please remember to adapt the column names, table names, and constraints according to your specific database schema and SQL dialect. Also, keep in mind that some constraints and features may not be supported in all database systems. Always refer to your database's documentation for accurate syntax and supported features.
 
-### Using constraints with UPDATE command
+## Using constraints with UPDATE command
 
 Here's an example that demonstrates using the mentioned constraints (`PRIMARY KEY`, `FOREIGN KEY`, `UNIQUE`, `NOT NULL`, `CHECK`, `DEFAULT`, `INDEX`, `AUTO_INCREMENT`, and `ENUM`) with the `UPDATE` command. This example assumes a simplified table named "Employees" with various columns.
 
