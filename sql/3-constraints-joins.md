@@ -253,14 +253,54 @@ INSERT INTO Bhaskar_Chats VALUES ('654','Aloo Tikki','20'); -- Trying to insert 
 
 - A composite key is a candidate key that consists of two or more attributes (table columns) that together uniquely identify an entity occurrence (table row).
 
+```
+CREATE TABLE Employee (
+    employee_id INT,
+    department_id INT,
+    employee_name VARCHAR(50),
+    PRIMARY KEY (employee_id, department_id)
+	);
 
+drop table sports;
+CREATE TABLE sports (
+    sports_id varchar(5),
+    Game VARCHAR(50),
+    emp_id INT,
+    dept_id INT,
+    FOREIGN KEY (emp_id, dept_id) REFERENCES Employee(employee_id, department_id)
+);
+
+INSERT INTO Employee (employee_id, department_id, employee_name) VALUES
+(1, 101, 'John Doe'),
+(2, 102, 'Jane Smith'),
+(3, 101, 'Michael Johnson'),
+(4, 103, 'Emily Brown');
+
+INSERT INTO sports (sports_id, Game, emp_id, dept_id) VALUES
+(200, 'Football', 1, 101),
+(201, 'Basketball', 1, 101),
+(203, 'Tennis', 2, 102),
+(204, 'Soccer', 2, 102);
+
+INSERT INTO Employee (employee_id, department_id, employee_name) VALUES (5, 104, 'stormy');
+INSERT INTO sports (sports_id, Game, emp_id, dept_id) VALUES (205, 'Football', 5, 104); -- trying to insert duplicates for child table.
+INSERT INTO sports (sports_id, Game, emp_id, dept_id) VALUES (206, 'Football', 'null', 'null');-- null records -ve case (Fails)
+INSERT INTO sports (sports_id, Game) VALUES (207, 'Football');-- no values +ve case (null is inserted)
+```
+
+## To find constraint information
+
+```
+SELECT * FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+WHERE TABLE_NAME = 'xyz';
+```
 
 ## Using constraints with CREATE Table
 
 Examples of using constraints:
 
 ```sql
--- Creating a table with constraints
+Creating a table with constraints
 CREATE TABLE employees (
     emp_id INT PRIMARY KEY,
     emp_name VARCHAR(50) NOT NULL,
@@ -514,19 +554,19 @@ Always adjust the column names, table names, and constraints according to your s
 2. Create table accounts
 
 ```
--- 2. Create table accounts
--- CREATE TABLE accounts (
--- account_no INT,
--- user_name VARCHAR(15),
--- bank_name VARCHAR (15),
--- email VARCHAR (20),
--- balance DECIMAL(10,2),
--- created_on DATETIME,
--- customer_id INT
--- );
+2. Create table accounts
+CREATE TABLE accounts (
+account_no INT,
+user_name VARCHAR(15),
+bank_name VARCHAR (15),
+email VARCHAR (20),
+balance DECIMAL(10,2),
+created_on DATETIME,
+customer_id INT
+);
 ```
 
-3.	Columns account_no, user_name,bank_name,email,balance,created_on, customer_id
+3.	Columns account_no, user_name, bank_name, email, balance, created_on, customer_id
 
 ```
 CREATE TABLE customer (
@@ -549,7 +589,7 @@ address VARCHAR (50)
 -- ADD CONSTRAINT check_ph_no_len CHECK (LENGTH(phone_number)=10);
 ```
 
-7.	Apply default as currenttime on created_on field from accounts table(apply on existing table
+7.	Apply default as currenttime on created_on field from accounts table(apply on existing table)
 
 ```
 ALTER TABLE accounts
