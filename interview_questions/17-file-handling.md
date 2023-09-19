@@ -107,6 +107,7 @@ These are just a few examples of the many types of files used in computing. Each
 - `b`:	Opens in binary mode.
 - `+`:	Opens a file for updating (reading and writing)
 
+[File Handlin](https://ncert.nic.in/textbook/pdf/lecs102.pdf)
 
 ## 5. Give example of reading, writing and updating a txt file
 
