@@ -111,3 +111,169 @@ An API call, or Application Programming Interface call, is a fundamental concept
 11. **Rate Limiting:** Some APIs impose rate limits on the number of API calls a client can make within a specified time period to prevent abuse and ensure fair usage.
 
 In summary, an API call is a communication process between a client and a server that follows a predefined set of rules and protocols. It involves sending an HTTP request from the client to the server, specifying the desired action or data retrieval, and receiving an HTTP response containing the result. APIs are a critical component of modern software development, enabling the integration of diverse services and systems to create complex and powerful applications.
+
+## 5. Explain GET vs POST request
+
+HTTP (Hypertext Transfer Protocol) defines several request methods that clients (such as web browsers) can use to communicate with web servers. Two of the most commonly used methods are GET and POST. These methods serve different purposes and have distinct characteristics:
+
+
+1. **Purpose:** 
+
+  - `GET` Request: The GET request method is primarily used to request data from a web server. It is used when the client wants to retrieve information from the server without sending any data in the request body.
+
+  - `POST` Request: The POST request method is used when the client wants to submit data to the server. It is often used for actions that modify server-side data, create new resources, or submit forms containing sensitive information.
+
+2. **Data in URL:**
+
+  - `GET` Request: In a GET request, the data is typically included in the URL as query parameters. This means that the data is visible in the URL, making it suitable for simple queries or when you want to share a link that contains specific parameters.
+
+  - `POST` Request: In a POST request, the data is included in the request body, not in the URL. This means that the data is not visible in the URL, making it suitable for sending larger amounts of data or sensitive information.
+
+3. **Caching:** 
+
+  - `GET`: GET requests are generally cacheable, which means that the response can be stored by the browser or intermediate proxy servers for future use. This can help reduce server load and improve performance for frequently accessed resources.
+
+  - `POST`: POST requests are typically not cacheable, meaning that the response should not be stored for future use by the client or intermediate proxies.
+
+4. **Idempotent:** 
+
+  - `GET`: GET requests are considered idempotent, meaning that making the same GET request multiple times should have the same result each time, and it should not change the server's state. This property makes GET requests safe for scenarios where repetition is acceptable.
+
+  - `POST`: POST requests are not idempotent, which means that making the same POST request multiple times may result in different outcomes, and it can change the server's state. Therefore, they should be used with caution when repeating the same request could have unintended consequences.
+
+5. **Examples:** 
+
+  - `GET`: Browsing a web page, requesting search results, or viewing an image are common use cases for GET requests.
+  - `POST`: Submitting a contact form, uploading a file, making a purchase, or submitting login credentials are common use cases for POST requests.
+
+In summary, the choice between GET and POST request methods depends on the intended use and the nature of the data being transferred:
+
+- Use GET for retrieving data from the server, especially when the request is idempotent and the data can be included in the URL.
+
+- Use POST for submitting data to the server, especially when the request modifies server-side data, involves sensitive information, or requires a larger data payload in the request body.
+
+## 6. Explain POST vs PUT
+
+HTTP (Hypertext Transfer Protocol) defines several request methods that clients (such as web browsers) can use to communicate with web servers. Two of these methods, POST and PUT, are often used to send data to the server, but they have distinct purposes and behaviors:
+
+1. **Purpose:** 
+
+  - POST: The POST request method is primarily used to submit data to the server for processing. It is commonly used when creating a new resource on the server or when sending data that will be processed and stored on the server.
+
+  - PUT: The PUT request method is used to update or replace an existing resource on the server. It is commonly used when the client wants to send data to the server to replace the current state of a resource entirely.
+
+
+2. **Data in Request Body:** 
+
+  - POST: In a POST request, the data is included in the request body, not in the URL. This allows for sending larger amounts of data and more complex data structures compared to GET requests.
+
+  - PUT: Similar to POST, the data in a PUT request is included in the request body. This data should represent the updated state of the resource.
+
+3. **Idempotence:** 
+
+  - POST: POST requests are not idempotent, meaning that making the same POST request multiple times can result in different outcomes. For example, submitting a POST request to create a new resource multiple times will create multiple resources on the server.
+
+  - PUT: PUT requests are idempotent, meaning that making the same PUT request multiple times should have the same result as making it once. Repeatedly sending the same data using PUT should not create multiple copies of the resource.
+
+4. **Resource Creation:** 
+
+  - POST: 
+  - PUT (Resource Update): PUT requests are typically used to update an existing resource. If the resource does not exist at the specified URL, some server implementations may create a new resource, but this behavior is not strictly defined by the HTTP specification.
+
+
+5. **Examples:** Submitting a form on a website, creating a new user account, posting a comment, or uploading a file are common use cases for POST requests.
+
+  - POST: POST requests are often used to create new resources on the server. The server typically generates a unique identifier for the newly created resource and includes it in the response.
+
+  - PUT: Updating a user's profile information, replacing a file on a server with an updated version, or editing an existing document are common use cases for PUT requests.
+
+In summary, the main difference between POST and PUT requests lies in their intended use:
+
+- Use POST when you want to submit data to the server for processing, especially when creating new resources or performing actions that are not idempotent.
+
+- Use PUT when you want to update or replace an existing resource on the server, and you want the request to be idempotent, meaning it can be safely repeated without unintended consequences.
+
+## 7. Explain PUT vs PATCH
+
+HTTP (Hypertext Transfer Protocol) defines several request methods that clients (such as web browsers) can use to communicate with web servers. Two of these methods, PUT and PATCH, are used for updating resources on the server, but they have different purposes and behaviors:
+
+**PUT Request:**
+
+1. **Purpose:** 
+
+  - PUT: The PUT request method is used to update or replace an existing resource on the server with a complete new representation of that resource. It is typically used when the client wants to provide a full, updated version of the resource, which will replace the existing resource entirely.
+
+  - PATCH: The PATCH request method is used to partially update an existing resource on the server. It is designed for making partial modifications to a resource, rather than replacing it entirely.
+
+2. **Data in Request Body:** 
+
+  - PUT: In a PUT request, the data representing the updated resource is included in the request body. This data should represent the complete state of the resource, including any properties that were not modified.
+
+  - PATCH: In a PATCH request, the data representing the changes or modifications to the resource is included in the request body. The data should only include the specific fields or properties that need to be updated.
+
+3. **Idempotence:** 
+
+  - PUT: PUT requests are idempotent, meaning that making the same PUT request multiple times should have the same result as making it once. Repeatedly sending the same data using PUT should not create multiple copies of the resource.
+
+  - PATCH: PATCH requests can be idempotent or non-idempotent, depending on how they are implemented. It is up to the server and the specific PATCH request to determine whether repeating the same request will have the same effect each time.
+
+4. **Resource Replacement:** 
+
+  - PUT: PUT requests are typically used for resource replacement. The server replaces the existing resource at the specified URL with the new representation provided in the request.
+
+  - PATCH (Partial Update): PATCH requests are used when you want to make partial updates to a resource. The server applies the changes provided in the request to the existing resource, without requiring the client to send the complete representation of the resource.
+
+5. **Examples:** 
+
+  - PUT: Using PUT to update a user's profile information with a complete new set of data, replacing an entire document on a server with an updated version, or updating a product's details with all new information are common use cases for PUT requests.
+
+  - PATCH: Using PATCH to update a user's profile with changes to specific fields (e.g., updating the user's email address or phone number), modifying a document by adding or changing specific sections, or updating specific attributes of a product are common use cases for PATCH requests.
+
+In summary, the key difference between PUT and PATCH requests lies in their intended use and the scope of updates:
+
+- Use PUT when you want to replace an entire resource on the server with a complete new representation of that resource.
+
+- Use PATCH when you want to make partial modifications or updates to an existing resource, sending only the changes needed, rather than replacing the entire resource.
+
+## 8. Explain POST vs PATCH
+
+POST and PATCH are both HTTP methods used for different purposes in web applications, particularly when dealing with resources and data manipulation. Here's an explanation of the differences between POST and PATCH:
+
+**POST Request:**
+
+1. **Purpose:** 
+
+  - POST: POST is primarily used to submit data to the server to create a new resource or perform a non-idempotent action. It is often used for creating new records or resources on the server.
+
+  - PATCH: PATCH is used to make partial updates to an existing resource on the server. It is designed for modifying specific attributes or properties of a resource without replacing the entire resource.
+
+2. **Data in Request Body:** 
+
+  - POST: In a POST request, the data to be processed or saved is included in the request body. This data typically represents the entire resource being created.
+
+  - PATCH: In a PATCH request, the data in the request body represents the changes or updates to be applied to the resource. It typically includes only the fields or properties that need to be updated.
+
+3. **Idempotence:** 
+
+  - POST: POST requests are not idempotent, meaning that making the same POST request multiple times can result in different outcomes. Each request typically creates a new resource or performs a non-idempotent action.
+
+  - PATCH: PATCH requests can be either idempotent or non-idempotent, depending on how they are implemented. It is possible to design PATCH requests in an idempotent way, where repeating the same request will have the same effect each time, but this is not guaranteed.
+
+4. **Resource Creation:** 
+
+  - POST: POST is commonly used for creating new resources on the server. The server typically generates a unique identifier for the newly created resource, and this identifier is often included in the response.
+
+  - PATCH (Partial Update): PATCH is used when you want to apply partial modifications to an existing resource. It allows you to send only the changes needed, without requiring the client to send the complete representation of the resource. 
+
+5. **Examples:** 
+
+  - POST: Submitting a form to create a new user account, adding a new item to a shopping cart, or posting a comment on a blog are common use cases for POST requests.
+
+  - PATCH: Using PATCH to update specific attributes of a user profile (e.g., changing the email address or phone number), modifying a document by adding or changing specific sections, or updating certain attributes of a product are common use cases for PATCH requests.
+
+
+In summary:
+
+- Use POST when you want to create a new resource or perform a non-idempotent action on the server. POST typically involves sending the complete data for the new resource.
+
+- Use PATCH when you want to make partial modifications to an existing resource on the server, sending only the changes needed to update specific attributes or properties of the resource.
