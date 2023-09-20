@@ -75,3 +75,39 @@ In order for an API to be considered RESTful, it has to conform to these criteri
 - Code-on-demand (optional): the ability to send executable code from the server to the client when requested, extending client functionality. 
 
 [REST API](https://www.redhat.com/en/topics/api/what-is-a-rest-api)
+
+## 4. What is an API call. Explain in detail?
+
+An API call, or Application Programming Interface call, is a fundamental concept in software development that allows different software applications or components to communicate and interact with each other. Let's dive into a detailed explanation of API calls:
+
+1. **Application Programming Interface (API):** An API is like a bridge or contract that defines how one software component or system can interact with another. It specifies a set of rules, protocols, and functions that developers can use to request specific actions or access data from another application, service, or system.
+
+2. **Client and Server:** In the context of API calls, there are typically two roles:
+   - **Client:** The client is the software application or component that initiates the API call. It needs some service, data, or functionality provided by the server.
+   - **Server:** The server is the software application or component that receives and processes the API request from the client. It performs the requested action or retrieves the requested data and sends a response back to the client.
+
+3. **HTTP/HTTPS:** Many API calls are made over the HTTP (Hypertext Transfer Protocol) or its secure counterpart, HTTPS. These protocols define how data is transmitted over the internet. When you make an API call using HTTP/HTTPS, you send an HTTP request from the client to the server, and the server responds with an HTTP response.
+
+4. **HTTP Request Methods:** HTTP requests typically use different HTTP methods to specify the type of action to be performed. The most common HTTP methods used in API calls are:
+   - **GET:** Used to retrieve data from the server.
+   - **POST:** Used to send data to the server to create a new resource or perform an action.
+   - **PUT:** Used to update an existing resource on the server.
+   - **DELETE:** Used to request the removal of a resource on the server.
+
+5. **Request Headers:** API calls often include headers in the HTTP request to provide additional information or metadata about the request. Headers can contain things like authentication tokens, content types, and other relevant information.
+
+6. **Request Body:** In some API calls, particularly those using the POST and PUT methods, data is sent in the request body. This data can be in various formats, such as JSON, XML, or form data, depending on the API's specifications.
+
+7. **Endpoint:** An API call typically includes an endpoint, which is a specific URL or URI (Uniform Resource Identifier) that identifies the resource or action the client wants to access on the server. The endpoint, combined with the HTTP method, defines the nature of the API call.
+
+8. **Response:** After processing the API request, the server sends back an HTTP response to the client. This response includes:
+   - **Status Code:** A three-digit numerical code that indicates the outcome of the request (e.g., 200 for success, 404 for not found, 500 for server error).
+   - **Response Body:** Data returned by the server, which can be in various formats like JSON, XML, HTML, or plain text. This is often the actual data or the result of the requested action.
+
+9. **Error Handling:** API calls can result in errors, such as authentication failures, invalid requests, or server issues. Proper error handling is crucial to ensure that the client can react appropriately when things go wrong.
+
+10. **Authentication and Security:** To protect sensitive data and resources, APIs often require authentication, where the client provides credentials (e.g., API keys, tokens) to prove its identity. Additionally, APIs may use encryption (HTTPS) to secure data transmission.
+
+11. **Rate Limiting:** Some APIs impose rate limits on the number of API calls a client can make within a specified time period to prevent abuse and ensure fair usage.
+
+In summary, an API call is a communication process between a client and a server that follows a predefined set of rules and protocols. It involves sending an HTTP request from the client to the server, specifying the desired action or data retrieval, and receiving an HTTP response containing the result. APIs are a critical component of modern software development, enabling the integration of diverse services and systems to create complex and powerful applications.
