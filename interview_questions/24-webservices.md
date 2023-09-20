@@ -469,4 +469,64 @@ Both SOAP (Simple Object Access Protocol) and REST (Representational State Trans
 
 It's important to note that the choice between SOAP and REST often depends on the specific requirements of a project. Some applications may benefit from SOAP's strong standards and features, while others may find REST's simplicity and compatibility with web technologies more suitable. Additionally, newer API technologies like GraphQL have emerged as alternatives to both SOAP and REST, addressing some of their drawbacks while introducing their own design considerations.
 
-## 13. 
+## 13. REST architectural constraints
+
+REST (Representational State Transfer) is an architectural style for designing networked applications and web services. It is characterized by a set of architectural constraints that guide the design of RESTful systems. These constraints help ensure that RESTful services are scalable, stateless, and easily cacheable. The six primary architectural constraints of REST are:
+
+1. **Client-Server:** The client-server constraint separates the user interface concerns from the data storage concerns. This separation allows the client and server components to evolve independently and be developed and scaled separately. It also promotes the flexibility and portability of the client and server components.
+
+2. **Statelessness:** RESTful services are stateless, meaning that each request from a client to a server must contain all the information needed to understand and process that request. The server should not maintain any client state between requests. This constraint simplifies server design and makes it easier to scale.
+
+3. **Cacheability:** Responses from a RESTful service can be explicitly marked as cacheable or non-cacheable. Cacheability improves the efficiency of the system by allowing clients to cache responses and reduce the need for repeated requests to the server. Cacheable responses should include information about how long the response can be cached (e.g., using the "Cache-Control" header).
+
+4. **Uniform Interface:** The uniform interface constraint defines a consistent and standardized way to interact with resources in a RESTful system. It includes four sub-constraints:
+
+   a. **Identification of Resources:** Resources are identified using URIs (Uniform Resource Identifiers). Each resource should have a unique URI.
+   
+   b. **Manipulation of Resources Through Representations:** Resources are manipulated through their representations. Clients interact with resources by exchanging representations, which can be in different formats (e.g., JSON, XML).
+   
+   c. **Self-Descriptive Messages:** Each message sent from the server to the client should include all the information needed to understand how to process that message. This includes information about the media type of the representation, which allows the client to determine how to interpret the data.
+   
+   d. **Hypermedia as the Engine of Application State (HATEOAS):** This is a key aspect of the uniform interface. It means that clients interact with resources by following links provided in the representations. HATEOAS enables a self-discovery mechanism where clients can navigate the application's state dynamically by following links.
+
+5. **Layered System:** RESTful architectures can be composed of multiple layers, where each layer has a specific responsibility and interacts only with adjacent layers. The layered system constraint promotes modularity, scalability, and flexibility by allowing intermediaries (e.g., proxies, load balancers) to be added without affecting the client or server.
+
+6. **Code on Demand (Optional):** This constraint is optional, and it allows for the transfer of executable code from the server to the client. While not commonly used in practice, it can enhance the capabilities of a client. Examples include JavaScript code sent to a web browser.
+
+These architectural constraints guide the design of RESTful APIs and web services, helping to create systems that are scalable, stateless, and easily maintainable. Adhering to these constraints ensures that RESTful services are efficient, flexible, and easy to understand and use.
+
+## 14. State vs Stateless protocol
+
+Stateful and stateless protocols are terms used in computer networking and communication to describe how a protocol handles the state or context of a communication session between a client and a server. Here's a breakdown of stateful and stateless protocols:
+
+**Stateful Protocol:**
+
+A stateful protocol maintains the state or context of a communication session between the client and server. This means that the protocol keeps track of the past interactions and the current status of the session. Some key characteristics of stateful protocols include:
+
+1. **Session Information:** Stateful protocols establish a session or connection between the client and server, and this session is maintained throughout the interaction.
+
+2. **Context Preservation:** The protocol remembers previous requests and responses within the same session. This context information is used to interpret subsequent messages.
+
+3. **Complexity:** Stateful protocols tend to be more complex because they need to manage and synchronize the state between the client and server.
+
+4. **Examples:** FTP (File Transfer Protocol) and SIP (Session Initiation Protocol) are examples of stateful protocols. In FTP, for example, a connection is established, and the server keeps track of the current directory and the state of the file transfer.
+
+**Stateless Protocol:**
+
+A stateless protocol does not maintain the state or context of a communication session between the client and server. Each request from the client to the server is treated in isolation, without any knowledge of previous interactions. Key characteristics of stateless protocols include:
+
+1. **No Session:** Stateless protocols do not establish a persistent session or connection between the client and server. Each request is independent.
+
+2. **No Context Preservation:** The protocol does not remember previous requests or responses. Each request must contain all the information needed for the server to understand and process it.
+
+3. **Simplicity:** Stateless protocols tend to be simpler because they do not need to manage session state or context.
+
+4. **Examples:** HTTP (Hypertext Transfer Protocol) is a common example of a stateless protocol. Each HTTP request is independent, and the server does not retain information about previous requests. RESTful APIs, which are built on top of HTTP, are also typically stateless.
+
+**Comparison:**
+
+- Stateful protocols are useful when maintaining session-specific information is necessary, such as in applications that require continuous communication and synchronization, like online gaming or real-time chat.
+
+- Stateless protocols are well-suited for applications where simplicity, scalability, and fault tolerance are important. Stateless protocols are often used in web services and APIs, where individual requests are self-contained and can be processed independently.
+
+The choice between stateful and stateless protocols depends on the specific requirements and design goals of the communication system or application. Each has its advantages and disadvantages, and the decision should be made based on the needs of the use case.
