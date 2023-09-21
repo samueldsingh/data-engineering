@@ -530,3 +530,20 @@ A stateless protocol does not maintain the state or context of a communication s
 - Stateless protocols are well-suited for applications where simplicity, scalability, and fault tolerance are important. Stateless protocols are often used in web services and APIs, where individual requests are self-contained and can be processed independently.
 
 The choice between stateful and stateless protocols depends on the specific requirements and design goals of the communication system or application. Each has its advantages and disadvantages, and the decision should be made based on the needs of the use case.
+
+## Example of getting information via API call
+
+Suppose you want to get the currency exchange rate information from [exchange-rate-api](https://www.exchangerate-api.com/). First obtain the API key which is available for free. The API key allows for 1500 requests per month. 
+The Standard endpoint returns a JSON object with exchange rates from a base currency to all the supported currency formats.
+
+My [API Key](https://app.exchangerate-api.com/dashboard) and example request is:
+
+```
+Your API Key: 82e58d9a63b75703423e21a1
+Example Request: https://v6.exchangerate-api.com/v6/82e58d9a63b75703423e21a1/latest/USD
+```
+
+[Exchange rate API documentation](https://www.exchangerate-api.com/docs/overview)
+
+[How to use an API](https://offers.hubspot.com/hubfs/How%20to%20Use%20an%20API.pdf?hubs_signup-url=offers.hubspot.com%2Fhow-to-use-an-api&hubs_signup-cta=Download%2520Now&hubs_offer=offers.hubspot.com%2Fhow-to-use-an-api)
+
