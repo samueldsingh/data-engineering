@@ -1522,6 +1522,8 @@ print(result)
 
 ## 20. Importance of context manager.Explain in detail
 
+[Context Managers](https://book.pythontips.com/en/latest/context_managers.html)
+
 A context manager in Python is a mechanism that allows you to properly manage resources, such as files or network connections, by allocating and releasing them automatically when they are no longer needed. Context managers are implemented using a protocol that defines two methods: `__enter__()` and `__exit__()`.
 
 The importance of context managers can be better understood through the following points:
@@ -1820,3 +1822,133 @@ File handling operations in Python allow you to interact with files on your syst
     ```
 
 Remember to handle exceptions when working with files to ensure your program doesn't crash due to file-related issues.
+
+## 25. Converting CSV file to JSON using Pandas
+
+Also involves converting pandas dataframe to JSON with compression (`gzip`) and read back the compressed, uncompressed file using python.
+
+We have a `water-physical-stock-account.csv` that is delineated with comma. Delimiters affect the way data is read in the pandas dataframe.
+
+```
+region,variable,RID,yq,value,year,Series,Unit,Source,Quarter
+NORTHLAND,Discharge by Hydrogeneration,1,1995.1,0,1995,Quarterly,Mm3,NIW,1
+NORTHLAND,Discharge by Hydrogeneration,1,1995.2,0,1995,Quarterly,Mm3,NIW,2
+NORTHLAND,Discharge by Hydrogeneration,1,1995.3,0,1995,Quarterly,Mm3,NIW,3
+NORTHLAND,Discharge by Hydrogeneration,1,1995.4,0,1995,Quarterly,Mm3,NIW,4
+.......
+```
+
+Pass in the raw location of the csv file and read the csv using the `read_csv` method provided by python:
+
+```
+csv_file = r"/content/water-physical-stock-account-quarterly-1995-2020-CSV.csv"
+water_df = pd.read_csv(csv_file, sep=',')
+print(water_df)
+```
+
+**Output**
+```
+region                        variable  RID      yq  value  year  \
+0         NORTHLAND    Discharge by Hydrogeneration    1  1995.1      0  1995   
+1         NORTHLAND    Discharge by Hydrogeneration    1  1995.2      0  1995   
+2         NORTHLAND    Discharge by Hydrogeneration    1  1995.3      0  1995   
+3         NORTHLAND    Discharge by Hydrogeneration    1  1995.4      0  1995   
+4          AUCKLAND    Discharge by Hydrogeneration    2  1995.1      0  1995   
+...             ...                             ...  ...     ...    ...   ...   
+17003  SOUTH_ISLAND  Abstraction by Hydrogeneration   19  2018.4 -27594  2018   
+17004  SOUTH_ISLAND  Abstraction by Hydrogeneration   19  2019.1 -27052  2019   
+17005  SOUTH_ISLAND  Abstraction by Hydrogeneration   19  2019.2 -26601  2019   
+17006  SOUTH_ISLAND  Abstraction by Hydrogeneration   19  2019.3 -28203  2019   
+17007  SOUTH_ISLAND  Abstraction by Hydrogeneration   19  2019.4 -30802  2019   
+
+          Series Unit Source  Quarter  
+0      Quarterly  Mm3    NIW        1  
+1      Quarterly  Mm3    NIW        2  
+2      Quarterly  Mm3    NIW        3  
+3      Quarterly  Mm3    NIW        4  
+4      Quarterly  Mm3    NIW        1  
+...          ...  ...    ...      ...  
+17003  Quarterly  Mm3    NIW        4  
+17004  Quarterly  Mm3    NIW        1  
+17005  Quarterly  Mm3    NIW        2  
+17006  Quarterly  Mm3    NIW        3  
+17007  Quarterly  Mm3    NIW        4  
+
+[17008 rows x 10 columns]
+```
+
+**Converting Pandas Dataframe to JSON**
+
+First create a file that ends with a `.json` specification, `water-stock-account.json`. The `to_json` method can be used to convert the pandas dataframe to `JSON`.
+Without specifying the `indent` and `orient` arguments, the records are written to the json file in the first row where the column format is the default format. 
+Orient based on the records.
+
+```
+json_output = r"/content/sample_data/water-stock-account.json"
+output = water_df.to_json(json_output, indent=1, orient='records')
+```
+
+The output is:
+```
+[
+ {
+  "region":"NORTHLAND",
+  "variable":"Discharge by Hydrogeneration",
+  "RID":1,
+  "yq":1995.1,
+  "value":0,
+  "year":1995,
+  "Series":"Quarterly",
+  "Unit":"Mm3",
+  "Source":"NIW",
+  "Quarter":1
+ },
+ ....
+....
+```
+
+**Writing the Pandas Dataframe as a compressed JSON file (gzip)**
+
+Create a compressed file with the `.gz` specification, `water-stock-account.json.gz`:
+
+```
+json_output_compressed = r"/content/sample_data/water-stock-account.json.gz"
+output_compressed = water_df.to_json(json_output_compressed, orient='records', indent=1, compression='gzip')
+```
+
+Read the compressed JSON file
+```
+pd.read_json(json_output_compressed)
+```
+
+The output is:
+```
+	region	variable	RID	yq	value	year	Series	Unit	Source	Quarter
+0	NORTHLAND	Discharge by Hydrogeneration	1	1995.1	0	1995	Quarterly	Mm3	NIW	1
+1	NORTHLAND	Discharge by Hydrogeneration	1	1995.2	0	1995	Quarterly	Mm3	NIW	2
+2	NORTHLAND	Discharge by Hydrogeneration	1	1995.3	0	1995	Quarterly	Mm3	NIW	3
+3	NORTHLAND	Discharge by Hydrogeneration	1	1995.4	0	1995	Quarterly	Mm3	NIW	4
+4	AUCKLAND	Discharge by Hydrogeneration	2	1995.1	0	1995	Quarterly	Mm3	NIW	1
+...	...	...	...	...	...	...	...	...	...	...
+17003	SOUTH_ISLAND	Abstraction by Hydrogeneration	19	2018.4	-27594	2018	Quarterly	Mm3	NIW	4
+17004	SOUTH_ISLAND	Abstraction by Hydrogeneration	19	2019.1	-27052	2019	Quarterly	Mm3	NIW	1
+17005	SOUTH_ISLAND	Abstraction by Hydrogeneration	19	2019.2	-26601	2019	Quarterly	Mm3	NIW	2
+17006	SOUTH_ISLAND	Abstraction by Hydrogeneration	19	2019.3	-28203	2019	Quarterly	Mm3	NIW	3
+17007	SOUTH_ISLAND	Abstraction by Hydrogeneration	19	2019.4	-30802	2019	Quarterly	Mm3	NIW	4
+17008 rows × 10 columns
+```
+
+**Reading the compressed JSON file without pandas**
+
+Without pandas, reading the compressed file involves a couple more steps:
+
+```
+with gzip.open(json_output_compressed, 'r') as jsonfile:
+  data = json.loads(jsonfile.read().decode('utf-8'))
+  
+```
+
+
+
+## 25. Reading and writing JSON file using Pandas
+
