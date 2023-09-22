@@ -1823,7 +1823,193 @@ File handling operations in Python allow you to interact with files on your syst
 
 Remember to handle exceptions when working with files to ensure your program doesn't crash due to file-related issues.
 
-## 25. Converting CSV file to JSON using Pandas
+## 25. Reading and writing to JSON using Pandas
+
+Read json string files in pandas `read_json()`. You can do this for URLS, files, compressed files and anything that’s in json format.
+
+```
+# from os import pathconf
+# load pandas and json modules
+import pandas as pd
+import json
+
+# json string
+pathconf = r"/content/sample_data/water-stock-account.json"
+
+# read json to data frame
+df = pd.read_json(path)
+print(df)
+```
+
+The output is:
+```
+             region                        variable  RID      yq  value  year  \
+0         NORTHLAND    Discharge by Hydrogeneration    1  1995.1      0  1995   
+1         NORTHLAND    Discharge by Hydrogeneration    1  1995.2      0  1995   
+2         NORTHLAND    Discharge by Hydrogeneration    1  1995.3      0  1995   
+3         NORTHLAND    Discharge by Hydrogeneration    1  1995.4      0  1995   
+4          AUCKLAND    Discharge by Hydrogeneration    2  1995.1      0  1995   
+...             ...                             ...  ...     ...    ...   ...   
+17003  SOUTH_ISLAND  Abstraction by Hydrogeneration   19  2018.4 -27594  2018   
+17004  SOUTH_ISLAND  Abstraction by Hydrogeneration   19  2019.1 -27052  2019   
+17005  SOUTH_ISLAND  Abstraction by Hydrogeneration   19  2019.2 -26601  2019   
+17006  SOUTH_ISLAND  Abstraction by Hydrogeneration   19  2019.3 -28203  2019   
+17007  SOUTH_ISLAND  Abstraction by Hydrogeneration   19  2019.4 -30802  2019   
+
+          Series Unit Source  Quarter  
+0      Quarterly  Mm3    NIW        1  
+1      Quarterly  Mm3    NIW        2  
+2      Quarterly  Mm3    NIW        3  
+3      Quarterly  Mm3    NIW        4  
+4      Quarterly  Mm3    NIW        1  
+...          ...  ...    ...      ...  
+17003  Quarterly  Mm3    NIW        4  
+17004  Quarterly  Mm3    NIW        1  
+17005  Quarterly  Mm3    NIW        2  
+17006  Quarterly  Mm3    NIW        3  
+17007  Quarterly  Mm3    NIW        4  
+```
+
+To load JSON from an URL (API):
+
+```
+import requests
+from pandas.io.json import json_normalize
+import pandas as pd
+
+url = "https://api.exchangerate-api.com/v4/latest/USD"
+df = pd.read_json(url)
+print(df
+```
+
+The output is:
+```
+     time_last_updated    rates  
+AED         1695340802     3.67  
+AFN         1695340802    79.05  
+ALL         1695340802    99.72  
+AMD         1695340802   386.67  
+ANG         1695340802     1.79  
+..                 ...      ...  
+XPF         1695340802   111.91  
+YER         1695340802   250.26  
+ZAR         1695340802    18.94  
+ZMW         1695340802    20.89  
+ZWL         1695340802  5066.90  
+
+[162 rows x 7 columns]
+```
+
+**Writing and saving to a JSON file**
+
+A DataFrame can be saved as a json file. To do so, use the method `to_json(filename)`.
+
+For a dataframe with several columns, if you want to save to a json file:
+
+```
+import pandas as pd
+import json
+data = [['Axel',32], ['Alice', 26], ['Alex', 45],['Sam',26]]
+df = pd.DataFrame(data,columns=['Name','Age'])
+df.to_json('example.json')
+
+s = '/content/example.json'
+
+# read json to data frame
+df = pd.read_json(s)
+print(df)
+```
+
+The output is:
+```
+    Name  Age
+0   Axel   32
+1  Alice   26
+2   Alex   45
+3    Sam   26
+```
+
+[Reference](https://pythonbasics.org/pandas-json/)
+
+## 26. Reading and writing to parquet files using pandas
+
+- The Apache Parquet format is a column-oriented data file format. This means data are stored based on columns, rather than by rows.
+- Parquet is optimized for distributed processing of large datasets. It is widely used in Big Data processing systems like Hadoop and Apache Spark. 
+- A partitioned parquet file is a parquet file that is partitioned into multiple smaller files based on the values of one or more columns.
+- Partitioning can significantly improve query performance by allowing the processing system to read only the necessary files by querying only a subset of columns.
+
+**Pandas `to_parquet()` method**
+
+Before diving into using the Pandas `to_parquet()` method, let’s take a look at the different parameters and default arguments of the method.
+
+```
+# Understanding the Pandas read_parquet() Method
+import pandas as pd
+df = pd.DataFrame()
+df.to_parquet(path, engine='auto', compression='snappy', index=None, partition_cols=None, **kwargs)
+```
+
+| Parameter      | Description |  Default Argument      | Possible Values |
+| ----------- | ----------- |  ----------- | ----------- |
+| path=      | If a string, it will be used as Root Directory path when writing a partitioned dataset.     |        | String or path object      |
+| engine=  | Which parquet library to use        |  ‘auto’     | {‘auto’, ‘pyarrow’, ‘fastparquet’}      |
+| compression=   | The name of the compression to use.       | ‘snappy’      | {‘snappy’, ‘gzip’, ‘brotli’, None}      |
+| index=   | If, True, includes the DataFrame’s index or indices in the file output.      |  None      | bool or None       |
+| partition_cols=   | The column names by which to partition the dataset.        |  None      | list     |
+	
+**Write to a Parquet File with `to_parquet`**
+
+In order to write a Pandas DataFrame, you simply need to apply the `.to_parquet()` method to the DataFrame and pass in a path to where you want to save the file.
+
+```
+# Write a Pandas DataFrame to a Parquet File
+import pandas as pd
+
+df = pd.DataFrame({
+    'ID': range(5),
+    'Name':['Nik', 'Kate', 'Noelle', 'Autumn', 'Many'],
+    'Age': [33, 34, 27, 45, 23]
+})
+
+df.to_parquet('/content/sample_data/sample.parquet', index=True)
+```
+
+**Use Compression When Writing a DataFrame to Parquet**
+
+The Pandas `to_parquet()` function also allows you to apply compression to a parquet file. By default, Pandas will use snappy compression. However, we can also use different formats, including gzip and brotli. You can also use `Index=True` to set an index for the parquet file.
+
+```
+# Apply gzip Compression to a Parquet File in Pandas
+import pandas as pd
+
+df = pd.DataFrame({
+    'ID': range(5),
+    'Name':['Nik', 'Kate', 'Noelle', 'Autumn', 'Many'],
+    'Age': [33, 34, 27, 45, 23]
+})
+
+df.to_parquet('/content/sample_data/df.parquet.gzip', compression='gzip', Index=True)
+```
+
+The output is:
+```
+	ID	Name	Age
+0	0	Nik	33
+1	1	Kate	34
+2	2	Noelle	27
+3	3	Autumn	45
+4	4	Many	23
+```
+
+[Writing to a parquet file](https://datagy.io/pandas-to-parquet/#:~:text=the%20DataFrame%20df%20.-,Use%20Compression%20When%20Writing%20a%20DataFrame%20to%20Parquet,formats%2C%20including%20gzip%20and%20brotli.)
+
+**Reading a parquet file**
+
+[Reading](https://www.geeksforgeeks.org/read-a-parquet-file-using-pandas/)
+
+[Data Partitioning](https://saturncloud.io/blog/how-to-write-data-to-parquet-with-python/)
+
+## 27. Converting CSV file to JSON using Pandas
 
 Also involves converting pandas dataframe to JSON with compression (`gzip`) and read back the compressed, uncompressed file using python.
 
@@ -1943,12 +2129,42 @@ The output is:
 Without pandas, reading the compressed file involves a couple more steps:
 
 ```
+# Open the gzipped JSON file for reading
 with gzip.open(json_output_compressed, 'r') as jsonfile:
-  data = json.loads(jsonfile.read().decode('utf-8'))
-  
+    # Read the file and decode it as UTF-8
+    content = jsonfile.read().decode('utf-8')
+
+    # Parse the JSON data
+    data = json.loads(content)
+
+    # Check if the data is a list or a dictionary
+    if isinstance(data, dict):
+        # If it's a dictionary, iterate through its items
+        for key, value in data.items():
+            print(f"{key}: {value}")
+    elif isinstance(data, list):
+        # If it's a list, iterate through its elements
+        for i, element in enumerate(data):
+            if i >= 10:  # Limit the number of elements to display
+                break
+            print(f"Element {i}: {element}")
+    else:
+        print("Unsupported JSON data format")
 ```
 
+The output when limited to the first ten rows is:
+```
+Element 0: {'region': 'NORTHLAND', 'variable': 'Discharge by Hydrogeneration', 'RID': 1, 'yq': 1995.1, 'value': 0, 'year': 1995, 'Series': 'Quarterly', 'Unit': 'Mm3', 'Source': 'NIW', 'Quarter': 1}
+Element 1: {'region': 'NORTHLAND', 'variable': 'Discharge by Hydrogeneration', 'RID': 1, 'yq': 1995.2, 'value': 0, 'year': 1995, 'Series': 'Quarterly', 'Unit': 'Mm3', 'Source': 'NIW', 'Quarter': 2}
+Element 2: {'region': 'NORTHLAND', 'variable': 'Discharge by Hydrogeneration', 'RID': 1, 'yq': 1995.3, 'value': 0, 'year': 1995, 'Series': 'Quarterly', 'Unit': 'Mm3', 'Source': 'NIW', 'Quarter': 3}
+Element 3: {'region': 'NORTHLAND', 'variable': 'Discharge by Hydrogeneration', 'RID': 1, 'yq': 1995.4, 'value': 0, 'year': 1995, 'Series': 'Quarterly', 'Unit': 'Mm3', 'Source': 'NIW', 'Quarter': 4}
+Element 4: {'region': 'AUCKLAND', 'variable': 'Discharge by Hydrogeneration', 'RID': 2, 'yq': 1995.1, 'value': 0, 'year': 1995, 'Series': 'Quarterly', 'Unit': 'Mm3', 'Source': 'NIW', 'Quarter': 1}
+Element 5: {'region': 'AUCKLAND', 'variable': 'Discharge by Hydrogeneration', 'RID': 2, 'yq': 1995.2, 'value': 0, 'year': 1995, 'Series': 'Quarterly', 'Unit': 'Mm3', 'Source': 'NIW', 'Quarter': 2}
+Element 6: {'region': 'AUCKLAND', 'variable': 'Discharge by Hydrogeneration', 'RID': 2, 'yq': 1995.3, 'value': 0, 'year': 1995, 'Series': 'Quarterly', 'Unit': 'Mm3', 'Source': 'NIW', 'Quarter': 3}
+Element 7: {'region': 'AUCKLAND', 'variable': 'Discharge by Hydrogeneration', 'RID': 2, 'yq': 1995.4, 'value': 0, 'year': 1995, 'Series': 'Quarterly', 'Unit': 'Mm3', 'Source': 'NIW', 'Quarter': 4}
+Element 8: {'region': 'WAIKATO', 'variable': 'Discharge by Hydrogeneration', 'RID': 3, 'yq': 1995.1, 'value': 19446, 'year': 1995, 'Series': 'Quarterly', 'Unit': 'Mm3', 'Source': 'NIW', 'Quarter': 1}
+Element 9: {'region': 'WAIKATO', 'variable': 'Discharge by Hydrogeneration', 'RID': 3, 'yq': 1995.2, 'value': 18933, 'year': 1995, 'Series': 'Quarterly', 'Unit': 'Mm3', 'Source': 'NIW', 'Quarter': 2}
+```
 
-
-## 25. Reading and writing JSON file using Pandas
+[Reference](https://www.youtube.com/watch?v=Wetck-Qq9bM&ab_channel=DataEngUncomplicated)
 
